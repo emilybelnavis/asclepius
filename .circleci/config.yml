@@ -7,13 +7,13 @@ jobs:
   build:
     macos:
       xcode: 13.3.0
-      steps:
-        - checkout
-        - run: swift build
-        - run: swift test --enable-code-coverage  --xunit-output ./results.xml --parallel --skip-build
-        - store_test_results:
-            path: results.xml
-        - codecov/upload
+  steps:
+    - checkout
+    - run: swift build
+    - run: swift test --enable-code-coverage  --xunit-output ./results.xml --parallel --skip-build
+    - store_test_results:
+        path: results.xml
+    - codecov/upload
 workflows:
   build:
     jobs:
