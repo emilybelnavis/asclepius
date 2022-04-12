@@ -13,6 +13,7 @@ jobs:
       - run: swift test --enable-code-coverage  --xunit-output ./results.xml --parallel
       - store_test_results:
           path: results.xml
+      - codecov/upload:
           file: /Users/distiller/project/results.xml
 workflows:
   build:
