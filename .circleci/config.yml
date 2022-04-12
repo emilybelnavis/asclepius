@@ -14,7 +14,7 @@ jobs:
       - store_test_results:
           path: results.xml
       - codecov/upload:
-          file: './results.xml'
+          file: /Users/distiller/project/results.xml
 workflows:
   build:
     jobs:
