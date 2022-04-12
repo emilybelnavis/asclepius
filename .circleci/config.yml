@@ -10,10 +10,11 @@ jobs:
     steps:
       - checkout
       - run: swift build
-      - run: swift test --enable-code-coverage  --xunit-output ./results.xml --parallel 
+      - run: swift test --enable-code-coverage  --xunit-output ./results.xml --parallel
       - store_test_results:
           path: results.xml
-      - codecov/upload
+      - codecov/upload:
+          file: './results.xml'
 workflows:
   build:
     jobs:

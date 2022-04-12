@@ -29,7 +29,7 @@ public protocol ExpressibleAsNSDate {
 }
 
 public enum DateExpressionError: Error {
-    case unableToExpressAsdate(DateComponents)
+    case unableToExpressAsDate(DateComponents)
     case unableToConstructFromDate(Date, DateComponents)
 }
 
