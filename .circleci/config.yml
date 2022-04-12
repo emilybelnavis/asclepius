@@ -10,15 +10,20 @@ jobs:
     steps:
       - checkout
       - run: swift build
-      - run: swift test --enable-code-coverage  --xunit-output ./results.xml --parallel 
+      - run: swift test --enable-code-coverage  --xunit-output ./results.xml --parallel
       - store_test_results:
           path: results.xml
+<<<<<<< HEAD
 <<<<<<< HEAD
       - codecov/upload
 =======
       - codecov/upload:
           file: /Users/distiller/project/results.xml
 >>>>>>> ea9b612 (update ci coverage step [ci-skip])
+=======
+      - codecov/upload:
+          file: './results.xml'
+>>>>>>> 6be9030 (fixed issue with date -> nsdate conversion)
 workflows:
   build:
     jobs:

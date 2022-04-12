@@ -25,6 +25,7 @@
 import Foundation
 
 public struct FHIRDateComponents: ExpressibleAsNSDate {
+    
     static var calendar = Calendar(identifier: .gregorian)
     
     let year: Int
@@ -33,22 +34,21 @@ public struct FHIRDateComponents: ExpressibleAsNSDate {
     let hour: UInt8?
     let minute: UInt8?
     let second: Decimal?
-    let timezone: TimeZone?
+    let timeZone: TimeZone?
     
-    public init(year: Int, month: UInt8? = nil, day: UInt8? = nil, hour: UInt8? = nil, minute: UInt8? = nil, second: Decimal? = nil, timezone: TimeZone? = nil) {
+    public init(year: Int, month: UInt8? = nil, day: UInt8? = nil, hour: UInt8? = nil, minute: UInt8? = nil, second: Decimal? = nil, timeZone: TimeZone? = nil) {
         self.year = year
         self.month = month
         self.day = day
-        self.minute = minute
         self.hour = hour
+        self.minute = minute
         self.second = second
-        self.timezone = timezone
+        self.timeZone = timeZone
     }
     
     public func asNSDate() throws -> Date {
         let calendar = Calendar(identifier: .gregorian)
-        var dateComponents = DateComponents(calendar: calendar, timeZone: timezone ?? TimeZone(abbreviation: "GMT"), era: nil, year: year)
-        
+        var dateComponents = DateComponents(calendar: calendar, timeZone: timeZone ?? TimeZone(abbreviation: "GMT"), era: nil, year: year)
         if let month = month {
             dateComponents.month = Int(month)
         }
@@ -56,13 +56,17 @@ public struct FHIRDateComponents: ExpressibleAsNSDate {
         if let day = day {
             dateComponents.day = Int(day)
         }
-                
+        
+        if let hour = hour {
+            dateComponents.hour = Int(hour)
+        }
+        
         if let minute = minute {
             dateComponents.minute = Int(minute)
         }
         
         guard var date = dateComponents.date else {
-            throw DateExpressionError.unableToExpressAsdate(dateComponents)
+            throw DateExpressionError.unableToExpressAsDate(dateComponents)
         }
         
         if let second = second {
@@ -74,50 +78,50 @@ public struct FHIRDateComponents: ExpressibleAsNSDate {
     }
     
     public static func dateComponents(from date: Date, with timeZone: TimeZone) throws -> (year: Int, month: UInt8?, day: UInt8?) {
-            calendar.timeZone = timeZone
-            let components = calendar.dateComponents([.year, .month, .day], from: date)
-            guard let year = components.year else {
-                throw DateExpressionError.unableToConstructFromDate(date, components)
-            }
-            return (year, components.month?.asUInt8(), components.day?.asUInt8())
+        calendar.timeZone = timeZone
+        let components = calendar.dateComponents([.year, .month, .day], from: date)
+        guard let year = components.year else {
+            throw DateExpressionError.unableToConstructFromDate(date, components)
+        }
+        return (year, components.month?.asUInt8(), components.day?.asUInt8())
+    }
+    
+    public static func timeComponents(from date: Date, with timeZone: TimeZone) throws -> (hour: UInt8, minute: UInt8, second: Decimal) {
+        calendar.timeZone = timeZone
+        let components = calendar.dateComponents([.hour, .minute, .second, .nanosecond], from: date)
+        guard let hourInt = components.hour,
+              let minuteInt = components.minute,
+              let secondsInt = components.second else {
+            throw DateExpressionError.unableToConstructFromDate(date, components)
         }
         
-        public static func timeComponents(from date: Date, with timeZone: TimeZone) throws -> (hour: UInt8, minute: UInt8, second: Decimal) {
-            calendar.timeZone = timeZone
-            let components = calendar.dateComponents([.hour, .minute, .second, .nanosecond], from: date)
-            guard let hourInt = components.hour,
-                  let minuteInt = components.minute,
-                  let secondsInt = components.second else {
-                throw DateExpressionError.unableToConstructFromDate(date, components)
-            }
-            
-            let hour = UInt8(hourInt)
-            let minute = UInt8(minuteInt)
-            
-            var second: Decimal
-            if let nanoseconds = components.nanosecond {
-                let secondsFraction = Decimal((Double(nanoseconds) / Double(1000000000)))
-                second = secondsFraction + Decimal(secondsInt)
-            } else {
-                second = Decimal(secondsInt)
-            }
-            
-            return (hour, minute, second)
+        let hour = UInt8(hourInt)
+        let minute = UInt8(minuteInt)
+        
+        var second: Decimal
+        if let nanoseconds = components.nanosecond {
+            let secondsFraction = Decimal((Double(nanoseconds) / Double(1000000000)))
+            second = secondsFraction + Decimal(secondsInt)
+        } else {
+            second = Decimal(secondsInt)
         }
         
-        public static func components(from date: Date, with timeZone: TimeZone) throws -> (year: Int, month: UInt8, day: UInt8, hour: UInt8, minute: UInt8, second: Decimal) {
-            let (year, monthComponent, dayComponent) = try dateComponents(from: date, with: timeZone)
-            guard let month = monthComponent else {
-                let failureComponents = DateComponents(calendar: calendar, timeZone: timeZone, era: nil, year: year, month: nil)
-                throw DateExpressionError.unableToConstructFromDate(date, failureComponents)
-            }
-            guard let day = dayComponent else {
-                let failureComponents = DateComponents(calendar: calendar, timeZone: timeZone, era: nil, year: year, month: Int(month), day: nil)
-                throw DateExpressionError.unableToConstructFromDate(date, failureComponents)
-            }
-            let (hour, minute, second) = try timeComponents(from: date, with: timeZone)
-            return (year, month, day, hour, minute, second)
+        return (hour, minute, second)
+    }
+    
+    public static func components(from date: Date, with timeZone: TimeZone) throws -> (year: Int, month: UInt8, day: UInt8, hour: UInt8, minute: UInt8, second: Decimal) {
+        let (year, monthComponent, dayComponent) = try dateComponents(from: date, with: timeZone)
+        guard let month = monthComponent else {
+            let failureComponents = DateComponents(calendar: calendar, timeZone: timeZone, era: nil, year: year, month: nil)
+            throw DateExpressionError.unableToConstructFromDate(date, failureComponents)
         }
+        guard let day = dayComponent else {
+            let failureComponents = DateComponents(calendar: calendar, timeZone: timeZone, era: nil, year: year, month: Int(month), day: nil)
+            throw DateExpressionError.unableToConstructFromDate(date, failureComponents)
+        }
+        let (hour, minute, second) = try timeComponents(from: date, with: timeZone)
+        return (year, month, day, hour, minute, second)
+    }
 }
 
 extension Int {

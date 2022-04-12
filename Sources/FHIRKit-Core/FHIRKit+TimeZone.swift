@@ -25,6 +25,7 @@
 import Foundation
 
 public extension TimeZone {
+    
     init(_ originalString: String) throws {
         let scanner = Scanner(string: originalString)
         let (seconds, _) = try TimeZone.hs_parseComponents(from: scanner, expectAtEnd: true)
