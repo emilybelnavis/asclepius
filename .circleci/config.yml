@@ -13,7 +13,12 @@ jobs:
       - run: swift test --enable-code-coverage  --xunit-output ./results.xml --parallel 
       - store_test_results:
           path: results.xml
+<<<<<<< HEAD
       - codecov/upload
+=======
+      - codecov/upload:
+          file: /Users/distiller/project/results.xml
+>>>>>>> ea9b612 (update ci coverage step [ci-skip])
 workflows:
   build:
     jobs:
