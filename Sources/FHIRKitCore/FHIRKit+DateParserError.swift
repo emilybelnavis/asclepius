@@ -24,7 +24,7 @@
 
 import Foundation
 
-public struct FHIRDateParserErrorPosition: CustomStringConvertible {
+public struct FHIRKitDateParserErrorPosition: CustomStringConvertible {
     public let string: String
     public let location: Int
     
@@ -38,10 +38,10 @@ public struct FHIRDateParserErrorPosition: CustomStringConvertible {
     }
 }
 
-// MARK: - FHIRDateParserErrorPosition
+// MARK: - FHIRKitDateParserErrorPosition
 
-extension FHIRDateParserErrorPosition: Equatable {
-    public static func ==(lhs: FHIRDateParserErrorPosition, rhs: FHIRDateParserErrorPosition) -> Bool {
+extension FHIRKitDateParserErrorPosition: Equatable {
+    public static func ==(lhs: FHIRKitDateParserErrorPosition, rhs: FHIRKitDateParserErrorPosition) -> Bool {
         if lhs.string != rhs.string {
             return false
         }
@@ -52,20 +52,20 @@ extension FHIRDateParserErrorPosition: Equatable {
     }
 }
 
-// MARK: - FHIRDateParserError
+// MARK: - FHIRKitDateParserError
 
-public enum FHIRDateParserError: LocalizedError {
-    case invalidSeparator(FHIRDateParserErrorPosition)
-    case invalidYear(FHIRDateParserErrorPosition)
-    case invalidMonth(FHIRDateParserErrorPosition)
-    case invalidDay(FHIRDateParserErrorPosition)
-    case invalidHour(FHIRDateParserErrorPosition)
-    case invalidMinute(FHIRDateParserErrorPosition)
-    case invalidSecond(FHIRDateParserErrorPosition)
-    case invalidTimeZonePrefix(FHIRDateParserErrorPosition)
-    case invalidTimeZoneHour(FHIRDateParserErrorPosition)
-    case invalidTimeZoneMinute(FHIRDateParserErrorPosition)
-    case additionalCharacters(FHIRDateParserErrorPosition)
+public enum FHIRKitDateParserError: LocalizedError {
+    case invalidSeparator(FHIRKitDateParserErrorPosition)
+    case invalidYear(FHIRKitDateParserErrorPosition)
+    case invalidMonth(FHIRKitDateParserErrorPosition)
+    case invalidDay(FHIRKitDateParserErrorPosition)
+    case invalidHour(FHIRKitDateParserErrorPosition)
+    case invalidMinute(FHIRKitDateParserErrorPosition)
+    case invalidSecond(FHIRKitDateParserErrorPosition)
+    case invalidTimeZonePrefix(FHIRKitDateParserErrorPosition)
+    case invalidTimeZoneHour(FHIRKitDateParserErrorPosition)
+    case invalidTimeZoneMinute(FHIRKitDateParserErrorPosition)
+    case additionalCharacters(FHIRKitDateParserErrorPosition)
     
     public var errorDescription: String? {
         switch self {
@@ -94,7 +94,7 @@ public enum FHIRDateParserError: LocalizedError {
         }
     }
     
-    public var errorPosition: FHIRDateParserErrorPosition {
+    public var errorPosition: FHIRKitDateParserErrorPosition {
         switch self {
         case .invalidSeparator(let position):
             return position

@@ -1,5 +1,5 @@
 //
-//  ConstructFromNSDate.swift
+//  FHIRKitUnsignedInteger.swift
 //  FHIRKit
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -24,6 +24,22 @@
 
 import Foundation
 
-public protocol ConstructFromNSDate {
-    init(date: Date, timeZone: TimeZone) throws
+public struct FHIRKitUnsignedInteger: FHIRKitPrimitiveType, FHIRKitIntegerRepresentable {
+  public typealias IntegerLiteralType = Int32
+  
+  public var integer: Self.IntegerLiteralType {
+    didSet {
+      if integer < 0 {
+        integer = oldValue
+      }
+    }
+  }
+  
+  public init(_ integer: Self.IntegerLiteralType) {
+    self.integer = max(0, integer)
+  }
+  
+  public init(integerLiteral value: Self.IntegerLiteralType) {
+    self.integer = max(0, value)
+  }
 }

@@ -1,5 +1,5 @@
 //
-//  FHIRKit+IntegerRepresentable.swift
+//  ConstructableFromNSDate.swift
 //  FHIRKit
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -24,14 +24,6 @@
 
 import Foundation
 
-public protocol FHIRIntegerRepresentable: ExpressibleByIntegerLiteral, Equatable, Decodable {
-    
-    var integer: Self.IntegerLiteralType { get set }
-}
-
-extension FHIRIntegerRepresentable where IntegerLiteralType: Equatable {
-    
-    public static func ==(l: Self, r: Self) -> Bool {
-        return l.integer == r.integer
-    }
+public protocol ConstructibleFromNSDate {
+    init(date: Date, timeZone: TimeZone) throws
 }

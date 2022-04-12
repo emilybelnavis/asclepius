@@ -24,7 +24,7 @@
 
 import Foundation
 
-public struct FHIRDateComponents: ExpressibleAsNSDate {
+public struct FHIRKitDateComponents: ExpressibleAsNSDate {
     
     static var calendar = Calendar(identifier: .gregorian)
     
