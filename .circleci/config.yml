@@ -10,7 +10,7 @@ jobs:
     steps:
       - checkout
       - run: swift build
-      - run: swift test --enable-code-coverage  --xunit-output ./results.xml --parallel --skip-build
+      - run: swift test --enable-code-coverage  --xunit-output ./results.xml --parallel 
       - store_test_results:
           path: results.xml
       - codecov/upload
