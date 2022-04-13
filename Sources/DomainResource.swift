@@ -1,5 +1,5 @@
 //
-//  Element.swift
+//  DomainResource.swift
 //  FHIRKit
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -22,65 +22,58 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+import Darwin
 
-/// Base definition for all elements in a resource
-open class Element: FHIRKitType {
-  /// unique id for inter-element referencing
-  public var id: FHIRKitPrimitive<FHIRKitString>?
+open class DomainResource: Resource {
+  override open class var resourceType: ResourceType { return .domainResource}
+  
+  public var text: Narrative?
+  
+  public var contaioned: [ResourceProxy]?
   
   public var `extension`: [Extension]?
   
-  public init(){
-    
+  public var modifierExtension: [Extension]?
+  
+  override public init() {
+    super.init()
   }
   
-  public convenience init(`extension`: [Extension]? = nil, id: FHIRKitPrimitive<FHIRKitString>? = nil) {
+  public convenience init(
+    contained: [ResourceProxy]? = nil,
+    `extension`: [Extension]? = nil,
+    id: FHIRKitPrimitive<FHIRKitString>? = nil,
+    implicitRules: FHIRKitPrimitive<FHIRKitURI>? = nil,
+    language: FHIRKitPrimitive<FHIRKitString>? = nil,
+    meta: Meta? = nil,
+    modifierExtension: [Extension]? = nil,
+    text: Narrative? = nil
+  ) {
     self.init()
+    self.contained = contained
     self.`extension` = `extension`
     self.id = id
+    self.implicitRules = implicitRules
+    self.language = language
+    self.meta = meta
+    self.modifierExtension = modifierExtension
+    self.text = text
   }
   
   // MARK: - Codable
   private enum CodingKeys: String, CodingKey {
+    case contained
     case `extension` = "extension"
-    case id; case _id
+    case modifierExtension
+    case text
   }
   
-  /// decodable
   public required init(from decoder: Decoder) throws {
     let _container = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.`extension` = try [Extension](from: _container, forKeyIfPresent: .`extension`)
-    self.id = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .id, auxiliaryKey: ._id)
-  }
-  
-  public func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
-    
-    try `extension`?.encode(on: &_container, forKey: .`extension`)
-    try id?.encode(on: &_container, forKey: .id, auxiliaryKey: ._id)
-  }
-  
-  // MARK: - Equatable
-  public static func ==(l: Element, r: Element) -> Bool {
-    return l.isEqual(to: r)
-  }
-  
-  public static func isEqual(to _other: Any?) -> Bool {
-    guard let _other = _other as? Element else {
-      return false
-    }
-    
-    guard type(of: self) == type(of: _other) else {
-      return false
-    }
-    
-    return `extension` == _other.`extension` && id == _other.id
-  }
-  
-  // MARK: - Hashable
-  public func hash(into: hasher: inout Hasher) {
-    hasher.combine(`extension`)
-    hasher.combine(id)
+    self.contained = try [ResourceProxy](from: _container, forKeyIfPresent: .contained)
+    self.`extension` = try [Extension](from: _container, forKeyIfPresent: .`extension)
+    self.modifierExtension = try [Extension](from: _container, forKeyIfPresent: .modifierExtension)
+    self.text = try Narrative(from: _container, forKeyIfPresent: .text)
   }
 }

@@ -1,5 +1,5 @@
 //
-//  Element.swift
+//  Narrative.swift
 //  FHIRKit
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -22,65 +22,46 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-
-/// Base definition for all elements in a resource
-open class Element: FHIRKitType {
-  /// unique id for inter-element referencing
-  public var id: FHIRKitPrimitive<FHIRKitString>?
+open class Narrative: Element {
+  public var status: FHIRKitPrimitive<NarrativeStatus>
+  public var div: FHIRKitPrimitive<FHIRKitString>
   
-  public var `extension`: [Extension]?
-  
-  public init(){
-    
+  public init(div: FHIRKitPrimitive<FHIRKitString>, status: FHIRKitPrimitive<NarrativeStatus>) {
+    self.div = div
+    self.status = status
+    super.init()
   }
   
-  public convenience init(`extension`: [Extension]? = nil, id: FHIRKitPrimitive<FHIRKitString>? = nil) {
-    self.init()
+  public convenience init(
+    div: FHIRKitPrimitive<FHIRKitString>,
+    `extension`: [Extension]? = nil,
+    id: FHIRKitPrimitive<FHIRKitString>? = nil,
+    status: FHIRKitPrimitive<NarrativeStatus>
+  ) {
+    self.init(div: div, status: status)
     self.`extension` = `extension`
     self.id = id
   }
   
   // MARK: - Codable
   private enum CodingKeys: String, CodingKey {
-    case `extension` = "extension"
-    case id; case _id
+    case div; case _div
+    case status; case _status
   }
   
-  /// decodable
   public required init(from decoder: Decoder) throws {
     let _container = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.`extension` = try [Extension](from: _container, forKeyIfPresent: .`extension`)
-    self.id = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .id, auxiliaryKey: ._id)
+    self.div = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKey: .div, auxiliaryKey: ._div)
+    self.status = try FHIRKitPrimitive<NarrativeStatus(from: _container, forKey: .status, auxiliaryKey: ._status)
+    try super.init(from: decoder)
   }
   
-  public func encode(to encoder: Encoder) throws {
+  public override func encode(to encoder: Encoder) throws {
     var _container = encoder.container(keyedBy: CodingKeys.self)
     
-    try `extension`?.encode(on: &_container, forKey: .`extension`)
-    try id?.encode(on: &_container, forKey: .id, auxiliaryKey: ._id)
-  }
-  
-  // MARK: - Equatable
-  public static func ==(l: Element, r: Element) -> Bool {
-    return l.isEqual(to: r)
-  }
-  
-  public static func isEqual(to _other: Any?) -> Bool {
-    guard let _other = _other as? Element else {
-      return false
-    }
-    
-    guard type(of: self) == type(of: _other) else {
-      return false
-    }
-    
-    return `extension` == _other.`extension` && id == _other.id
-  }
-  
-  // MARK: - Hashable
-  public func hash(into: hasher: inout Hasher) {
-    hasher.combine(`extension`)
-    hasher.combine(id)
+    try div.encode(on: &_container, forKey: .div, auxiliaryKey: ._div)
+    try status.encode(on: &_container, forKey: .status, auxiliaryKey: ._status)
+    try super.encode(to: encoder)
   }
 }

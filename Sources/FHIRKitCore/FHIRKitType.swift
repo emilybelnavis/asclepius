@@ -22,11 +22,11 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-public protocol FHIRType: Codable, Hashable {
+public protocol FHIRKitType: Codable, Hashable {
     
 }
 
-extension FHIRType {
+extension FHIRKitType {
     
     public init<K>(from parentContainer: KeyedDecodingContainer<K>, forKey key: K) throws {
         self = try parentContainer.decode(Self.self, forKey: key)
@@ -44,7 +44,7 @@ extension FHIRType {
     }
 }
 
-extension Array where Element: FHIRType {
+extension Array where Element: FHIRKitType {
     
     public init<K>(from container: KeyedDecodingContainer<K>, forKey key: K) throws {
         self = try container.decode(Self.self, forKey: key)
