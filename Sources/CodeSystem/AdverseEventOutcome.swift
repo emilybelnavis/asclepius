@@ -1,5 +1,5 @@
 //
-//  AddressUse.swift
+//  AdverseEventOutcome.swift
 //  FHIRKit
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -22,10 +22,11 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-public enum AddressUse: String, FHIRKitPrimitiveType {
-  case home
-  case work
-  case temp
-  case old
-  case billing
+public enum AdverseEventOutcome: String, FHIRKitPrimitiveType {
+  case resolved
+  case recovering
+  case ongoing
+  case resolvedWithSequelae
+  case fatal
+  case unknown
 }

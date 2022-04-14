@@ -1,5 +1,5 @@
 //
-//  AddressUse.swift
+//  ActionDefinitionCategory.swift
 //  FHIRKit
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -22,10 +22,8 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-public enum AddressUse: String, FHIRKitPrimitiveType {
-  case home
-  case work
-  case temp
-  case old
-  case billing
+public enum ActivityDefinitionCategory: String, FHIRKitPrimitiveType {
+  case treatment
+  case education
+  case assessment
 }

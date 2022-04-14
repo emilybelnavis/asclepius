@@ -1,5 +1,5 @@
 //
-//  AddressUse.swift
+//  AdverseEventCausalityMethod.swift
 //  FHIRKit
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -22,10 +22,8 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-public enum AddressUse: String, FHIRKitPrimitiveType {
-  case home
-  case work
-  case temp
-  case old
-  case billing
+public enum AdverseEventCausalityMethod: String, FHIRKitPrimitiveType {
+  case probabilityScale = "ProbabilityScale"
+  case bayesian = "Bayesian"
+  case checklist = "Checklist"
 }
