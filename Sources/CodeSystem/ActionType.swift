@@ -1,5 +1,5 @@
 //
-//  AddressUse.swift
+//  ActionType.swift
 //  FHIRKit
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -22,4 +22,9 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-public 
+public enum ActionType: String, FHIRKitPrimitiveType {
+  case create
+  case update
+  case remove
+  case fireEvent = "fire-event"
+}

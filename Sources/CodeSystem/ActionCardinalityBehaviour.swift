@@ -1,5 +1,5 @@
 //
-//  AddressUse.swift
+//  ActionCardinalityBehaviour.swift
 //  FHIRKit
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -22,4 +22,16 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-public 
+/**
+ Defines behavior for an action or a group for how many times that item may be repeated.
+ 
+ URL: http://hl7.org/fhir/action-cardinality-behavior
+ ValueSet: http://hl7.org/fhir/ValueSet/action-cardinality-behavior
+ */
+public enum ActionCardinalityBehaviour: String, FHIRKitPrimitiveType {
+  /// The action may only be selected one time
+  case single
+  
+  /// The action may be selected multiple times
+  case multiple
+}

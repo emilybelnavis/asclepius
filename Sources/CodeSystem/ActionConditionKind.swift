@@ -1,5 +1,5 @@
 //
-//  AddressUse.swift
+//  ActionConditionKind.swift
 //  FHIRKit
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -22,4 +22,20 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-public 
+
+/**
+ Defines the kinds of conditions that can appear on actions.
+ 
+ URL: http://hl7.org/fhir/action-condition-kind
+ ValueSet: http://hl7.org/fhir/ValueSet/action-condition-kind
+ */
+public enum ActionConditionKind: String, FHIRKitPrimitiveType {
+  /// The condition describes whether or not a given action is applicable
+  case applicability
+  
+  /// The condition is a starting condition for the action
+  case start
+  
+  /// The condition is a stop, or exit condition for the action
+  case stop
+}

@@ -1,5 +1,5 @@
 //
-//  AddressUse.swift
+//  AbstractType.swift
 //  FHIRKit
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -22,4 +22,17 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-public 
+/**
+ A list of the base types defined by this version of the FHIR specification
+ 
+ Types that are defined, but for which only specializations are actually created
+ 
+ URL: https://hl7.org/fhir/abstract-types
+ */
+public enum AbstractType: String, FHIRKitPrimitiveType {
+  /// A placeholder that means any kind of data type
+  case type = "Type"
+  
+  /// A placeholder that means any kind of resource
+  case any = "Any"
+}

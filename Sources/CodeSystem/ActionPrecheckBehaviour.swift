@@ -1,5 +1,5 @@
 //
-//  AddressUse.swift
+//  ActionPrecheckBehaviour.swift
 //  FHIRKit
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -22,4 +22,24 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-public 
+/**
+ Defines selection frequency behavior for an action or group.
+ 
+ URL: http://hl7.org/fhir/action-precheck-behavior
+ ValueSet: http://hl7.org/fhir/ValueSet/action-precheck-behavior
+ */
+public enum ActionPrecheckBehavior: String, FHIRKitPrimitiveType {
+  /**
+   An action with this behaviour is one of the most frequent action that is, or should be, included by an
+   end-user, for the particular context in which the action occurs. The system displaying the action to the
+   end-user should consider "pre-checking" such an action as a convenience for the user
+   */
+  case yes
+  
+  /**
+   An action with this behaviour is one of the less frequent actions included by the end-user, for the particular
+   context in which the action occurs. The system displaying the actions to the end user would typically not
+   "pre-check" such an action
+   */
+  case no
+}

@@ -1,5 +1,5 @@
 //
-//  AddressUse.swift
+//  AccountStatus.swift
 //  FHIRKit
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -22,4 +22,25 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-public 
+/**
+ Indicates whether the account is available to be used.
+ 
+ URL: http://hl7.org/fhir/account-status
+ ValueSet: http://hl7.org/fhir/ValueSet/account-status
+ */
+public enum AccountStatus: String, FHIRKitPrimitiveType {
+  /// This account is active and may be used
+  case active
+  
+  /// This account is inactive and should not be used to track financial information
+  case inactive
+  
+  /// This instance should not have been part of this patient's medical record
+  case enteredInError = "entered-in-error"
+  
+  /// This account is on hold
+  case onHold = "on-hold"
+
+  /// The account status is unknown
+  case unknown
+}

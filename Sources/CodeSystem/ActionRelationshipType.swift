@@ -1,5 +1,5 @@
 //
-//  AddressUse.swift
+//  ActionRelationshipType.swift
 //  FHIRKit
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -22,4 +22,14 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-public 
+public enum ActionRelationshipType: String, FHIRKitPrimitiveType {
+  case beforeStart = "before-start"
+  case before
+  case beforeEnd = "before-end"
+  case concurrentWithStart = "concurrent-with-start"
+  case concurrent
+  case concurrentWithEnd = "concurrent-with-end"
+  case afterStart = "after-start"
+  case after
+  case afterEnd = "after-end"
+}

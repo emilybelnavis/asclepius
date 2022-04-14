@@ -1,5 +1,5 @@
 //
-//  AddressUse.swift
+//  ActionSelectionBehavior.swift
 //  FHIRKit
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -22,4 +22,11 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-public 
+public enum ActionSelectionBehavior: String, FHIRKitPrimitiveType {
+  case any
+  case all
+  case allOrNone = "all-or-none"
+  case exactlyOne = "exactly-one"
+  case atMostOne = "at-most-one"
+  case oneOrMore = "one-or-more"
+}
