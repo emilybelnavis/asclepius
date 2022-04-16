@@ -1,5 +1,5 @@
 //
-//  DomainResource.swift
+//  Period.swift
 //  FHIRKit
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -22,58 +22,69 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-import Darwin
-
-open class DomainResource: Resource {
-  override open class var resourceType: ResourceType { return .domainResource}
-  
-  public var text: Narrative?
-  
-  public var contaioned: [ResourceProxy]?
-  
-  public var `extension`: [Extension]?
-  
-  public var modifierExtension: [Extension]?
+/**
+ Time range defined by a start and end date, and optionally time
+ */
+open class Period: Element {
+  public var start: FHIRKitPrimitive<DateTime>?
+  public var end: FHIRKitPrimitive<DateTime>?
   
   override public init() {
     super.init()
   }
   
   public convenience init(
-    contained: [ResourceProxy]? = nil,
+    end: FHIRKitPrimitive<DateTime>? = nil,
     `extension`: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    implicitRules: FHIRKitPrimitive<FHIRKitURI>? = nil,
-    language: FHIRKitPrimitive<FHIRKitString>? = nil,
-    meta: Meta? = nil,
-    modifierExtension: [Extension]? = nil,
-    text: Narrative? = nil
+    start: FHIRKitPrimitive<DateTime>? = nil
   ) {
     self.init()
-    self.contained = contained
+    
+    self.end = end
     self.`extension` = `extension`
     self.id = id
-    self.implicitRules = implicitRules
-    self.language = language
-    self.meta = meta
-    self.modifierExtension = modifierExtension
-    self.text = text
+    self.start = start
   }
   
-  // MARK: - Codable
   private enum CodingKeys: String, CodingKey {
-    case contained
-    case `extension` = "extension"
-    case modifierExtension
-    case text
+    case end; case _end
+    case start; case _start
   }
   
   public required init(from decoder: Decoder) throws {
     let _container = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.contained = try [ResourceProxy](from: _container, forKeyIfPresent: .contained)
-    self.`extension` = try [Extension](from: _container, forKeyIfPresent: .`extension`)
-    self.modifierExtension = try [Extension](from: _container, forKeyIfPresent: .modifierExtension)
-    self.text = try Narrative(from: _container, forKeyIfPresent: .text)
+    self.end = try FHIRKitPrimitive<DateTime>(from: _container, forKeyIfPresent: .end, auxiliaryKey: ._end)
+    self.start = try FHIRKitPrimitive<DateTime>(from: _container, forKeyIfPresent: .start, auxiliaryKey: ._start)
+    
+    try super.init(from: decoder)
+  }
+  
+  public override func encode(to encoder: Encoder) throws {
+    var _container = encoder.container(keyedBy: CodingKeys.self)
+    
+    try end?.encode(on: &_container, forKey: .end, auxiliaryKey: ._end)
+    try start?.encode(on: &_container, forKey: .start, auxiliaryKey: ._start)
+    
+    try super.encode(to: encoder)
+  }
+  
+  public override func isEqual(to _other: Any?) -> Bool {
+    guard let _other = _other as? Period else {
+      return false
+    }
+    
+    guard super.isEqual(to: _other) else {
+      return false
+    }
+    
+    return end == _other.end && start == other.start
+  }
+  
+  public override func hash(into hasher: inout Hasher) {
+    super.hash(into: &hasher)
+    hasher.combine(end)
+    hasher.combine(start)
   }
 }

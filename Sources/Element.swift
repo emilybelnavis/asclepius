@@ -66,7 +66,7 @@ open class Element: FHIRKitType {
     return l.isEqual(to: r)
   }
   
-  public static func isEqual(to _other: Any?) -> Bool {
+  public func isEqual(to _other: Any?) -> Bool {
     guard let _other = _other as? Element else {
       return false
     }
@@ -79,7 +79,7 @@ open class Element: FHIRKitType {
   }
   
   // MARK: - Hashable
-  public func hash(into: hasher: inout Hasher) {
+  public func hash(into hasher: inout Hasher) {
     hasher.combine(`extension`)
     hasher.combine(id)
   }

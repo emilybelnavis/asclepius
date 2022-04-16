@@ -1,5 +1,5 @@
 //
-//  Address.swift
+//  ContractActionCodes.swift
 //  FHIRKit
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -22,10 +22,17 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-import Foundation
-
-
-open class Address: Element {
-  public var use: FHIRKitPrimitive<AddressUse>?
-  public var type: FHIRKitPrimitive<AddressType>?
+/**
+ This value set includes sample Contract Action codes.
+ 
+ URL: http://terminology.hl7.org/CodeSystem/contractaction
+ ValueSet: http://hl7.org/fhir/ValueSet/contract-action
+ */
+public enum ContractActionCodes: String, FHIRKitPrimitiveType {
+  
+    /// Definition for Action A
+  case actionA = "action-a"
+  
+    /// Definition for Action B
+  case actionB = "action-b"
 }

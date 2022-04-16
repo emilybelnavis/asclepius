@@ -1,5 +1,5 @@
 //
-//  ActionRequiredBehavior.swift
+//  ContractActorRoleCodes.swift
 //  FHIRKit
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -22,22 +22,18 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-
 /**
- Defines expectations around whether an action or action group is required.
+ This value set includes sample Contract Actor Role codes.
  
- URL: http://hl7.org/fhir/action-required-behavior
- ValueSet: http://hl7.org/fhir/ValueSet/action-required-behavior
+ URL: http://terminology.hl7.org/CodeSystem/contractactorrole
+ ValueSet: http://hl7.org/fhir/ValueSet/contract-actorrole
  */
-public enum ActionRequiredBehavior: String, FHIRKitPrimitiveType {
-  /// An action with this behaviour must be included in the actions processed by the end-user; the end-user
-  /// shall not choose to include this action.
-  case must
+public enum ContractActorRoleCodes: String, FHIRKitPrimitiveType {
   
-  /// An action with this behaviour may be included in the set of actions processed by the end-user
-  case could
+    /// Someone who provides health care related services to people or animals including both clinical and support
+    /// services.
+  case practitioner
   
-  /// An action with this behaviour must be included in the set of actions processed by the end-user, unless
-  /// the end user provides documentation as to why the action was not included.
-  case mustUnlessDocumented = "must-unless-documented"
+    /// A receiver, human or animal, of health care related goods and services.
+  case patient
 }

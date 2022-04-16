@@ -22,9 +22,23 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+
+/**
+ The type of action to be performed.
+ 
+ URL: http://terminology.hl7.org/CodeSystem/action-type
+ ValueSet: http://hl7.org/fhir/ValueSet/action-type
+ */
 public enum ActionType: String, FHIRKitPrimitiveType {
+  /// Create a new resource
   case create
+  
+  /// Update an existing resource
   case update
+  
+  /// Remove an existing resource
   case remove
+  
+  /// Fire a specific event
   case fireEvent = "fire-event"
 }

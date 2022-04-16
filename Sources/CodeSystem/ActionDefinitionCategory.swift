@@ -22,8 +22,19 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+/**
+ High-level categorization of the type of activity
+ 
+ URL: http://terminology.hl7.org/CodeSystem/activity-definition-category
+ ValueSet: http://hl7.or/fhir/ValueSet/activity-definition-category
+ */
 public enum ActivityDefinitionCategory: String, FHIRKitPrimitiveType {
+  /// The activity is intended to provide or is related to treatment of the patient.
   case treatment
+  
+  /// The activity is intended to provide or is related to education of the patient.
   case education
+  
+  /// The activity is intended to provide or is related to assessment of the patient.
   case assessment
 }

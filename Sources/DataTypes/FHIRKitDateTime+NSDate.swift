@@ -1,5 +1,5 @@
 //
-//  ActionRequiredBehavior.swift
+//  FHIRKitDateTime+NSDate.swift
 //  FHIRKit
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -22,22 +22,27 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+import Foundation
 
-/**
- Defines expectations around whether an action or action group is required.
- 
- URL: http://hl7.org/fhir/action-required-behavior
- ValueSet: http://hl7.org/fhir/ValueSet/action-required-behavior
- */
-public enum ActionRequiredBehavior: String, FHIRKitPrimitiveType {
-  /// An action with this behaviour must be included in the actions processed by the end-user; the end-user
-  /// shall not choose to include this action.
-  case must
+extension FHIRKitDateTime: ExpressibleAsNSDate, ConstructibleFromNSDate {
+  public func asNSDate() throws -> Date {
+    let dateComponents = FHIRKitDateComponents(
+      year: date.year,
+      month: date.month,
+      day: date.day,
+      hour: time?.hour,
+      minute: time?.minute,
+      second: time?.second,
+      timeZone: timeZone)
+    
+    return try dateComponents.asNSDate()
+  }
   
-  /// An action with this behaviour may be included in the set of actions processed by the end-user
-  case could
-  
-  /// An action with this behaviour must be included in the set of actions processed by the end-user, unless
-  /// the end user provides documentation as to why the action was not included.
-  case mustUnlessDocumented = "must-unless-documented"
+  public init(date: Date, timeZone: TimeZone = TimeZone.current) throws {
+    self.timeZone = timeZone
+    self.date = try FHIRKitDate(date: date, timeZone: timeZone)
+    self.time = try FHIRKitTime(date: date, timeZone: timeZone)
+    
+    self.originalTimeZoneString = nil
+  }
 }

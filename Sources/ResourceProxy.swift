@@ -22,7 +22,7 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-public enum ResourceProxy: FHIRType {
+public enum ResourceProxy: FHIRKitType {
   case account(Account)
   case activityDefinition(ActivityDefinition)
   case adverseEvent(AdverseEvent)

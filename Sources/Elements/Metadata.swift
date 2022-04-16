@@ -1,5 +1,5 @@
 //
-//  ActionRequiredBehavior.swift
+//  Metadata.swift
 //  FHIRKit
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -22,22 +22,7 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-
-/**
- Defines expectations around whether an action or action group is required.
- 
- URL: http://hl7.org/fhir/action-required-behavior
- ValueSet: http://hl7.org/fhir/ValueSet/action-required-behavior
- */
-public enum ActionRequiredBehavior: String, FHIRKitPrimitiveType {
-  /// An action with this behaviour must be included in the actions processed by the end-user; the end-user
-  /// shall not choose to include this action.
-  case must
-  
-  /// An action with this behaviour may be included in the set of actions processed by the end-user
-  case could
-  
-  /// An action with this behaviour must be included in the set of actions processed by the end-user, unless
-  /// the end user provides documentation as to why the action was not included.
-  case mustUnlessDocumented = "must-unless-documented"
+open class Metadata: Element {
+  public var versionId: FHIRKitPrimitive<FHIRKitString>?
+  public var lastUpdate: FHIRKitPrimitive<Instant>
 }

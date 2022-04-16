@@ -22,14 +22,37 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+/**
+ Defines the types of relationships between actions.
+ 
+ URL: http://hl7.org/fhir/action-relationship-type
+ ValueSet: http://hl7.org/fhir/ValueSet/action-relationship-type
+ */
 public enum ActionRelationshipType: String, FHIRKitPrimitiveType {
+  /// the action must be performed before the start of the related action
   case beforeStart = "before-start"
+  
+  /// The action must be performed before the related action
   case before
+  
+  /// The action must be performed before the end of the related action
   case beforeEnd = "before-end"
+  
+  /// The action must be perfomed concurrently with the start with of the related action
   case concurrentWithStart = "concurrent-with-start"
+  
+  /// The action must be performed concurrently with the related action
   case concurrent
+  
+  /// The action must be performed concurrently with the end of the related action
   case concurrentWithEnd = "concurrent-with-end"
+  
+  /// The action must be performed after the the start of the related action
   case afterStart = "after-start"
+  
+  /// The action must be performed after the related action
   case after
+  
+  /// The action must be performed after the end of the related action
   case afterEnd = "after-end"
 }
