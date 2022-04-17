@@ -1,5 +1,5 @@
 //
-//  Metadata.swift
+//  ContactPoint.swift
 //  FHIRKit
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -22,7 +22,4 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-open class Metadata: Element {
-  public var versionId: FHIRKitPrimitive<FHIRKitString>?
-  public var lastUpdate: FHIRKitPrimitive<FHIRKitInstant>
-}
+import Foundation
