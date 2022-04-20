@@ -22,8 +22,19 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+/**
+ A code that indicates how the server supports conditional delete.
+ 
+ URL: http://hl7.org/fhir/conditional-delete-status
+ ValueSet: http://hl7.org/fhir/ValueSet/conditional-delete-status
+ */
 public enum ConditionalDeleteStatus: String, FHIRKitPrimitiveType {
+  /// No support for conditional deletes
   case notSupported = "not-supported"
+  
+  /// Conditional deletes are supported, but only single resources at a time
   case single
+  
+  /// Conditional deletes are supported and multiple resources can be deleted in a single interaction
   case multiple
 }

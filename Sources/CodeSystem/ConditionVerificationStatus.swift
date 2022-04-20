@@ -22,11 +22,29 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+/**
+ The verification status to support or decline the clinical status of the condition or diagnosis.
+ 
+ URL: http://terminology.hl7.org/CodeSystem/condition-ver-status
+ ValueSet: http://hl7.org/fhir/ValueSet/condition-ver-status
+ */
 public enum ConditionVerificationStatus: String, FHIRKitPrimitiveType {
+  /// There is not sufficient diagnostic and/or clinical evidence to treat this as a confirmed condition
   case unconfirmed
+  
+  /// This is a tentative diagnosis - still a candidate that is under consideration
   case provisional
+  
+  /// One of a set of potentially (and typically mutually exclusive) diagnoses asserted to further guide
+  /// the diagnostic process and preliminary treatment
   case differential
+  
+  /// There is sufficient diagnostic and/or clinical evidence to treat this as a confirmed condition
   case confirmed
+  
+  /// This condition has been ruled out by diagnostic and clinical evidence
   case refuted
+  
+  /// The statement was entered in error and is not valid
   case enteredInError
 }

@@ -22,14 +22,36 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+/**
+ This value set includes a smattering of Adjudication Value codes which includes codes to indicate the amounts eligible
+ under the plan, the amount of benefit, copays etc.
+ 
+ URL: http://terminology.hl7.org/CodeSystem/adjudication
+ ValueSet: http://hl7.org/fhir/ValueSet/adjudication
+ */
 public enum AdjudicationValueCodes: String, FHIRKitPrimitiveType {
+  /// Total submitted amount for the claim, group, or line item
   case submitted
+  
+  /// Patient co-payment
   case copay
+  
+  /// Amount of the charge which is considered for adjudication
   case eligible
+  
+  /// Amount deducted from the eligible amount prior to adjudication
   case deductible
+  
+  /// The amount of deductable which could not be allocated to other line items.
   case unallocdeduct
+  
+  /// Eligible percentage
   case eligpercent
+  
+  /// The amount of tax
   case tax
+  
+  /// Amount payable under coverage
   case benefit
   
 }

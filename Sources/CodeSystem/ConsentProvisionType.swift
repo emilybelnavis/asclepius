@@ -22,7 +22,16 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+/**
+ How a rule statement is applied, such as adding additional consent or removing consent.
+ 
+ URL: http://hl7.org/fhir/consent-provision-type
+ ValueSet: http://hl7.org/fhir/ValueSet/consent-provision-type
+ */
 public enum ConsentProvisionType: String, FHIRKitPrimitiveType {
+  /// Consent is denied for actions meeting these rules
   case deny
+  
+  /// Consent is provided for actions meeting these rules
   case permit
 }

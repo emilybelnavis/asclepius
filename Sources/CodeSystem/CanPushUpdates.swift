@@ -22,8 +22,19 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+/**
+ Ability of the primary source to push updates/alerts
+ 
+ URL: http://terminology.hl7.org/CodeSystem/can-push-updates
+ ValueSet: http://hl7.org/fhir/ValueSet/verificationresult-can-push-updates
+ */
 public enum CanPushUpdates: String, FHIRKitPrimitiveType {
+  /// Yes
   case yes
+  
+  /// No
   case no
+  
+  /// Undetermined
   case undetermined
 }

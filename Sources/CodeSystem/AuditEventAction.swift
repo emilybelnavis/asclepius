@@ -22,6 +22,12 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+/**
+ Indicator for type of action performed during the event that generated the event.
+ 
+ URL: http://hl7.org/fhir/audit-event-action
+ ValueSet: http://hl7.org/fhir/ValueSet/audit-event-action
+ */
 public enum AuditEventAction: String, FHIRKitPrimitiveType {
   /// Create new database object (ex: placing an order)
   case C

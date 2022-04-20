@@ -22,8 +22,19 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+/**
+ Enumeration indicating whether the condition is currently active, inactive, or has been resolved.
+ 
+ URL: http://terminology.hl7.org/CodeSystem/condition-state
+ ValueSet: http://hl7.org/fhir/ValueSet/condition-state
+ */
 public enum ConditionState: String, FHIRKitPrimitiveType {
+  /// The condition is active
   case active
+  
+  /// The condition is inactive, but not resolved
   case inactive
+  
+  /// The condition is resolved
   case resolved
 }

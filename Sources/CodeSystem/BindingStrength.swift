@@ -22,9 +22,27 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+/**
+ Indication of the degree of conformance expectations associated with a binding.
+ 
+ URL: http://hl7.org/fhir/binding-strength
+ ValueSet: http://hl7.org/fhir/ValueSet/binding-strength
+ */
 public enum BindingStrength: String, FHIRKitPrimitiveType {
+  /// To be conformant, the concept in this element SHALL be from the specified value set.
   case required
+  
+  /// To be conformant, the concept in this element SHALL be from the specified value set if any of the
+  /// codes within the value set can apply to the concept being communicated. If the value set does not
+  /// cover the concept (based on human review), alternate codings (or, data type allowing, text) may be
+  /// included instead.
   case extensible
+  
+  /// Instances are encouraged to draw from the specified codes for interoperability purposes but are not
+  /// required to do so to be conformant.
   case preferred
+  
+  /// Instances are not expected or even encouraged to draw from the specified value set. The value set
+  /// merely provides examples of the types of concepts intended to be included.
   case example
 }

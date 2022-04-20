@@ -22,7 +22,17 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+/**
+ Preferred value set for Condition Categories.
+ 
+ URL: http://terminology.hl7.org/CodeSystem/condition-category
+ ValueSet: http://hl7.org/fhir/ValueSet/condition-category
+ */
 public enum ConditionCategoryCodes: String, FHIRKitPrimitiveType {
+  /// An item on a problem list that can be managed over time and can be expressed by a practitioner
+  /// (e.g. physician, nurse), patient, or related person
   case problemListItem = "problem-list-item"
+  
+  /// A point in time diagnosis (e.g. from a physician or nurse) in context of an encounter
   case encounterDiagnosis = "encounter-diagnosis"
 }

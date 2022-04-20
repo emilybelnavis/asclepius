@@ -22,6 +22,13 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+/**
+ Common Tag Codes defined by FHIR project
+ 
+ URL: http://terminology.hl7.org/CodeSystem/common-tags
+ ValueSet: http://hl7.org/fhir/ValueSet/common-tags
+ */
 public enum CommonTags: String, FHIRKitPrimitiveType {
+  /// This request is intended to be acted upon, not merely stored
   case actionable
 }

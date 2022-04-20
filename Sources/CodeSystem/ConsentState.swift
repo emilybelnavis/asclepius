@@ -22,11 +22,28 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+/**
+ Indicates the state of the consent.
+ 
+ URL: http://hl7.org/fhir/consent-state-codes
+ ValueSet: http://hl7.org/fhir/ValueSet/consent-state-codes
+ */
 public enum ConsentState: String, FHIRKitPrimitiveType {
+  /// The consent is in development or awaiting use but is not yet intended to be acted upon
   case draft
+  
+  /// The consent has been proposed but not yet agreed to by all parties. The negotiation stage.
   case proposed
+  
+  /// The consent is to be followed and enforced
   case active
+  
+  /// The concent has been rejected by one or more of the parties
   case rejected
+  
+  /// The consent is terminated or replaced
   case inactive
+  
+  /// The consent was created wrongly (e.g. wrong patient) and should be ignored.
   case enteredInError = "entered-in-error"
 }

@@ -22,8 +22,19 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+/**
+ The severity of the adverse event itself, in direct relation to the subject.
+ 
+ URL: http://terminology.hl7.org/CodeSystem/adverse-event-severity
+ ValueSet: http://hl7.org/fhir/ValueSet/adverse-event-severity
+ */
 public enum AdverseEventSeverity: String, FHIRKitPrimitiveType {
+  /// Mild
   case mild
+  
+  /// Moderate
   case moderate
+  
+  /// Severe
   case severe
 }

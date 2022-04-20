@@ -22,16 +22,43 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+/**
+ The type of operator to use for assertion.
+ 
+ URL: http://hl7.org/fhir/assert-operator-codes
+ ValueSet: http://hl7.org/fhir/ValueSet/assert-operator-codes
+ */
 public enum AssertionOperatorType: String, FHIRKitPrimitiveType {
+  /// Default value. Equals comparison
   case equals
+  
+  /// Not equals comparison
   case notEquals
+  
+  /// Compare value within a known set of values
   case `in`
+  
+  /// Compare value not within a known set of values
   case notIn
+  
+  /// Compare value to be greater than a known value
   case greaterThan
+  
+  /// Compare value to be less than a known value
   case lessThan
+  
+  /// Compare value is empty
   case empty
+  
+  /// Compare value is not empty
   case notEmpty
+  
+  /// Compare value string contains a known value
   case contains
+  
+  /// Compare value string does not contain a known value
   case notContains
+  
+  /// Evaluiate the FHIRKitPath expression as a boolean condition.
   case eval
 }

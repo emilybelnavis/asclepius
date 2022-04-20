@@ -22,7 +22,16 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+/**
+ SHALL applications comply with this constraint?
+ 
+ URL: http://hl7.org/fhir/constraint-severity
+ ValueSet: http://hl7.org/fhir/ValueSet/constraint-severity
+ */
 public enum ContraintSeverity: String, FHIRKitPrimitiveType {
+  /// If the constraint is violated, the resource is not conformant
   case error
+  
+  /// If the constraint is violated, the resource is conformant, but it is not necessarily following best practice
   case warning
 }

@@ -22,8 +22,22 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+/**
+ How a resource reference is interpreted when testing consent restrictions.
+ 
+ URL: http://hl7.org/fhir/consent-data-meaning
+ ValueSet: http://hl7.org/fhir/ValueSet/consent-data-meaning
+ */
 public enum ConsentDataMeaning: String, FHIRKitPrimitiveType {
+  /// The consent applies directly to the instance of the resource
   case instance
+  
+  /// The consent applies directly to the instance of the resource and the instance it refers to
+  case related
+  
+  /// The consent applies directly to the instance of the resource and instances that refer to it
   case dependents
+  
+  /// The consent applies to instances of resouces that are authored by
   case authoredby
 }

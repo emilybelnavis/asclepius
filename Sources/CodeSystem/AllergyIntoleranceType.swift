@@ -22,7 +22,20 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+/**
+ Identification of the underlying physiological mechanism for a Reaction Risk.
+ 
+ URL: http://hl7.org/fhir/allergy-intolerance-type
+ ValueSet: http://hl7.org/fhir/ValueSet/allergy-intolerance-type
+ */
 public enum AllergyIntoleranceType: String, FHIRKitPrimitiveType {
+  /// A propensity for hypersensitive reaction(s) to a substance. These reactions are typically type I
+  /// hypersensitvity, plus other "allergy-like" reactions, including pseudoallergy
   case allergy
+  
+  /// A propensity for adverse reactions to a substance taht is not judged to be allergic or "allergy-like".
+  /// These reactions are typically (but not necessarily) non-immune. They are to some degree idiosyncratic
+  /// and/or patient-specific (i.e, are not a reaction that is expected to occur with most or all patients given
+  /// similar circumstances.)
   case intolerance
 }

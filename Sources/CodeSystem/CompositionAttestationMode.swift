@@ -22,9 +22,22 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+/**
+ The way in which a person authenticated a composition.
+ 
+ URL: http://hl7.org/fhir/composition-attestation-mode
+ ValueSet: http://hl7.org/fhir/ValueSet/composition-attestation-mode
+ */
 public enum CompositionAttestationMode: String, FHIRKitPrimitiveType {
+  /// The person authenticated the content in their personal capacity
   case personal
+  
+  /// The person authenticated the content in their professional capacity
   case professional
+  
+  /// The person authenticated the content and accepted legal responsibility for its content
   case legal
+  
+  /// The organization authenticated the content as consistent with their policies and procedures
   case official
 }

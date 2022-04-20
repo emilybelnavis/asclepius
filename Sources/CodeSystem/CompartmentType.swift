@@ -22,10 +22,25 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+/**
+ Which type a compartment definition describes.
+ 
+ URL: http://hl7.org/fhir/compartment-type
+ ValueSet: http://hl7.org/fhir/ValueSet/compartment-type
+ */
 public enum CompartmentType: String, FHIRKitPrimitiveType {
+  /// The compartment definition is for the patient compartment
   case patient = "Patient"
+  
+  /// The compartment definition is for the encounter compartment
   case encounter = "Encounter"
+  
+  /// The compartment definition is for the related-person compartment
   case relatedPerson = "RelatedPerson"
+  
+  /// The compartment definition is for the practitioner comparment
   case practitioner = "Practitioner"
+  
+  /// The compartment definition is for the device compartment
   case device = "Device"
 }

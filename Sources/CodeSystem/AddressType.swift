@@ -22,8 +22,19 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+/**
+ The type of an address (physical / postal).
+ 
+ URL: http://hl7.org/fhir/address-type
+ ValueSet: http://hl7.org/fhir/ValueSet/address-type
+ */
 public enum AddressType: String, FHIRKitPrimitiveType {
+  /// Mailing Address - PO Boxes and Care/of addresses.
   case postal
+  
+  /// A physical address that can be visited
   case physical
+  
+  /// An address that is both phyisical and postal
   case both
 }

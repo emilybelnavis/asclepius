@@ -22,8 +22,19 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+/**
+ The type of catalog.
+ 
+ URL: http://terminology.hl7.org/CodeSystem/catalogType
+ ValueSet: http://hl7.org/fhir/ValueSet/catalogType
+ */
 public enum CatalogType: String, FHIRKitPrimitiveType {
+  /// Medication catalog
   case medication
+  
+  /// Device catalog
   case device
+  
+  /// Protocol catalog
   case `protocol`
 }

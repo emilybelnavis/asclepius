@@ -22,11 +22,28 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+/**
+ Codes describing the purpose or content of the communication.
+ 
+ URL: http://terminology.hl7.org/CodeSystem/communication-topic
+ ValueSet: http://hl7.org/fhir/ValueSet/communication-topic
+ */
 public enum CommunicationTopic: String, FHIRKitPrimitiveType {
+  /// The purpose or content of the communication is a prescriptions refill request
   case presecriptionRefillRequest = "prescription-refill-request"
+  
+  /// The purpose or content of the communication is a progress update
   case progressUpdate = "progress-update"
+  
+  /// The purpose or content of the communication is to report labs
   case reportLabs = "report-labs"
+  
+  /// The purpose or content of the communication is an appointment reminder
   case appointmentReminder = "appointment-reminder"
+  
+  /// The purpose or content of the communication is a phone consult
   case phoneConsult = "phone-consult"
+  
+  /// The purpose or content of the communication is a summary report
   case summaryReport = "summary-report"
 }

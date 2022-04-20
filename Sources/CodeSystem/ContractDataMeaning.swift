@@ -1,5 +1,5 @@
 //
-//  AssertionDirectionType.swift
+//  ContractDataMeaning.swift
 //  FHIRKit
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,15 +23,21 @@
 //  SOFTWARE.
 
 /**
- The type of direction to use for assertion.
+ How a resource reference is interpreted when evaluating contract offers.
  
- URL: http://hl7.org/fhir/assert-direction-codes
- ValueSet: http://hl7.org/fhir/ValueSet/assert-direction-codes
+ URL: http://terminology.hl7.org/CodeSystem/contract-data-meaning
+ ValueSet: http://hl7.org/fhir/ValueSet/contract-data-meaning
  */
-public enum AssertionDirectionType: String, FHIRKitPrimitiveType {
-  /// The assertion is evaluated on the response. This is the default value.
-  case response
+public enum ContractDataMeaning: String, FHIRKitPrimitiveType {
+  /// The consent applies directly to the instance of the resouce.
+  case instance
   
-  /// The assertion is evaluated on the request.
-  case request
+  /// The consent applies directly to the instance of the resource and instances it refers to.
+  case related
+  
+  /// The consent applies directly to the instance of the resource and instances that refer to it
+  case dependents
+  
+  /// The consent applies to instances of resources that are authored by
+  case authoredby
 }

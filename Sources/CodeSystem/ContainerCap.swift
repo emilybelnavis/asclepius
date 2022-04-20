@@ -22,17 +22,46 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+/**
+ Color of the container cap.
+ 
+ URL: http://terminology.hl7.org/CodeSystem/container-cap
+ ValueSet: http://hl7.org/fhir/ValueSet/container-cap
+ */
 public enum ContainerCap: String, FHIRKitPrimitiveType {
+  /// Red cap
   case red
+  
+  /// Yellow cap
   case yellow
+  
+  /// Dark-yellow cap
   case darkYellow = "dark-yellow"
+  
+  /// Grey cap
   case grey
+  
+  /// Light blue cap
   case lightBlue
+  
+  /// Black cap
   case black
+  
+  /// Green cap
   case green
+  
+  /// Light green cap
   case lightGreen = "light-green"
+  
+  /// Lavender cap
   case lavender
+  
+  /// Brown cap
   case brown
+  
+  /// White cap
   case white
+  
+  /// Pink cap
   case pink
 }

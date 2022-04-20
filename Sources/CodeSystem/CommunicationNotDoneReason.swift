@@ -22,11 +22,28 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+/**
+ Codes for the reason why a communication did not happen.
+ 
+ URL: http://terminology.hl7.org/CodeSystem/communication-not-done-reason
+ ValueSet: http://hl7.org/fhir/ValueSet/communication-not-done-reason
+ */
 public enum CommunicationNotDoneReason: String, FHIRKitPrimitiveType {
+  /// The communication was not done due to an unknown reason
   case unknown
+  
+  /// The communication was not done due to a system error
   case systemError = "system-error"
+  
+  /// The communication was not done due to an invalid phone number
   case invalidPhoneNumber = "invalid-phone-number"
+  
+  /// The communication was not done due to the recipient being unavailable
   case recipientUnavailable = "recipient-unavailable"
+  
+  /// The communication was not done due to a family objection
   case familyObjection = "family-objection"
+  
+  /// The communication was not done due to a patient objection
   case patientObjection = "patient-objection"
 }

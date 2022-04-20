@@ -22,9 +22,22 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+/**
+ This value set includes sample Claim Care Team Role codes.
+ 
+ URL: http://terminology.hl7.org/CodeSystem/claimcareteamrole
+ ValueSet: http://hl7.org/fhir/ValueSet/claim-careteamrole
+ */
 public enum ClaimCareTeamRoleCodes: String, FHIRKitPrimitiveType {
+  /// The primary care provider
   case primary
+  
+  /// Assisting care provider
   case assist
+  
+  /// Supervising care provider
   case supervisor
+  
+  /// Other role on the care team
   case other
 }

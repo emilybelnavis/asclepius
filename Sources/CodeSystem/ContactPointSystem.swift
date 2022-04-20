@@ -22,12 +22,38 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+/**
+ Telecommunications form for contact point.
+ 
+ URL: http://hl7.org/fhir/contact-point-system
+ ValueSet: http://hl7.org/fhir/ValueSet/contact-point-system
+ */
 public enum ContactPointSystem: String, FHIRKitPrimitiveType {
+  /// The value is a telephone number used for voice calls. Use of full international numbers starting with a
+  /// `+` is recommended to enable automatic dialing support, but not required
   case phone
+  
+  /// The value is a fax machine. Use of international numbers starting with with a `+` is recommended
+  /// to enable automatic dialing support, but not required
   case fax
+  
+  /// The value is an email address
   case email
+  
+  /// The value is a pager number. These may be local pager numbers that are only useable on a particular
+  /// pager system
   case pager
+  
+  /// A contact that is not a phone, fax, pager, or email address, and is expressed as a URL. This is
+  /// intended for various institutional or personal contacts including websites. Do not use for email
+  /// addresses
   case url
+  
+  /// A contact that can be used for sending an SMS message (e.g. mobile phones, some landlines)
   case sms
+  
+  /// A contact that is not a phone, fax, page, or email address, and is not expressible as a URL. E.g.
+  /// Internal mail address. This SHOULD NOT be used for contacts that are expressible as a URL,
+  /// Extensions may be used to distinguish "other" contact types.
   case other
 }

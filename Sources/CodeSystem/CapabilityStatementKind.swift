@@ -22,8 +22,22 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-public enum CapabilityStatementKind: String, FHIRKitPrimitveType {
+/**
+ How a capability statement is intended to be used.
+ 
+ URL: http://hl7.org/fhir/capability-statement-kind
+ ValueSet: http://hl7.org/fhir/ValueSet/capability-statement-kind
+ */
+public enum CapabilityStatementKind: String, FHIRKitPrimitiveType {
+  /// The CapabilityStatement instance represents the present capabilities of a specific system instance.
+  /// This is the kind returned by /metadata for a FHIR server end-point
   case instance
+  
+  /// The CapabilityStatement isntance represents the capabilities of a system of piece of software,
+  /// independent of a particular installation.
   case capability
+  
+  /// The CapabilityStatement instance represents a set of requirements for other systems to meet;
+  /// e.g. as part of an implementation guide of "request for proposal"
   case requirements
 }

@@ -22,9 +22,24 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+/**
+ The subsumption relationship between code/Coding "A" and code/Coding "B". There are 4 possible codes to be returned:
+ equivalent, subsumes, subsumed-by, and not-subsumed. If the server is unable to determine the relationship between the
+ codes/Codings, then it returns an error (i.e. an OperationOutcome).
+ 
+ URL: http://hl7.org/fhir/concept-subsumption-outcome
+ ValueSet: http://hl7.org/fhir/ValueSet/concept-subsumption-outcome
+ */
 public enum ConceptSubsumptionOutcome: String, FHIRKitPrimitiveType {
+  /// The two concepts are equivalent (have the same properties)
   case equivalent
+  
+  /// Coding/code "A" subsumes Coding/code "B" (e.g. B has all the properties A has, and some of it's own)
   case subsumes
+  
+  /// Coding/code "A" is subsumed by Coding/code "B" (e.g. A has all the properties B has, and some of it's own)
   case subsumedBy = "subsumed-by"
+  
+  /// Coding/code "A" and Coding/code "B" are disjoint (e.g. each has properties that the other doesn't have)
   case notSubsumed = "not-subsumed"
 }

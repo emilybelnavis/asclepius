@@ -22,7 +22,16 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+/**
+ Biologically Derived Product Status.
+ 
+ URL: http://hl7.org/fhir/product-status
+ ValueSet: http://hl7.org/fhir/ValueSet/product-status
+ */
 public enum BiologicallyDerivedProductStatus: String, FHIRKitPrimitiveType {
+  /// Product is currently available for use
   case available
+  
+  /// Product is not currently available for use
   case unavailable
 }

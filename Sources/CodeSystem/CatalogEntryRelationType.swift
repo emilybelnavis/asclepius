@@ -22,7 +22,16 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+/**
+ The type of relations between entries.
+ 
+ URL: http://hl7.org/fhir/relation-type
+ ValueSet: http://hl7.org/fhir/ValueSet/relation-type
+ */
 public enum CatalogEntryRelationType: String, FHIRKitPrimitiveType {
+  /// The related entry represents an activity that may be triggered by the current item
   case triggers
+  
+  /// The related entry represents an item that replaces the current retired ite,
   case isReplacedBy = "is-replaced-by"
 }

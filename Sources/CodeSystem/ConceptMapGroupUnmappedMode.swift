@@ -22,8 +22,19 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+/**
+ Defines which action to take if there is no match in the group.
+ 
+ URL: http://hl7.org/fhir/conceptmap-unmapped-mode
+ ValueSet: http://hl7.org/fhir/ValueSet/conceptmap-unmapped-mode
+ */
 public enum ConceptMapGroupUnmappedMode: String, FHIRKitPrimitiveType {
+  /// Use the code as provided in the `$translate` request
   case provided
+  
+  /// Use the code explicitly provide in the `group.unmapped`
   case fixed
+  
+  /// Use the map identified bu the canonical URL in the `url` element
   case otherMap = "other-map"
 }

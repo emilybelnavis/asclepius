@@ -22,6 +22,12 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+/**
+ This value set includes smattering of Adjudication Reason codes.
+ 
+ URL: http://terminology.hl7.org/CodeSystem/adjudication-reason
+ ValueSet: http://hl7.org/fhir/ValueSet/adjudication-reason
+ */
 public enum AdjudicationReasonCodes: String, FHIRKitPrimitiveType {
   /// not covered
   case ar001

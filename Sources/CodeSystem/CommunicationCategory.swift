@@ -22,9 +22,22 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+/**
+ Codes for general categories of communications such as alerts, instructions, etc.
+ 
+ URL: http://terminology.hl7.org/CodeSystem/communication-category
+ ValueSet: http://hl7.org/fhir/ValueSet/communication-category
+ */
 public enum CommunicationCategory: String, FHIRKitPrimitiveType {
+  /// The communication conveys an alert
   case alert
+  
+  /// The communication conveys a notification
   case notification
+  
+  /// The communication conveys a reminder
   case reminder
+  
+  /// The communication conveys an instruction
   case instruction
 }

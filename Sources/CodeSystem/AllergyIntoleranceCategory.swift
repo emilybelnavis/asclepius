@@ -22,9 +22,27 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+/**
+ Category of an identified substance associated with allergies or intolerances.
+ 
+ URL: http://hl7.org/fhir/allergy-intolerance-category
+ ValueSet: http://hl7.org/fhir/ValueSet/allergy-intolerance-category
+ */
 public enum AllergyIntoleranceCategory: String, FHIRKitPrimitiveType {
+  /// Any substance comsumed to provide nutritional support for the body
   case food
+  
+  /// Substances administered to achieve a physiological effect.
   case medication
+  
+  /// Any substances that are encountered in the environment, including any substance not already
+  /// classified as food, medication, or biologic.
   case environment
+  
+  /// A preparation that is synthesized from living organisms or their products, especially a human or
+  /// animal protein, such as a hormone or antitoxin, that is used as a diagnostic preventative, or
+  /// theraputic agent. Examples of biologic medications include: vaccines, allergenic extracts, which are
+  /// both used for diagnosis and treatment (ex: allergy shots); gene therapiesl cellular therapies. There are
+  /// other biologic products such as tissues, whch are not typically associated with allergies.
   case biologic
 }

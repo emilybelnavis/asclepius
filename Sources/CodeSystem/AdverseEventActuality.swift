@@ -22,7 +22,16 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+/**
+ Overall nature of the adverse event, e.g. real or potential.
+ 
+ URL: http://hl7.org/fhir/adverse-event-actuality
+ ValueSet: http://hl7.org/fhir/ValueSet/adverse-event-actuality
+ */
 public enum AdverseEventActuality: String, FHIRKitPrimitiveType {
+  /// The adverse event actually happened regardless of whether anyone was affected/harmed
   case actual
+  
+  /// A potential adverse event
   case potential
 }

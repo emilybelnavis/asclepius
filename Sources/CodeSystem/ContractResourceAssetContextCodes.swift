@@ -1,5 +1,5 @@
 //
-//  AssertionDirectionType.swift
+//  ContractResourceAssetContextCodes.swift
 //  FHIRKit
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,15 +23,12 @@
 //  SOFTWARE.
 
 /**
- The type of direction to use for assertion.
+ This value set contract specific codes for asset context.
  
- URL: http://hl7.org/fhir/assert-direction-codes
- ValueSet: http://hl7.org/fhir/ValueSet/assert-direction-codes
+ URL: http://hl7.org/fhir/contract-asset-context
+ ValueSet: http://hl7.org/fhir/ValueSet/contract-assetcontext
  */
-public enum AssertionDirectionType: String, FHIRKitPrimitiveType {
-  /// The assertion is evaluated on the response. This is the default value.
-  case response
-  
-  /// The assertion is evaluated on the request.
-  case request
+public enum ContractResourceAssetContextCodes: String, FHIRKitPrimitiveType {
+  /// todo: to be completed
+  case custodian
 }

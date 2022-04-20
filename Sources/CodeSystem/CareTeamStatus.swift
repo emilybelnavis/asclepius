@@ -22,10 +22,27 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+/**
+ Indicates the status of the care team.
+ 
+ URL: http://hl7.org/fhir/care-team-status
+ ValueSet: http://hl7.org/fhir/ValueSet/care-team-status
+ */
 public enum CareTeamStatus: String, FHIRKitPrimitiveType {
+  /// The care team has been drafted and proposed, but not yet participating in the coordination and
+  /// delivery of patient care
   case proposed
+  
+  /// The care team is currently participating in the coordination and delivery of care
   case active
+  
+  /// The care team is temporarily on hold or suspended and not participating in the coordination and
+  /// delivery of care.
   case suspended
+  
+  /// The care team was, but is no longer, participating in the coordination and delivery of care.
   case inactive
+  
+  /// The care team should have never existed.
   case enteredInError = "entered-in-error"
 }

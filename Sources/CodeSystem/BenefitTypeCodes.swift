@@ -22,17 +22,46 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+/**
+ This value set includes a smattering of Benefit type codes.
+ 
+ URL: http://terminology.hl7.org/CodeSystem/benefit-type
+ ValueSet: http://hl7.org/fhir/ValueSet/benefit-type
+ */
 public enum BenefitTypeCodes: String, FHIRKitPrimitiveType {
+  /// Maximum benefit allowable
   case benefit
+  
+  /// Cost to be incurred before benefits are applied
   case deductible
+  
+  /// Service visit
   case visit
+  
+  /// Type of room
   case room
+  
+  /// Copayment per service
   case copay
+  
+  /// Copayment percentage per service
   case copayPercent = "copay-percent"
+  
+  /// Copayment maximum per service
   case copayMaximum = "copay-maximum"
+  
+  /// Vision exam
   case visionExam = "vision-exam"
+  
+  /// Frames and lenses
   case visionGlasses = "vision-glasses"
+  
+  /// Contact lenses
   case visionContacts = "vision-contacts"
+  
+  /// Medical primary health coverage
   case medicalPrimarycare = "medical-primarycare"
+  
+  /// Pharmacy dispense coverage
   case pharmacyDispense = "pharmacy-dispense"
 }

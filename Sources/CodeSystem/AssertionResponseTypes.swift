@@ -22,6 +22,13 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+
+/**
+ The type of response code to use for assertion.
+ 
+ URL: http://hl7.org/fhir/assert-response-code-types
+ ValueSet: http://hl7.org/fhir/ValueSet/assert-response-code-types
+ */
 public enum AssertionResponseTypes: String, FHIRKitPrimitiveType {
   /// Response Code - 200
   case okay

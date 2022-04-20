@@ -22,6 +22,12 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+/**
+ This value set includes sample additional material type codes.
+ 
+ URL: http://hl7.org/fhir/additionalmaterials
+ ValueSet: http://hl7.org/fhir/ValueSet/additionalmaterials
+ */
 public enum AdditionalMaterialCodes: String, FHIRKitPrimitiveType {
   case xray
   case image

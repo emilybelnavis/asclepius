@@ -22,6 +22,12 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+/**
+ The gender of a person used for administrative purposes.
+ 
+ URL: http://hl7.org/fhir/administrative-gender
+ ValueSet: http://hl7.org/fhir/ValueSet/administrative-gender
+ */
 public enum AdministrativeGender: String, FHIRKitPrimitiveType {
   case male
   case female

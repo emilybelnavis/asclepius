@@ -22,8 +22,21 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+/**
+ How resource references can be aggregated.
+ 
+ URL: http://hl7.org/fhir/resource-aggregation-mode
+ ValueSet: http://hl7.org/fhir/ValueSet/resource-aggregation-mode
+ */
 public enum AggregationMode: String, FHIRKitPrimitiveType {
+  /// The reference is a local reference to a contained resource
   case contained
+  
+  /// The reference to a resource that has to be resolved externally to the resouce that includes
+  /// the reference.
   case referenced
+  
+  /// The resource the reference points to will be found in the same bundle as the resource that
+  /// includes the reference
   case bundled
 }

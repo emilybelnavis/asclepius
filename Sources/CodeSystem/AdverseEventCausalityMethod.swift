@@ -22,8 +22,19 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+/**
+ TODO.
+ 
+ URL: http://terminology.hl7.org/CodeSystem/adverse-event-causality-method
+ ValueSet: http://hl7.org/fhir/ValueSet/adverse-event-causality-method
+ */
 public enum AdverseEventCausalityMethod: String, FHIRKitPrimitiveType {
+  /// probability scale
   case probabilityScale = "ProbabilityScale"
+  
+  /// bayesian
   case bayesian = "Bayesian"
+  
+  /// checklist
   case checklist = "Checklist"
 }

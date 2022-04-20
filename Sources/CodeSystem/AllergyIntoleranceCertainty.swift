@@ -22,9 +22,25 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+/**
+ Statement about the degree of clinical certainty that a specific substance was the cause of the manifestation in a
+ reaction event.
+ 
+ URL: http://terminology.hl7.org/CodeSystem/reaction-event-certainty
+ ValueSet: http://hl7.org/fhir/ValueSet/reaction-event-certainty
+ */
 public enum AllergyIntoleranceCertainty: String, FHIRKitPrimitiveType {
+  /// There is a low level of clinical certainty that the reaction was caused by the identified substance.
   case unlikely
+  
+  /// There is a high level of clinical certainty that the reaction was caused by the identified substance
   case likely
+  
+  /// There is a very high level of clinical certainty that the reaction was due to the identified substance,
+  /// which may include clinical evidence by testing or re-challenge
   case confirmed
+  
+  /// The clinical certainty that the reaction was caused by the identified substance is unknown. It is an
+  /// explicit assertation that certainty is not known.
   case unknown
 }

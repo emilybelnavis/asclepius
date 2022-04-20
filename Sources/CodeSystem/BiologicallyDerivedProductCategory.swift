@@ -22,10 +22,26 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+/**
+ Biologically Derived Product Category.
+ 
+ URL: http://hl7.org/fhir/product-category
+ ValueSet: http://hl7.org/fhir/ValueSet/product-category
+ */
 public enum BiologicallyDerivedProductCategory: String, FHIRKitPrimitiveType {
+  /// A collection of tissues joined in a structural unit to serve a common function
   case organ
+  
+  /// An ensemble of similar cells and their extracellular matrix from the same origin that together carry out
+  /// a specific function
   case tissue
+  
+  /// Body fluid
   case fluid
+  
+  /// Collection of cells
   case cells
+  
+  /// Biological agent of unspecified type
   case biologicalAgent
 }

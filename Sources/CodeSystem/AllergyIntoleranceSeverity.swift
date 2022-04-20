@@ -22,8 +22,20 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+/**
+ Clinical assessment of the severity of a reaction event as a whole, potentially considering multiple different
+ manifestations.
+ 
+ URL: http://hl7.org/fhir/reaction-event-severity
+ ValueSet: http://hl7.org/fhir/ValueSet/reaction-event-severity
+ */
 public enum AllergyIntoleranceSeverity: String, FHIRKitPrimitiveType {
+  /// Causes mild physiological effects
   case mild
+  
+  /// Causes moderate physiological effects
   case moderate
+  
+  /// Causes severe physiological effects
   case severe
 }

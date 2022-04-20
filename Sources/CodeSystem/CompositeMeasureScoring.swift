@@ -22,9 +22,25 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+/**
+ The composite scoring method of the measure.
+ 
+ URL: http://terminology.hl7.org/CodeSystem/composite-measure-scoring
+ ValueSet: http://hl7.org/fhir/ValueSet/composite-measure-scoring
+ */
 public enum CompositeMeasureScoring: String, FHIRKitPrimitiveType {
+  /// Opportunity scoring combines the scores from component measures by combining the numerators
+  /// and denominators for each component
   case opportunity
+  
+  /// All-or-nothing scoring includes an individual in the numerator of the composite measure if they are in
+  /// the numerators of all the component measures in which they are the denominator
   case allOrNothing = "all-or-nothing"
+  
+  /// Linear scoring gives an individual a score based on the number of numerators in which they appear
   case linear
+  
+  /// Weighted scoring gives an individual a score based on a weighted factor for each component
+  /// numerator in which they appear
   case weighted
 }

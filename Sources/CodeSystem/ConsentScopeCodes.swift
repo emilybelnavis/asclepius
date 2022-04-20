@@ -22,9 +22,22 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+/**
+ This value set includes the four Consent scope codes.
+ 
+ URL: http://terminology.hl7.org/CodeSystem/consentscope
+ ValueSet: http://hl7.org/fhir/ValueSet/consent-scope
+ */
 public enum ConsentScopeCodes: String, FHIRKitPrimitiveType {
+  /// Actions to be taken if they are no longer able to make decisions for themselves
   case adr
+  
+  /// Consent to participate in research protocol and information sharing required
   case research
+  
+  /// Agreement to collect, access, use or disclose (share) information
   case patientPrivacy = "patient-privacy"
+  
+  /// Consent to undergo a specific treatment
   case treatment
 }

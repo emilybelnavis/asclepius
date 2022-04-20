@@ -22,7 +22,16 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+/**
+ Direction in which lists of possible answers should be displayed.
+ 
+ URL: http://terminology.hl7.org/CodeSystem/choice-list-orientation
+ ValueSet: http://hl7.org/fhir/ValueSet/choice-list-orientation
+ */
 public enum ChoiceListOrientation: String, FHIRKitPrimitiveType {
+  /// Lists choices along the horizontal axis
   case horizontal
+  
+  /// Lists choices along the vertical axis
   case vertical
 }

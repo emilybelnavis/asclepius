@@ -22,8 +22,21 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+/**
+ Whether the cost applies to in-network or out-of-network providers.
+ 
+ URL: http://terminology.hl7.org/CodeSystem/applicability
+ ValueSet: http://hl7.org/fhir/ValueSet/insuranceplan-applicability
+ */
 public enum BenefitCostApplicability: String, FHIRKitPrimitiveType {
+  /// Provider is contracted with the health insurance company to provide services to plan members for
+  /// specific pre-negotiated rates
   case inNetwork = "in-network"
+  
+  /// Provider is not contracted with the health insurance company to provide services to plan members for
+  /// specific pre-negotiated rates
   case outOfNetwork = "out-of-network"
+  
+  /// Other applicability
   case other
 }

@@ -22,9 +22,22 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+/**
+ This value set includes Claim Processing Outcome codes.
+ 
+ URL: http://hl7.org/fhir/remittance-outcome
+ ValueSet: http://hl7.org/fhir/ValueSet/remittance-outcome
+ */
 public enum ClaimProcessingCodes: String, FHIRKitPrimitiveType {
+  /// The claim/pre-authorization/pre-determination has been received but processing has not begun
   case queued
+  
+  /// The processing has completed without errors
   case complete
+  
+  /// One or more errors have been detected in the claim
   case error
+  
+  /// No errors have been detected in the claim and some of the adjudication has been performed
   case partial
 }

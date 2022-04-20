@@ -22,11 +22,29 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+/**
+ This example value set defines a set of codes that can be used to indicate the purpose for which you would contact a
+ contact party.
+ 
+ URL: http://terminology.hl7.org/CodeSystem/contactentity-type
+ ValueSet: http://hl7.org/fhir/ValueSet/contactentity-type
+ */
 public enum ContactEntityType: String, FHIRKitPrimitiveType {
+  /// Contact details for information regarding to billing/general finance inquiries
   case BILL
+  
+  /// Contact details for administrative inquiries
   case ADMIN
+  
+  /// Contact details for issues related to Human Resources, such as staff matters, OH&S, etc...
   case HR
+  
+  /// Contact details for dealing with issues related to insurance claism/adjudication/payment
   case PAYOR
+  
+  /// Generic information contact for patients
   case PATINF
+  
+  /// Dedicated contact point for matters relating to press inquiries
   case PRESS
 }

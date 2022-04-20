@@ -22,6 +22,12 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+/**
+ This value set defines a set of codes that can be used to indicate from where the patient came in.
+ 
+ URL: http://terminology.hl7.org/CodeSystem/admit-source
+ ValueSet: http://hl7.org/fhir/ValueSet/encounter-admit-source
+ */
 public enum AdmitSource: String, FHIRKitPrimitiveType {
   /// The patient has been transferred from another hospital for this encounter
   case hospTrans = "hosp-trans"

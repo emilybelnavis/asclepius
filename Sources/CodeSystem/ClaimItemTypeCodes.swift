@@ -22,8 +22,19 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+/**
+ This value set includes sample Item Type codes.
+ 
+ URL: http://hl7.org/fhir/ex-claimitemtype
+ ValueSet: http://hl7.org/fhir/ValueSet/fm-itemtype
+ */
 public enum ClaimItemTypeCodes: String, FHIRKitPrimitiveType {
+  /// A group of products and/or services, amount ar the summary or detail level products and services
   case group
+  
+  /// A billed product line item
   case product
+  
+  /// A billed service line item
   case service
 }

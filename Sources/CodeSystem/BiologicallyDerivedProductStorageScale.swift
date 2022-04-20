@@ -22,8 +22,19 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+/**
+ BiologicallyDerived Product Storage Scale.
+ 
+ URL: http://hl7.org/fhir/product-storage-scale
+ ValueSet: http://hl7.org/fhir/ValueSet/product-storage-scale
+ */
 public enum BiologicallyDerivedProductStorageScale: String, FHIRKitPrimitiveType {
+  /// Celcius or centigrade temperature scale
   case celsius
+  
+  /// Fahrenheit temperature scale
   case fahrenheit
+  
+  /// Kelvin absolute thermodynamic temperature scale
   case kelvin
 }

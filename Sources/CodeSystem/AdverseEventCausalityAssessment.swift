@@ -22,6 +22,13 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+
+/**
+ Codes for the assessment of whether the entity caused the event.
+ 
+ URL: http://terminology.hl7.org/CodeSystem/adverse-event-causality-assess
+ ValueSet: http://hl7.org/fhir/ValueSet/adverse-event-causality-assess
+ */
 public enum AdverseEventCausalityAssessment: String, FHIRKitPrimitiveType {
 
   /// i) Event or laboratory test abnormality, with plausible time relationship to drug intake; ii) Cannot be

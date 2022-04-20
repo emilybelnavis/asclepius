@@ -22,7 +22,17 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+/**
+ The risk of an adverse reaction (allergy or intolerance) for this patient upon exposure to the substance (including
+ pharmaceutical products).
+ 
+ URL: http://terminology.hl7.org/CodeSystem/allerg-intol-substance-exp-risk
+ ValueSet: http://hl7.org/fhir/ValueSet/allerg-intol-substance-exp-risk
+ */
 public enum AllergyIntoleranceSubstanceExposureRisk: String, FHIRKitPrimitiveType {
+  /// Known risk of allergy or intolerance reaction upon exposure to the specified substance
   case knownReactionRisk = "known-reaction-risk"
+  
+  /// No known risk of allergy or intolerance reaction upon exposure to the specified substance
   case noKnownReactionRisk = "no-known-reaction-risk"
 }

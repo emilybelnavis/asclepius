@@ -22,10 +22,26 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+/**
+ This value set includes sample Consent Action codes.
+ 
+ URL: http://terminology.hl7.org/CodeSystem/consentaction
+ ValueSet: http://hl7.org/fhir/ValueSet/consent-action
+ */
 public enum ConsentActionCodes: String, FHIRKitPrimitiveType {
+  /// Gather retrieved information for storage
   case collect
+  
+  /// Retrieval without permitting collection, use, or disclosure (e.g. no screen-scraping for collection,
+  /// use or disclosure) (view-only access)
   case access
+  
+  /// Utilize the retrieved information
   case use
+  
+  /// Transfer retrieved information
   case disclose
+  
+  /// Allow retrieval of a patient's informatoin for the purpose of update or rectify
   case correct
 }

@@ -22,9 +22,22 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+/**
+ The type of Claim payee Resource.
+ 
+ URL: http://terminology.hl7.org/CodeSystem/ex-payee-resource-type
+ ValueSet: http://hl7.org/fhir/ValueSet/ex-payee-resource-type
+ */
 public enum ClaimPayeeResourceType: String, FHIRKitPrimitiveType {
+  /// Organization resource
   case organization
+  
+  /// Patient resource
   case patient
+  
+  /// Practitioner resource
   case practitioner
+  
+  /// RelatedPerson resource
   case relatedperson
 }

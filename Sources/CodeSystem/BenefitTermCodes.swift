@@ -22,8 +22,19 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+/**
+ This value set includes a smattering of Benefit Term codes.
+ 
+ URL: http://terminology.hl7.org/CodeSystem/benefit-term
+ ValueSet: http://hl7.org/fhir/ValueSet/benefit-term
+ */
 public enum BenefitTermCodes: String, FHIRKitPrimitiveType {
+  /// Annual, renewing on the anniversary
   case annual
+  
+  /// Per day
   case day
+  
+  /// For the total term, lifetime, of the policy or coverage
   case lifetime
 }

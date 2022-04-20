@@ -22,6 +22,12 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+/**
+ Event Types for Audit Events - defined by DICOM with some FHIR specific additions.
+ 
+ URL: http://terminology.hl7.org/CodeSystem/audit-event-type
+ */
 public enum AuditEventID: String, FHIRKitPrimitiveType {
+  /// Audit Event: Execution of a RESTful operation as defined by FHIR
   case rest
 }

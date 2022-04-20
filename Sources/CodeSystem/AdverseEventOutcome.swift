@@ -22,11 +22,28 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+/**
+ TODO (and should this be required?).
+ 
+ URL: http://terminology.hl7.org/CodeSystem/adverse-event-outcome
+ ValueSet: http://hl7.org/fhir/ValueSet/adverse-event-outcome
+ */
 public enum AdverseEventOutcome: String, FHIRKitPrimitiveType {
+  /// resolved
   case resolved
+  
+  /// recovering
   case recovering
+  
+  /// ongoing
   case ongoing
+  
+  /// resolved with sequelae
   case resolvedWithSequelae
+  
+  /// fatal
   case fatal
+  
+  /// unknown
   case unknown
 }

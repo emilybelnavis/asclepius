@@ -22,10 +22,26 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+/**
+ This value set includes Claim Type codes.
+ 
+ URL: http://terminology.hl7.org/CodeSystem/claim-type
+ ValueSet: http://hl7.org/fhir/ValueSet/claim-type
+ */
 public enum ClaimTypecodes: String, FHIRKitPrimitiveType {
+  /// Hospital, clinic, and typically inpatient claims
   case institutional
+  
+  /// Dental, denture, and hygiene claims
   case oral
+  
+  /// Pharmacy claims for goods and services
   case pharmacy
+  
+  /// Typically outpatient claims from Physician, Psychological, Chiropractor, Physiotherapy,
+  /// Speech Pathology, Rehabilitative, Consulting
   case professional
+  
+  /// Vision claims for professional services and products such as glasses and contact lenses
   case vision
 }

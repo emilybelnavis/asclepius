@@ -22,16 +22,43 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+/**
+ The quality rating of the subcomponent of a quality of evidence rating.
+ 
+ URL: http://terminology.hl7.org/CodeSystem/certainty-subcomponent-rating
+ ValueSet: http://hl7.org/fhir/ValueSet/certainty-subcomponent-rating
+ */
 public enum CertaintySubcomponentRating: String, FHIRKitPrimitiveType {
+  /// No change to quality rating
   case noChange = "no-change"
+  
+  /// Reduce quality rating by 1
   case downcode1
+  
+  /// Reduce quality rating by 2
   case downcode2
+  
+  /// Reduce quality rating by 3
   case downcode3
+  
+  /// Increase quality rating by 1
   case upcode1
+  
+  /// Increase quality rating by 2
   case upcode2
+  
+  /// No serious concern
   case noConcern = "no-concern"
+  
+  /// Serious concern
   case seriousConcern = "serious-concern"
+  
+  /// Critical concern
   case criticalConcern = "critical-concern"
+  
+  /// Possible reason for increasing quality rating was checked and found to be present
   case present
+  
+  /// Possible reason for increasing quality rating was checked and found to be absent
   case absent
 }
