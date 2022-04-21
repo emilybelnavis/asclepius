@@ -1,5 +1,5 @@
 //
-//  ContactDetail.swift
+//  AccountCoverage.swift
 //  FHIRKit
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -22,43 +22,47 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-import Darwin
-
-open class ContactDetail: Element {
-  /// name of an individual to contact
-  public var name: FHIRKitPrimitive<FHIRKitString>?
+/**
+ The party(s) that are responsible for covering the payment of this account and what order they should be
+ applied to the account
+ */
+open class AccountCoverage: BackboneElement {
+  /// The party(s), such as insurance providers, that may contribute to the payment of this account
+  public var coverage: Reference
   
-  /// contact details for individual or organization
-  public var telecom: [ContactPoint]?
+  /// The priority of coverage in the context of this account
+  public var priority: FHIRKitPrimitive<FHIRKitPositiveInteger>?
   
-  override public init() {
+  public init(coverage: Reference) {
+    self.coverage = coverage
     super.init()
   }
   
   public convenience init(
     `extension`: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    name: FHIRKitPrimitive<FHIRKitString>? = nil,
-    telecom: [ContactPoint]? = nil
+    coverage: Reference,
+    priority: FHIRKitPrimitive<FHIRKitPositiveInteger>? = nil,
+    modifierExtension: [Extension]? = nil
   ) {
-    self.init()
+    self.init(coverage: coverage)
     self.`extension` = `extension`
     self.id = id
-    self.name = name
-    self.telecom = telecom
+    self.priority = priority
+    self.modifierExtension = modifierExtension
   }
   
   // MARK: - Codable
   private enum CodingKeys: String, CodingKey {
-    case name; case _name
-    case telecom
+    case coverage
+    case priority; case _priority
   }
   
   public required init(from decoder: Decoder) throws {
     let _container = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.name = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .name, auxiliaryKey: ._name)
-    self.telecom = try [ContactPoint](from: _container, forKeyIfPresent: .telecom)
+    self.coverage = try Reference(from: _container, forKey: .coverage)
+    self.priority = try FHIRKitPrimitive<FHIRKitPositiveInteger>(from: _container, forKeyIfPresent: .priority, auxiliaryKey: ._priority)
     
     try super.init(from: decoder)
   }
@@ -66,27 +70,27 @@ open class ContactDetail: Element {
   public override func encode(to encoder: Encoder) throws {
     var _container = encoder.container(keyedBy: CodingKeys.self)
     
-    try name?.encode(on: &_container, forKey: .name, auxiliaryKey: ._name)
-    try telecom?.encode(on: &_container, forKey: .telecom)
-    try super.encode(to: encoder)
+    try coverage?.encode(on: &_container, forKey: .coverage)
+    try priority?.encode(on: &_container, forKey: .priority, auxiliaryKey: ._priority)
   }
   
   // MARK: - Equatable & Hashable
   public override func isEqual(to _other: Any?) -> Bool {
-    guard let _other = _other as? ContactDetail else {
+    guard let _other = _other as? AccountCoverage else {
       return false
     }
     
-    guard super.isEqual(to: _other) else {
+    guard _other.isEqual(to: _other) else {
       return false
     }
     
-    return name == _other.name && telecom == _other.telecom
+    return coverage == _other.coverage
+    && priority == _other.priority
   }
   
   public override func hash(into hasher: inout Hasher) {
-    super.hash(into: &hasher)
-    hasher.combine(name)
-    hasher.combine(telecom)
+    super .hash(into: &hasher)
+    hasher.combine(coverage)
+    hasher.combine(priority)
   }
 }

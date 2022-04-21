@@ -1,5 +1,5 @@
 //
-//  ContactPoint.swift
+//  Identifier.swift
 //  FHIRKit
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,23 +23,28 @@
 //  SOFTWARE.
 
 /**
- Details of a Technology mediated contact point (phone, fax, email, etc.)
+ An identifier intended for computation
+ 
+ An identifier - identifies some entity uniquely and unambiguously. Typically used for business identifiers
  */
-open class ContactPoint: Element {
-  /// Telecommunications form for contact point
-  public var system: FHIRKitPrimitive<ContactPointSystem>?
+open class Identifier: Element {
+  /// The purpose of this identifier
+  public var use: FHIRKitPrimitive<IdentifierUse>?
   
-  /// The actual contact point details
+  /// Description of identifier
+  public var type: CodableConcept?
+  
+  /// The namespace for the identifier value
+  public var system: FHIRKitPrimitive<FHIRKitURI>?
+  
+  /// The value that is unique
   public var value: FHIRKitPrimitive<FHIRKitString>?
   
-  /// Identifies the purpose for the contact point
-  public var use: FHIRKitPrimitive<ContactPointUse>?
-  
-  /// Specified preferred order of use (1 = highest)
-  public var rank: FHIRKitPrimitive<FHIRKitPositiveInteger>?
-  
-  /// Time period when the contact point was/is in use
+  /// Time period when is/was valid for use
   public var period: Period?
+  
+  /// Organization that issued id (may be just text)
+  public var assigner: Reference?
   
   override public init() {
     super.init()
@@ -48,78 +53,84 @@ open class ContactPoint: Element {
   public convenience init(
     `extension`: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    system: FHIRKitPrimitive<ContactPointSystem>? = nil,
+    use: FHIRKitPrimitive<IdentifierUse>? = nil,
+    type: CodableConcept? = nil,
+    system: FHIRKitPrimitive<FHIRKitURI>? = nil,
     value: FHIRKitPrimitive<FHIRKitString>? = nil,
-    use: FHIRKitPrimitive<ContactPointUse>? = nil,
-    rank: FHIRKitPrimitive<FHIRKitPositiveInteger>? = nil,
-    period: Period? = nil
+    period: Period? = nil,
+    assigner: Reference? = nil
   ) {
     self.init()
-    
     self.`extension` = `extension`
     self.id = id
+    self.use = use
+    self.type = type
     self.system = system
     self.value = value
-    self.use = use
-    self.rank = rank
     self.period = period
+    self.assigner = assigner
   }
   
   // MARK: - Codable
   private enum CodingKeys: String, CodingKey {
+    case use; case _use
+    case type
     case system; case _system
     case value; case _value
-    case use; case _use
-    case rank; case _rank
     case period
+    case assigner
   }
   
   public required init(from decoder: Decoder) throws {
     let _container = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.system = try FHIRKitPrimitive<ContactPointSystem>(from: _container, forKeyIfPresent: .system, auxiliaryKey: ._system)
+    self.use = try FHIRKitPrimitive<IdentifierUse>(from: _container, forKeyIfPresent: .use, auxiliaryKey: ._use)
+    self.type = try CodableConcept(from: _container, forKeyIfPresent: .type)
+    self.system = try FHIRKitPrimitive<FHIRKitURI>(from: _container, forKeyIfPresent: .system, auxiliaryKey: ._system)
     self.value = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .value, auxiliaryKey: ._value)
-    self.use = try FHIRKitPrimitive<ContactPointUse>(from: _container, forKeyIfPresent: .use, auxiliaryKey: ._use)
-    self.rank = try FHIRKitPrimitive<FHIRKitPositiveInteger>(from: _container, forKeyIfPresent: ._rank, auxiliaryKey: ._rank)
     self.period = try Period(from: _container, forKeyIfPresent: .period)
+    self.assigner = try Reference(from: _container, forKeyIfPresent: .assigner)
     
     try super.init(from: decoder)
   }
+  
   public override func encode(to encoder: Encoder) throws {
     var _container = encoder.container(keyedBy: CodingKeys.self)
     
+    try use?.encode(on: &_container, forKey: .use, auxiliaryKey: ._use)
+    try type?.encode(on: &_container, forKey: .type)
     try system?.encode(on: &_container, forKey: .system, auxiliaryKey: ._system)
     try value?.encode(on: &_container, forKey: .value, auxiliaryKey: ._value)
-    try use?.encode(on: &_container, forKey: .use, auxiliaryKey: ._use)
-    try rank?.encode(on: &_container, forKey: .rank, auxiliaryKey: ._rank)
     try period?.encode(on: &_container, forKey: .period)
+    try assigner?.encode(on: &_container, forKey: .assigner)
     
     try super.encode(to: encoder)
   }
   
   // MARK: - Equatable & Hashable
   public override func isEqual(to _other: Any?) -> Bool {
-    guard let _other = _other as? ContactPoint else {
+    guard let _other = _other as? Identifier else {
       return false
     }
     
-    guard super.isEqual(to: _other) else {
+    guard _other.isEqual(to: _other) else {
       return false
     }
     
-    return system == _other.system
+    return use == _other.use
+    && type == _other.type
+    && system == _other.system
     && value == _other.value
-    && use == _other.use
-    && rank == _other.rank
     && period == _other.period
+    && assigner == _other.assigner
   }
   
   public override func hash(into hasher: inout Hasher) {
     super.hash(into: &hasher)
-    hasher.combine(system)
-    hasher.combine(value)
     hasher.combine(use)
-    hasher.combine(rank)
+    hasher.combine(type)
+    hasher.combine(value)
     hasher.combine(period)
+    hasher.combine(assigner)
   }
 }

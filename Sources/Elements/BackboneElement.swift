@@ -1,5 +1,5 @@
 //
-//  DomainResource.swift
+//  BackboneElement.swift
 //  FHIRKit
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -22,17 +22,11 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-import Darwin
-
-open class DomainResource: Resource {
-  override open class var resourceType: ResourceType { return .domainResource}
-  
-  public var text: Narrative?
-  
-  public var contained: [ResourceProxy]?
-  
-  public var `extension`: [Extension]?
-  
+/**
+ Base definition for all elements that are defined inside a resource, but not those in a data type
+ */
+open class BackboneElement: Element {
+  /// Extensions that cannot be ignored even if unrecognized
   public var modifierExtension: [Extension]?
   
   override public init() {
@@ -40,40 +34,50 @@ open class DomainResource: Resource {
   }
   
   public convenience init(
-    contained: [ResourceProxy]? = nil,
     `extension`: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    implicitRules: FHIRKitPrimitive<FHIRKitURI>? = nil,
-    language: FHIRKitPrimitive<FHIRKitString>? = nil,
-    meta: Meta? = nil,
-    modifierExtension: [Extension]? = nil,
-    text: Narrative? = nil
+    modifierExtension: [Extension]? = nil
   ) {
     self.init()
-    self.contained = contained
     self.`extension` = `extension`
     self.id = id
-    self.implicitRules = implicitRules
-    self.language = language
-    self.meta = meta
     self.modifierExtension = modifierExtension
-    self.text = text
   }
   
   // MARK: - Codable
   private enum CodingKeys: String, CodingKey {
-    case contained
-    case `extension` = "extension"
     case modifierExtension
-    case text
   }
   
   public required init(from decoder: Decoder) throws {
     let _container = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.contained = try [ResourceProxy](from: _container, forKeyIfPresent: .contained)
-    self.`extension` = try [Extension](from: _container, forKeyIfPresent: .`extension`)
     self.modifierExtension = try [Extension](from: _container, forKeyIfPresent: .modifierExtension)
-    self.text = try Narrative(from: _container, forKeyIfPresent: .text)
+    try super.init(from: decoder)
+  }
+  
+  public override func encode(to encoder: Encoder) throws {
+    var _container = encoder.container(keyedBy: CodingKeys.self)
+    
+    try modifierExtension?.encode(on: &_container, forKey: .modifierExtension)
+    try super.encode(to: encoder)
+  }
+  
+  // MARK: - Equatable & Hashable
+  public override func isEqual(to _other: Any?) -> Bool {
+    guard let _other = _other as? BackboneElement else {
+      return false
+    }
+    
+    guard super.isEqual(to: _other) else {
+      return false
+    }
+    
+    return modifierExtension == _other.modifierExtension
+  }
+  
+  public override func hash(into hasher: inout Hasher) {
+    super .hash(into: &hasher)
+    hasher.combine(modifierExtension)
   }
 }

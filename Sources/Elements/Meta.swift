@@ -1,5 +1,5 @@
 //
-//  AbstractResource.swift
+//  Meta.swift
 //  FHIRKit
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -22,43 +22,7 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-/**
-    Base class for all FHIR Resources
- */
-
-open class AbstractResource: FHIRType {
-    open class var resourceType: ResourceType {
-        return .resource
-    }
-    
-    public init() {}
-    
-    // MARK: Codable
-    private enum ValidKeys: String, CodingKey {
-        case resourceType
-    }
-    
-    public init(from decoder: Decoder) throws {
-        
-    }
-    
-    public var description: String {
-        return "<\(type(of: self).resourceType)>"
-    }
-    
-    public static func ==(l: AbstractResource, r: AbstractResource) -> Bool {
-        return l.isEqual(to: r)
-    }
-    
-    public func isEqual(to _other: Any?) -> Bool {
-        guard let _other = _other as? AbstractResource else {
-            return false
-        }
-        
-        guard type(of: self) == type(of: _other) else {
-            return false
-        }
-        
-        return type(of: self).resourceType == type(of: _other).resourceType
-    }
+open class Meta: Element {
+  public var versionId: FHIRKitPrimitive<FHIRKitString>?
+  public var lastUpdate: FHIRKitPrimitive<FHIRKitInstant>
 }

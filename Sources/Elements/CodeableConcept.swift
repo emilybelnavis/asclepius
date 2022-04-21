@@ -1,5 +1,5 @@
 //
-//  DomainResource.swift
+//  CodableConcept.swift
 //  FHIRKit
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -22,58 +22,77 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-import Darwin
-
-open class DomainResource: Resource {
-  override open class var resourceType: ResourceType { return .domainResource}
+/**
+ Concept - reference to a terminology or just text
+ 
+ A concept that may be defined by a formal reference to a terminology, ontology, or may be provided by text
+ */
+open class CodableConcept: Element {
+  /// Code defined by a terminology system
+  public var coding: [Coding]?
   
-  public var text: Narrative?
-  
-  public var contained: [ResourceProxy]?
-  
-  public var `extension`: [Extension]?
-  
-  public var modifierExtension: [Extension]?
+  /// Plain text representation of the concept
+  public var text: FHIRKitPrimitive<FHIRKitString>?
   
   override public init() {
     super.init()
   }
   
   public convenience init(
-    contained: [ResourceProxy]? = nil,
     `extension`: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    implicitRules: FHIRKitPrimitive<FHIRKitURI>? = nil,
-    language: FHIRKitPrimitive<FHIRKitString>? = nil,
-    meta: Meta? = nil,
-    modifierExtension: [Extension]? = nil,
-    text: Narrative? = nil
+    coding: [Coding]? = nil,
+    text: FHIRKitPrimitive<FHIRKitString>? = nil
   ) {
     self.init()
-    self.contained = contained
     self.`extension` = `extension`
     self.id = id
-    self.implicitRules = implicitRules
-    self.language = language
-    self.meta = meta
-    self.modifierExtension = modifierExtension
+    self.coding = coding
     self.text = text
   }
   
   // MARK: - Codable
   private enum CodingKeys: String, CodingKey {
-    case contained
-    case `extension` = "extension"
-    case modifierExtension
-    case text
+    case coding
+    case text; case _text
   }
   
   public required init(from decoder: Decoder) throws {
     let _container = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.contained = try [ResourceProxy](from: _container, forKeyIfPresent: .contained)
-    self.`extension` = try [Extension](from: _container, forKeyIfPresent: .`extension`)
-    self.modifierExtension = try [Extension](from: _container, forKeyIfPresent: .modifierExtension)
-    self.text = try Narrative(from: _container, forKeyIfPresent: .text)
+    self.coding = try [Coding](from: _container, forKeyIfPresent: .coding)
+    self.text = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .text, auxiliaryKey: ._text)
+    
+    try super.init(from: decoder)
+  }
+  
+  public override func encode(to encoder: Encoder) throws {
+    var _container = encoder.container(keyedBy: CodingKeys.self)
+    
+    try coding?.encode(on: &_container, forKey: .coding)
+    try text?.encode(on: &_container, forKey: .text, auxiliaryKey: ._text)
+    
+    try super.encode(to: encoder)
+  }
+  
+  // MARK: - Equatable & Hashable
+  public override func isEqual(to _other: Any?) -> Bool {
+    guard let _other = _other as? CodableConcept else {
+      return false
+    }
+    
+    guard _other.isEqual(to: _other) else {
+      return false
+    }
+    
+    return coding == _other.coding
+    && text == _other.text
+  }
+  
+  public override func hash(into hasher: inout Hasher) {
+    super.hash(into: &hasher)
+    
+    hasher.combine(coding)
+    hasher.combine(text)
   }
 }

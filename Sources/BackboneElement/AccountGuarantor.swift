@@ -1,5 +1,5 @@
 //
-//  ContactDetail.swift
+//  AccountGuarantor.swift
 //  FHIRKit
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -22,43 +22,53 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-import Darwin
-
-open class ContactDetail: Element {
-  /// name of an individual to contact
-  public var name: FHIRKitPrimitive<FHIRKitString>?
+/**
+ The parties responsible for balancing the account if other payment options fall short
+ */
+open class AccountGuarantor: BackboneElement {
+  /// Responsible entity
+  public var party: Reference
   
-  /// contact details for individual or organization
-  public var telecom: [ContactPoint]?
+  /// Credit or other hold applied
+  public var onHold: FHIRKitPrimitive<FHIRKitBool>?
   
-  override public init() {
+  /// Guarantee account during
+  public var period: Period?
+  
+  public init(party: Reference) {
+    self.party = party
     super.init()
   }
   
   public convenience init(
     `extension`: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    name: FHIRKitPrimitive<FHIRKitString>? = nil,
-    telecom: [ContactPoint]? = nil
+    party: Reference,
+    onHold: FHIRKitPrimitive<FHIRKitBool>? = nil,
+    period: Period? = nil,
+    modifierExtension: [Extension]? = nil
   ) {
-    self.init()
+    self.init(party: party)
     self.`extension` = `extension`
     self.id = id
-    self.name = name
-    self.telecom = telecom
+    self.onHold = onHold
+    self.period = period
+    self.modifierExtension = modifierExtension
   }
   
   // MARK: - Codable
   private enum CodingKeys: String, CodingKey {
-    case name; case _name
-    case telecom
+    case party
+    case onHold; case _onHold
+    case period
   }
   
   public required init(from decoder: Decoder) throws {
     let _container = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.name = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .name, auxiliaryKey: ._name)
-    self.telecom = try [ContactPoint](from: _container, forKeyIfPresent: .telecom)
+    self.party = try Reference(from: _container, forKey: .party)
+    self.onHold = try FHIRKitPrimitive<FHIRKitBool>(from: _container, forKeyIfPresent: .onHold, auxiliaryKey: ._onHold)
+    self.period = try Period(from: _container, forKeyIfPresent: .period)
     
     try super.init(from: decoder)
   }
@@ -66,14 +76,16 @@ open class ContactDetail: Element {
   public override func encode(to encoder: Encoder) throws {
     var _container = encoder.container(keyedBy: CodingKeys.self)
     
-    try name?.encode(on: &_container, forKey: .name, auxiliaryKey: ._name)
-    try telecom?.encode(on: &_container, forKey: .telecom)
+    try party.encode(on: &_container, forKey: .party)
+    try onHold?.encode(on: &_container, forKey: .onHold, auxiliaryKey: ._onHold)
+    try period?.encode(on: &_container, forKey: .period)
+    
     try super.encode(to: encoder)
   }
   
   // MARK: - Equatable & Hashable
   public override func isEqual(to _other: Any?) -> Bool {
-    guard let _other = _other as? ContactDetail else {
+    guard let _other = _other as? AccountGuarantor else {
       return false
     }
     
@@ -81,12 +93,15 @@ open class ContactDetail: Element {
       return false
     }
     
-    return name == _other.name && telecom == _other.telecom
+    return party == _other.party
+    && onHold == _other.onHold
+    && period == _other.period
   }
   
   public override func hash(into hasher: inout Hasher) {
-    super.hash(into: &hasher)
-    hasher.combine(name)
-    hasher.combine(telecom)
+    super .hash(into: &hasher)
+    hasher.combine(party)
+    hasher.combine(onHold)
+    hasher.combine(period)
   }
 }
