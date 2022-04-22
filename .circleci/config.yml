@@ -9,8 +9,10 @@ jobs:
       xcode: 13.3.0
     steps:
       - checkout
-      - run: swift build
-      - run: swift test --enable-code-coverage  --xunit-output ./results.xml --parallel
+      - run: swiftlint
+      - run:
+          name: Build and Test
+          command: swift test --enable-code-coverage  --xunit-output ./results.xml --parallel
       - run: |
           xcrun llvm-cov export \
           -format=lcov \
@@ -18,7 +20,7 @@ jobs:
           .build/x86_64-apple-macosx/debug/FHIRKitPackageTests.xctest/Contents/MacOS/FHIRKitPackageTests \
           > /Users/distiller/project/lcov.info
       - store_test_results:
-          path: ./lcov.info
+          path: /Users/distiller/project/lcov.info
       - coverage-reporter/send_report:
           coverage-reports: "/Users/distiller/project/lcov.info"
           project-token: $CODACY_PROJECT_TOKEN
