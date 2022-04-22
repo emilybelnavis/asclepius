@@ -16,7 +16,7 @@ jobs:
           -format=lcov \
           -instr-profile=.build/x86_64-apple-macosx/debug/codecov/default.profdata \
           .build/x86_64-apple-macosx/debug/FHIRKitPackageTests.xctest/Contents/MacOS/FHIRKitPackageTests \
-          > .lcov.info
+          > /Users/distiller/project/lcov.info
       - store_test_results:
           path: ./lcov.info
       - coverage-reporter/send_report:
