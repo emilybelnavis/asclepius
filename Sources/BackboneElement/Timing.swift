@@ -82,9 +82,9 @@ open class Timing: BackboneElement {
     
     try event?.encode(on: &_container, forKey: .event, auxiliaryKey: ._event)
     try `repeat`?.encode(on: &_container, forKey: .`repeat`)
-    try code?.encode(on: &_container, forKey.code)
+    try code?.encode(on: &_container, forKey: .code)
     
-    try super.encode(to: encoder`)
+    try super.encode(to: encoder)
   }
   
   // MARK: - Equatable & Hashable

@@ -34,7 +34,7 @@ open class ActivityDefinitionParticipant: BackboneElement {
   /// E.g. nurse, surgeon, parent, etc...
   public var role: CodableConcept?
   
-  public init(type: FHIRKitPrimitive<ActionRelationshipType>) {
+  public init(type: FHIRKitPrimitive<ActionParticipantType>) {
     self.type = type
     super.init()
   }
@@ -42,7 +42,7 @@ open class ActivityDefinitionParticipant: BackboneElement {
   public convenience init(
     `extension`: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    type: FHIRKitPrimitive<ActionRelationshipType>,
+    type: FHIRKitPrimitive<ActionParticipantType>,
     role: CodableConcept? = nil,
     modifierExtension: [Extension]? = nil
   ) {
@@ -62,7 +62,7 @@ open class ActivityDefinitionParticipant: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let _container = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.type = try FHIRKitPrimitive<ActionRelationshipType>(from: _container, forKey: .type, auxiliaryKey: ._type)
+    self.type = try FHIRKitPrimitive<ActionParticipantType>(from: _container, forKey: .type, auxiliaryKey: ._type)
     self.role = try CodableConcept(from: _container, forKeyIfPresent: .role)
     
     try super.init(from: decoder)

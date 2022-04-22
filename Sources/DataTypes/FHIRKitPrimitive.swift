@@ -26,7 +26,7 @@
  Protocol for all FHIR Primitives
  */
 
-public protocol FHIRKitPrimitiveType: FHIRType {}
+public protocol FHIRKitPrimitiveType: FHIRKitType {}
 
 extension FHIRKitPrimitiveType {
   public func asPrimitive(with id: String? = nil, extension: [Extension]? = nil) -> FHIRKitPrimitive<Self> {

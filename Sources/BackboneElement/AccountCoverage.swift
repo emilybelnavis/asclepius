@@ -70,7 +70,7 @@ open class AccountCoverage: BackboneElement {
   public override func encode(to encoder: Encoder) throws {
     var _container = encoder.container(keyedBy: CodingKeys.self)
     
-    try coverage?.encode(on: &_container, forKey: .coverage)
+    try coverage.encode(on: &_container, forKey: .coverage)
     try priority?.encode(on: &_container, forKey: .priority, auxiliaryKey: ._priority)
   }
   

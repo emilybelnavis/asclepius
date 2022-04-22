@@ -26,18 +26,18 @@
  Time range defined by a start and end date, and optionally time
  */
 open class Period: Element {
-  public var start: FHIRKitPrimitive<DateTime>?
-  public var end: FHIRKitPrimitive<DateTime>?
+  public var start: FHIRKitPrimitive<FHIRKitDateTime>?
+  public var end: FHIRKitPrimitive<FHIRKitDateTime>?
   
   override public init() {
     super.init()
   }
   
   public convenience init(
-    end: FHIRKitPrimitive<DateTime>? = nil,
+    end: FHIRKitPrimitive<FHIRKitDateTime>? = nil,
     `extension`: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    start: FHIRKitPrimitive<DateTime>? = nil
+    start: FHIRKitPrimitive<FHIRKitDateTime>? = nil
   ) {
     self.init()
     
@@ -55,8 +55,8 @@ open class Period: Element {
   public required init(from decoder: Decoder) throws {
     let _container = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.end = try FHIRKitPrimitive<DateTime>(from: _container, forKeyIfPresent: .end, auxiliaryKey: ._end)
-    self.start = try FHIRKitPrimitive<DateTime>(from: _container, forKeyIfPresent: .start, auxiliaryKey: ._start)
+    self.end = try FHIRKitPrimitive<FHIRKitDateTime>(from: _container, forKeyIfPresent: .end, auxiliaryKey: ._end)
+    self.start = try FHIRKitPrimitive<FHIRKitDateTime>(from: _container, forKeyIfPresent: .start, auxiliaryKey: ._start)
     
     try super.init(from: decoder)
   }
@@ -79,7 +79,8 @@ open class Period: Element {
       return false
     }
     
-    return end == _other.end && start == other.start
+    return end == _other.end
+    && start == _other.start
   }
   
   public override func hash(into hasher: inout Hasher) {

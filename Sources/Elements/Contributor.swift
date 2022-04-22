@@ -67,7 +67,7 @@ open class Contributor: Element {
     let _container = try decoder.container(keyedBy: CodingKeys.self)
     self.type = try FHIRKitPrimitive<ContributorType>(from: _container, forKey: .type, auxiliaryKey: ._type)
     self.name = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKey: .name, auxiliaryKey: ._name)
-    self.contract = try [ContactDetail](from: _container, forKeyIfPresent: .contact)
+    self.contact = try [ContactDetail](from: _container, forKeyIfPresent: .contact)
     
     try super.init(from: decoder)
   }

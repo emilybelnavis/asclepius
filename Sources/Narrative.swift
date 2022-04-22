@@ -53,7 +53,7 @@ open class Narrative: Element {
     let _container = try decoder.container(keyedBy: CodingKeys.self)
     
     self.div = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKey: .div, auxiliaryKey: ._div)
-    self.status = try FHIRKitPrimitive<NarrativeStatus(from: _container, forKey: .status, auxiliaryKey: ._status)
+    self.status = try FHIRKitPrimitive<NarrativeStatus>(from: _container, forKey: .status, auxiliaryKey: ._status)
     try super.init(from: decoder)
   }
   

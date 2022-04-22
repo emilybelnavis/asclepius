@@ -27,16 +27,16 @@
  Optional Extensions Element - Found in all FHIR resources
  */
 open class Extension: Element {
-  public enum ValueX: Hashable {
+  public enum Value: Hashable {
     case address(Address)
     case age(Age)
     case annotation(Annotation)
     case attachment(Attachment)
-    case base64Binary(FHIRKitPrimitive<Base64Binary>)
+    case base64Binary(FHIRKitPrimitive<FHIRKitBase64Binary>)
     case boolean(FHIRKitPrimitive<FHIRKitBool>)
     case canonical(FHIRKitPrimitive<Canonical>)
     case code(FHIRKitPrimitive<FHIRKitString>)
-    case codeableConcept(CodeableConcept)
+    case codeableConcept(CodableConcept)
     case coding(Coding)
     case contactDetail(ContactDetail)
     case contactPoint(ContactPoint)
@@ -44,7 +44,7 @@ open class Extension: Element {
     case count(Count)
     case dataRequirement(DataRequirement)
     case date(FHIRKitPrimitive<FHIRKitDate>)
-    case dateTime(FHIRKitPrimitive<DateTime>)
+    case dateTime(FHIRKitPrimitive<FHIRKitDateTime>)
     case decimal(FHIRKitPrimitive<FHIRKitDecimal>)
     case distance(Distance)
     case dosage(Dosage)
@@ -53,7 +53,7 @@ open class Extension: Element {
     case humanName(HumanName)
     case id(FHIRKitPrimitive<FHIRKitString>)
     case identifier(Identifier)
-    case instant(FHIRKitPrimitive<Instant>)
+    case instant(FHIRKitPrimitive<FHIRKitInstant>)
     case integer(FHIRKitPrimitive<FHIRKitInteger>)
     case markdown(FHIRKitPrimitive<FHIRKitString>)
     case meta(Meta)
@@ -84,12 +84,12 @@ open class Extension: Element {
   public var url: FHIRKitPrimitive<FHIRKitURI>
   
   /// value of extension
-  public init(url: FHIRKitPrimitive<FHIRURI>) {
+  public init(url: FHIRKitPrimitive<FHIRKitURI>) {
     self.url = url
     super.init()
   }
   
-  public convenience init(`extension`: [Extension]? = nil, id: FHIRKitPrimitive<FHIRString>? = nil, url: FHIRKitPrimitive<FHIRURI>, value: ValueX? = nil) {
+  public convenience init(`extension`: [Extension]? = nil, id: FHIRKitPrimitive<FHIRKitString>? = nil, url: FHIRKitPrimitive<FHIRKitURI>, value: Value? = nil) {
     self.init(url: url)
     self.`extension` = `extension`
     self.id = id
@@ -156,6 +156,6 @@ open class Extension: Element {
     let _container = try decoder.container(keyedBy: CodingKeys.self)
     
     // Decode all the properties
-    self.url = try FHIRKitPrimitive<FHIRURI>(from: _container, forKey: .url, auxiliaryKey: ._url)
+    self.url = try FHIRKitPrimitive<FHIRKitURI>(from: _container, forKey: .url, auxiliaryKey: ._url)
   }
 }

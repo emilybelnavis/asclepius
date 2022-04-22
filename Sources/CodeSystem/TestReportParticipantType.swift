@@ -28,8 +28,7 @@
  URL: http://hl7.org/fhir/report-participant-type
  ValueSet: http://hl7.org/fhir/ValueSet/report-participant-type
  */
-public enum TestReportParticipantType: String, FHIRPrimitiveType {
-  
+public enum TestReportParticipantType: String, FHIRKitPrimitiveType {
     /// The test execution engine.
   case testEngine = "test-engine"
   

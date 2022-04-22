@@ -120,7 +120,7 @@ open class Quantity: Element {
   }
   
   public override func hash(into hasher: inout Hasher) {
-    super hash(into: &hasher)
+    super.hash(into: &hasher)
     hasher.combine(value)
     hasher.combine(comparator)
     hasher.combine(unit)

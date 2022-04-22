@@ -43,7 +43,7 @@ open class ActivityDefinition: DomainResource {
     case reference(Reference)
   }
   
-  public enum Timing: Hashable {
+  public indirect enum Timing: Hashable {
     case age(Age)
     case dateTime(FHIRKitPrimitive<FHIRKitDateTime>)
     case duration(Duration)
@@ -65,7 +65,7 @@ open class ActivityDefinition: DomainResource {
   public var publisher: FHIRKitPrimitive<FHIRKitString>?
   public var contact: [ContactDetail]?
   public var fhirDescription: FHIRKitPrimitive<FHIRKitString>?
-  public var useContext: [Usagecontext]?
+  public var useContext: [UsageContext]?
   public var jurisdiction: [CodableConcept]?
   public var purpose: FHIRKitPrimitive<FHIRKitString>?
   public var usage: FHIRKitPrimitive<FHIRKitString>?

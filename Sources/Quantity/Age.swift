@@ -35,7 +35,7 @@ open class Age: Quantity {
     comparator: FHIRKitPrimitive<QuantityComparator>? = nil,
     system: FHIRKitPrimitive<FHIRKitURI>? = nil,
     unit: FHIRKitPrimitive<FHIRKitString>? = nil,
-    value: FHIRKitPrimitive<FHIRKitDecimal> = nil
+    value: FHIRKitPrimitive<FHIRKitDecimal>? = nil
   ) {
     self.init()
     self.`extension` = `extension`

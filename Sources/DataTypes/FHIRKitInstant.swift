@@ -140,7 +140,7 @@ extension FHIRKitInstant: Equatable {
     return true
   }
   
-  public static func ==(l: FHIRKitInstant, r: DateTime) -> Bool {
+  public static func ==(l: FHIRKitInstant, r: FHIRKitDateTime) -> Bool {
     if !(l.date == r.date) {
       return false
     }
@@ -153,7 +153,7 @@ extension FHIRKitInstant: Equatable {
     return true
   }
   
-  public static func ==(l: DateTime, r: FHIRKitInstant) -> Bool {
+  public static func ==(l: FHIRKitDateTime, r: FHIRKitInstant) -> Bool {
     if !(l.date == r.date) {
       return false
     }
@@ -178,7 +178,7 @@ extension FHIRKitInstant: Comparable {
     }
   }
   
-  public static func <(l: FHIRKitInstant, r: DateTime) -> Bool {
+  public static func <(l: FHIRKitInstant, r: FHIRKitDateTime) -> Bool {
     do {
       return try l.compare(r) == .orderedAscending
     } catch {
@@ -187,7 +187,7 @@ extension FHIRKitInstant: Comparable {
     }
   }
   
-  public static func <(l: DateTime, r: FHIRKitInstant) -> Bool {
+  public static func <(l: FHIRKitDateTime, r: FHIRKitInstant) -> Bool {
     do {
       return try l.compare(r) == .orderedAscending
     } catch {

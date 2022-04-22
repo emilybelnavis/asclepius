@@ -102,7 +102,7 @@ public struct FHIRKitDate: FHIRKitPrimitiveType{
     }
     
     scanLocation = scanner.scanLocation
-    if expectedAtEnd && !scanner.isAtEnd {
+    if expectAtEnd && !scanner.isAtEnd {
       throw FHIRKitDateParserError.additionalCharacters(FHIRKitDateParserErrorPosition(string: scanner.string, location: scanLocation))
     }
     

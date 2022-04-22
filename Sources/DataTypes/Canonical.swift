@@ -80,7 +80,7 @@ extension Canonical: Codable {
     if let version = version {
       try _container.encode("\(url.absoluteString)|\(version)")
     } else {
-      try container.encode(url)
+      try _container.encode(url)
     }
   }
 }

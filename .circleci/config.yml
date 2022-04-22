@@ -11,10 +11,16 @@ jobs:
       - checkout
       - run: swift build
       - run: swift test --enable-code-coverage  --xunit-output ./results.xml --parallel
+      - run: |
+          xcrun llvm-cov export \
+          -format=lcov \
+          -instr-profile=.build/x86_64-apple-macosx/debug/codecov/default.profdata \
+          .build/x86_64-apple-macosx/debug/FHIRKitPackageTests.xctest/Contents/MacOS/FHIRKitPackageTests \
+          > .lcov.info
       - store_test_results:
-          path: results.xml
+          path: ./lcov.info
       - codecov/upload:
-          file: /Users/distiller/project/results.xml
+          file: /Users/distiller/project/lcov.info
 workflows:
   build:
     jobs:
