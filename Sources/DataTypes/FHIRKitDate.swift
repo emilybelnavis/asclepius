@@ -31,7 +31,7 @@ import Foundation
  HL7 R4 only allows years 0001 to 9999 which is what will be enforced.
  */
 
-public struct FHIRKitDate: FHIRKitPrimitiveType{
+public struct FHIRKitDate: FHIRKitPrimitiveType {
   public var year: Int
   public var month: UInt8? {
     didSet {
@@ -137,7 +137,7 @@ extension FHIRKitDate: Codable {
 }
 
 extension FHIRKitDate: CustomStringConvertible {
-  public var description: String{
+  public var description: String {
     if let month = month {
       if let day = day {
         return String(format: "%04d-%02d-%02d", year, month, day)

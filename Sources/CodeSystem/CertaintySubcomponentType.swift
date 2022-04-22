@@ -41,7 +41,7 @@ public enum CertaintySubcomponentType: String, FHIRKitPrimitiveType {
   /// High quality evidence
   case imprecision = "Imprecision"
   
-  ///Likelyhood that what is published misprepresents what is available to publish
+  /// Likelyhood that what is published misprepresents what is available to publish
   case publicationBias = "PublicationBias"
   
   /// Higher certainty due to dose response relationship

@@ -35,39 +35,39 @@ class FHIRDateComponentsTests: XCTestCase {
     let date4 = Date(timeIntervalSinceReferenceDate: 694224000.5) // 2023-01-01 at 00:00:00.5 (half a second into 2023)
     let date5 = Date(timeIntervalSinceReferenceDate: 730916400.0) // 2024-02-29 at 16:20:00 (leap year 2024)
     
-    var dates: Array<[String: Any]> = []
+    var dates: [[String: Any]] = []
     
     override func setUp() {
         dates = [
             [
                 "date": date0,
                 "gmtComponents": [2022, 1, 1, 12, 34, 56.0], // 2022-01-01 12:34:56
-                "estComponents": [2022, 1, 1, 7, 34, 56.0],  // 2022-01-01 07:34:56
+                "estComponents": [2022, 1, 1, 7, 34, 56.0]  // 2022-01-01 07:34:56
             ],
             [
                 "date": date1,
                 "gmtComponents": [2022, 2, 28, 13, 24, 30.0], // 2022-02-28 13:24:30
-                "estComponents": [2022, 2, 28, 8, 24, 30.0],  // 2022-02-28 6:24:30
+                "estComponents": [2022, 2, 28, 8, 24, 30.0]  // 2022-02-28 6:24:30
             ],
             [
                 "date": date2,
                 "gmtComponents": [2022, 12, 31, 23, 59, 59.0], // 2022-12-31 23:59:59
-                "estComponents": [2022, 12, 31, 18, 59, 59.0], // 2022-12-31 16:59:59
+                "estComponents": [2022, 12, 31, 18, 59, 59.0] // 2022-12-31 16:59:59
             ],
             [
                 "date": date3,
-                "gmtComponents": [2023,  1,  1, 0,  0, 0.0], // 2023-01-01 00:00:00
-                "estComponents": [2022, 12, 31, 19, 0, 0.0], // 2022-12-31 17:00:00
+                "gmtComponents": [2023, 1, 1, 0, 0, 0.0], // 2023-01-01 00:00:00
+                "estComponents": [2022, 12, 31, 19, 0, 0.0] // 2022-12-31 17:00:00
             ],
             [
                 "date": date4,
-                "gmtComponents": [2023, 1,  1, 0,  0, 0.5],  // 2023-01-01 00:00:00.5
-                "estComponents": [2022, 12, 31, 19, 0, 0.5], // 2022-12-31 17:00:00.5
+                "gmtComponents": [2023, 1, 1, 0, 0, 0.5],  // 2023-01-01 00:00:00.5
+                "estComponents": [2022, 12, 31, 19, 0, 0.5] // 2022-12-31 17:00:00.5
             ],
             [
                 "date": date5,
                 "gmtComponents": [2024, 2, 29, 16, 20, 0],  // 2024-02-29 16:20:00
-                "estComponents": [2024, 2, 29, 11, 20, 0],  // 2024-02-29 11:20:00
+                "estComponents": [2024, 2, 29, 11, 20, 0]  // 2024-02-29 11:20:00
             ]
         ]
     }
@@ -82,17 +82,17 @@ class FHIRDateComponentsTests: XCTestCase {
             let gmtComponents = dateObject["gmtComponents"] as! [NSNumber]
             let estComponents = dateObject["estComponents"] as! [NSNumber]
             
-            let dateComponentsGMT = try FHIRDateComponents.dateComponents(from: date, with: gmt)
+            let dateComponentsGMT = try FHIRKitDateComponents.dateComponents(from: date, with: gmt)
             XCTAssertEqual(dateComponentsGMT.year, gmtComponents[0] as? Int, "Date number \(i) incorrect GMT year")
             XCTAssertEqual(dateComponentsGMT.month, gmtComponents[1] as? UInt8, "Date number \(i) incorrect GMT month")
             XCTAssertEqual(dateComponentsGMT.day, gmtComponents[2] as? UInt8, "Date number \(i) incorrect GMT day")
             
-            let timeComponentsGMT = try FHIRDateComponents.timeComponents(from: date, with: gmt)
+            let timeComponentsGMT = try FHIRKitDateComponents.timeComponents(from: date, with: gmt)
             XCTAssertEqual(timeComponentsGMT.hour, gmtComponents[3] as? UInt8, "Date number \(i) incorrect GMT hour")
             XCTAssertEqual(timeComponentsGMT.minute, gmtComponents[4] as? UInt8, "Date number \(i) incorrect GMT minute")
             XCTAssertEqual(timeComponentsGMT.second, gmtComponents[5].decimalValue, "Date number \(i) incorrect GMT second")
             
-            let componentsGMT = try FHIRDateComponents.components(from: date, with: gmt)
+            let componentsGMT = try FHIRKitDateComponents.components(from: date, with: gmt)
             XCTAssertEqual(componentsGMT.year, gmtComponents[0] as? Int, "Date number \(i) incorrect GMT year")
             XCTAssertEqual(componentsGMT.month, gmtComponents[1] as? UInt8, "Date number \(i) incorrect GMT month")
             XCTAssertEqual(componentsGMT.day, gmtComponents[2] as? UInt8, "Date number \(i) incorrect GMT day")
@@ -100,17 +100,17 @@ class FHIRDateComponentsTests: XCTestCase {
             XCTAssertEqual(componentsGMT.minute, gmtComponents[4] as? UInt8, "Date number \(i) incorrect GMT minute")
             XCTAssertEqual(componentsGMT.second, gmtComponents[5].decimalValue, "Date number \(i) incorrect GMT second")
             
-            let dateComponentsEST = try FHIRDateComponents.dateComponents(from: date, with: est)
+            let dateComponentsEST = try FHIRKitDateComponents.dateComponents(from: date, with: est)
             XCTAssertEqual(dateComponentsEST.year, estComponents[0] as? Int, "Date number \(i) incorrect EST year")
             XCTAssertEqual(dateComponentsEST.month, estComponents[1] as? UInt8, "Date number \(i) incorrect EST month")
             XCTAssertEqual(dateComponentsEST.day, estComponents[2] as? UInt8, "Date number \(i) incorrect EST day")
             
-            let timeComponentsEST = try FHIRDateComponents.timeComponents(from: date, with: est)
+            let timeComponentsEST = try FHIRKitDateComponents.timeComponents(from: date, with: est)
             XCTAssertEqual(timeComponentsEST.hour, estComponents[3] as? UInt8, "Date number \(i) incorrect EST hour")
             XCTAssertEqual(timeComponentsEST.minute, estComponents[4] as? UInt8, "Date number \(i) incorrect EST minute")
             XCTAssertEqual(timeComponentsEST.second, estComponents[5].decimalValue, "Date number \(i) incorrect EST second")
             
-            let componentsEST = try FHIRDateComponents.components(from: date, with: est)
+            let componentsEST = try FHIRKitDateComponents.components(from: date, with: est)
             XCTAssertEqual(componentsEST.year, estComponents[0] as? Int, "Date number \(i) incorrect EST year")
             XCTAssertEqual(componentsEST.month, estComponents[1] as? UInt8, "Date number \(i) incorrect EST month")
             XCTAssertEqual(componentsEST.day, estComponents[2] as? UInt8, "Date number \(i) incorrect EST day")
@@ -121,17 +121,17 @@ class FHIRDateComponentsTests: XCTestCase {
     }
     
     func testLeapDayParsing() throws {
-        let leapDayDate = try FHIRDateComponents.dateComponents(from: date5, with: gmt)
+        let leapDayDate = try FHIRKitDateComponents.dateComponents(from: date5, with: gmt)
         XCTAssertEqual(2024, leapDayDate.year)
         XCTAssertEqual(2, leapDayDate.month)
         XCTAssertEqual(29, leapDayDate.day)
         
-        let leapDayTime = try FHIRDateComponents.timeComponents(from: date5, with: gmt)
+        let leapDayTime = try FHIRKitDateComponents.timeComponents(from: date5, with: gmt)
         XCTAssertEqual(16, leapDayTime.hour)
         XCTAssertEqual(20, leapDayTime.minute)
         XCTAssertEqual(00.0, leapDayTime.second)
         
-        let leapDayComponents = try FHIRDateComponents.components(from: date5, with: gmt)
+        let leapDayComponents = try FHIRKitDateComponents.components(from: date5, with: gmt)
         XCTAssertEqual(2024, leapDayComponents.year)
         XCTAssertEqual(2, leapDayComponents.month)
         XCTAssertEqual(29, leapDayComponents.day)
@@ -139,7 +139,7 @@ class FHIRDateComponentsTests: XCTestCase {
         XCTAssertEqual(20, leapDayComponents.minute)
         XCTAssertEqual(0.0, leapDayTime.second)
         
-        let timeZoneShiftComponents = try FHIRDateComponents.components(from: date5, with: est)
+        let timeZoneShiftComponents = try FHIRKitDateComponents.components(from: date5, with: est)
         XCTAssertEqual(2024, timeZoneShiftComponents.year)
         XCTAssertEqual(2, timeZoneShiftComponents.month)
         XCTAssertEqual(29, timeZoneShiftComponents.day)
@@ -149,17 +149,17 @@ class FHIRDateComponentsTests: XCTestCase {
     }
     
     func testNewYearParsing() throws {
-        let happyNewYearDateComponents = try FHIRDateComponents.dateComponents(from: date4, with: gmt)
+        let happyNewYearDateComponents = try FHIRKitDateComponents.dateComponents(from: date4, with: gmt)
         XCTAssertEqual(2023, happyNewYearDateComponents.year)
         XCTAssertEqual(1, happyNewYearDateComponents.month)
         XCTAssertEqual(1, happyNewYearDateComponents.day)
         
-        let happyNewYearTimeComponents = try FHIRDateComponents.timeComponents(from: date4, with: gmt)
+        let happyNewYearTimeComponents = try FHIRKitDateComponents.timeComponents(from: date4, with: gmt)
         XCTAssertEqual(0, happyNewYearTimeComponents.hour)
         XCTAssertEqual(0, happyNewYearTimeComponents.minute)
         XCTAssertEqual(0.5, happyNewYearTimeComponents.second)
         
-        let happyNewYearComponents = try FHIRDateComponents.components(from: date4, with: gmt)
+        let happyNewYearComponents = try FHIRKitDateComponents.components(from: date4, with: gmt)
         XCTAssertEqual(2023, happyNewYearComponents.year)
         XCTAssertEqual(1, happyNewYearComponents.month)
         XCTAssertEqual(1, happyNewYearComponents.day)
@@ -167,7 +167,7 @@ class FHIRDateComponentsTests: XCTestCase {
         XCTAssertEqual(0, happyNewYearComponents.minute)
         XCTAssertEqual(0.5, happyNewYearComponents.second)
         
-        let timeZoneSwitchComponents = try FHIRDateComponents.components(from: date4, with: est)
+        let timeZoneSwitchComponents = try FHIRKitDateComponents.components(from: date4, with: est)
         XCTAssertEqual(2022, timeZoneSwitchComponents.year)
         XCTAssertEqual(12, timeZoneSwitchComponents.month)
         XCTAssertEqual(31, timeZoneSwitchComponents.day)
@@ -182,7 +182,7 @@ class FHIRDateComponentsTests: XCTestCase {
             let date = dateObject["date"] as! Date
             let gmtComponents = dateObject["gmtComponents"] as! [NSNumber]
             let estComponents = dateObject["estComponents"] as! [NSNumber]
-            let gmtFHIRComponents = FHIRDateComponents(year: gmtComponents[0] as! Int,
+            let gmtFHIRComponents = FHIRKitDateComponents(year: gmtComponents[0] as! Int,
                                                        month: gmtComponents[1] as? UInt8,
                                                        day: gmtComponents[2] as? UInt8,
                                                        hour: gmtComponents[3] as? UInt8,
@@ -192,7 +192,7 @@ class FHIRDateComponentsTests: XCTestCase {
             let testGMTDate = try gmtFHIRComponents.asNSDate()
             XCTAssertEqual(testGMTDate, date, "Date number \(i) GMT date conversion incorrect")
             
-            let estFHIRComponents = FHIRDateComponents(year: estComponents[0] as! Int,
+            let estFHIRComponents = FHIRKitDateComponents(year: estComponents[0] as! Int,
                                                        month: estComponents[1] as? UInt8,
                                                        day: estComponents[2] as? UInt8,
                                                        hour: estComponents[3] as? UInt8,

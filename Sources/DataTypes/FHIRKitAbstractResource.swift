@@ -1,4 +1,4 @@
-  //
+//
   //  AbstractResource.swift
   //  FHIRKit
   //

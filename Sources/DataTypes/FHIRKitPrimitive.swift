@@ -94,7 +94,7 @@ public struct FHIRKitPrimitive<PrimitiveType: FHIRKitPrimitiveType>: FHIRKitPrim
   }
 }
 
-// MARK:  - Hashable
+// MARK: - Hashable
 extension FHIRKitPrimitive: Hashable {
   public static func ==(l: FHIRKitPrimitive<PrimitiveType>, r: FHIRKitPrimitive<PrimitiveType>) -> Bool {
     if l.value != r.value {
@@ -206,7 +206,7 @@ extension Array where Element: FHIRKitPrimitiveProtocol {
     } else if let primitives = primitives {
       self = primitives.compactMap { $0 }
     } else {
-      throw DecodingError.keyNotFound(key, DecodingError.Context(codingPath:[key], debugDescription: "Must have a value for \"\(key)\" but have none"))
+      throw DecodingError.keyNotFound(key, DecodingError.Context(codingPath: [key], debugDescription: "Must have a value for \"\(key)\" but have none"))
     }
   }
   
@@ -308,5 +308,3 @@ extension FHIRKitPrimitive: ExpressibleByFloatLiteral where PrimitiveType: Expre
     self.init(PrimitiveType(floatLiteral: value))
   }
 }
-
-

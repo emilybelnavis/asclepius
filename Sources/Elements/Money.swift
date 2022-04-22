@@ -1,5 +1,5 @@
 //
-//  DomainResource.swift
+//  Money.swift
 //  FHIRKit
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -22,60 +22,70 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-import Darwin
-
-open class DomainResource: Resource {
-  override open class var resourceType: ResourceType { return .domainResource}
+/// An amount of economic utility in some recognized currency
+open class Money: Element {
+  /// numerical value (with implicit precision)
+  public var value: FHIRKitPrimitive<FHIRKitDecimal>?
   
-  public var text: Narrative?
-  
-  public var contained: [ResourceProxy]?
-  
-  public var `extension`: [Extension]?
-  
-  public var modifierExtension: [Extension]?
+  /// ISO 4217 currency code
+  public var currency: FHIRKitPrimitive<FHIRKitString>?
   
   override public init() {
     super.init()
   }
   
   public convenience init(
-    contained: [ResourceProxy]? = nil,
     `extension`: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    implicitRules: FHIRKitPrimitive<FHIRKitURI>? = nil,
-    language: FHIRKitPrimitive<FHIRKitString>? = nil,
-    meta: Meta? = nil,
-    modifierExtension: [Extension]? = nil,
-    text: Narrative? = nil
+    value: FHIRKitPrimitive<FHIRKitDecimal>? = nil,
+    currency: FHIRKitPrimitive<FHIRKitString>? = nil
   ) {
     self.init()
-    self.contained = contained
     self.`extension` = `extension`
     self.id = id
-    self.implicitRules = implicitRules
-    self.language = language
-    self.meta = meta
-    self.modifierExtension = modifierExtension
-    self.text = text
+    self.value = value
+    self.currency = currency
   }
   
   // MARK: - Codable
   private enum CodingKeys: String, CodingKey {
-    case contained
-    case `extension` = "extension"
-    case modifierExtension
-    case text
+    case value; case _value
+    case currency; case _currency
   }
   
   public required init(from decoder: Decoder) throws {
     let _container = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.contained = try [ResourceProxy](from: _container, forKeyIfPresent: .contained)
-    self.`extension` = try [Extension](from: _container, forKeyIfPresent: .`extension`)
-    self.modifierExtension = try [Extension](from: _container, forKeyIfPresent: .modifierExtension)
-    self.text = try Narrative(from: _container, forKeyIfPresent: .text)
-    
+    self.value = try FHIRKitPrimitive<FHIRKitDecimal>(from: _container, forKeyIfPresent: .value, auxiliaryKey: ._value)
+    self.currency = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .currency, auxiliaryKey: ._currency)
     try super.init(from: decoder)
+  }
+  
+  public override func encode(to encoder: Encoder) throws {
+    var _container = encoder.container(keyedBy: CodingKeys.self)
+    
+    try value?.encode(on: &_container, forKey: .value, auxiliaryKey: ._value)
+    try currency?.encode(on: &_container, forKey: .currency, auxiliaryKey: ._currency)
+    try super.encode(to: encoder)
+  }
+  
+  // MARK: - Equatable & Hashable
+  public override func isEqual(to _other: Any?) -> Bool {
+    guard let _other = _other as? Money else {
+      return false
+    }
+    
+    guard super.isEqual(to: _other) else {
+      return false
+    }
+    
+    return value == _other.value
+    && currency == _other.currency
+  }
+  
+  public override func hash(into hasher: inout Hasher) {
+    super.hash(into: &hasher)
+    hasher.combine(value)
+    hasher.combine(currency)
   }
 }

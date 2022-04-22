@@ -1,178 +1,320 @@
-  //
-  //  ResourceProxy.swift
-  //  FHIRKit
-  //
-  //  Copyright (c) 2022 Bitmatic Ltd.
-  //
-  //  Permission is hereby granted, free of charge, to any person obtaining a copy
-  //  of this software and associated documentation files (the "Software"), to deal
-  //  in the Software without restriction, including without limitation the rights
-  //  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-  //  copies of the Software, and to permit persons to whom the Software is
-  //  furnished to do so, subject to the following conditions:
-  //
-  //  The above copyright notice and this permission notice shall be included in all
-  //  copies or substantial portions of the Software.
-  //
-  //  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-  //  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-  //  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-  //  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-  //  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-  //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-  //  SOFTWARE.
+//
+//  ResourceProxy.swift
+//  FHIRKit
+//
+//  Copyright (c) 2022 Bitmatic Ltd.
+//
+//  Permission is hereby granted, free of charge, to any person obtaining a copy
+//  of this software and associated documentation files (the "Software"), to deal
+//  in the Software without restriction, including without limitation the rights
+//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+//  copies of the Software, and to permit persons to whom the Software is
+//  furnished to do so, subject to the following conditions:
+//
+//  The above copyright notice and this permission notice shall be included in all
+//  copies or substantial portions of the Software.
+//
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+//  SOFTWARE.
 
 public enum ResourceProxy: FHIRKitType {
   case account(Account)
   case activityDefinition(ActivityDefinition)
-  case adverseEvent(AdverseEvent)
-  case allergyIntolerance(AllergyIntolerance)
-  case appointment(Appointment)
-  case appointmentResponse(AppointmentResponse)
-  case auditEvent(AuditEvent)
-  case basic(Basic)
-  case binary(Binary)
-  case biologicallyDerivedProduct(BiologicallyDerivedProduct)
-  case bodyStructure(BodyStructure)
-  case bundle(Bundle)
-  case capabilityStatement(CapabilityStatement)
-  case carePlan(CarePlan)
-  case careTeam(CareTeam)
-  case catalogEntry(CatalogEntry)
-  case chargeItem(ChargeItem)
-  case chargeItemDefinition(ChargeItemDefinition)
-  case claim(Claim)
-  case claimResponse(ClaimResponse)
-  case clinicalImpression(ClinicalImpression)
+//  case adverseEvent(AdverseEvent)
+  case adverseEvent(Resource)
+//  case allergyIntolerance(AllergyIntolerance)
+  case allergyIntolerance(Resource)
+//  case appointment(Appointment)
+  case appointment(Resource)
+//  case appointmentResponse(AppointmentResponse)
+  case appointmentResponse(Resource)
+//  case auditEvent(AuditEvent)
+  case auditEvent(Resource)
+//  case basic(Basic)
+  case basic(Resource)
+//  case binary(Binary)
+  case binary(Resource)
+//  case biologicallyDerivedProduct(BiologicallyDerivedProduct)
+  case biologicallyDerivedProduct(Resource)
+//  case bodyStructure(BodyStructure)
+  case bodyStructure(Resource)
+//  case bundle(Bundle)
+  case bundle(Resource)
+//  case capabilityStatement(CapabilityStatement)
+  case capabilityStatement(Resource)
+//  case carePlan(CarePlan)
+  case carePlan(Resource)
+//  case careTeam(CareTeam)
+  case careTeam(Resource)
+//  case catalogEntry(CatalogEntry)
+  case catalogEntry(Resource)
+//  case chargeItem(ChargeItem)
+  case chargeItem(Resource)
+//  case chargeItemDefinition(ChargeItemDefinition)
+  case chargeItemDefinition(Resource)
+//  case claim(Claim)
+  case claim(Resource)
+//  case claimResponse(ClaimResponse)
+  case claimResponse(Resource)
+//  case clinicalImpression(ClinicalImpression)
+  case clinicalImpression(Resource)
   case codeSystem(CodeSystem)
-  case communication(Communication)
-  case communicationRequest(CommunicationRequest)
-  case compartmentDefinition(CompartmentDefinition)
-  case composition(Composition)
-  case conceptMap(ConceptMap)
-  case condition(Condition)
-  case consent(Consent)
-  case contract(Contract)
-  case coverage(Coverage)
-  case coverageEligibilityRequest(CoverageEligibilityRequest)
-  case coverageEligibilityResponse(CoverageEligibilityResponse)
-  case detectedIssue(DetectedIssue)
-  case device(Device)
-  case deviceDefinition(DeviceDefinition)
-  case deviceMetric(DeviceMetric)
-  case deviceRequest(DeviceRequest)
-  case deviceUseStatement(DeviceUseStatement)
-  case diagnosticReport(DiagnosticReport)
-  case documentManifest(DocumentManifest)
-  case documentReference(DocumentReference)
+//  case communication(Communication)
+  case communication(Resource)
+//  case communicationRequest(CommunicationRequest)
+  case communicationRequest(Resource)
+//  case compartmentDefinition(CompartmentDefinition)
+  case compartmentDefinition(Resource)
+//  case composition(Composition)
+  case composition(Resource)
+//  case conceptMap(ConceptMap)
+  case conceptMap(Resource)
+//  case condition(Condition)
+  case condition(Resource)
+//  case consent(Consent)
+  case consent(Resource)
+//  case contract(Contract)
+  case contract(Resource)
+//  case coverage(Coverage)
+  case coverage(Resource)
+//  case coverageEligibilityRequest(CoverageEligibilityRequest)
+  case coverageEligibilityRequest(Resource)
+//  case coverageEligibilityResponse(CoverageEligibilityResponse)
+  case coverageEligibilityResponse(Resource)
+//  case detectedIssue(DetectedIssue)
+  case detectedIssue(Resource)
+//  case device(Device)
+  case device(Resource)
+//  case deviceDefinition(DeviceDefinition)
+  case deviceDefinition(Resource)
+//  case deviceMetric(DeviceMetric)
+  case deviceMetric(Resource)
+//  case deviceRequest(DeviceRequest)
+  case deviceRequest(Resource)
+//  case deviceUseStatement(DeviceUseStatement)
+  case deviceUseStatement(Resource)
+//  case diagnosticReport(DiagnosticReport)
+  case diagnosticReport(Resource)
+//  case documentManifest(DocumentManifest)
+  case documentManifest(Resource)
+//  case documentReference(DocumentReference)
+  case documentReference(Resource)
   case domainResource(DomainResource)
-  case effectEvidenceSynthesis(EffectEvidenceSynthesis)
-  case encounter(Encounter)
-  case endpoint(Endpoint)
-  case enrollmentRequest(EnrollmentRequest)
-  case enrollmentResponse(EnrollmentResponse)
-  case episodeOfCare(EpisodeOfCare)
-  case eventDefinition(EventDefinition)
-  case evidence(Evidence)
-  case evidenceVariable(EvidenceVariable)
-  case exampleScenario(ExampleScenario)
-  case explanationOfBenefit(ExplanationOfBenefit)
-  case familyMemberHistory(FamilyMemberHistory)
-  case flag(Flag)
-  case goal(Goal)
-  case graphDefinition(GraphDefinition)
-  case group(Group)
-  case guidanceResponse(GuidanceResponse)
-  case healthcareService(HealthcareService)
-  case imagingStudy(ImagingStudy)
-  case immunization(Immunization)
-  case immunizationEvaluation(ImmunizationEvaluation)
-  case immunizationRecommendation(ImmunizationRecommendation)
-  case implementationGuide(ImplementationGuide)
-  case insurancePlan(InsurancePlan)
-  case invoice(Invoice)
-  case library(Library)
-  case linkage(Linkage)
-  case list(List)
-  case location(Location)
-  case measure(Measure)
-  case measureReport(MeasureReport)
-  case media(Media)
-  case medication(Medication)
-  case medicationAdministration(MedicationAdministration)
-  case medicationDispense(MedicationDispense)
-  case medicationKnowledge(MedicationKnowledge)
-  case medicationRequest(MedicationRequest)
-  case medicationStatement(MedicationStatement)
-  case medicinalProduct(MedicinalProduct)
-  case medicinalProductAuthorization(MedicinalProductAuthorization)
-  case medicinalProductContraindication(MedicinalProductContraindication)
-  case medicinalProductIndication(MedicinalProductIndication)
-  case medicinalProductIngredient(MedicinalProductIngredient)
-  case medicinalProductInteraction(MedicinalProductInteraction)
-  case medicinalProductManufactured(MedicinalProductManufactured)
-  case medicinalProductPackaged(MedicinalProductPackaged)
-  case medicinalProductPharmaceutical(MedicinalProductPharmaceutical)
-  case medicinalProductUndesirableEffect(MedicinalProductUndesirableEffect)
-  case messageDefinition(MessageDefinition)
-  case messageHeader(MessageHeader)
-  case molecularSequence(MolecularSequence)
-  case namingSystem(NamingSystem)
-  case nutritionOrder(NutritionOrder)
-  case observation(Observation)
-  case observationDefinition(ObservationDefinition)
-  case operationDefinition(OperationDefinition)
-  case operationOutcome(OperationOutcome)
-  case organization(Organization)
-  case organizationAffiliation(OrganizationAffiliation)
-  case parameters(Parameters)
-  case patient(Patient)
-  case paymentNotice(PaymentNotice)
-  case paymentReconciliation(PaymentReconciliation)
-  case person(Person)
-  case planDefinition(PlanDefinition)
-  case practitioner(Practitioner)
-  case practitionerRole(PractitionerRole)
-  case procedure(Procedure)
-  case provenance(Provenance)
-  case questionnaire(Questionnaire)
-  case questionnaireResponse(QuestionnaireResponse)
-  case relatedPerson(RelatedPerson)
-  case requestGroup(RequestGroup)
-  case researchDefinition(ResearchDefinition)
-  case researchElementDefinition(ResearchElementDefinition)
-  case researchStudy(ResearchStudy)
-  case researchSubject(ResearchSubject)
+//  case effectEvidenceSynthesis(EffectEvidenceSynthesis)
+  case effectEvidenceSynthesis(Resource)
+//  case encounter(Encounter)
+  case encounter(Resource)
+//  case endpoint(Endpoint)
+  case endpoint(Resource)
+//  case enrollmentRequest(EnrollmentRequest)
+  case enrollmentRequest(Resource)
+//  case enrollmentResponse(EnrollmentResponse)
+  case enrollmentResponse(Resource)
+//  case episodeOfCare(EpisodeOfCare)
+  case episodeOfCare(Resource)
+//  case eventDefinition(EventDefinition)
+  case eventDefinition(Resource)
+//  case evidence(Evidence)
+  case evidence(Resource)
+//  case evidenceVariable(EvidenceVariable)
+  case evidenceVariable(Resource)
+//  case explanationOfBenefit(ExplanationOfBenefit)
+  case explanationOfBenefit(Resource)
+//  case familyMemberHistory(FamilyMemberHistory)
+  case familyMemberHistory(Resource)
+//  case flag(Flag)
+  case flag(Resource)
+//  case goal(Goal)
+  case goal(Resource)
+//  case graphDefinition(GraphDefinition)
+  case graphDefinition(Resource)
+//  case group(Group)
+  case group(Resource)
+//  case guidanceResponse(GuidanceResponse)
+  case guidanceResponse(Resource)
+//  case healthcareService(HealthcareService)
+  case healthcareService(Resource)
+//  case imagingStudy(ImagingStudy)
+  case imagingStudy(Resource)
+//  case immunization(Immunization)
+  case immunization(Resource)
+//  case immunizationEvaluation(ImmunizationEvaluation)
+  case immunizationEvaluation(Resource)
+//  case immunizationRecommendation(ImmunizationRecommendation)
+  case immunizationRecommendation(Resource)
+//  case implementationGuide(ImplementationGuide)
+  case implementationGuide(Resource)
+//  case insurancePlan(InsurancePlan)
+  case insurancePlan(Resource)
+//  case invoice(Invoice)
+  case invoice(Resource)
+//  case library(Library)
+  case library(Resource)
+//  case linkage(Linkage)
+  case linkage(Resource)
+//  case list(List)
+  case list(Resource)
+//  case location(Location)
+  case location(Resource)
+//  case measure(Measure)
+  case measure(Resource)
+//  case measureReport(MeasureReport)
+  case measureReport(Resource)
+//  case media(Media)
+  case media(Resource)
+//  case medication(Medication)
+  case medication(Resource)
+//  case medicationAdministration(MedicationAdministration)
+  case medicationAdministration(Resource)
+//  case medicationDispense(MedicationDispense)
+  case medicationDispense(Resource)
+//  case medicationKnowledge(MedicationKnowledge)
+  case medicationKnowledge(Resource)
+//  case medicationRequest(MedicationRequest)
+  case medicationRequest(Resource)
+//  case medicationStatement(MedicationStatement)
+  case medicationStatement(Resource)
+//  case medicinalProduct(MedicinalProduct)
+  case medicinalProduct(Resource)
+//  case medicinalProductAuthorization(MedicinalProductAuthorization)
+  case medicinalProductAuthorization(Resource)
+//  case medicinalProductContraindication(MedicinalProductContraindication)
+  case medicinalProductContraindication(Resource)
+//  case medicinalProductIndication(MedicinalProductIndication)
+  case medicinalProductIndication(Resource)
+//  case medicinalProductIngredient(MedicinalProductIngredient)
+  case medicinalProductIngredient(Resource)
+//  case medicinalProductInteraction(MedicinalProductInteraction)
+  case medicinalProductInteraction(Resource)
+//  case medicinalProductManufactured(MedicinalProductManufactured)
+  case medicinalProductManufactured(Resource)
+//  case medicinalProductPackaged(MedicinalProductPackaged)
+  case medicinalProductPackaged(Resource)
+//  case medicinalProductPharmaceutical(MedicinalProductPharmaceutical)
+  case medicinalProductPharmaceutical(Resource)
+//  case medicinalProductUndesirableEffect(MedicinalProductUndesirableEffect)
+  case medicinalProductUndesirableEffect(Resource)
+//  case messageDefinition(MessageDefinition)
+  case messageDefinition(Resource)
+//  case messageHeader(MessageHeader)
+  case messageHeader(Resource)
+//  case molecularSequence(MolecularSequence)
+  case molecularSequence(Resource)
+//  case namingSystem(NamingSystem)
+  case namingSystem(Resource)
+//  case nutritionOrder(NutritionOrder)
+  case nutritionOrder(Resource)
+//  case observation(Observation)
+  case observation(Resource)
+//  case observationDefinition(ObservationDefinition)
+  case observationDefinition(Resource)
+//  case operationDefinition(OperationDefinition)
+  case operationDefinition(Resource)
+//  case operationOutcome(OperationOutcome)
+  case operationOutcome(Resource)
+//  case organization(Organization)
+  case organization(Resource)
+//  case organizationAffiliation(OrganizationAffiliation)
+  case organizationAffiliation(Resource)
+//  case parameters(Parameters)
+  case parameters(Resource)
+//  case patient(Patient)
+  case patient(Resource)
+//  case paymentNotice(PaymentNotice)
+  case paymentNotice(Resource)
+//  case paymentReconciliation(PaymentReconciliation)
+  case paymentReconciliation(Resource)
+//  case person(Person)
+  case person(Resource)
+//  case planDefinition(PlanDefinition)
+  case planDefinition(Resource)
+//  case practitioner(Practitioner)
+  case practitioner(Resource)
+//  case practitionerRole(PractitionerRole)
+  case practitionerRole(Resource)
+//  case procedure(Procedure)
+  case procedure(Resource)
+//  case provenance(Provenance)
+  case provenance(Resource)
+//  case questionnaire(Questionnaire)
+  case questionnaire(Resource)
+//  case questionnaireResponse(QuestionnaireResponse)
+  case questionnaireResponse(Resource)
+//  case relatedPerson(RelatedPerson)
+  case relatedPerson(Resource)
+//  case requestGroup(RequestGroup)
+  case requestGroup(Resource)
+//  case researchDefinition(ResearchDefinition)
+  case researchDefinition(Resource)
+//  case researchElementDefinition(ResearchElementDefinition)
+  case researchElementDefinition(Resource)
+//  case researchStudy(ResearchStudy)
+  case researchStudy(Resource)
+//  case researchSubject(ResearchSubject)
+  case researchSubject(Resource)
   case resource(Resource)
-  case riskAssessment(RiskAssessment)
-  case riskEvidenceSynthesis(RiskEvidenceSynthesis)
-  case schedule(Schedule)
-  case searchParameter(SearchParameter)
-  case serviceRequest(ServiceRequest)
-  case slot(Slot)
-  case specimen(Specimen)
-  case specimenDefinition(SpecimenDefinition)
-  case structureDefinition(StructureDefinition)
-  case structureMap(StructureMap)
-  case subscription(Subscription)
-  case substance(Substance)
-  case substanceNucleicAcid(SubstanceNucleicAcid)
-  case substancePolymer(SubstancePolymer)
-  case substanceProtein(SubstanceProtein)
-  case substanceReferenceInformation(SubstanceReferenceInformation)
-  case substanceSourceMaterial(SubstanceSourceMaterial)
-  case substanceSpecification(SubstanceSpecification)
-  case supplyDelivery(SupplyDelivery)
-  case supplyRequest(SupplyRequest)
-  case task(Task)
-  case terminologyCapabilities(TerminologyCapabilities)
-  case testReport(TestReport)
-  case testScript(TestScript)
-  case valueSet(ValueSet)
-  case verificationResult(VerificationResult)
-  case visionPrescription(VisionPrescription)
+//  case riskAssessment(RiskAssessment)
+  case riskAssessment(Resource)
+//  case riskEvidenceSynthesis(RiskEvidenceSynthesis)
+  case riskEvidenceSynthesis(Resource)
+//  case schedule(Schedule)
+  case schedule(Resource)
+//  case searchParameter(SearchParameter)
+  case searchParameter(Resource)
+//  case serviceRequest(ServiceRequest)
+  case serviceRequest(Resource)
+//  case slot(Slot)
+  case slot(Resource)
+//  case specimen(Specimen)
+  case specimen(Resource)
+//  case specimenDefinition(SpecimenDefinition)
+  case specimenDefinition(Resource)
+//  case structureDefinition(StructureDefinition)
+  case structureDefinition(Resource)
+//  case structureMap(StructureMap)
+  case structureMap(Resource)
+//  case subscription(Subscription)
+  case subscription(Resource)
+//  case substance(Substance)
+  case substance(Resource)
+//  case substanceNucleicAcid(SubstanceNucleicAcid)
+  case substanceNucleicAcid(Resource)
+//  case substancePolymer(SubstancePolymer)
+  case substancePolymer(Resource)
+//  case substanceProtein(SubstanceProtein)
+  case substanceProtein(Resource)
+//  case substanceReferenceInformation(SubstanceReferenceInformation)
+  case substanceReferenceInformation(Resource)
+//  case substanceSourceMaterial(SubstanceSourceMaterial)
+  case substanceSourceMaterial(Resource)
+//  case substanceSpecification(SubstanceSpecification)
+  case substanceSpecification(Resource)
+//  case supplyDelivery(SupplyDelivery)
+  case supplyDelivery(Resource)
+//  case supplyRequest(SupplyRequest)
+  case supplyRequest(Resource)
+//  case task(Task)
+  case task(Resource)
+//  case terminologyCapabilities(TerminologyCapabilities)
+  case terminologyCapabilities(Resource)
+//  case testReport(TestReport)
+  case testReport(Resource)
+//  case testScript(TestScript)
+  case testScript(Resource)
+//  case valueSet(ValueSet)
+  case valueSet(Resource)
+//  case verificationResult(VerificationResult)
+  case verificationResult(Resource)
+//  case visionPrescription(VisionPrescription)
+  case visionPrescription(Resource)
   case unrecognized(Resource)
   
+  // swiftlint:disable:cyclomatic_complexity
   public var resourceType: String {
     switch self {
     case .account:
@@ -279,8 +421,6 @@ public enum ResourceProxy: FHIRKitType {
       return "Evidence"
     case .evidenceVariable:
       return "EvidenceVariable"
-    case .exampleScenario:
-      return "ExampleScenario"
     case .explanationOfBenefit:
       return "ExplanationOfBenefit"
     case .familyMemberHistory:
@@ -485,297 +625,295 @@ public enum ResourceProxy: FHIRKitType {
     case .activityDefinition:
       self = .activityDefinition(resource as! ActivityDefinition)
     case .adverseEvent:
-      self = .adverseEvent(resource as! AdverseEvent)
+        self = .adverseEvent(resource) // todo
     case .allergyIntolerance:
-      self = .allergyIntolerance(resource as! AllergyIntolerance)
+      self = .allergyIntolerance(resource) // todo
     case .appointment:
-      self = .appointment(resource as! Appointment)
+      self = .appointment(resource) // todo
     case .appointmentResponse:
-      self = .appointmentResponse(resource as! AppointmentResponse)
+      self = .appointmentResponse(resource) // todo
     case .auditEvent:
-      self = .auditEvent(resource as! AuditEvent)
+      self = .auditEvent(resource) // todo
     case .basic:
-      self = .basic(resource as! Basic)
+      self = .basic(resource) // todo
     case .binary:
-      self = .binary(resource as! Binary)
+      self = .binary(resource) // todo
     case .biologicallyDerivedProduct:
-      self = .biologicallyDerivedProduct(resource as! BiologicallyDerivedProduct)
+      self = .biologicallyDerivedProduct(resource) // todo
     case .bodyStructure:
-      self = .bodyStructure(resource as! BodyStructure)
+      self = .bodyStructure(resource) // todo
     case .bundle:
-      self = .bundle(resource as! Bundle)
+      self = .bundle(resource) // todo
     case .capabilityStatement:
-      self = .capabilityStatement(resource as! CapabilityStatement)
+      self = .capabilityStatement(resource) // todo
     case .carePlan:
-      self = .carePlan(resource as! CarePlan)
+      self = .carePlan(resource) // todo
     case .careTeam:
-      self = .careTeam(resource as! CareTeam)
+      self = .careTeam(resource) // todo
     case .catalogEntry:
-      self = .catalogEntry(resource as! CatalogEntry)
+      self = .catalogEntry(resource) // todo
     case .chargeItem:
-      self = .chargeItem(resource as! ChargeItem)
+      self = .chargeItem(resource) // todo
     case .chargeItemDefinition:
-      self = .chargeItemDefinition(resource as! ChargeItemDefinition)
+      self = .chargeItemDefinition(resource) // todo
     case .claim:
-      self = .claim(resource as! Claim)
+      self = .claim(resource) // todo
     case .claimResponse:
-      self = .claimResponse(resource as! ClaimResponse)
+      self = .claimResponse(resource) // todo
     case .clinicalImpression:
-      self = .clinicalImpression(resource as! ClinicalImpression)
+      self = .clinicalImpression(resource) // todo
     case .codeSystem:
-      self = .codeSystem(resource as! CodeSystem)
+        self = .codeSystem(resource as! CodeSystem)
     case .communication:
-      self = .communication(resource as! Communication)
+      self = .communication(resource) // todo
     case .communicationRequest:
-      self = .communicationRequest(resource as! CommunicationRequest)
+      self = .communicationRequest(resource) // todo
     case .compartmentDefinition:
-      self = .compartmentDefinition(resource as! CompartmentDefinition)
+      self = .compartmentDefinition(resource) // todo
     case .composition:
-      self = .composition(resource as! Composition)
+      self = .composition(resource) // todo
     case .conceptMap:
-      self = .conceptMap(resource as! ConceptMap)
+      self = .conceptMap(resource) // todo
     case .condition:
-      self = .condition(resource as! Condition)
+      self = .condition(resource) // todo
     case .consent:
-      self = .consent(resource as! Consent)
+      self = .consent(resource) // todo
     case .contract:
-      self = .contract(resource as! Contract)
+      self = .contract(resource) // todo
     case .coverage:
-      self = .coverage(resource as! Coverage)
+      self = .coverage(resource) // todo
     case .coverageEligibilityRequest:
-      self = .coverageEligibilityRequest(resource as! CoverageEligibilityRequest)
+      self = .coverageEligibilityRequest(resource) // todo
     case .coverageEligibilityResponse:
-      self = .coverageEligibilityResponse(resource as! CoverageEligibilityResponse)
+      self = .coverageEligibilityResponse(resource) // todo
     case .detectedIssue:
-      self = .detectedIssue(resource as! DetectedIssue)
+        self = .detectedIssue(resource) // todo
     case .device:
-      self = .device(resource as! Device)
+      self = .device(resource) // todo
     case .deviceDefinition:
-      self = .deviceDefinition(resource as! DeviceDefinition)
+      self = .deviceDefinition(resource) // todo
     case .deviceMetric:
-      self = .deviceMetric(resource as! DeviceMetric)
+      self = .deviceMetric(resource) // todo
     case .deviceRequest:
-      self = .deviceRequest(resource as! DeviceRequest)
+      self = .deviceRequest(resource) // todo
     case .deviceUseStatement:
-      self = .deviceUseStatement(resource as! DeviceUseStatement)
+      self = .deviceUseStatement(resource) // todo
     case .diagnosticReport:
-      self = .diagnosticReport(resource as! DiagnosticReport)
+      self = .diagnosticReport(resource) // todo
     case .documentManifest:
-      self = .documentManifest(resource as! DocumentManifest)
+      self = .documentManifest(resource) // todo
     case .documentReference:
-      self = .documentReference(resource as! DocumentReference)
+      self = .documentReference(resource) // todo
     case .domainResource:
       self = .domainResource(resource as! DomainResource)
     case .effectEvidenceSynthesis:
-      self = .effectEvidenceSynthesis(resource as! EffectEvidenceSynthesis)
+      self = .effectEvidenceSynthesis(resource) // todo
     case .encounter:
-      self = .encounter(resource as! Encounter)
+      self = .encounter(resource) // todo
     case .endpoint:
-      self = .endpoint(resource as! Endpoint)
+      self = .endpoint(resource) // todo
     case .enrollmentRequest:
-      self = .enrollmentRequest(resource as! EnrollmentRequest)
+      self = .enrollmentRequest(resource) // todo
     case .enrollmentResponse:
-      self = .enrollmentResponse(resource as! EnrollmentResponse)
+      self = .enrollmentResponse(resource) // todo
     case .episodeOfCare:
-      self = .episodeOfCare(resource as! EpisodeOfCare)
+      self = .episodeOfCare(resource) // todo
     case .eventDefinition:
-      self = .eventDefinition(resource as! EventDefinition)
+      self = .eventDefinition(resource) // todo
     case .evidence:
-      self = .evidence(resource as! Evidence)
+      self = .evidence(resource) // todo
     case .evidenceVariable:
-      self = .evidenceVariable(resource as! EvidenceVariable)
-    case .exampleScenario:
-      self = .exampleScenario(resource as! ExampleScenario)
+      self = .evidenceVariable(resource) // todo
     case .explanationOfBenefit:
-      self = .explanationOfBenefit(resource as! ExplanationOfBenefit)
+      self = .explanationOfBenefit(resource) // todo
     case .familyMemberHistory:
-      self = .familyMemberHistory(resource as! FamilyMemberHistory)
+      self = .familyMemberHistory(resource) // todo
     case .flag:
-      self = .flag(resource as! Flag)
+      self = .flag(resource) // todo
     case .goal:
-      self = .goal(resource as! Goal)
+      self = .goal(resource) // todo
     case .graphDefinition:
-      self = .graphDefinition(resource as! GraphDefinition)
+      self = .graphDefinition(resource) // todo
     case .group:
-      self = .group(resource as! Group)
+      self = .group(resource) // todo
     case .guidanceResponse:
-      self = .guidanceResponse(resource as! GuidanceResponse)
+      self = .guidanceResponse(resource) // todo
     case .healthcareService:
-      self = .healthcareService(resource as! HealthcareService)
+      self = .healthcareService(resource) // todo
     case .imagingStudy:
-      self = .imagingStudy(resource as! ImagingStudy)
+      self = .imagingStudy(resource) // todo
     case .immunization:
-      self = .immunization(resource as! Immunization)
+      self = .immunization(resource) // todo
     case .immunizationEvaluation:
-      self = .immunizationEvaluation(resource as! ImmunizationEvaluation)
+      self = .immunizationEvaluation(resource) // todo
     case .immunizationRecommendation:
-      self = .immunizationRecommendation(resource as! ImmunizationRecommendation)
+      self = .immunizationRecommendation(resource) // todo
     case .implementationGuide:
-      self = .implementationGuide(resource as! ImplementationGuide)
+      self = .implementationGuide(resource) // todo
     case .insurancePlan:
-      self = .insurancePlan(resource as! InsurancePlan)
+      self = .insurancePlan(resource) // todo
     case .invoice:
-      self = .invoice(resource as! Invoice)
+      self = .invoice(resource) // todo
     case .library:
-      self = .library(resource as! Library)
+      self = .library(resource) // todo
     case .linkage:
-      self = .linkage(resource as! Linkage)
+      self = .linkage(resource) // todo
     case .list:
-      self = .list(resource as! List)
+      self = .list(resource) // todo
     case .location:
-      self = .location(resource as! Location)
+      self = .location(resource) // todo
     case .measure:
-      self = .measure(resource as! Measure)
+      self = .measure(resource) // todo
     case .measureReport:
-      self = .measureReport(resource as! MeasureReport)
+      self = .measureReport(resource) // todo
     case .media:
-      self = .media(resource as! Media)
+      self = .media(resource) // todo
     case .medication:
-      self = .medication(resource as! Medication)
+      self = .medication(resource) // todo
     case .medicationAdministration:
-      self = .medicationAdministration(resource as! MedicationAdministration)
+      self = .medicationAdministration(resource) // todo
     case .medicationDispense:
-      self = .medicationDispense(resource as! MedicationDispense)
+      self = .medicationDispense(resource) // todo
     case .medicationKnowledge:
-      self = .medicationKnowledge(resource as! MedicationKnowledge)
+      self = .medicationKnowledge(resource) // todo
     case .medicationRequest:
-      self = .medicationRequest(resource as! MedicationRequest)
+      self = .medicationRequest(resource) // todo
     case .medicationStatement:
-      self = .medicationStatement(resource as! MedicationStatement)
+      self = .medicationStatement(resource) // todo
     case .medicinalProduct:
-      self = .medicinalProduct(resource as! MedicinalProduct)
+      self = .medicinalProduct(resource) // todo
     case .medicinalProductAuthorization:
-      self = .medicinalProductAuthorization(resource as! MedicinalProductAuthorization)
+      self = .medicinalProductAuthorization(resource) // todo
     case .medicinalProductContraindication:
-      self = .medicinalProductContraindication(resource as! MedicinalProductContraindication)
+      self = .medicinalProductContraindication(resource) // todo
     case .medicinalProductIndication:
-      self = .medicinalProductIndication(resource as! MedicinalProductIndication)
+      self = .medicinalProductIndication(resource) // todo
     case .medicinalProductIngredient:
-      self = .medicinalProductIngredient(resource as! MedicinalProductIngredient)
+      self = .medicinalProductIngredient(resource) // todo
     case .medicinalProductInteraction:
-      self = .medicinalProductInteraction(resource as! MedicinalProductInteraction)
+      self = .medicinalProductInteraction(resource) // todo
     case .medicinalProductManufactured:
-      self = .medicinalProductManufactured(resource as! MedicinalProductManufactured)
+      self = .medicinalProductManufactured(resource) // todo
     case .medicinalProductPackaged:
-      self = .medicinalProductPackaged(resource as! MedicinalProductPackaged)
+      self = .medicinalProductPackaged(resource) // todo
     case .medicinalProductPharmaceutical:
-      self = .medicinalProductPharmaceutical(resource as! MedicinalProductPharmaceutical)
+      self = .medicinalProductPharmaceutical(resource) // todo
     case .medicinalProductUndesirableEffect:
-      self = .medicinalProductUndesirableEffect(resource as! MedicinalProductUndesirableEffect)
+      self = .medicinalProductUndesirableEffect(resource) // todo
     case .messageDefinition:
-      self = .messageDefinition(resource as! MessageDefinition)
+      self = .messageDefinition(resource) // todo
     case .messageHeader:
-      self = .messageHeader(resource as! MessageHeader)
+      self = .messageHeader(resource) // todo
     case .molecularSequence:
-      self = .molecularSequence(resource as! MolecularSequence)
+      self = .molecularSequence(resource) // todo
     case .namingSystem:
-      self = .namingSystem(resource as! NamingSystem)
+      self = .namingSystem(resource) // todo
     case .nutritionOrder:
-      self = .nutritionOrder(resource as! NutritionOrder)
+      self = .nutritionOrder(resource) // todo
     case .observation:
-      self = .observation(resource as! Observation)
+      self = .observation(resource) // todo
     case .observationDefinition:
-      self = .observationDefinition(resource as! ObservationDefinition)
+      self = .observationDefinition(resource) // todo
     case .operationDefinition:
-      self = .operationDefinition(resource as! OperationDefinition)
+      self = .operationDefinition(resource) // todo
     case .operationOutcome:
-      self = .operationOutcome(resource as! OperationOutcome)
+    self = .operationOutcome(resource) // todo
     case .organization:
-      self = .organization(resource as! Organization)
+      self = .organization(resource) // todo
     case .organizationAffiliation:
-      self = .organizationAffiliation(resource as! OrganizationAffiliation)
+      self = .organizationAffiliation(resource) // todo
     case .parameters:
-      self = .parameters(resource as! Parameters)
+      self = .parameters(resource) // todo
     case .patient:
-      self = .patient(resource as! Patient)
+      self = .patient(resource) // todo
     case .paymentNotice:
-      self = .paymentNotice(resource as! PaymentNotice)
+      self = .paymentNotice(resource) // todo
     case .paymentReconciliation:
-      self = .paymentReconciliation(resource as! PaymentReconciliation)
+      self = .paymentReconciliation(resource) // todo
     case .person:
-      self = .person(resource as! Person)
+      self = .person(resource) // todo
     case .planDefinition:
-      self = .planDefinition(resource as! PlanDefinition)
+      self = .planDefinition(resource) // todo
     case .practitioner:
-      self = .practitioner(resource as! Practitioner)
+      self = .practitioner(resource) // todo
     case .practitionerRole:
-      self = .practitionerRole(resource as! PractitionerRole)
+      self = .practitionerRole(resource) // todo
     case .procedure:
-      self = .procedure(resource as! Procedure)
+      self = .procedure(resource) // todo
     case .provenance:
-      self = .provenance(resource as! Provenance)
+      self = .provenance(resource) // todo
     case .questionnaire:
-      self = .questionnaire(resource as! Questionnaire)
+      self = .questionnaire(resource) // todo
     case .questionnaireResponse:
-      self = .questionnaireResponse(resource as! QuestionnaireResponse)
+      self = .questionnaireResponse(resource) // todo
     case .relatedPerson:
-      self = .relatedPerson(resource as! RelatedPerson)
+      self = .relatedPerson(resource) // todo
     case .requestGroup:
-      self = .requestGroup(resource as! RequestGroup)
+      self = .requestGroup(resource) // todo
     case .researchDefinition:
-      self = .researchDefinition(resource as! ResearchDefinition)
+      self = .researchDefinition(resource) // todo
     case .researchElementDefinition:
-      self = .researchElementDefinition(resource as! ResearchElementDefinition)
+      self = .researchElementDefinition(resource) // todo
     case .researchStudy:
-      self = .researchStudy(resource as! ResearchStudy)
+      self = .researchStudy(resource) // todo
     case .researchSubject:
-      self = .researchSubject(resource as! ResearchSubject)
+      self = .researchSubject(resource) // todo
     case .resource:
       self = .resource(resource)
     case .riskAssessment:
-      self = .riskAssessment(resource as! RiskAssessment)
+      self = .riskAssessment(resource) // todo
     case .riskEvidenceSynthesis:
-      self = .riskEvidenceSynthesis(resource as! RiskEvidenceSynthesis)
+      self = .riskEvidenceSynthesis(resource) // todo
     case .schedule:
-      self = .schedule(resource as! Schedule)
+      self = .schedule(resource) // todo
     case .searchParameter:
-      self = .searchParameter(resource as! SearchParameter)
+      self = .searchParameter(resource) // todo
     case .serviceRequest:
-      self = .serviceRequest(resource as! ServiceRequest)
+      self = .serviceRequest(resource) // todo
     case .slot:
-      self = .slot(resource as! Slot)
+      self = .slot(resource) // todo
     case .specimen:
-      self = .specimen(resource as! Specimen)
+      self = .specimen(resource) // todo
     case .specimenDefinition:
-      self = .specimenDefinition(resource as! SpecimenDefinition)
+      self = .specimenDefinition(resource) // todo
     case .structureDefinition:
-      self = .structureDefinition(resource as! StructureDefinition)
+      self = .structureDefinition(resource) // todo
     case .structureMap:
-      self = .structureMap(resource as! StructureMap)
+      self = .structureMap(resource) // todo
     case .subscription:
-      self = .subscription(resource as! Subscription)
+      self = .subscription(resource) // todo
     case .substance:
-      self = .substance(resource as! Substance)
+      self = .substance(resource) // todo
     case .substanceNucleicAcid:
-      self = .substanceNucleicAcid(resource as! SubstanceNucleicAcid)
+      self = .substanceNucleicAcid(resource) // todo
     case .substancePolymer:
-      self = .substancePolymer(resource as! SubstancePolymer)
+      self = .substancePolymer(resource) // todo
     case .substanceProtein:
-      self = .substanceProtein(resource as! SubstanceProtein)
+      self = .substanceProtein(resource) // todo
     case .substanceReferenceInformation:
-      self = .substanceReferenceInformation(resource as! SubstanceReferenceInformation)
+      self = .substanceReferenceInformation(resource) // todo
     case .substanceSourceMaterial:
-      self = .substanceSourceMaterial(resource as! SubstanceSourceMaterial)
+      self = .substanceSourceMaterial(resource) // todo
     case .substanceSpecification:
-      self = .substanceSpecification(resource as! SubstanceSpecification)
+      self = .substanceSpecification(resource) // todo
     case .supplyDelivery:
-      self = .supplyDelivery(resource as! SupplyDelivery)
+      self = .supplyDelivery(resource) // todo
     case .supplyRequest:
-      self = .supplyRequest(resource as! SupplyRequest)
+      self = .supplyRequest(resource) // todo
     case .task:
-      self = .task(resource as! Task)
+      self = .task(resource) // todo
     case .terminologyCapabilities:
-      self = .terminologyCapabilities(resource as! TerminologyCapabilities)
+      self = .terminologyCapabilities(resource) // todo
     case .testReport:
-      self = .testReport(resource as! TestReport)
+      self = .testReport(resource) // todo
     case .testScript:
-      self = .testScript(resource as! TestScript)
+      self = .testScript(resource) // todo
     case .valueSet:
-      self = .valueSet(resource as! ValueSet)
+      self = .valueSet(resource) // todo
     case .verificationResult:
-      self = .verificationResult(resource as! VerificationResult)
+      self = .verificationResult(resource) // todo
     case .visionPrescription:
-      self = .visionPrescription(resource as! VisionPrescription)
+      self = .visionPrescription(resource) // todo
     }
   }
   
@@ -884,8 +1022,6 @@ public enum ResourceProxy: FHIRKitType {
     case .evidence(let resource):
       return resource
     case .evidenceVariable(let resource):
-      return resource
-    case .exampleScenario(let resource):
       return resource
     case .explanationOfBenefit(let resource):
       return resource
@@ -1103,298 +1239,298 @@ public enum ResourceProxy: FHIRKitType {
       self = .account(try Account(from: decoder))
     case "ActivityDefinition":
       self = .activityDefinition(try ActivityDefinition(from: decoder))
-    case "AdverseEvent":
-      self = .adverseEvent(try AdverseEvent(from: decoder))
-    case "AllergyIntolerance":
-      self = .allergyIntolerance(try AllergyIntolerance(from: decoder))
-    case "Appointment":
-      self = .appointment(try Appointment(from: decoder))
-    case "AppointmentResponse":
-      self = .appointmentResponse(try AppointmentResponse(from: decoder))
-    case "AuditEvent":
-      self = .auditEvent(try AuditEvent(from: decoder))
-    case "Basic":
-      self = .basic(try Basic(from: decoder))
-    case "Binary":
-      self = .binary(try Binary(from: decoder))
-    case "BiologicallyDerivedProduct":
-      self = .biologicallyDerivedProduct(try BiologicallyDerivedProduct(from: decoder))
-    case "BodyStructure":
-      self = .bodyStructure(try BodyStructure(from: decoder))
-    case "Bundle":
-      self = .bundle(try Bundle(from: decoder))
-    case "CapabilityStatement":
-      self = .capabilityStatement(try CapabilityStatement(from: decoder))
-    case "CarePlan":
-      self = .carePlan(try CarePlan(from: decoder))
-    case "CareTeam":
-      self = .careTeam(try CareTeam(from: decoder))
-    case "CatalogEntry":
-      self = .catalogEntry(try CatalogEntry(from: decoder))
-    case "ChargeItem":
-      self = .chargeItem(try ChargeItem(from: decoder))
-    case "ChargeItemDefinition":
-      self = .chargeItemDefinition(try ChargeItemDefinition(from: decoder))
-    case "Claim":
-      self = .claim(try Claim(from: decoder))
-    case "ClaimResponse":
-      self = .claimResponse(try ClaimResponse(from: decoder))
-    case "ClinicalImpression":
-      self = .clinicalImpression(try ClinicalImpression(from: decoder))
+//    case "AdverseEvent":
+//      self = .adverseEvent(try AdverseEvent(from: decoder))
+//    case "AllergyIntolerance":
+//      self = .allergyIntolerance(try AllergyIntolerance(from: decoder))
+//    case "Appointment":
+//      self = .appointment(try Appointment(from: decoder))
+//    case "AppointmentResponse":
+//      self = .appointmentResponse(try AppointmentResponse(from: decoder))
+//    case "AuditEvent":
+//      self = .auditEvent(try AuditEvent(from: decoder))
+//    case "Basic":
+//      self = .basic(try Basic(from: decoder))
+//    case "Binary":
+//      self = .binary(try Binary(from: decoder))
+//    case "BiologicallyDerivedProduct":
+//      self = .biologicallyDerivedProduct(try BiologicallyDerivedProduct(from: decoder))
+//    case "BodyStructure":
+//      self = .bodyStructure(try BodyStructure(from: decoder))
+//    case "Bundle":
+//      self = .bundle(try Bundle(from: decoder))
+//    case "CapabilityStatement":
+//      self = .capabilityStatement(try CapabilityStatement(from: decoder))
+//    case "CarePlan":
+//      self = .carePlan(try CarePlan(from: decoder))
+//    case "CareTeam":
+//      self = .careTeam(try CareTeam(from: decoder))
+//    case "CatalogEntry":
+//      self = .catalogEntry(try CatalogEntry(from: decoder))
+//    case "ChargeItem":
+//      self = .chargeItem(try ChargeItem(from: decoder))
+//    case "ChargeItemDefinition":
+//      self = .chargeItemDefinition(try ChargeItemDefinition(from: decoder))
+//    case "Claim":
+//      self = .claim(try Claim(from: decoder))
+//    case "ClaimResponse":
+//      self = .claimResponse(try ClaimResponse(from: decoder))
+//    case "ClinicalImpression":
+//      self = .clinicalImpression(try ClinicalImpression(from: decoder))
     case "CodeSystem":
       self = .codeSystem(try CodeSystem(from: decoder))
-    case "Communication":
-      self = .communication(try Communication(from: decoder))
-    case "CommunicationRequest":
-      self = .communicationRequest(try CommunicationRequest(from: decoder))
-    case "CompartmentDefinition":
-      self = .compartmentDefinition(try CompartmentDefinition(from: decoder))
-    case "Composition":
-      self = .composition(try Composition(from: decoder))
-    case "ConceptMap":
-      self = .conceptMap(try ConceptMap(from: decoder))
-    case "Condition":
-      self = .condition(try Condition(from: decoder))
-    case "Consent":
-      self = .consent(try Consent(from: decoder))
-    case "Contract":
-      self = .contract(try Contract(from: decoder))
-    case "Coverage":
-      self = .coverage(try Coverage(from: decoder))
-    case "CoverageEligibilityRequest":
-      self = .coverageEligibilityRequest(try CoverageEligibilityRequest(from: decoder))
-    case "CoverageEligibilityResponse":
-      self = .coverageEligibilityResponse(try CoverageEligibilityResponse(from: decoder))
-    case "DetectedIssue":
-      self = .detectedIssue(try DetectedIssue(from: decoder))
-    case "Device":
-      self = .device(try Device(from: decoder))
-    case "DeviceDefinition":
-      self = .deviceDefinition(try DeviceDefinition(from: decoder))
-    case "DeviceMetric":
-      self = .deviceMetric(try DeviceMetric(from: decoder))
-    case "DeviceRequest":
-      self = .deviceRequest(try DeviceRequest(from: decoder))
-    case "DeviceUseStatement":
-      self = .deviceUseStatement(try DeviceUseStatement(from: decoder))
-    case "DiagnosticReport":
-      self = .diagnosticReport(try DiagnosticReport(from: decoder))
-    case "DocumentManifest":
-      self = .documentManifest(try DocumentManifest(from: decoder))
-    case "DocumentReference":
-      self = .documentReference(try DocumentReference(from: decoder))
+//    case "Communication":
+//      self = .communication(try Communication(from: decoder))
+//    case "CommunicationRequest":
+//      self = .communicationRequest(try CommunicationRequest(from: decoder))
+//    case "CompartmentDefinition":
+//      self = .compartmentDefinition(try CompartmentDefinition(from: decoder))
+//    case "Composition":
+//      self = .composition(try Composition(from: decoder))
+//    case "ConceptMap":
+//      self = .conceptMap(try ConceptMap(from: decoder))
+//    case "Condition":
+//      self = .condition(try Condition(from: decoder))
+//    case "Consent":
+//      self = .consent(try Consent(from: decoder))
+//    case "Contract":
+//      self = .contract(try Contract(from: decoder))
+//    case "Coverage":
+//      self = .coverage(try Coverage(from: decoder))
+//    case "CoverageEligibilityRequest":
+//      self = .coverageEligibilityRequest(try CoverageEligibilityRequest(from: decoder))
+//    case "CoverageEligibilityResponse":
+//      self = .coverageEligibilityResponse(try CoverageEligibilityResponse(from: decoder))
+//    case "DetectedIssue":
+//      self = .detectedIssue(try DetectedIssue(from: decoder))
+//    case "Device":
+//      self = .device(try Device(from: decoder))
+//    case "DeviceDefinition":
+//      self = .deviceDefinition(try DeviceDefinition(from: decoder))
+//    case "DeviceMetric":
+//      self = .deviceMetric(try DeviceMetric(from: decoder))
+//    case "DeviceRequest":
+//      self = .deviceRequest(try DeviceRequest(from: decoder))
+//    case "DeviceUseStatement":
+//      self = .deviceUseStatement(try DeviceUseStatement(from: decoder))
+//    case "DiagnosticReport":
+//      self = .diagnosticReport(try DiagnosticReport(from: decoder))
+//    case "DocumentManifest":
+//      self = .documentManifest(try DocumentManifest(from: decoder))
+//    case "DocumentReference":
+//      self = .documentReference(try DocumentReference(from: decoder))
     case "DomainResource":
       self = .domainResource(try DomainResource(from: decoder))
-    case "EffectEvidenceSynthesis":
-      self = .effectEvidenceSynthesis(try EffectEvidenceSynthesis(from: decoder))
-    case "Encounter":
-      self = .encounter(try Encounter(from: decoder))
-    case "Endpoint":
-      self = .endpoint(try Endpoint(from: decoder))
-    case "EnrollmentRequest":
-      self = .enrollmentRequest(try EnrollmentRequest(from: decoder))
-    case "EnrollmentResponse":
-      self = .enrollmentResponse(try EnrollmentResponse(from: decoder))
-    case "EpisodeOfCare":
-      self = .episodeOfCare(try EpisodeOfCare(from: decoder))
-    case "EventDefinition":
-      self = .eventDefinition(try EventDefinition(from: decoder))
-    case "Evidence":
-      self = .evidence(try Evidence(from: decoder))
-    case "EvidenceVariable":
-      self = .evidenceVariable(try EvidenceVariable(from: decoder))
-    case "ExampleScenario":
-      self = .exampleScenario(try ExampleScenario(from: decoder))
-    case "ExplanationOfBenefit":
-      self = .explanationOfBenefit(try ExplanationOfBenefit(from: decoder))
-    case "FamilyMemberHistory":
-      self = .familyMemberHistory(try FamilyMemberHistory(from: decoder))
-    case "Flag":
-      self = .flag(try Flag(from: decoder))
-    case "Goal":
-      self = .goal(try Goal(from: decoder))
-    case "GraphDefinition":
-      self = .graphDefinition(try GraphDefinition(from: decoder))
-    case "Group":
-      self = .group(try Group(from: decoder))
-    case "GuidanceResponse":
-      self = .guidanceResponse(try GuidanceResponse(from: decoder))
-    case "HealthcareService":
-      self = .healthcareService(try HealthcareService(from: decoder))
-    case "ImagingStudy":
-      self = .imagingStudy(try ImagingStudy(from: decoder))
-    case "Immunization":
-      self = .immunization(try Immunization(from: decoder))
-    case "ImmunizationEvaluation":
-      self = .immunizationEvaluation(try ImmunizationEvaluation(from: decoder))
-    case "ImmunizationRecommendation":
-      self = .immunizationRecommendation(try ImmunizationRecommendation(from: decoder))
-    case "ImplementationGuide":
-      self = .implementationGuide(try ImplementationGuide(from: decoder))
-    case "InsurancePlan":
-      self = .insurancePlan(try InsurancePlan(from: decoder))
-    case "Invoice":
-      self = .invoice(try Invoice(from: decoder))
-    case "Library":
-      self = .library(try Library(from: decoder))
-    case "Linkage":
-      self = .linkage(try Linkage(from: decoder))
-    case "List":
-      self = .list(try List(from: decoder))
-    case "Location":
-      self = .location(try Location(from: decoder))
-    case "Measure":
-      self = .measure(try Measure(from: decoder))
-    case "MeasureReport":
-      self = .measureReport(try MeasureReport(from: decoder))
-    case "Media":
-      self = .media(try Media(from: decoder))
-    case "Medication":
-      self = .medication(try Medication(from: decoder))
-    case "MedicationAdministration":
-      self = .medicationAdministration(try MedicationAdministration(from: decoder))
-    case "MedicationDispense":
-      self = .medicationDispense(try MedicationDispense(from: decoder))
-    case "MedicationKnowledge":
-      self = .medicationKnowledge(try MedicationKnowledge(from: decoder))
-    case "MedicationRequest":
-      self = .medicationRequest(try MedicationRequest(from: decoder))
-    case "MedicationStatement":
-      self = .medicationStatement(try MedicationStatement(from: decoder))
-    case "MedicinalProduct":
-      self = .medicinalProduct(try MedicinalProduct(from: decoder))
-    case "MedicinalProductAuthorization":
-      self = .medicinalProductAuthorization(try MedicinalProductAuthorization(from: decoder))
-    case "MedicinalProductContraindication":
-      self = .medicinalProductContraindication(try MedicinalProductContraindication(from: decoder))
-    case "MedicinalProductIndication":
-      self = .medicinalProductIndication(try MedicinalProductIndication(from: decoder))
-    case "MedicinalProductIngredient":
-      self = .medicinalProductIngredient(try MedicinalProductIngredient(from: decoder))
-    case "MedicinalProductInteraction":
-      self = .medicinalProductInteraction(try MedicinalProductInteraction(from: decoder))
-    case "MedicinalProductManufactured":
-      self = .medicinalProductManufactured(try MedicinalProductManufactured(from: decoder))
-    case "MedicinalProductPackaged":
-      self = .medicinalProductPackaged(try MedicinalProductPackaged(from: decoder))
-    case "MedicinalProductPharmaceutical":
-      self = .medicinalProductPharmaceutical(try MedicinalProductPharmaceutical(from: decoder))
-    case "MedicinalProductUndesirableEffect":
-      self = .medicinalProductUndesirableEffect(try MedicinalProductUndesirableEffect(from: decoder))
-    case "MessageDefinition":
-      self = .messageDefinition(try MessageDefinition(from: decoder))
-    case "MessageHeader":
-      self = .messageHeader(try MessageHeader(from: decoder))
-    case "MolecularSequence":
-      self = .molecularSequence(try MolecularSequence(from: decoder))
-    case "NamingSystem":
-      self = .namingSystem(try NamingSystem(from: decoder))
-    case "NutritionOrder":
-      self = .nutritionOrder(try NutritionOrder(from: decoder))
-    case "Observation":
-      self = .observation(try Observation(from: decoder))
-    case "ObservationDefinition":
-      self = .observationDefinition(try ObservationDefinition(from: decoder))
-    case "OperationDefinition":
-      self = .operationDefinition(try OperationDefinition(from: decoder))
-    case "OperationOutcome":
-      self = .operationOutcome(try OperationOutcome(from: decoder))
-    case "Organization":
-      self = .organization(try Organization(from: decoder))
-    case "OrganizationAffiliation":
-      self = .organizationAffiliation(try OrganizationAffiliation(from: decoder))
-    case "Parameters":
-      self = .parameters(try Parameters(from: decoder))
-    case "Patient":
-      self = .patient(try Patient(from: decoder))
-    case "PaymentNotice":
-      self = .paymentNotice(try PaymentNotice(from: decoder))
-    case "PaymentReconciliation":
-      self = .paymentReconciliation(try PaymentReconciliation(from: decoder))
-    case "Person":
-      self = .person(try Person(from: decoder))
-    case "PlanDefinition":
-      self = .planDefinition(try PlanDefinition(from: decoder))
-    case "Practitioner":
-      self = .practitioner(try Practitioner(from: decoder))
-    case "PractitionerRole":
-      self = .practitionerRole(try PractitionerRole(from: decoder))
-    case "Procedure":
-      self = .procedure(try Procedure(from: decoder))
-    case "Provenance":
-      self = .provenance(try Provenance(from: decoder))
-    case "Questionnaire":
-      self = .questionnaire(try Questionnaire(from: decoder))
-    case "QuestionnaireResponse":
-      self = .questionnaireResponse(try QuestionnaireResponse(from: decoder))
-    case "RelatedPerson":
-      self = .relatedPerson(try RelatedPerson(from: decoder))
-    case "RequestGroup":
-      self = .requestGroup(try RequestGroup(from: decoder))
-    case "ResearchDefinition":
-      self = .researchDefinition(try ResearchDefinition(from: decoder))
-    case "ResearchElementDefinition":
-      self = .researchElementDefinition(try ResearchElementDefinition(from: decoder))
-    case "ResearchStudy":
-      self = .researchStudy(try ResearchStudy(from: decoder))
-    case "ResearchSubject":
-      self = .researchSubject(try ResearchSubject(from: decoder))
+//    case "EffectEvidenceSynthesis":
+//      self = .effectEvidenceSynthesis(try EffectEvidenceSynthesis(from: decoder))
+//    case "Encounter":
+//      self = .encounter(try Encounter(from: decoder))
+//    case "Endpoint":
+//      self = .endpoint(try Endpoint(from: decoder))
+//    case "EnrollmentRequest":
+//      self = .enrollmentRequest(try EnrollmentRequest(from: decoder))
+//    case "EnrollmentResponse":
+//      self = .enrollmentResponse(try EnrollmentResponse(from: decoder))
+//    case "EpisodeOfCare":
+//      self = .episodeOfCare(try EpisodeOfCare(from: decoder))
+//    case "EventDefinition":
+//      self = .eventDefinition(try EventDefinition(from: decoder))
+//    case "Evidence":
+//      self = .evidence(try Evidence(from: decoder))
+//    case "EvidenceVariable":
+//      self = .evidenceVariable(try EvidenceVariable(from: decoder))
+//    case "ExampleScenario":
+//      self = .exampleScenario(try ExampleScenario(from: decoder))
+//    case "ExplanationOfBenefit":
+//      self = .explanationOfBenefit(try ExplanationOfBenefit(from: decoder))
+//    case "FamilyMemberHistory":
+//      self = .familyMemberHistory(try FamilyMemberHistory(from: decoder))
+//    case "Flag":
+//      self = .flag(try Flag(from: decoder))
+//    case "Goal":
+//      self = .goal(try Goal(from: decoder))
+//    case "GraphDefinition":
+//      self = .graphDefinition(try GraphDefinition(from: decoder))
+//    case "Group":
+//      self = .group(try Group(from: decoder))
+//    case "GuidanceResponse":
+//      self = .guidanceResponse(try GuidanceResponse(from: decoder))
+//    case "HealthcareService":
+//      self = .healthcareService(try HealthcareService(from: decoder))
+//    case "ImagingStudy":
+//      self = .imagingStudy(try ImagingStudy(from: decoder))
+//    case "Immunization":
+//      self = .immunization(try Immunization(from: decoder))
+//    case "ImmunizationEvaluation":
+//      self = .immunizationEvaluation(try ImmunizationEvaluation(from: decoder))
+//    case "ImmunizationRecommendation":
+//      self = .immunizationRecommendation(try ImmunizationRecommendation(from: decoder))
+//    case "ImplementationGuide":
+//      self = .implementationGuide(try ImplementationGuide(from: decoder))
+//    case "InsurancePlan":
+//      self = .insurancePlan(try InsurancePlan(from: decoder))
+//    case "Invoice":
+//      self = .invoice(try Invoice(from: decoder))
+//    case "Library":
+//      self = .library(try Library(from: decoder))
+//    case "Linkage":
+//      self = .linkage(try Linkage(from: decoder))
+//    case "List":
+//      self = .list(try List(from: decoder))
+//    case "Location":
+//      self = .location(try Location(from: decoder))
+//    case "Measure":
+//      self = .measure(try Measure(from: decoder))
+//    case "MeasureReport":
+//      self = .measureReport(try MeasureReport(from: decoder))
+//    case "Media":
+//      self = .media(try Media(from: decoder))
+//    case "Medication":
+//      self = .medication(try Medication(from: decoder))
+//    case "MedicationAdministration":
+//      self = .medicationAdministration(try MedicationAdministration(from: decoder))
+//    case "MedicationDispense":
+//      self = .medicationDispense(try MedicationDispense(from: decoder))
+//    case "MedicationKnowledge":
+//      self = .medicationKnowledge(try MedicationKnowledge(from: decoder))
+//    case "MedicationRequest":
+//      self = .medicationRequest(try MedicationRequest(from: decoder))
+//    case "MedicationStatement":
+//      self = .medicationStatement(try MedicationStatement(from: decoder))
+//    case "MedicinalProduct":
+//      self = .medicinalProduct(try MedicinalProduct(from: decoder))
+//    case "MedicinalProductAuthorization":
+//      self = .medicinalProductAuthorization(try MedicinalProductAuthorization(from: decoder))
+//    case "MedicinalProductContraindication":
+//      self = .medicinalProductContraindication(try MedicinalProductContraindication(from: decoder))
+//    case "MedicinalProductIndication":
+//      self = .medicinalProductIndication(try MedicinalProductIndication(from: decoder))
+//    case "MedicinalProductIngredient":
+//      self = .medicinalProductIngredient(try MedicinalProductIngredient(from: decoder))
+//    case "MedicinalProductInteraction":
+//      self = .medicinalProductInteraction(try MedicinalProductInteraction(from: decoder))
+//    case "MedicinalProductManufactured":
+//      self = .medicinalProductManufactured(try MedicinalProductManufactured(from: decoder))
+//    case "MedicinalProductPackaged":
+//      self = .medicinalProductPackaged(try MedicinalProductPackaged(from: decoder))
+//    case "MedicinalProductPharmaceutical":
+//      self = .medicinalProductPharmaceutical(try MedicinalProductPharmaceutical(from: decoder))
+//    case "MedicinalProductUndesirableEffect":
+//      self = .medicinalProductUndesirableEffect(try MedicinalProductUndesirableEffect(from: decoder))
+//    case "MessageDefinition":
+//      self = .messageDefinition(try MessageDefinition(from: decoder))
+//    case "MessageHeader":
+//      self = .messageHeader(try MessageHeader(from: decoder))
+//    case "MolecularSequence":
+//      self = .molecularSequence(try MolecularSequence(from: decoder))
+//    case "NamingSystem":
+//      self = .namingSystem(try NamingSystem(from: decoder))
+//    case "NutritionOrder":
+//      self = .nutritionOrder(try NutritionOrder(from: decoder))
+//    case "Observation":
+//      self = .observation(try Observation(from: decoder))
+//    case "ObservationDefinition":
+//      self = .observationDefinition(try ObservationDefinition(from: decoder))
+//    case "OperationDefinition":
+//      self = .operationDefinition(try OperationDefinition(from: decoder))
+//    case "OperationOutcome":
+//      self = .operationOutcome(try OperationOutcome(from: decoder))
+//    case "Organization":
+//      self = .organization(try Organization(from: decoder))
+//    case "OrganizationAffiliation":
+//      self = .organizationAffiliation(try OrganizationAffiliation(from: decoder))
+//    case "Parameters":
+//      self = .parameters(try Parameters(from: decoder))
+//    case "Patient":
+//      self = .patient(try Patient(from: decoder))
+//    case "PaymentNotice":
+//      self = .paymentNotice(try PaymentNotice(from: decoder))
+//    case "PaymentReconciliation":
+//      self = .paymentReconciliation(try PaymentReconciliation(from: decoder))
+//    case "Person":
+//      self = .person(try Person(from: decoder))
+//    case "PlanDefinition":
+//      self = .planDefinition(try PlanDefinition(from: decoder))
+//    case "Practitioner":
+//      self = .practitioner(try Practitioner(from: decoder))
+//    case "PractitionerRole":
+//      self = .practitionerRole(try PractitionerRole(from: decoder))
+//    case "Procedure":
+//      self = .procedure(try Procedure(from: decoder))
+//    case "Provenance":
+//      self = .provenance(try Provenance(from: decoder))
+//    case "Questionnaire":
+//      self = .questionnaire(try Questionnaire(from: decoder))
+//    case "QuestionnaireResponse":
+//      self = .questionnaireResponse(try QuestionnaireResponse(from: decoder))
+//    case "RelatedPerson":
+//      self = .relatedPerson(try RelatedPerson(from: decoder))
+//    case "RequestGroup":
+//      self = .requestGroup(try RequestGroup(from: decoder))
+//    case "ResearchDefinition":
+//      self = .researchDefinition(try ResearchDefinition(from: decoder))
+//    case "ResearchElementDefinition":
+//      self = .researchElementDefinition(try ResearchElementDefinition(from: decoder))
+//    case "ResearchStudy":
+//      self = .researchStudy(try ResearchStudy(from: decoder))
+//    case "ResearchSubject":
+//      self = .researchSubject(try ResearchSubject(from: decoder))
     case "Resource":
       self = .resource(try Resource(from: decoder))
-    case "RiskAssessment":
-      self = .riskAssessment(try RiskAssessment(from: decoder))
-    case "RiskEvidenceSynthesis":
-      self = .riskEvidenceSynthesis(try RiskEvidenceSynthesis(from: decoder))
-    case "Schedule":
-      self = .schedule(try Schedule(from: decoder))
-    case "SearchParameter":
-      self = .searchParameter(try SearchParameter(from: decoder))
-    case "ServiceRequest":
-      self = .serviceRequest(try ServiceRequest(from: decoder))
-    case "Slot":
-      self = .slot(try Slot(from: decoder))
-    case "Specimen":
-      self = .specimen(try Specimen(from: decoder))
-    case "SpecimenDefinition":
-      self = .specimenDefinition(try SpecimenDefinition(from: decoder))
-    case "StructureDefinition":
-      self = .structureDefinition(try StructureDefinition(from: decoder))
-    case "StructureMap":
-      self = .structureMap(try StructureMap(from: decoder))
-    case "Subscription":
-      self = .subscription(try Subscription(from: decoder))
-    case "Substance":
-      self = .substance(try Substance(from: decoder))
-    case "SubstanceNucleicAcid":
-      self = .substanceNucleicAcid(try SubstanceNucleicAcid(from: decoder))
-    case "SubstancePolymer":
-      self = .substancePolymer(try SubstancePolymer(from: decoder))
-    case "SubstanceProtein":
-      self = .substanceProtein(try SubstanceProtein(from: decoder))
-    case "SubstanceReferenceInformation":
-      self = .substanceReferenceInformation(try SubstanceReferenceInformation(from: decoder))
-    case "SubstanceSourceMaterial":
-      self = .substanceSourceMaterial(try SubstanceSourceMaterial(from: decoder))
-    case "SubstanceSpecification":
-      self = .substanceSpecification(try SubstanceSpecification(from: decoder))
-    case "SupplyDelivery":
-      self = .supplyDelivery(try SupplyDelivery(from: decoder))
-    case "SupplyRequest":
-      self = .supplyRequest(try SupplyRequest(from: decoder))
-    case "Task":
-      self = .task(try Task(from: decoder))
-    case "TerminologyCapabilities":
-      self = .terminologyCapabilities(try TerminologyCapabilities(from: decoder))
-    case "TestReport":
-      self = .testReport(try TestReport(from: decoder))
-    case "TestScript":
-      self = .testScript(try TestScript(from: decoder))
-    case "ValueSet":
-      self = .valueSet(try ValueSet(from: decoder))
-    case "VerificationResult":
-      self = .verificationResult(try VerificationResult(from: decoder))
-    case "VisionPrescription":
-      self = .visionPrescription(try VisionPrescription(from: decoder))
+//    case "RiskAssessment":
+//      self = .riskAssessment(try RiskAssessment(from: decoder))
+//    case "RiskEvidenceSynthesis":
+//      self = .riskEvidenceSynthesis(try RiskEvidenceSynthesis(from: decoder))
+//    case "Schedule":
+//      self = .schedule(try Schedule(from: decoder))
+//    case "SearchParameter":
+//      self = .searchParameter(try SearchParameter(from: decoder))
+//    case "ServiceRequest":
+//      self = .serviceRequest(try ServiceRequest(from: decoder))
+//    case "Slot":
+//      self = .slot(try Slot(from: decoder))
+//    case "Specimen":
+//      self = .specimen(try Specimen(from: decoder))
+//    case "SpecimenDefinition":
+//      self = .specimenDefinition(try SpecimenDefinition(from: decoder))
+//    case "StructureDefinition":
+//      self = .structureDefinition(try StructureDefinition(from: decoder))
+//    case "StructureMap":
+//      self = .structureMap(try StructureMap(from: decoder))
+//    case "Subscription":
+//      self = .subscription(try Subscription(from: decoder))
+//    case "Substance":
+//      self = .substance(try Substance(from: decoder))
+//    case "SubstanceNucleicAcid":
+//      self = .substanceNucleicAcid(try SubstanceNucleicAcid(from: decoder))
+//    case "SubstancePolymer":
+//      self = .substancePolymer(try SubstancePolymer(from: decoder))
+//    case "SubstanceProtein":
+//      self = .substanceProtein(try SubstanceProtein(from: decoder))
+//    case "SubstanceReferenceInformation":
+//      self = .substanceReferenceInformation(try SubstanceReferenceInformation(from: decoder))
+//    case "SubstanceSourceMaterial":
+//      self = .substanceSourceMaterial(try SubstanceSourceMaterial(from: decoder))
+//    case "SubstanceSpecification":
+//      self = .substanceSpecification(try SubstanceSpecification(from: decoder))
+//    case "SupplyDelivery":
+//      self = .supplyDelivery(try SupplyDelivery(from: decoder))
+//    case "SupplyRequest":
+//      self = .supplyRequest(try SupplyRequest(from: decoder))
+//    case "Task":
+//      self = .task(try Task(from: decoder))
+//    case "TerminologyCapabilities":
+//      self = .terminologyCapabilities(try TerminologyCapabilities(from: decoder))
+//    case "TestReport":
+//      self = .testReport(try TestReport(from: decoder))
+//    case "TestScript":
+//      self = .testScript(try TestScript(from: decoder))
+//    case "ValueSet":
+//      self = .valueSet(try ValueSet(from: decoder))
+//    case "VerificationResult":
+//      self = .verificationResult(try VerificationResult(from: decoder))
+//    case "VisionPrescription":
+//      self = .visionPrescription(try VisionPrescription(from: decoder))
     default:
       self = .unrecognized(try Resource(from: decoder))
     }

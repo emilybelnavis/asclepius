@@ -143,7 +143,7 @@ open class TimingRepeat: Element {
   public required init(from decoder: Decoder) throws {
     let _container = try decoder.container(keyedBy: CodingKeys.self)
     
-    var _bounds: Bounds? = nil
+    var _bounds: Bounds?
     if let boundsDuration = try Duration(from: _container, forKeyIfPresent: .boundsDuration) {
       if _bounds != nil {
         throw DecodingError.dataCorruptedError(forKey: .boundsDuration, in: _container, debugDescription: "More than one value provided for \"bounds\"")

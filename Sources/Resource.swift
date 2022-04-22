@@ -1,4 +1,4 @@
-  //
+//
   //  Resource.swift
   //  FHIRKit
 
@@ -62,7 +62,7 @@ open class Resource: FHIRKitAbstractResource {
   // MARK: - Codable
   private enum CodingKeys: String, CodingKey {
     case id; case _id
-    case meta;
+    case meta
     case implicitRules; case _implicitRules
     case language; case _language
   }

@@ -22,7 +22,6 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-
 /// Base definition for all elements in a resource
 open class Element: FHIRKitType {
   /// unique id for inter-element referencing
@@ -30,7 +29,7 @@ open class Element: FHIRKitType {
   
   public var `extension`: [Extension]?
   
-  public init(){
+  public init() {
     
   }
   

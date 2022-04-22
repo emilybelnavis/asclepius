@@ -56,7 +56,7 @@ public enum BundleType: String, FHIRKitPrimitiveType {
   /// or message
   case searchset
   
-  ///The bundle is a set of resouces collected into a single package for easy of distribution that imposes
-  ///no processing obligations or behavioural rules beyond persistence
+  /// The bundle is a set of resouces collected into a single package for easy of distribution that imposes
+  /// no processing obligations or behavioural rules beyond persistence
   case collection
 }

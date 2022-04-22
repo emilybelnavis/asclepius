@@ -22,7 +22,6 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-
 import Foundation
 
 /**
@@ -53,7 +52,7 @@ public struct FHIRKitTime: FHIRKitPrimitiveType {
   }
   
   public var second: Decimal {
-    didSet{
+    didSet {
       if second > 60 {
         second = 60.0
       }
@@ -91,7 +90,7 @@ public struct FHIRKitTime: FHIRKitPrimitiveType {
   // MARK: Parsing
   public static func parseComponents(from scanner: Scanner, expectAtEnd: Bool = true) throws -> (hour: UInt8, minute: UInt8, second: Decimal, originalSecondsString: String) {
     let originalCharactersToBeSkipped = scanner.charactersToBeSkipped
-    defer { scanner.charactersToBeSkipped = scanner.charactersToBeSkipped }
+    defer { scanner.charactersToBeSkipped = originalCharactersToBeSkipped }
     scanner.charactersToBeSkipped = nil
     let numbers = CharacterSet.decimalDigits
     

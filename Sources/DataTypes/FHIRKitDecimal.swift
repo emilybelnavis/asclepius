@@ -67,7 +67,7 @@ extension FHIRKitDecimal: Codable {
   }
 }
 
-extension FHIRKitDecimal: Equatable{
+extension FHIRKitDecimal: Equatable {
   public static func ==(l: FHIRKitDecimal, r: FHIRKitDecimal) -> Bool {
     return l.decimal == r.decimal
   }

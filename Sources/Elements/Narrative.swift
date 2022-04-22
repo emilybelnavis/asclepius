@@ -22,46 +22,74 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+/**
+ A human-readable summary of the resouce conveying the essential clinical and business information for the
+ resource.
+ */
 open class Narrative: Element {
+  /// The status of the narrative - whether it's entirely generated, or wheter a human authored it and it may
+  /// contain additional data.
   public var status: FHIRKitPrimitive<NarrativeStatus>
+  
+  /// Limited XHTML content
   public var div: FHIRKitPrimitive<FHIRKitString>
   
-  public init(div: FHIRKitPrimitive<FHIRKitString>, status: FHIRKitPrimitive<NarrativeStatus>) {
-    self.div = div
+  public init(status: FHIRKitPrimitive<NarrativeStatus>, div: FHIRKitPrimitive<FHIRKitString>) {
     self.status = status
+    self.div = div
     super.init()
   }
   
   public convenience init(
-    div: FHIRKitPrimitive<FHIRKitString>,
     `extension`: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    status: FHIRKitPrimitive<NarrativeStatus>
+    status: FHIRKitPrimitive<NarrativeStatus>,
+    div: FHIRKitPrimitive<FHIRKitString>
   ) {
-    self.init(div: div, status: status)
+    self.init(status: status, div: div)
     self.`extension` = `extension`
     self.id = id
   }
   
   // MARK: - Codable
   private enum CodingKeys: String, CodingKey {
-    case div; case _div
     case status; case _status
+    case div; case _div
   }
   
   public required init(from decoder: Decoder) throws {
     let _container = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.div = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKey: .div, auxiliaryKey: ._div)
     self.status = try FHIRKitPrimitive<NarrativeStatus>(from: _container, forKey: .status, auxiliaryKey: ._status)
+    self.div = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKey: .div, auxiliaryKey: ._div)
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
     var _container = encoder.container(keyedBy: CodingKeys.self)
     
-    try div.encode(on: &_container, forKey: .div, auxiliaryKey: ._div)
     try status.encode(on: &_container, forKey: .status, auxiliaryKey: ._status)
+    try div.encode(on: &_container, forKey: .div, auxiliaryKey: ._div)
     try super.encode(to: encoder)
+  }
+  
+  // MARK: - Equatable & Hashable
+  public override func isEqual(to _other: Any?) -> Bool {
+    guard let _other = _other as? Narrative else {
+      return false
+    }
+
+    guard super.isEqual(to: _other) else {
+      return false
+    }
+    
+    return status == _other.status
+    && div == _other.div
+  }
+  
+  public override func hash(into hasher: inout Hasher) {
+    super.hash(into: &hasher)
+    hasher.combine(status)
+    hasher.combine(div)
   }
 }

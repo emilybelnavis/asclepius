@@ -88,7 +88,7 @@ open class Coding: Element {
   }
   
   // MARK: - equatable & hashable
-  public override func isEqual(to _other: Any?) ->  Bool {
+  public override func isEqual(to _other: Any?) -> Bool {
     guard let _other = _other as? Coding else {
       return false
     }

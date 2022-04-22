@@ -9,7 +9,7 @@ let package = Package(
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
             name: "FHIRKit",
-            targets: ["FHIRKit"]),
+            targets: ["FHIRKit"])
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
@@ -25,6 +25,6 @@ let package = Package(
         .testTarget(
             name: "FHIRKitTests",
             dependencies: ["FHIRKit"],
-            path: "Tests"),
+            path: "Tests")
     ]
 )

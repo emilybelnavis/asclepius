@@ -35,4 +35,3 @@ public enum ParticipantType: String, FHIRKitPrimitiveType {
     /// A person to be contacted in case of an emergency during the encounter.
   case emergency
 }
-

@@ -28,7 +28,7 @@ public struct FHIRKitPositiveInteger: FHIRKitPrimitiveType, FHIRKitIntegerRepres
   public typealias IntegerLiteralType = Int32
   
   public var integer: Self.IntegerLiteralType {
-    didSet{
+    didSet {
       if integer < 1 {
         integer = oldValue
       }

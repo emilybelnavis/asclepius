@@ -61,7 +61,6 @@ extension Canonical: ExpressibleByStringLiteral {
   }
 }
 
-
 extension Canonical: Codable {
   public init(from decoder: Decoder) throws {
     let _container = try decoder.singleValueContainer()

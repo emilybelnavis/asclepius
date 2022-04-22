@@ -92,5 +92,5 @@ iOSInjectionProject/
 .swiftpm/
 .idea/
 **/.DS_Store
-
+**/results.xml
 **/lcov.info

@@ -110,7 +110,7 @@ open class DataRequirement: Element {
     self.limit = try FHIRKitPrimitive<FHIRKitPositiveInteger>(from: _container, forKeyIfPresent: .limit, auxiliaryKey: ._limit)
     self.sort = try [DataRequirementSort](from: _container, forKeyIfPresent: .sort)
     
-    var tempSubject: Subject? = nil
+    var tempSubject: Subject?
     if let subjectCodableConcept = try CodableConcept(from: _container, forKeyIfPresent: .subjectCodableConcept) {
       if tempSubject != nil {
         throw DecodingError.dataCorruptedError(forKey: .subjectCodableConcept, in: _container, debugDescription: "More than one value provided for \"subject\"")

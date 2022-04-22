@@ -36,7 +36,6 @@ open class Reference: Element {
   /// Text alternative for the resource
   public var display: FHIRKitPrimitive<FHIRKitString>?
   
-  
   override public init() {
     super.init()
   }

@@ -22,7 +22,115 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+/**
+ The metadata about a resource. This is content in the resource that is maintained by the infrastructure.
+ Chages to the content might not always be associated with version changes to the resource.
+ */
 open class Meta: Element {
+  /// Version specific identifier
   public var versionId: FHIRKitPrimitive<FHIRKitString>?
-  public var lastUpdate: FHIRKitPrimitive<FHIRKitInstant>
+  
+  /// When the resource version last changed
+  public var lastUpdated: FHIRKitPrimitive<FHIRKitInstant>?
+  
+  /// Identifies where the resource comes from
+  public var source: FHIRKitPrimitive<FHIRKitURI>?
+  
+  /// Profiles this resource claims to conform to
+  public var profile: [FHIRKitPrimitive<Canonical>]?
+  
+  /// Security labels applied to this resource
+  public var security: [Coding]?
+  
+  /// Tags applied to this resource
+  public var tag: [Coding]?
+  
+  override public init() {
+    super.init()
+  }
+  
+  public convenience init(
+    `extension`: [Extension]? = nil,
+    id: FHIRKitPrimitive<FHIRKitString>? = nil,
+    versionId: FHIRKitPrimitive<FHIRKitString>? = nil,
+    lastUpdated: FHIRKitPrimitive<FHIRKitInstant>? = nil,
+    source: FHIRKitPrimitive<FHIRKitURI>? = nil,
+    profile: [FHIRKitPrimitive<Canonical>]? = nil,
+    security: [Coding]? = nil,
+    tag: [Coding]? = nil
+  ) {
+    self.init()
+    self.`extension` = `extension`
+    self.id = id
+    self.versionId = versionId
+    self.lastUpdated = lastUpdated
+    self.source = source
+    self.profile = profile
+    self.security = security
+    self.tag = tag
+  }
+  
+  // MARK: - Codable
+  private enum CodingKeys: String, CodingKey {
+    case versionId; case _versionId
+    case lastUpdated; case _lastUpdated
+    case source; case _source
+    case profile; case _profile
+    case security
+    case tag
+  }
+  
+  public required init(from decoder: Decoder) throws {
+    let _container = try decoder.container(keyedBy: CodingKeys.self)
+    
+    self.versionId = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .versionId, auxiliaryKey: ._versionId)
+    self.lastUpdated = try FHIRKitPrimitive<FHIRKitInstant>(from: _container, forKeyIfPresent: .lastUpdated, auxiliaryKey: ._lastUpdated)
+    self.source = try FHIRKitPrimitive<FHIRKitURI>(from: _container, forKeyIfPresent: .source, auxiliaryKey: ._source)
+    self.profile = try [FHIRKitPrimitive<Canonical>](from: _container, forKeyIfPresent: .profile, auxiliaryKey: ._profile)
+    self.security = try [Coding](from: _container, forKeyIfPresent: .security)
+    self.tag = try [Coding](from: _container, forKeyIfPresent: .tag)
+    
+    try super.init(from: decoder)
+  }
+  
+  public override func encode(to encoder: Encoder) throws {
+    var _container = encoder.container(keyedBy: CodingKeys.self)
+    
+    try versionId?.encode(on: &_container, forKey: .versionId, auxiliaryKey: ._versionId)
+    try lastUpdated?.encode(on: &_container, forKey: .lastUpdated, auxiliaryKey: ._lastUpdated)
+    try source?.encode(on: &_container, forKey: .source, auxiliaryKey: ._source)
+    try profile?.encode(on: &_container, forKey: .profile, auxiliaryKey: ._profile)
+    try security?.encode(on: &_container, forKey: .security)
+    try tag?.encode(on: &_container, forKey: .tag)
+    
+    try super.encode(to: encoder)
+  }
+  
+  // MARK: - Equatable & Hashable
+  public override func isEqual(to _other: Any?) -> Bool {
+    guard let _other = _other as? Meta else {
+      return false
+    }
+    
+    guard super.isEqual(to: _other) else {
+      return false
+    }
+    
+    return versionId == _other.versionId
+    && lastUpdated == _other.lastUpdated
+    && source == _other.source
+    && profile == _other.profile
+    && security == _other.security
+    && tag == _other.tag
+  }
+  
+  public override func hash(into hasher: inout Hasher) {
+    super.hash(into: &hasher)
+    hasher.combine(versionId)
+    hasher.combine(lastUpdated)
+    hasher.combine(source)
+    hasher.combine(profile)
+    hasher.combine(security)
+    hasher.combine(tag)
+  }
 }

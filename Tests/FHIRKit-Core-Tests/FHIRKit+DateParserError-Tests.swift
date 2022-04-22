@@ -28,10 +28,10 @@ import XCTest
 class FHIRDateParserErrorTests: XCTestCase {
     
     func testEquality() {
-        let a = FHIRDateParserErrorPosition(string: "abc", location: 2)
-        let b = FHIRDateParserErrorPosition(string: "def", location: 2)
-        let c = FHIRDateParserErrorPosition(string: "abc", location: 3)
-        let c1 = FHIRDateParserErrorPosition(string: "abc", location: 3)
+        let a = FHIRKitDateParserErrorPosition(string: "abc", location: 2)
+        let b = FHIRKitDateParserErrorPosition(string: "def", location: 2)
+        let c = FHIRKitDateParserErrorPosition(string: "abc", location: 3)
+        let c1 = FHIRKitDateParserErrorPosition(string: "abc", location: 3)
         XCTAssertNotEqual(a, b)
         XCTAssertNotEqual(a, c)
         XCTAssertNotEqual(b, c)

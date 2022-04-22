@@ -53,4 +53,3 @@ public enum DefinitionResourceType: String, FHIRKitPrimitiveType {
   /// collection.
   case questionnaire = "Questionnaire"
 }
-

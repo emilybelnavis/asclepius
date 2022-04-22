@@ -75,8 +75,8 @@ open class Address: Element {
     case line; case _line
     case period
     case postalCode; case _postalCode
-    case state; case _state;
-    case text; case _text;
+    case state; case _state
+    case text; case _text
     case type; case _type
     case use; case _use
   }

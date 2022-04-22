@@ -47,4 +47,3 @@ public enum ValidationProcess: String, FHIRKitPrimitiveType {
   /// inContext
   case inContext = "in-context"
 }
-

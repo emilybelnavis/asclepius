@@ -55,10 +55,10 @@ public enum ConceptMapEquivalence: String, FHIRKitPrimitiveType {
   /// The target mapping specializes the meaning of the source concept (e.g. the target `is-a` source)
   case specializes
   
-  ///The target mapping overlaps with the source concept but both source and target cover additional
-  ///meaning or the definitions are imprecise and it is uncertain whether they have the same boundaries to
-  ///their meaning. The sense in which the mapping is inexact SHALL be described in the comments in this
-  ///case and applications should be careful when attempting to use this mappings operationally,
+  /// The target mapping overlaps with the source concept but both source and target cover additional
+  /// meaning or the definitions are imprecise and it is uncertain whether they have the same boundaries to
+  /// their meaning. The sense in which the mapping is inexact SHALL be described in the comments in this
+  /// case and applications should be careful when attempting to use this mappings operationally,
   case inexact
   
   /// There is no match for this concept in the target code system

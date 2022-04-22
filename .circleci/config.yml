@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  codecov: codecov/codecov@3.2.2
+  coverage-reporter: codacy/coverage-reporter@13.9.3
 
 jobs:
   build:
@@ -19,8 +19,9 @@ jobs:
           > .lcov.info
       - store_test_results:
           path: ./lcov.info
-      - codecov/upload:
-          file: /Users/distiller/project/lcov.info
+      - coverage-reporter/send_report:
+          coverage-reports: "/Users/distiller/project/lcov.info"
+          project-token: $CODACY_PROJECT_TOKEN
 workflows:
   build:
     jobs:

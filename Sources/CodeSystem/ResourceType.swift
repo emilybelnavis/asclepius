@@ -240,9 +240,6 @@ public enum ResourceType: String, FHIRKitPrimitiveType {
   /// about.
   case evidenceVariable = "EvidenceVariable"
   
-  /// Example of workflow instance.
-  case exampleScenario = "ExampleScenario"
-  
   /// This resource provides: the claim details; adjudication details from the processing of a Claim; and optionally
   /// account balance information, for informing the subscriber of the benefits provided.
   case explanationOfBenefit = "ExplanationOfBenefit"

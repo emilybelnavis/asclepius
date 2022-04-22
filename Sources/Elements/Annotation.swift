@@ -52,14 +52,13 @@ open class Annotation: Element {
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     author: Author? = nil,
     time: FHIRKitPrimitive<FHIRKitDateTime>? = nil,
-    text: FHIRKitPrimitive<FHIRKitString>? = nil
+    text: FHIRKitPrimitive<FHIRKitString>
   ) {
-    self.init()
+    self.init(text: text)
     self.`extension` = `extension`
     self.id = id
     self.author = author
     self.time = time
-    self.text = text
   }
   
   // MARK: - Codable
@@ -73,7 +72,7 @@ open class Annotation: Element {
   public required init(from decoder: Decoder) throws {
     let _container = try decoder.container(keyedBy: CodingKeys.self)
     
-    var _t_author: Author? = nil
+    var _t_author: Author?
     if let authorReference = try Reference(from: _container, forKeyIfPresent: .authorReference) {
       if _t_author != nil {
         throw DecodingError.dataCorruptedError(forKey: .authorReference, in: _container, debugDescription: "More than one value provided for \"Author\"")

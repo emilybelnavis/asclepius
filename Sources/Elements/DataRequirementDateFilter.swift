@@ -79,7 +79,7 @@ open class DataRequirementDateFilter: Element {
     self.path = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .path, auxiliaryKey: ._path)
     self.searchParam = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .searchParam, auxiliaryKey: ._searchParam)
     
-    var tempValue: Value? = nil
+    var tempValue: Value?
     if let valueDateTime = try FHIRKitPrimitive<FHIRKitDateTime>(from: _container, forKeyIfPresent: .valueDateTime, auxiliaryKey: ._valueDateTime) {
       if tempValue != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueDateTime, in: _container, debugDescription: "More than one value provided for \"value\"")

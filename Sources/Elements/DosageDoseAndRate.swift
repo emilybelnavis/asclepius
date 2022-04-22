@@ -81,7 +81,7 @@ open class DosageDoseAndRate: Element {
     self.type = try CodableConcept(from: _container, forKeyIfPresent: .type)
     
     // decode Dose
-    var tempDose: Dose? = nil
+    var tempDose: Dose?
     
     if let doseQuantity = try Quantity(from: _container, forKeyIfPresent: .doseQuantity) {
       if tempDose != nil {
@@ -99,7 +99,7 @@ open class DosageDoseAndRate: Element {
     self.dose = tempDose
     
     // decode Rate
-    var tempRate: Rate? = nil
+    var tempRate: Rate?
     if let rateQuantity = try Quantity(from: _container, forKeyIfPresent: .rateQuantity) {
       if tempRate != nil {
         throw DecodingError.dataCorruptedError(forKey: .rateQuantity, in: _container, debugDescription: "More than one value provided for \"rate\"")

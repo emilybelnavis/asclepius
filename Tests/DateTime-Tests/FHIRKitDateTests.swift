@@ -20,6 +20,7 @@
 //  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
+
 import FHIRKit
 import XCTest
 
@@ -40,7 +41,7 @@ class FHIRKitDateTests: XCTestCase {
     let successes = [
       ("2019", FHIRKitDate(year: 2019)),
       ("3019-12", FHIRKitDate(year: 3019, month: 12)),
-      ("0019-12-29", FHIRKitDate(year: 19, month: 12, day: 29)),
+      ("0019-12-29", FHIRKitDate(year: 19, month: 12, day: 29))
     ]
     
     for (string, expectedDate) in successes {
@@ -60,7 +61,7 @@ class FHIRKitDateTests: XCTestCase {
       ("-2019-05-22", 0),
       ("Y2019", 0),
       ("0000-10-05", 0),
-      ("12019-10-05", 0),
+      ("12019-10-05", 0)
     ]
     for (string, location) in yearThrowers {
       do {
@@ -80,7 +81,7 @@ class FHIRKitDateTests: XCTestCase {
       ("2019-00", 5),
       ("2019-19", 5),
       ("2019--12", 5),
-      ("2019-00", 5),
+      ("2019-00", 5)
     ]
     for (string, location) in monthThrowers {
       do {
@@ -99,7 +100,7 @@ class FHIRKitDateTests: XCTestCase {
       ("2019-11-", 8),
       ("2019-11-2", 8),
       ("2019-11-00", 8),
-      ("2019-11-34", 8),
+      ("2019-11-34", 8)
     ]
     for (string, location) in dayThrowers {
       do {
@@ -122,7 +123,7 @@ class FHIRKitDateTests: XCTestCase {
       ("2019-11 23", 7),
       ("2019-11-23T", 10),
       ("2019-11-23 ", 10),
-      ("2019-11-23T14:22:30Z", 10),
+      ("2019-11-23T14:22:30Z", 10)
     ]
     for (string, location) in extraThrowers {
       do {
@@ -171,4 +172,3 @@ class FHIRKitDateTests: XCTestCase {
     }
   }
 }
-
