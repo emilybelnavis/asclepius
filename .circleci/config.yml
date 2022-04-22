@@ -12,7 +12,7 @@ jobs:
       - run:
           name: install swiftlint
           command: HOMBREW_NO_AUTO_UPDATE=1 brew install swiftlint
-      - run: swiftlint || true
+      - run: swiftlint > swiftlint.json|| true
       - run:
           name: Build and Test
           command: swift test --enable-code-coverage  --xunit-output ./results.xml --parallel
@@ -24,6 +24,10 @@ jobs:
           > /Users/distiller/project/lcov.info
       - store_test_results:
           path: /Users/distiller/project/lcov.info
+      - store_test_results:
+          path: /Users/distiller/project/results.xml
+      - store_artifacts:
+          path: /Users/distiller/project/swiftlint.json
       - coverage-reporter/send_report:
           coverage-reports: "/Users/distiller/project/lcov.info"
           project-token: $CODACY_PROJECT_TOKEN

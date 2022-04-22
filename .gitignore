@@ -94,3 +94,5 @@ iOSInjectionProject/
 **/.DS_Store
 **/results.xml
 **/lcov.info
+**/swiftlint.html
+**/swiftlint.json
