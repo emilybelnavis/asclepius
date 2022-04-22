@@ -1,0 +1,21 @@
+disabled_rules:
+  - trailing_whitespace
+  - identifier_name
+  
+force_cast:
+  severity: warning
+
+type_name:
+  min_length: 4
+  max_length:
+    warning: 50
+    error: 60
+  allowed_symbols: ["_"]
+
+identifier_name:
+  min_length: 4
+  max_length:
+    warning: 50
+    error: 60
+
+reporter: "codeclimate"
