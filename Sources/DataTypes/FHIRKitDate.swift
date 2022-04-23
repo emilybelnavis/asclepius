@@ -158,7 +158,7 @@ extension FHIRKitDate: Equatable {
       return false
     }
     
-    if leftSide.day != rightside.day {
+    if leftSide.day != rightSide.day {
       return false
     }
     

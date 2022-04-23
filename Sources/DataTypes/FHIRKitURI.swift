@@ -58,7 +58,7 @@ extension FHIRKitURI: CustomStringConvertible {
 }
 
 extension FHIRKitURI: Equatable {
-  public static func == (leftSide: FHIRKitURI, rightside: FHIRKitURI) -> Bool {
+  public static func == (leftSide: FHIRKitURI, rightSide: FHIRKitURI) -> Bool {
     return leftSide.url == rightSide.url
   }
   

@@ -1219,7 +1219,7 @@ public enum ResourceProxy: FHIRKitType {
     }
   }
   
-  public func get<_Type: Resource>(if type: _Type.Type) -> T? {
+  public func get<_Type: Resource>(if type: _Type.Type) -> _Type? {
     guard let resource = get() as? _Type else {
       return nil
     }

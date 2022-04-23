@@ -22,8 +22,12 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-import Foundation
-
+/**
+ Any non-negative integer in the range  0 to 2,147,483,647 (31 bits because the positive int is a constraint on
+ the signed int in FHIR)
+ 
+ http://hl7.org/fhir/datatypes.html#unsignedInt
+ */
 public struct FHIRKitUnsignedInteger: FHIRKitPrimitiveType, FHIRKitIntegerRepresentable {
   public typealias IntegerLiteralType = Int32
   
@@ -41,5 +45,32 @@ public struct FHIRKitUnsignedInteger: FHIRKitPrimitiveType, FHIRKitIntegerRepres
   
   public init(integerLiteral value: Self.IntegerLiteralType) {
     self.integer = max(0, value)
+  }
+}
+
+extension FHIRKitUnsignedInteger: Codable {
+  public init(from decoder: Decoder) throws {
+    let _container = try decoder.singleValueContainer()
+    let integer = try _container.decode(Self.IntegerLiteralType.self)
+    
+    if integer < 0 {
+      throw FHIRKitUnsignedIntegerError.valueIsLessThanZero
+    }
+    self.integer = integer
+  }
+  
+  public func encode(to encoder: Encoder) throws {
+    var _container = encoder.singleValueContainer()
+    try _container.encode(integer)
+  }
+}
+
+public enum FHIRKitUnsignedIntegerError: Error {
+  case valueIsLessThanZero
+}
+
+extension Int {
+  public func asFHIRKitUnsignedIntegerPrimitive() -> FHIRKitPrimitive<FHIRKitUnsignedInteger> {
+    return FHIRKitPrimitive(FHIRKitUnsignedInteger(FHIRKitUnsignedInteger.IntegerLiteralType(self)))
   }
 }
