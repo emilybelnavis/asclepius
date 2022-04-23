@@ -22,6 +22,7 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+// swiftlint:disable file_length
 public enum ResourceProxy: FHIRKitType {
   case account(Account)
   case activityDefinition(ActivityDefinition)
@@ -616,8 +617,8 @@ public enum ResourceProxy: FHIRKitType {
     }
   }
   
-    // MARK: -
-  
+  // MARK: -
+  // swiftlint:disable force_cast cyclomatic_complexity
   public init(with resource: Resource) {
     switch type(of: resource).resourceType {
     case .account:
@@ -1218,8 +1219,8 @@ public enum ResourceProxy: FHIRKitType {
     }
   }
   
-  public func get<T: Resource>(if type: T.Type) -> T? {
-    guard let resource = get() as? T else {
+  public func get<_Type: Resource>(if type: _Type.Type) -> T? {
+    guard let resource = get() as? _Type else {
       return nil
     }
     return resource

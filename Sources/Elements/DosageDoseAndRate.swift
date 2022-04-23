@@ -133,21 +133,21 @@ open class DosageDoseAndRate: Element {
     
     if let _dose = dose {
       switch _dose {
-        case .quantity(let _value):
-          try _value.encode(on: &_container, forKey: .doseQuantity)
-        case .range(let _value):
-          try _value.encode(on: &_container, forKey: .doseRange)
+      case .quantity(let _value):
+        try _value.encode(on: &_container, forKey: .doseQuantity)
+      case .range(let _value):
+        try _value.encode(on: &_container, forKey: .doseRange)
       }
     }
     
     if let _rate = rate {
       switch _rate {
-        case .quantity(let _value):
-          try _value.encode(on: &_container, forKey: .rateQuantity)
-        case .range(let _value):
-          try _value.encode(on: &_container, forKey: .rateRange)
-        case .ratio(let _value):
-          try _value.encode(on: &_container, forKey: .rateRatio)
+      case .quantity(let _value):
+        try _value.encode(on: &_container, forKey: .rateQuantity)
+      case .range(let _value):
+        try _value.encode(on: &_container, forKey: .rateRange)
+      case .ratio(let _value):
+        try _value.encode(on: &_container, forKey: .rateRatio)
       }
     }
     

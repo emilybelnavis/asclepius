@@ -28,6 +28,7 @@
  URL: http://terminology.hl7.org/CodeSystem/missingtoothreason
  ValueSet: http://hl7.org/fhir/ValueSet/missing-tooth-reason
  */
+// swiftlint:disable identifier_name
 public enum MissingToothReasonCodes: String, FHIRKitPrimitiveType {
   /// Extraction
   case E = "e"

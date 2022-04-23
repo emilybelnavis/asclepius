@@ -63,7 +63,7 @@ open class DomainResource: Resource {
   // MARK: - Codable
   private enum CodingKeys: String, CodingKey {
     case contained
-    case `extension` = "extension"
+    case `extension` = "extension" // swiftlint:disable:this redundant_string_enum_value
     case modifierExtension
     case text
   }

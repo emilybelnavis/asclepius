@@ -4,15 +4,22 @@ orbs:
   coverage-reporter: codacy/coverage-reporter@13.9.3
 
 jobs:
+  lint:
+    docker:
+      - image: ghcr.io/realm/swiftlint:latest
+    working_directory: ~/project
+    steps:
+      - checkout
+      - run:
+          name: Run linter
+          command: swiftlint > swiftlint.html
+      - store_artifacts:
+          path: ~/project/swiftlint.html
   build:
     macos:
       xcode: 13.3.0
     steps:
       - checkout
-      - run:
-          name: install swiftlint
-          command: HOMBREW_NO_AUTO_UPDATE=1 brew install swiftlint
-      - run: swiftlint > swiftlint.json|| true
       - run:
           name: Build and Test
           command: swift test --enable-code-coverage  --xunit-output ./results.xml --parallel
@@ -26,12 +33,15 @@ jobs:
           path: /Users/distiller/project/lcov.info
       - store_test_results:
           path: /Users/distiller/project/results.xml
-      - store_artifacts:
-          path: /Users/distiller/project/swiftlint.json
       - coverage-reporter/send_report:
           coverage-reports: "/Users/distiller/project/lcov.info"
           project-token: $CODACY_PROJECT_TOKEN
+
 workflows:
-  build:
+  version: 2
+  lint-and-build:
     jobs:
-      - build
+      - lint
+      - build:
+          requires:
+            - lint

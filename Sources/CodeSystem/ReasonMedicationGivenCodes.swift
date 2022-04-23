@@ -31,11 +31,11 @@
  */
 public enum ReasonMedicationGivenCodes: String, FHIRKitPrimitiveType {
   /// No reason known.
-  case A = "a"
+  case A = "a" // swiftlint:disable:this identifier_name
   
   /// The administration was following an ordered protocol.
-  case B = "b"
+  case B = "b" // swiftlint:disable:this identifier_name
   
   /// The administration was needed to treat an emergency.
-  case C = "c"
+  case C = "c" // swiftlint:disable:this identifier_name
 }

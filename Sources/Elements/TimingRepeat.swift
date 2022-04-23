@@ -189,12 +189,12 @@ open class TimingRepeat: Element {
     
     if let _bounds = bounds {
       switch _bounds {
-        case .duration(let _value):
-          try _value.encode(on: &_container, forKey: .boundsDuration)
-        case .period(let _value):
-          try _value.encode(on: &_container, forKey: .boundsPeriod)
-        case .range(let _value):
-          try _value.encode(on: &_container, forKey: .boundsRange)
+      case .duration(let _value):
+        try _value.encode(on: &_container, forKey: .boundsDuration)
+      case .period(let _value):
+        try _value.encode(on: &_container, forKey: .boundsPeriod)
+      case .range(let _value):
+        try _value.encode(on: &_container, forKey: .boundsRange)
       }
     }
     

@@ -142,10 +142,10 @@ open class DataRequirement: Element {
     
     if let _enum = subject {
       switch _enum {
-        case .codableConcept(let _value):
-          try _value.encode(on: &_container, forKey: .subjectCodableConcept)
-        case .reference(let _value):
-          try _value.encode(on: &_container, forKey: .subjectReference)
+      case .codableConcept(let _value):
+        try _value.encode(on: &_container, forKey: .subjectCodableConcept)
+      case .reference(let _value):
+        try _value.encode(on: &_container, forKey: .subjectReference)
       }
     }
   

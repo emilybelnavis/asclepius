@@ -31,7 +31,7 @@ public protocol FHIRKitIntegerRepresentable: ExpressibleByIntegerLiteral, Equata
 
 extension FHIRKitIntegerRepresentable where IntegerLiteralType: Equatable {
     
-    public static func ==(l: Self, r: Self) -> Bool {
-        return l.integer == r.integer
+    public static func == (leftSide: Self, rightSide: Self) -> Bool {
+        return leftSide.integer == rightSide.integer
     }
 }

@@ -1,7 +1,7 @@
 //
 //  FHIRKit+DateParserError-Tests.swift
 //  FHIRKit
-//  
+//
 //  Copyright (c) 2022 Bitmatic Ltd.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy

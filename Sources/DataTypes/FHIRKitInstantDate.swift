@@ -107,7 +107,7 @@ public struct FHIRKitInstantDate: FHIRKitPrimitiveType {
 
 extension FHIRKitInstantDate: ExpressibleByStringLiteral {
   public init(stringLiteral value: StringLiteralType) {
-    try! self.init(value)
+    try! self.init(value) // swiftlint:disable:this force_try
   }
 }
 
@@ -132,48 +132,48 @@ extension FHIRKitInstantDate: CustomStringConvertible {
 }
 
 extension FHIRKitInstantDate: Equatable {
-  public static func ==(l: FHIRKitInstantDate, r: FHIRKitInstantDate) -> Bool {
-    if l.year != r.year {
+  public static func == (leftSide: FHIRKitInstantDate, rightSide: FHIRKitInstantDate) -> Bool {
+    if leftSide.year != rightSide.year {
       return false
     }
     
-    if l.month != r.month {
+    if leftSide.month != rightSide.month {
       return false
     }
     
-    if l.day != r.day {
-      return false
-    }
-    
-    return true
-  }
-  
-  public static func ==(l: FHIRKitInstantDate, r: FHIRKitDate) -> Bool {
-    if l.year != r.year {
-      return false
-    }
-    
-    if l.month != r.month {
-      return false
-    }
-    
-    if l.day != r.day {
+    if leftSide.day != rightSide.day {
       return false
     }
     
     return true
   }
   
-  public static func ==(l: FHIRKitDate, r: FHIRKitInstantDate) -> Bool {
-    if l.year != r.year {
+  public static func == (leftSide: FHIRKitInstantDate, rightSide: FHIRKitDate) -> Bool {
+    if leftSide.year != rightSide.year {
       return false
     }
     
-    if l.month != r.month {
+    if leftSide.month != rightSide.month {
       return false
     }
     
-    if l.day != r.day {
+    if leftSide.day != rightSide.day {
+      return false
+    }
+    
+    return true
+  }
+  
+  public static func == (leftSide: FHIRKitDate, rightSide: FHIRKitInstantDate) -> Bool {
+    if leftSide.year != rightSide.year {
+      return false
+    }
+    
+    if leftSide.month != rightSide.month {
+      return false
+    }
+    
+    if leftSide.day != rightSide.day {
       return false
     }
     
@@ -182,45 +182,42 @@ extension FHIRKitInstantDate: Equatable {
 }
 
 extension FHIRKitInstantDate: Comparable {
-  public static func <(l: FHIRKitInstantDate, r: FHIRKitInstantDate) -> Bool {
-    if l.year < r.year {
+  public static func < (leftSide: FHIRKitInstantDate, rightSide: FHIRKitInstantDate) -> Bool {
+    if leftSide.year < rightSide.year {
       return true
-    } else if l.year == r.year {
-      if l.month < r.month {
+    } else if leftSide.year == rightSide.year {
+      if leftSide.month < rightSide.month {
         return true
-      } else if l.month == r.month {
-        return l.day < r.day
+      } else if leftSide.month == rightSide.month {
+        return leftSide.day < rightSide.day
       }
     }
-    
     return false
   }
   
-  public static func <(l: FHIRKitInstantDate, r: FHIRKitDate) -> Bool {
-    if l.year < r.year {
+  public static func < (leftSide: FHIRKitInstantDate, rightSide: FHIRKitDate) -> Bool {
+    if leftSide.year < rightSide.year {
       return true
-    } else if l.year == r.year {
-      if l.month < r.month ?? 0 {
+    } else if leftSide.year == rightSide.year {
+      if leftSide.month < rightSide.month ?? 0 {
        return true
-      } else if l.month == r.month {
-        return l.day < r.day ?? 0
+      } else if leftSide.month == rightSide.month {
+        return leftSide.day < rightSide.day ?? 0
       }
     }
-    
     return false
   }
   
-  public static func <(l: FHIRKitDate, r: FHIRKitInstantDate) -> Bool {
-    if l.year < r.year {
+  public static func < (leftSide: FHIRKitDate, rightSide: FHIRKitInstantDate) -> Bool {
+    if leftSide.year < rightSide.year {
       return true
-    } else if l.year == r.year {
-      if l.month ?? 0 < r.month {
+    } else if leftSide.year == rightSide.year {
+      if leftSide.month ?? 0 < rightSide.month {
         return true
-      } else if l.month == r.month {
-        return l.day ?? 0 < r.day
+      } else if leftSide.month == rightSide.month {
+        return leftSide.day ?? 0 < rightSide.day
       }
     }
-    
     return false
   }
 }

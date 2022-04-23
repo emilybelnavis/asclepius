@@ -28,36 +28,36 @@ public protocol FHIRKitType: Codable, Hashable {
 
 extension FHIRKitType {
     
-    public init<K>(from parentContainer: KeyedDecodingContainer<K>, forKey key: K) throws {
+    public init<_Key>(from parentContainer: KeyedDecodingContainer<_Key>, forKey key: _Key) throws {
         self = try parentContainer.decode(Self.self, forKey: key)
     }
     
-    public init?<K>(from parentContainer: KeyedDecodingContainer<K>, forKeyIfPresent key: K) throws {
+    public init?<_Key>(from parentContainer: KeyedDecodingContainer<_Key>, forKeyIfPresent key: _Key) throws {
         guard let decoded = try parentContainer.decodeIfPresent(Self.self, forKey: key) else {
             return nil
         }
         self = decoded
     }
     
-    public func encode<K>(on parentContainer: inout KeyedEncodingContainer<K>, forKey key: K) throws {
+    public func encode<_Key>(on parentContainer: inout KeyedEncodingContainer<_Key>, forKey key: _Key) throws {
         try parentContainer.encode(self, forKey: key)
     }
 }
 
 extension Array where Element: FHIRKitType {
     
-    public init<K>(from container: KeyedDecodingContainer<K>, forKey key: K) throws {
+    public init<_Key>(from container: KeyedDecodingContainer<_Key>, forKey key: _Key) throws {
         self = try container.decode(Self.self, forKey: key)
     }
     
-    public init?<K>(from container: KeyedDecodingContainer<K>, forKeyIfPresent key: K) throws {
+    public init?<_Key>(from container: KeyedDecodingContainer<_Key>, forKeyIfPresent key: _Key) throws {
         guard let decoded = try container.decodeIfPresent(Self.self, forKey: key) else {
             return nil
         }
         self = decoded
     }
     
-    public func encode<K>(on parentContainer: inout KeyedEncodingContainer<K>, forKey key: K) throws {
+    public func encode<_Key>(on parentContainer: inout KeyedEncodingContainer<_Key>, forKey key: _Key) throws {
         try parentContainer.encode(self, forKey: key)
     }
 }

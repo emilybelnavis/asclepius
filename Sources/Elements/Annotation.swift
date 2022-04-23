@@ -99,10 +99,10 @@ open class Annotation: Element {
     
     if let _enum = author {
       switch _enum {
-        case.reference(let _value):
-          try _value.encode(on: &_container, forKey: .authorReference)
-        case .string(let _value):
-          try _value.encode(on: &_container, forKey: .authorString, auxiliaryKey: ._authorString)
+      case.reference(let _value):
+        try _value.encode(on: &_container, forKey: .authorReference)
+      case .string(let _value):
+        try _value.encode(on: &_container, forKey: .authorString, auxiliaryKey: ._authorString)
       }
     }
     

@@ -95,7 +95,7 @@ extension Canonical: CustomStringConvertible {
 }
 
 extension Canonical: Equatable {
-  public static func ==(leftSide: Canonical, rightSide: Canonical) -> Bool {
+  public static func == (leftSide: Canonical, rightSide: Canonical) -> Bool {
     if leftSide.url != rightSide.url {
       return false
     }
@@ -107,11 +107,11 @@ extension Canonical: Equatable {
     return true
   }
   
-  public static func ==(leftSide: String, rightSide: Canonical) -> Bool {
+  public static func == (leftSide: String, rightSide: Canonical) -> Bool {
     return leftSide == rightSide.description
   }
   
-  public static func ==(leftSide: Canonical, rightSide: String) -> Bool {
+  public static func == (leftSide: Canonical, rightSide: String) -> Bool {
     return leftSide.description == rightSide
   }
 }
@@ -123,7 +123,6 @@ extension String {
     guard let url = parsedURL else {
       return nil
     }
-    
     return Canonical(url, version: version)
   }
   
@@ -131,7 +130,6 @@ extension String {
     guard let uri = asFHIRKitCanonical() else {
       return nil
     }
-    
     return FHIRKitPrimitive(uri)
   }
 }

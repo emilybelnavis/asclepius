@@ -130,14 +130,14 @@ open class TriggerDefinition: Element {
     
     if let _timing = timing {
       switch _timing {
-        case .date(let _value):
-          try _value.encode(on: &_container, forKey: .timingDate, auxiliaryKey: ._timingDate)
-        case .dateTime(let _value):
-          try _value.encode(on: &_container, forKey: .timingDateTime, auxiliaryKey: ._timingDateTime)
-        case .reference(let _value):
-          try _value.encode(on: &_container, forKey: .timingReference)
-        case .timing(let _value):
-          try _value.encode(on: &_container, forKey: .timingTiming)
+      case .date(let _value):
+        try _value.encode(on: &_container, forKey: .timingDate, auxiliaryKey: ._timingDate)
+      case .dateTime(let _value):
+        try _value.encode(on: &_container, forKey: .timingDateTime, auxiliaryKey: ._timingDateTime)
+      case .reference(let _value):
+        try _value.encode(on: &_container, forKey: .timingReference)
+      case .timing(let _value):
+        try _value.encode(on: &_container, forKey: .timingTiming)
       }
     }
    

@@ -64,7 +64,7 @@ open class Timing: BackboneElement {
   // MARK: - Codable
   private enum CodingKeys: String, CodingKey {
     case event; case _event
-    case `repeat` = "repeat"
+    case `repeat` = "repeat" // swiftlint:disable:this redundant_string_enum_value
     case code
   }
   

@@ -98,7 +98,7 @@ public struct FHIRKitInstant: FHIRKitPrimitiveType {
 
 extension FHIRKitInstant: ExpressibleByStringLiteral {
   public init(stringLiteral value: StringLiteralType) {
-    try! self.init(value)
+    try! self.init(value) // swiftlint:disable:this force_try
   }
 }
 
@@ -127,40 +127,40 @@ extension FHIRKitInstant: CustomStringConvertible {
 
 extension FHIRKitInstant: Equatable {
   
-  public static func ==(l: FHIRKitInstant, r: FHIRKitInstant) -> Bool {
-    if l.date != r.date {
+  public static func == (leftSide: FHIRKitInstant, rightSide: FHIRKitInstant) -> Bool {
+    if leftSide.date != rightSide.date {
       return false
     }
-    if l.time != r.time {
+    if leftSide.time != rightSide.time {
       return false
     }
-    if l.timeZone != r.timeZone {
-      return false
-    }
-    return true
-  }
-  
-  public static func ==(l: FHIRKitInstant, r: FHIRKitDateTime) -> Bool {
-    if !(l.date == r.date) {
-      return false
-    }
-    if l.time != r.time {
-      return false
-    }
-    if l.timeZone != r.timeZone {
+    if leftSide.timeZone != rightSide.timeZone {
       return false
     }
     return true
   }
   
-  public static func ==(l: FHIRKitDateTime, r: FHIRKitInstant) -> Bool {
-    if !(l.date == r.date) {
+  public static func == (leftSide: FHIRKitInstant, rightSide: FHIRKitDateTime) -> Bool {
+    if !(leftSide.date == rightSide.date) {
       return false
     }
-    if l.time != r.time {
+    if leftSide.time != rightSide.time {
       return false
     }
-    if l.timeZone != r.timeZone {
+    if leftSide.timeZone != rightSide.timeZone {
+      return false
+    }
+    return true
+  }
+  
+  public static func == (leftSide: FHIRKitDateTime, rightSide: FHIRKitInstant) -> Bool {
+    if !(leftSide.date == rightSide.date) {
+      return false
+    }
+    if leftSide.time != rightSide.time {
+      return false
+    }
+    if leftSide.timeZone != rightSide.timeZone {
       return false
     }
     return true
@@ -169,29 +169,29 @@ extension FHIRKitInstant: Equatable {
 
 extension FHIRKitInstant: Comparable {
   
-  public static func <(l: FHIRKitInstant, r: FHIRKitInstant) -> Bool {
+  public static func < (leftSide: FHIRKitInstant, rightSide: FHIRKitInstant) -> Bool {
     do {
-      return try l.compare(r) == .orderedAscending
+      return try leftSide.compare(rightSide) == .orderedAscending
     } catch {
-      print("Instant comparison \(String(describing: l)) < \(String(describing: r)) raised \(String(describing: error))")
+      print("Instant comparison \(String(describing: leftSide)) < \(String(describing: rightSide)) raised \(String(describing: error))")
       return false
     }
   }
   
-  public static func <(l: FHIRKitInstant, r: FHIRKitDateTime) -> Bool {
+  public static func < (leftSide: FHIRKitInstant, rightSide: FHIRKitDateTime) -> Bool {
     do {
-      return try l.compare(r) == .orderedAscending
+      return try leftSide.compare(rightSide) == .orderedAscending
     } catch {
-      print("Instant comparison \(String(describing: l)) < \(String(describing: r)) raised \(String(describing: error))")
+      print("Instant comparison \(String(describing: leftSide)) < \(String(describing: rightSide)) raised \(String(describing: error))")
       return false
     }
   }
   
-  public static func <(l: FHIRKitDateTime, r: FHIRKitInstant) -> Bool {
+  public static func < (leftSide: FHIRKitDateTime, rightSide: FHIRKitInstant) -> Bool {
     do {
-      return try l.compare(r) == .orderedAscending
+      return try leftSide.compare(rightSide) == .orderedAscending
     } catch {
-      print("Instant comparison \(String(describing: l)) < \(String(describing: r)) raised \(String(describing: error))")
+      print("Instant comparison \(String(describing: leftSide)) < \(String(describing: rightSide)) raised \(String(describing: error))")
       return false
     }
   }

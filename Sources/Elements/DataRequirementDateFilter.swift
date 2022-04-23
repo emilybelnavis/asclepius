@@ -115,12 +115,12 @@ open class DataRequirementDateFilter: Element {
     
     if let _enum = value {
       switch _enum {
-        case .dateTime(let _value):
-          try _value.encode(on: &_container, forKey: .valueDateTime, auxiliaryKey: ._valueDateTime)
-        case .period(let _value):
-          try _value.encode(on: &_container, forKey: .valuePeriod)
-        case .duration(let _value):
-          try _value.encode(on: &_container, forKey: .valueDuration)
+      case .dateTime(let _value):
+        try _value.encode(on: &_container, forKey: .valueDateTime, auxiliaryKey: ._valueDateTime)
+      case .period(let _value):
+        try _value.encode(on: &_container, forKey: .valuePeriod)
+      case .duration(let _value):
+        try _value.encode(on: &_container, forKey: .valueDuration)
       }
     }
     

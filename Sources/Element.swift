@@ -41,7 +41,7 @@ open class Element: FHIRKitType {
   
   // MARK: - Codable
   private enum CodingKeys: String, CodingKey {
-    case `extension` = "extension"
+    case `extension` = "extension" // swiftlint:disable:this redundant_string_enum_value
     case id; case _id
   }
   
@@ -61,8 +61,8 @@ open class Element: FHIRKitType {
   }
   
   // MARK: - Equatable
-  public static func ==(l: Element, r: Element) -> Bool {
-    return l.isEqual(to: r)
+  public static func == (leftSide: Element, rightSide: Element) -> Bool {
+    return leftSide.isEqual(to: rightSide)
   }
   
   public func isEqual(to _other: Any?) -> Bool {

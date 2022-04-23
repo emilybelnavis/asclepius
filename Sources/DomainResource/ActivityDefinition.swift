@@ -363,6 +363,7 @@ open class ActivityDefinition: DomainResource {
     case version; case _version
   }
   
+  // swiftlint:disable cyclomatic_complexity
   public required init(from decoder: Decoder) throws {
     let _container = try decoder.container(keyedBy: CodingKeys.self)
     
@@ -480,36 +481,36 @@ open class ActivityDefinition: DomainResource {
     
     if let _product = product {
       switch _product {
-        case .codableConcept(let _value):
-          try _value.encode(on: &_container, forKey: .productCodableConcept)
-        case .reference(let _value):
-          try _value.encode(on: &_container, forKey: .productReference)
+      case .codableConcept(let _value):
+        try _value.encode(on: &_container, forKey: .productCodableConcept)
+      case .reference(let _value):
+        try _value.encode(on: &_container, forKey: .productReference)
       }
     }
     
     if let _subject = subject {
       switch _subject {
-        case .codableConcept(let _value):
-          try _value.encode(on: &_container, forKey: .subjectCodableConcept)
-        case .reference(let _value):
-          try _value.encode(on: &_container, forKey: .subjectReference)
+      case .codableConcept(let _value):
+        try _value.encode(on: &_container, forKey: .subjectCodableConcept)
+      case .reference(let _value):
+        try _value.encode(on: &_container, forKey: .subjectReference)
       }
     }
     
     if let _timing = timing {
       switch _timing {
-        case .age(let _value):
-          try _value.encode(on: &_container, forKey: .timingAge)
-        case .dateTime(let _value):
-          try _value.encode(on: &_container, forKey: .timingDateTime, auxiliaryKey: ._timingDateTime)
-        case .duration(let _value):
-          try _value.encode(on: &_container, forKey: .timingDuration)
-        case .period(let _value):
-          try _value.encode(on: &_container, forKey: .timingPeriod)
-        case .range(let _value):
-          try _value.encode(on: &_container, forKey: .timingRange)
-        case .timing(let _value):
-          try _value.encode(on: &_container, forKey: .timingTiming)
+      case .age(let _value):
+        try _value.encode(on: &_container, forKey: .timingAge)
+      case .dateTime(let _value):
+        try _value.encode(on: &_container, forKey: .timingDateTime, auxiliaryKey: ._timingDateTime)
+      case .duration(let _value):
+        try _value.encode(on: &_container, forKey: .timingDuration)
+      case .period(let _value):
+        try _value.encode(on: &_container, forKey: .timingPeriod)
+      case .range(let _value):
+        try _value.encode(on: &_container, forKey: .timingRange)
+      case .timing(let _value):
+        try _value.encode(on: &_container, forKey: .timingTiming)
       }
     }
     

@@ -1,7 +1,7 @@
 //
 //  FHIRKitDate.swift
 //  FHIRKit
-
+//
 //  Copyright (c) 2022 Bitmatic Ltd.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -119,7 +119,7 @@ public struct FHIRKitDate: FHIRKitPrimitiveType {
 
 extension FHIRKitDate: ExpressibleByStringLiteral {
   public init(stringLiteral value: StringLiteralType) {
-    try! self.init(value)
+    try! self.init(value) // swiftlint:disable:this force_try
   }
 }
 
@@ -149,16 +149,16 @@ extension FHIRKitDate: CustomStringConvertible {
 }
 
 extension FHIRKitDate: Equatable {
-  public static func ==(l: FHIRKitDate, r: FHIRKitDate) -> Bool {
-    if l.year != r.year {
+  public static func == (leftSide: FHIRKitDate, rightSide: FHIRKitDate) -> Bool {
+    if leftSide.year != rightSide.year {
       return false
     }
     
-    if l.month != r.month {
+    if leftSide.month != rightSide.month {
       return false
     }
     
-    if l.day != r.day {
+    if leftSide.day != rightside.day {
       return false
     }
     
@@ -167,14 +167,14 @@ extension FHIRKitDate: Equatable {
 }
 
 extension FHIRKitDate: Comparable {
-  public static func <(l: FHIRKitDate, r: FHIRKitDate) -> Bool {
-    if l.year < r.year {
+  public static func < (leftSide: FHIRKitDate, rightSide: FHIRKitDate) -> Bool {
+    if leftSide.year < rightSide.year {
       return true
-    } else if l.year == r.year {
-      if l.month ?? 0 < r.month ?? 0 {
+    } else if leftSide.year == rightSide.year {
+      if leftSide.month ?? 0 < rightSide.month ?? 0 {
           return true
-      } else if l.month == r.month {
-      return l.day ?? 0 < r.day ?? 0
+      } else if leftSide.month == rightSide.month {
+      return leftSide.day ?? 0 < rightSide.day ?? 0
       }
     }
     

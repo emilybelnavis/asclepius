@@ -25,99 +25,99 @@
 import Foundation
 
 public struct FHIRKitDateParserErrorPosition: CustomStringConvertible {
-    public let string: String
-    public let location: Int
-    
-    public init(string: String, location: Int) {
-        self.string = string
-        self.location = location
-    }
-    
-    public var description: String {
-        return "[\(location)] in “\(string)”"
-    }
+  public let string: String
+  public let location: Int
+  
+  public init(string: String, location: Int) {
+    self.string = string
+    self.location = location
+  }
+  
+  public var description: String {
+    return "[\(location)] in “\(string)”"
+  }
 }
 
 // MARK: - FHIRKitDateParserErrorPosition
 
 extension FHIRKitDateParserErrorPosition: Equatable {
-    public static func ==(lhs: FHIRKitDateParserErrorPosition, rhs: FHIRKitDateParserErrorPosition) -> Bool {
-        if lhs.string != rhs.string {
-            return false
-        }
-        if lhs.location != rhs.location {
-            return false
-        }
-        return true
+  public static func == (leftSide: FHIRKitDateParserErrorPosition, rightSide: FHIRKitDateParserErrorPosition) -> Bool {
+    if leftSide.string != rightSide.string {
+      return false
     }
+    if leftSide.location != rightSide.location {
+      return false
+    }
+    return true
+  }
 }
 
 // MARK: - FHIRKitDateParserError
 
 public enum FHIRKitDateParserError: LocalizedError {
-    case invalidSeparator(FHIRKitDateParserErrorPosition)
-    case invalidYear(FHIRKitDateParserErrorPosition)
-    case invalidMonth(FHIRKitDateParserErrorPosition)
-    case invalidDay(FHIRKitDateParserErrorPosition)
-    case invalidHour(FHIRKitDateParserErrorPosition)
-    case invalidMinute(FHIRKitDateParserErrorPosition)
-    case invalidSecond(FHIRKitDateParserErrorPosition)
-    case invalidTimeZonePrefix(FHIRKitDateParserErrorPosition)
-    case invalidTimeZoneHour(FHIRKitDateParserErrorPosition)
-    case invalidTimeZoneMinute(FHIRKitDateParserErrorPosition)
-    case additionalCharacters(FHIRKitDateParserErrorPosition)
-    
-    public var errorDescription: String? {
-        switch self {
-        case .invalidSeparator(let position):
-            return "Invalid separator at \(position)"
-        case .invalidYear(let position):
-            return "Invalid year at \(position)"
-        case .invalidMonth(let position):
-            return "Invalid month at \(position)"
-        case .invalidDay(let position):
-            return "Invalid day at \(position)"
-        case .invalidHour(let position):
-            return "Invalid hour at \(position)"
-        case .invalidMinute(let position):
-            return "Invalid minute at \(position)"
-        case .invalidSecond(let position):
-            return "Invalid second at \(position)"
-        case .invalidTimeZonePrefix(let position):
-            return "Invalid time zone prefix at \(position)"
-        case .invalidTimeZoneHour(let position):
-            return "Invalid time zone hour at \(position)"
-        case .invalidTimeZoneMinute(let position):
-            return "Invalid time zone minute at \(position)"
-        case .additionalCharacters(let position):
-            return "Unexpected characters after \(position)"
-        }
+  case invalidSeparator(FHIRKitDateParserErrorPosition)
+  case invalidYear(FHIRKitDateParserErrorPosition)
+  case invalidMonth(FHIRKitDateParserErrorPosition)
+  case invalidDay(FHIRKitDateParserErrorPosition)
+  case invalidHour(FHIRKitDateParserErrorPosition)
+  case invalidMinute(FHIRKitDateParserErrorPosition)
+  case invalidSecond(FHIRKitDateParserErrorPosition)
+  case invalidTimeZonePrefix(FHIRKitDateParserErrorPosition)
+  case invalidTimeZoneHour(FHIRKitDateParserErrorPosition)
+  case invalidTimeZoneMinute(FHIRKitDateParserErrorPosition)
+  case additionalCharacters(FHIRKitDateParserErrorPosition)
+  
+  public var errorDescription: String? {
+    switch self {
+    case .invalidSeparator(let position):
+        return "Invalid separator at \(position)"
+    case .invalidYear(let position):
+        return "Invalid year at \(position)"
+    case .invalidMonth(let position):
+        return "Invalid month at \(position)"
+    case .invalidDay(let position):
+        return "Invalid day at \(position)"
+    case .invalidHour(let position):
+        return "Invalid hour at \(position)"
+    case .invalidMinute(let position):
+        return "Invalid minute at \(position)"
+    case .invalidSecond(let position):
+        return "Invalid second at \(position)"
+    case .invalidTimeZonePrefix(let position):
+        return "Invalid time zone prefix at \(position)"
+    case .invalidTimeZoneHour(let position):
+        return "Invalid time zone hour at \(position)"
+    case .invalidTimeZoneMinute(let position):
+        return "Invalid time zone minute at \(position)"
+    case .additionalCharacters(let position):
+        return "Unexpected characters after \(position)"
     }
+  }
     
-    public var errorPosition: FHIRKitDateParserErrorPosition {
-        switch self {
-        case .invalidSeparator(let position):
-            return position
-        case .invalidYear(let position):
-            return position
-        case .invalidMonth(let position):
-            return position
-        case .invalidDay(let position):
-            return position
-        case .invalidHour(let position):
-            return position
-        case .invalidMinute(let position):
-            return position
-        case .invalidSecond(let position):
-            return position
-        case .invalidTimeZonePrefix(let position):
-            return position
-        case .invalidTimeZoneHour(let position):
-            return position
-        case .invalidTimeZoneMinute(let position):
-            return position
-        case .additionalCharacters(let position):
-            return position
-        }
+  public var errorPosition: FHIRKitDateParserErrorPosition {
+    switch self {
+    case .invalidSeparator(let position):
+        return position
+    case .invalidYear(let position):
+        return position
+    case .invalidMonth(let position):
+        return position
+    case .invalidDay(let position):
+        return position
+    case .invalidHour(let position):
+        return position
+    case .invalidMinute(let position):
+        return position
+    case .invalidSecond(let position):
+        return position
+    case .invalidTimeZonePrefix(let position):
+        return position
+    case .invalidTimeZoneHour(let position):
+        return position
+    case .invalidTimeZoneMinute(let position):
+        return position
+    case .additionalCharacters(let position):
+        return position
     }
+  }
 }

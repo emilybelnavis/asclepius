@@ -111,14 +111,14 @@ open class UsageContext: Element {
     try code.encode(on: &_container, forKey: .code)
     
     switch value {
-      case .codableConcept(let _value):
-        try _value.encode(on: &_container, forKey: .valueCodableConcept)
-      case .quantity(let _value):
-        try _value.encode(on: &_container, forKey: .valueQuantity)
-      case .range(let _value):
-        try _value.encode(on: &_container, forKey: .valueRange)
-      case .reference(let _value):
-        try _value.encode(on: &_container, forKey: .valueReference)
+    case .codableConcept(let _value):
+      try _value.encode(on: &_container, forKey: .valueCodableConcept)
+    case .quantity(let _value):
+      try _value.encode(on: &_container, forKey: .valueQuantity)
+    case .range(let _value):
+      try _value.encode(on: &_container, forKey: .valueRange)
+    case .reference(let _value):
+      try _value.encode(on: &_container, forKey: .valueReference)
     }
     
     try super.encode(to: encoder)

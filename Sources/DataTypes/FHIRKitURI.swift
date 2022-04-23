@@ -58,16 +58,16 @@ extension FHIRKitURI: CustomStringConvertible {
 }
 
 extension FHIRKitURI: Equatable {
-  public static func ==(l: FHIRKitURI, r: FHIRKitURI) -> Bool {
-    return l.url == r.url
+  public static func == (leftSide: FHIRKitURI, rightside: FHIRKitURI) -> Bool {
+    return leftSide.url == rightSide.url
   }
   
-  public static func ==(l: URL, r: FHIRKitURI) -> Bool {
-    return l == r.url
+  public static func == (leftSide: URL, rightSide: FHIRKitURI) -> Bool {
+    return leftSide == rightSide.url
   }
   
-  public static func ==(l: FHIRKitURI, r: URL) -> Bool {
-    return l.url == r
+  public static func == (leftSide: FHIRKitURI, rightSide: URL) -> Bool {
+    return leftSide.url == rightSide
   }
 }
 

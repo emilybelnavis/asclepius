@@ -28,6 +28,7 @@
  URL: http://hl7.org/fhir/audit-event-action
  ValueSet: http://hl7.org/fhir/ValueSet/audit-event-action
  */
+// swiftlint:disable identifier_name
 public enum AuditEventAction: String, FHIRKitPrimitiveType {
   /// Create new database object (ex: placing an order)
   case C

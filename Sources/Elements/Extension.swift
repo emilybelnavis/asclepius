@@ -157,6 +157,7 @@ open class Extension: Element {
     case valueUuid; case _valueUuid
   }
   
+  // swiftlint:disable cyclomatic_complexity
   /// Initializer for Decodable
   public required init(from decoder: Decoder) throws {
     let _container = try decoder.container(keyedBy: CodingKeys.self)

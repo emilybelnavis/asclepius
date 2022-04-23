@@ -68,7 +68,7 @@ extension FHIRKitBase64Binary: Codable {
 }
 
 extension FHIRKitBase64Binary: Equatable {
-  public static func ==(left: FHIRKitBase64Binary, right: FHIRKitBase64Binary) -> Bool {
+  public static func == (left: FHIRKitBase64Binary, right: FHIRKitBase64Binary) -> Bool {
     return left.dataString == right.dataString
   }
 }

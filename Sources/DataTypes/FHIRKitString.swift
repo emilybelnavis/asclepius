@@ -84,16 +84,16 @@ extension FHIRKitString: CustomStringConvertible {
 }
 
 extension FHIRKitString: Equatable {
-  public static func ==(l: FHIRKitString, r: FHIRKitString) -> Bool {
-    return l.string == r.string
+  public static func == (leftSide: FHIRKitString, rightSide: FHIRKitString) -> Bool {
+    return leftSide.string == rightSide.string
   }
   
-  public static func ==(l: String, r: FHIRKitString) -> Bool {
-    return l == r.string
+  public static func == (leftSide: String, rightSide: FHIRKitString) -> Bool {
+    return leftSide == rightSide.string
   }
   
-  public static func ==(l: FHIRKitString, r: String) -> Bool {
-    return l.string == r
+  public static func == (leftSide: FHIRKitString, rightSide: String) -> Bool {
+    return leftSide.string == rightSide
   }
 }
 

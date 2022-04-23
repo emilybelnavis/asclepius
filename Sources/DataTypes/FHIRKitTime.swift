@@ -88,6 +88,7 @@ public struct FHIRKitTime: FHIRKitPrimitiveType {
   }
   
   // MARK: Parsing
+  // swiftlint:disable cyclomatic_complexity
   public static func parseComponents(from scanner: Scanner, expectAtEnd: Bool = true) throws -> (hour: UInt8, minute: UInt8, second: Decimal, originalSecondsString: String) {
     let originalCharactersToBeSkipped = scanner.charactersToBeSkipped
     defer { scanner.charactersToBeSkipped = originalCharactersToBeSkipped }
@@ -174,7 +175,7 @@ public struct FHIRKitTime: FHIRKitPrimitiveType {
 
 extension FHIRKitTime: ExpressibleByStringLiteral {
   public init(stringLiteral value: StringLiteralType) {
-    try! self.init(value)
+    try! self.init(value) // swiftlint:disable:this force_try
   }
 }
 
@@ -214,16 +215,16 @@ extension FHIRKitTime: CustomStringConvertible {
 }
 
 extension FHIRKitTime: Equatable {
-  public static func ==(l: FHIRKitTime, r: FHIRKitTime) -> Bool {
-    if l.hour != r.hour {
+  public static func == (leftSide: FHIRKitTime, rightSide: FHIRKitTime) -> Bool {
+    if leftSide.hour != rightSide.hour {
       return false
     }
     
-    if l.minute != r.minute {
+    if leftSide.minute != rightSide.minute {
       return false
     }
     
-    if l.second != r.second {
+    if leftSide.second != rightSide.second {
       return false
     }
     
@@ -232,14 +233,14 @@ extension FHIRKitTime: Equatable {
 }
 
 extension FHIRKitTime: Comparable {
-  public static func <(l: FHIRKitTime, r: FHIRKitTime) -> Bool {
-    if l.hour < r.hour {
+  public static func < (leftSide: FHIRKitTime, rightSide: FHIRKitTime) -> Bool {
+    if leftSide.hour < rightSide.hour {
       return true
-    } else if l.hour == r.hour {
-      if l.minute < r.minute {
+    } else if leftSide.hour == rightSide.hour {
+      if leftSide.minute < rightSide.minute {
         return true
-      } else if l.minute == r.minute {
-        return l.second < r.second
+      } else if leftSide.minute == rightSide.minute {
+        return leftSide.second < rightSide.second
       }
     }
     return false

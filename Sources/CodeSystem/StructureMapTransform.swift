@@ -71,7 +71,7 @@ public enum StructureMapTransform: String, FHIRKitPrimitiveType {
   case cc
   
   /// Create a Coding. Parameters = (system. Code[, display]).
-  case C = "c"
+  case C = "c" // swiftlint:disable:this identifier_name
   
   /// Create a quantity. Parameters = (text) or (value, unit, [system, code]) where text is the natural representation
   /// e.g. [comparator]value[space]unit.

@@ -50,6 +50,7 @@ public struct FHIRKitDecimal: FHIRKitPrimitiveType, ExpressibleByFloatLiteral {
     self.decimal = decimal
   }
   
+  // swiftlint:disable compiler_protocol_init
   public init(floatLiteral value: Self.FloatLiteralType) {
     self.decimal = Decimal(floatLiteral: value)
   }
@@ -68,8 +69,8 @@ extension FHIRKitDecimal: Codable {
 }
 
 extension FHIRKitDecimal: Equatable {
-  public static func ==(l: FHIRKitDecimal, r: FHIRKitDecimal) -> Bool {
-    return l.decimal == r.decimal
+  public static func == (leftSide: FHIRKitDecimal, rightSide: FHIRKitDecimal) -> Bool {
+    return leftSide.decimal == rightSide.decimal
   }
 }
 

@@ -28,6 +28,8 @@
  URL: http://terminology.hl7.org/CodeSystem/payment-adjustment-reason
  ValueSet: http://hl7.org/fhir/ValueSet/payment-adjustment-reason
  */
+
+// swiftlint:disable identifier_name
 public enum PaymentAdjustmentReasonCodes: String, FHIRKitPrimitiveType {
   /// Prior Payment Reversal
   case A001 = "a001"

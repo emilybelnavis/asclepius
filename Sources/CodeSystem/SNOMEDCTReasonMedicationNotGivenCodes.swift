@@ -30,14 +30,14 @@
  */
 public enum SNOMEDCTReasonMedicationNotGivenCodes: String, FHIRKitPrimitiveType {
   /// No reason known.
-  case A = "a"
+  case A = "a" // swiftlint:disable:this identifier_name
   
   /// The patient was not available when the dose was scheduled.
-  case B = "b"
+  case B = "b" // swiftlint:disable:this identifier_name
   
   /// The patient was asleep when the dose was scheduled.
-  case C = "c"
+  case C = "c" // swiftlint:disable:this identifier_name
   
   /// The patient was given the medication and immediately vomited it back.
-  case D = "d"
+  case D = "d" // swiftlint:disable:this identifier_name
 }

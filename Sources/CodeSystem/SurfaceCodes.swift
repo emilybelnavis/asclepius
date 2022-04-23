@@ -30,28 +30,28 @@
  */
 public enum SurfaceCodes: String, FHIRKitPrimitiveType {
   /// The surface of a tooth that is closest to the midline (middle) of the face.
-  case M
+  case M // swiftlint:disable:this identifier_name
   
   /// The chewing surface of posterior teeth.
-  case O
+  case O // swiftlint:disable:this identifier_name
   
   /// The biting edge of anterior teeth.
-  case I
+  case I // swiftlint:disable:this identifier_name
   
   /// The surface of a tooth that faces away from the midline of the face.
-  case D
+  case D // swiftlint:disable:this identifier_name
   
   /// The surface of a posterior tooth facing the cheeks.
-  case B
+  case B // swiftlint:disable:this identifier_name
   
   /// The surface of a tooth facing the lips.
-  case V
+  case V // swiftlint:disable:this identifier_name
   
   /// The surface of a tooth facing the tongue.
-  case L
+  case L // swiftlint:disable:this identifier_name
   
   /// The Mesioclusal surfaces of a tooth.
-  case MO
+  case MO 
   
   /// The Distoclusal surfaces of a tooth.
   case DO

@@ -96,27 +96,27 @@ public struct FHIRKitPrimitive<PrimitiveType: FHIRKitPrimitiveType>: FHIRKitPrim
 
 // MARK: - Hashable
 extension FHIRKitPrimitive: Hashable {
-  public static func ==(l: FHIRKitPrimitive<PrimitiveType>, r: FHIRKitPrimitive<PrimitiveType>) -> Bool {
-    if l.value != r.value {
+  public static func == (leftSide: FHIRKitPrimitive<PrimitiveType>, rightSide: FHIRKitPrimitive<PrimitiveType>) -> Bool {
+    if leftSide.value != rightSide.value {
       return false
     }
     
-    if l.id != r.id {
+    if leftSide.id != rightSide.id {
       return false
     }
     
-    if l.extension != r.extension {
+    if leftSide.extension != rightSide.extension {
       return false
     }
     return true
   }
   
-  public static func ==(l: FHIRKitPrimitive<PrimitiveType>, r: PrimitiveType) -> Bool {
-    return l.value == r
+  public static func == (leftSide: FHIRKitPrimitive<PrimitiveType>, rightSide: PrimitiveType) -> Bool {
+    return leftSide.value == rightSide
   }
   
-  public static func ==(l: PrimitiveType, r: FHIRKitPrimitive<PrimitiveType>) -> Bool {
-    return l == r.value
+  public static func == (leftSide: PrimitiveType, rightSide: FHIRKitPrimitive<PrimitiveType>) -> Bool {
+    return leftSide == rightSide.value
   }
   
   public func hash(into hasher: inout Hasher) {
@@ -128,7 +128,6 @@ extension FHIRKitPrimitive: Hashable {
 
 // MARK: - Codable
 extension FHIRKitPrimitive: Codable {
-  
   private enum CodingKeys: String, CodingKey {
     case id
     case `extension`
@@ -138,7 +137,7 @@ extension FHIRKitPrimitive: Codable {
    Decode the primitive from the given container. Right now this is tailored for FHIR's JSON representation and it
    will look for its value on "key" and id or extensions on "_key".
    */
-  public init<K: CodingKey>(from parentContainer: KeyedDecodingContainer<K>, forKey key: K, auxiliaryKey: K? = nil) throws {
+  public init<_Key: CodingKey>(from parentContainer: KeyedDecodingContainer<_Key>, forKey key: _Key, auxiliaryKey: _Key? = nil) throws {
     let value = try parentContainer.decodeIfPresent(PrimitiveType.self, forKey: key)
     if let auxiliaryKey = auxiliaryKey, let primitive = try parentContainer.decodeIfPresent(Self.self, forKey: auxiliaryKey) {
       self.init(value, id: primitive.id, extension: primitive.extension)
@@ -153,7 +152,7 @@ extension FHIRKitPrimitive: Codable {
    Decode the primitive from the given container. Right now this is tailored for FHIR's JSON representation and it
    will look for its value on "key" and id or extensions on "_key".
    */
-  public init?<K: CodingKey>(from parentContainer: KeyedDecodingContainer<K>, forKeyIfPresent key: K, auxiliaryKey: K? = nil) throws {
+  public init?<_Key: CodingKey>(from parentContainer: KeyedDecodingContainer<_Key>, forKeyIfPresent key: _Key, auxiliaryKey: _Key? = nil) throws {
     let value = try parentContainer.decodeIfPresent(PrimitiveType.self, forKey: key)
     if let auxiliaryKey = auxiliaryKey, let primitive = try parentContainer.decodeIfPresent(Self.self, forKey: auxiliaryKey) {
       self.init(value, id: primitive.id, extension: primitive.extension)
@@ -168,7 +167,7 @@ extension FHIRKitPrimitive: Codable {
    Encode the primitive to the given parent container. Right now this is tailored for FHIR's JSON representation and
    will encode its value to "key" and its id and/or extension, if any, to "_key" given with auxiliaryKey.
    */
-  public func encode<K>(on parentContainer: inout KeyedEncodingContainer<K>, forKey key: K, auxiliaryKey: K? = nil) throws {
+  public func encode<_Key>(on parentContainer: inout KeyedEncodingContainer<_Key>, forKey key: _Key, auxiliaryKey: _Key? = nil) throws {
     if let value = value {
       try parentContainer.encode(value, forKey: key)
     }
@@ -184,8 +183,9 @@ extension FHIRKitPrimitive: Codable {
 
 // MARK: - Array<FHIRKitPrimitiveProtocol>
 
+// swiftlint:disable identifier_name
 extension Array where Element: FHIRKitPrimitiveProtocol {
-  public init<K: CodingKey>(from parentContainer: KeyedDecodingContainer<K>, forKey key: K, auxiliaryKey: K? = nil) throws {
+  public init<_Key: CodingKey>(from parentContainer: KeyedDecodingContainer<_Key>, forKey key: _Key, auxiliaryKey: _Key? = nil) throws {
     let values = try parentContainer.decodeIfPresent([Element.PrimitiveType?].self, forKey: key)
     let primitives = (auxiliaryKey != nil) ? try parentContainer.decodeIfPresent([Element?].self, forKey: auxiliaryKey!): nil
     if let values = values {
@@ -194,7 +194,7 @@ extension Array where Element: FHIRKitPrimitiveProtocol {
         for (i, v) in values.enumerated() {
           let p = primitives[safe: i]
           if let v = v {
-            arr.append(v.asPrimitive(with: p??.id, extension: p??.extension) as! Element)
+            arr.append(v.asPrimitive(with: p??.id, extension: p??.extension) as! Element) // swiftlint:disable:this force_cast
           } else if let pidx = p, let p = pidx {
             arr.append(p)
           }
@@ -210,7 +210,7 @@ extension Array where Element: FHIRKitPrimitiveProtocol {
     }
   }
   
-  public init?<K: CodingKey>(from parentContainer: KeyedDecodingContainer<K>, forKeyIfPresent key: K, auxiliaryKey: K? = nil) throws {
+  public init?<_Key: CodingKey>(from parentContainer: KeyedDecodingContainer<_Key>, forKeyIfPresent key: _Key, auxiliaryKey: _Key? = nil) throws {
     // This is thorny. See testDecodePrimitiveArrayWithID() and testDecodePrimitiveArrayWithOnlyExtension()
     let values = try parentContainer.decodeIfPresent([Element.PrimitiveType?].self, forKey: key)
     let primitives = (auxiliaryKey != nil) ? try parentContainer.decodeIfPresent([Element?].self, forKey: auxiliaryKey!) : nil
@@ -220,7 +220,7 @@ extension Array where Element: FHIRKitPrimitiveProtocol {
         for (i, v) in values.enumerated() {
           let p = primitives[safe: i]
           if let v = v {
-            arr.append(v.asPrimitive(with: p??.id, extension: p??.extension) as! Element)
+            arr.append(v.asPrimitive(with: p??.id, extension: p??.extension) as! Element) // swiftlint:disable:this force_cast
           } else if let pidx = p, let p = pidx {
             arr.append(p)
           }
@@ -236,7 +236,7 @@ extension Array where Element: FHIRKitPrimitiveProtocol {
     }
   }
   
-  public func encode<K>(on parentContainer: inout KeyedEncodingContainer<K>, forKey key: K, auxiliaryKey: K? = nil) throws {
+  public func encode<_Key>(on parentContainer: inout KeyedEncodingContainer<_Key>, forKey key: _Key, auxiliaryKey: _Key? = nil) throws {
     var values = [Element.PrimitiveType?]()
     var primitives = [Element?]()
     var hasNonnullValues = false

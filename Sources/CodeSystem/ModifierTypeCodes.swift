@@ -30,20 +30,20 @@
  */
 public enum ModifierTypeCodes: String, FHIRKitPrimitiveType {
   /// Repair of prior service or installation.
-  case A = "a"
+  case A = "a" // swiftlint:disable:this identifier_name
   
   /// Temporary service or installation.
-  case B = "b"
+  case B = "b" // swiftlint:disable:this identifier_name
   
   /// Treatment associated with TMJ.
-  case C = "c"
+  case C = "c" // swiftlint:disable:this identifier_name
   
   /// Implant or associated with an implant.
-  case E = "e"
+  case E = "e" // swiftlint:disable:this identifier_name
   
   /// A Rush service or service performed outside of normal office hours.
   case rooh
   
   /// None.
-  case X = "x"
+  case X = "x" // swiftlint:disable:this identifier_name
 }

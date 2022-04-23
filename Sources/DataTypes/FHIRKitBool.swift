@@ -56,16 +56,16 @@ extension FHIRKitBool: Codable {
 }
 
 extension FHIRKitBool: Equatable {
-  public static func ==(l: FHIRKitBool, r: FHIRKitBool) -> Bool {
-    return l.bool == r.bool
+  public static func == (leftSide: FHIRKitBool, rightSide: FHIRKitBool) -> Bool {
+    return leftSide.bool == rightSide.bool
   }
   
-  public static func ==(l: Bool, r: FHIRKitBool) -> Bool {
-    return l == r.bool
+  public static func == (leftSide: Bool, rightSide: FHIRKitBool) -> Bool {
+    return leftSide == rightSide.bool
   }
   
-  public static func ==(l: FHIRKitBool, r: Bool) -> Bool {
-    return l.bool == r
+  public static func == (leftSide: FHIRKitBool, rightSide: Bool) -> Bool {
+    return leftSide.bool == rightSide
   }
 }
 

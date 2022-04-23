@@ -86,7 +86,7 @@ public struct FHIRKitDateTime: FHIRKitPrimitiveType {
 
 extension FHIRKitDateTime: ExpressibleByStringLiteral {
   public init(stringLiteral value: StringLiteralType) {
-    try! self.init(value)
+    try! self.init(value) // swiftlint:disable:this force_try
   }
 }
 
@@ -117,14 +117,14 @@ extension FHIRKitDateTime: CustomStringConvertible {
 
 extension FHIRKitDateTime: Equatable {
   
-  public static func ==(l: FHIRKitDateTime, r: FHIRKitDateTime) -> Bool {
-    if l.date != r.date {
+  public static func == (leftSide: FHIRKitDateTime, rightSide: FHIRKitDateTime) -> Bool {
+    if leftSide.date != rightSide.date {
       return false
     }
-    if l.time != r.time {
+    if leftSide.time != rightSide.time {
       return false
     }
-    if l.timeZone != r.timeZone {
+    if leftSide.timeZone != rightSide.timeZone {
       return false
     }
     return true
@@ -133,11 +133,11 @@ extension FHIRKitDateTime: Equatable {
 
 extension FHIRKitDateTime: Comparable {
     /// This comparison will be done by taking time zones into account.
-  public static func <(l: FHIRKitDateTime, r: FHIRKitDateTime) -> Bool {
+  public static func < (leftSide: FHIRKitDateTime, rightSide: FHIRKitDateTime) -> Bool {
     do {
-      return try l.compare(r) == .orderedAscending
+      return try leftSide.compare(rightSide) == .orderedAscending
     } catch {
-      print("DateTime comparison \(String(describing: l)) < \(String(describing: r)) raised \(String(describing: error))")
+      print("DateTime comparison \(String(describing: leftSide)) < \(String(describing: rightSide)) raised \(String(describing: error))")
       return false
     }
   }
