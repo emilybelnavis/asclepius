@@ -59,6 +59,8 @@ public struct FHIRKitInstantDate: FHIRKitPrimitiveType {
     self.init(year: year, month: month, day: day)
   }
   
+  /// Parse valid "date" strings but required the month and day to be present
+  /// See http://hl7.org/fhir/datatypes.html#date for more details
   public static func parseComponents(from scanner: Scanner, expectAtEnd: Bool = true) throws -> (year: Int, month: UInt8, day: UInt8) {
     let originalCharacterstoBeSkipped = scanner.charactersToBeSkipped
     defer { scanner.charactersToBeSkipped = originalCharacterstoBeSkipped }
@@ -105,12 +107,14 @@ public struct FHIRKitInstantDate: FHIRKitPrimitiveType {
   }
 }
 
+// MARK: -
 extension FHIRKitInstantDate: ExpressibleByStringLiteral {
   public init(stringLiteral value: StringLiteralType) {
     try! self.init(value) // swiftlint:disable:this force_try
   }
 }
 
+// MARK: - Codable
 extension FHIRKitInstantDate: Codable {
   public init(from decoder: Decoder) throws {
     let container = try decoder.singleValueContainer()

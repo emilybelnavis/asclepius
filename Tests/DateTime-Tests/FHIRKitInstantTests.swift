@@ -44,15 +44,15 @@ class FHIRKitInstantTests: XCTestCase {
   
   func testInstantDateErrorHandling() {
     let badInstantDateStringSet: [String: Int] = [
-      "2022": 4,
-      "2022-04": 7,
+      "2022": 0,
+      "2022-04": 5,
       "2022-04-20": 10,
       "2022-04-20T": 11,
       "2022-04-20T04": 13,
       "2022-04-20T04:20": 16,
       "2022-04-20T04:20:00": 19,
-      "2022T04:20:00Z": 4,
-      "2022-04T04:20:00Z": 7
+      "2022T04:20:00Z": 0,
+      "2022-04T04:20:00Z": 5
     ]
     
     for (dateString, errorLocation) in badInstantDateStringSet {
