@@ -35,6 +35,7 @@ import Foundation
  */
 public struct FHIRKitTime: FHIRKitPrimitiveType {
   private var _secondsAreUnaltered = true
+  
   public var hour: UInt8 {
     didSet {
       if hour > 23 {
@@ -179,6 +180,7 @@ extension FHIRKitTime: ExpressibleByStringLiteral {
   }
 }
 
+// MARK: - Codable
 extension FHIRKitTime: Codable {
   public init(from decoder: Decoder) throws {
     let container = try decoder.singleValueContainer()

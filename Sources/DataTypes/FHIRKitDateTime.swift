@@ -90,6 +90,7 @@ extension FHIRKitDateTime: ExpressibleByStringLiteral {
   }
 }
 
+// MARK: - Codable
 extension FHIRKitDateTime: Codable {
   public init(from decoder: Decoder) throws {
     let container = try decoder.singleValueContainer()
