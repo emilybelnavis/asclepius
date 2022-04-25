@@ -1,6 +1,6 @@
 //
-//  AuditEventSource.swift
-//  FHIRKit
+//  CapabilityStatementDocument.swift
+//  FHIRKIT
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
 //
@@ -22,66 +22,64 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-/// The system that is reporting the event
-open class AuditEventSource: BackboneElement {
-  /// Logical source location within the enterprise
-  public var site: FHIRKitPrimitive<FHIRKitString>?
+/// A document definition
+open class CapabilityStatementDocument: BackboneElement {
+  /// Mode of this document declaration - whether application is a producer or consumer
+  public var mode: FHIRKitPrimitive<DocumentMode>
   
-  /// The identity of the source detecting the event
-  public var observer: Reference
+  /// Description of document support
+  public var documentation: FHIRKitPrimitive<FHIRKitString>?
   
-  /// The type of source where the event originated from
-  public var type: [Coding]?
+  /// Constraint on the resources used in the document
+  public var profile: FHIRKitPrimitive<Canonical>
   
-  public init(observer: Reference) {
-    self.observer = observer
+  public init(mode: FHIRKitPrimitive<DocumentMode>, profile: FHIRKitPrimitive<Canonical>) {
+    self.mode = mode
+    self.profile = profile
     super.init()
   }
   
   public convenience init(
     `extension`: [Extension]? = nil,
+    modifierExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    site: FHIRKitPrimitive<FHIRKitString>? = nil,
-    observer: Reference,
-    type: [Coding]? = nil
+    mode: FHIRKitPrimitive<DocumentMode>,
+    documentation: FHIRKitPrimitive<FHIRKitString>? = nil,
+    profile: FHIRKitPrimitive<Canonical>
   ) {
-    self.init(observer: observer)
+    self.init(mode: mode, profile: profile)
     self.`extension` = `extension`
+    self.modifierExtension = modifierExtension
     self.id = id
-    self.site = site
-    self.observer = observer
-    self.type = type
+    self.documentation = documentation
   }
   
   // MARK: - Codable
   private enum CodingKeys: String, CodingKey {
-    case site; case _site
-    case observer
-    case type
+    case mode; case _mode
+    case documentation; case _documentation
+    case profile; case _profile
   }
   
   public required init(from decoder: Decoder) throws {
     let _container = try decoder.container(keyedBy: CodingKeys.self)
-    
-    self.site = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .site, auxiliaryKey: ._site)
-    self.observer = try Reference(from: _container, forKey: .observer)
-    self.type = try [Coding](from: _container, forKeyIfPresent: .type)
-    
+    self.mode = try FHIRKitPrimitive<DocumentMode>(from: _container, forKey: .mode, auxiliaryKey: ._mode)
+    self.documentation = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .documentation, auxiliaryKey: ._documentation)
+    self.profile = try FHIRKitPrimitive<Canonical>(from: _container, forKey: .profile, auxiliaryKey: ._profile)
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
     var _container = encoder.container(keyedBy: CodingKeys.self)
-    
-    try site?.encode(on: &_container, forKey: .site, auxiliaryKey: ._site)
-    try observer.encode(on: &_container, forKey: .observer)
-    try type?.encode(on: &_container, forKey: .type)
+    try mode.encode(on: &_container, forKey: .mode, auxiliaryKey: ._mode)
+    try documentation?.encode(on: &_container, forKey: .documentation, auxiliaryKey: ._documentation)
+    try profile.encode(on: &_container, forKey: .profile, auxiliaryKey: ._profile)
     try super.encode(to: encoder)
   }
   
   // MARK: - Equatable
   public override func isEqual(to _other: Any?) -> Bool {
-    guard let _other = _other as? AuditEventSource else {
+    guard let _other = _other as? CapabilityStatementDocument else {
       return false
     }
     
@@ -89,16 +87,16 @@ open class AuditEventSource: BackboneElement {
       return false
     }
     
-    return site == _other.site
-    && observer == _other.observer
-    && type == _other.type
+    return mode == _other.mode
+    && documentation == _other.documentation
+    && profile == _other.profile
   }
   
   // MARK: - Hashable
   public override func hash(into hasher: inout Hasher) {
     super.hash(into: &hasher)
-    hasher.combine(site)
-    hasher.combine(observer)
-    hasher.combine(type)
+    hasher.combine(mode)
+    hasher.combine(documentation)
+    hasher.combine(profile)
   }
 }

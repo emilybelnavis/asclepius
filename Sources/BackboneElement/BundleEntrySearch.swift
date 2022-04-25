@@ -1,6 +1,6 @@
 //
-//  AuditEventSource.swift
-//  FHIRKit
+//  BundleEntrySearch.swift
+//  FHIRKIT
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
 //
@@ -22,66 +22,58 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-/// The system that is reporting the event
-open class AuditEventSource: BackboneElement {
-  /// Logical source location within the enterprise
-  public var site: FHIRKitPrimitive<FHIRKitString>?
+/// Information about the search process that lead to the creation of this entry
+open class BundleEntrySearch: BackboneElement {
+  /// Why yhis entry is in the result set - whether it is include as a mathc or because of an `_include`
+  /// requrirement, or to convey information or warning infomation about the search process.
+  public var mode: FHIRKitPrimitive<SearchEntryMode>?
   
-  /// The identity of the source detecting the event
-  public var observer: Reference
+  /// Search ranking (between 0 and 1
+  public var score: FHIRKitPrimitive<FHIRKitDecimal>?
   
-  /// The type of source where the event originated from
-  public var type: [Coding]?
-  
-  public init(observer: Reference) {
-    self.observer = observer
+  override public init() {
     super.init()
   }
   
   public convenience init(
     `extension`: [Extension]? = nil,
+    modifierExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    site: FHIRKitPrimitive<FHIRKitString>? = nil,
-    observer: Reference,
-    type: [Coding]? = nil
+    mode: FHIRKitPrimitive<SearchEntryMode>? = nil,
+    score: FHIRKitPrimitive<FHIRKitDecimal>? = nil
   ) {
-    self.init(observer: observer)
+    self.init()
     self.`extension` = `extension`
+    self.modifierExtension = modifierExtension
     self.id = id
-    self.site = site
-    self.observer = observer
-    self.type = type
+    self.mode = mode
+    self.score = score
   }
   
   // MARK: - Codable
   private enum CodingKeys: String, CodingKey {
-    case site; case _site
-    case observer
-    case type
+    case mode; case _mode
+    case score; case _score
   }
   
   public required init(from decoder: Decoder) throws {
     let _container = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.site = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .site, auxiliaryKey: ._site)
-    self.observer = try Reference(from: _container, forKey: .observer)
-    self.type = try [Coding](from: _container, forKeyIfPresent: .type)
-    
+    self.mode = try FHIRKitPrimitive<SearchEntryMode>(from: _container, forKeyIfPresent: .mode, auxiliaryKey: ._mode)
+    self.score = try FHIRKitPrimitive<FHIRKitDecimal>(from: _container, forKeyIfPresent: .score, auxiliaryKey: ._score)
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
     var _container = encoder.container(keyedBy: CodingKeys.self)
-    
-    try site?.encode(on: &_container, forKey: .site, auxiliaryKey: ._site)
-    try observer.encode(on: &_container, forKey: .observer)
-    try type?.encode(on: &_container, forKey: .type)
+    try mode?.encode(on: &_container, forKey: .mode, auxiliaryKey: ._mode)
+    try score?.encode(on: &_container, forKey: .score, auxiliaryKey: ._score)
     try super.encode(to: encoder)
   }
   
   // MARK: - Equatable
   public override func isEqual(to _other: Any?) -> Bool {
-    guard let _other = _other as? AuditEventSource else {
+    guard let _other = _other as? BundleEntrySearch else {
       return false
     }
     
@@ -89,16 +81,14 @@ open class AuditEventSource: BackboneElement {
       return false
     }
     
-    return site == _other.site
-    && observer == _other.observer
-    && type == _other.type
+    return mode == _other.mode
+    && score == _other.score
   }
   
   // MARK: - Hashable
   public override func hash(into hasher: inout Hasher) {
     super.hash(into: &hasher)
-    hasher.combine(site)
-    hasher.combine(observer)
-    hasher.combine(type)
+    hasher.combine(mode)
+    hasher.combine(score)
   }
 }

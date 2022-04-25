@@ -1,6 +1,6 @@
 //
-//  AuditEventSource.swift
-//  FHIRKit
+//  CapabilityStatementMessagingEndpoint.swift
+//  FHIRKIT
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
 //
@@ -22,66 +22,56 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-/// The system that is reporting the event
-open class AuditEventSource: BackboneElement {
-  /// Logical source location within the enterprise
-  public var site: FHIRKitPrimitive<FHIRKitString>?
+/// An endpoint (network accessible address) to which messages and/or replies are to be sent
+open class CapabilityStatementMessagingEndpoint: BackboneElement {
+  /// http | ftp | mllp | etc...
+  public var `protocol`: Coding
   
-  /// The identity of the source detecting the event
-  public var observer: Reference
+  /// Network address or identifier of the endpoint
+  public var address: FHIRKitPrimitive<FHIRKitURI>
   
-  /// The type of source where the event originated from
-  public var type: [Coding]?
-  
-  public init(observer: Reference) {
-    self.observer = observer
+  public init(`protocol`: Coding, address: FHIRKitPrimitive<FHIRKitURI>) {
+    self.`protocol` = `protocol`
+    self.address = address
     super.init()
   }
   
   public convenience init(
     `extension`: [Extension]? = nil,
+    modifierExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    site: FHIRKitPrimitive<FHIRKitString>? = nil,
-    observer: Reference,
-    type: [Coding]? = nil
+    `protocol`: Coding,
+    address: FHIRKitPrimitive<FHIRKitURI>
   ) {
-    self.init(observer: observer)
+    self.init(protocol: `protocol`, address: address)
     self.`extension` = `extension`
+    self.modifierExtension = modifierExtension
     self.id = id
-    self.site = site
-    self.observer = observer
-    self.type = type
   }
   
   // MARK: - Codable
   private enum CodingKeys: String, CodingKey {
-    case site; case _site
-    case observer
-    case type
+    case `protocol`
+    case address; case _address
   }
   
   public required init(from decoder: Decoder) throws {
     let _container = try decoder.container(keyedBy: CodingKeys.self)
-    
-    self.site = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .site, auxiliaryKey: ._site)
-    self.observer = try Reference(from: _container, forKey: .observer)
-    self.type = try [Coding](from: _container, forKeyIfPresent: .type)
-    
+    self.`protocol` = try Coding(from: _container, forKey: .`protocol`)
+    self.address = try FHIRKitPrimitive<FHIRKitURI>(from: _container, forKey: .address, auxiliaryKey: ._address)
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
     var _container = encoder.container(keyedBy: CodingKeys.self)
-    
-    try site?.encode(on: &_container, forKey: .site, auxiliaryKey: ._site)
-    try observer.encode(on: &_container, forKey: .observer)
-    try type?.encode(on: &_container, forKey: .type)
+    try `protocol`.encode(on: &_container, forKey: .`protocol`)
+    try address.encode(on: &_container, forKey: .address, auxiliaryKey: ._address)
     try super.encode(to: encoder)
   }
   
   // MARK: - Equatable
   public override func isEqual(to _other: Any?) -> Bool {
-    guard let _other = _other as? AuditEventSource else {
+    guard let _other = _other as? CapabilityStatementMessagingEndpoint else {
       return false
     }
     
@@ -89,16 +79,14 @@ open class AuditEventSource: BackboneElement {
       return false
     }
     
-    return site == _other.site
-    && observer == _other.observer
-    && type == _other.type
+    return `protocol` == _other.`protocol`
+    && address == _other.address
   }
   
   // MARK: - Hashable
   public override func hash(into hasher: inout Hasher) {
     super.hash(into: &hasher)
-    hasher.combine(site)
-    hasher.combine(observer)
-    hasher.combine(type)
+    hasher.combine(`protocol`)
+    hasher.combine(address)
   }
 }

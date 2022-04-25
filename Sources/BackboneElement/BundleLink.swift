@@ -1,6 +1,6 @@
 //
-//  AuditEventSource.swift
-//  FHIRKit
+//  BundleLink.swift
+//  FHIRKIT
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
 //
@@ -22,66 +22,58 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-/// The system that is reporting the event
-open class AuditEventSource: BackboneElement {
-  /// Logical source location within the enterprise
-  public var site: FHIRKitPrimitive<FHIRKitString>?
+/// A series of links that provide context to this bundle
+open class BundleLink: BackboneElement {
+  /// See http://www.iana.org/assignments/link-relations.xhtml#link-relations-1
+  public var relation: FHIRKitPrimitive<FHIRKitString>
   
-  /// The identity of the source detecting the event
-  public var observer: Reference
-  
-  /// The type of source where the event originated from
-  public var type: [Coding]?
-  
-  public init(observer: Reference) {
-    self.observer = observer
+  /// Reference details for the link
+  public var url: FHIRKitPrimitive<FHIRKitURI>
+
+  public init(relation: FHIRKitPrimitive<FHIRKitString>, url: FHIRKitPrimitive<FHIRKitURI>) {
+    self.relation = relation
+    self.url = url
     super.init()
   }
   
   public convenience init(
     `extension`: [Extension]? = nil,
+    modifierExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    site: FHIRKitPrimitive<FHIRKitString>? = nil,
-    observer: Reference,
-    type: [Coding]? = nil
+    relation: FHIRKitPrimitive<FHIRKitString>,
+    url: FHIRKitPrimitive<FHIRKitURI>
   ) {
-    self.init(observer: observer)
+    self.init(relation: relation, url: url)
     self.`extension` = `extension`
+    self.modifierExtension = modifierExtension
     self.id = id
-    self.site = site
-    self.observer = observer
-    self.type = type
   }
   
   // MARK: - Codable
   private enum CodingKeys: String, CodingKey {
-    case site; case _site
-    case observer
-    case type
+    case relation; case _relation
+    case url; case _url
   }
   
   public required init(from decoder: Decoder) throws {
     let _container = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.site = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .site, auxiliaryKey: ._site)
-    self.observer = try Reference(from: _container, forKey: .observer)
-    self.type = try [Coding](from: _container, forKeyIfPresent: .type)
-    
+    self.relation = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKey: .relation, auxiliaryKey: ._relation)
+    self.url = try FHIRKitPrimitive<FHIRKitURI>(from: _container, forKey: .url, auxiliaryKey: ._url)
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
     var _container = encoder.container(keyedBy: CodingKeys.self)
     
-    try site?.encode(on: &_container, forKey: .site, auxiliaryKey: ._site)
-    try observer.encode(on: &_container, forKey: .observer)
-    try type?.encode(on: &_container, forKey: .type)
+    try relation.encode(on: &_container, forKey: .relation, auxiliaryKey: ._relation)
+    try url.encode(on: &_container, forKey: .url, auxiliaryKey: ._url)
     try super.encode(to: encoder)
   }
   
   // MARK: - Equatable
   public override func isEqual(to _other: Any?) -> Bool {
-    guard let _other = _other as? AuditEventSource else {
+    guard let _other = _other as? BundleLink else {
       return false
     }
     
@@ -89,16 +81,14 @@ open class AuditEventSource: BackboneElement {
       return false
     }
     
-    return site == _other.site
-    && observer == _other.observer
-    && type == _other.type
+    return relation == _other.relation
+    && url == _other.url
   }
   
   // MARK: - Hashable
   public override func hash(into hasher: inout Hasher) {
     super.hash(into: &hasher)
-    hasher.combine(site)
-    hasher.combine(observer)
-    hasher.combine(type)
+    hasher.combine(relation)
+    hasher.combine(url)
   }
 }
