@@ -31,4 +31,68 @@ open class ClaimResponseTotal: BackboneElement {
   
   /// Financial total for the category
   public var amount: Money
+  
+  public init(category: CodableConcept, amount: Money) {
+    self.category = category
+    self.amount = amount
+    super.init()
+  }
+  
+  public convenience init(
+    `extension`: [Extension]? = nil,
+    modifierExtension: [Extension]? = nil,
+    id: FHIRKitPrimitive<FHIRKitString>? = nil,
+    category: CodableConcept,
+    amount: Money
+  ) {
+    self.init(category: category, amount: amount)
+    self.`extension` = `extension`
+    self.modifierExtension = modifierExtension
+    self.id = id
+  }
+  
+  // MARK: - Codable
+  private enum CodingKeys: String, CodingKey {
+    case category
+    case amount
+  }
+  
+  public required init(from decoder: Decoder) throws {
+    let _container = try decoder.container(keyedBy: CodingKeys.self)
+    
+    self.category = try CodableConcept(from: _container, forKey: .category)
+    self.amount = try Money(from: _container, forKey: .amount)
+    
+    try super.init(from: decoder)
+  }
+  
+  public override func encode(to encoder: Encoder) throws {
+    var _container = encoder.container(keyedBy: CodingKeys.self)
+    
+    try category.encode(on: &_container, forKey: .category)
+    try amount.encode(on: &_container, forKey: .amount)
+    
+    try super.encode(to: encoder)
+  }
+  
+  // MARK: - Equatable
+  public override func isEqual(to _other: Any?) -> Bool {
+    guard let _other = _other as? ClaimResponseTotal else {
+      return false
+    }
+    
+    guard super.isEqual(to: _other) else {
+      return false
+    }
+    
+    return category == _other.category
+    && amount == _other.amount
+  }
+  
+  // MARK: - Hashable
+  public override func hash(into hasher: inout Hasher) {
+    super.hash(into: &hasher)
+    hasher.combine(category)
+    hasher.combine(amount)
+  }
 }

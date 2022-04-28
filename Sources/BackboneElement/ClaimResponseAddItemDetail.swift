@@ -109,7 +109,7 @@ open class ClaimResponseAddItemDetail: BackboneElement {
     self.factor = try FHIRKitPrimitive<FHIRKitDecimal>(from: _container, forKeyIfPresent: .factor, auxiliaryKey: ._factor)
     self.net = try Money(from: _container, forKeyIfPresent: .net)
     self.noteNumber = try [FHIRKitPrimitive<FHIRKitPositiveInteger>](from: _container, forKeyIfPresent: .noteNumber, auxiliaryKey: ._noteNumber)
-    self.adjudication = try [ClaimResponseItemAdjudication](from: _container, forKeyIfPresent: .adjudication)
+    self.adjudication = try [ClaimResponseItemAdjudication](from: _container, forKey: .adjudication)
     self.subDetail = try [ClaimResponseItemDetailSubDetail](from: _container, forKeyIfPresent: .subDetail)
     
     try super.init(from: decoder)

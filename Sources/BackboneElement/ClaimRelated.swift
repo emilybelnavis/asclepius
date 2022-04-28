@@ -36,7 +36,7 @@ open class ClaimRelated: BackboneElement {
   /// File or case reference
   public var reference: Identifier?
   
-  override func init() {
+  public override init() {
     super.init()
   }
   
@@ -45,7 +45,7 @@ open class ClaimRelated: BackboneElement {
     modifierExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     claim: Reference? = nil,
-    relationship: Reference? = nil,
+    relationship: CodableConcept? = nil,
     reference: Identifier? = nil
   ) {
     self.init()
@@ -70,7 +70,7 @@ open class ClaimRelated: BackboneElement {
     self.relationship = try CodableConcept(from: _container, forKeyIfPresent: .relationship)
     self.reference = try Identifier(from: _container, forKeyIfPresent: .reference)
     
-    try super.init(from: encoder)
+    try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {

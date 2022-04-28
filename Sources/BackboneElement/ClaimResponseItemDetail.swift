@@ -39,4 +39,83 @@ open class ClaimResponseItemDetail: BackboneElement {
   /// Adjudication for claim sub-details
   public var subDetail: [ClaimResponseItemDetailSubDetail]?
   
+  public init(detailSequence: FHIRKitPrimitive<FHIRKitPositiveInteger>, adjudication: [ClaimResponseItemAdjudication]) {
+    self.detailSequence = detailSequence
+    self.adjudication = adjudication
+    super.init()
+  }
+  
+  public convenience init(
+    `extension`: [Extension]? = nil,
+    modifierExtension: [Extension]? = nil,
+    id: FHIRKitPrimitive<FHIRKitString>? = nil,
+    detailSequence: FHIRKitPrimitive<FHIRKitPositiveInteger>,
+    noteNumber: [FHIRKitPrimitive<FHIRKitPositiveInteger>]? = nil,
+    adjudication: [ClaimResponseItemAdjudication],
+    subDetail: [ClaimResponseItemDetailSubDetail]? = nil
+  ) {
+    self.init(detailSequence: detailSequence, adjudication: adjudication)
+    self.`extension` = `extension`
+    self.modifierExtension = modifierExtension
+    self.id = id
+    self.detailSequence = detailSequence
+    self.noteNumber = noteNumber
+    self.adjudication = adjudication
+    self.subDetail = subDetail
+  }
+  
+  // MARK: - Codable
+  private enum CodingKeys: String, CodingKey {
+    case detailSequence; case _detailSequence
+    case noteNumber; case _noteNumber
+    case adjudication
+    case subDetail
+  }
+  
+  public required init(from decoder: Decoder) throws {
+    let _container = try decoder.container(keyedBy: CodingKeys.self)
+    
+    self.detailSequence = try FHIRKitPrimitive<FHIRKitPositiveInteger>(from: _container, forKey: .detailSequence, auxiliaryKey: ._detailSequence)
+    self.noteNumber = try [FHIRKitPrimitive<FHIRKitPositiveInteger>](from: _container, forKeyIfPresent: .noteNumber, auxiliaryKey: ._noteNumber)
+    self.adjudication = try [ClaimResponseItemAdjudication](from: _container, forKey: .adjudication)
+    self.subDetail = try [ClaimResponseItemDetailSubDetail](from: _container, forKeyIfPresent: .subDetail)
+    
+    try super.init(from: decoder)
+  }
+  
+  public override func encode(to encoder: Encoder) throws {
+    var _container = encoder.container(keyedBy: CodingKeys.self)
+    
+    try detailSequence.encode(on: &_container, forKey: .detailSequence, auxiliaryKey: ._detailSequence)
+    try noteNumber?.encode(on: &_container, forKey: .noteNumber, auxiliaryKey: ._noteNumber)
+    try adjudication.encode(on: &_container, forKey: .adjudication)
+    try subDetail?.encode(on: &_container, forKey: .subDetail)
+    
+    try super.encode(to: encoder)
+  }
+  
+  // MARK: - Equatable
+  public override func isEqual(to _other: Any?) -> Bool {
+    guard let _other = _other as? ClaimResponseItemDetail else {
+      return false
+    }
+    
+    guard super.isEqual(to: _other) else {
+      return false
+    }
+    
+    return detailSequence == _other.detailSequence
+    && noteNumber == _other.noteNumber
+    && adjudication == _other.adjudication
+    && subDetail == _other.subDetail
+  }
+  
+  // MARK: - Hashable
+  public override func hash(into hasher: inout Hasher) {
+    super.hash(into: &hasher)
+    hasher.combine(detailSequence)
+    hasher.combine(noteNumber)
+    hasher.combine(adjudication)
+    hasher.combine(subDetail)
+  }
 }

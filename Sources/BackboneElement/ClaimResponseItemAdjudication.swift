@@ -38,4 +38,81 @@ open class ClaimResponseItemAdjudication: BackboneElement {
   
   /// Non-monetary value
   public var value: FHIRKitPrimitive<FHIRKitDecimal>?
+  
+  public init(category: CodableConcept) {
+    self.category = category
+    super.init()
+  }
+  
+  public convenience init(
+    `extension`: [Extension]? = nil,
+    modifierExtension: [Extension]? = nil,
+    id: FHIRKitPrimitive<FHIRKitString>? = nil,
+    category: CodableConcept,
+    reason: CodableConcept? = nil,
+    amount: Money? = nil,
+    value: FHIRKitPrimitive<FHIRKitDecimal>? = nil
+  ) {
+    self.init(category: category)
+    self.`extension` = `extension`
+    self.modifierExtension = modifierExtension
+    self.id = id
+    self.category = category
+    self.reason = reason
+    self.amount = amount
+    self.value = value
+  }
+  
+  // MARK: - Codable
+  private enum CodingKeys: String, CodingKey {
+    case category
+    case reason
+    case amount
+    case value; case _value
+  }
+  
+  public required init(from decoder: Decoder) throws {
+    let _container = try decoder.container(keyedBy: CodingKeys.self)
+    
+    self.category = try CodableConcept(from: _container, forKey: .category)
+    self.reason = try CodableConcept(from: _container, forKeyIfPresent: .reason)
+    self.amount = try Money(from: _container, forKeyIfPresent: .amount)
+    self.value = try FHIRKitPrimitive<FHIRKitDecimal>(from: _container, forKeyIfPresent: .value, auxiliaryKey: ._value)
+    
+    try super.init(from: decoder)
+  }
+  
+  public override func encode(to encoder: Encoder) throws {
+    var _container = encoder.container(keyedBy: CodingKeys.self)
+    try category.encode(on: &_container, forKey: .category)
+    try reason?.encode(on: &_container, forKey: .reason)
+    try amount?.encode(on: &_container, forKey: .amount)
+    try value?.encode(on: &_container, forKey: .value, auxiliaryKey: ._value)
+    try super.encode(to: encoder)
+  }
+  
+  // MARK: - Equatable
+  public override func isEqual(to _other: Any?) -> Bool {
+    guard let _other = _other as? ClaimResponseItemAdjudication else {
+      return false
+    }
+    
+    guard super.isEqual(to: _other) else {
+      return false
+    }
+    
+    return category == _other.category
+    && reason == _other.reason
+    && amount == _other.amount
+    && value == _other.value
+  }
+  
+  // MARK: - Hashable
+  public override func hash(into hasher: inout Hasher) {
+    super.hash(into: &hasher)
+    hasher.combine(category)
+    hasher.combine(reason)
+    hasher.combine(amount)
+    hasher.combine(value)
+  }
 }

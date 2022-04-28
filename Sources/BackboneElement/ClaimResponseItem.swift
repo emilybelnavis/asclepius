@@ -47,8 +47,73 @@ open class ClaimResponseItem: BackboneElement {
   
   public convenience init(
     `extension`: [Extension]? = nil,
-    `
+    modifierExtension: [Extension]? = nil,
+    id: FHIRKitPrimitive<FHIRKitString>? = nil,
+    itemSequence: FHIRKitPrimitive<FHIRKitPositiveInteger>,
+    noteNumber: [FHIRKitPrimitive<FHIRKitPositiveInteger>]? = nil,
+    adjudication: [ClaimResponseItemAdjudication],
+    detail: [ClaimResponseItemDetail]? = nil
   ) {
+    self.init(itemSequence: itemSequence, adjudication: adjudication)
+    self.`extension` = `extension`
+    self.modifierExtension = modifierExtension
+    self.id = id
+    self.noteNumber = noteNumber
+    self.detail = detail
+  }
+
+  // MARK: - Codable
+  private enum CodingKeys: String, CodingKey {
+    case itemSequence; case _itemSequence
+    case noteNumber; case _noteNumber
+    case adjudication
+    case detail
+  }
+
+  public required init(from decoder: Decoder) throws {
+    let _container = try decoder.container(keyedBy: CodingKeys.self)
+
+    self.itemSequence = try FHIRKitPrimitive<FHIRKitPositiveInteger>(from: _container, forKey: .itemSequence, auxiliaryKey: ._itemSequence)
+    self.noteNumber = try [FHIRKitPrimitive<FHIRKitPositiveInteger>](from: _container, forKeyIfPresent: .noteNumber, auxiliaryKey: ._noteNumber)
+    self.adjudication = try [ClaimResponseItemAdjudication](from: _container, forKey: .adjudication)
+    self.detail = try [ClaimResponseItemDetail](from: _container, forKeyIfPresent: .detail)
     
+    try super.init(from: decoder)
+  }
+ 
+  public override func encode(to encoder: Encoder) throws {
+    var _container = encoder.container(keyedBy: CodingKeys.self)
+    
+    try itemSequence.encode(on: &_container, forKey: .itemSequence, auxiliaryKey: ._itemSequence)
+    try noteNumber?.encode(on: &_container, forKey: .noteNumber, auxiliaryKey: ._noteNumber)
+    try adjudication.encode(on: &_container, forKey: .adjudication)
+    try detail?.encode(on: &_container, forKey: .detail)
+    try super.encode(to: encoder)
+  }
+  
+  // MARK: - Equatable
+  public override func isEqual(to _other: Any?) -> Bool {
+    guard let _other = _other as? ClaimResponseItem else {
+      return false
+    }
+    
+    guard super.isEqual(to: _other) else {
+      return false
+    }
+    
+    return itemSequence == _other.itemSequence
+    && noteNumber == _other.noteNumber
+    && adjudication == _other.adjudication
+    && detail == _other.detail
+  }
+  
+  // MARK: - Hashable
+  public override func hash(into hasher: inout Hasher) {
+    super.hash(into: &hasher)
+    hasher.combine(itemSequence)
+    hasher.combine(noteNumber)
+    hasher.combine(adjudication)
+    hasher.combine(detail)
   }
 }
+
