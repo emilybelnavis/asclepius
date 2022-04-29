@@ -24,14 +24,23 @@
 
 import Foundation
 
+/**
+ A date, date-time, or partial date (e.g, just year or year + month) as used in human communication. The format is
+ `YYYY`, `YYYY-MM`, `YYYY-MM-DD` or `YYYY-MM-DDThh:mm:ss+zz:zz`, (e.g. `2018`, `1973-06`,
+ `1905-08-23`, `2015-02-07T13:28:17-05:00`, or `2017-01-01T00:00:00.000Z.`) If hours and
+ minutes are specified, a time zone shall be populated. Seconds must be provided due to schema type constraints
+ but may be zero-filled and ignored at receiver discretion. Dates SHALL be valid dates. **The time "24:00" is
+ not allowed**. Leap Seconds are allowed
+ 
+ */
 public struct FHIRKitDateTime: FHIRKitPrimitiveType {
-  private var _timeZoneIsUnaltered = true
+  private var timeZoneIsUnaltered = true
   public var date: FHIRKitDate
   public var time: FHIRKitTime?
   
   public var timeZone: TimeZone? {
     didSet {
-      _timeZoneIsUnaltered = false
+      timeZoneIsUnaltered = false
     }
   }
   
@@ -54,6 +63,7 @@ public struct FHIRKitDateTime: FHIRKitPrimitiveType {
     self.originalTimeZoneString = originalTimeZoneString
   }
   
+  /// Date parsing
   public static func parse(from scanner: Scanner, expectAtEnd: Bool = true) throws -> (date: FHIRKitDate, time: FHIRKitTime?, timezone: TimeZone?, timeZoneString: String?) {
     let originalCharactersToBeSkipped = scanner.charactersToBeSkipped
     defer { scanner.charactersToBeSkipped = originalCharactersToBeSkipped }
@@ -104,10 +114,11 @@ extension FHIRKitDateTime: Codable {
   }
 }
 
+// MARK: - CustomStringConvertible
 extension FHIRKitDateTime: CustomStringConvertible {
   public var description: String {
     if let time = time, let timeZone = timeZone {
-      if _timeZoneIsUnaltered, let originalTimeZoneString = originalTimeZoneString {
+      if timeZoneIsUnaltered, let originalTimeZoneString = originalTimeZoneString {
         return "\(date.description)T\(time.description)\(originalTimeZoneString)"
       }
       return "\(date.description)T\(time.description)\(timeZone.fhirDescription)"
@@ -116,8 +127,8 @@ extension FHIRKitDateTime: CustomStringConvertible {
   }
 }
 
+// MARK: - Equatable
 extension FHIRKitDateTime: Equatable {
-  
   public static func == (leftSide: FHIRKitDateTime, rightSide: FHIRKitDateTime) -> Bool {
     if leftSide.date != rightSide.date {
       return false
@@ -132,6 +143,7 @@ extension FHIRKitDateTime: Equatable {
   }
 }
 
+// MARK: - Comparable
 extension FHIRKitDateTime: Comparable {
     /// This comparison will be done by taking time zones into account.
   public static func < (leftSide: FHIRKitDateTime, rightSide: FHIRKitDateTime) -> Bool {
@@ -141,5 +153,29 @@ extension FHIRKitDateTime: Comparable {
       print("DateTime comparison \(String(describing: leftSide)) < \(String(describing: rightSide)) raised \(String(describing: error))")
       return false
     }
+  }
+}
+
+// MARK: - Extends NSDate
+extension FHIRKitDateTime: ExpressibleAsNSDate, ConstructibleFromNSDate {
+  public func asNSDate() throws -> Date {
+    let dateComponents = FHIRKitDateComponents(
+      year: date.year,
+      month: date.month,
+      day: date.day,
+      hour: time?.hour,
+      minute: time?.minute,
+      second: time?.second,
+      timeZone: timeZone)
+    
+    return try dateComponents.asNSDate()
+  }
+  
+  public init(date: Date, timeZone: TimeZone = TimeZone.current) throws {
+    self.timeZone = timeZone
+    self.date = try FHIRKitDate(date: date, timeZone: timeZone)
+    self.time = try FHIRKitTime(date: date, timeZone: timeZone)
+    
+    self.originalTimeZoneString = nil
   }
 }

@@ -24,6 +24,7 @@
 
 import Foundation
 
+/// Any positive integer in the range 1..2,147,483,647
 public struct FHIRKitPositiveInteger: FHIRKitPrimitiveType, FHIRKitIntegerRepresentable {
   public typealias IntegerLiteralType = Int32
   
@@ -44,10 +45,11 @@ public struct FHIRKitPositiveInteger: FHIRKitPrimitiveType, FHIRKitIntegerRepres
   }
 }
 
+// MARK: - Codable
 extension FHIRKitPositiveInteger: Codable {
   public init(from decoder: Decoder) throws {
-    let container = try decoder.singleValueContainer()
-    let integer = try container.decode(Self.IntegerLiteralType.self)
+    let codingKeyContainer = try decoder.singleValueContainer()
+    let integer = try codingKeyContainer.decode(Self.IntegerLiteralType.self)
     if integer < 1 {
       throw FHIRKitPositiveIntegerError.valueIsLessThanOne
     }
@@ -55,18 +57,18 @@ extension FHIRKitPositiveInteger: Codable {
   }
   
   public func encode(to encoder: Encoder) throws {
-    var container = encoder.singleValueContainer()
-    try container.encode(integer)
+    var codingKeyContainer = encoder.singleValueContainer()
+    try codingKeyContainer.encode(integer)
   }
 }
 
-// MARK: -
+// MARK: - Error Types
 
 public enum FHIRKitPositiveIntegerError: Error {
   case valueIsLessThanOne
 }
 
-// MARK: -
+// MARK: - Extend Int
 
 extension Int {
   public func asFHIRKitPositiveIntegerPrimitive() -> FHIRKitPrimitive<FHIRKitPositiveInteger> {

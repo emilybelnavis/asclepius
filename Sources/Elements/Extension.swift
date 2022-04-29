@@ -23,10 +23,16 @@
 //  SOFTWARE.
 
 /**
- Optional Extensions Element - Found in all FHIR resources
+ Optional Extensions Element - Found in all FHIR resources.
+ 
+ Every element in a resource or data type includes an optional "extension" child element that may be present any
+ number of times.
+ 
+ https://www.hl7.org/fhir/extensibility.html
  */
 open class Extension: Element {
-  public enum _Value: Hashable {
+  /// Value of extension
+  public enum ValueX: Hashable {
     case address(Address)
     case age(Age)
     case annotation(Annotation)
@@ -82,8 +88,8 @@ open class Extension: Element {
   /// identifies the meaning of the extension
   public var url: FHIRKitPrimitive<FHIRKitURI>
   
-  /// value of extension
-  public var value: _Value?
+  /// Value of extension
+  public var valueX: ValueX?
 
   public init(url: FHIRKitPrimitive<FHIRKitURI>) {
     self.url = url
@@ -91,15 +97,15 @@ open class Extension: Element {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     url: FHIRKitPrimitive<FHIRKitURI>,
-    value: _Value? = nil
+    valueX: ValueX? = nil
   ) {
     self.init(url: url)
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.id = id
-    self.value = value
+    self.valueX = valueX
   }
   
   // MARK: - Codable
@@ -160,499 +166,499 @@ open class Extension: Element {
   // swiftlint:disable cyclomatic_complexity
   /// Initializer for Decodable
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
+    let codingContainer = try decoder.container(keyedBy: CodingKeys.self)
     let debugDescription: String = "More than one value provided for \"value\""
     
-    self.url = try FHIRKitPrimitive<FHIRKitURI>(from: _container, forKey: .url, auxiliaryKey: ._url)
+    self.url = try FHIRKitPrimitive<FHIRKitURI>(from: codingContainer, forKey: .url, auxiliaryKey: ._url)
     
-    var _value: _Value?
+    var _value: _ValueX? = nil
     
     // Address
-    if let valueAddress = try Address(from: _container, forKeyIfPresent: .valueAddress) {
+    if let valueAddress = try Address(from: codingContainer, forKeyIfPresent: .valueAddress) {
       if _value != nil {
-        throw DecodingError.dataCorruptedError(forKey: .valueAddress, in: _container, debugDescription: debugDescription)
+        throw DecodingError.dataCorruptedError(forKey: .valueAddress, in: codingContainer, debugDescription: debugDescription)
       }
       _value = .address(valueAddress)
     }
     
     // Age
-    if let valueAge = try Age(from: _container, forKeyIfPresent: .valueAge) {
+    if let valueAge = try Age(from: codingContainer, forKeyIfPresent: .valueAge) {
       if _value != nil {
-        throw DecodingError.dataCorruptedError(forKey: .valueAge, in: _container, debugDescription: debugDescription)
+        throw DecodingError.dataCorruptedError(forKey: .valueAge, in: codingContainer, debugDescription: debugDescription)
       }
       _value = .age(valueAge)
     }
     
     // Annotation
-    if let valueAnnotation = try Annotation(from: _container, forKeyIfPresent: .valueAnnotation) {
-      if _value != nil {
-        throw DecodingError.dataCorruptedError(forKey: .valueAnnotation, in: _container, debugDescription: debugDescription)
+    if let valueAnnotation = try Annotation(from: codingContainer, forKeyIfPresent: .valueAnnotation) {
+      if _value != nil {e
+        throw DecodingError.dataCorruptedError(forKey: .valueAnnotation, in: codingContainer, debugDescription: debugDescription)
       }
       _value = .annotation(valueAnnotation)
     }
     
     // Attachment
-    if let valueAttachment = try Attachment(from: _container, forKeyIfPresent: .valueAttachment) {
+    if let valueAttachment = try Attachment(from: codingContainer, forKeyIfPresent: .valueAttachment) {
       if _value != nil {
-        throw DecodingError.dataCorruptedError(forKey: .valueAttachment, in: _container, debugDescription: debugDescription)
+        throw DecodingError.dataCorruptedError(forKey: .valueAttachment, in: codingContainer, debugDescription: debugDescription)
       }
       _value = .attachment(valueAttachment)
     }
     
     // Base64Binary
-    if let valueBase64Binary = try FHIRKitPrimitive<FHIRKitBase64Binary>(from: _container, forKeyIfPresent: .valueBase64Binary, auxiliaryKey: ._valueBase64Binary) {
+    if let valueBase64Binary = try FHIRKitPrimitive<FHIRKitBase64Binary>(from: codingContainer, forKeyIfPresent: .valueBase64Binary, auxiliaryKey: ._valueBase64Binary) {
       if _value != nil {
-        throw DecodingError.dataCorruptedError(forKey: .valueBase64Binary, in: _container, debugDescription: debugDescription)
+        throw DecodingError.dataCorruptedError(forKey: .valueBase64Binary, in: codingContainer, debugDescription: debugDescription)
       }
       _value = .base64Binary(valueBase64Binary)
     }
 
     // Boolean
-    if let valueBoolean = try FHIRKitPrimitive<FHIRKitBool>(from: _container, forKeyIfPresent: .valueBoolean, auxiliaryKey: ._valueBoolean) {
+    if let valueBoolean = try FHIRKitPrimitive<FHIRKitBool>(from: codingContainer, forKeyIfPresent: .valueBoolean, auxiliaryKey: ._valueBoolean) {
       if _value != nil {
-        throw DecodingError.dataCorruptedError(forKey: .valueBoolean, in: _container, debugDescription: debugDescription)
+        throw DecodingError.dataCorruptedError(forKey: .valueBoolean, in: codingContainer, debugDescription: debugDescription)
       }
       _value = .boolean(valueBoolean)
     }
     
     // Canonical
-    if let valueCanonical = try FHIRKitPrimitive<Canonical>(from: _container, forKeyIfPresent: .valueCanonical, auxiliaryKey: ._valueCanonical) {
+    if let valueCanonical = try FHIRKitPrimitive<Canonical>(from: codingContainer, forKeyIfPresent: .valueCanonical, auxiliaryKey: ._valueCanonical) {
       if _value != nil {
-        throw DecodingError.dataCorruptedError(forKey: .valueCanonical, in: _container, debugDescription: debugDescription)
+        throw DecodingError.dataCorruptedError(forKey: .valueCanonical, in: codingContainer, debugDescription: debugDescription)
       }
       _value = .canonical(valueCanonical)
     }
     
     // Code
-    if let valueCode = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .valueCode, auxiliaryKey: ._valueCode) {
+    if let valueCode = try FHIRKitPrimitive<FHIRKitString>(from: codingContainer, forKeyIfPresent: .valueCode, auxiliaryKey: ._valueCode) {
       if _value != nil {
-        throw DecodingError.dataCorruptedError(forKey: .valueCode, in: _container, debugDescription: debugDescription)
+        throw DecodingError.dataCorruptedError(forKey: .valueCode, in: codingContainer, debugDescription: debugDescription)
       }
       _value = .code(valueCode)
     }
     
     // CodableConcept
-    if let valueCodableConcept = try CodableConcept(from: _container, forKeyIfPresent: .valueCodableConcept) {
+    if let valueCodableConcept = try CodableConcept(from: codingContainer, forKeyIfPresent: .valueCodableConcept) {
       if _value != nil {
-        throw DecodingError.dataCorruptedError(forKey: .valueCodableConcept, in: _container, debugDescription: debugDescription)
+        throw DecodingError.dataCorruptedError(forKey: .valueCodableConcept, in: codingContainer, debugDescription: debugDescription)
       }
       _value = .codableConcept(valueCodableConcept)
     }
     
     // Coding
-    if let valueCoding = try Coding(from: _container, forKeyIfPresent: .valueCoding) {
+    if let valueCoding = try Coding(from: codingContainer, forKeyIfPresent: .valueCoding) {
       if _value != nil {
-        throw DecodingError.dataCorruptedError(forKey: .valueCoding, in: _container, debugDescription: debugDescription)
+        throw DecodingError.dataCorruptedError(forKey: .valueCoding, in: codingContainer, debugDescription: debugDescription)
       }
       _value = .coding(valueCoding)
     }
     
     // ContactDetail
-    if let valueContactDetail = try ContactDetail(from: _container, forKeyIfPresent: .valueContactDetail) {
+    if let valueContactDetail = try ContactDetail(from: codingContainer, forKeyIfPresent: .valueContactDetail) {
       if _value != nil {
-        throw DecodingError.dataCorruptedError(forKey: .valueContactDetail, in: _container, debugDescription: debugDescription)
+        throw DecodingError.dataCorruptedError(forKey: .valueContactDetail, in: codingContainer, debugDescription: debugDescription)
       }
       _value = .contactDetail(valueContactDetail)
     }
     
     // ContactPoint
-    if let valueContactPoint = try ContactPoint(from: _container, forKeyIfPresent: .valueContactPoint) {
+    if let valueContactPoint = try ContactPoint(from: codingContainer, forKeyIfPresent: .valueContactPoint) {
       if _value != nil {
-        throw DecodingError.dataCorruptedError(forKey: .valueContactPoint, in: _container, debugDescription: debugDescription)
+        throw DecodingError.dataCorruptedError(forKey: .valueContactPoint, in: codingContainer, debugDescription: debugDescription)
       }
       _value = .contactPoint(valueContactPoint)
     }
     
     // Contributor
-    if let valueContributor = try Contributor(from: _container, forKeyIfPresent: .valueContributor) {
+    if let valueContributor = try Contributor(from: codingContainer, forKeyIfPresent: .valueContributor) {
       if _value != nil {
-        throw DecodingError.dataCorruptedError(forKey: .valueContributor, in: _container, debugDescription: debugDescription)
+        throw DecodingError.dataCorruptedError(forKey: .valueContributor, in: codingContainer, debugDescription: debugDescription)
       }
       _value = .contributor(valueContributor)
     }
     
     // Count
-    if let valueCount = try Count(from: _container, forKeyIfPresent: .valueCount) {
+    if let valueCount = try Count(from: codingContainer, forKeyIfPresent: .valueCount) {
       if _value != nil {
-        throw DecodingError.dataCorruptedError(forKey: .valueCount, in: _container, debugDescription: debugDescription)
+        throw DecodingError.dataCorruptedError(forKey: .valueCount, in: codingContainer, debugDescription: debugDescription)
       }
       _value = .count(valueCount)
     }
     
     // DataRequirement
-    if let valueDataRequirement = try DataRequirement(from: _container, forKeyIfPresent: .valueDataRequirement) {
+    if let valueDataRequirement = try DataRequirement(from: codingContainer, forKeyIfPresent: .valueDataRequirement) {
       if _value != nil {
-        throw DecodingError.dataCorruptedError(forKey: .valueDataRequirement, in: _container, debugDescription: debugDescription)
+        throw DecodingError.dataCorruptedError(forKey: .valueDataRequirement, in: codingContainer, debugDescription: debugDescription)
       }
       _value = .dataRequirement(valueDataRequirement)
     }
     
     // Date
-    if let valueDate = try FHIRKitPrimitive<FHIRKitDate>(from: _container, forKeyIfPresent: .valueDate, auxiliaryKey: ._valueDate) {
+    if let valueDate = try FHIRKitPrimitive<FHIRKitDate>(from: codingContainer, forKeyIfPresent: .valueDate, auxiliaryKey: ._valueDate) {
       if _value != nil {
-        throw DecodingError.dataCorruptedError(forKey: .valueDate, in: _container, debugDescription: debugDescription)
+        throw DecodingError.dataCorruptedError(forKey: .valueDate, in: codingContainer, debugDescription: debugDescription)
       }
       _value = .date(valueDate)
     }
     
     // DateTime
-    if let valueDateTime = try FHIRKitPrimitive<FHIRKitDateTime>(from: _container, forKeyIfPresent: .valueDateTime, auxiliaryKey: ._valueDateTime) {
+    if let valueDateTime = try FHIRKitPrimitive<FHIRKitDateTime>(from: codingContainer, forKeyIfPresent: .valueDateTime, auxiliaryKey: ._valueDateTime) {
       if _value != nil {
-        throw DecodingError.dataCorruptedError(forKey: .valueDateTime, in: _container, debugDescription: debugDescription)
+        throw DecodingError.dataCorruptedError(forKey: .valueDateTime, in: codingContainer, debugDescription: debugDescription)
       }
       _value = .dateTime(valueDateTime)
     }
     
     // Decimal
-    if let valueDecimal = try FHIRKitPrimitive<FHIRKitDecimal>(from: _container, forKeyIfPresent: .valueDecimal, auxiliaryKey: ._valueDecimal) {
+    if let valueDecimal = try FHIRKitPrimitive<FHIRKitDecimal>(from: codingContainer, forKeyIfPresent: .valueDecimal, auxiliaryKey: ._valueDecimal) {
       if _value != nil {
-        throw DecodingError.dataCorruptedError(forKey: .valueDecimal, in: _container, debugDescription: debugDescription)
+        throw DecodingError.dataCorruptedError(forKey: .valueDecimal, in: codingContainer, debugDescription: debugDescription)
       }
       _value = .decimal(valueDecimal)
     }
     
     // Distance
-    if let valueDistance = try Distance(from: _container, forKeyIfPresent: .valueDistance) {
+    if let valueDistance = try Distance(from: codingContainer, forKeyIfPresent: .valueDistance) {
       if _value != nil {
-        throw DecodingError.dataCorruptedError(forKey: .valueDistance, in: _container, debugDescription: debugDescription)
+        throw DecodingError.dataCorruptedError(forKey: .valueDistance, in: codingContainer, debugDescription: debugDescription)
       }
       _value = .distance(valueDistance)
     }
     
     // Dosage
-    if let valueDosage = try Dosage(from: _container, forKeyIfPresent: .valueDosage) {
+    if let valueDosage = try Dosage(from: codingContainer, forKeyIfPresent: .valueDosage) {
       if _value != nil {
-        throw DecodingError.dataCorruptedError(forKey: .valueDosage, in: _container, debugDescription: debugDescription)
+        throw DecodingError.dataCorruptedError(forKey: .valueDosage, in: codingContainer, debugDescription: debugDescription)
       }
       _value = .dosage(valueDosage)
     }
     
     // Expression
-    if let valueExpression = try Expression(from: _container, forKeyIfPresent: .valueExpression) {
+    if let valueExpression = try Expression(from: codingContainer, forKeyIfPresent: .valueExpression) {
       if _value != nil {
-        throw DecodingError.dataCorruptedError(forKey: .valueExpression, in: _container, debugDescription: debugDescription)
+        throw DecodingError.dataCorruptedError(forKey: .valueExpression, in: codingContainer, debugDescription: debugDescription)
       }
       _value = .expression(valueExpression)
     }
     
     // Human Name
-    if let valueHumanName = try HumanName(from: _container, forKeyIfPresent: .valueHumanName) {
+    if let valueHumanName = try HumanName(from: codingContainer, forKeyIfPresent: .valueHumanName) {
       if _value != nil {
-        throw DecodingError.dataCorruptedError(forKey: .valueHumanName, in: _container, debugDescription: debugDescription)
+        throw DecodingError.dataCorruptedError(forKey: .valueHumanName, in: codingContainer, debugDescription: debugDescription)
       }
       _value = .humanName(valueHumanName)
     }
     
     // ID
-    if let valueId = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .valueId, auxiliaryKey: ._valueId) {
+    if let valueId = try FHIRKitPrimitive<FHIRKitString>(from: codingContainer, forKeyIfPresent: .valueId, auxiliaryKey: ._valueId) {
       if _value != nil {
-        throw DecodingError.dataCorruptedError(forKey: .valueId, in: _container, debugDescription: debugDescription)
+        throw DecodingError.dataCorruptedError(forKey: .valueId, in: codingContainer, debugDescription: debugDescription)
       }
       _value = .id(valueId)
     }
     
     // Identifier
-    if let valueIdentifier = try Identifier(from: _container, forKeyIfPresent: .valueIdentifier) {
+    if let valueIdentifier = try Identifier(from: codingContainer, forKeyIfPresent: .valueIdentifier) {
       if _value != nil {
-        throw DecodingError.dataCorruptedError(forKey: .valueIdentifier, in: _container, debugDescription: debugDescription)
+        throw DecodingError.dataCorruptedError(forKey: .valueIdentifier, in: codingContainer, debugDescription: debugDescription)
       }
       _value = .identifier(valueIdentifier)
     }
     
     // Instant
-    if let valueInstant = try FHIRKitPrimitive<FHIRKitInstant>(from: _container, forKeyIfPresent: .valueInstant, auxiliaryKey: ._valueInstant) {
+    if let valueInstant = try FHIRKitPrimitive<FHIRKitInstant>(from: codingContainer, forKeyIfPresent: .valueInstant, auxiliaryKey: ._valueInstant) {
       if _value != nil {
-        throw DecodingError.dataCorruptedError(forKey: .valueInstant, in: _container, debugDescription: debugDescription)
+        throw DecodingError.dataCorruptedError(forKey: .valueInstant, in: codingContainer, debugDescription: debugDescription)
       }
       _value = .instant(valueInstant)
     }
     
     // Integer
-    if let valueInteger = try FHIRKitPrimitive<FHIRKitInteger>(from: _container, forKeyIfPresent: .valueInteger, auxiliaryKey: ._valueInteger) {
+    if let valueInteger = try FHIRKitPrimitive<FHIRKitInteger>(from: codingContainer, forKeyIfPresent: .valueInteger, auxiliaryKey: ._valueInteger) {
       if _value != nil {
-        throw DecodingError.dataCorruptedError(forKey: .valueInteger, in: _container, debugDescription: debugDescription)
+        throw DecodingError.dataCorruptedError(forKey: .valueInteger, in: codingContainer, debugDescription: debugDescription)
       }
       _value = .integer(valueInteger)
     }
     
     // Markdown
-    if let valueMarkdown = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .valueMarkdown, auxiliaryKey: ._valueMarkdown) {
+    if let valueMarkdown = try FHIRKitPrimitive<FHIRKitString>(from: codingContainer, forKeyIfPresent: .valueMarkdown, auxiliaryKey: ._valueMarkdown) {
       if _value != nil {
-        throw DecodingError.dataCorruptedError(forKey: .valueMarkdown, in: _container, debugDescription: debugDescription)
+        throw DecodingError.dataCorruptedError(forKey: .valueMarkdown, in: codingContainer, debugDescription: debugDescription)
       }
       _value = .markdown(valueMarkdown)
     }
     
     // Meta
-    if let valueMeta = try Meta(from: _container, forKeyIfPresent: .valueMeta) {
+    if let valueMeta = try Meta(from: codingContainer, forKeyIfPresent: .valueMeta) {
       if _value != nil {
-        throw DecodingError.dataCorruptedError(forKey: .valueMeta, in: _container, debugDescription: debugDescription)
+        throw DecodingError.dataCorruptedError(forKey: .valueMeta, in: codingContainer, debugDescription: debugDescription)
       }
       _value = .meta(valueMeta)
     }
     
     // Money
-    if let valueMoney = try Money(from: _container, forKeyIfPresent: .valueMoney) {
+    if let valueMoney = try Money(from: codingContainer, forKeyIfPresent: .valueMoney) {
       if _value != nil {
-        throw DecodingError.dataCorruptedError(forKey: .valueMoney, in: _container, debugDescription: debugDescription)
+        throw DecodingError.dataCorruptedError(forKey: .valueMoney, in: codingContainer, debugDescription: debugDescription)
       }
       _value = .money(valueMoney)
     }
     
     // OID
-    if let valueOID = try FHIRKitPrimitive<FHIRKitURI>(from: _container, forKeyIfPresent: .valueOid, auxiliaryKey: ._valueOid) {
+    if let valueOID = try FHIRKitPrimitive<FHIRKitURI>(from: codingContainer, forKeyIfPresent: .valueOid, auxiliaryKey: ._valueOid) {
       if _value != nil {
-        throw DecodingError.dataCorruptedError(forKey: .valueOid, in: _container, debugDescription: debugDescription)
+        throw DecodingError.dataCorruptedError(forKey: .valueOid, in: codingContainer, debugDescription: debugDescription)
       }
       _value = .oid(valueOID)
     }
     
     // Parameter Definition
-    if let valueParameterDefinition = try ParameterDefinition(from: _container, forKeyIfPresent: .valueParameterDefinition) {
+    if let valueParameterDefinition = try ParameterDefinition(from: codingContainer, forKeyIfPresent: .valueParameterDefinition) {
       if _value != nil {
-        throw DecodingError.dataCorruptedError(forKey: .valueParameterDefinition, in: _container, debugDescription: debugDescription)
+        throw DecodingError.dataCorruptedError(forKey: .valueParameterDefinition, in: codingContainer, debugDescription: debugDescription)
       }
       _value = .parameterDefinition(valueParameterDefinition)
     }
     
     // Period
-    if let valuePeriod = try Period(from: _container, forKeyIfPresent: .valuePeriod) {
+    if let valuePeriod = try Period(from: codingContainer, forKeyIfPresent: .valuePeriod) {
       if _value != nil {
-        throw DecodingError.dataCorruptedError(forKey: .valuePeriod, in: _container, debugDescription: debugDescription)
+        throw DecodingError.dataCorruptedError(forKey: .valuePeriod, in: codingContainer, debugDescription: debugDescription)
       }
       _value = .period(valuePeriod)
     }
     
     // Positive Integer
-    if let valuePositiveInteger = try FHIRKitPrimitive<FHIRKitPositiveInteger>(from: _container, forKeyIfPresent: .valuePositiveInt, auxiliaryKey: ._valuePositiveInt) {
+    if let valuePositiveInteger = try FHIRKitPrimitive<FHIRKitPositiveInteger>(from: codingContainer, forKeyIfPresent: .valuePositiveInt, auxiliaryKey: ._valuePositiveInt) {
       if _value != nil {
-        throw DecodingError.dataCorruptedError(forKey: .valuePositiveInt, in: _container, debugDescription: debugDescription)
+        throw DecodingError.dataCorruptedError(forKey: .valuePositiveInt, in: codingContainer, debugDescription: debugDescription)
       }
       _value = .positiveInt(valuePositiveInteger)
     }
     
     // Quantity
-    if let valueQuantity = try Quantity(from: _container, forKeyIfPresent: .valueQuantity) {
+    if let valueQuantity = try Quantity(from: codingContainer, forKeyIfPresent: .valueQuantity) {
       if _value != nil {
-        throw DecodingError.dataCorruptedError(forKey: .valueQuantity, in: _container, debugDescription: debugDescription)
+        throw DecodingError.dataCorruptedError(forKey: .valueQuantity, in: codingContainer, debugDescription: debugDescription)
       }
       _value = .quantity(valueQuantity)
     }
     
     // Range
-    if let valueRange = try Range(from: _container, forKeyIfPresent: .valueRange) {
+    if let valueRange = try Range(from: codingContainer, forKeyIfPresent: .valueRange) {
       if _value != nil {
-        throw DecodingError.dataCorruptedError(forKey: .valueRange, in: _container, debugDescription: debugDescription)
+        throw DecodingError.dataCorruptedError(forKey: .valueRange, in: codingContainer, debugDescription: debugDescription)
       }
       _value = .range(valueRange)
     }
     
     // Ratio
-    if let valueRatio = try Ratio(from: _container, forKeyIfPresent: .valueRatio) {
+    if let valueRatio = try Ratio(from: codingContainer, forKeyIfPresent: .valueRatio) {
       if _value != nil {
-        throw DecodingError.dataCorruptedError(forKey: .valueRatio, in: _container, debugDescription: debugDescription)
+        throw DecodingError.dataCorruptedError(forKey: .valueRatio, in: codingContainer, debugDescription: debugDescription)
       }
       _value = .ratio(valueRatio)
     }
     
     // Reference
-    if let valueReference = try Reference(from: _container, forKeyIfPresent: .valueReference) {
+    if let valueReference = try Reference(from: codingContainer, forKeyIfPresent: .valueReference) {
       if _value != nil {
-        throw DecodingError.dataCorruptedError(forKey: .valueReference, in: _container, debugDescription: debugDescription)
+        throw DecodingError.dataCorruptedError(forKey: .valueReference, in: codingContainer, debugDescription: debugDescription)
       }
       _value = .reference(valueReference)
     }
     
     // Related Artifact
-    if let valueRelatedArtifact = try RelatedArtifact(from: _container, forKeyIfPresent: .valueRelatedArtifact) {
+    if let valueRelatedArtifact = try RelatedArtifact(from: codingContainer, forKeyIfPresent: .valueRelatedArtifact) {
       if _value != nil {
-        throw DecodingError.dataCorruptedError(forKey: .valueRelatedArtifact, in: _container, debugDescription: debugDescription)
+        throw DecodingError.dataCorruptedError(forKey: .valueRelatedArtifact, in: codingContainer, debugDescription: debugDescription)
       }
       _value = .relatedArtifact(valueRelatedArtifact)
     }
     
     // Sampled Data
-    if let valueSampledData = try SampledData(from: _container, forKeyIfPresent: .valueSampledData) {
+    if let valueSampledData = try SampledData(from: codingContainer, forKeyIfPresent: .valueSampledData) {
       if _value != nil {
-        throw DecodingError.dataCorruptedError(forKey: .valueSampledData, in: _container, debugDescription: debugDescription)
+        throw DecodingError.dataCorruptedError(forKey: .valueSampledData, in: codingContainer, debugDescription: debugDescription)
       }
       _value = .sampledData(valueSampledData)
     }
     
     // Signature
-    if let valueSignature = try Signature(from: _container, forKeyIfPresent: .valueSignature) {
+    if let valueSignature = try Signature(from: codingContainer, forKeyIfPresent: .valueSignature) {
       if _value != nil {
-        throw DecodingError.dataCorruptedError(forKey: .valueSignature, in: _container, debugDescription: debugDescription)
+        throw DecodingError.dataCorruptedError(forKey: .valueSignature, in: codingContainer, debugDescription: debugDescription)
       }
       _value = .signature(valueSignature)
     }
     
     // Time
-    if let valueTime = try FHIRKitPrimitive<FHIRKitTime>(from: _container, forKeyIfPresent: .valueTime, auxiliaryKey: ._valueTime) {
+    if let valueTime = try FHIRKitPrimitive<FHIRKitTime>(from: codingContainer, forKeyIfPresent: .valueTime, auxiliaryKey: ._valueTime) {
       if _value != nil {
-        throw DecodingError.dataCorruptedError(forKey: .valueTime, in: _container, debugDescription: debugDescription)
+        throw DecodingError.dataCorruptedError(forKey: .valueTime, in: codingContainer, debugDescription: debugDescription)
       }
       _value = .time(valueTime)
     }
     
     // Timing
-    if let valueTiming = try Timing(from: _container, forKeyIfPresent: .valueTiming) {
+    if let valueTiming = try Timing(from: codingContainer, forKeyIfPresent: .valueTiming) {
       if _value != nil {
-        throw DecodingError.dataCorruptedError(forKey: .valueTiming, in: _container, debugDescription: debugDescription)
+        throw DecodingError.dataCorruptedError(forKey: .valueTiming, in: codingContainer, debugDescription: debugDescription)
       }
       _value = .timing(valueTiming)
     }
     
     // Trigger Definition
-    if let valueTriggerDefinition = try TriggerDefinition(from: _container, forKeyIfPresent: .valueTriggerDefinition) {
+    if let valueTriggerDefinition = try TriggerDefinition(from: codingContainer, forKeyIfPresent: .valueTriggerDefinition) {
       if _value != nil {
-        throw DecodingError.dataCorruptedError(forKey: .valueTriggerDefinition, in: _container, debugDescription: debugDescription)
+        throw DecodingError.dataCorruptedError(forKey: .valueTriggerDefinition, in: codingContainer, debugDescription: debugDescription)
       }
       _value = .triggerDefinition(valueTriggerDefinition)
     }
     
     // URI
-    if let valueURI = try FHIRKitPrimitive<FHIRKitURI>(from: _container, forKeyIfPresent: .valueUri, auxiliaryKey: ._valueUri) {
+    if let valueURI = try FHIRKitPrimitive<FHIRKitURI>(from: codingContainer, forKeyIfPresent: .valueUri, auxiliaryKey: ._valueUri) {
       if _value != nil {
-        throw DecodingError.dataCorruptedError(forKey: .valueUri, in: _container, debugDescription: debugDescription)
+        throw DecodingError.dataCorruptedError(forKey: .valueUri, in: codingContainer, debugDescription: debugDescription)
       }
       _value = .uri(valueURI)
     }
     
     // URL
-    if let valueURL = try FHIRKitPrimitive<FHIRKitURI>(from: _container, forKeyIfPresent: .valueUrl, auxiliaryKey: ._valueUrl) {
+    if let valueURL = try FHIRKitPrimitive<FHIRKitURI>(from: codingContainer, forKeyIfPresent: .valueUrl, auxiliaryKey: ._valueUrl) {
       if _value != nil {
-        throw DecodingError.dataCorruptedError(forKey: .valueUrl, in: _container, debugDescription: debugDescription)
+        throw DecodingError.dataCorruptedError(forKey: .valueUrl, in: codingContainer, debugDescription: debugDescription)
       }
       _value = .url(valueURL)
     }
     
     // Usage Context
-    if let valueUsageContext = try UsageContext(from: _container, forKeyIfPresent: .valueUsageContext) {
+    if let valueUsageContext = try UsageContext(from: codingContainer, forKeyIfPresent: .valueUsageContext) {
       if _value != nil {
-        throw DecodingError.dataCorruptedError(forKey: .valueUsageContext, in: _container, debugDescription: debugDescription)
+        throw DecodingError.dataCorruptedError(forKey: .valueUsageContext, in: codingContainer, debugDescription: debugDescription)
       }
       _value = .usageContext(valueUsageContext)
     }
     
     // UUID
-    if let valueUUID = try FHIRKitPrimitive<FHIRKitURI>(from: _container, forKeyIfPresent: .valueUuid, auxiliaryKey: ._valueUuid) {
+    if let valueUUID = try FHIRKitPrimitive<FHIRKitURI>(from: codingContainer, forKeyIfPresent: .valueUuid, auxiliaryKey: ._valueUuid) {
       if _value != nil {
-        throw DecodingError.dataCorruptedError(forKey: .valueUuid, in: _container, debugDescription: debugDescription)
+        throw DecodingError.dataCorruptedError(forKey: .valueUuid, in: codingContainer, debugDescription: debugDescription)
       }
       _value = .uuid(valueUUID)
     }
     
-    self.value = _value
+    self.valueX = _value
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
+    var codingContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    try url.encode(on: &_container, forKey: .url, auxiliaryKey: ._url)
-    if let _enum = value {
+    try url.encode(on: &codingContainer, forKey: .url, auxiliaryKey: ._url)
+    if let _enum = valueX {
       switch _enum {
       case .address(let _value):
-        try _value.encode(on: &_container, forKey: .valueAddress)
+        try _value.encode(on: &codingContainer, forKey: .valueAddress)
       case .age(let _value):
-        try _value.encode(on: &_container, forKey: .valueAge)
+        try _value.encode(on: &codingContainer, forKey: .valueAge)
       case .annotation(let _value):
-        try _value.encode(on: &_container, forKey: .valueAnnotation)
+        try _value.encode(on: &codingContainer, forKey: .valueAnnotation)
       case .attachment(let _value):
-        try _value.encode(on: &_container, forKey: .valueAttachment)
+        try _value.encode(on: &codingContainer, forKey: .valueAttachment)
       case .base64Binary(let _value):
-        try _value.encode(on: &_container, forKey: .valueBase64Binary, auxiliaryKey: ._valueBase64Binary)
+        try _value.encode(on: &codingContainer, forKey: .valueBase64Binary, auxiliaryKey: ._valueBase64Binary)
       case .boolean(let _value):
-        try _value.encode(on: &_container, forKey: .valueBoolean, auxiliaryKey: ._valueBoolean)
+        try _value.encode(on: &codingContainer, forKey: .valueBoolean, auxiliaryKey: ._valueBoolean)
       case .canonical(let _value):
-        try _value.encode(on: &_container, forKey: .valueCanonical, auxiliaryKey: ._valueCanonical)
+        try _value.encode(on: &codingContainer, forKey: .valueCanonical, auxiliaryKey: ._valueCanonical)
       case .code(let _value):
-        try _value.encode(on: &_container, forKey: .valueCode, auxiliaryKey: ._valueCode)
+        try _value.encode(on: &codingContainer, forKey: .valueCode, auxiliaryKey: ._valueCode)
       case .codableConcept(let _value):
-        try _value.encode(on: &_container, forKey: .valueCodableConcept)
+        try _value.encode(on: &codingContainer, forKey: .valueCodableConcept)
       case .coding(let _value):
-        try _value.encode(on: &_container, forKey: .valueCoding)
+        try _value.encode(on: &codingContainer, forKey: .valueCoding)
       case .contactDetail(let _value):
-        try _value.encode(on: &_container, forKey: .valueContactDetail)
+        try _value.encode(on: &codingContainer, forKey: .valueContactDetail)
       case .contactPoint(let _value):
-        try _value.encode(on: &_container, forKey: .valueContactPoint)
+        try _value.encode(on: &codingContainer, forKey: .valueContactPoint)
       case .contributor(let _value):
-        try _value.encode(on: &_container, forKey: .valueContributor)
+        try _value.encode(on: &codingContainer, forKey: .valueContributor)
       case .count(let _value):
-        try _value.encode(on: &_container, forKey: .valueCount)
+        try _value.encode(on: &codingContainer, forKey: .valueCount)
       case .dataRequirement(let _value):
-        try _value.encode(on: &_container, forKey: .valueDataRequirement)
+        try _value.encode(on: &codingContainer, forKey: .valueDataRequirement)
       case .date(let _value):
-        try _value.encode(on: &_container, forKey: .valueDate, auxiliaryKey: ._valueDate)
+        try _value.encode(on: &codingContainer, forKey: .valueDate, auxiliaryKey: ._valueDate)
       case .dateTime(let _value):
-        try _value.encode(on: &_container, forKey: .valueDateTime, auxiliaryKey: ._valueDateTime)
+        try _value.encode(on: &codingContainer, forKey: .valueDateTime, auxiliaryKey: ._valueDateTime)
       case .decimal(let _value):
-        try _value.encode(on: &_container, forKey: .valueDecimal, auxiliaryKey: ._valueDecimal)
+        try _value.encode(on: &codingContainer, forKey: .valueDecimal, auxiliaryKey: ._valueDecimal)
       case .distance(let _value):
-        try _value.encode(on: &_container, forKey: .valueDistance)
+        try _value.encode(on: &codingContainer, forKey: .valueDistance)
       case .dosage(let _value):
-        try _value.encode(on: &_container, forKey: .valueDosage)
+        try _value.encode(on: &codingContainer, forKey: .valueDosage)
       case .duration(let _value):
-        try _value.encode(on: &_container, forKey: .valueDuration)
+        try _value.encode(on: &codingContainer, forKey: .valueDuration)
       case .expression(let _value):
-        try _value.encode(on: &_container, forKey: .valueExpression)
+        try _value.encode(on: &codingContainer, forKey: .valueExpression)
       case .humanName(let _value):
-        try _value.encode(on: &_container, forKey: .valueHumanName)
+        try _value.encode(on: &codingContainer, forKey: .valueHumanName)
       case .id(let _value):
-        try _value.encode(on: &_container, forKey: .valueId, auxiliaryKey: ._valueId)
+        try _value.encode(on: &codingContainer, forKey: .valueId, auxiliaryKey: ._valueId)
       case .identifier(let _value):
-        try _value.encode(on: &_container, forKey: .valueIdentifier)
+        try _value.encode(on: &codingContainer, forKey: .valueIdentifier)
       case .instant(let _value):
-        try _value.encode(on: &_container, forKey: .valueInstant, auxiliaryKey: ._valueInstant)
+        try _value.encode(on: &codingContainer, forKey: .valueInstant, auxiliaryKey: ._valueInstant)
       case .integer(let _value):
-        try _value.encode(on: &_container, forKey: .valueInteger, auxiliaryKey: ._valueInteger)
+        try _value.encode(on: &codingContainer, forKey: .valueInteger, auxiliaryKey: ._valueInteger)
       case .markdown(let _value):
-        try _value.encode(on: &_container, forKey: .valueMarkdown, auxiliaryKey: ._valueMarkdown)
+        try _value.encode(on: &codingContainer, forKey: .valueMarkdown, auxiliaryKey: ._valueMarkdown)
       case .meta(let _value):
-        try _value.encode(on: &_container, forKey: .valueMeta)
+        try _value.encode(on: &codingContainer, forKey: .valueMeta)
       case .money(let _value):
-        try _value.encode(on: &_container, forKey: .valueMoney)
+        try _value.encode(on: &codingContainer, forKey: .valueMoney)
       case .oid(let _value):
-        try _value.encode(on: &_container, forKey: .valueOid, auxiliaryKey: ._valueOid)
+        try _value.encode(on: &codingContainer, forKey: .valueOid, auxiliaryKey: ._valueOid)
       case .parameterDefinition(let _value):
-        try _value.encode(on: &_container, forKey: .valueParameterDefinition)
+        try _value.encode(on: &codingContainer, forKey: .valueParameterDefinition)
       case .period(let _value):
-        try _value.encode(on: &_container, forKey: .valuePeriod)
+        try _value.encode(on: &codingContainer, forKey: .valuePeriod)
       case .positiveInt(let _value):
-        try _value.encode(on: &_container, forKey: .valuePositiveInt, auxiliaryKey: ._valuePositiveInt)
+        try _value.encode(on: &codingContainer, forKey: .valuePositiveInt, auxiliaryKey: ._valuePositiveInt)
       case .quantity(let _value):
-        try _value.encode(on: &_container, forKey: .valueQuantity)
+        try _value.encode(on: &codingContainer, forKey: .valueQuantity)
       case .range(let _value):
-        try _value.encode(on: &_container, forKey: .valueRange)
+        try _value.encode(on: &codingContainer, forKey: .valueRange)
       case .ratio(let _value):
-        try _value.encode(on: &_container, forKey: .valueRatio)
+        try _value.encode(on: &codingContainer, forKey: .valueRatio)
       case .reference(let _value):
-        try _value.encode(on: &_container, forKey: .valueReference)
+        try _value.encode(on: &codingContainer, forKey: .valueReference)
       case .relatedArtifact(let _value):
-        try _value.encode(on: &_container, forKey: .valueRelatedArtifact)
+        try _value.encode(on: &codingContainer, forKey: .valueRelatedArtifact)
       case .sampledData(let _value):
-        try _value.encode(on: &_container, forKey: .valueSampledData)
+        try _value.encode(on: &codingContainer, forKey: .valueSampledData)
       case .signature(let _value):
-        try _value.encode(on: &_container, forKey: .valueSignature)
+        try _value.encode(on: &codingContainer, forKey: .valueSignature)
       case .string(let _value):
-        try _value.encode(on: &_container, forKey: .valueString, auxiliaryKey: ._valueString)
+        try _value.encode(on: &codingContainer, forKey: .valueString, auxiliaryKey: ._valueString)
       case .time(let _value):
-        try _value.encode(on: &_container, forKey: .valueTime, auxiliaryKey: ._valueTime)
+        try _value.encode(on: &codingContainer, forKey: .valueTime, auxiliaryKey: ._valueTime)
       case .timing(let _value):
-        try _value.encode(on: &_container, forKey: .valueTiming)
+        try _value.encode(on: &codingContainer, forKey: .valueTiming)
       case .triggerDefinition(let _value):
-        try _value.encode(on: &_container, forKey: .valueTriggerDefinition)
+        try _value.encode(on: &codingContainer, forKey: .valueTriggerDefinition)
       case .unsignedInt(let _value):
-        try _value.encode(on: &_container, forKey: .valueUnsignedInt, auxiliaryKey: ._valueUnsignedInt)
+        try _value.encode(on: &codingContainer, forKey: .valueUnsignedInt, auxiliaryKey: ._valueUnsignedInt)
       case .uri(let _value):
-        try _value.encode(on: &_container, forKey: .valueUri, auxiliaryKey: ._valueUri)
+        try _value.encode(on: &codingContainer, forKey: .valueUri, auxiliaryKey: ._valueUri)
       case .url(let _value):
-        try _value.encode(on: &_container, forKey: .valueUrl, auxiliaryKey: ._valueUrl)
+        try _value.encode(on: &codingContainer, forKey: .valueUrl, auxiliaryKey: ._valueUrl)
       case .usageContext(let _value):
-        try _value.encode(on: &_container, forKey: .valueUsageContext)
+        try _value.encode(on: &codingContainer, forKey: .valueUsageContext)
       case .uuid(let _value):
-        try _value.encode(on: &_container, forKey: ._valueUuid, auxiliaryKey: ._valueUuid)
+        try _value.encode(on: &codingContainer, forKey: ._valueUuid, auxiliaryKey: ._valueUuid)
       }
     }
     
@@ -670,12 +676,13 @@ open class Extension: Element {
     }
     
     return url == _other.url
-    && value == _other.value
+    && valueX == _other.valueX
   }
   
   public override func hash(into hasher: inout Hasher) {
     super.hash(into: &hasher)
+    
     hasher.combine(url)
-    hasher.combine(value)
+    hasher.combine(valueX)
   }
 }

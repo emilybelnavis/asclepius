@@ -37,24 +37,34 @@ public struct FHIRKitBool: FHIRKitPrimitiveType {
   }
 }
 
+// MARK: - ExpressibleByBooleanLiteral
 extension FHIRKitBool: ExpressibleByBooleanLiteral {
   public init(booleanLiteral value: Self.BooleanLiteralType) {
     self.bool = value
   }
 }
 
-extension FHIRKitBool: Codable {
-  public init(from decoder: Decoder) throws {
-    let container = try decoder.singleValueContainer()
-    self.bool = try container.decode(Self.BooleanLiteralType.self)
-  }
-  
-  public func encode(to encoder: Encoder) throws {
-    var container = encoder.singleValueContainer()
-    try container.encode(bool)
+extension FHIRKitPrimitive: ExpressibleByBooleanLiteral where PrimitiveType == FHIRKitBool {
+  public typealias BooleanLiteralType = Bool
+  public init(booleanLiteral value: Self.BooleanLiteralType) {
+    self.init(FHIRKitBool(value))
   }
 }
 
+// MARK: - Codable
+extension FHIRKitBool: Codable {
+  public init(from decoder: Decoder) throws {
+    let codingKeyContainer = try decoder.singleValueContainer()
+    self.bool = try codingKeyContainer.decode(Self.BooleanLiteralType.self)
+  }
+  
+  public func encode(to encoder: Encoder) throws {
+    var codingKeyContainer = encoder.singleValueContainer()
+    try codingKeyContainer.encode(bool)
+  }
+}
+
+// MARK: - Equatable
 extension FHIRKitBool: Equatable {
   public static func == (leftSide: FHIRKitBool, rightSide: FHIRKitBool) -> Bool {
     return leftSide.bool == rightSide.bool
@@ -69,7 +79,7 @@ extension FHIRKitBool: Equatable {
   }
 }
 
-// MARK: -
+// MARK: - Extends Bool
 
 extension Bool {
   public func asPrimitive() -> FHIRKitPrimitive<FHIRKitBool> {
@@ -77,9 +87,3 @@ extension Bool {
   }
 }
 
-extension FHIRKitPrimitive: ExpressibleByBooleanLiteral where PrimitiveType == FHIRKitBool {
-  public typealias BooleanLiteralType = Bool
-  public init(booleanLiteral value: Self.BooleanLiteralType) {
-    self.init(FHIRKitBool(value))
-  }
-}

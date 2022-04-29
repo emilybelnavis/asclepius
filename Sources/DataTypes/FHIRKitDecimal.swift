@@ -56,25 +56,27 @@ public struct FHIRKitDecimal: FHIRKitPrimitiveType, ExpressibleByFloatLiteral {
   }
 }
 
+// MARK: - Codable
 extension FHIRKitDecimal: Codable {
   public init(from decoder: Decoder) throws {
-    let container = try decoder.singleValueContainer()
-    self.decimal = try container.decode(Decimal.self)
+    let codingKeyContainer = try decoder.singleValueContainer()
+    self.decimal = try codingKeyContainer.decode(Decimal.self)
   }
   
   public func encode(to encoder: Encoder) throws {
-    var container = encoder.singleValueContainer()
-    try container.encode(decimal)
+    var codingKeyContainer = encoder.singleValueContainer()
+    try codingKeyContainer.encode(decimal)
   }
 }
 
+// MARK: - Equatable
 extension FHIRKitDecimal: Equatable {
   public static func == (leftSide: FHIRKitDecimal, rightSide: FHIRKitDecimal) -> Bool {
     return leftSide.decimal == rightSide.decimal
   }
 }
 
-// MARK: -
+// MARK: - Extends Double
 extension Double {
   public func asFHIRKitDecimalPrimitive() -> FHIRKitPrimitive<FHIRKitDecimal> {
     return FHIRKitPrimitive(FHIRKitDecimal(floatLiteral: FHIRKitDecimal.FloatLiteralType(self)))

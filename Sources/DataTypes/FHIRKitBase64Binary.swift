@@ -55,18 +55,20 @@ extension FHIRKitBase64Binary: ExpressibleByStringLiteral {
   }
 }
 
+// MARK: - Codable
 extension FHIRKitBase64Binary: Codable {
   public init(from decoder: Decoder) throws {
-    let container = try decoder.singleValueContainer()
-    self.dataString = try container.decode(String.self)
+    let codingContainer = try decoder.singleValueContainer()
+    self.dataString = try codingContainer.decode(String.self)
   }
   
   public func encode(to encoder: Encoder) throws {
-    var container = encoder.singleValueContainer()
-    try container.encode(dataString)
+    var codingContainer = encoder.singleValueContainer()
+    try codingContainer.encode(dataString)
   }
 }
 
+// MARK: - Equatable
 extension FHIRKitBase64Binary: Equatable {
   public static func == (left: FHIRKitBase64Binary, right: FHIRKitBase64Binary) -> Bool {
     return left.dataString == right.dataString

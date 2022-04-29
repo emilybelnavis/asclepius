@@ -34,7 +34,7 @@ import Foundation
  http://hl7.org/fhir/datatypes.html#time
  */
 public struct FHIRKitTime: FHIRKitPrimitiveType {
-  private var _secondsAreUnaltered = true
+  private var secondsAreUnaltered = true
   
   public var hour: UInt8 {
     didSet {
@@ -57,7 +57,7 @@ public struct FHIRKitTime: FHIRKitPrimitiveType {
       if second > 60 {
         second = 60.0
       }
-      _secondsAreUnaltered = false
+      secondsAreUnaltered = false
     }
   }
   
@@ -172,8 +172,7 @@ public struct FHIRKitTime: FHIRKitPrimitiveType {
   }
 }
 
-// MARK: -
-
+// MARK: - ExpressibleByStringLiteral
 extension FHIRKitTime: ExpressibleByStringLiteral {
   public init(stringLiteral value: StringLiteralType) {
     try! self.init(value) // swiftlint:disable:this force_try
@@ -183,8 +182,8 @@ extension FHIRKitTime: ExpressibleByStringLiteral {
 // MARK: - Codable
 extension FHIRKitTime: Codable {
   public init(from decoder: Decoder) throws {
-    let container = try decoder.singleValueContainer()
-    let string = try container.decode(String.self)
+    let codingKeyContainer = try decoder.singleValueContainer()
+    let string = try codingKeyContainer.decode(String.self)
     try self.init(string)
   }
   
@@ -194,6 +193,7 @@ extension FHIRKitTime: Codable {
   }
 }
 
+// MARK: - CustomStringConvertable
 extension FHIRKitTime: CustomStringConvertible {
   static let secondsFormatter: NumberFormatter = {
     let formatter = NumberFormatter()
@@ -209,13 +209,14 @@ extension FHIRKitTime: CustomStringConvertible {
   }()
   
   public var description: String {
-    if _secondsAreUnaltered, let originalSecondsString = originalSecondsString {
+    if secondsAreUnaltered, let originalSecondsString = originalSecondsString {
       return String(format: "%02d:%02d:\(originalSecondsString)", hour, minute)
     }
     return String(format: "%02d:%02d:\(FHIRKitTime.secondsFormatter.string(for: second) ?? "00")", hour, minute)
   }
 }
 
+// MARK: - Equatable
 extension FHIRKitTime: Equatable {
   public static func == (leftSide: FHIRKitTime, rightSide: FHIRKitTime) -> Bool {
     if leftSide.hour != rightSide.hour {
@@ -234,6 +235,7 @@ extension FHIRKitTime: Equatable {
   }
 }
 
+// MARK: - Comparable
 extension FHIRKitTime: Comparable {
   public static func < (leftSide: FHIRKitTime, rightSide: FHIRKitTime) -> Bool {
     if leftSide.hour < rightSide.hour {
@@ -246,5 +248,13 @@ extension FHIRKitTime: Comparable {
       }
     }
     return false
+  }
+}
+
+// MARK: - Extends NSDate
+extension FHIRKitTime: ConstructibleFromNSDate {
+  public init(date: Date, timeZone: TimeZone = TimeZone.current) throws {
+    self.originalSecondsString = nil
+    (self.hour, self.minute, self.second) = try FHIRKitDateComponents.timeComponents(from: date, with: timeZone)
   }
 }

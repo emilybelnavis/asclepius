@@ -59,30 +59,34 @@ public struct FHIRKitString: FHIRKitPrimitiveType {
   }
 }
 
+// MARK: - ExpressibleByStringLiteral
 extension FHIRKitString: ExpressibleByStringLiteral {
   public init(stringLiteral value: StringLiteralType) {
     self.init(value)
   }
 }
 
+// MARK: - Codable
 extension FHIRKitString: Codable {
   public init(from decoder: Decoder) throws {
-    let container = try decoder.singleValueContainer()
-    self.string = try container.decode(String.self)
+    let codingKeyContainer = try decoder.singleValueContainer()
+    self.string = try codingKeyContainer.decode(String.self)
   }
   
   public func encode(to encoder: Encoder) throws {
-    var container = encoder.singleValueContainer()
-    try container.encode(string)
+    var codingKeyContainer = encoder.singleValueContainer()
+    try codingKeyContainer.encode(string)
   }
 }
 
+// MARK: CustomStringConvertible
 extension FHIRKitString: CustomStringConvertible {
   public var description: String {
     return string
   }
 }
 
+// MARK: - Equatable
 extension FHIRKitString: Equatable {
   public static func == (leftSide: FHIRKitString, rightSide: FHIRKitString) -> Bool {
     return leftSide.string == rightSide.string
@@ -97,7 +101,7 @@ extension FHIRKitString: Equatable {
   }
 }
 
-// MARK: -
+// MARK: - Extends String
 extension String {
   public func asFHIRKitStringPrimitive() -> FHIRKitPrimitive<FHIRKitString> {
     return FHIRKitPrimitive(FHIRKitString(self))

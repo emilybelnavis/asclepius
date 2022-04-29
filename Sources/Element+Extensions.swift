@@ -24,7 +24,7 @@
 
 public extension Element {
   func extensions(for url: String) -> [Extension] {
-    let matches = `extension`?.filter {
+    let matches = fhirExtension?.filter {
       return $0.url.value?.url.absoluteString == url
     }
     return matches ?? []

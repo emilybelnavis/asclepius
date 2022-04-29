@@ -22,42 +22,48 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-/// Base definition for all elements in a resource
+/**
+ The base definition for all elements contained inside a resource. All elements, whether defined as a `Data Type`
+ (including primitives) or as a part of a resource structure have this base content; Extensions and an internal ID.
+ 
+ Three kinds of decend
+ */
 open class Element: FHIRKitType {
-  /// unique id for inter-element referencing
+  /// Unique id for inter-element referencing
   public var id: FHIRKitPrimitive<FHIRKitString>?
   
-  public var `extension`: [Extension]?
+  /// Addistional content defined by implementations
+  public var fhirExtension: [Extension]?
   
   public init() {
     
   }
   
-  public convenience init(`extension`: [Extension]? = nil, id: FHIRKitPrimitive<FHIRKitString>? = nil) {
+  public convenience init(fhirExtension: [Extension]? = nil, id: FHIRKitPrimitive<FHIRKitString>? = nil) {
     self.init()
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.id = id
   }
   
   // MARK: - Codable
   private enum CodingKeys: String, CodingKey {
-    case `extension` = "extension" // swiftlint:disable:this redundant_string_enum_value
+    case fhirExtension = "extension" // swiftlint:disable:this redundant_string_enum_value
     case id; case _id
   }
   
   /// decodable
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
+    let codingContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.`extension` = try [Extension](from: _container, forKeyIfPresent: .`extension`)
-    self.id = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .id, auxiliaryKey: ._id)
+    self.fhirExtension = try [Extension](from: codingContainer, forKeyIfPresent: .fhirExtension)
+    self.id = try FHIRKitPrimitive<FHIRKitString>(from: codingContainer, forKeyIfPresent: .id, auxiliaryKey: ._id)
   }
   
   public func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
+    var codingContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    try `extension`?.encode(on: &_container, forKey: .`extension`)
-    try id?.encode(on: &_container, forKey: .id, auxiliaryKey: ._id)
+    try fhirExtension?.encode(on: &codingContainer, forKey: .fhirExtension)
+    try id?.encode(on: &codingContainer, forKey: .id, auxiliaryKey: ._id)
   }
   
   // MARK: - Equatable
@@ -74,12 +80,13 @@ open class Element: FHIRKitType {
       return false
     }
     
-    return `extension` == _other.`extension` && id == _other.id
+    return fhirExtension == _other.fhirExtension
+    && id == _other.id
   }
   
   // MARK: - Hashable
   public func hash(into hasher: inout Hasher) {
-    hasher.combine(`extension`)
+    hasher.combine(fhirExtension)
     hasher.combine(id)
   }
 }
