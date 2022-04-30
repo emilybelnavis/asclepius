@@ -58,7 +58,7 @@ open class Signature: Element {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     type: [Coding],
     when: FHIRKitPrimitive<FHIRKitInstant>,
@@ -69,7 +69,7 @@ open class Signature: Element {
     data: FHIRKitPrimitive<FHIRKitBase64Binary>? = nil
   ) {
     self.init(type: type, when: when, who: who)
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.id = id
     self.onBehalfOf = onBehalfOf
     self.targetFormat = targetFormat
@@ -89,34 +89,34 @@ open class Signature: Element {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.type = try [Coding](from: _container, forKey: .type)
-    self.when = try FHIRKitPrimitive<FHIRKitInstant>(from: _container, forKey: .when, auxiliaryKey: ._when)
-    self.who = try Reference(from: _container, forKey: .who)
-    self.onBehalfOf = try Reference(from: _container, forKeyIfPresent: .onBehalfOf)
-    self.targetFormat = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .targetFormat, auxiliaryKey: ._targetFormat)
-    self.sigFormat = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .sigFormat, auxiliaryKey: ._sigFormat)
-    self.data = try FHIRKitPrimitive<FHIRKitBase64Binary>(from: _container, forKeyIfPresent: .data, auxiliaryKey: ._data)
+    self.type = try [Coding](from: codingKeyContainer, forKey: .type)
+    self.when = try FHIRKitPrimitive<FHIRKitInstant>(from: codingKeyContainer, forKey: .when, auxKey: ._when)
+    self.who = try Reference(from: codingKeyContainer, forKey: .who)
+    self.onBehalfOf = try Reference(from: codingKeyContainer, forKeyIfPresent: .onBehalfOf)
+    self.targetFormat = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .targetFormat, auxKey: ._targetFormat)
+    self.sigFormat = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .sigFormat, auxKey: ._sigFormat)
+    self.data = try FHIRKitPrimitive<FHIRKitBase64Binary>(from: codingKeyContainer, forKeyIfPresent: .data, auxKey: ._data)
     
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    try type.encode(on: &_container, forKey: .type)
-    try when.encode(on: &_container, forKey: .when, auxiliaryKey: ._when)
-    try who.encode(on: &_container, forKey: .who)
-    try onBehalfOf?.encode(on: &_container, forKey: .onBehalfOf)
-    try targetFormat?.encode(on: &_container, forKey: .targetFormat, auxiliaryKey: ._targetFormat)
-    try sigFormat?.encode(on: &_container, forKey: .sigFormat, auxiliaryKey: ._sigFormat)
-    try data?.encode(on: &_container, forKey: .data, auxiliaryKey: ._data)
+    try type.encode(on: &codingKeyContainer, forKey: .type)
+    try when.encode(on: &codingKeyContainer, forKey: .when, auxKey: ._when)
+    try who.encode(on: &codingKeyContainer, forKey: .who)
+    try onBehalfOf?.encode(on: &codingKeyContainer, forKey: .onBehalfOf)
+    try targetFormat?.encode(on: &codingKeyContainer, forKey: .targetFormat, auxKey: ._targetFormat)
+    try sigFormat?.encode(on: &codingKeyContainer, forKey: .sigFormat, auxKey: ._sigFormat)
+    try data?.encode(on: &codingKeyContainer, forKey: .data, auxKey: ._data)
     
     try super.encode(to: encoder)
   }
   
-  // MARK: - Equatable & Hashable
+  // MARK: - Equatable
   public override func isEqual(to _other: Any?) -> Bool {
     guard let _other = _other as? Signature else {
       return false
@@ -135,6 +135,7 @@ open class Signature: Element {
     && data == _other.data
   }
   
+  // MARK: - Hashable
   public override func hash(into hasher: inout Hasher) {
     super.hash(into: &hasher)
     hasher.combine(type)

@@ -67,7 +67,7 @@ open class ClaimItemDetailSubDetail: BackboneElement {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     sequence: FHIRKitPrimitive<FHIRKitPositiveInteger>,
@@ -83,7 +83,7 @@ open class ClaimItemDetailSubDetail: BackboneElement {
     udi: [Reference]? = nil
   ) {
     self.init(sequence: sequence, productOrService: productOrService)
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
     self.id = id
     self.sequence = sequence
@@ -115,35 +115,37 @@ open class ClaimItemDetailSubDetail: BackboneElement {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
-    self.sequence = try FHIRKitPrimitive<FHIRKitPositiveInteger>(from: _container, forKey: .sequence, auxiliaryKey: ._sequence)
-    self.revenue = try CodableConcept(from: _container, forKeyIfPresent: .revenue)
-    self.category = try CodableConcept(from: _container, forKeyIfPresent: .category)
-    self.productOrService = try CodableConcept(from: _container, forKey: .productOrService)
-    self.modifier = try [CodableConcept](from: _container, forKeyIfPresent: .modifier)
-    self.quantity = try Quantity(from: _container, forKeyIfPresent: .quantity)
-    self.unitPrice = try Money(from: _container, forKeyIfPresent: .unitPrice)
-    self.factor = try FHIRKitPrimitive<FHIRKitDecimal>(from: _container, forKey: .factor, auxiliaryKey: ._factor)
-    self.net = try Money(from: _container, forKeyIfPresent: .net)
-    self.udi = try [Reference](from: _container, forKeyIfPresent: .udi)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
+    
+    self.sequence = try FHIRKitPrimitive<FHIRKitPositiveInteger>(from: codingKeyContainer, forKey: .sequence, auxKey: ._sequence)
+    self.revenue = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .revenue)
+    self.category = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .category)
+    self.productOrService = try CodableConcept(from: codingKeyContainer, forKey: .productOrService)
+    self.modifier = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .modifier)
+    self.quantity = try Quantity(from: codingKeyContainer, forKeyIfPresent: .quantity)
+    self.unitPrice = try Money(from: codingKeyContainer, forKeyIfPresent: .unitPrice)
+    self.factor = try FHIRKitPrimitive<FHIRKitDecimal>(from: codingKeyContainer, forKey: .factor, auxKey: ._factor)
+    self.net = try Money(from: codingKeyContainer, forKeyIfPresent: .net)
+    self.udi = try [Reference](from: codingKeyContainer, forKeyIfPresent: .udi)
     
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    try sequence.encode(on: &_container, forKey: .sequence, auxiliaryKey: ._sequence)
-    try revenue?.encode(on: &_container, forKey: .revenue)
-    try category?.encode(on: &_container, forKey: .category)
-    try productOrService.encode(on: &_container, forKey: .productOrService)
-    try modifier?.encode(on: &_container, forKey: .modifier)
-    try programCode?.encode(on: &_container, forKey: .programCode)
-    try quantity?.encode(on: &_container, forKey: .quantity)
-    try unitPrice?.encode(on: &_container, forKey: .unitPrice)
-    try factor?.encode(on: &_container, forKey: .factor, auxiliaryKey: ._factor)
-    try net?.encode(on: &_container, forKey: .net)
-    try udi?.encode(on: &_container, forKey: .udi)
+    try sequence.encode(on: &codingKeyContainer, forKey: .sequence, auxKey: ._sequence)
+    try revenue?.encode(on: &codingKeyContainer, forKey: .revenue)
+    try category?.encode(on: &codingKeyContainer, forKey: .category)
+    try productOrService.encode(on: &codingKeyContainer, forKey: .productOrService)
+    try modifier?.encode(on: &codingKeyContainer, forKey: .modifier)
+    try programCode?.encode(on: &codingKeyContainer, forKey: .programCode)
+    try quantity?.encode(on: &codingKeyContainer, forKey: .quantity)
+    try unitPrice?.encode(on: &codingKeyContainer, forKey: .unitPrice)
+    try factor?.encode(on: &codingKeyContainer, forKey: .factor, auxKey: ._factor)
+    try net?.encode(on: &codingKeyContainer, forKey: .net)
+    try udi?.encode(on: &codingKeyContainer, forKey: .udi)
+    
     try super.encode(to: encoder)
   }
   

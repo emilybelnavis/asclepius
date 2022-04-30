@@ -39,14 +39,14 @@ open class ClaimPayee: BackboneElement {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     type: CodableConcept,
     party: Reference? = nil
   ) {
     self.init(type: type)
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
     self.id = id
     self.party = party
@@ -59,18 +59,20 @@ open class ClaimPayee: BackboneElement {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
-    self.type = try CodableConcept(from: _container, forKey: .type)
-    self.party = try Reference(from: _container, forKeyIfPresent: .party)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
+    
+    self.type = try CodableConcept(from: codingKeyContainer, forKey: .type)
+    self.party = try Reference(from: codingKeyContainer, forKeyIfPresent: .party)
     
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    try type.encode(on: &_container, forKey: .type)
-    try party?.encode(on: &_container, forKey: .party)
+    try type.encode(on: &codingKeyContainer, forKey: .type)
+    try party?.encode(on: &codingKeyContainer, forKey: .party)
+    
     try super.encode(to: encoder)
   }
   

@@ -1,6 +1,6 @@
 //
 //  CapabilityStatementMessagingSupportedMessage.swift
-//  FHIRKIT
+//  FHIRKit
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
 //
@@ -37,14 +37,14 @@ open class CapabilityStatementMessagingSupportMessage: BackboneElement {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     mode: FHIRKitPrimitive<EventCapabilityMode>,
     definition: FHIRKitPrimitive<Canonical>
   ) {
     self.init(mode: mode, definition: definition)
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
     self.id = id
   }
@@ -56,16 +56,20 @@ open class CapabilityStatementMessagingSupportMessage: BackboneElement {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
-    self.mode = try FHIRKitPrimitive<EventCapabilityMode>(from: _container, forKey: .mode, auxiliaryKey: ._mode)
-    self.definition = try FHIRKitPrimitive<Canonical>(from: _container, forKey: .definition, auxiliaryKey: ._definition)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
+    
+    self.mode = try FHIRKitPrimitive<EventCapabilityMode>(from: codingKeyContainer, forKey: .mode, auxKey: ._mode)
+    self.definition = try FHIRKitPrimitive<Canonical>(from: codingKeyContainer, forKey: .definition, auxKey: ._definition)
+    
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
-    try mode.encode(on: &_container, forKey: .mode, auxiliaryKey: ._mode)
-    try definition.encode(on: &_container, forKey: .definition, auxiliaryKey: ._definition)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
+    
+    try mode.encode(on: &codingKeyContainer, forKey: .mode, auxKey: ._mode)
+    try definition.encode(on: &codingKeyContainer, forKey: .definition, auxKey: ._definition)
+    
     try super.encode(to: encoder)
   }
   

@@ -48,7 +48,7 @@ open class ChargeItemDefinitionPropertyGroupPriceComponent: BackboneElement {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     type: FHIRKitPrimitive<InvoicePriceComponentType>,
@@ -57,7 +57,7 @@ open class ChargeItemDefinitionPropertyGroupPriceComponent: BackboneElement {
     amount: Money? = nil
   ) {
     self.init(type: type)
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
     self.id = id
     self.code = code
@@ -74,22 +74,24 @@ open class ChargeItemDefinitionPropertyGroupPriceComponent: BackboneElement {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
-    self.type = try FHIRKitPrimitive<InvoicePriceComponentType>(from: _container, forKey: .type, auxiliaryKey: ._type)
-    self.code = try CodableConcept(from: _container, forKeyIfPresent: .code)
-    self.factor = try FHIRKitPrimitive<FHIRKitDecimal>(from: _container, forKeyIfPresent: .factor, auxiliaryKey: ._factor)
-    self.amount = try Money(from: _container, forKeyIfPresent: .amount)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
+    
+    self.type = try FHIRKitPrimitive<InvoicePriceComponentType>(from: codingKeyContainer, forKey: .type, auxKey: ._type)
+    self.code = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .code)
+    self.factor = try FHIRKitPrimitive<FHIRKitDecimal>(from: codingKeyContainer, forKeyIfPresent: .factor, auxKey: ._factor)
+    self.amount = try Money(from: codingKeyContainer, forKeyIfPresent: .amount)
     
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    try type.encode(on: &_container, forKey: .type, auxiliaryKey: ._type)
-    try code?.encode(on: &_container, forKey: .code)
-    try factor?.encode(on: &_container, forKey: .factor, auxiliaryKey: ._factor)
-    try amount?.encode(on: &_container, forKey: .amount)
+    try type.encode(on: &codingKeyContainer, forKey: .type, auxKey: ._type)
+    try code?.encode(on: &codingKeyContainer, forKey: .code)
+    try factor?.encode(on: &codingKeyContainer, forKey: .factor, auxKey: ._factor)
+    try amount?.encode(on: &codingKeyContainer, forKey: .amount)
+    
     try super.encode(to: encoder)
   }
   

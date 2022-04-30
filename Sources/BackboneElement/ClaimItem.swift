@@ -27,13 +27,13 @@
  items or roups of sub-details
  */
 open class ClaimItem: BackboneElement {
-  public enum _Location: Hashable {
+  public enum LocationX: Hashable {
     case address(Address)
     case codableConcept(CodableConcept)
     case reference(Reference)
   }
   
-  public enum _Serviced: Hashable {
+  public enum ServicedX: Hashable {
     case date(FHIRKitPrimitive<FHIRKitDate>)
     case period(Period)
   }
@@ -69,10 +69,10 @@ open class ClaimItem: BackboneElement {
   public var programCode: [CodableConcept]?
   
   /// Date(s) of service or product delivery
-  public var serviced: _Serviced?
+  public var servicedX: ServicedX?
   
   /// Place of service or where product was supplied
-  public var location: _Location?
+  public var locationX: LocationX?
   
   /// Count of products or services
   public var quantity: Quantity?
@@ -108,7 +108,7 @@ open class ClaimItem: BackboneElement {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     sequence: FHIRKitPrimitive<FHIRKitPositiveInteger>,
@@ -121,8 +121,8 @@ open class ClaimItem: BackboneElement {
     productOrService: CodableConcept,
     modifier: [CodableConcept]? = nil,
     programCode: [CodableConcept]? = nil,
-    serviced: _Serviced? = nil,
-    location: _Location? = nil,
+    servicedX: ServicedX? = nil,
+    locationX: LocationX? = nil,
     quantity: Quantity? = nil,
     unitPrice: Money? = nil,
     factor: FHIRKitPrimitive<FHIRKitDecimal>? = nil,
@@ -134,7 +134,7 @@ open class ClaimItem: BackboneElement {
     detail: [ClaimItemDetail]? = nil
   ) {
     self.init(sequence: sequence, productOrService: productOrService)
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
     self.id = id
     self.careTeamSequence = careTeamSequence
@@ -145,8 +145,8 @@ open class ClaimItem: BackboneElement {
     self.category = category
     self.modifier = modifier
     self.programCode = programCode
-    self.serviced = serviced
-    self.location = location
+    self.servicedX = servicedX
+    self.locationX = locationX
     self.quantity = quantity
     self.unitPrice = unitPrice
     self.factor = factor
@@ -187,112 +187,113 @@ open class ClaimItem: BackboneElement {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    var _serviced: _Serviced? = nil
-    if let servicedDate = try FHIRKitPrimitive<FHIRKitDate>(from: _container, forKeyIfPresent: .servicedDate, auxiliaryKey: ._servicedDate) {
-      if _serviced != nil {
-        throw DecodingError.dataCorruptedError(forKey: .servicedDate, in: _container, debugDescription: "More than one value supplied for \"serviced\"")
+    var tempServicedX: ServicedX?
+    if let servicedDate = try FHIRKitPrimitive<FHIRKitDate>(from: codingKeyContainer, forKeyIfPresent: .servicedDate, auxKey: ._servicedDate) {
+      if tempServicedX != nil {
+        throw DecodingError.dataCorruptedError(forKey: .servicedDate, in: codingKeyContainer, debugDescription: "More than one value supplied for \"serviced\"")
       }
-      _serviced = .date(servicedDate)
+      tempServicedX = .date(servicedDate)
     }
     
-    if let servicedPeriod = try Period(from: _container, forKeyIfPresent: .servicedPeriod) {
-      if _serviced != nil {
-        throw DecodingError.dataCorruptedError(forKey: .servicedPeriod, in: _container, debugDescription: "More than one value supplied for \"serviced\"")
+    if let servicedPeriod = try Period(from: codingKeyContainer, forKeyIfPresent: .servicedPeriod) {
+      if tempServicedX != nil {
+        throw DecodingError.dataCorruptedError(forKey: .servicedPeriod, in: codingKeyContainer, debugDescription: "More than one value supplied for \"serviced\"")
       }
-      _serviced = .period(servicedPeriod)
+      tempServicedX = .period(servicedPeriod)
     }
     
-    var _location: _Location? = nil
-    if let locationAddress = try Address(from: _container, forKeyIfPresent: .locationAddress) {
-      if _location != nil {
-        throw DecodingError.dataCorruptedError(forKey: .locationAddress, in: _container, debugDescription: "More than one value supplied for \"location\"")
+    var tempLocationX: LocationX?
+    if let locationAddress = try Address(from: codingKeyContainer, forKeyIfPresent: .locationAddress) {
+      if tempLocationX != nil {
+        throw DecodingError.dataCorruptedError(forKey: .locationAddress, in: codingKeyContainer, debugDescription: "More than one value supplied for \"location\"")
       }
-      _location = .address(locationAddress)
+      tempLocationX = .address(locationAddress)
     }
     
-    if let locationCodableConcept = try CodableConcept(from: _container, forKeyIfPresent: .locationCodableConcept) {
-      if _location != nil {
-        throw DecodingError.dataCorruptedError(forKey: .locationCodableConcept, in: _container, debugDescription: "More than one value supplied for \"location\"")
+    if let locationCodableConcept = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .locationCodableConcept) {
+      if tempLocationX != nil {
+        throw DecodingError.dataCorruptedError(forKey: .locationCodableConcept, in: codingKeyContainer, debugDescription: "More than one value supplied for \"location\"")
       }
-      _location = .codableConcept(locationCodableConcept)
+      tempLocationX = .codableConcept(locationCodableConcept)
     }
     
-    if let locationReference = try Reference(from: _container, forKeyIfPresent: .locationReference) {
-      if _location != nil {
-        throw DecodingError.dataCorruptedError(forKey: .locationReference, in: _container, debugDescription: "More than one value supplied for \"location\"")
+    if let locationReference = try Reference(from: codingKeyContainer, forKeyIfPresent: .locationReference) {
+      if tempLocationX != nil {
+        throw DecodingError.dataCorruptedError(forKey: .locationReference, in: codingKeyContainer, debugDescription: "More than one value supplied for \"location\"")
       }
-      _location = .reference(locationReference)
+      tempLocationX = .reference(locationReference)
     }
     
-    self.sequence = try FHIRKitPrimitive<FHIRKitPositiveInteger>(from: _container, forKey: .sequence, auxiliaryKey: ._sequence)
-    self.careTeamSequence = try [FHIRKitPrimitive<FHIRKitPositiveInteger>](from: _container, forKeyIfPresent: .careTeamSequence, auxiliaryKey: ._careTeamSequence)
-    self.diagnosisSequence = try [FHIRKitPrimitive<FHIRKitPositiveInteger>](from: _container, forKeyIfPresent: .diagnosisSequence, auxiliaryKey: ._diagnosisSequence)
-    self.procedureSequence = try [FHIRKitPrimitive<FHIRKitPositiveInteger>](from: _container, forKeyIfPresent: .procedureSequence, auxiliaryKey: ._procedureSequence)
-    self.informationSequence = try [FHIRKitPrimitive<FHIRKitPositiveInteger>](from: _container, forKeyIfPresent: .informationSequence, auxiliaryKey: ._informationSequence)
-    self.revenue = try CodableConcept(from: _container, forKeyIfPresent: .revenue)
-    self.category = try CodableConcept(from: _container, forKeyIfPresent: .category)
-    self.productOrService = try CodableConcept(from: _container, forKey: .productOrService)
-    self.modifier = try [CodableConcept](from: _container, forKeyIfPresent: .modifier)
-    self.programCode = try [CodableConcept](from: _container, forKeyIfPresent: .programCode)
-    self.serviced = _serviced
-    self.location = _location
-    self.quantity = try Quantity(from: _container, forKeyIfPresent: .quantity)
-    self.unitPrice = try Money(from: _container, forKeyIfPresent: .unitPrice)
-    self.factor = try FHIRKitPrimitive<FHIRKitDecimal>(from: _container, forKeyIfPresent: .factor, auxiliaryKey: ._factor)
-    self.net = try Money(from: _container, forKeyIfPresent: .net)
-    self.udi = try [Reference](from: _container, forKeyIfPresent: .udi)
-    self.bodySite = try CodableConcept(from: _container, forKeyIfPresent: .bodySite)
-    self.subSite = try [CodableConcept](from: _container, forKeyIfPresent: .subSite)
-    self.encounter = try [Reference](from: _container, forKeyIfPresent: .encounter)
-    self.detail = try [ClaimItemDetail](from: _container, forKeyIfPresent: .detail)
+    self.sequence = try FHIRKitPrimitive<FHIRKitPositiveInteger>(from: codingKeyContainer, forKey: .sequence, auxKey: ._sequence)
+    self.careTeamSequence = try [FHIRKitPrimitive<FHIRKitPositiveInteger>](from: codingKeyContainer, forKeyIfPresent: .careTeamSequence, auxKey: ._careTeamSequence)
+    self.diagnosisSequence = try [FHIRKitPrimitive<FHIRKitPositiveInteger>](from: codingKeyContainer, forKeyIfPresent: .diagnosisSequence, auxKey: ._diagnosisSequence)
+    self.procedureSequence = try [FHIRKitPrimitive<FHIRKitPositiveInteger>](from: codingKeyContainer, forKeyIfPresent: .procedureSequence, auxKey: ._procedureSequence)
+    self.informationSequence = try [FHIRKitPrimitive<FHIRKitPositiveInteger>](from: codingKeyContainer, forKeyIfPresent: .informationSequence, auxKey: ._informationSequence)
+    self.revenue = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .revenue)
+    self.category = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .category)
+    self.productOrService = try CodableConcept(from: codingKeyContainer, forKey: .productOrService)
+    self.modifier = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .modifier)
+    self.programCode = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .programCode)
+    self.servicedX = tempServicedX
+    self.locationX = tempLocationX
+    self.quantity = try Quantity(from: codingKeyContainer, forKeyIfPresent: .quantity)
+    self.unitPrice = try Money(from: codingKeyContainer, forKeyIfPresent: .unitPrice)
+    self.factor = try FHIRKitPrimitive<FHIRKitDecimal>(from: codingKeyContainer, forKeyIfPresent: .factor, auxKey: ._factor)
+    self.net = try Money(from: codingKeyContainer, forKeyIfPresent: .net)
+    self.udi = try [Reference](from: codingKeyContainer, forKeyIfPresent: .udi)
+    self.bodySite = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .bodySite)
+    self.subSite = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .subSite)
+    self.encounter = try [Reference](from: codingKeyContainer, forKeyIfPresent: .encounter)
+    self.detail = try [ClaimItemDetail](from: codingKeyContainer, forKeyIfPresent: .detail)
     
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    if let _serviced = serviced {
-      switch _serviced {
+    if let enumServicedX = servicedX {
+      switch enumServicedX {
       case .date(let _value):
-        try _value.encode(on: &_container, forKey: .servicedDate, auxiliaryKey: ._servicedDate)
+        try _value.encode(on: &codingKeyContainer, forKey: .servicedDate, auxKey: ._servicedDate)
       case .period(let _value):
-        try _value.encode(on: &_container, forKey: .servicedPeriod)
+        try _value.encode(on: &codingKeyContainer, forKey: .servicedPeriod)
       }
     }
     
-    if let _location = location {
-      switch _location {
+    if let enumLocationX = locationX {
+      switch enumLocationX {
       case .address(let _value):
-        try _value.encode(on: &_container, forKey: .locationAddress)
+        try _value.encode(on: &codingKeyContainer, forKey: .locationAddress)
       case .codableConcept(let _value):
-        try _value.encode(on: &_container, forKey: .locationCodableConcept)
+        try _value.encode(on: &codingKeyContainer, forKey: .locationCodableConcept)
       case .reference(let _value):
-        try _value.encode(on: &_container, forKey: .locationReference)
+        try _value.encode(on: &codingKeyContainer, forKey: .locationReference)
       }
     }
     
-    try sequence.encode(on: &_container, forKey: .sequence, auxiliaryKey: ._sequence)
-    try careTeamSequence?.encode(on: &_container, forKey: .careTeamSequence, auxiliaryKey: ._careTeamSequence)
-    try diagnosisSequence?.encode(on: &_container, forKey: .diagnosisSequence, auxiliaryKey: ._diagnosisSequence)
-    try procedureSequence?.encode(on: &_container, forKey: .procedureSequence, auxiliaryKey: ._procedureSequence)
-    try informationSequence?.encode(on: &_container, forKey: .informationSequence, auxiliaryKey: ._informationSequence)
-    try revenue?.encode(on: &_container, forKey: .revenue)
-    try category?.encode(on: &_container, forKey: .category)
-    try productOrService.encode(on: &_container, forKey: .productOrService)
-    try modifier?.encode(on: &_container, forKey: .modifier)
-    try programCode?.encode(on: &_container, forKey: .programCode)
-    try quantity?.encode(on: &_container, forKey: .quantity)
-    try unitPrice?.encode(on: &_container, forKey: .unitPrice)
-    try factor?.encode(on: &_container, forKey: .factor, auxiliaryKey: ._factor)
-    try net?.encode(on: &_container, forKey: .net)
-    try udi?.encode(on: &_container, forKey: .udi)
-    try bodySite?.encode(on: &_container, forKey: .bodySite)
-    try subSite?.encode(on: &_container, forKey: .subSite)
-    try encounter?.encode(on: &_container, forKey: .encounter)
-    try detail?.encode(on: &_container, forKey: .detail)
+    try sequence.encode(on: &codingKeyContainer, forKey: .sequence, auxKey: ._sequence)
+    try careTeamSequence?.encode(on: &codingKeyContainer, forKey: .careTeamSequence, auxKey: ._careTeamSequence)
+    try diagnosisSequence?.encode(on: &codingKeyContainer, forKey: .diagnosisSequence, auxKey: ._diagnosisSequence)
+    try procedureSequence?.encode(on: &codingKeyContainer, forKey: .procedureSequence, auxKey: ._procedureSequence)
+    try informationSequence?.encode(on: &codingKeyContainer, forKey: .informationSequence, auxKey: ._informationSequence)
+    try revenue?.encode(on: &codingKeyContainer, forKey: .revenue)
+    try category?.encode(on: &codingKeyContainer, forKey: .category)
+    try productOrService.encode(on: &codingKeyContainer, forKey: .productOrService)
+    try modifier?.encode(on: &codingKeyContainer, forKey: .modifier)
+    try programCode?.encode(on: &codingKeyContainer, forKey: .programCode)
+    try quantity?.encode(on: &codingKeyContainer, forKey: .quantity)
+    try unitPrice?.encode(on: &codingKeyContainer, forKey: .unitPrice)
+    try factor?.encode(on: &codingKeyContainer, forKey: .factor, auxKey: ._factor)
+    try net?.encode(on: &codingKeyContainer, forKey: .net)
+    try udi?.encode(on: &codingKeyContainer, forKey: .udi)
+    try bodySite?.encode(on: &codingKeyContainer, forKey: .bodySite)
+    try subSite?.encode(on: &codingKeyContainer, forKey: .subSite)
+    try encounter?.encode(on: &codingKeyContainer, forKey: .encounter)
+    try detail?.encode(on: &codingKeyContainer, forKey: .detail)
+    
     try super.encode(to: encoder)
   }
   
@@ -316,8 +317,8 @@ open class ClaimItem: BackboneElement {
     && productOrService == _other.productOrService
     && modifier == _other.modifier
     && programCode == _other.programCode
-    && serviced == _other.serviced
-    && location == _other.location
+    && servicedX == _other.servicedX
+    && locationX == _other.locationX
     && quantity == _other.quantity
     && unitPrice == _other.unitPrice
     && factor == _other.factor
@@ -342,8 +343,8 @@ open class ClaimItem: BackboneElement {
     hasher.combine(productOrService)
     hasher.combine(modifier)
     hasher.combine(programCode)
-    hasher.combine(serviced)
-    hasher.combine(location)
+    hasher.combine(servicedX)
+    hasher.combine(locationX)
     hasher.combine(quantity)
     hasher.combine(unitPrice)
     hasher.combine(factor)
@@ -354,4 +355,3 @@ open class ClaimItem: BackboneElement {
     hasher.combine(detail)
   }
 }
-

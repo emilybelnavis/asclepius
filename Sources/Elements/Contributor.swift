@@ -44,14 +44,14 @@ open class Contributor: Element {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     type: FHIRKitPrimitive<ContributorType>,
     name: FHIRKitPrimitive<FHIRKitString>,
     contact: [ContactDetail]? = nil
   ) {
     self.init(type: type, name: name)
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.id = id
     self.contact = contact
   }
@@ -64,25 +64,26 @@ open class Contributor: Element {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
-    self.type = try FHIRKitPrimitive<ContributorType>(from: _container, forKey: .type, auxiliaryKey: ._type)
-    self.name = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKey: .name, auxiliaryKey: ._name)
-    self.contact = try [ContactDetail](from: _container, forKeyIfPresent: .contact)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
+    
+    self.type = try FHIRKitPrimitive<ContributorType>(from: codingKeyContainer, forKey: .type, auxKey: ._type)
+    self.name = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKey: .name, auxKey: ._name)
+    self.contact = try [ContactDetail](from: codingKeyContainer, forKeyIfPresent: .contact)
     
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    try type.encode(on: &_container, forKey: .type, auxiliaryKey: ._type)
-    try name.encode(on: &_container, forKey: .name, auxiliaryKey: ._name)
-    try contact?.encode(on: &_container, forKey: .contact)
+    try type.encode(on: &codingKeyContainer, forKey: .type, auxKey: ._type)
+    try name.encode(on: &codingKeyContainer, forKey: .name, auxKey: ._name)
+    try contact?.encode(on: &codingKeyContainer, forKey: .contact)
     
     try super.encode(to: encoder)
   }
   
-  // MARK: - Equatable & Hashable
+  // MARK: - Equatable
   public override func isEqual(to _other: Any?) -> Bool {
     guard let _other = _other as? Contributor else {
       return false
@@ -97,6 +98,7 @@ open class Contributor: Element {
     && contact == _other.contact
   }
   
+  // MARK: - Hashable
   public override func hash(into hasher: inout Hasher) {
     super.hash(into: &hasher)
     hasher.combine(type)

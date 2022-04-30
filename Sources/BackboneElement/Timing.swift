@@ -35,7 +35,7 @@ open class Timing: BackboneElement {
   public var event: [FHIRKitPrimitive<FHIRKitDateTime>]?
   
   /// When the event is to occur
-  public var `repeat`: TimingRepeat?
+  public var timingRepeat: TimingRepeat?
   
   /// BID | TID | QID | AM | PM | QD | QOD | +
   public var code: CodableConcept?
@@ -45,49 +45,50 @@ open class Timing: BackboneElement {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
+    modifierExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     event: [FHIRKitPrimitive<FHIRKitDateTime>]? = nil,
-    `repeat`: TimingRepeat? = nil,
-    code: CodableConcept? = nil,
-    modifierExtension: [Extension]? = nil
+    timingRepeat: TimingRepeat? = nil,
+    code: CodableConcept? = nil
   ) {
     self.init()
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
+    self.modifierExtension = modifierExtension
     self.id = id
     self.event = event
-    self.`repeat` = `repeat`
+    self.timingRepeat = timingRepeat
     self.code = code
-    self.modifierExtension = modifierExtension
   }
   
   // MARK: - Codable
   private enum CodingKeys: String, CodingKey {
     case event; case _event
-    case `repeat` = "repeat" // swiftlint:disable:this redundant_string_enum_value
+    case timingRepeat = "repeat"
     case code
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.event = try [FHIRKitPrimitive<FHIRKitDateTime>](from: _container, forKeyIfPresent: .event, auxiliaryKey: ._event)
-    self.`repeat` = try TimingRepeat(from: _container, forKeyIfPresent: .`repeat`)
-    self.code = try CodableConcept(from: _container, forKeyIfPresent: .code)
+    self.event = try [FHIRKitPrimitive<FHIRKitDateTime>](from: codingKeyContainer, forKeyIfPresent: .event, auxKey: ._event)
+    self.timingRepeat = try TimingRepeat(from: codingKeyContainer, forKeyIfPresent: .timingRepeat)
+    self.code = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .code)
+    
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    try event?.encode(on: &_container, forKey: .event, auxiliaryKey: ._event)
-    try `repeat`?.encode(on: &_container, forKey: .`repeat`)
-    try code?.encode(on: &_container, forKey: .code)
+    try event?.encode(on: &codingKeyContainer, forKey: .event, auxKey: ._event)
+    try timingRepeat?.encode(on: &codingKeyContainer, forKey: .timingRepeat)
+    try code?.encode(on: &codingKeyContainer, forKey: .code)
     
     try super.encode(to: encoder)
   }
   
-  // MARK: - Equatable & Hashable
+  // MARK: - Equatable
   public override func isEqual(to _other: Any?) -> Bool {
     guard let _other = _other as? Timing else {
       return false
@@ -98,14 +99,15 @@ open class Timing: BackboneElement {
     }
     
     return event == _other.event
-    && `repeat` == _other.`repeat`
+    && timingRepeat == _other.timingRepeat
     && code == _other.code
   }
   
+  // MARK: - Hashable
   public override func hash(into hasher: inout Hasher) {
     super.hash(into: &hasher)
     hasher.combine(event)
-    hasher.combine(`repeat`)
+    hasher.combine(timingRepeat)
     hasher.combine(code)
   }
 }

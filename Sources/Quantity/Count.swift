@@ -34,7 +34,7 @@ open class Count: Quantity {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     code: FHIRKitPrimitive<FHIRKitString>? = nil,
     comparator: FHIRKitPrimitive<QuantityComparator>? = nil,
@@ -43,7 +43,7 @@ open class Count: Quantity {
     value: FHIRKitPrimitive<FHIRKitDecimal>? = nil
   ) {
     self.init()
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.id = id
     self.code = code
     self.comparator = comparator
@@ -61,7 +61,7 @@ open class Count: Quantity {
     try super.encode(to: encoder)
   }
   
-  // MARK: - Equatable & Hashable
+  // MARK: - Equatable
   public override func isEqual(to _other: Any?) -> Bool {
     guard let _other = _other as? Count else {
       return false
@@ -74,6 +74,7 @@ open class Count: Quantity {
     return true
   }
   
+  // MARK: - Hashable
   public override func hash(into hasher: inout Hasher) {
     super.hash(into: &hasher)
   }

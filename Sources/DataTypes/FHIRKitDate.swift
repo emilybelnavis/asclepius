@@ -25,10 +25,9 @@
 import Foundation
 
 /**
- A date or partial date (year/ year + month). Format is YYYY, YYYY-MM, or YYYY-MM-DD, e.g. 2022, 2022-04,
- or 2022-04-20. There SHALL be no time zone and dates MUST be valid dates.
- 
- HL7 R4 only allows years 0001 to 9999 which is what will be enforced.
+ A date, or partial date (e.g. just year or year/month) as used in human communication. The format is YYYY,
+ YYYY-MM, or YYYY-MM-DD (e.g, 2018, 1973-06, or 1905-08-23). **There SHALL be no time zone**.
+ Dates SHALL be valid dates.
  */
 
 public struct FHIRKitDate: FHIRKitPrimitiveType {
@@ -115,7 +114,7 @@ public struct FHIRKitDate: FHIRKitPrimitiveType {
   }
 }
 
-// MARK: -
+// MARK: - ExpressibleByStringLiteral
 
 extension FHIRKitDate: ExpressibleByStringLiteral {
   public init(stringLiteral value: StringLiteralType) {
@@ -123,6 +122,7 @@ extension FHIRKitDate: ExpressibleByStringLiteral {
   }
 }
 
+// MARK: - Codable
 extension FHIRKitDate: Codable {
   public init(from decoder: Decoder) throws {
     let container = try decoder.singleValueContainer()
@@ -136,6 +136,7 @@ extension FHIRKitDate: Codable {
   }
 }
 
+// MARK: - CustomStringConvertible
 extension FHIRKitDate: CustomStringConvertible {
   public var description: String {
     if let month = month {
@@ -148,6 +149,7 @@ extension FHIRKitDate: CustomStringConvertible {
   }
 }
 
+// MARK: - Equatable
 extension FHIRKitDate: Equatable {
   public static func == (leftSide: FHIRKitDate, rightSide: FHIRKitDate) -> Bool {
     if leftSide.year != rightSide.year {
@@ -166,6 +168,7 @@ extension FHIRKitDate: Equatable {
   }
 }
 
+// MARK: - Comparable
 extension FHIRKitDate: Comparable {
   public static func < (leftSide: FHIRKitDate, rightSide: FHIRKitDate) -> Bool {
     if leftSide.year < rightSide.year {
@@ -179,5 +182,17 @@ extension FHIRKitDate: Comparable {
     }
     
     return false
+  }
+}
+
+// MARK: - Extends NSDate
+extension FHIRKitDate: ExpressibleAsNSDate, ConstructibleFromNSDate {
+  public func asNSDate() throws -> Date {
+    let dateComponents = FHIRKitDateComponents(year: year, month: month, day: day)
+    return try dateComponents.asNSDate()
+  }
+  
+  public init(date: Date, timeZone timezone: TimeZone = TimeZone.current) throws {
+    (self.year, self.month, self.day) = try FHIRKitDateComponents.dateComponents(from: date, with: timezone)
   }
 }

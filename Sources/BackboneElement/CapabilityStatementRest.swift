@@ -1,6 +1,6 @@
 //
 //  CapabilityStatementRest.swift
-//  FHIRKIT
+//  FHIRKit
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
 //
@@ -55,7 +55,7 @@ open class CapabilityStatementRest: BackboneElement {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     mode: FHIRKitPrimitive<RestfulCapabilityMode>,
@@ -68,7 +68,7 @@ open class CapabilityStatementRest: BackboneElement {
     compartment: [FHIRKitPrimitive<Canonical>]? = nil
   ) {
     self.init(mode: mode)
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
     self.id = id
     self.documentation = documentation
@@ -93,28 +93,32 @@ open class CapabilityStatementRest: BackboneElement {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
-    self.mode = try FHIRKitPrimitive<RestfulCapabilityMode>(from: _container, forKey: .mode, auxiliaryKey: ._mode)
-    self.documentation = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .documentation, auxiliaryKey: ._documentation)
-    self.security = try CapabilityStatementRestSecurity(from: _container, forKeyIfPresent: .security)
-    self.resource = try [CapabilityStatementRestResource](from: _container, forKeyIfPresent: .resource)
-    self.interaction = try [CapabilityStatementRestInteraction](from: _container, forKeyIfPresent: .interaction)
-    self.searchParam = try [CapabilityStatementRestResourceSearchParam](from: _container, forKeyIfPresent: .searchParam)
-    self.operation = try [CapabilityStatementRestResourceOperation](from: _container, forKeyIfPresent: .operation)
-    self.compartment = try [FHIRKitPrimitive<Canonical>](from: _container, forKeyIfPresent: .compartment, auxiliaryKey: ._compartment)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
+    
+    self.mode = try FHIRKitPrimitive<RestfulCapabilityMode>(from: codingKeyContainer, forKey: .mode, auxKey: ._mode)
+    self.documentation = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .documentation, auxKey: ._documentation)
+    self.security = try CapabilityStatementRestSecurity(from: codingKeyContainer, forKeyIfPresent: .security)
+    self.resource = try [CapabilityStatementRestResource](from: codingKeyContainer, forKeyIfPresent: .resource)
+    self.interaction = try [CapabilityStatementRestInteraction](from: codingKeyContainer, forKeyIfPresent: .interaction)
+    self.searchParam = try [CapabilityStatementRestResourceSearchParam](from: codingKeyContainer, forKeyIfPresent: .searchParam)
+    self.operation = try [CapabilityStatementRestResourceOperation](from: codingKeyContainer, forKeyIfPresent: .operation)
+    self.compartment = try [FHIRKitPrimitive<Canonical>](from: codingKeyContainer, forKeyIfPresent: .compartment, auxKey: ._compartment)
+    
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
-    try mode.encode(on: &_container, forKey: .mode, auxiliaryKey: ._mode)
-    try documentation?.encode(on: &_container, forKey: .documentation, auxiliaryKey: ._documentation)
-    try security?.encode(on: &_container, forKey: .security)
-    try resource?.encode(on: &_container, forKey: .resource)
-    try interaction?.encode(on: &_container, forKey: .interaction)
-    try searchParam?.encode(on: &_container, forKey: .searchParam)
-    try operation?.encode(on: &_container, forKey: .operation)
-    try compartment?.encode(on: &_container, forKey: .compartment, auxiliaryKey: ._compartment)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
+    
+    try mode.encode(on: &codingKeyContainer, forKey: .mode, auxKey: ._mode)
+    try documentation?.encode(on: &codingKeyContainer, forKey: .documentation, auxKey: ._documentation)
+    try security?.encode(on: &codingKeyContainer, forKey: .security)
+    try resource?.encode(on: &codingKeyContainer, forKey: .resource)
+    try interaction?.encode(on: &codingKeyContainer, forKey: .interaction)
+    try searchParam?.encode(on: &codingKeyContainer, forKey: .searchParam)
+    try operation?.encode(on: &codingKeyContainer, forKey: .operation)
+    try compartment?.encode(on: &codingKeyContainer, forKey: .compartment, auxKey: ._compartment)
+    
     try super.encode(to: encoder)
   }
   

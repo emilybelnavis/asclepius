@@ -25,7 +25,7 @@
 import Foundation
 
 /**
- A stricter version of `FHIRKitdate` which requires month and day to be present, for use in an `Instant`
+ A stricter version of `FHIRKitDate` which requires month and day to be present, for use in an `Instant`
  
  http://hl7.org/fhir/datatypes.html#date
  */
@@ -107,7 +107,7 @@ public struct FHIRKitInstantDate: FHIRKitPrimitiveType {
   }
 }
 
-// MARK: -
+// MARK: - ExpressibleByStringLiteral
 extension FHIRKitInstantDate: ExpressibleByStringLiteral {
   public init(stringLiteral value: StringLiteralType) {
     try! self.init(value) // swiftlint:disable:this force_try
@@ -117,24 +117,26 @@ extension FHIRKitInstantDate: ExpressibleByStringLiteral {
 // MARK: - Codable
 extension FHIRKitInstantDate: Codable {
   public init(from decoder: Decoder) throws {
-    let container = try decoder.singleValueContainer()
-    let string = try container.decode(String.self)
+    let codingKeyContainer = try decoder.singleValueContainer()
+    let string = try codingKeyContainer.decode(String.self)
     
     try self.init(string)
   }
   
   public func encode(to encoder: Encoder) throws {
-    var container = encoder.singleValueContainer()
-    try container.encode(description)
+    var codingKeyContainer = encoder.singleValueContainer()
+    try codingKeyContainer.encode(description)
   }
 }
 
+// MARK: - CustomStringConvertible
 extension FHIRKitInstantDate: CustomStringConvertible {
   public var description: String {
     return String(format: "%04d-%02d-%02d", year, month, day)
   }
 }
 
+// MARK: - Equatable
 extension FHIRKitInstantDate: Equatable {
   public static func == (leftSide: FHIRKitInstantDate, rightSide: FHIRKitInstantDate) -> Bool {
     if leftSide.year != rightSide.year {
@@ -185,6 +187,7 @@ extension FHIRKitInstantDate: Equatable {
   }
 }
 
+// MARK: - Comparable
 extension FHIRKitInstantDate: Comparable {
   public static func < (leftSide: FHIRKitInstantDate, rightSide: FHIRKitInstantDate) -> Bool {
     if leftSide.year < rightSide.year {
@@ -226,6 +229,7 @@ extension FHIRKitInstantDate: Comparable {
   }
 }
 
+// MARK: - Extends self
 extension FHIRKitInstantDate {
   public var fhirKitDate: FHIRKitDate {
     return FHIRKitDate(year: year, month: month, day: day)

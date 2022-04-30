@@ -24,7 +24,7 @@
 
 /// Identifies traits whos presence or absence are shared by members of the group
 open class GroupCharacteristic: BackboneElement {
-  public enum _Value: Hashable {
+  public enum ValueX: Hashable {
     case boolean(FHIRKitPrimitive<FHIRKitBool>)
     case codableConcept(CodableConcept)
     case quantity(Quantity)
@@ -36,7 +36,7 @@ open class GroupCharacteristic: BackboneElement {
   public var code: CodableConcept
   
   /// value held by characteristic
-  public var value: _Value
+  public var valueX: ValueX
   
   /// group includes or excludes
   public var exclude: FHIRKitPrimitive<FHIRKitBool>
@@ -44,23 +44,23 @@ open class GroupCharacteristic: BackboneElement {
   /// period over which characteristic is tested
   public var period: Period?
 
-  public init(code: CodableConcept, value: _Value, exclude: FHIRKitPrimitive<FHIRKitBool>) {
+  public init(code: CodableConcept, valueX: ValueX, exclude: FHIRKitPrimitive<FHIRKitBool>) {
     self.code = code
-    self.value = value
+    self.valueX = valueX
     self.exclude = exclude
     super.init()
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     code: CodableConcept,
-    value: _Value,
+    valueX: ValueX,
     exclude: FHIRKitPrimitive<FHIRKitBool>,
     period: Period? = nil
   ) {
-    self.init(code: code, value: value, exclude: exclude)
-    self.`extension` = `extension`
+    self.init(code: code, valueX: valueX, exclude: exclude)
+    self.fhirExtension = fhirExtension
     self.id = id
     self.period = period
   }
@@ -79,10 +79,10 @@ open class GroupCharacteristic: BackboneElement {
   
   // swiftlint:disable cyclomatic_complexity
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     // Validate that the expanded properties `value` contains at least one of the mandatory properties
-    guard _container.contains(CodingKeys.valueBool) || _container.contains(CodingKeys.valueCodableConcept) || _container.contains(CodingKeys.valueQuantity) || _container.contains(CodingKeys.valueRange) || _container.contains(CodingKeys.valueReference) else { // swiftlint:disable:this line_length
+    guard codingKeyContainer.contains(CodingKeys.valueBool) || codingKeyContainer.contains(CodingKeys.valueCodableConcept) || codingKeyContainer.contains(CodingKeys.valueQuantity) || codingKeyContainer.contains(CodingKeys.valueRange) || codingKeyContainer.contains(CodingKeys.valueReference) else { // swiftlint:disable:this line_length
       throw DecodingError.valueNotFound(Any.self, DecodingError.Context(codingPath: [
         CodingKeys.valueBool,
         CodingKeys.valueCodableConcept,
@@ -93,74 +93,74 @@ open class GroupCharacteristic: BackboneElement {
     }
     
     // decode values for expanded prop. `value`
-    var _value: _Value? = nil // swiftlint:disable:this redundant_optional_initialization
-    if let valueBool = try FHIRKitPrimitive<FHIRKitBool>(from: _container, forKeyIfPresent: .valueBool, auxiliaryKey: ._valueBool) {
-      if _value != nil {
-        throw DecodingError.dataCorruptedError(forKey: .valueBool, in: _container, debugDescription: "More than one value provided for \"value\"")
+    var tempValueX: ValueX? = nil // swiftlint:disable:this redundant_optional_initialization
+    if let valueBool = try FHIRKitPrimitive<FHIRKitBool>(from: codingKeyContainer, forKeyIfPresent: .valueBool, auxKey: ._valueBool) {
+      if tempValueX != nil {
+        throw DecodingError.dataCorruptedError(forKey: .valueBool, in: codingKeyContainer, debugDescription: "More than one value provided for \"value\"")
       }
-      _value = .boolean(valueBool)
+      tempValueX = .boolean(valueBool)
     }
     
-    if let valueCodableConcept = try CodableConcept(from: _container, forKeyIfPresent: .valueCodableConcept) {
-      if _value != nil {
-        throw DecodingError.dataCorruptedError(forKey: .valueCodableConcept, in: _container, debugDescription: "More than one value provided for \"value\"")
+    if let valueCodableConcept = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .valueCodableConcept) {
+      if tempValueX != nil {
+        throw DecodingError.dataCorruptedError(forKey: .valueCodableConcept, in: codingKeyContainer, debugDescription: "More than one value provided for \"value\"")
       }
-      _value = .codableConcept(valueCodableConcept)
+      tempValueX = .codableConcept(valueCodableConcept)
     }
     
-    if let valueQuantity = try Quantity(from: _container, forKeyIfPresent: .valueQuantity) {
-      if _value != nil {
-        throw DecodingError.dataCorruptedError(forKey: .valueQuantity, in: _container, debugDescription: "More than one value provided for \"value\"")
+    if let valueQuantity = try Quantity(from: codingKeyContainer, forKeyIfPresent: .valueQuantity) {
+      if tempValueX != nil {
+        throw DecodingError.dataCorruptedError(forKey: .valueQuantity, in: codingKeyContainer, debugDescription: "More than one value provided for \"value\"")
       }
-      _value = .quantity(valueQuantity)
+      tempValueX = .quantity(valueQuantity)
     }
     
-    if let valueRange = try Range(from: _container, forKeyIfPresent: .valueRange) {
-      if _value != nil {
-        throw DecodingError.dataCorruptedError(forKey: .valueRange, in: _container, debugDescription: "More than one value provided for \"value\"")
+    if let valueRange = try Range(from: codingKeyContainer, forKeyIfPresent: .valueRange) {
+      if tempValueX != nil {
+        throw DecodingError.dataCorruptedError(forKey: .valueRange, in: codingKeyContainer, debugDescription: "More than one value provided for \"value\"")
       }
-      _value = .range(valueRange)
+      tempValueX = .range(valueRange)
     }
     
-    if let valueReference = try Reference(from: _container, forKeyIfPresent: .valueReference) {
-      if _value != nil {
-        throw DecodingError.dataCorruptedError(forKey: .valueReference, in: _container, debugDescription: "More than one value provided for \"value\"")
+    if let valueReference = try Reference(from: codingKeyContainer, forKeyIfPresent: .valueReference) {
+      if tempValueX != nil {
+        throw DecodingError.dataCorruptedError(forKey: .valueReference, in: codingKeyContainer, debugDescription: "More than one value provided for \"value\"")
       }
-      _value = .reference(valueReference)
+      tempValueX = .reference(valueReference)
     }
     
-    self.code = try CodableConcept(from: _container, forKey: .code)
-    self.value = _value!
-    self.exclude = try FHIRKitPrimitive<FHIRKitBool>(from: _container, forKey: .exclude, auxiliaryKey: ._exclude)
-    self.period = try Period(from: _container, forKeyIfPresent: .period)
+    self.code = try CodableConcept(from: codingKeyContainer, forKey: .code)
+    self.valueX = tempValueX!
+    self.exclude = try FHIRKitPrimitive<FHIRKitBool>(from: codingKeyContainer, forKey: .exclude, auxKey: ._exclude)
+    self.period = try Period(from: codingKeyContainer, forKeyIfPresent: .period)
     
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    switch value {
+    switch valueX {
     case .boolean(let _value):
-      try _value.encode(on: &_container, forKey: .valueBool)
+      try _value.encode(on: &codingKeyContainer, forKey: .valueBool)
     case .codableConcept(let _value):
-      try _value.encode(on: &_container, forKey: .valueCodableConcept)
+      try _value.encode(on: &codingKeyContainer, forKey: .valueCodableConcept)
     case .quantity(let _value):
-      try _value.encode(on: &_container, forKey: .valueQuantity)
+      try _value.encode(on: &codingKeyContainer, forKey: .valueQuantity)
     case .range(let _value):
-      try _value.encode(on: &_container, forKey: .valueRange)
+      try _value.encode(on: &codingKeyContainer, forKey: .valueRange)
     case .reference(let _value):
-      try _value.encode(on: &_container, forKey: .valueReference)
+      try _value.encode(on: &codingKeyContainer, forKey: .valueReference)
     }
     
-    try code.encode(on: &_container, forKey: .code)
-    try exclude.encode(on: &_container, forKey: .exclude, auxiliaryKey: ._exclude)
-    try period?.encode(on: &_container, forKey: .period)
+    try code.encode(on: &codingKeyContainer, forKey: .code)
+    try exclude.encode(on: &codingKeyContainer, forKey: .exclude, auxKey: ._exclude)
+    try period?.encode(on: &codingKeyContainer, forKey: .period)
     
     try super.encode(to: encoder)
   }
   
-  // MARK: - Equatable & Hashable
+  // MARK: - Equatable
   public override func isEqual(to _other: Any?) -> Bool {
     guard let _other = _other as? GroupCharacteristic else {
       return false
@@ -171,15 +171,16 @@ open class GroupCharacteristic: BackboneElement {
     }
     
     return code == _other.code
-    && value == _other.value
+    && valueX == _other.valueX
     && exclude == _other.exclude
     && period == _other.period
   }
   
+  // MARK: - Hashable
   public override func hash(into hasher: inout Hasher) {
     super.hash(into: &hasher)
     hasher.combine(code)
-    hasher.combine(value)
+    hasher.combine(valueX)
     hasher.combine(exclude)
     hasher.combine(period)
   }

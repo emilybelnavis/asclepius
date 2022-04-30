@@ -1,6 +1,6 @@
 //
 //  CapabilityStatementRestSecurity.swift
-//  FHIRKIT
+//  FHIRKit
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
 //
@@ -38,7 +38,7 @@ open class CapabilityStatementRestSecurity: BackboneElement {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     cors: FHIRKitPrimitive<FHIRKitBool>? = nil,
@@ -46,7 +46,7 @@ open class CapabilityStatementRestSecurity: BackboneElement {
     fhirDescription: FHIRKitPrimitive<FHIRKitString>? = nil
   ) {
     self.init()
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
     self.id = id
     self.cors = cors
@@ -62,18 +62,22 @@ open class CapabilityStatementRestSecurity: BackboneElement {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
-    self.cors = try FHIRKitPrimitive<FHIRKitBool>(from: _container, forKeyIfPresent: .cors, auxiliaryKey: ._cors)
-    self.service = try [CodableConcept](from: _container, forKeyIfPresent: .service)
-    self.fhirDescription = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .fhirDescription, auxiliaryKey: ._fhirDescription)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
+    
+    self.cors = try FHIRKitPrimitive<FHIRKitBool>(from: codingKeyContainer, forKeyIfPresent: .cors, auxKey: ._cors)
+    self.service = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .service)
+    self.fhirDescription = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .fhirDescription, auxKey: ._fhirDescription)
+    
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
-    try cors?.encode(on: &_container, forKey: .cors, auxiliaryKey: ._cors)
-    try service?.encode(on: &_container, forKey: .service)
-    try fhirDescription?.encode(on: &_container, forKey: .fhirDescription, auxiliaryKey: ._fhirDescription)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
+    
+    try cors?.encode(on: &codingKeyContainer, forKey: .cors, auxKey: ._cors)
+    try service?.encode(on: &codingKeyContainer, forKey: .service)
+    try fhirDescription?.encode(on: &codingKeyContainer, forKey: .fhirDescription, auxKey: ._fhirDescription)
+    
     try super.encode(to: encoder)
   }
   

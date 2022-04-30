@@ -50,7 +50,7 @@ open class ClaimResponseInsurance: BackboneElement {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     sequence: FHIRKitPrimitive<FHIRKitPositiveInteger>,
@@ -60,7 +60,7 @@ open class ClaimResponseInsurance: BackboneElement {
     claimResponse: Reference? = nil
   ) {
     self.init(sequence: sequence, focal: focal, coverage: coverage)
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
     self.id = id
     self.businessArrangement = businessArrangement
@@ -77,24 +77,26 @@ open class ClaimResponseInsurance: BackboneElement {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
-    self.sequence = try FHIRKitPrimitive<FHIRKitPositiveInteger>(from: _container, forKey: .sequence, auxiliaryKey: ._sequence)
-    self.focal = try FHIRKitPrimitive<FHIRKitBool>(from: _container, forKey: .focal, auxiliaryKey: ._focal)
-    self.coverage = try Reference(from: _container, forKey: .coverage)
-    self.businessArrangement = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKey: .businessArrangement, auxiliaryKey: ._businessArrangement)
-    self.claimResponse = try Reference(from: _container, forKeyIfPresent: .claimResponse)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
+    
+    self.sequence = try FHIRKitPrimitive<FHIRKitPositiveInteger>(from: codingKeyContainer, forKey: .sequence, auxKey: ._sequence)
+    self.focal = try FHIRKitPrimitive<FHIRKitBool>(from: codingKeyContainer, forKey: .focal, auxKey: ._focal)
+    self.coverage = try Reference(from: codingKeyContainer, forKey: .coverage)
+    self.businessArrangement = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKey: .businessArrangement, auxKey: ._businessArrangement)
+    self.claimResponse = try Reference(from: codingKeyContainer, forKeyIfPresent: .claimResponse)
     
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    try sequence.encode(on: &_container, forKey: .sequence, auxiliaryKey: ._sequence)
-    try focal.encode(on: &_container, forKey: .focal, auxiliaryKey: ._focal)
-    try coverage.encode(on: &_container, forKey: .coverage)
-    try businessArrangement?.encode(on: &_container, forKey: .businessArrangement, auxiliaryKey: ._businessArrangement)
-    try claimResponse?.encode(on: &_container, forKey: .claimResponse)
+    try sequence.encode(on: &codingKeyContainer, forKey: .sequence, auxKey: ._sequence)
+    try focal.encode(on: &codingKeyContainer, forKey: .focal, auxKey: ._focal)
+    try coverage.encode(on: &codingKeyContainer, forKey: .coverage)
+    try businessArrangement?.encode(on: &codingKeyContainer, forKey: .businessArrangement, auxKey: ._businessArrangement)
+    try claimResponse?.encode(on: &codingKeyContainer, forKey: .claimResponse)
+    
     try super.encode(to: encoder)
   }
   
@@ -125,4 +127,3 @@ open class ClaimResponseInsurance: BackboneElement {
     hasher.combine(claimResponse)
   }
 }
-

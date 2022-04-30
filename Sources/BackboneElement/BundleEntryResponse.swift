@@ -1,6 +1,6 @@
 //
 //  BundleEntryResponse.swift
-//  FHIRKIT
+//  FHIRKit
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
 //
@@ -48,7 +48,7 @@ open class BundleEntryResponse: BackboneElement {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     status: FHIRKitPrimitive<FHIRKitString>,
@@ -58,7 +58,7 @@ open class BundleEntryResponse: BackboneElement {
     outcome: ResourceProxy? = nil
   ) {
     self.init(status: status)
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
     self.id = id
     self.status = status
@@ -78,22 +78,25 @@ open class BundleEntryResponse: BackboneElement {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
-    self.status = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKey: .status, auxiliaryKey: ._status)
-    self.location = try FHIRKitPrimitive<FHIRKitURI>(from: _container, forKeyIfPresent: .location, auxiliaryKey: ._location)
-    self.etag = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .etag, auxiliaryKey: ._etag)
-    self.lastModified = try FHIRKitPrimitive<FHIRKitInstant>(from: _container, forKeyIfPresent: .lastModified, auxiliaryKey: ._lastModified)
-    self.outcome = try ResourceProxy(from: _container, forKeyIfPresent: .outcome)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
+    
+    self.status = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKey: .status, auxKey: ._status)
+    self.location = try FHIRKitPrimitive<FHIRKitURI>(from: codingKeyContainer, forKeyIfPresent: .location, auxKey: ._location)
+    self.etag = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .etag, auxKey: ._etag)
+    self.lastModified = try FHIRKitPrimitive<FHIRKitInstant>(from: codingKeyContainer, forKeyIfPresent: .lastModified, auxKey: ._lastModified)
+    self.outcome = try ResourceProxy(from: codingKeyContainer, forKeyIfPresent: .outcome)
+    
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
-    try status.encode(on: &_container, forKey: .status, auxiliaryKey: ._status)
-    try location?.encode(on: &_container, forKey: .location, auxiliaryKey: ._location)
-    try etag?.encode(on: &_container, forKey: .etag, auxiliaryKey: ._etag)
-    try lastModified?.encode(on: &_container, forKey: .lastModified, auxiliaryKey: ._lastModified)
-    try outcome?.encode(on: &_container, forKey: .outcome)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
+    try status.encode(on: &codingKeyContainer, forKey: .status, auxKey: ._status)
+    try location?.encode(on: &codingKeyContainer, forKey: .location, auxKey: ._location)
+    try etag?.encode(on: &codingKeyContainer, forKey: .etag, auxKey: ._etag)
+    try lastModified?.encode(on: &codingKeyContainer, forKey: .lastModified, auxKey: ._lastModified)
+    try outcome?.encode(on: &codingKeyContainer, forKey: .outcome)
+    
     try super.encode(to: encoder)
   }
   

@@ -25,14 +25,14 @@
 /// A set of rules that describe when the event is scheduled.
 open class TimingRepeat: Element {
   /// All possible types for bounds
-  public enum Bounds: Hashable {
+  public enum BoundsX: Hashable {
     case duration(Duration)
     case period(Period)
     case range(Range)
   }
   
   /// length/range of lengths, or start and/or end limits
-  public var bounds: Bounds?
+  public var boundsX: BoundsX?
   
   /// number of times to repeat
   public var count: FHIRKitPrimitive<FHIRKitPositiveInteger>?
@@ -81,9 +81,9 @@ open class TimingRepeat: Element {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    bounds: Bounds? = nil,
+    boundsX: BoundsX? = nil,
     count: FHIRKitPrimitive<FHIRKitPositiveInteger>? = nil,
     countMax: FHIRKitPrimitive<FHIRKitPositiveInteger>? = nil,
     duration: FHIRKitPrimitive<FHIRKitDecimal>? = nil,
@@ -100,9 +100,9 @@ open class TimingRepeat: Element {
     offset: FHIRKitPrimitive<FHIRKitUnsignedInteger>? = nil
   ) {
     self.init()
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.id = id
-    self.bounds = bounds
+    self.boundsX = boundsX
     self.count = count
     self.countMax = countMax
     self.duration = duration
@@ -141,82 +141,82 @@ open class TimingRepeat: Element {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    var _bounds: Bounds?
-    if let boundsDuration = try Duration(from: _container, forKeyIfPresent: .boundsDuration) {
-      if _bounds != nil {
-        throw DecodingError.dataCorruptedError(forKey: .boundsDuration, in: _container, debugDescription: "More than one value provided for \"bounds\"")
+    var tempBoundsX: BoundsX?
+    if let boundsDuration = try Duration(from: codingKeyContainer, forKeyIfPresent: .boundsDuration) {
+      if tempBoundsX != nil {
+        throw DecodingError.dataCorruptedError(forKey: .boundsDuration, in: codingKeyContainer, debugDescription: "More than one value provided for \"bounds\"")
       }
-      _bounds = .duration(boundsDuration)
+      tempBoundsX = .duration(boundsDuration)
     }
     
-    if let boundsPeriod = try Period(from: _container, forKeyIfPresent: .boundsPeriod) {
-      if _bounds != nil {
-        throw DecodingError.dataCorruptedError(forKey: .boundsPeriod, in: _container, debugDescription: "More than one value provided for \"bounds\"")
+    if let boundsPeriod = try Period(from: codingKeyContainer, forKeyIfPresent: .boundsPeriod) {
+      if tempBoundsX != nil {
+        throw DecodingError.dataCorruptedError(forKey: .boundsPeriod, in: codingKeyContainer, debugDescription: "More than one value provided for \"bounds\"")
       }
-      _bounds = .period(boundsPeriod)
+      tempBoundsX = .period(boundsPeriod)
     }
     
-    if let boundsRange = try Range(from: _container, forKeyIfPresent: .boundsRange) {
-      if _bounds != nil {
-        throw DecodingError.dataCorruptedError(forKey: .boundsRange, in: _container, debugDescription: "More than one value provided for \"bounds\"")
+    if let boundsRange = try Range(from: codingKeyContainer, forKeyIfPresent: .boundsRange) {
+      if tempBoundsX != nil {
+        throw DecodingError.dataCorruptedError(forKey: .boundsRange, in: codingKeyContainer, debugDescription: "More than one value provided for \"bounds\"")
       }
-      _bounds = .range(boundsRange)
+      tempBoundsX = .range(boundsRange)
     }
     
-    self.bounds = _bounds
-    self.count = try FHIRKitPrimitive<FHIRKitPositiveInteger>(from: _container, forKeyIfPresent: .count, auxiliaryKey: ._count)
-    self.countMax = try FHIRKitPrimitive<FHIRKitPositiveInteger>(from: _container, forKeyIfPresent: .countMax, auxiliaryKey: ._countMax)
-    self.duration = try FHIRKitPrimitive<FHIRKitDecimal>(from: _container, forKeyIfPresent: .duration, auxiliaryKey: ._duration)
-    self.durationMax = try FHIRKitPrimitive<FHIRKitDecimal>(from: _container, forKeyIfPresent: .durationMax, auxiliaryKey: ._durationMax)
-    self.durationUnit = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .durationUnit, auxiliaryKey: ._durationUnit)
-    self.frequency = try FHIRKitPrimitive<FHIRKitPositiveInteger>(from: _container, forKeyIfPresent: .frequency, auxiliaryKey: ._frequency)
-    self.frequencyMax = try FHIRKitPrimitive<FHIRKitPositiveInteger>(from: _container, forKeyIfPresent: .frequencyMax, auxiliaryKey: ._frequencyMax)
-    self.period = try FHIRKitPrimitive<FHIRKitDecimal>(from: _container, forKeyIfPresent: .period, auxiliaryKey: ._period)
-    self.periodMax = try FHIRKitPrimitive<FHIRKitDecimal>(from: _container, forKeyIfPresent: .periodMax, auxiliaryKey: ._periodMax)
-    self.periodUnit = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .periodUnit, auxiliaryKey: ._periodUnit)
-    self.dayOfWeek = try [FHIRKitPrimitive<DaysOfWeek>](from: _container, forKeyIfPresent: .dayOfWeek, auxiliaryKey: ._dayOfWeek)
-    self.timeOfDay = try [FHIRKitPrimitive<FHIRKitTime>](from: _container, forKeyIfPresent: .timeOfDay, auxiliaryKey: ._timeOfDay)
-    self.when = try [FHIRKitPrimitive<FHIRKitString>](from: _container, forKeyIfPresent: .when, auxiliaryKey: ._when)
-    self.offset = try FHIRKitPrimitive<FHIRKitUnsignedInteger>(from: _container, forKeyIfPresent: .offset, auxiliaryKey: ._offset)
+    self.boundsX = tempBoundsX
+    self.count = try FHIRKitPrimitive<FHIRKitPositiveInteger>(from: codingKeyContainer, forKeyIfPresent: .count, auxKey: ._count)
+    self.countMax = try FHIRKitPrimitive<FHIRKitPositiveInteger>(from: codingKeyContainer, forKeyIfPresent: .countMax, auxKey: ._countMax)
+    self.duration = try FHIRKitPrimitive<FHIRKitDecimal>(from: codingKeyContainer, forKeyIfPresent: .duration, auxKey: ._duration)
+    self.durationMax = try FHIRKitPrimitive<FHIRKitDecimal>(from: codingKeyContainer, forKeyIfPresent: .durationMax, auxKey: ._durationMax)
+    self.durationUnit = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .durationUnit, auxKey: ._durationUnit)
+    self.frequency = try FHIRKitPrimitive<FHIRKitPositiveInteger>(from: codingKeyContainer, forKeyIfPresent: .frequency, auxKey: ._frequency)
+    self.frequencyMax = try FHIRKitPrimitive<FHIRKitPositiveInteger>(from: codingKeyContainer, forKeyIfPresent: .frequencyMax, auxKey: ._frequencyMax)
+    self.period = try FHIRKitPrimitive<FHIRKitDecimal>(from: codingKeyContainer, forKeyIfPresent: .period, auxKey: ._period)
+    self.periodMax = try FHIRKitPrimitive<FHIRKitDecimal>(from: codingKeyContainer, forKeyIfPresent: .periodMax, auxKey: ._periodMax)
+    self.periodUnit = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .periodUnit, auxKey: ._periodUnit)
+    self.dayOfWeek = try [FHIRKitPrimitive<DaysOfWeek>](from: codingKeyContainer, forKeyIfPresent: .dayOfWeek, auxKey: ._dayOfWeek)
+    self.timeOfDay = try [FHIRKitPrimitive<FHIRKitTime>](from: codingKeyContainer, forKeyIfPresent: .timeOfDay, auxKey: ._timeOfDay)
+    self.when = try [FHIRKitPrimitive<FHIRKitString>](from: codingKeyContainer, forKeyIfPresent: .when, auxKey: ._when)
+    self.offset = try FHIRKitPrimitive<FHIRKitUnsignedInteger>(from: codingKeyContainer, forKeyIfPresent: .offset, auxKey: ._offset)
     
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    if let _bounds = bounds {
-      switch _bounds {
+    if let enumBoundsX = boundsX {
+      switch enumBoundsX {
       case .duration(let _value):
-        try _value.encode(on: &_container, forKey: .boundsDuration)
+        try _value.encode(on: &codingKeyContainer, forKey: .boundsDuration)
       case .period(let _value):
-        try _value.encode(on: &_container, forKey: .boundsPeriod)
+        try _value.encode(on: &codingKeyContainer, forKey: .boundsPeriod)
       case .range(let _value):
-        try _value.encode(on: &_container, forKey: .boundsRange)
+        try _value.encode(on: &codingKeyContainer, forKey: .boundsRange)
       }
     }
     
-    try count?.encode(on: &_container, forKey: .count, auxiliaryKey: ._count)
-    try countMax?.encode(on: &_container, forKey: .countMax, auxiliaryKey: ._countMax)
-    try duration?.encode(on: &_container, forKey: .duration, auxiliaryKey: ._duration)
-    try durationMax?.encode(on: &_container, forKey: .durationMax, auxiliaryKey: ._durationMax)
-    try durationUnit?.encode(on: &_container, forKey: .durationUnit, auxiliaryKey: ._durationUnit)
-    try frequency?.encode(on: &_container, forKey: .frequency, auxiliaryKey: ._frequency)
-    try frequencyMax?.encode(on: &_container, forKey: .frequencyMax, auxiliaryKey: ._frequencyMax)
-    try period?.encode(on: &_container, forKey: .period, auxiliaryKey: ._period)
-    try periodMax?.encode(on: &_container, forKey: .periodMax, auxiliaryKey: ._periodMax)
-    try periodUnit?.encode(on: &_container, forKey: .periodUnit, auxiliaryKey: ._periodUnit)
-    try dayOfWeek?.encode(on: &_container, forKey: .dayOfWeek, auxiliaryKey: ._dayOfWeek)
-    try timeOfDay?.encode(on: &_container, forKey: .timeOfDay, auxiliaryKey: ._timeOfDay)
-    try when?.encode(on: &_container, forKey: .when, auxiliaryKey: ._when)
-    try offset?.encode(on: &_container, forKey: .offset, auxiliaryKey: ._offset)
+    try count?.encode(on: &codingKeyContainer, forKey: .count, auxKey: ._count)
+    try countMax?.encode(on: &codingKeyContainer, forKey: .countMax, auxKey: ._countMax)
+    try duration?.encode(on: &codingKeyContainer, forKey: .duration, auxKey: ._duration)
+    try durationMax?.encode(on: &codingKeyContainer, forKey: .durationMax, auxKey: ._durationMax)
+    try durationUnit?.encode(on: &codingKeyContainer, forKey: .durationUnit, auxKey: ._durationUnit)
+    try frequency?.encode(on: &codingKeyContainer, forKey: .frequency, auxKey: ._frequency)
+    try frequencyMax?.encode(on: &codingKeyContainer, forKey: .frequencyMax, auxKey: ._frequencyMax)
+    try period?.encode(on: &codingKeyContainer, forKey: .period, auxKey: ._period)
+    try periodMax?.encode(on: &codingKeyContainer, forKey: .periodMax, auxKey: ._periodMax)
+    try periodUnit?.encode(on: &codingKeyContainer, forKey: .periodUnit, auxKey: ._periodUnit)
+    try dayOfWeek?.encode(on: &codingKeyContainer, forKey: .dayOfWeek, auxKey: ._dayOfWeek)
+    try timeOfDay?.encode(on: &codingKeyContainer, forKey: .timeOfDay, auxKey: ._timeOfDay)
+    try when?.encode(on: &codingKeyContainer, forKey: .when, auxKey: ._when)
+    try offset?.encode(on: &codingKeyContainer, forKey: .offset, auxKey: ._offset)
     
     try super.encode(to: encoder)
   }
   
-  // MARK: - Equatable & Hashable
+  // MARK: - Equatable
   public override func isEqual(to _other: Any?) -> Bool {
     guard let _other = _other as? TimingRepeat else {
       return false
@@ -226,7 +226,7 @@ open class TimingRepeat: Element {
       return false
     }
     
-    return bounds == _other.bounds
+    return boundsX == _other.boundsX
     && count == _other.count
     && countMax == _other.countMax
     && duration == _other.duration
@@ -243,9 +243,10 @@ open class TimingRepeat: Element {
     && offset == _other.offset
   }
   
+  // MARK: - Hashable
   public override func hash(into hasher: inout Hasher) {
     super.hash(into: &hasher)
-    hasher.combine(bounds)
+    hasher.combine(boundsX)
     hasher.combine(count)
     hasher.combine(countMax)
     hasher.combine(duration)

@@ -38,14 +38,14 @@ open class ChargeItemPerformer: BackboneElement {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     function: CodableConcept? = nil,
     actor: Reference
   ) {
     self.init(actor: actor)
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
     self.id = id
   }
@@ -57,18 +57,20 @@ open class ChargeItemPerformer: BackboneElement {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
-    self.function = try CodableConcept(from: _container, forKeyIfPresent: .function)
-    self.actor = try Reference(from: _container, forKey: .actor)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
+    
+    self.function = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .function)
+    self.actor = try Reference(from: codingKeyContainer, forKey: .actor)
     
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    try function?.encode(on: &_container, forKey: .function)
-    try actor.encode(on: &_container, forKey: .actor)
+    try function?.encode(on: &codingKeyContainer, forKey: .function)
+    try actor.encode(on: &codingKeyContainer, forKey: .actor)
+    
     try super.encode(to: encoder)
   }
   

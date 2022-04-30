@@ -1,6 +1,6 @@
 //
 //  BundleEntryRequest.swift
-//  FHIRKIT
+//  FHIRKit
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
 //
@@ -53,7 +53,7 @@ open class BundleEntryRequest: BackboneElement {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     method: FHIRKitPrimitive<HTTPVerb>,
@@ -64,7 +64,7 @@ open class BundleEntryRequest: BackboneElement {
     ifNoneExist: FHIRKitPrimitive<FHIRKitString>? = nil
   ) {
     self.init(method: method, url: url)
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
     self.id = id
     self.url = url
@@ -85,24 +85,28 @@ open class BundleEntryRequest: BackboneElement {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
-    self.method = try FHIRKitPrimitive<HTTPVerb>(from: _container, forKey: .method, auxiliaryKey: ._method)
-    self.url = try FHIRKitPrimitive<FHIRKitURI>(from: _container, forKey: .url, auxiliaryKey: ._url)
-    self.ifNoneMatch = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .ifNoneMatch, auxiliaryKey: ._ifNoneMatch)
-    self.ifModifiedSince = try FHIRKitPrimitive<FHIRKitInstant>(from: _container, forKeyIfPresent: .ifModifiedSince, auxiliaryKey: ._ifModifiedSince)
-    self.ifMatch = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .ifMatch, auxiliaryKey: ._ifMatch)
-    self.ifNoneExist = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .ifNoneExist, auxiliaryKey: ._ifNoneExist)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
+    
+    self.method = try FHIRKitPrimitive<HTTPVerb>(from: codingKeyContainer, forKey: .method, auxKey: ._method)
+    self.url = try FHIRKitPrimitive<FHIRKitURI>(from: codingKeyContainer, forKey: .url, auxKey: ._url)
+    self.ifNoneMatch = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .ifNoneMatch, auxKey: ._ifNoneMatch)
+    self.ifModifiedSince = try FHIRKitPrimitive<FHIRKitInstant>(from: codingKeyContainer, forKeyIfPresent: .ifModifiedSince, auxKey: ._ifModifiedSince)
+    self.ifMatch = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .ifMatch, auxKey: ._ifMatch)
+    self.ifNoneExist = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .ifNoneExist, auxKey: ._ifNoneExist)
+    
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
-    try method.encode(on: &_container, forKey: .method, auxiliaryKey: ._method)
-    try url.encode(on: &_container, forKey: .url, auxiliaryKey: ._url)
-    try ifNoneMatch?.encode(on: &_container, forKey: .ifNoneMatch, auxiliaryKey: ._ifNoneMatch)
-    try ifModifiedSince?.encode(on: &_container, forKey: .ifModifiedSince, auxiliaryKey: ._ifModifiedSince)
-    try ifMatch?.encode(on: &_container, forKey: .ifMatch, auxiliaryKey: ._ifMatch)
-    try ifNoneExist?.encode(on: &_container, forKey: .ifNoneExist, auxiliaryKey: ._ifNoneExist)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
+    
+    try method.encode(on: &codingKeyContainer, forKey: .method, auxKey: ._method)
+    try url.encode(on: &codingKeyContainer, forKey: .url, auxKey: ._url)
+    try ifNoneMatch?.encode(on: &codingKeyContainer, forKey: .ifNoneMatch, auxKey: ._ifNoneMatch)
+    try ifModifiedSince?.encode(on: &codingKeyContainer, forKey: .ifModifiedSince, auxKey: ._ifModifiedSince)
+    try ifMatch?.encode(on: &codingKeyContainer, forKey: .ifMatch, auxKey: ._ifMatch)
+    try ifNoneExist?.encode(on: &codingKeyContainer, forKey: .ifNoneExist, auxKey: ._ifNoneExist)
+    
     try super.encode(to: encoder)
   }
   

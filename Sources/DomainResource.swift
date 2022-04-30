@@ -22,17 +22,31 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-import Darwin
-
+/**
+ A resource that has a human-readable XHTML representation of the content inside the resource (`Narrative`), can
+ contain additional related resources inside the resource, and can have additional extensions and modifierExtensions
+ as well as the defined data.
+ 
+ As an abstract resource, this resource is never created directly; instead, one of its decendant resources is created.
+ 
+ This resource extends the base `Resource. All of the listed Resources with the exception of `Bundle`,
+ `Parameters`, and `Binary` extend this resource.
+ 
+ https://www.hl7.org/fhir/domainresource.html
+ */
 open class DomainResource: Resource {
   override open class var resourceType: ResourceType { return .domainResource}
   
+  /// Text summary of the resource for human interpretation
   public var text: Narrative?
   
+  /// Contained, inline resources
   public var contained: [ResourceProxy]?
   
-  public var `extension`: [Extension]?
+  /// Additional content defined by implementations
+  public var fhirExtension: [Extension]?
   
+  /// Extensions that cannot be ignored
   public var modifierExtension: [Extension]?
   
   override public init() {
@@ -40,41 +54,41 @@ open class DomainResource: Resource {
   }
   
   public convenience init(
+    text: Narrative? = nil,
     contained: [ResourceProxy]? = nil,
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
+    modifierExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     implicitRules: FHIRKitPrimitive<FHIRKitURI>? = nil,
     language: FHIRKitPrimitive<FHIRKitString>? = nil,
-    meta: Meta? = nil,
-    modifierExtension: [Extension]? = nil,
-    text: Narrative? = nil
+    meta: Meta? = nil
   ) {
     self.init()
+    self.text = text
     self.contained = contained
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
+    self.modifierExtension = modifierExtension
     self.id = id
     self.implicitRules = implicitRules
     self.language = language
     self.meta = meta
-    self.modifierExtension = modifierExtension
-    self.text = text
   }
   
   // MARK: - Codable
   private enum CodingKeys: String, CodingKey {
-    case contained
-    case `extension` = "extension" // swiftlint:disable:this redundant_string_enum_value
-    case modifierExtension
     case text
+    case contained
+    case fhirExtension = "extension"
+    case modifierExtension
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.contained = try [ResourceProxy](from: _container, forKeyIfPresent: .contained)
-    self.`extension` = try [Extension](from: _container, forKeyIfPresent: .`extension`)
-    self.modifierExtension = try [Extension](from: _container, forKeyIfPresent: .modifierExtension)
-    self.text = try Narrative(from: _container, forKeyIfPresent: .text)
+    self.text = try Narrative(from: codingKeyContainer, forKeyIfPresent: .text)
+    self.contained = try [ResourceProxy](from: codingKeyContainer, forKeyIfPresent: .contained)
+    self.fhirExtension = try [Extension](from: codingKeyContainer, forKeyIfPresent: .fhirExtension)
+    self.modifierExtension = try [Extension](from: codingKeyContainer, forKeyIfPresent: .modifierExtension)
     
     try super.init(from: decoder)
   }

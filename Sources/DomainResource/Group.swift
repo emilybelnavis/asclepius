@@ -67,7 +67,7 @@ open class Group: DomainResource {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     identifier: [Identifier]? = nil,
     active: FHIRKitPrimitive<FHIRKitBool>? = nil,
@@ -81,7 +81,7 @@ open class Group: DomainResource {
     member: [GroupMember]? = nil
   ) {
     self.init(type: type, actual: actual)
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.id = id
     self.identifier = identifier
     self.active = active
@@ -108,40 +108,40 @@ open class Group: DomainResource {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.identifier = try [Identifier](from: _container, forKeyIfPresent: .identifier)
-    self.active = try FHIRKitPrimitive<FHIRKitBool>(from: _container, forKeyIfPresent: .active, auxiliaryKey: ._active)
-    self.type = try FHIRKitPrimitive<GroupType>(from: _container, forKey: .type, auxiliaryKey: ._type)
-    self.actual = try FHIRKitPrimitive<FHIRKitBool>(from: _container, forKey: .actual, auxiliaryKey: ._actual)
-    self.code = try CodableConcept(from: _container, forKeyIfPresent: .code)
-    self.name = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .name, auxiliaryKey: ._name)
-    self.quantity = try FHIRKitPrimitive<FHIRKitUnsignedInteger>(from: _container, forKeyIfPresent: .quantity, auxiliaryKey: ._quantity)
-    self.managingEntity = try Reference(from: _container, forKeyIfPresent: .managingEntity)
-    self.characteristic = try [GroupCharacteristic](from: _container, forKeyIfPresent: .characteristic)
-    self.member = try [GroupMember](from: _container, forKeyIfPresent: .member)
+    self.identifier = try [Identifier](from: codingKeyContainer, forKeyIfPresent: .identifier)
+    self.active = try FHIRKitPrimitive<FHIRKitBool>(from: codingKeyContainer, forKeyIfPresent: .active, auxKey: ._active)
+    self.type = try FHIRKitPrimitive<GroupType>(from: codingKeyContainer, forKey: .type, auxKey: ._type)
+    self.actual = try FHIRKitPrimitive<FHIRKitBool>(from: codingKeyContainer, forKey: .actual, auxKey: ._actual)
+    self.code = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .code)
+    self.name = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .name, auxKey: ._name)
+    self.quantity = try FHIRKitPrimitive<FHIRKitUnsignedInteger>(from: codingKeyContainer, forKeyIfPresent: .quantity, auxKey: ._quantity)
+    self.managingEntity = try Reference(from: codingKeyContainer, forKeyIfPresent: .managingEntity)
+    self.characteristic = try [GroupCharacteristic](from: codingKeyContainer, forKeyIfPresent: .characteristic)
+    self.member = try [GroupMember](from: codingKeyContainer, forKeyIfPresent: .member)
     
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    try identifier?.encode(on: &_container, forKey: .identifier)
-    try active?.encode(on: &_container, forKey: .active, auxiliaryKey: ._active)
-    try type.encode(on: &_container, forKey: .type, auxiliaryKey: ._type)
-    try actual.encode(on: &_container, forKey: .actual, auxiliaryKey: ._actual)
-    try code?.encode(on: &_container, forKey: .code)
-    try name?.encode(on: &_container, forKey: .name, auxiliaryKey: ._name)
-    try quantity?.encode(on: &_container, forKey: .quantity, auxiliaryKey: ._quantity)
-    try managingEntity?.encode(on: &_container, forKey: .managingEntity)
-    try characteristic?.encode(on: &_container, forKey: .characteristic)
-    try member?.encode(on: &_container, forKey: .member)
+    try identifier?.encode(on: &codingKeyContainer, forKey: .identifier)
+    try active?.encode(on: &codingKeyContainer, forKey: .active, auxKey: ._active)
+    try type.encode(on: &codingKeyContainer, forKey: .type, auxKey: ._type)
+    try actual.encode(on: &codingKeyContainer, forKey: .actual, auxKey: ._actual)
+    try code?.encode(on: &codingKeyContainer, forKey: .code)
+    try name?.encode(on: &codingKeyContainer, forKey: .name, auxKey: ._name)
+    try quantity?.encode(on: &codingKeyContainer, forKey: .quantity, auxKey: ._quantity)
+    try managingEntity?.encode(on: &codingKeyContainer, forKey: .managingEntity)
+    try characteristic?.encode(on: &codingKeyContainer, forKey: .characteristic)
+    try member?.encode(on: &codingKeyContainer, forKey: .member)
     
     try super.encode(to: encoder)
   }
   
-  // MARK: - Equatable & Hashable
+  // MARK: - Equatable
   public override func isEqual(to _other: Any?) -> Bool {
     guard let _other = _other as? Group else {
       return false
@@ -163,6 +163,7 @@ open class Group: DomainResource {
     && member == _other.member
   }
   
+  // MARK: - Hashable
   public override func hash(into hasher: inout Hasher) {
     super.hash(into: &hasher)
     hasher.combine(identifier)

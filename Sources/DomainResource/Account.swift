@@ -52,6 +52,7 @@ open class Account: DomainResource {
   
   public convenience init(
     `extension`: [Extension]? = nil,
+    modifierExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     identifier: [Identifier]? = nil,
     status: FHIRKitPrimitive<AccountStatus>,
@@ -67,11 +68,11 @@ open class Account: DomainResource {
     contained: [ResourceProxy]? = nil,
     implicitRules: FHIRKitPrimitive<FHIRKitURI>? = nil,
     meta: Meta? = nil,
-    modifierExtension: [Extension]? = nil,
     text: Narrative? = nil
   ) {
     self.init(status: status)
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
+    self.modifierExtension = modifierExtension
     self.id = id
     self.identifier = identifier
     self.type = type
@@ -86,7 +87,6 @@ open class Account: DomainResource {
     self.contained = contained
     self.implicitRules = implicitRules
     self.meta = meta
-    self.modifierExtension = modifierExtension
     self.text = text
   }
   
@@ -106,42 +106,42 @@ open class Account: DomainResource {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.identifier = try [Identifier](from: _container, forKeyIfPresent: .identifier)
-    self.status = try FHIRKitPrimitive<AccountStatus>(from: _container, forKey: .status, auxiliaryKey: ._status)
-    self.type = try CodableConcept(from: _container, forKeyIfPresent: .type)
-    self.name = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .name, auxiliaryKey: ._name)
-    self.subject = try [Reference](from: _container, forKeyIfPresent: .subject)
-    self.servicePeriod = try Period(from: _container, forKeyIfPresent: .servicePeriod)
-    self.coverage = try [AccountCoverage](from: _container, forKey: .coverage)
-    self.owner = try Reference(from: _container, forKeyIfPresent: .owner)
-    self.fhirDescription = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .fhirDescription, auxiliaryKey: ._fhirDescription)
-    self.guarantor = try [AccountGuarantor](from: _container, forKeyIfPresent: .guarantor)
-    self.partOf = try Reference(from: _container, forKeyIfPresent: .partOf)
+    self.identifier = try [Identifier](from: codingKeyContainer, forKeyIfPresent: .identifier)
+    self.status = try FHIRKitPrimitive<AccountStatus>(from: codingKeyContainer, forKey: .status, auxKey: ._status)
+    self.type = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .type)
+    self.name = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .name, auxKey: ._name)
+    self.subject = try [Reference](from: codingKeyContainer, forKeyIfPresent: .subject)
+    self.servicePeriod = try Period(from: codingKeyContainer, forKeyIfPresent: .servicePeriod)
+    self.coverage = try [AccountCoverage](from: codingKeyContainer, forKey: .coverage)
+    self.owner = try Reference(from: codingKeyContainer, forKeyIfPresent: .owner)
+    self.fhirDescription = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .fhirDescription, auxKey: ._fhirDescription)
+    self.guarantor = try [AccountGuarantor](from: codingKeyContainer, forKeyIfPresent: .guarantor)
+    self.partOf = try Reference(from: codingKeyContainer, forKeyIfPresent: .partOf)
     
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    try identifier?.encode(on: &_container, forKey: .identifier)
-    try status.encode(on: &_container, forKey: .status, auxiliaryKey: ._status)
-    try type?.encode(on: &_container, forKey: .type)
-    try name?.encode(on: &_container, forKey: .name)
-    try subject?.encode(on: &_container, forKey: .subject)
-    try servicePeriod?.encode(on: &_container, forKey: .servicePeriod)
-    try coverage?.encode(on: &_container, forKey: .coverage)
-    try owner?.encode(on: &_container, forKey: .owner)
-    try fhirDescription?.encode(on: &_container, forKey: .fhirDescription, auxiliaryKey: ._fhirDescription)
-    try guarantor?.encode(on: &_container, forKey: .guarantor)
-    try partOf?.encode(on: &_container, forKey: .partOf)
+    try identifier?.encode(on: &codingKeyContainer, forKey: .identifier)
+    try status.encode(on: &codingKeyContainer, forKey: .status, auxKey: ._status)
+    try type?.encode(on: &codingKeyContainer, forKey: .type)
+    try name?.encode(on: &codingKeyContainer, forKey: .name)
+    try subject?.encode(on: &codingKeyContainer, forKey: .subject)
+    try servicePeriod?.encode(on: &codingKeyContainer, forKey: .servicePeriod)
+    try coverage?.encode(on: &codingKeyContainer, forKey: .coverage)
+    try owner?.encode(on: &codingKeyContainer, forKey: .owner)
+    try fhirDescription?.encode(on: &codingKeyContainer, forKey: .fhirDescription, auxKey: ._fhirDescription)
+    try guarantor?.encode(on: &codingKeyContainer, forKey: .guarantor)
+    try partOf?.encode(on: &codingKeyContainer, forKey: .partOf)
     
     try super.encode(to: encoder)
   }
   
-  // MARK: - Equatable & Hashable
+  // MARK: - Equatable
   public override func isEqual(to _other: Any?) -> Bool {
     guard let _other = _other as? Account else {
       return false
@@ -164,6 +164,7 @@ open class Account: DomainResource {
     && partOf == _other.partOf
   }
   
+  // MARK: - Hashable
   public override func hash(into hasher: inout Hasher) {
     super .hash(into: &hasher)
     hasher.combine(identifier)

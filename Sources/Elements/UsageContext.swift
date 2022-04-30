@@ -28,7 +28,7 @@
  context of care (e.g. venue, care setting, provider of care)
  */
 open class UsageContext: Element {
-  public enum _Value: Hashable {
+  public enum ValueX: Hashable {
     case codableConcept(CodableConcept)
     case quantity(Quantity)
     case range(Range)
@@ -39,22 +39,22 @@ open class UsageContext: Element {
   public var code: Coding
 
   /// value that defines the context
-  public var value: _Value
+  public var valueX: ValueX
   
-  public init(code: Coding, value: _Value) {
+  public init(code: Coding, valueX: ValueX) {
     self.code = code
-    self.value = value
+    self.valueX = valueX
     super.init()
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     code: Coding,
-    value: _Value
+    valueX: ValueX
   ) {
-    self.init(code: code, value: value)
-    self.`extension` = `extension`
+    self.init(code: code, valueX: valueX)
+    self.fhirExtension = fhirExtension
     self.id = id
   }
   
@@ -68,63 +68,63 @@ open class UsageContext: Element {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    var _value: _Value?
-    if let valueCodableConcept = try CodableConcept(from: _container, forKeyIfPresent: .valueCodableConcept) {
-      if _value != nil {
-        throw DecodingError.dataCorruptedError(forKey: .valueCodableConcept, in: _container, debugDescription: "More than one value provided for \"value\"")
+    var tempValueX: ValueX?
+    if let valueCodableConcept = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .valueCodableConcept) {
+      if tempValueX != nil {
+        throw DecodingError.dataCorruptedError(forKey: .valueCodableConcept, in: codingKeyContainer, debugDescription: "More than one value provided for \"value\"")
       }
-      _value = .codableConcept(valueCodableConcept)
+      tempValueX = .codableConcept(valueCodableConcept)
     }
     
-    if let valueQuantity = try Quantity(from: _container, forKeyIfPresent: .valueQuantity) {
-      if _value != nil {
-        throw DecodingError.dataCorruptedError(forKey: .valueQuantity, in: _container, debugDescription: "More than one value provided for \"value\"")
+    if let valueQuantity = try Quantity(from: codingKeyContainer, forKeyIfPresent: .valueQuantity) {
+      if tempValueX != nil {
+        throw DecodingError.dataCorruptedError(forKey: .valueQuantity, in: codingKeyContainer, debugDescription: "More than one value provided for \"value\"")
       }
-      _value = .quantity(valueQuantity)
+      tempValueX = .quantity(valueQuantity)
     }
     
-    if let valueRange = try Range(from: _container, forKeyIfPresent: .valueRange) {
-      if _value != nil {
-        throw DecodingError.dataCorruptedError(forKey: .valueRange, in: _container, debugDescription: "More than one value provided for \"value\"")
+    if let valueRange = try Range(from: codingKeyContainer, forKeyIfPresent: .valueRange) {
+      if tempValueX != nil {
+        throw DecodingError.dataCorruptedError(forKey: .valueRange, in: codingKeyContainer, debugDescription: "More than one value provided for \"value\"")
       }
-      _value = .range(valueRange)
+      tempValueX = .range(valueRange)
     }
     
-    if let valueReference = try Reference(from: _container, forKeyIfPresent: .valueReference) {
-      if _value != nil {
-        throw DecodingError.dataCorruptedError(forKey: .valueReference, in: _container, debugDescription: "More than one value provided for \"value\"")
+    if let valueReference = try Reference(from: codingKeyContainer, forKeyIfPresent: .valueReference) {
+      if tempValueX != nil {
+        throw DecodingError.dataCorruptedError(forKey: .valueReference, in: codingKeyContainer, debugDescription: "More than one value provided for \"value\"")
       }
-      _value = .reference(valueReference)
+      tempValueX = .reference(valueReference)
     }
     
-    self.code = try Coding(from: _container, forKey: .code)
-    self.value = _value!
+    self.code = try Coding(from: codingKeyContainer, forKey: .code)
+    self.valueX = tempValueX!
     
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
-  
-    try code.encode(on: &_container, forKey: .code)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    switch value {
+    switch valueX {
     case .codableConcept(let _value):
-      try _value.encode(on: &_container, forKey: .valueCodableConcept)
+      try _value.encode(on: &codingKeyContainer, forKey: .valueCodableConcept)
     case .quantity(let _value):
-      try _value.encode(on: &_container, forKey: .valueQuantity)
+      try _value.encode(on: &codingKeyContainer, forKey: .valueQuantity)
     case .range(let _value):
-      try _value.encode(on: &_container, forKey: .valueRange)
+      try _value.encode(on: &codingKeyContainer, forKey: .valueRange)
     case .reference(let _value):
-      try _value.encode(on: &_container, forKey: .valueReference)
+      try _value.encode(on: &codingKeyContainer, forKey: .valueReference)
     }
+    
+    try code.encode(on: &codingKeyContainer, forKey: .code)
     
     try super.encode(to: encoder)
   }
   
-  // MARK: - Equatable & Hashable
+  // MARK: - Equatable
   public override func isEqual(to _other: Any?) -> Bool {
     guard let _other = _other as? UsageContext else {
       return false
@@ -134,12 +134,13 @@ open class UsageContext: Element {
       return false
     }
     return code == _other.code
-    && value == _other.value
+    && valueX == _other.valueX
   }
   
+  // MARK: - Hashable
   public override func hash(into hasher: inout Hasher) {
     super.hash(into: &hasher)
     hasher.combine(code)
-    hasher.combine(value)
+    hasher.combine(valueX)
   }
 }

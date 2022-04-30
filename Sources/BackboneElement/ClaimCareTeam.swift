@@ -48,7 +48,7 @@ open class ClaimCareTeam: BackboneElement {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     sequence: FHIRKitPrimitive<FHIRKitPositiveInteger>,
@@ -58,7 +58,7 @@ open class ClaimCareTeam: BackboneElement {
     qualification: CodableConcept? = nil
   ) {
     self.init(sequence: sequence, provider: provider)
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
     self.id = id
     self.responsible = responsible
@@ -75,24 +75,25 @@ open class ClaimCareTeam: BackboneElement {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
-    self.sequence = try FHIRKitPrimitive<FHIRKitPositiveInteger>(from: _container, forKey: .sequence, auxiliaryKey: ._sequence)
-    self.provider = try Reference(from: _container, forKey: .provider)
-    self.responsible = try FHIRKitPrimitive<FHIRKitBool>(from: _container, forKeyIfPresent: .responsible, auxiliaryKey: ._responsible)
-    self.role = try CodableConcept(from: _container, forKeyIfPresent: .role)
-    self.qualification = try CodableConcept(from: _container, forKeyIfPresent: .qualification)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
+    
+    self.sequence = try FHIRKitPrimitive<FHIRKitPositiveInteger>(from: codingKeyContainer, forKey: .sequence, auxKey: ._sequence)
+    self.provider = try Reference(from: codingKeyContainer, forKey: .provider)
+    self.responsible = try FHIRKitPrimitive<FHIRKitBool>(from: codingKeyContainer, forKeyIfPresent: .responsible, auxKey: ._responsible)
+    self.role = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .role)
+    self.qualification = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .qualification)
     
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    try sequence.encode(on: &_container, forKey: .sequence, auxiliaryKey: ._sequence)
-    try provider.encode(on: &_container, forKey: .provider)
-    try responsible?.encode(on: &_container, forKey: .responsible, auxiliaryKey: ._responsible)
-    try role?.encode(on: &_container, forKey: .role)
-    try qualification?.encode(on: &_container, forKey: .qualification)
+    try sequence.encode(on: &codingKeyContainer, forKey: .sequence, auxKey: ._sequence)
+    try provider.encode(on: &codingKeyContainer, forKey: .provider)
+    try responsible?.encode(on: &codingKeyContainer, forKey: .responsible, auxKey: ._responsible)
+    try role?.encode(on: &codingKeyContainer, forKey: .role)
+    try qualification?.encode(on: &codingKeyContainer, forKey: .qualification)
     try super.encode(to: encoder)
   }
   

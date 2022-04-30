@@ -1,6 +1,6 @@
 //
 //  AuditEventAgentNetwork.swift
-//  FHIRKIT
+//  FHIRKit
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
 //
@@ -35,14 +35,14 @@ open class AuditEventAgentNetwork: BackboneElement {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     address: FHIRKitPrimitive<FHIRKitString>? = nil,
     type: FHIRKitPrimitive<FHIRKitString>? = nil
   ) {
     self.init()
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
     self.id = id
     self.address = address
@@ -56,19 +56,19 @@ open class AuditEventAgentNetwork: BackboneElement {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.address = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .address, auxiliaryKey: ._address)
-    self.type = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .type, auxiliaryKey: ._type)
+    self.address = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .address, auxKey: ._address)
+    self.type = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .type, auxKey: ._type)
     
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    try address?.encode(on: &_container, forKey: .address, auxiliaryKey: ._address)
-    try type?.encode(on: &_container, forKey: .type, auxiliaryKey: ._type)
+    try address?.encode(on: &codingKeyContainer, forKey: .address, auxKey: ._address)
+    try type?.encode(on: &codingKeyContainer, forKey: .type, auxKey: ._type)
     
     try super.encode(to: encoder)
   }

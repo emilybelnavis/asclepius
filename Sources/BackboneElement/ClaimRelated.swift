@@ -41,7 +41,7 @@ open class ClaimRelated: BackboneElement {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     claim: Reference? = nil,
@@ -49,7 +49,7 @@ open class ClaimRelated: BackboneElement {
     reference: Identifier? = nil
   ) {
     self.init()
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
     self.id = id
     self.claim = claim
@@ -65,20 +65,22 @@ open class ClaimRelated: BackboneElement {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
-    self.claim = try Reference(from: _container, forKeyIfPresent: .claim)
-    self.relationship = try CodableConcept(from: _container, forKeyIfPresent: .relationship)
-    self.reference = try Identifier(from: _container, forKeyIfPresent: .reference)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
+    
+    self.claim = try Reference(from: codingKeyContainer, forKeyIfPresent: .claim)
+    self.relationship = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .relationship)
+    self.reference = try Identifier(from: codingKeyContainer, forKeyIfPresent: .reference)
     
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    try claim?.encode(on: &_container, forKey: .claim)
-    try relationship?.encode(on: &_container, forKey: .relationship)
-    try reference?.encode(on: &_container, forKey: .reference)
+    try claim?.encode(on: &codingKeyContainer, forKey: .claim)
+    try relationship?.encode(on: &codingKeyContainer, forKey: .relationship)
+    try reference?.encode(on: &codingKeyContainer, forKey: .reference)
+    
     try super.encode(to: encoder)
   }
   

@@ -22,8 +22,6 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
-import Darwin
-
 open class ContactDetail: Element {
   /// name of an individual to contact
   public var name: FHIRKitPrimitive<FHIRKitString>?
@@ -36,13 +34,13 @@ open class ContactDetail: Element {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     name: FHIRKitPrimitive<FHIRKitString>? = nil,
     telecom: [ContactPoint]? = nil
   ) {
     self.init()
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.id = id
     self.name = name
     self.telecom = telecom
@@ -55,23 +53,24 @@ open class ContactDetail: Element {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.name = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .name, auxiliaryKey: ._name)
-    self.telecom = try [ContactPoint](from: _container, forKeyIfPresent: .telecom)
+    self.name = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .name, auxKey: ._name)
+    self.telecom = try [ContactPoint](from: codingKeyContainer, forKeyIfPresent: .telecom)
     
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    try name?.encode(on: &_container, forKey: .name, auxiliaryKey: ._name)
-    try telecom?.encode(on: &_container, forKey: .telecom)
+    try name?.encode(on: &codingKeyContainer, forKey: .name, auxKey: ._name)
+    try telecom?.encode(on: &codingKeyContainer, forKey: .telecom)
+    
     try super.encode(to: encoder)
   }
   
-  // MARK: - Equatable & Hashable
+  // MARK: - Equatable
   public override func isEqual(to _other: Any?) -> Bool {
     guard let _other = _other as? ContactDetail else {
       return false
@@ -84,6 +83,7 @@ open class ContactDetail: Element {
     return name == _other.name && telecom == _other.telecom
   }
   
+  // MARK: - Hashable
   public override func hash(into hasher: inout Hasher) {
     super.hash(into: &hasher)
     hasher.combine(name)

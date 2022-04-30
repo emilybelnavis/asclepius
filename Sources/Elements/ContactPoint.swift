@@ -46,7 +46,7 @@ open class ContactPoint: Element {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     system: FHIRKitPrimitive<ContactPointSystem>? = nil,
     value: FHIRKitPrimitive<FHIRKitString>? = nil,
@@ -55,8 +55,7 @@ open class ContactPoint: Element {
     period: Period? = nil
   ) {
     self.init()
-    
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.id = id
     self.system = system
     self.value = value
@@ -75,29 +74,29 @@ open class ContactPoint: Element {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.system = try FHIRKitPrimitive<ContactPointSystem>(from: _container, forKeyIfPresent: .system, auxiliaryKey: ._system)
-    self.value = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .value, auxiliaryKey: ._value)
-    self.use = try FHIRKitPrimitive<ContactPointUse>(from: _container, forKeyIfPresent: .use, auxiliaryKey: ._use)
-    self.rank = try FHIRKitPrimitive<FHIRKitPositiveInteger>(from: _container, forKeyIfPresent: ._rank, auxiliaryKey: ._rank)
-    self.period = try Period(from: _container, forKeyIfPresent: .period)
+    self.system = try FHIRKitPrimitive<ContactPointSystem>(from: codingKeyContainer, forKeyIfPresent: .system, auxKey: ._system)
+    self.value = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .value, auxKey: ._value)
+    self.use = try FHIRKitPrimitive<ContactPointUse>(from: codingKeyContainer, forKeyIfPresent: .use, auxKey: ._use)
+    self.rank = try FHIRKitPrimitive<FHIRKitPositiveInteger>(from: codingKeyContainer, forKeyIfPresent: ._rank, auxKey: ._rank)
+    self.period = try Period(from: codingKeyContainer, forKeyIfPresent: .period)
     
     try super.init(from: decoder)
   }
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    try system?.encode(on: &_container, forKey: .system, auxiliaryKey: ._system)
-    try value?.encode(on: &_container, forKey: .value, auxiliaryKey: ._value)
-    try use?.encode(on: &_container, forKey: .use, auxiliaryKey: ._use)
-    try rank?.encode(on: &_container, forKey: .rank, auxiliaryKey: ._rank)
-    try period?.encode(on: &_container, forKey: .period)
+    try system?.encode(on: &codingKeyContainer, forKey: .system, auxKey: ._system)
+    try value?.encode(on: &codingKeyContainer, forKey: .value, auxKey: ._value)
+    try use?.encode(on: &codingKeyContainer, forKey: .use, auxKey: ._use)
+    try rank?.encode(on: &codingKeyContainer, forKey: .rank, auxKey: ._rank)
+    try period?.encode(on: &codingKeyContainer, forKey: .period)
     
     try super.encode(to: encoder)
   }
   
-  // MARK: - Equatable & Hashable
+  // MARK: - Equatable
   public override func isEqual(to _other: Any?) -> Bool {
     guard let _other = _other as? ContactPoint else {
       return false
@@ -114,6 +113,7 @@ open class ContactPoint: Element {
     && period == _other.period
   }
   
+  // MARK: - Hashable
   public override func hash(into hasher: inout Hasher) {
     super.hash(into: &hasher)
     hasher.combine(system)

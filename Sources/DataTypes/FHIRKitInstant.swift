@@ -42,13 +42,13 @@ import Foundation
  http://hl7.org/fhir/datatypes.html#instant
  */
 public struct FHIRKitInstant: FHIRKitPrimitiveType {
-  private var _timezoneIsUnaltered = true
+  private var timeZoneIsUnaltered = true
   public var date: FHIRKitInstantDate
   public var time: FHIRKitTime
   
   public var timeZone: TimeZone {
     didSet {
-      _timezoneIsUnaltered = false
+      timeZoneIsUnaltered = false
     }
   }
   
@@ -71,6 +71,7 @@ public struct FHIRKitInstant: FHIRKitPrimitiveType {
     self.originalTimeZoneString = originalTimeZoneString
   }
   
+  /// Date parsing
   public static func parse(from scanner: Scanner, expectAtEnd: Bool = true) throws -> (date: FHIRKitInstantDate, time: FHIRKitTime, timezone: TimeZone, timeZoneString: String) {
     let originalCharacterstoBeSkipped = scanner.charactersToBeSkipped
     defer { scanner.charactersToBeSkipped = originalCharacterstoBeSkipped }
@@ -96,37 +97,40 @@ public struct FHIRKitInstant: FHIRKitPrimitiveType {
   }
 }
 
+// MARK: - ExpressibleByStringLiteral
 extension FHIRKitInstant: ExpressibleByStringLiteral {
   public init(stringLiteral value: StringLiteralType) {
     try! self.init(value) // swiftlint:disable:this force_try
   }
 }
 
+// MARK: - Codable
 extension FHIRKitInstant: Codable {
   public init(from decoder: Decoder) throws {
-    let container = try decoder.singleValueContainer()
-    let string = try container.decode(String.self)
+    let codingKeyContainer = try decoder.singleValueContainer()
+    let string = try codingKeyContainer.decode(String.self)
     
     try self.init(string)
   }
   
   public func encode(to encoder: Encoder) throws {
-    var container = encoder.singleValueContainer()
-    try container.encode(description)
+    var codingKeyContainer = encoder.singleValueContainer()
+    try codingKeyContainer.encode(description)
   }
 }
 
+// MARK: - CustomStringConvertible
 extension FHIRKitInstant: CustomStringConvertible {
   public var description: String {
-    if _timezoneIsUnaltered, let originalTimeZoneString = originalTimeZoneString {
+    if timeZoneIsUnaltered, let originalTimeZoneString = originalTimeZoneString {
       return "\(date.description)T\(time.description)\(originalTimeZoneString)"
     }
     return "\(date.description)T\(time.description)\(timeZone.fhirDescription)"
   }
 }
 
+// MARK: - Equatable
 extension FHIRKitInstant: Equatable {
-  
   public static func == (leftSide: FHIRKitInstant, rightSide: FHIRKitInstant) -> Bool {
     if leftSide.date != rightSide.date {
       return false
@@ -167,6 +171,7 @@ extension FHIRKitInstant: Equatable {
   }
 }
 
+// MARK: - Comparable
 extension FHIRKitInstant: Comparable {
   
   public static func < (leftSide: FHIRKitInstant, rightSide: FHIRKitInstant) -> Bool {
@@ -194,5 +199,30 @@ extension FHIRKitInstant: Comparable {
       print("Instant comparison \(String(describing: leftSide)) < \(String(describing: rightSide)) raised \(String(describing: error))")
       return false
     }
+  }
+}
+
+// MARK: - Extends NSDate
+extension FHIRKitInstant: ExpressibleAsNSDate, ConstructibleFromNSDate {
+  
+  public func asNSDate() throws -> Date {
+    let dateComponents = FHIRKitDateComponents(
+      year: date.year,
+      month: date.month,
+      day: date.day,
+      hour: time.hour,
+      minute: time.minute,
+      second: time.second,
+      timeZone: timeZone)
+    
+    return try dateComponents.asNSDate()
+  }
+  
+  public init(date: Date, timeZone: TimeZone = TimeZone.current) throws {
+    let (year, month, day, hour, minute, second) = try FHIRKitDateComponents.components(from: date, with: timeZone)
+    self.date = FHIRKitInstantDate(year: year, month: month, day: day)
+    self.time = FHIRKitTime(hour: hour, minute: minute, second: second)
+    self.timeZone = timeZone
+    self.originalTimeZoneString = nil
   }
 }

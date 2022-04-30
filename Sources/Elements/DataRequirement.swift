@@ -28,7 +28,7 @@
  */
 open class DataRequirement: Element {
   /// all possible types for `Subject`
-  public enum Subject: Hashable {
+  public enum SubjectX: Hashable {
     case codableConcept(CodableConcept)
     case reference(Reference)
   }
@@ -40,7 +40,7 @@ open class DataRequirement: Element {
   public var profile: [FHIRKitPrimitive<Canonical>]?
   
   /// One of `Subject`; e.g. Patient, practitioner, related person, etc...
-  public var subject: Subject?
+  public var subjectX: SubjectX?
   
   /// indicates specific structure elemtnets that are referenced by the knowledge module
   public var mustSupport: [FHIRKitPrimitive<FHIRKitString>]?
@@ -63,11 +63,11 @@ open class DataRequirement: Element {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     type: FHIRKitPrimitive<FHIRKitString>,
     profile: [FHIRKitPrimitive<Canonical>]? = nil,
-    subject: Subject? = nil,
+    subjectX: SubjectX? = nil,
     mustSupport: [FHIRKitPrimitive<FHIRKitString>]? = nil,
     codeFilter: [DataRequirementCodeFilter]? = nil,
     dateFilter: [DataRequirementDateFilter]? = nil,
@@ -75,10 +75,10 @@ open class DataRequirement: Element {
     sort: [DataRequirementSort]? = nil
   ) {
     self.init(type: type)
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.id = id
     self.profile = profile
-    self.subject = subject
+    self.subjectX = subjectX
     self.mustSupport = mustSupport
     self.codeFilter = codeFilter
     self.dateFilter = dateFilter
@@ -100,59 +100,58 @@ open class DataRequirement: Element {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.type = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKey: .type, auxiliaryKey: ._type)
-    self.profile = try [FHIRKitPrimitive<Canonical>](from: _container, forKeyIfPresent: .profile, auxiliaryKey: ._profile)
-    self.mustSupport = try [FHIRKitPrimitive<FHIRKitString>](from: _container, forKeyIfPresent: .mustSupport, auxiliaryKey: ._mustSupport)
-    self.codeFilter = try [DataRequirementCodeFilter](from: _container, forKeyIfPresent: .codeFilter)
-    self.dateFilter = try [DataRequirementDateFilter](from: _container, forKeyIfPresent: .dateFilter)
-    self.limit = try FHIRKitPrimitive<FHIRKitPositiveInteger>(from: _container, forKeyIfPresent: .limit, auxiliaryKey: ._limit)
-    self.sort = try [DataRequirementSort](from: _container, forKeyIfPresent: .sort)
-    
-    var tempSubject: Subject?
-    if let subjectCodableConcept = try CodableConcept(from: _container, forKeyIfPresent: .subjectCodableConcept) {
-      if tempSubject != nil {
-        throw DecodingError.dataCorruptedError(forKey: .subjectCodableConcept, in: _container, debugDescription: "More than one value provided for \"subject\"")
+    var tempSubjectX: SubjectX?
+    if let subjectCodableConcept = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .subjectCodableConcept) {
+      if tempSubjectX != nil {
+        throw DecodingError.dataCorruptedError(forKey: .subjectCodableConcept, in: codingKeyContainer, debugDescription: "More than one value provided for \"subject\"")
       }
-      tempSubject = .codableConcept(subjectCodableConcept)
+      tempSubjectX = .codableConcept(subjectCodableConcept)
     }
     
-    if let subjectReference = try Reference(from: _container, forKeyIfPresent: .subjectReference) {
-      if tempSubject != nil {
-        throw DecodingError.dataCorruptedError(forKey: .subjectReference, in: _container, debugDescription: "More than one value provided for \"subject\"")
+    if let subjectReference = try Reference(from: codingKeyContainer, forKeyIfPresent: .subjectReference) {
+      if tempSubjectX != nil {
+        throw DecodingError.dataCorruptedError(forKey: .subjectReference, in: codingKeyContainer, debugDescription: "More than one value provided for \"subject\"")
       }
-      tempSubject = .reference(subjectReference)
+      tempSubjectX = .reference(subjectReference)
     }
     
-    self.subject = tempSubject
+    self.type = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKey: .type, auxKey: ._type)
+    self.profile = try [FHIRKitPrimitive<Canonical>](from: codingKeyContainer, forKeyIfPresent: .profile, auxKey: ._profile)
+    self.subjectX = tempSubjectX
+    self.mustSupport = try [FHIRKitPrimitive<FHIRKitString>](from: codingKeyContainer, forKeyIfPresent: .mustSupport, auxKey: ._mustSupport)
+    self.codeFilter = try [DataRequirementCodeFilter](from: codingKeyContainer, forKeyIfPresent: .codeFilter)
+    self.dateFilter = try [DataRequirementDateFilter](from: codingKeyContainer, forKeyIfPresent: .dateFilter)
+    self.limit = try FHIRKitPrimitive<FHIRKitPositiveInteger>(from: codingKeyContainer, forKeyIfPresent: .limit, auxKey: ._limit)
+    self.sort = try [DataRequirementSort](from: codingKeyContainer, forKeyIfPresent: .sort)
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
-    
-    try type.encode(on: &_container, forKey: .type, auxiliaryKey: ._type)
-    try profile?.encode(on: &_container, forKey: .profile, auxiliaryKey: ._profile)
-    try mustSupport?.encode(on: &_container, forKey: .mustSupport, auxiliaryKey: ._mustSupport)
-    try codeFilter?.encode(on: &_container, forKey: .codeFilter)
-    try dateFilter?.encode(on: &_container, forKey: .dateFilter)
-    try limit?.encode(on: &_container, forKey: .limit, auxiliaryKey: ._limit)
-    try sort?.encode(on: &_container, forKey: .sort)
-    
-    if let _enum = subject {
-      switch _enum {
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
+  
+    if let enumSubject = subjectX {
+      switch enumSubject {
       case .codableConcept(let _value):
-        try _value.encode(on: &_container, forKey: .subjectCodableConcept)
+        try _value.encode(on: &codingKeyContainer, forKey: .subjectCodableConcept)
       case .reference(let _value):
-        try _value.encode(on: &_container, forKey: .subjectReference)
+        try _value.encode(on: &codingKeyContainer, forKey: .subjectReference)
       }
     }
   
+    try type.encode(on: &codingKeyContainer, forKey: .type, auxKey: ._type)
+    try profile?.encode(on: &codingKeyContainer, forKey: .profile, auxKey: ._profile)
+    try mustSupport?.encode(on: &codingKeyContainer, forKey: .mustSupport, auxKey: ._mustSupport)
+    try codeFilter?.encode(on: &codingKeyContainer, forKey: .codeFilter)
+    try dateFilter?.encode(on: &codingKeyContainer, forKey: .dateFilter)
+    try limit?.encode(on: &codingKeyContainer, forKey: .limit, auxKey: ._limit)
+    try sort?.encode(on: &codingKeyContainer, forKey: .sort)
+    
     try super.encode(to: encoder)
   }
   
-  // MARK: - Equatable & Hashable
+  // MARK: - Equatable
   public override func isEqual(to _other: Any?) -> Bool {
     guard let _other = _other as? DataRequirement else {
       return false
@@ -164,7 +163,7 @@ open class DataRequirement: Element {
     
     return type == _other.type
     && profile == _other.profile
-    && subject == _other.subject
+    && subjectX == _other.subjectX
     && mustSupport == _other.mustSupport
     && codeFilter == _other.codeFilter
     && dateFilter == _other.dateFilter
@@ -172,11 +171,12 @@ open class DataRequirement: Element {
     && sort == _other.sort
   }
   
+  // MARK: - Hashable
   public override func hash(into hasher: inout Hasher) {
     super.hash(into: &hasher)
     hasher.combine(type)
     hasher.combine(profile)
-    hasher.combine(subject)
+    hasher.combine(subjectX)
     hasher.combine(mustSupport)
     hasher.combine(codeFilter)
     hasher.combine(dateFilter)

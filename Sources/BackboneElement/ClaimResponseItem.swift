@@ -46,7 +46,7 @@ open class ClaimResponseItem: BackboneElement {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     itemSequence: FHIRKitPrimitive<FHIRKitPositiveInteger>,
@@ -55,7 +55,7 @@ open class ClaimResponseItem: BackboneElement {
     detail: [ClaimResponseItemDetail]? = nil
   ) {
     self.init(itemSequence: itemSequence, adjudication: adjudication)
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
     self.id = id
     self.noteNumber = noteNumber
@@ -71,23 +71,24 @@ open class ClaimResponseItem: BackboneElement {
   }
 
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
 
-    self.itemSequence = try FHIRKitPrimitive<FHIRKitPositiveInteger>(from: _container, forKey: .itemSequence, auxiliaryKey: ._itemSequence)
-    self.noteNumber = try [FHIRKitPrimitive<FHIRKitPositiveInteger>](from: _container, forKeyIfPresent: .noteNumber, auxiliaryKey: ._noteNumber)
-    self.adjudication = try [ClaimResponseItemAdjudication](from: _container, forKey: .adjudication)
-    self.detail = try [ClaimResponseItemDetail](from: _container, forKeyIfPresent: .detail)
+    self.itemSequence = try FHIRKitPrimitive<FHIRKitPositiveInteger>(from: codingKeyContainer, forKey: .itemSequence, auxKey: ._itemSequence)
+    self.noteNumber = try [FHIRKitPrimitive<FHIRKitPositiveInteger>](from: codingKeyContainer, forKeyIfPresent: .noteNumber, auxKey: ._noteNumber)
+    self.adjudication = try [ClaimResponseItemAdjudication](from: codingKeyContainer, forKey: .adjudication)
+    self.detail = try [ClaimResponseItemDetail](from: codingKeyContainer, forKeyIfPresent: .detail)
     
     try super.init(from: decoder)
   }
  
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    try itemSequence.encode(on: &_container, forKey: .itemSequence, auxiliaryKey: ._itemSequence)
-    try noteNumber?.encode(on: &_container, forKey: .noteNumber, auxiliaryKey: ._noteNumber)
-    try adjudication.encode(on: &_container, forKey: .adjudication)
-    try detail?.encode(on: &_container, forKey: .detail)
+    try itemSequence.encode(on: &codingKeyContainer, forKey: .itemSequence, auxKey: ._itemSequence)
+    try noteNumber?.encode(on: &codingKeyContainer, forKey: .noteNumber, auxKey: ._noteNumber)
+    try adjudication.encode(on: &codingKeyContainer, forKey: .adjudication)
+    try detail?.encode(on: &codingKeyContainer, forKey: .detail)
+    
     try super.encode(to: encoder)
   }
   
@@ -116,4 +117,3 @@ open class ClaimResponseItem: BackboneElement {
     hasher.combine(detail)
   }
 }
-

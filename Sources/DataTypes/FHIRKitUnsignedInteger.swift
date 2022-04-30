@@ -48,10 +48,11 @@ public struct FHIRKitUnsignedInteger: FHIRKitPrimitiveType, FHIRKitIntegerRepres
   }
 }
 
+// MARK: Codable
 extension FHIRKitUnsignedInteger: Codable {
   public init(from decoder: Decoder) throws {
-    let _container = try decoder.singleValueContainer()
-    let integer = try _container.decode(Self.IntegerLiteralType.self)
+    let codingKeyContainer = try decoder.singleValueContainer()
+    let integer = try codingKeyContainer.decode(Self.IntegerLiteralType.self)
     
     if integer < 0 {
       throw FHIRKitUnsignedIntegerError.valueIsLessThanZero
@@ -60,15 +61,17 @@ extension FHIRKitUnsignedInteger: Codable {
   }
   
   public func encode(to encoder: Encoder) throws {
-    var _container = encoder.singleValueContainer()
-    try _container.encode(integer)
+    var codingKeyContainer = encoder.singleValueContainer()
+    try codingKeyContainer.encode(integer)
   }
 }
 
+// MARK: - Error Types
 public enum FHIRKitUnsignedIntegerError: Error {
   case valueIsLessThanZero
 }
 
+// MARK: - Extends Int
 extension Int {
   public func asFHIRKitUnsignedIntegerPrimitive() -> FHIRKitPrimitive<FHIRKitUnsignedInteger> {
     return FHIRKitPrimitive(FHIRKitUnsignedInteger(FHIRKitUnsignedInteger.IntegerLiteralType(self)))

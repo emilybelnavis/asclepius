@@ -1,6 +1,6 @@
 //
 //  CapabilityStatementDocument.swift
-//  FHIRKIT
+//  FHIRKit
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
 //
@@ -40,7 +40,7 @@ open class CapabilityStatementDocument: BackboneElement {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     mode: FHIRKitPrimitive<DocumentMode>,
@@ -48,7 +48,7 @@ open class CapabilityStatementDocument: BackboneElement {
     profile: FHIRKitPrimitive<Canonical>
   ) {
     self.init(mode: mode, profile: profile)
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
     self.id = id
     self.documentation = documentation
@@ -62,18 +62,22 @@ open class CapabilityStatementDocument: BackboneElement {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
-    self.mode = try FHIRKitPrimitive<DocumentMode>(from: _container, forKey: .mode, auxiliaryKey: ._mode)
-    self.documentation = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .documentation, auxiliaryKey: ._documentation)
-    self.profile = try FHIRKitPrimitive<Canonical>(from: _container, forKey: .profile, auxiliaryKey: ._profile)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
+    
+    self.mode = try FHIRKitPrimitive<DocumentMode>(from: codingKeyContainer, forKey: .mode, auxKey: ._mode)
+    self.documentation = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .documentation, auxKey: ._documentation)
+    self.profile = try FHIRKitPrimitive<Canonical>(from: codingKeyContainer, forKey: .profile, auxKey: ._profile)
+    
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
-    try mode.encode(on: &_container, forKey: .mode, auxiliaryKey: ._mode)
-    try documentation?.encode(on: &_container, forKey: .documentation, auxiliaryKey: ._documentation)
-    try profile.encode(on: &_container, forKey: .profile, auxiliaryKey: ._profile)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
+    
+    try mode.encode(on: &codingKeyContainer, forKey: .mode, auxKey: ._mode)
+    try documentation?.encode(on: &codingKeyContainer, forKey: .documentation, auxKey: ._documentation)
+    try profile.encode(on: &codingKeyContainer, forKey: .profile, auxKey: ._profile)
+    
     try super.encode(to: encoder)
   }
   

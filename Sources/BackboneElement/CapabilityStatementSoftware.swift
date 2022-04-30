@@ -1,6 +1,6 @@
 //
 //  CapabilityStatementSoftware.swift
-//  FHIRKIT
+//  FHIRKit
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
 //
@@ -42,14 +42,14 @@ open class CapabilityStatementSoftware: BackboneElement {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     name: FHIRKitPrimitive<FHIRKitString>,
     version: FHIRKitPrimitive<FHIRKitString>? = nil,
     releaseDate: FHIRKitPrimitive<FHIRKitDateTime>? = nil
   ) {
     self.init(name: name)
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
     self.id = id
     self.version = version
@@ -64,18 +64,22 @@ open class CapabilityStatementSoftware: BackboneElement {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
-    self.name = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKey: .name, auxiliaryKey: ._name)
-    self.version = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .version, auxiliaryKey: ._version)
-    self.releaseDate = try FHIRKitPrimitive<FHIRKitDateTime>(from: _container, forKeyIfPresent: .releaseDate, auxiliaryKey: ._releaseDate)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
+    
+    self.name = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKey: .name, auxKey: ._name)
+    self.version = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .version, auxKey: ._version)
+    self.releaseDate = try FHIRKitPrimitive<FHIRKitDateTime>(from: codingKeyContainer, forKeyIfPresent: .releaseDate, auxKey: ._releaseDate)
+    
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
-    try name.encode(on: &_container, forKey: .name, auxiliaryKey: ._name)
-    try version?.encode(on: &_container, forKey: .version, auxiliaryKey: ._version)
-    try releaseDate?.encode(on: &_container, forKey: .releaseDate, auxiliaryKey: ._releaseDate)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
+    
+    try name.encode(on: &codingKeyContainer, forKey: .name, auxKey: ._name)
+    try version?.encode(on: &codingKeyContainer, forKey: .version, auxKey: ._version)
+    try releaseDate?.encode(on: &codingKeyContainer, forKey: .releaseDate, auxKey: ._releaseDate)
+    
     try super.encode(to: encoder)
   }
   

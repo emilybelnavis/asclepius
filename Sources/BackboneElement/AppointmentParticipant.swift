@@ -47,7 +47,7 @@ open class AppointmentParticipant: BackboneElement {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     type: [CodableConcept]? = nil,
     `actor`: Reference? = nil,
@@ -56,7 +56,7 @@ open class AppointmentParticipant: BackboneElement {
     period: Period? = nil
   ) {
     self.init(status: status)
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.id = id
     self.type = type
     self.`actor` = `actor`
@@ -74,25 +74,25 @@ open class AppointmentParticipant: BackboneElement {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.type = try [CodableConcept](from: _container, forKeyIfPresent: .type)
-    self.`actor` = try Reference(from: _container, forKeyIfPresent: .actor)
-    self.`required` = try FHIRKitPrimitive<ParticipantRequired>(from: _container, forKeyIfPresent: .required, auxiliaryKey: ._required)
-    self.status = try FHIRKitPrimitive<ParticipationStatus>(from: _container, forKey: .status, auxiliaryKey: ._status)
-    self.period = try Period(from: _container, forKeyIfPresent: .period)
+    self.type = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .type)
+    self.`actor` = try Reference(from: codingKeyContainer, forKeyIfPresent: .actor)
+    self.`required` = try FHIRKitPrimitive<ParticipantRequired>(from: codingKeyContainer, forKeyIfPresent: .required, auxKey: ._required)
+    self.status = try FHIRKitPrimitive<ParticipationStatus>(from: codingKeyContainer, forKey: .status, auxKey: ._status)
+    self.period = try Period(from: codingKeyContainer, forKeyIfPresent: .period)
     
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    try type?.encode(on: &_container, forKey: .type)
-    try `actor`?.encode(on: &_container, forKey: .actor)
-    try `required`?.encode(on: &_container, forKey: .required, auxiliaryKey: ._required)
-    try status.encode(on: &_container, forKey: .status, auxiliaryKey: ._status)
-    try period?.encode(on: &_container, forKey: .period)
+    try type?.encode(on: &codingKeyContainer, forKey: .type)
+    try `actor`?.encode(on: &codingKeyContainer, forKey: .actor)
+    try `required`?.encode(on: &codingKeyContainer, forKey: .required, auxKey: ._required)
+    try status.encode(on: &codingKeyContainer, forKey: .status, auxKey: ._status)
+    try period?.encode(on: &codingKeyContainer, forKey: .period)
     
     try super.encode(to: encoder)
   }

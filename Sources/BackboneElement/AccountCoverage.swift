@@ -39,17 +39,17 @@ open class AccountCoverage: BackboneElement {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
+    modifierExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     coverage: Reference,
-    priority: FHIRKitPrimitive<FHIRKitPositiveInteger>? = nil,
-    modifierExtension: [Extension]? = nil
+    priority: FHIRKitPrimitive<FHIRKitPositiveInteger>? = nil
   ) {
     self.init(coverage: coverage)
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
+    self.modifierExtension = modifierExtension
     self.id = id
     self.priority = priority
-    self.modifierExtension = modifierExtension
   }
   
   // MARK: - Codable
@@ -59,19 +59,21 @@ open class AccountCoverage: BackboneElement {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.coverage = try Reference(from: _container, forKey: .coverage)
-    self.priority = try FHIRKitPrimitive<FHIRKitPositiveInteger>(from: _container, forKeyIfPresent: .priority, auxiliaryKey: ._priority)
+    self.coverage = try Reference(from: codingKeyContainer, forKey: .coverage)
+    self.priority = try FHIRKitPrimitive<FHIRKitPositiveInteger>(from: codingKeyContainer, forKeyIfPresent: .priority, auxKey: ._priority)
     
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    try coverage.encode(on: &_container, forKey: .coverage)
-    try priority?.encode(on: &_container, forKey: .priority, auxiliaryKey: ._priority)
+    try coverage.encode(on: &codingKeyContainer, forKey: .coverage)
+    try priority?.encode(on: &codingKeyContainer, forKey: .priority, auxKey: ._priority)
+    
+    try super.encode(to: encoder)
   }
   
   // MARK: - Equatable & Hashable

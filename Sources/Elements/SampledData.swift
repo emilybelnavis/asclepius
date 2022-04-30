@@ -56,7 +56,7 @@ open class SampledData: Element {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     origin: Quantity,
     period: FHIRKitPrimitive<FHIRKitDecimal>,
@@ -67,7 +67,7 @@ open class SampledData: Element {
     data: FHIRKitPrimitive<FHIRKitString>? = nil
   ) {
     self.init(origin: origin, period: period, dimensions: dimensions)
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.id = id
     self.factor = factor
     self.lowerLimit = lowerLimit
@@ -87,33 +87,34 @@ open class SampledData: Element {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.origin = try Quantity(from: _container, forKey: .origin)
-    self.period = try FHIRKitPrimitive<FHIRKitDecimal>(from: _container, forKey: .period, auxiliaryKey: ._period)
-    self.factor = try FHIRKitPrimitive<FHIRKitDecimal>(from: _container, forKeyIfPresent: .factor, auxiliaryKey: ._factor)
-    self.lowerLimit = try FHIRKitPrimitive<FHIRKitDecimal>(from: _container, forKeyIfPresent: .lowerLimit, auxiliaryKey: ._lowerLimit)
-    self.upperLimit = try FHIRKitPrimitive<FHIRKitDecimal>(from: _container, forKeyIfPresent: .upperLimit, auxiliaryKey: ._upperLimit)
-    self.dimensions = try FHIRKitPrimitive<FHIRKitPositiveInteger>(from: _container, forKey: .dimensions, auxiliaryKey: ._dimensions)
-    self.data = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .data, auxiliaryKey: ._data)
+    self.origin = try Quantity(from: codingKeyContainer, forKey: .origin)
+    self.period = try FHIRKitPrimitive<FHIRKitDecimal>(from: codingKeyContainer, forKey: .period, auxKey: ._period)
+    self.factor = try FHIRKitPrimitive<FHIRKitDecimal>(from: codingKeyContainer, forKeyIfPresent: .factor, auxKey: ._factor)
+    self.lowerLimit = try FHIRKitPrimitive<FHIRKitDecimal>(from: codingKeyContainer, forKeyIfPresent: .lowerLimit, auxKey: ._lowerLimit)
+    self.upperLimit = try FHIRKitPrimitive<FHIRKitDecimal>(from: codingKeyContainer, forKeyIfPresent: .upperLimit, auxKey: ._upperLimit)
+    self.dimensions = try FHIRKitPrimitive<FHIRKitPositiveInteger>(from: codingKeyContainer, forKey: .dimensions, auxKey: ._dimensions)
+    self.data = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .data, auxKey: ._data)
+    
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    try origin.encode(on: &_container, forKey: .origin)
-    try period.encode(on: &_container, forKey: .period, auxiliaryKey: ._period)
-    try factor?.encode(on: &_container, forKey: .factor, auxiliaryKey: ._factor)
-    try lowerLimit?.encode(on: &_container, forKey: .lowerLimit, auxiliaryKey: ._lowerLimit)
-    try upperLimit?.encode(on: &_container, forKey: .upperLimit, auxiliaryKey: ._upperLimit)
-    try dimensions.encode(on: &_container, forKey: .dimensions, auxiliaryKey: ._dimensions)
-    try data?.encode(on: &_container, forKey: .data, auxiliaryKey: ._data)
+    try origin.encode(on: &codingKeyContainer, forKey: .origin)
+    try period.encode(on: &codingKeyContainer, forKey: .period, auxKey: ._period)
+    try factor?.encode(on: &codingKeyContainer, forKey: .factor, auxKey: ._factor)
+    try lowerLimit?.encode(on: &codingKeyContainer, forKey: .lowerLimit, auxKey: ._lowerLimit)
+    try upperLimit?.encode(on: &codingKeyContainer, forKey: .upperLimit, auxKey: ._upperLimit)
+    try dimensions.encode(on: &codingKeyContainer, forKey: .dimensions, auxKey: ._dimensions)
+    try data?.encode(on: &codingKeyContainer, forKey: .data, auxKey: ._data)
     
     try super.encode(to: encoder)
   }
   
-  // MARK: - Equatable & Hashable
+  // MARK: - Equatable
   public override func isEqual(to _other: Any?) -> Bool {
     guard let _other = _other as? SampledData else {
       return false
@@ -132,6 +133,7 @@ open class SampledData: Element {
     && data == _other.data
   }
   
+  // MARK: - Hashable
   public override func hash(into hasher: inout Hasher) {
     super.hash(into: &hasher)
     hasher.combine(origin)

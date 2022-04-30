@@ -41,19 +41,19 @@ open class AccountGuarantor: BackboneElement {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
+    modifierExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     party: Reference,
     onHold: FHIRKitPrimitive<FHIRKitBool>? = nil,
-    period: Period? = nil,
-    modifierExtension: [Extension]? = nil
+    period: Period? = nil
   ) {
     self.init(party: party)
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
+    self.modifierExtension = modifierExtension
     self.id = id
     self.onHold = onHold
     self.period = period
-    self.modifierExtension = modifierExtension
   }
   
   // MARK: - Codable
@@ -64,26 +64,26 @@ open class AccountGuarantor: BackboneElement {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.party = try Reference(from: _container, forKey: .party)
-    self.onHold = try FHIRKitPrimitive<FHIRKitBool>(from: _container, forKeyIfPresent: .onHold, auxiliaryKey: ._onHold)
-    self.period = try Period(from: _container, forKeyIfPresent: .period)
+    self.party = try Reference(from: codingKeyContainer, forKey: .party)
+    self.onHold = try FHIRKitPrimitive<FHIRKitBool>(from: codingKeyContainer, forKeyIfPresent: .onHold, auxKey: ._onHold)
+    self.period = try Period(from: codingKeyContainer, forKeyIfPresent: .period)
     
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    try party.encode(on: &_container, forKey: .party)
-    try onHold?.encode(on: &_container, forKey: .onHold, auxiliaryKey: ._onHold)
-    try period?.encode(on: &_container, forKey: .period)
+    try party.encode(on: &codingKeyContainer, forKey: .party)
+    try onHold?.encode(on: &codingKeyContainer, forKey: .onHold, auxKey: ._onHold)
+    try period?.encode(on: &codingKeyContainer, forKey: .period)
     
     try super.encode(to: encoder)
   }
   
-  // MARK: - Equatable & Hashable
+  // MARK: - Equatable
   public override func isEqual(to _other: Any?) -> Bool {
     guard let _other = _other as? AccountGuarantor else {
       return false
@@ -98,6 +98,7 @@ open class AccountGuarantor: BackboneElement {
     && period == _other.period
   }
   
+  // MARK: - Hashable
   public override func hash(into hasher: inout Hasher) {
     super .hash(into: &hasher)
     hasher.combine(party)

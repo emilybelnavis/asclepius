@@ -39,13 +39,13 @@ open class Ratio: Element {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     numerator: Quantity? = nil,
     denominator: Quantity? = nil
   ) {
     self.init()
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.id = id
     self.numerator = numerator
     self.denominator = denominator
@@ -58,22 +58,24 @@ open class Ratio: Element {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
-    self.numerator = try Quantity(from: _container, forKeyIfPresent: .numerator)
-    self.denominator = try Quantity(from: _container, forKeyIfPresent: .denominator)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
+    
+    self.numerator = try Quantity(from: codingKeyContainer, forKeyIfPresent: .numerator)
+    self.denominator = try Quantity(from: codingKeyContainer, forKeyIfPresent: .denominator)
     
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
-    try numerator?.encode(on: &_container, forKey: .numerator)
-    try denominator?.encode(on: &_container, forKey: .denominator)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
+    
+    try numerator?.encode(on: &codingKeyContainer, forKey: .numerator)
+    try denominator?.encode(on: &codingKeyContainer, forKey: .denominator)
     
     try super.encode(to: encoder)
   }
   
-  // MARK: - Equatable & Hashable
+  // MARK: - Equatable
   public override func isEqual(to _other: Any?) -> Bool {
     guard let _other = _other as? Ratio else {
       return false
@@ -87,6 +89,7 @@ open class Ratio: Element {
     && denominator == _other.denominator
   }
   
+  // MARK: - Hashable
   public override func hash(into hasher: inout Hasher) {
     super.hash(into: &hasher)
     hasher.combine(numerator)

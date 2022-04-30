@@ -63,7 +63,7 @@ open class AuditEventAgent: BackboneElement {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     type: CodableConcept? = nil,
@@ -79,7 +79,7 @@ open class AuditEventAgent: BackboneElement {
     purposeOfUse: [CodableConcept]? = nil
   ) {
     self.init(requestor: requestor)
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
     self.id = id
     self.type = type
@@ -110,35 +110,35 @@ open class AuditEventAgent: BackboneElement {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.type = try CodableConcept(from: _container, forKeyIfPresent: .type)
-    self.role = try [CodableConcept](from: _container, forKeyIfPresent: .role)
-    self.altId = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .altId, auxiliaryKey: ._altId)
-    self.name = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .name, auxiliaryKey: ._name)
-    self.requestor = try FHIRKitPrimitive<FHIRKitBool>(from: _container, forKey: .requestor, auxiliaryKey: ._requestor)
-    self.location = try Reference(from: _container, forKeyIfPresent: .location)
-    self.policy = try [FHIRKitPrimitive<FHIRKitURI>](from: _container, forKeyIfPresent: .policy, auxiliaryKey: ._policy)
-    self.media = try Coding(from: _container, forKeyIfPresent: .media)
-    self.network = try AuditEventAgentNetwork(from: _container, forKeyIfPresent: .network)
-    self.purposeOfUse = try [CodableConcept](from: _container, forKeyIfPresent: .purposeOfUse)
+    self.type = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .type)
+    self.role = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .role)
+    self.altId = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .altId, auxKey: ._altId)
+    self.name = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .name, auxKey: ._name)
+    self.requestor = try FHIRKitPrimitive<FHIRKitBool>(from: codingKeyContainer, forKey: .requestor, auxKey: ._requestor)
+    self.location = try Reference(from: codingKeyContainer, forKeyIfPresent: .location)
+    self.policy = try [FHIRKitPrimitive<FHIRKitURI>](from: codingKeyContainer, forKeyIfPresent: .policy, auxKey: ._policy)
+    self.media = try Coding(from: codingKeyContainer, forKeyIfPresent: .media)
+    self.network = try AuditEventAgentNetwork(from: codingKeyContainer, forKeyIfPresent: .network)
+    self.purposeOfUse = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .purposeOfUse)
     
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    try type?.encode(on: &_container, forKey: .type)
-    try role?.encode(on: &_container, forKey: .role)
-    try altId?.encode(on: &_container, forKey: .altId, auxiliaryKey: ._altId)
-    try name?.encode(on: &_container, forKey: .name, auxiliaryKey: ._name)
-    try requestor.encode(on: &_container, forKey: .requestor, auxiliaryKey: ._requestor)
-    try location?.encode(on: &_container, forKey: .location)
-    try policy?.encode(on: &_container, forKey: .policy, auxiliaryKey: ._policy)
-    try media?.encode(on: &_container, forKey: .media)
-    try network?.encode(on: &_container, forKey: .network)
-    try purposeOfUse?.encode(on: &_container, forKey: .purposeOfUse)
+    try type?.encode(on: &codingKeyContainer, forKey: .type)
+    try role?.encode(on: &codingKeyContainer, forKey: .role)
+    try altId?.encode(on: &codingKeyContainer, forKey: .altId, auxKey: ._altId)
+    try name?.encode(on: &codingKeyContainer, forKey: .name, auxKey: ._name)
+    try requestor.encode(on: &codingKeyContainer, forKey: .requestor, auxKey: ._requestor)
+    try location?.encode(on: &codingKeyContainer, forKey: .location)
+    try policy?.encode(on: &codingKeyContainer, forKey: .policy, auxKey: ._policy)
+    try media?.encode(on: &codingKeyContainer, forKey: .media)
+    try network?.encode(on: &codingKeyContainer, forKey: .network)
+    try purposeOfUse?.encode(on: &codingKeyContainer, forKey: .purposeOfUse)
     try super.encode(to: encoder)
   }
   

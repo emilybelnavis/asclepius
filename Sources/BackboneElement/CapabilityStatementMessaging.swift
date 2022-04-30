@@ -1,6 +1,6 @@
 //
 //  CapabilityStatementMessaging.swift
-//  FHIRKIT
+//  FHIRKit
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
 //
@@ -41,7 +41,7 @@ open class CapabilityStatementMessaging: BackboneElement {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     endpoint: [CapabilityStatementMessagingEndpoint]? = nil,
@@ -50,7 +50,7 @@ open class CapabilityStatementMessaging: BackboneElement {
     supportedMessage: [CapabilityStatementMessagingSupportMessage]? = nil
   ) {
     self.init()
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
     self.id = id
     self.endpoint = endpoint
@@ -68,20 +68,24 @@ open class CapabilityStatementMessaging: BackboneElement {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
-    self.endpoint = try [CapabilityStatementMessagingEndpoint](from: _container, forKeyIfPresent: .endpoint)
-    self.reliableCache = try FHIRKitPrimitive<FHIRKitUnsignedInteger>(from: _container, forKeyIfPresent: .reliableCache, auxiliaryKey: ._reliableCache)
-    self.documentation = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .documentation, auxiliaryKey: ._documentation)
-    self.supportedMessage = try [CapabilityStatementMessagingSupportMessage](from: _container, forKeyIfPresent: .supportedMessage)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
+    
+    self.endpoint = try [CapabilityStatementMessagingEndpoint](from: codingKeyContainer, forKeyIfPresent: .endpoint)
+    self.reliableCache = try FHIRKitPrimitive<FHIRKitUnsignedInteger>(from: codingKeyContainer, forKeyIfPresent: .reliableCache, auxKey: ._reliableCache)
+    self.documentation = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .documentation, auxKey: ._documentation)
+    self.supportedMessage = try [CapabilityStatementMessagingSupportMessage](from: codingKeyContainer, forKeyIfPresent: .supportedMessage)
+    
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
-    try endpoint?.encode(on: &_container, forKey: .endpoint)
-    try reliableCache?.encode(on: &_container, forKey: .reliableCache, auxiliaryKey: ._reliableCache)
-    try documentation?.encode(on: &_container, forKey: .documentation, auxiliaryKey: ._documentation)
-    try supportedMessage?.encode(on: &_container, forKey: .supportedMessage)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
+    
+    try endpoint?.encode(on: &codingKeyContainer, forKey: .endpoint)
+    try reliableCache?.encode(on: &codingKeyContainer, forKey: .reliableCache, auxKey: ._reliableCache)
+    try documentation?.encode(on: &codingKeyContainer, forKey: .documentation, auxKey: ._documentation)
+    try supportedMessage?.encode(on: &codingKeyContainer, forKey: .supportedMessage)
+    
     try super.encode(to: encoder)
   }
   

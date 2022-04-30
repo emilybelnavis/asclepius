@@ -26,6 +26,7 @@
  Base Resource
  
  This is the base resource type for everything
+ https://www.hl7.org/fhir/resource.html
  */
 open class Resource: FHIRKitAbstractResource {
   override open class var resourceType: ResourceType { return .resource }
@@ -68,28 +69,28 @@ open class Resource: FHIRKitAbstractResource {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.id = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .id, auxiliaryKey: ._id)
-    self.meta = try Meta(from: _container, forKeyIfPresent: .meta)
-    self.implicitRules = try FHIRKitPrimitive<FHIRKitURI>(from: _container, forKeyIfPresent: .implicitRules, auxiliaryKey: ._implicitRules)
-    self.language = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .language, auxiliaryKey: ._language)
+    self.id = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .id, auxKey: ._id)
+    self.meta = try Meta(from: codingKeyContainer, forKeyIfPresent: .meta)
+    self.implicitRules = try FHIRKitPrimitive<FHIRKitURI>(from: codingKeyContainer, forKeyIfPresent: .implicitRules, auxKey: ._implicitRules)
+    self.language = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .language, auxKey: ._language)
     
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    try id?.encode(on: &_container, forKey: .id, auxiliaryKey: ._id)
-    try meta?.encode(on: &_container, forKey: .id)
-    try implicitRules?.encode(on: &_container, forKey: .implicitRules, auxiliaryKey: ._implicitRules)
-    try language?.encode(on: &_container, forKey: .language, auxiliaryKey: ._language)
+    try id?.encode(on: &codingKeyContainer, forKey: .id, auxKey: ._id)
+    try meta?.encode(on: &codingKeyContainer, forKey: .id)
+    try implicitRules?.encode(on: &codingKeyContainer, forKey: .implicitRules, auxKey: ._implicitRules)
+    try language?.encode(on: &codingKeyContainer, forKey: .language, auxKey: ._language)
     
     try super.encode(to: encoder)
   }
   
-  // MARK: - Equatable & Hashable
+  // MARK: - Equatable
   public override func isEqual(to _other: Any?) -> Bool {
     guard let _other = _other as? Resource else {
       return false
@@ -105,6 +106,7 @@ open class Resource: FHIRKitAbstractResource {
       && language == _other.language
   }
   
+  // MARK: - Hashable
   public override func hash(into hasher: inout Hasher) {
     super.hash(into: &hasher)
     

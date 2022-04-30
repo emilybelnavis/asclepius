@@ -39,8 +39,8 @@ open class FHIRKitAbstractResource: FHIRKitType {
   public required init(from decoder: Decoder) throws { }
   
   public func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
-    try _container.encode(type(of: self).resourceType.rawValue, forKey: .resourceType)
+    var codingContainer = encoder.container(keyedBy: CodingKeys.self)
+    try codingContainer.encode(type(of: self).resourceType.rawValue, forKey: .resourceType)
   }
   
   // MARK: - Custom String Convertible
@@ -48,7 +48,7 @@ open class FHIRKitAbstractResource: FHIRKitType {
     return "<\(type(of: self).resourceType)>"
   }
   
-  // MARK: - Equatable & Hashable
+  // MARK: - Equatable
   public static func == (leftSide: FHIRKitAbstractResource, rightSide: FHIRKitAbstractResource) -> Bool {
     return leftSide.isEqual(to: rightSide)
   }
@@ -65,6 +65,7 @@ open class FHIRKitAbstractResource: FHIRKitType {
     return type(of: self).resourceType == type(of: _other).resourceType
   }
   
+  // MARK: - Hashable
   public func hash(into hasher: inout Hasher) {
     hasher.combine(type(of: self).resourceType)
   }

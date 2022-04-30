@@ -30,7 +30,7 @@
  */
 open class DataRequirementDateFilter: Element {
   /// all possible types for `Value`
-  public enum Value: Hashable {
+  public enum ValueX: Hashable {
     case dateTime(FHIRKitPrimitive<FHIRKitDateTime>)
     case duration(Duration)
     case period(Period)
@@ -43,25 +43,25 @@ open class DataRequirementDateFilter: Element {
   public var searchParam: FHIRKitPrimitive<FHIRKitString>?
   
   /// the value of the filter as a period, datetime, or duration value
-  public var value: Value?
+  public var valueX: ValueX?
   
   override public init() {
     super.init()
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     path: FHIRKitPrimitive<FHIRKitString>? = nil,
     searchParam: FHIRKitPrimitive<FHIRKitString>? = nil,
-    value: Value? = nil
+    valueX: ValueX? = nil
   ) {
     self.init()
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.id = id
     self.path = path
     self.searchParam = searchParam
-    self.value = value
+    self.valueX = valueX
   }
   
   // MARK: - Codable
@@ -74,60 +74,58 @@ open class DataRequirementDateFilter: Element {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.path = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .path, auxiliaryKey: ._path)
-    self.searchParam = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .searchParam, auxiliaryKey: ._searchParam)
-    
-    var tempValue: Value?
-    if let valueDateTime = try FHIRKitPrimitive<FHIRKitDateTime>(from: _container, forKeyIfPresent: .valueDateTime, auxiliaryKey: ._valueDateTime) {
-      if tempValue != nil {
-        throw DecodingError.dataCorruptedError(forKey: .valueDateTime, in: _container, debugDescription: "More than one value provided for \"value\"")
+    var tempValueX: ValueX?
+    if let valueDateTime = try FHIRKitPrimitive<FHIRKitDateTime>(from: codingKeyContainer, forKeyIfPresent: .valueDateTime, auxKey: ._valueDateTime) {
+      if tempValueX != nil {
+        throw DecodingError.dataCorruptedError(forKey: .valueDateTime, in: codingKeyContainer, debugDescription: "More than one value provided for \"value\"")
       }
-      
-      tempValue = .dateTime(valueDateTime)
+      tempValueX = .dateTime(valueDateTime)
     }
     
-    if let valuePeriod = try Period(from: _container, forKeyIfPresent: .valuePeriod) {
-      if tempValue != nil {
-        throw DecodingError.dataCorruptedError(forKey: .valuePeriod, in: _container, debugDescription: "More than one value provided for \"value\"")
+    if let valuePeriod = try Period(from: codingKeyContainer, forKeyIfPresent: .valuePeriod) {
+      if tempValueX != nil {
+        throw DecodingError.dataCorruptedError(forKey: .valuePeriod, in: codingKeyContainer, debugDescription: "More than one value provided for \"value\"")
       }
-      
-      tempValue = .period(valuePeriod)
+      tempValueX = .period(valuePeriod)
     }
   
-    if let valueDuration = try Duration(from: _container, forKeyIfPresent: .valueDuration) {
-      if tempValue != nil {
-        throw DecodingError.dataCorruptedError(forKey: .valueDuration, in: _container, debugDescription: "More than one value provided for \"value\"")
+    if let valueDuration = try Duration(from: codingKeyContainer, forKeyIfPresent: .valueDuration) {
+      if tempValueX != nil {
+        throw DecodingError.dataCorruptedError(forKey: .valueDuration, in: codingKeyContainer, debugDescription: "More than one value provided for \"value\"")
       }
-      
-      tempValue = .duration(valueDuration)
+      tempValueX = .duration(valueDuration)
     }
     
-    self.value = tempValue
+    self.path = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .path, auxKey: ._path)
+    self.searchParam = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .searchParam, auxKey: ._searchParam)
+    self.valueX = tempValueX
+    
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
-    try path?.encode(on: &_container, forKey: .path, auxiliaryKey: ._path)
-    try searchParam?.encode(on: &_container, forKey: .searchParam, auxiliaryKey: ._searchParam)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    if let _enum = value {
-      switch _enum {
+    try path?.encode(on: &codingKeyContainer, forKey: .path, auxKey: ._path)
+    try searchParam?.encode(on: &codingKeyContainer, forKey: .searchParam, auxKey: ._searchParam)
+    
+    if let enumValue = valueX {
+      switch enumValue {
       case .dateTime(let _value):
-        try _value.encode(on: &_container, forKey: .valueDateTime, auxiliaryKey: ._valueDateTime)
+        try _value.encode(on: &codingKeyContainer, forKey: .valueDateTime, auxKey: ._valueDateTime)
       case .period(let _value):
-        try _value.encode(on: &_container, forKey: .valuePeriod)
+        try _value.encode(on: &codingKeyContainer, forKey: .valuePeriod)
       case .duration(let _value):
-        try _value.encode(on: &_container, forKey: .valueDuration)
+        try _value.encode(on: &codingKeyContainer, forKey: .valueDuration)
       }
     }
     
     try super.encode(to: encoder)
   }
   
-  // MARK: - Equatable & Hashable
+  // MARK: - Equatable
   public override func isEqual(to _other: Any?) -> Bool {
     guard let _other = _other as? DataRequirementDateFilter else {
       return false
@@ -139,13 +137,14 @@ open class DataRequirementDateFilter: Element {
     
     return path == _other.path
     && searchParam == _other.searchParam
-    && value == _other.value
+    && valueX == _other.valueX
   }
   
+  // MARK: - Hashable
   public override func hash(into hasher: inout Hasher) {
     super.hash(into: &hasher)
     hasher.combine(path)
     hasher.combine(searchParam)
-    hasher.combine(value)
+    hasher.combine(valueX)
   }
 }

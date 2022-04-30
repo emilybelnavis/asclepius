@@ -57,7 +57,7 @@ open class Attachment: Element {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     contentType: FHIRKitPrimitive<FHIRKitString>? = nil,
     language: FHIRKitPrimitive<FHIRKitString>? = nil,
@@ -69,7 +69,7 @@ open class Attachment: Element {
     creation: FHIRKitPrimitive<FHIRKitDateTime>? = nil
   ) {
     self.init()
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.id = id
     self.contentType = contentType
     self.language = language
@@ -94,36 +94,36 @@ open class Attachment: Element {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.contentType = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .contentType, auxiliaryKey: ._contentType)
-    self.language = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .language, auxiliaryKey: ._language)
-    self.data = try FHIRKitPrimitive<FHIRKitBase64Binary>(from: _container, forKeyIfPresent: .data, auxiliaryKey: ._data)
-    self.url = try FHIRKitPrimitive<FHIRKitURI>(from: _container, forKeyIfPresent: .url, auxiliaryKey: ._url)
-    self.size = try FHIRKitPrimitive<FHIRKitUnsignedInteger>(from: _container, forKeyIfPresent: .size, auxiliaryKey: ._size)
-    self.hash = try FHIRKitPrimitive<FHIRKitBase64Binary>(from: _container, forKeyIfPresent: .hash, auxiliaryKey: ._hash)
-    self.title = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .title, auxiliaryKey: ._title)
-    self.creation = try FHIRKitPrimitive<FHIRKitDateTime>(from: _container, forKeyIfPresent: .creation, auxiliaryKey: ._creation)
+    self.contentType = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .contentType, auxKey: ._contentType)
+    self.language = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .language, auxKey: ._language)
+    self.data = try FHIRKitPrimitive<FHIRKitBase64Binary>(from: codingKeyContainer, forKeyIfPresent: .data, auxKey: ._data)
+    self.url = try FHIRKitPrimitive<FHIRKitURI>(from: codingKeyContainer, forKeyIfPresent: .url, auxKey: ._url)
+    self.size = try FHIRKitPrimitive<FHIRKitUnsignedInteger>(from: codingKeyContainer, forKeyIfPresent: .size, auxKey: ._size)
+    self.hash = try FHIRKitPrimitive<FHIRKitBase64Binary>(from: codingKeyContainer, forKeyIfPresent: .hash, auxKey: ._hash)
+    self.title = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .title, auxKey: ._title)
+    self.creation = try FHIRKitPrimitive<FHIRKitDateTime>(from: codingKeyContainer, forKeyIfPresent: .creation, auxKey: ._creation)
     
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    try contentType?.encode(on: &_container, forKey: .contentType, auxiliaryKey: ._contentType)
-    try language?.encode(on: &_container, forKey: .language, auxiliaryKey: ._language)
-    try data?.encode(on: &_container, forKey: .data, auxiliaryKey: ._data)
-    try url?.encode(on: &_container, forKey: .url, auxiliaryKey: ._url)
-    try size?.encode(on: &_container, forKey: .size, auxiliaryKey: ._size)
-    try hash?.encode(on: &_container, forKey: .hash, auxiliaryKey: ._hash)
-    try title?.encode(on: &_container, forKey: .title, auxiliaryKey: ._title)
-    try creation?.encode(on: &_container, forKey: .creation, auxiliaryKey: ._creation)
+    try contentType?.encode(on: &codingKeyContainer, forKey: .contentType, auxKey: ._contentType)
+    try language?.encode(on: &codingKeyContainer, forKey: .language, auxKey: ._language)
+    try data?.encode(on: &codingKeyContainer, forKey: .data, auxKey: ._data)
+    try url?.encode(on: &codingKeyContainer, forKey: .url, auxKey: ._url)
+    try size?.encode(on: &codingKeyContainer, forKey: .size, auxKey: ._size)
+    try hash?.encode(on: &codingKeyContainer, forKey: .hash, auxKey: ._hash)
+    try title?.encode(on: &codingKeyContainer, forKey: .title, auxKey: ._title)
+    try creation?.encode(on: &codingKeyContainer, forKey: .creation, auxKey: ._creation)
     
     try super.encode(to: encoder)
   }
   
-  // MARK: - Equatable & Hashable
+  // MARK: - Equatable
   public override func isEqual(to _other: Any?) -> Bool {
     guard let _other = _other as? Attachment else {
       return false
@@ -143,6 +143,7 @@ open class Attachment: Element {
     && creation == _other.creation
   }
   
+  // MARK: - Hashable
   public override func hash(into hasher: inout Hasher) {
     super.hash(into: &hasher)
     hasher.combine(contentType)

@@ -51,7 +51,7 @@ open class Expression: Element {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     fhirDescriotion: FHIRKitPrimitive<FHIRKitString>? = nil,
     name: FHIRKitPrimitive<FHIRKitString>? = nil,
@@ -60,7 +60,7 @@ open class Expression: Element {
     reference: FHIRKitPrimitive<FHIRKitURI>? = nil
   ) {
     self.init(language: language)
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.id = id
     self.fhirDescription = fhirDescriotion
     self.name = name
@@ -77,30 +77,30 @@ open class Expression: Element {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.fhirDescription = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .fhirDescription, auxiliaryKey: ._fhirDescription)
-    self.name = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .name, auxiliaryKey: ._name)
-    self.language = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKey: .language, auxiliaryKey: ._language)
-    self.expression = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .expression, auxiliaryKey: ._expression)
-    self.reference = try FHIRKitPrimitive<FHIRKitURI>(from: _container, forKeyIfPresent: .reference, auxiliaryKey: ._reference)
+    self.fhirDescription = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .fhirDescription, auxKey: ._fhirDescription)
+    self.name = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .name, auxKey: ._name)
+    self.language = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKey: .language, auxKey: ._language)
+    self.expression = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .expression, auxKey: ._expression)
+    self.reference = try FHIRKitPrimitive<FHIRKitURI>(from: codingKeyContainer, forKeyIfPresent: .reference, auxKey: ._reference)
     
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
   
-    try fhirDescription?.encode(on: &_container, forKey: .fhirDescription, auxiliaryKey: ._fhirDescription)
-    try name?.encode(on: &_container, forKey: .name, auxiliaryKey: ._name)
-    try language.encode(on: &_container, forKey: .language, auxiliaryKey: ._language)
-    try expression?.encode(on: &_container, forKey: .expression, auxiliaryKey: ._expression)
-    try reference?.encode(on: &_container, forKey: .reference, auxiliaryKey: ._reference)
+    try fhirDescription?.encode(on: &codingKeyContainer, forKey: .fhirDescription, auxKey: ._fhirDescription)
+    try name?.encode(on: &codingKeyContainer, forKey: .name, auxKey: ._name)
+    try language.encode(on: &codingKeyContainer, forKey: .language, auxKey: ._language)
+    try expression?.encode(on: &codingKeyContainer, forKey: .expression, auxKey: ._expression)
+    try reference?.encode(on: &codingKeyContainer, forKey: .reference, auxKey: ._reference)
 
     try super.encode(to: encoder)
   }
   
-  // MARK: - Equatable & Hashable
+  // MARK: - Equatable
   public override func isEqual(to _other: Any?) -> Bool {
     guard let _other = _other as? Expression else {
       return false
@@ -117,6 +117,7 @@ open class Expression: Element {
     && reference == _other.reference
   }
   
+  // MARK: - Hashable
   public override func hash(into hasher: inout Hasher) {
     super .hash(into: &hasher)
     hasher.combine(fhirDescription)

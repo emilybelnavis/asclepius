@@ -29,7 +29,7 @@ open class Duration: Quantity {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     code: FHIRKitPrimitive<FHIRKitString>? = nil,
     comparator: FHIRKitPrimitive<QuantityComparator>? = nil,
@@ -38,7 +38,7 @@ open class Duration: Quantity {
     value: FHIRKitPrimitive<FHIRKitDecimal>? = nil
   ) {
     self.init()
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.id = id
     self.code = code
     self.comparator = comparator
@@ -56,7 +56,7 @@ open class Duration: Quantity {
     try super.encode(to: encoder)
   }
   
-  // MARK: - Equatable & Hashable
+  // MARK: - Equatable
   public override func isEqual(to _other: Any?) -> Bool {
     guard let _other = _other as? Duration else {
       return false
@@ -69,6 +69,7 @@ open class Duration: Quantity {
     return true
   }
   
+  // MARK: - Hashable
   public override func hash(into hasher: inout Hasher) {
     super.hash(into: &hasher)
   }

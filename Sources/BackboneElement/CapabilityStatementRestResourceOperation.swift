@@ -1,6 +1,6 @@
 //
 //  CapabilityStatementRestResourceOperation.swift
-//  FHIRKIT
+//  FHIRKit
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
 //
@@ -43,7 +43,7 @@ open class CapabilityStatementRestResourceOperation: BackboneElement {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     name: FHIRKitPrimitive<FHIRKitString>,
@@ -51,7 +51,7 @@ open class CapabilityStatementRestResourceOperation: BackboneElement {
     documentation: FHIRKitPrimitive<FHIRKitString>? = nil
   ) {
     self.init(name: name, definition: definition)
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
     self.id = id
     self.documentation = documentation
@@ -65,18 +65,21 @@ open class CapabilityStatementRestResourceOperation: BackboneElement {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
-    self.name = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKey: .name, auxiliaryKey: ._name)
-    self.definition = try FHIRKitPrimitive<Canonical>(from: _container, forKey: .definition, auxiliaryKey: .definition)
-    self.documentation = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .documentation, auxiliaryKey: ._documentation)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
+    
+    self.name = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKey: .name, auxKey: ._name)
+    self.definition = try FHIRKitPrimitive<Canonical>(from: codingKeyContainer, forKey: .definition, auxKey: .definition)
+    self.documentation = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .documentation, auxKey: ._documentation)
+    
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
-    try name.encode(on: &_container, forKey: .name, auxiliaryKey: ._name)
-    try definition.encode(on: &_container, forKey: .definition, auxiliaryKey: ._definition)
-    try documentation?.encode(on: &_container, forKey: .documentation, auxiliaryKey: ._documentation)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
+    
+    try name.encode(on: &codingKeyContainer, forKey: .name, auxKey: ._name)
+    try definition.encode(on: &codingKeyContainer, forKey: .definition, auxKey: ._definition)
+    try documentation?.encode(on: &codingKeyContainer, forKey: .documentation, auxKey: ._documentation)
     try super.encode(to: encoder)
   }
   

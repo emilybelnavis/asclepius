@@ -41,7 +41,7 @@ open class ClaimResponseItemDetailSubDetail: BackboneElement {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     subDetailSequence: FHIRKitPrimitive<FHIRKitPositiveInteger>,
@@ -49,7 +49,7 @@ open class ClaimResponseItemDetailSubDetail: BackboneElement {
     adjudication: [ClaimResponseItemAdjudication]? = nil
   ) {
     self.init(subDetailSequence: subDetailSequence)
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
     self.noteNumber = noteNumber
     self.adjudication = adjudication
@@ -63,21 +63,21 @@ open class ClaimResponseItemDetailSubDetail: BackboneElement {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.subDetailSequence = try FHIRKitPrimitive<FHIRKitPositiveInteger>(from: _container, forKey: .subDetailSequence, auxiliaryKey: ._subDetailSequence)
-    self.noteNumber = try [FHIRKitPrimitive<FHIRKitPositiveInteger>](from: _container, forKeyIfPresent: .noteNumber, auxiliaryKey: ._noteNumber)
-    self.adjudication = try [ClaimResponseItemAdjudication](from: _container, forKeyIfPresent: .adjudication)
+    self.subDetailSequence = try FHIRKitPrimitive<FHIRKitPositiveInteger>(from: codingKeyContainer, forKey: .subDetailSequence, auxKey: ._subDetailSequence)
+    self.noteNumber = try [FHIRKitPrimitive<FHIRKitPositiveInteger>](from: codingKeyContainer, forKeyIfPresent: .noteNumber, auxKey: ._noteNumber)
+    self.adjudication = try [ClaimResponseItemAdjudication](from: codingKeyContainer, forKeyIfPresent: .adjudication)
     
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    try subDetailSequence.encode(on: &_container, forKey: .subDetailSequence, auxiliaryKey: ._subDetailSequence)
-    try noteNumber?.encode(on: &_container, forKey: .noteNumber, auxiliaryKey: ._noteNumber)
-    try adjudication?.encode(on: &_container, forKey: .adjudication)
+    try subDetailSequence.encode(on: &codingKeyContainer, forKey: .subDetailSequence, auxKey: ._subDetailSequence)
+    try noteNumber?.encode(on: &codingKeyContainer, forKey: .noteNumber, auxKey: ._noteNumber)
+    try adjudication?.encode(on: &codingKeyContainer, forKey: .adjudication)
     
     try super.encode(to: encoder)
   }

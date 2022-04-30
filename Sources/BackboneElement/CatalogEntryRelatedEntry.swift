@@ -41,14 +41,14 @@ open class CatalogEntryRelatedEntry: BackboneElement {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     relationType: FHIRKitPrimitive<CatalogEntryRelationType>,
     item: Reference
   ) {
     self.init(relationType: relationType, item: item)
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
     self.id = id
   }
@@ -60,18 +60,20 @@ open class CatalogEntryRelatedEntry: BackboneElement {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
-    self.relationType = try FHIRKitPrimitive<CatalogEntryRelationType>(from: _container, forKey: .relationType, auxiliaryKey: ._relationType)
-    self.item = try Reference(from: _container, forKey: .item)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
+    
+    self.relationType = try FHIRKitPrimitive<CatalogEntryRelationType>(from: codingKeyContainer, forKey: .relationType, auxKey: ._relationType)
+    self.item = try Reference(from: codingKeyContainer, forKey: .item)
     
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    try relationType.encode(on: &_container, forKey: .relationType, auxiliaryKey: ._relationType)
-    try item.encode(on: &_container, forKey: .item)
+    try relationType.encode(on: &codingKeyContainer, forKey: .relationType, auxKey: ._relationType)
+    try item.encode(on: &codingKeyContainer, forKey: .item)
+    
     try super.encode(to: encoder)
   }
   

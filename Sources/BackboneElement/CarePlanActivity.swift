@@ -49,7 +49,7 @@ open class CarePlanActivity: BackboneElement {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     outcomeCodableConcept: [CodableConcept]? = nil,
@@ -59,7 +59,7 @@ open class CarePlanActivity: BackboneElement {
     detail: CarePlanActivityDetail? = nil
   ) {
     self.init()
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
     self.id = id
     self.outcomeCodableConcept = outcomeCodableConcept
@@ -79,24 +79,26 @@ open class CarePlanActivity: BackboneElement {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
-    self.outcomeCodableConcept = try [CodableConcept](from: _container, forKeyIfPresent: .outcomeReference)
-    self.outcomeReference = try [Reference](from: _container, forKeyIfPresent: .outcomeReference)
-    self.progress = try [Annotation](from: _container, forKeyIfPresent: .progress)
-    self.reference = try Reference(from: _container, forKeyIfPresent: .reference)
-    self.detail = try CarePlanActivityDetail(from: _container, forKeyIfPresent: .detail)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
+    
+    self.outcomeCodableConcept = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .outcomeReference)
+    self.outcomeReference = try [Reference](from: codingKeyContainer, forKeyIfPresent: .outcomeReference)
+    self.progress = try [Annotation](from: codingKeyContainer, forKeyIfPresent: .progress)
+    self.reference = try Reference(from: codingKeyContainer, forKeyIfPresent: .reference)
+    self.detail = try CarePlanActivityDetail(from: codingKeyContainer, forKeyIfPresent: .detail)
     
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    try outcomeCodableConcept?.encode(on: &_container, forKey: .outcomeCodableConcept)
-    try outcomeReference?.encode(on: &_container, forKey: .outcomeReference)
-    try progress?.encode(on: &_container, forKey: .progress)
-    try reference?.encode(on: &_container, forKey: .reference)
-    try detail?.encode(on: &_container, forKey: .detail)
+    try outcomeCodableConcept?.encode(on: &codingKeyContainer, forKey: .outcomeCodableConcept)
+    try outcomeReference?.encode(on: &codingKeyContainer, forKey: .outcomeReference)
+    try progress?.encode(on: &codingKeyContainer, forKey: .progress)
+    try reference?.encode(on: &codingKeyContainer, forKey: .reference)
+    try detail?.encode(on: &codingKeyContainer, forKey: .detail)
+    
     try super.encode(to: encoder)
   }
   

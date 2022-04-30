@@ -33,17 +33,17 @@ open class ActivityDefinition: DomainResource {
     return .activityDefinition
   }
   
-  public enum _Product: Hashable {
+  public enum ProductX: Hashable {
     case codableConcept(CodableConcept)
     case reference(Reference)
   }
   
-  public enum _Subject: Hashable {
+  public enum SubjectX: Hashable {
     case codableConcept(CodableConcept)
     case reference(Reference)
   }
   
-  public enum _Timing: Hashable {
+  public enum TimingX: Hashable {
     case age(Age)
     case dateTime(FHIRKitPrimitive<FHIRKitDateTime>)
     case duration(Duration)
@@ -77,7 +77,7 @@ open class ActivityDefinition: DomainResource {
   public var experimental: FHIRKitPrimitive<FHIRKitBool>?
   
   /// type of individual the activity definition is intended for
-  public var subject: _Subject?
+  public var subjectX: SubjectX?
   
   /// date last changed
   public var date: FHIRKitPrimitive<FHIRKitDateTime>?
@@ -156,7 +156,7 @@ open class ActivityDefinition: DomainResource {
   public var doNotPerform: FHIRKitPrimitive<FHIRKitBool>?
   
   /// when the activity is to be performed
-  public var timing: _Timing?
+  public var timingX: TimingX?
   
   /// where the activity is to be performed
   public var location: Reference?
@@ -165,7 +165,7 @@ open class ActivityDefinition: DomainResource {
   public var participant: [ActivityDefinitionParticipant]?
   
   /// what is administered/supplied
-  public var product: _Product?
+  public var productX: ProductX?
   
   /// how much is administered/consumed/supplied
   public var quantity: Quantity?
@@ -197,7 +197,8 @@ open class ActivityDefinition: DomainResource {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
+    modifierExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     approvalDate: FHIRKitPrimitive<FHIRKitDate>? = nil,
     author: [ContactDetail]? = nil,
@@ -225,13 +226,12 @@ open class ActivityDefinition: DomainResource {
     library: [FHIRKitPrimitive<Canonical>]? = nil,
     location: Reference? = nil,
     meta: Meta? = nil,
-    modifierExtension: [Extension]? = nil,
     name: FHIRKitPrimitive<FHIRKitString>? = nil,
     observationRequirement: [Reference]? = nil,
     observationResultRequirement: [Reference]? = nil,
     participant: [ActivityDefinitionParticipant]? = nil,
     priority: FHIRKitPrimitive<RequestPriority>? = nil,
-    product: _Product? = nil,
+    productX: ProductX? = nil,
     profile: FHIRKitPrimitive<Canonical>? = nil,
     publisher: FHIRKitPrimitive<FHIRKitString>? = nil,
     purpose: FHIRKitPrimitive<FHIRKitString>? = nil,
@@ -240,10 +240,10 @@ open class ActivityDefinition: DomainResource {
     reviewer: [ContactDetail]? = nil,
     specimenRequirement: [Reference]? = nil,
     status: FHIRKitPrimitive<PublicationStatus>,
-    subject: _Subject? = nil,
+    subjectX: SubjectX? = nil,
     subtitle: FHIRKitPrimitive<FHIRKitString>? = nil,
     text: Narrative? = nil,
-    timing: _Timing? = nil,
+    timingX: TimingX? = nil,
     title: FHIRKitPrimitive<FHIRKitString>? = nil,
     topic: [CodableConcept]? = nil,
     transform: FHIRKitPrimitive<Canonical>? = nil,
@@ -253,7 +253,8 @@ open class ActivityDefinition: DomainResource {
     version: FHIRKitPrimitive<FHIRKitString>? = nil
   ) {
     self.init(status: status)
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
+    self.modifierExtension = modifierExtension
     self.id = id
     self.approvalDate = approvalDate
     self.author = author
@@ -280,13 +281,12 @@ open class ActivityDefinition: DomainResource {
     self.library = library
     self.location = location
     self.meta = meta
-    self.modifierExtension = modifierExtension
     self.name = name
     self.observationRequirement = observationRequirement
     self.observationResultRequirement = observationResultRequirement
     self.participant = participant
     self.priority = priority
-    self.product = product
+    self.productX = productX
     self.publisher = publisher
     self.purpose = purpose
     self.quantity = quantity
@@ -294,10 +294,10 @@ open class ActivityDefinition: DomainResource {
     self.reviewer = reviewer
     self.specimenRequirement = specimenRequirement
     self.status = status
-    self.subject = subject
+    self.subjectX = subjectX
     self.subtitle = subtitle
     self.text = text
-    self.timing = timing
+    self.timingX = timingX
     self.title = title
     self.topic = topic
     self.transform = transform
@@ -365,203 +365,209 @@ open class ActivityDefinition: DomainResource {
   
   // swiftlint:disable cyclomatic_complexity
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     // product
-    var _product: _Product?
-    if let productCodableConcept = try CodableConcept(from: _container, forKeyIfPresent: .productCodableConcept) {
-      if _product != nil {
-        throw DecodingError.dataCorruptedError(forKey: .productCodableConcept, in: _container, debugDescription: "More than one value provided for \"product\"")
+    var tempProductX: ProductX?
+    if let productCodableConcept = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .productCodableConcept) {
+      if tempProductX != nil {
+        throw DecodingError.dataCorruptedError(forKey: .productCodableConcept, in: codingKeyContainer, debugDescription: "More than one value provided for \"product\"")
       }
-      _product = .codableConcept(productCodableConcept)
+      tempProductX = .codableConcept(productCodableConcept)
     }
-    if let productReference = try Reference(from: _container, forKeyIfPresent: .productReference) {
-      if _product != nil {
-        throw DecodingError.dataCorruptedError(forKey: .productReference, in: _container, debugDescription: "More than one value provided for \"product\"")
+    if let productReference = try Reference(from: codingKeyContainer, forKeyIfPresent: .productReference) {
+      if tempProductX != nil {
+        throw DecodingError.dataCorruptedError(forKey: .productReference, in: codingKeyContainer, debugDescription: "More than one value provided for \"product\"")
       }
-      _product = .reference(productReference)
+      tempProductX = .reference(productReference)
     }
     
     // subject
-    var _subject: _Subject?
-    if let subjectCodableConcept = try CodableConcept(from: _container, forKeyIfPresent: .subjectCodableConcept) {
-      if _subject != nil {
-        throw DecodingError.dataCorruptedError(forKey: .subjectCodableConcept, in: _container, debugDescription: "More than one value provided for \"subject\"")
+    var tempSubjectX: SubjectX?
+    if let subjectCodableConcept = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .subjectCodableConcept) {
+      if tempSubjectX != nil {
+        throw DecodingError.dataCorruptedError(forKey: .subjectCodableConcept, in: codingKeyContainer, debugDescription: "More than one value provided for \"subject\"")
       }
-      _subject = .codableConcept(subjectCodableConcept)
+      tempSubjectX = .codableConcept(subjectCodableConcept)
     }
     
+    if let subjectReference = try Reference(from: codingKeyContainer, forKeyIfPresent: .subjectReference) {
+      if tempSubjectX != nil {
+        throw DecodingError.dataCorruptedError(forKey: .subjectReference, in: codingKeyContainer, debugDescription: "More than one value provided for \"subject\"")
+      }
+      tempSubjectX = .reference(subjectReference)
+    }
     // timing
-    var _timing: _Timing?
-    if let timingAge = try Age(from: _container, forKeyIfPresent: .timingAge) {
-      if _timing != nil {
-        throw DecodingError.dataCorruptedError(forKey: .timingAge, in: _container, debugDescription: "More than one value provided for \"timing\"")
+    var tempTimingX: TimingX?
+    if let timingAge = try Age(from: codingKeyContainer, forKeyIfPresent: .timingAge) {
+      if tempTimingX != nil {
+        throw DecodingError.dataCorruptedError(forKey: .timingAge, in: codingKeyContainer, debugDescription: "More than one value provided for \"timing\"")
       }
-      _timing = .age(timingAge)
+      tempTimingX = .age(timingAge)
     }
     
-    if let timingDateTime = try FHIRKitPrimitive<FHIRKitDateTime>(from: _container, forKeyIfPresent: .timingDateTime, auxiliaryKey: ._timingDateTime) {
-      if _timing != nil {
-        throw DecodingError.dataCorruptedError(forKey: .timingDateTime, in: _container, debugDescription: "More than one value provided for \"timing\"")
+    if let timingDateTime = try FHIRKitPrimitive<FHIRKitDateTime>(from: codingKeyContainer, forKeyIfPresent: .timingDateTime, auxKey: ._timingDateTime) {
+      if tempTimingX != nil {
+        throw DecodingError.dataCorruptedError(forKey: .timingDateTime, in: codingKeyContainer, debugDescription: "More than one value provided for \"timing\"")
       }
-      _timing = .dateTime(timingDateTime)
+      tempTimingX = .dateTime(timingDateTime)
     }
     
-    if let timingDuration = try Duration(from: _container, forKeyIfPresent: .timingDuration) {
-      if _timing != nil {
-        throw DecodingError.dataCorruptedError(forKey: .timingDuration, in: _container, debugDescription: "More than one value provided for \"timing\"")
+    if let timingDuration = try Duration(from: codingKeyContainer, forKeyIfPresent: .timingDuration) {
+      if tempTimingX != nil {
+        throw DecodingError.dataCorruptedError(forKey: .timingDuration, in: codingKeyContainer, debugDescription: "More than one value provided for \"timing\"")
       }
-      _timing = .duration(timingDuration)
+      tempTimingX = .duration(timingDuration)
     }
     
-    if let timingRange = try Range(from: _container, forKeyIfPresent: .timingRange) {
-      if _timing != nil {
-        throw DecodingError.dataCorruptedError(forKey: .timingRange, in: _container, debugDescription: "More than one value provided for \"timing\"")
+    if let timingRange = try Range(from: codingKeyContainer, forKeyIfPresent: .timingRange) {
+      if tempTimingX != nil {
+        throw DecodingError.dataCorruptedError(forKey: .timingRange, in: codingKeyContainer, debugDescription: "More than one value provided for \"timing\"")
       }
-      _timing = .range(timingRange)
+      tempTimingX = .range(timingRange)
     }
     
-    if let timingTiming = try Timing(from: _container, forKeyIfPresent: .timingTiming) {
-      if _timing != nil {
-        throw DecodingError.dataCorruptedError(forKey: .timingTiming, in: _container, debugDescription: "More than one value provided for \"timing\"")
+    if let timingTiming = try Timing(from: codingKeyContainer, forKeyIfPresent: .timingTiming) {
+      if tempTimingX != nil {
+        throw DecodingError.dataCorruptedError(forKey: .timingTiming, in: codingKeyContainer, debugDescription: "More than one value provided for \"timing\"")
       }
-      _timing = .timing(timingTiming)
+      tempTimingX = .timing(timingTiming)
     }
     
-    self.approvalDate = try FHIRKitPrimitive<FHIRKitDate>(from: _container, forKeyIfPresent: .approvalDate, auxiliaryKey: ._approvalDate)
-    self.author = try [ContactDetail](from: _container, forKeyIfPresent: .author)
-    self.bodySite = try [CodableConcept](from: _container, forKeyIfPresent: .bodySite)
-    self.code = try CodableConcept(from: _container, forKeyIfPresent: .code)
-    self.contact = try [ContactDetail](from: _container, forKeyIfPresent: .contact)
-    self.copyright = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .copyright, auxiliaryKey: ._copyright)
-    self.date = try FHIRKitPrimitive<FHIRKitDateTime>(from: _container, forKeyIfPresent: .date, auxiliaryKey: ._date)
-    self.doNotPerform = try FHIRKitPrimitive<FHIRKitBool>(from: _container, forKeyIfPresent: .doNotPerform, auxiliaryKey: ._doNotPerform)
-    self.dosage = try [Dosage](from: _container, forKeyIfPresent: .dosage)
-    self.dynamicValue = try [ActivityDefinitionDynamicValue](from: _container, forKeyIfPresent: .dynamicValue)
-    self.editor = try [ContactDetail](from: _container, forKeyIfPresent: .editor)
-    self.effectivePeriod = try Period(from: _container, forKeyIfPresent: .effectivePeriod)
-    self.endorser = try [ContactDetail](from: _container, forKeyIfPresent: .endorser)
-    self.experimental = try FHIRKitPrimitive<FHIRKitBool>(from: _container, forKeyIfPresent: .experimental, auxiliaryKey: ._experimental)
-    self.fhirDescription = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .fhirDescription, auxiliaryKey: ._fhirDescription)
-    self.identifier = try [Identifier](from: _container, forKeyIfPresent: .identifier)
-    self.intent = try FHIRKitPrimitive<RequestIntent>(from: _container, forKeyIfPresent: .intent, auxiliaryKey: ._intent)
-    self.jurisdiction = try [CodableConcept](from: _container, forKeyIfPresent: .jurisdiction)
-    self.kind = try FHIRKitPrimitive<RequestResourceType>(from: _container, forKeyIfPresent: .kind, auxiliaryKey: ._kind)
-    self.lastReviewDate = try FHIRKitPrimitive<FHIRKitDate>(from: _container, forKeyIfPresent: .lastReviewDate, auxiliaryKey: ._lastReviewDate)
-    self.library = try [FHIRKitPrimitive<Canonical>](from: _container, forKeyIfPresent: .library, auxiliaryKey: ._library)
-    self.location = try Reference(from: _container, forKeyIfPresent: .location)
-    self.name = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .name, auxiliaryKey: ._name)
-    self.observationRequirement = try [Reference](from: _container, forKeyIfPresent: .observationRequirement)
-    self.observationResultRequirement = try [Reference](from: _container, forKeyIfPresent: .observationResultRequirement)
-    self.participant = try [ActivityDefinitionParticipant](from: _container, forKeyIfPresent: .participant)
-    self.priority = try FHIRKitPrimitive<RequestPriority>(from: _container, forKeyIfPresent: .priority, auxiliaryKey: ._priority)
-    self.product = _product
-    self.profile = try FHIRKitPrimitive<Canonical>(from: _container, forKeyIfPresent: .profile, auxiliaryKey: ._profile)
-    self.publisher = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .publisher, auxiliaryKey: ._publisher)
-    self.purpose = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .purpose, auxiliaryKey: ._purpose)
-    self.quantity = try Quantity(from: _container, forKeyIfPresent: .quantity)
-    self.relatedArtifact = try [RelatedArtifact](from: _container, forKeyIfPresent: .relatedArtifact)
-    self.reviewer = try [ContactDetail](from: _container, forKeyIfPresent: .reviewer)
-    self.specimenRequirement = try [Reference](from: _container, forKeyIfPresent: .specimenRequirement)
-    self.status = try FHIRKitPrimitive<PublicationStatus>(from: _container, forKey: .status, auxiliaryKey: ._status)
-    self.subject = _subject
-    self.timing = _timing
-    self.title = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .title, auxiliaryKey: ._title)
-    self.topic = try [CodableConcept](from: _container, forKeyIfPresent: .topic)
-    self.transform = try FHIRKitPrimitive<Canonical>(from: _container, forKeyIfPresent: .transform, auxiliaryKey: ._transform)
-    self.url = try FHIRKitPrimitive<FHIRKitURI>(from: _container, forKeyIfPresent: .url, auxiliaryKey: ._url)
-    self.usage = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .usage, auxiliaryKey: ._usage)
-    self.useContext = try [UsageContext](from: _container, forKeyIfPresent: .useContext)
-    self.version = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .version, auxiliaryKey: ._version)
+    self.approvalDate = try FHIRKitPrimitive<FHIRKitDate>(from: codingKeyContainer, forKeyIfPresent: .approvalDate, auxKey: ._approvalDate)
+    self.author = try [ContactDetail](from: codingKeyContainer, forKeyIfPresent: .author)
+    self.bodySite = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .bodySite)
+    self.code = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .code)
+    self.contact = try [ContactDetail](from: codingKeyContainer, forKeyIfPresent: .contact)
+    self.copyright = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .copyright, auxKey: ._copyright)
+    self.date = try FHIRKitPrimitive<FHIRKitDateTime>(from: codingKeyContainer, forKeyIfPresent: .date, auxKey: ._date)
+    self.doNotPerform = try FHIRKitPrimitive<FHIRKitBool>(from: codingKeyContainer, forKeyIfPresent: .doNotPerform, auxKey: ._doNotPerform)
+    self.dosage = try [Dosage](from: codingKeyContainer, forKeyIfPresent: .dosage)
+    self.dynamicValue = try [ActivityDefinitionDynamicValue](from: codingKeyContainer, forKeyIfPresent: .dynamicValue)
+    self.editor = try [ContactDetail](from: codingKeyContainer, forKeyIfPresent: .editor)
+    self.effectivePeriod = try Period(from: codingKeyContainer, forKeyIfPresent: .effectivePeriod)
+    self.endorser = try [ContactDetail](from: codingKeyContainer, forKeyIfPresent: .endorser)
+    self.experimental = try FHIRKitPrimitive<FHIRKitBool>(from: codingKeyContainer, forKeyIfPresent: .experimental, auxKey: ._experimental)
+    self.fhirDescription = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .fhirDescription, auxKey: ._fhirDescription)
+    self.identifier = try [Identifier](from: codingKeyContainer, forKeyIfPresent: .identifier)
+    self.intent = try FHIRKitPrimitive<RequestIntent>(from: codingKeyContainer, forKeyIfPresent: .intent, auxKey: ._intent)
+    self.jurisdiction = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .jurisdiction)
+    self.kind = try FHIRKitPrimitive<RequestResourceType>(from: codingKeyContainer, forKeyIfPresent: .kind, auxKey: ._kind)
+    self.lastReviewDate = try FHIRKitPrimitive<FHIRKitDate>(from: codingKeyContainer, forKeyIfPresent: .lastReviewDate, auxKey: ._lastReviewDate)
+    self.library = try [FHIRKitPrimitive<Canonical>](from: codingKeyContainer, forKeyIfPresent: .library, auxKey: ._library)
+    self.location = try Reference(from: codingKeyContainer, forKeyIfPresent: .location)
+    self.name = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .name, auxKey: ._name)
+    self.observationRequirement = try [Reference](from: codingKeyContainer, forKeyIfPresent: .observationRequirement)
+    self.observationResultRequirement = try [Reference](from: codingKeyContainer, forKeyIfPresent: .observationResultRequirement)
+    self.participant = try [ActivityDefinitionParticipant](from: codingKeyContainer, forKeyIfPresent: .participant)
+    self.priority = try FHIRKitPrimitive<RequestPriority>(from: codingKeyContainer, forKeyIfPresent: .priority, auxKey: ._priority)
+    self.productX = tempProductX
+    self.profile = try FHIRKitPrimitive<Canonical>(from: codingKeyContainer, forKeyIfPresent: .profile, auxKey: ._profile)
+    self.publisher = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .publisher, auxKey: ._publisher)
+    self.purpose = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .purpose, auxKey: ._purpose)
+    self.quantity = try Quantity(from: codingKeyContainer, forKeyIfPresent: .quantity)
+    self.relatedArtifact = try [RelatedArtifact](from: codingKeyContainer, forKeyIfPresent: .relatedArtifact)
+    self.reviewer = try [ContactDetail](from: codingKeyContainer, forKeyIfPresent: .reviewer)
+    self.specimenRequirement = try [Reference](from: codingKeyContainer, forKeyIfPresent: .specimenRequirement)
+    self.status = try FHIRKitPrimitive<PublicationStatus>(from: codingKeyContainer, forKey: .status, auxKey: ._status)
+    self.subjectX = tempSubjectX
+    self.timingX = tempTimingX
+    self.title = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .title, auxKey: ._title)
+    self.topic = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .topic)
+    self.transform = try FHIRKitPrimitive<Canonical>(from: codingKeyContainer, forKeyIfPresent: .transform, auxKey: ._transform)
+    self.url = try FHIRKitPrimitive<FHIRKitURI>(from: codingKeyContainer, forKeyIfPresent: .url, auxKey: ._url)
+    self.usage = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .usage, auxKey: ._usage)
+    self.useContext = try [UsageContext](from: codingKeyContainer, forKeyIfPresent: .useContext)
+    self.version = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .version, auxKey: ._version)
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    if let _product = product {
-      switch _product {
+    if let enumProduct = productX {
+      switch enumProduct {
       case .codableConcept(let _value):
-        try _value.encode(on: &_container, forKey: .productCodableConcept)
+        try _value.encode(on: &codingKeyContainer, forKey: .productCodableConcept)
       case .reference(let _value):
-        try _value.encode(on: &_container, forKey: .productReference)
+        try _value.encode(on: &codingKeyContainer, forKey: .productReference)
       }
     }
     
-    if let _subject = subject {
-      switch _subject {
+    if let enumSubject = subjectX {
+      switch enumSubject {
       case .codableConcept(let _value):
-        try _value.encode(on: &_container, forKey: .subjectCodableConcept)
+        try _value.encode(on: &codingKeyContainer, forKey: .subjectCodableConcept)
       case .reference(let _value):
-        try _value.encode(on: &_container, forKey: .subjectReference)
+        try _value.encode(on: &codingKeyContainer, forKey: .subjectReference)
       }
     }
     
-    if let _timing = timing {
-      switch _timing {
+    if let enumTiming = timingX {
+      switch enumTiming {
       case .age(let _value):
-        try _value.encode(on: &_container, forKey: .timingAge)
+        try _value.encode(on: &codingKeyContainer, forKey: .timingAge)
       case .dateTime(let _value):
-        try _value.encode(on: &_container, forKey: .timingDateTime, auxiliaryKey: ._timingDateTime)
+        try _value.encode(on: &codingKeyContainer, forKey: .timingDateTime, auxKey: ._timingDateTime)
       case .duration(let _value):
-        try _value.encode(on: &_container, forKey: .timingDuration)
+        try _value.encode(on: &codingKeyContainer, forKey: .timingDuration)
       case .period(let _value):
-        try _value.encode(on: &_container, forKey: .timingPeriod)
+        try _value.encode(on: &codingKeyContainer, forKey: .timingPeriod)
       case .range(let _value):
-        try _value.encode(on: &_container, forKey: .timingRange)
+        try _value.encode(on: &codingKeyContainer, forKey: .timingRange)
       case .timing(let _value):
-        try _value.encode(on: &_container, forKey: .timingTiming)
+        try _value.encode(on: &codingKeyContainer, forKey: .timingTiming)
       }
     }
     
-    try approvalDate?.encode(on: &_container, forKey: .approvalDate, auxiliaryKey: ._approvalDate)
-    try author?.encode(on: &_container, forKey: .author)
-    try bodySite?.encode(on: &_container, forKey: .bodySite)
-    try code?.encode(on: &_container, forKey: .code)
-    try contact?.encode(on: &_container, forKey: .contact)
-    try copyright?.encode(on: &_container, forKey: .copyright, auxiliaryKey: ._copyright)
-    try date?.encode(on: &_container, forKey: .date, auxiliaryKey: ._date)
-    try doNotPerform?.encode(on: &_container, forKey: .doNotPerform, auxiliaryKey: ._doNotPerform)
-    try dosage?.encode(on: &_container, forKey: .dosage)
-    try dynamicValue?.encode(on: &_container, forKey: .dynamicValue)
-    try editor?.encode(on: &_container, forKey: .editor)
-    try effectivePeriod?.encode(on: &_container, forKey: .effectivePeriod)
-    try endorser?.encode(on: &_container, forKey: .endorser)
-    try experimental?.encode(on: &_container, forKey: .experimental, auxiliaryKey: ._experimental)
-    try fhirDescription?.encode(on: &_container, forKey: .fhirDescription, auxiliaryKey: ._fhirDescription)
-    try identifier?.encode(on: &_container, forKey: .identifier)
-    try intent?.encode(on: &_container, forKey: .intent, auxiliaryKey: ._intent)
-    try jurisdiction?.encode(on: &_container, forKey: .jurisdiction)
-    try kind?.encode(on: &_container, forKey: .kind, auxiliaryKey: ._kind)
-    try lastReviewDate?.encode(on: &_container, forKey: .lastReviewDate, auxiliaryKey: ._lastReviewDate)
-    try library?.encode(on: &_container, forKey: .library, auxiliaryKey: ._library)
-    try location?.encode(on: &_container, forKey: .location)
-    try name?.encode(on: &_container, forKey: .name, auxiliaryKey: ._name)
-    try observationRequirement?.encode(on: &_container, forKey: .observationRequirement)
-    try observationResultRequirement?.encode(on: &_container, forKey: .observationResultRequirement)
-    try participant?.encode(on: &_container, forKey: .participant)
-    try priority?.encode(on: &_container, forKey: .priority, auxiliaryKey: ._priority)
-    try profile?.encode(on: &_container, forKey: .profile, auxiliaryKey: ._profile)
-    try publisher?.encode(on: &_container, forKey: .publisher, auxiliaryKey: ._publisher)
-    try purpose?.encode(on: &_container, forKey: .purpose, auxiliaryKey: .purpose)
-    try quantity?.encode(on: &_container, forKey: .quantity)
-    try relatedArtifact?.encode(on: &_container, forKey: .relatedArtifact)
-    try reviewer?.encode(on: &_container, forKey: .reviewer)
-    try specimenRequirement?.encode(on: &_container, forKey: .specimenRequirement)
-    try status.encode(on: &_container, forKey: .status, auxiliaryKey: ._status)
-    try subtitle?.encode(on: &_container, forKey: .subtitle, auxiliaryKey: ._subtitle)
-    try title?.encode(on: &_container, forKey: .title, auxiliaryKey: ._title)
-    try topic?.encode(on: &_container, forKey: .topic)
-    try transform?.encode(on: &_container, forKey: .transform, auxiliaryKey: ._transform)
-    try url?.encode(on: &_container, forKey: .url, auxiliaryKey: ._url)
-    try usage?.encode(on: &_container, forKey: .usage, auxiliaryKey: ._usage)
-    try useContext?.encode(on: &_container, forKey: .useContext)
-    try version?.encode(on: &_container, forKey: .version, auxiliaryKey: ._version)
+    try approvalDate?.encode(on: &codingKeyContainer, forKey: .approvalDate, auxKey: ._approvalDate)
+    try author?.encode(on: &codingKeyContainer, forKey: .author)
+    try bodySite?.encode(on: &codingKeyContainer, forKey: .bodySite)
+    try code?.encode(on: &codingKeyContainer, forKey: .code)
+    try contact?.encode(on: &codingKeyContainer, forKey: .contact)
+    try copyright?.encode(on: &codingKeyContainer, forKey: .copyright, auxKey: ._copyright)
+    try date?.encode(on: &codingKeyContainer, forKey: .date, auxKey: ._date)
+    try doNotPerform?.encode(on: &codingKeyContainer, forKey: .doNotPerform, auxKey: ._doNotPerform)
+    try dosage?.encode(on: &codingKeyContainer, forKey: .dosage)
+    try dynamicValue?.encode(on: &codingKeyContainer, forKey: .dynamicValue)
+    try editor?.encode(on: &codingKeyContainer, forKey: .editor)
+    try effectivePeriod?.encode(on: &codingKeyContainer, forKey: .effectivePeriod)
+    try endorser?.encode(on: &codingKeyContainer, forKey: .endorser)
+    try experimental?.encode(on: &codingKeyContainer, forKey: .experimental, auxKey: ._experimental)
+    try fhirDescription?.encode(on: &codingKeyContainer, forKey: .fhirDescription, auxKey: ._fhirDescription)
+    try identifier?.encode(on: &codingKeyContainer, forKey: .identifier)
+    try intent?.encode(on: &codingKeyContainer, forKey: .intent, auxKey: ._intent)
+    try jurisdiction?.encode(on: &codingKeyContainer, forKey: .jurisdiction)
+    try kind?.encode(on: &codingKeyContainer, forKey: .kind, auxKey: ._kind)
+    try lastReviewDate?.encode(on: &codingKeyContainer, forKey: .lastReviewDate, auxKey: ._lastReviewDate)
+    try library?.encode(on: &codingKeyContainer, forKey: .library, auxKey: ._library)
+    try location?.encode(on: &codingKeyContainer, forKey: .location)
+    try name?.encode(on: &codingKeyContainer, forKey: .name, auxKey: ._name)
+    try observationRequirement?.encode(on: &codingKeyContainer, forKey: .observationRequirement)
+    try observationResultRequirement?.encode(on: &codingKeyContainer, forKey: .observationResultRequirement)
+    try participant?.encode(on: &codingKeyContainer, forKey: .participant)
+    try priority?.encode(on: &codingKeyContainer, forKey: .priority, auxKey: ._priority)
+    try profile?.encode(on: &codingKeyContainer, forKey: .profile, auxKey: ._profile)
+    try publisher?.encode(on: &codingKeyContainer, forKey: .publisher, auxKey: ._publisher)
+    try purpose?.encode(on: &codingKeyContainer, forKey: .purpose, auxKey: .purpose)
+    try quantity?.encode(on: &codingKeyContainer, forKey: .quantity)
+    try relatedArtifact?.encode(on: &codingKeyContainer, forKey: .relatedArtifact)
+    try reviewer?.encode(on: &codingKeyContainer, forKey: .reviewer)
+    try specimenRequirement?.encode(on: &codingKeyContainer, forKey: .specimenRequirement)
+    try status.encode(on: &codingKeyContainer, forKey: .status, auxKey: ._status)
+    try subtitle?.encode(on: &codingKeyContainer, forKey: .subtitle, auxKey: ._subtitle)
+    try title?.encode(on: &codingKeyContainer, forKey: .title, auxKey: ._title)
+    try topic?.encode(on: &codingKeyContainer, forKey: .topic)
+    try transform?.encode(on: &codingKeyContainer, forKey: .transform, auxKey: ._transform)
+    try url?.encode(on: &codingKeyContainer, forKey: .url, auxKey: ._url)
+    try usage?.encode(on: &codingKeyContainer, forKey: .usage, auxKey: ._usage)
+    try useContext?.encode(on: &codingKeyContainer, forKey: .useContext)
+    try version?.encode(on: &codingKeyContainer, forKey: .version, auxKey: ._version)
     
     try super.encode(to: encoder)
   }
   
-  // MARK: - Equatable & Hashable
+  // MARK: - Equatable
   public override func isEqual(to _other: Any?) -> Bool {
     guard let _other = _other as? ActivityDefinition else {
       return false
@@ -598,7 +604,7 @@ open class ActivityDefinition: DomainResource {
     && observationResultRequirement == _other.observationResultRequirement
     && participant == _other.participant
     && priority == _other.priority
-    && product == _other.product
+    && productX == _other.productX
     && profile == _other.profile
     && publisher == _other.publisher
     && purpose == _other.purpose
@@ -607,9 +613,9 @@ open class ActivityDefinition: DomainResource {
     && reviewer == _other.reviewer
     && specimenRequirement == _other.specimenRequirement
     && status == _other.status
-    && subject == _other.subject
+    && subjectX == _other.subjectX
     && subtitle == _other.subtitle
-    && timing == _other.timing
+    && timingX == _other.timingX
     && title == _other.title
     && topic == _other.topic
     && transform == _other.transform
@@ -619,6 +625,7 @@ open class ActivityDefinition: DomainResource {
     && version == _other.version
   }
   
+  // MARK: - Hashable
   public override func hash(into hasher: inout Hasher) {
     super.hash(into: &hasher)
     hasher.combine(approvalDate)
@@ -647,7 +654,7 @@ open class ActivityDefinition: DomainResource {
     hasher.combine(observationRequirement)
     hasher.combine(participant)
     hasher.combine(priority)
-    hasher.combine(product)
+    hasher.combine(productX)
     hasher.combine(profile)
     hasher.combine(publisher)
     hasher.combine(purpose)
@@ -656,8 +663,9 @@ open class ActivityDefinition: DomainResource {
     hasher.combine(reviewer)
     hasher.combine(specimenRequirement)
     hasher.combine(status)
+    hasher.combine(subjectX)
     hasher.combine(subtitle)
-    hasher.combine(timing)
+    hasher.combine(timingX)
     hasher.combine(title)
     hasher.combine(topic)
     hasher.combine(transform)

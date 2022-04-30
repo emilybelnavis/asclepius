@@ -24,6 +24,11 @@
 
 import Foundation
 
+/**
+ A Uniform Resource Locator (RFC 1738). Note URLs are accessed directly using the speficied protocol.
+ Common URL protocols are `http{s}:`, `ftp:`,  `mailto:`, and `mllp:`, though many others
+ are defined.
+ */
 public struct FHIRKitURI: FHIRKitPrimitiveType {
   public var url: URL
   
@@ -32,6 +37,7 @@ public struct FHIRKitURI: FHIRKitPrimitiveType {
   }
 }
 
+// MARK: - ExpressibleByStringLiteral
 extension FHIRKitURI: ExpressibleByStringLiteral {
   public init(stringLiteral value: StringLiteralType) {
     let url = URL(string: value) ?? URL(string: "invalid:uri")!
@@ -39,24 +45,27 @@ extension FHIRKitURI: ExpressibleByStringLiteral {
   }
 }
 
+// MARK: - Codable
 extension FHIRKitURI: Codable {
   public init(from decoder: Decoder) throws {
-    let container = try decoder.singleValueContainer()
-    self.url = try container.decode(URL.self)
+    let codingKeyContainer = try decoder.singleValueContainer()
+    self.url = try codingKeyContainer.decode(URL.self)
   }
   
   public func encode(to encoder: Encoder) throws {
-    var container = encoder.singleValueContainer()
-    try container.encode(url)
+    var codingKeyContainer = encoder.singleValueContainer()
+    try codingKeyContainer.encode(url)
   }
 }
 
+// MARK: - CustomStringConvertible
 extension FHIRKitURI: CustomStringConvertible {
   public var description: String {
     return url.absoluteString
   }
 }
 
+// MARK: - Equatable
 extension FHIRKitURI: Equatable {
   public static func == (leftSide: FHIRKitURI, rightSide: FHIRKitURI) -> Bool {
     return leftSide.url == rightSide.url
@@ -71,7 +80,7 @@ extension FHIRKitURI: Equatable {
   }
 }
 
-// MARK: -
+// MARK: - Extends String
 extension String {
   public func asFHIRKitURI() -> FHIRKitURI? {
     guard let url = URL(string: self) else {

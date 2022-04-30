@@ -41,7 +41,7 @@ open class AdverseEventSuspectEntityCausality: BackboneElement {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     assessment: CodableConcept? = nil,
     productRelatedness: FHIRKitPrimitive<FHIRKitString>? = nil,
@@ -49,7 +49,7 @@ open class AdverseEventSuspectEntityCausality: BackboneElement {
     method: CodableConcept? = nil
   ) {
     self.init()
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.id = id
     self.assessment = assessment
     self.productRelatedness = productRelatedness
@@ -66,23 +66,23 @@ open class AdverseEventSuspectEntityCausality: BackboneElement {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.assessment = try CodableConcept(from: _container, forKeyIfPresent: .assessment)
-    self.productRelatedness = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .productRelatedness, auxiliaryKey: ._productRelatedness)
-    self.author = try Reference(from: _container, forKeyIfPresent: .author)
-    self.method = try CodableConcept(from: _container, forKeyIfPresent: .method)
+    self.assessment = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .assessment)
+    self.productRelatedness = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .productRelatedness, auxKey: ._productRelatedness)
+    self.author = try Reference(from: codingKeyContainer, forKeyIfPresent: .author)
+    self.method = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .method)
     
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    try assessment?.encode(on: &_container, forKey: .assessment)
-    try productRelatedness?.encode(on: &_container, forKey: .productRelatedness, auxiliaryKey: ._productRelatedness)
-    try author?.encode(on: &_container, forKey: .author)
-    try method?.encode(on: &_container, forKey: .method)
+    try assessment?.encode(on: &codingKeyContainer, forKey: .assessment)
+    try productRelatedness?.encode(on: &codingKeyContainer, forKey: .productRelatedness, auxKey: ._productRelatedness)
+    try author?.encode(on: &codingKeyContainer, forKey: .author)
+    try method?.encode(on: &codingKeyContainer, forKey: .method)
     
     try super.encode(to: encoder)
   }

@@ -51,7 +51,7 @@ open class ClaimResponsePayment: BackboneElement {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     type: CodableConcept,
@@ -62,7 +62,7 @@ open class ClaimResponsePayment: BackboneElement {
     identifier: Identifier?
   ) {
     self.init(type: type, amount: amount)
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
     self.id = id
     self.adjustment = adjustment
@@ -82,27 +82,27 @@ open class ClaimResponsePayment: BackboneElement {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.type = try CodableConcept(from: _container, forKey: .type)
-    self.adjustment = try Money(from: _container, forKeyIfPresent: .adjustment)
-    self.adjustmentReason = try CodableConcept(from: _container, forKeyIfPresent: .adjustmentReason)
-    self.date = try FHIRKitPrimitive<FHIRKitDate>(from: _container, forKeyIfPresent: .date, auxiliaryKey: ._date)
-    self.amount = try Money(from: _container, forKey: .amount)
-    self.identifier = try Identifier(from: _container, forKeyIfPresent: .identifier)
+    self.type = try CodableConcept(from: codingKeyContainer, forKey: .type)
+    self.adjustment = try Money(from: codingKeyContainer, forKeyIfPresent: .adjustment)
+    self.adjustmentReason = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .adjustmentReason)
+    self.date = try FHIRKitPrimitive<FHIRKitDate>(from: codingKeyContainer, forKeyIfPresent: .date, auxKey: ._date)
+    self.amount = try Money(from: codingKeyContainer, forKey: .amount)
+    self.identifier = try Identifier(from: codingKeyContainer, forKeyIfPresent: .identifier)
     
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    try type.encode(on: &_container, forKey: .type)
-    try adjustment?.encode(on: &_container, forKey: .adjustment)
-    try adjustmentReason?.encode(on: &_container, forKey: .adjustmentReason)
-    try date?.encode(on: &_container, forKey: .date, auxiliaryKey: ._date)
-    try amount.encode(on: &_container, forKey: .amount)
-    try identifier?.encode(on: &_container, forKey: .identifier)
+    try type.encode(on: &codingKeyContainer, forKey: .type)
+    try adjustment?.encode(on: &codingKeyContainer, forKey: .adjustment)
+    try adjustmentReason?.encode(on: &codingKeyContainer, forKey: .adjustmentReason)
+    try date?.encode(on: &codingKeyContainer, forKey: .date, auxKey: ._date)
+    try amount.encode(on: &codingKeyContainer, forKey: .amount)
+    try identifier?.encode(on: &codingKeyContainer, forKey: .identifier)
     
     try super.encode(to: encoder)
   }

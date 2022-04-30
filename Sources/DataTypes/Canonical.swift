@@ -61,13 +61,15 @@ extension Canonical: ExpressibleByStringLiteral {
   }
 }
 
+// MARK: - Codable
 extension Canonical: Codable {
   public init(from decoder: Decoder) throws {
-    let _container = try decoder.singleValueContainer()
-    let string = try _container.decode(String.self)
+    let codingKeyContainer = try decoder.singleValueContainer()
+    let string = try codingKeyContainer.decode(String.self)
     let parts = string.split(separator: "|", maxSplits: 1)
+    
     guard let urlPart = parts.first, let urlInstance = URL(string: String(urlPart)) else {
-      throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: _container.codingPath, debugDescription: "Invalid URL in canonical \"\(string)\""))
+      throw DecodingError.dataCorrupted(DecodingError.Context(codingPath: codingKeyContainer.codingPath, debugDescription: "Invalid URL in canonical \"\(string)\""))
     }
     
     self.url = urlInstance
@@ -75,15 +77,16 @@ extension Canonical: Codable {
   }
   
   public func encode(to encoder: Encoder) throws {
-    var _container = encoder.singleValueContainer()
+    var codingKeyContainer = encoder.singleValueContainer()
     if let version = version {
-      try _container.encode("\(url.absoluteString)|\(version)")
+      try codingKeyContainer.encode("\(url.absoluteString)|\(version)")
     } else {
-      try _container.encode(url)
+      try codingKeyContainer.encode(url)
     }
   }
 }
 
+// MARK: - CustomStringConvertible
 extension Canonical: CustomStringConvertible {
   public var description: String {
     if let version = version, !version.isEmpty {
@@ -94,6 +97,7 @@ extension Canonical: CustomStringConvertible {
   }
 }
 
+// MARK: - Equatable
 extension Canonical: Equatable {
   public static func == (leftSide: Canonical, rightSide: Canonical) -> Bool {
     if leftSide.url != rightSide.url {

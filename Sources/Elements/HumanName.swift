@@ -50,7 +50,7 @@ open class HumanName: Element {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     use: FHIRKitPrimitive<NameUse>? = nil,
     text: FHIRKitPrimitive<FHIRKitString>? = nil,
@@ -61,7 +61,7 @@ open class HumanName: Element {
     period: Period? = nil
   ) {
     self.init()
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.id = id
     self.use = use
     self.text = text
@@ -84,34 +84,34 @@ open class HumanName: Element {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.use = try FHIRKitPrimitive<NameUse>(from: _container, forKeyIfPresent: .use, auxiliaryKey: ._use)
-    self.text = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .text, auxiliaryKey: ._text)
-    self.family = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .family, auxiliaryKey: ._family)
-    self.given = try [FHIRKitPrimitive<FHIRKitString>](from: _container, forKeyIfPresent: .given, auxiliaryKey: ._given)
-    self.prefix = try [FHIRKitPrimitive<FHIRKitString>](from: _container, forKeyIfPresent: .prefix, auxiliaryKey: ._prefix)
-    self.suffix = try [FHIRKitPrimitive<FHIRKitString>](from: _container, forKeyIfPresent: .suffix, auxiliaryKey: ._suffix)
-    self.period = try Period(from: _container, forKeyIfPresent: .period)
+    self.use = try FHIRKitPrimitive<NameUse>(from: codingKeyContainer, forKeyIfPresent: .use, auxKey: ._use)
+    self.text = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .text, auxKey: ._text)
+    self.family = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .family, auxKey: ._family)
+    self.given = try [FHIRKitPrimitive<FHIRKitString>](from: codingKeyContainer, forKeyIfPresent: .given, auxKey: ._given)
+    self.prefix = try [FHIRKitPrimitive<FHIRKitString>](from: codingKeyContainer, forKeyIfPresent: .prefix, auxKey: ._prefix)
+    self.suffix = try [FHIRKitPrimitive<FHIRKitString>](from: codingKeyContainer, forKeyIfPresent: .suffix, auxKey: ._suffix)
+    self.period = try Period(from: codingKeyContainer, forKeyIfPresent: .period)
     
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    try use?.encode(on: &_container, forKey: .use, auxiliaryKey: ._use)
-    try text?.encode(on: &_container, forKey: .text, auxiliaryKey: ._text)
-    try family?.encode(on: &_container, forKey: .family, auxiliaryKey: ._family)
-    try given?.encode(on: &_container, forKey: .given, auxiliaryKey: .given)
-    try prefix?.encode(on: &_container, forKey: .prefix, auxiliaryKey: ._prefix)
-    try suffix?.encode(on: &_container, forKey: .suffix, auxiliaryKey: ._suffix)
-    try period?.encode(on: &_container, forKey: .period)
+    try use?.encode(on: &codingKeyContainer, forKey: .use, auxKey: ._use)
+    try text?.encode(on: &codingKeyContainer, forKey: .text, auxKey: ._text)
+    try family?.encode(on: &codingKeyContainer, forKey: .family, auxKey: ._family)
+    try given?.encode(on: &codingKeyContainer, forKey: .given, auxKey: .given)
+    try prefix?.encode(on: &codingKeyContainer, forKey: .prefix, auxKey: ._prefix)
+    try suffix?.encode(on: &codingKeyContainer, forKey: .suffix, auxKey: ._suffix)
+    try period?.encode(on: &codingKeyContainer, forKey: .period)
     
     try super.encode(to: encoder)
   }
   
-  // MARK: - Equatable & Hashable
+  // MARK: - Equatable
   public override func isEqual(to _other: Any?) -> Bool {
     guard let _other = _other as? HumanName else {
       return false
@@ -130,6 +130,7 @@ open class HumanName: Element {
     && period == _other.period
   }
   
+  // MARK: - Hashable
   public override func hash(into hasher: inout Hasher) {
     super.hash(into: &hasher)
     hasher.combine(use)

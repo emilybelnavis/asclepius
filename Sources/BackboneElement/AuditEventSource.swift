@@ -39,14 +39,14 @@ open class AuditEventSource: BackboneElement {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     site: FHIRKitPrimitive<FHIRKitString>? = nil,
     observer: Reference,
     type: [Coding]? = nil
   ) {
     self.init(observer: observer)
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.id = id
     self.site = site
     self.observer = observer
@@ -61,21 +61,22 @@ open class AuditEventSource: BackboneElement {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.site = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .site, auxiliaryKey: ._site)
-    self.observer = try Reference(from: _container, forKey: .observer)
-    self.type = try [Coding](from: _container, forKeyIfPresent: .type)
+    self.site = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .site, auxKey: ._site)
+    self.observer = try Reference(from: codingKeyContainer, forKey: .observer)
+    self.type = try [Coding](from: codingKeyContainer, forKeyIfPresent: .type)
     
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    try site?.encode(on: &_container, forKey: .site, auxiliaryKey: ._site)
-    try observer.encode(on: &_container, forKey: .observer)
-    try type?.encode(on: &_container, forKey: .type)
+    try site?.encode(on: &codingKeyContainer, forKey: .site, auxKey: ._site)
+    try observer.encode(on: &codingKeyContainer, forKey: .observer)
+    try type?.encode(on: &codingKeyContainer, forKey: .type)
+    
     try super.encode(to: encoder)
   }
   

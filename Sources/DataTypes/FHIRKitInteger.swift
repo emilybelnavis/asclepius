@@ -24,6 +24,7 @@
 
 import Foundation
 
+/// A signed integer in the range -2,147,483,648..2,147,483,647 (32-bit; for larger values, use `FHIRKitDecimal`)
 public struct FHIRKitInteger: FHIRKitPrimitiveType, FHIRKitIntegerRepresentable {
   public typealias IntegerLiteralType = Int32
   public var integer: Self.IntegerLiteralType
@@ -37,19 +38,20 @@ public struct FHIRKitInteger: FHIRKitPrimitiveType, FHIRKitIntegerRepresentable 
   }
 }
 
+// MARK: - Codable
 extension FHIRKitInteger: Codable {
   public init(from decoder: Decoder) throws {
-    let container = try decoder.singleValueContainer()
-    self.integer = try container.decode(Self.IntegerLiteralType.self)
+    let codingKeyContainer = try decoder.singleValueContainer()
+    self.integer = try codingKeyContainer.decode(Self.IntegerLiteralType.self)
   }
  
   public func encode(to encoder: Encoder) throws {
-    var container = encoder.singleValueContainer()
-    try container.encode(integer)
+    var codingKeyContainer = encoder.singleValueContainer()
+    try codingKeyContainer.encode(integer)
   }
 }
 
-// MARK: -
+// MARK: - Extends Int
 
 extension Int {
   public func asFHIRKitIntegerPrimitive() -> FHIRKitPrimitive<FHIRKitInteger> {

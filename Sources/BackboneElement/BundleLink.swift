@@ -1,6 +1,6 @@
 //
 //  BundleLink.swift
-//  FHIRKIT
+//  FHIRKit
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
 //
@@ -37,14 +37,14 @@ open class BundleLink: BackboneElement {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     relation: FHIRKitPrimitive<FHIRKitString>,
     url: FHIRKitPrimitive<FHIRKitURI>
   ) {
     self.init(relation: relation, url: url)
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
     self.id = id
   }
@@ -56,18 +56,20 @@ open class BundleLink: BackboneElement {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.relation = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKey: .relation, auxiliaryKey: ._relation)
-    self.url = try FHIRKitPrimitive<FHIRKitURI>(from: _container, forKey: .url, auxiliaryKey: ._url)
+    self.relation = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKey: .relation, auxKey: ._relation)
+    self.url = try FHIRKitPrimitive<FHIRKitURI>(from: codingKeyContainer, forKey: .url, auxKey: ._url)
+    
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    try relation.encode(on: &_container, forKey: .relation, auxiliaryKey: ._relation)
-    try url.encode(on: &_container, forKey: .url, auxiliaryKey: ._url)
+    try relation.encode(on: &codingKeyContainer, forKey: .relation, auxKey: ._relation)
+    try url.encode(on: &codingKeyContainer, forKey: .url, auxKey: ._url)
+    
     try super.encode(to: encoder)
   }
   
