@@ -47,23 +47,22 @@ open class Element: FHIRKitType {
   
   // MARK: - Codable
   private enum CodingKeys: String, CodingKey {
-    case fhirExtension = "extension" // swiftlint:disable:this redundant_string_enum_value
+    case fhirExtension = "extension"
     case id; case _id
   }
   
-  /// decodable
   public required init(from decoder: Decoder) throws {
-    let codingContainer = try decoder.container(keyedBy: CodingKeys.self)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.fhirExtension = try [Extension](from: codingContainer, forKeyIfPresent: .fhirExtension)
-    self.id = try FHIRKitPrimitive<FHIRKitString>(from: codingContainer, forKeyIfPresent: .id, auxiliaryKey: ._id)
+    self.fhirExtension = try [Extension](from: codingKeyContainer, forKeyIfPresent: .fhirExtension)
+    self.id = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .id, auxKey: ._id)
   }
   
   public func encode(to encoder: Encoder) throws {
-    var codingContainer = encoder.container(keyedBy: CodingKeys.self)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    try fhirExtension?.encode(on: &codingContainer, forKey: .fhirExtension)
-    try id?.encode(on: &codingContainer, forKey: .id, auxiliaryKey: ._id)
+    try fhirExtension?.encode(on: &codingKeyContainer, forKey: .fhirExtension)
+    try id?.encode(on: &codingKeyContainer, forKey: .id, auxKey: ._id)
   }
   
   // MARK: - Equatable
@@ -88,5 +87,15 @@ open class Element: FHIRKitType {
   public func hash(into hasher: inout Hasher) {
     hasher.combine(fhirExtension)
     hasher.combine(id)
+  }
+}
+
+// MARK: - Extends Element
+public extension Element {
+  func extensions(for url: String) -> [Extension] {
+    let matches = fhirExtension?.filter {
+      return $0.url.value?.url.absoluteString == url
+    }
+    return matches ?? []
   }
 }

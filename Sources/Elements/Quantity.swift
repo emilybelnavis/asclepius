@@ -51,7 +51,7 @@ open class Quantity: Element {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     value: FHIRKitPrimitive<FHIRKitDecimal>? = nil,
     comparator: FHIRKitPrimitive<QuantityComparator>? = nil,
@@ -60,7 +60,7 @@ open class Quantity: Element {
     code: FHIRKitPrimitive<FHIRKitString>? = nil
   ) {
     self.init()
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.id = id
     self.value = value
     self.comparator = comparator
@@ -79,30 +79,30 @@ open class Quantity: Element {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.value = try FHIRKitPrimitive<FHIRKitDecimal>(from: _container, forKeyIfPresent: .value, auxiliaryKey: ._value)
-    self.comparator = try FHIRKitPrimitive<QuantityComparator>(from: _container, forKeyIfPresent: .comparator, auxiliaryKey: ._comparator)
-    self.unit = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .unit, auxiliaryKey: ._unit)
-    self.system = try FHIRKitPrimitive<FHIRKitURI>(from: _container, forKeyIfPresent: .system, auxiliaryKey: ._system)
-    self.code = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .code, auxiliaryKey: ._code)
+    self.value = try FHIRKitPrimitive<FHIRKitDecimal>(from: codingKeyContainer, forKeyIfPresent: .value, auxKey: ._value)
+    self.comparator = try FHIRKitPrimitive<QuantityComparator>(from: codingKeyContainer, forKeyIfPresent: .comparator, auxKey: ._comparator)
+    self.unit = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .unit, auxKey: ._unit)
+    self.system = try FHIRKitPrimitive<FHIRKitURI>(from: codingKeyContainer, forKeyIfPresent: .system, auxKey: ._system)
+    self.code = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .code, auxKey: ._code)
     
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    try value?.encode(on: &_container, forKey: .value, auxiliaryKey: ._value)
-    try comparator?.encode(on: &_container, forKey: .comparator, auxiliaryKey: ._comparator)
-    try unit?.encode(on: &_container, forKey: .unit, auxiliaryKey: ._unit)
-    try system?.encode(on: &_container, forKey: .system, auxiliaryKey: ._system)
-    try code?.encode(on: &_container, forKey: .code, auxiliaryKey: ._code)
+    try value?.encode(on: &codingKeyContainer, forKey: .value, auxKey: ._value)
+    try comparator?.encode(on: &codingKeyContainer, forKey: .comparator, auxKey: ._comparator)
+    try unit?.encode(on: &codingKeyContainer, forKey: .unit, auxKey: ._unit)
+    try system?.encode(on: &codingKeyContainer, forKey: .system, auxKey: ._system)
+    try code?.encode(on: &codingKeyContainer, forKey: .code, auxKey: ._code)
     
     try super.encode(to: encoder)
   }
   
-  // MARK: - Equatable & Hashable
+  // MARK: - Equatable
   public override func isEqual(to _other: Any?) -> Bool {
     guard let _other = _other as? Quantity else {
       return false
@@ -119,6 +119,7 @@ open class Quantity: Element {
     && code == _other.code
   }
   
+  // MARK: - Hashable
   public override func hash(into hasher: inout Hasher) {
     super.hash(into: &hasher)
     hasher.combine(value)

@@ -48,7 +48,7 @@ open class ClaimInsurance: BackboneElement {
   /// Adjudication results
   public var claimResponse: Reference?
   
-  public init(sequence: FHIRKitPrimitive<FHIRKitPositiveInteger>, focal: FHIRKitPrimitive<FHIRKitBool>, coverage: Reference){
+  public init(sequence: FHIRKitPrimitive<FHIRKitPositiveInteger>, focal: FHIRKitPrimitive<FHIRKitBool>, coverage: Reference) {
     self.sequence = sequence
     self.focal = focal
     self.coverage = coverage

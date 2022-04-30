@@ -34,38 +34,37 @@ open class Period: Element {
   }
   
   public convenience init(
-    end: FHIRKitPrimitive<FHIRKitDateTime>? = nil,
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    start: FHIRKitPrimitive<FHIRKitDateTime>? = nil
+    start: FHIRKitPrimitive<FHIRKitDateTime>? = nil,
+    end: FHIRKitPrimitive<FHIRKitDateTime>? = nil
   ) {
     self.init()
-    
-    self.end = end
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.id = id
     self.start = start
+    self.end = end
   }
   
   private enum CodingKeys: String, CodingKey {
-    case end; case _end
     case start; case _start
+    case end; case _end
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.end = try FHIRKitPrimitive<FHIRKitDateTime>(from: _container, forKeyIfPresent: .end, auxiliaryKey: ._end)
-    self.start = try FHIRKitPrimitive<FHIRKitDateTime>(from: _container, forKeyIfPresent: .start, auxiliaryKey: ._start)
+    self.start = try FHIRKitPrimitive<FHIRKitDateTime>(from: codingKeyContainer, forKeyIfPresent: .start, auxKey: ._start)
+    self.end = try FHIRKitPrimitive<FHIRKitDateTime>(from: codingKeyContainer, forKeyIfPresent: .end, auxKey: ._end)
     
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    try end?.encode(on: &_container, forKey: .end, auxiliaryKey: ._end)
-    try start?.encode(on: &_container, forKey: .start, auxiliaryKey: ._start)
+    try start?.encode(on: &codingKeyContainer, forKey: .start, auxKey: ._start)
+    try end?.encode(on: &codingKeyContainer, forKey: .end, auxKey: ._end)
     
     try super.encode(to: encoder)
   }
@@ -79,13 +78,13 @@ open class Period: Element {
       return false
     }
     
-    return end == _other.end
-    && start == _other.start
+    return start == _other.start
+    && end == _other.end
   }
   
   public override func hash(into hasher: inout Hasher) {
     super.hash(into: &hasher)
-    hasher.combine(end)
     hasher.combine(start)
+    hasher.combine(end)
   }
 }

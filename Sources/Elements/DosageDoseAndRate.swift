@@ -25,13 +25,13 @@
 /// The amount of medication administered
 open class DosageDoseAndRate: Element {
   /// All possible types for `dose`
-  public enum Dose: Hashable {
+  public enum DoseX: Hashable {
     case quantity(Quantity)
     case range(Range)
   }
   
   /// All possible types for `rate`
-  public enum Rate: Hashable {
+  public enum RateX: Hashable {
     case quantity(Quantity)
     case range(Range)
     case ratio(Ratio)
@@ -41,28 +41,28 @@ open class DosageDoseAndRate: Element {
   public var type: CodableConcept?
   
   /// Amount of medication per dose
-  public var dose: Dose?
+  public var doseX: DoseX?
   
   /// Amount of medication per unit of time
-  public var rate: Rate?
+  public var rateX: RateX?
   
   override public init() {
     super.init()
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     type: CodableConcept? = nil,
-    dose: Dose? = nil,
-    rate: Rate? = nil
+    doseX: DoseX? = nil,
+    rateX: RateX? = nil
   ) {
     self.init()
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.id = id
     self.type = type
-    self.dose = dose
-    self.rate = rate
+    self.doseX = doseX
+    self.rateX = rateX
   }
   
   // MARK: - Codable
@@ -76,85 +76,85 @@ open class DosageDoseAndRate: Element {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
-    
-    self.type = try CodableConcept(from: _container, forKeyIfPresent: .type)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     // decode Dose
-    var tempDose: Dose?
+    var tempDoseX: DoseX?
     
-    if let doseQuantity = try Quantity(from: _container, forKeyIfPresent: .doseQuantity) {
-      if tempDose != nil {
-        throw DecodingError.dataCorruptedError(forKey: .doseQuantity, in: _container, debugDescription: "More than one value provided for \"dose\"")
+    if let doseQuantity = try Quantity(from: codingKeyContainer, forKeyIfPresent: .doseQuantity) {
+      if tempDoseX != nil {
+        throw DecodingError.dataCorruptedError(forKey: .doseQuantity, in: codingKeyContainer, debugDescription: "More than one value provided for \"dose\"")
       }
-      tempDose = .quantity(doseQuantity)
+      tempDoseX = .quantity(doseQuantity)
     }
     
-    if let doseRange = try Range(from: _container, forKeyIfPresent: .doseRange) {
-      if tempDose != nil {
-        throw DecodingError.dataCorruptedError(forKey: .doseRange, in: _container, debugDescription: "More than one value provided for \"dose\"")
+    if let doseRange = try Range(from: codingKeyContainer, forKeyIfPresent: .doseRange) {
+      if tempDoseX != nil {
+        throw DecodingError.dataCorruptedError(forKey: .doseRange, in: codingKeyContainer, debugDescription: "More than one value provided for \"dose\"")
       }
-      tempDose = .range(doseRange)
+      tempDoseX = .range(doseRange)
     }
-    self.dose = tempDose
     
     // decode Rate
-    var tempRate: Rate?
-    if let rateQuantity = try Quantity(from: _container, forKeyIfPresent: .rateQuantity) {
-      if tempRate != nil {
-        throw DecodingError.dataCorruptedError(forKey: .rateQuantity, in: _container, debugDescription: "More than one value provided for \"rate\"")
+    var tempRateX: RateX?
+    if let rateQuantity = try Quantity(from: codingKeyContainer, forKeyIfPresent: .rateQuantity) {
+      if tempRateX != nil {
+        throw DecodingError.dataCorruptedError(forKey: .rateQuantity, in: codingKeyContainer, debugDescription: "More than one value provided for \"rate\"")
       }
-      tempRate = .quantity(rateQuantity)
+      tempRateX = .quantity(rateQuantity)
     }
     
-    if let rateRange = try Range(from: _container, forKeyIfPresent: .rateRange) {
-      if tempRate != nil {
-        throw DecodingError.dataCorruptedError(forKey: .rateRange, in: _container, debugDescription: "More than one value provided for \"rate\"")
+    if let rateRange = try Range(from: codingKeyContainer, forKeyIfPresent: .rateRange) {
+      if tempRateX != nil {
+        throw DecodingError.dataCorruptedError(forKey: .rateRange, in: codingKeyContainer, debugDescription: "More than one value provided for \"rate\"")
       }
-      tempRate = .range(rateRange)
+      tempRateX = .range(rateRange)
     }
     
-    if let rateRatio = try Ratio(from: _container, forKeyIfPresent: .rateRatio) {
-      if tempRate != nil {
-        throw DecodingError.dataCorruptedError(forKey: .rateRatio, in: _container, debugDescription: "More than one value provided for \"rate\"")
+    if let rateRatio = try Ratio(from: codingKeyContainer, forKeyIfPresent: .rateRatio) {
+      if tempRateX != nil {
+        throw DecodingError.dataCorruptedError(forKey: .rateRatio, in: codingKeyContainer, debugDescription: "More than one value provided for \"rate\"")
       }
       
-      tempRate = .ratio(rateRatio)
+      tempRateX = .ratio(rateRatio)
     }
     
-    self.rate = tempRate
+    self.type = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .type)
+    self.doseX = tempDoseX
+    self.rateX = tempRateX
+    
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    try type?.encode(on: &_container, forKey: .type)
+    try type?.encode(on: &codingKeyContainer, forKey: .type)
     
-    if let _dose = dose {
-      switch _dose {
+    if let enumDose = doseX {
+      switch enumDose {
       case .quantity(let _value):
-        try _value.encode(on: &_container, forKey: .doseQuantity)
+        try _value.encode(on: &codingKeyContainer, forKey: .doseQuantity)
       case .range(let _value):
-        try _value.encode(on: &_container, forKey: .doseRange)
+        try _value.encode(on: &codingKeyContainer, forKey: .doseRange)
       }
     }
     
-    if let _rate = rate {
-      switch _rate {
+    if let enumRate = rateX {
+      switch enumRate {
       case .quantity(let _value):
-        try _value.encode(on: &_container, forKey: .rateQuantity)
+        try _value.encode(on: &codingKeyContainer, forKey: .rateQuantity)
       case .range(let _value):
-        try _value.encode(on: &_container, forKey: .rateRange)
+        try _value.encode(on: &codingKeyContainer, forKey: .rateRange)
       case .ratio(let _value):
-        try _value.encode(on: &_container, forKey: .rateRatio)
+        try _value.encode(on: &codingKeyContainer, forKey: .rateRatio)
       }
     }
     
     try super.encode(to: encoder)
   }
   
-  // MARK: - Equatable & Hashable
+  // MARK: - Equatable
   public override func isEqual(to _other: Any?) -> Bool {
     guard let _other = _other as? DosageDoseAndRate else {
       return false
@@ -165,14 +165,15 @@ open class DosageDoseAndRate: Element {
     }
     
     return type == _other.type
-    && dose == _other.dose
-    && rate == _other.rate
+    && doseX == _other.doseX
+    && rateX == _other.rateX
   }
   
+  // MARK: - Hashable
   public override func hash(into hasher: inout Hasher) {
     super.hash(into: &hasher)
     hasher.combine(type)
-    hasher.combine(dose)
-    hasher.combine(rate)
+    hasher.combine(doseX)
+    hasher.combine(rateX)
   }
 }

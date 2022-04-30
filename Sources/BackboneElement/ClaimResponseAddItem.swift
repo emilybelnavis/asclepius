@@ -168,7 +168,7 @@ open class ClaimResponseAddItem: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    var tempServicedX: ServicedX? = nil
+    var tempServicedX: ServicedX?
     if let servicedDate = try FHIRKitPrimitive<FHIRKitDate>(from: codingKeyContainer, forKeyIfPresent: .servicedDate) {
       if tempServicedX != nil {
         throw DecodingError.dataCorruptedError(forKey: .servicedDate, in: codingKeyContainer, debugDescription: "More than one value provided for \"serviced\"")
@@ -183,24 +183,24 @@ open class ClaimResponseAddItem: BackboneElement {
       tempServicedX = .period(servicedPeriod)
     }
     
-    var tempLocationX: _Location? = nil
+    var tempLocationX: LocationX?
     if let locationAddress = try Address(from: codingKeyContainer, forKeyIfPresent: .locationAddress) {
       if tempLocationX != nil {
-        throw DecodingError.dataCorruptedError(forKey: .locationAddress, in: _container, debugDescription: "More than one value provided for \"location\"")
+        throw DecodingError.dataCorruptedError(forKey: .locationAddress, in: codingKeyContainer, debugDescription: "More than one value provided for \"location\"")
       }
       tempLocationX = .address(locationAddress)
     }
     
     if let locationCodableConcept = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .locationCodableConcept) {
       if tempLocationX != nil {
-        throw DecodingError.dataCorruptedError(forKey: .locationCodableConcept, in: _container, debugDescription: "More than one value provided for \"location\"")
+        throw DecodingError.dataCorruptedError(forKey: .locationCodableConcept, in: codingKeyContainer, debugDescription: "More than one value provided for \"location\"")
       }
       tempLocationX = .codableConcept(locationCodableConcept)
     }
     
     if let locationReference = try Reference(from: codingKeyContainer, forKeyIfPresent: .locationReference) {
       if tempLocationX != nil {
-        throw DecodingError.dataCorruptedError(forKey: .locationReference, in: _container, debugDescription: "More than one value provided for \"location\"")
+        throw DecodingError.dataCorruptedError(forKey: .locationReference, in: codingKeyContainer, debugDescription: "More than one value provided for \"location\"")
       }
       tempLocationX = .reference(locationReference)
     }

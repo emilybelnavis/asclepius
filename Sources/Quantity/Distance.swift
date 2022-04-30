@@ -29,7 +29,7 @@ open class Distance: Quantity {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     code: FHIRKitPrimitive<FHIRKitString>? = nil,
     comparator: FHIRKitPrimitive<QuantityComparator>? = nil,
@@ -38,7 +38,7 @@ open class Distance: Quantity {
     value: FHIRKitPrimitive<FHIRKitDecimal>? = nil
   ) {
     self.init()
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.id = id
     self.code = code
     self.comparator = comparator
@@ -56,7 +56,7 @@ open class Distance: Quantity {
     try super.encode(to: encoder)
   }
   
-  // MARK: - Equatable & Hashable
+  // MARK: - Equatable
   public override func isEqual(to _other: Any?) -> Bool {
     guard let _other = _other as? Distance else {
       return false
@@ -68,6 +68,7 @@ open class Distance: Quantity {
     return true
   }
   
+  // MARK: - Hashable
   public override func hash(into hasher: inout Hasher) {
     super.hash(into: &hasher)
   }

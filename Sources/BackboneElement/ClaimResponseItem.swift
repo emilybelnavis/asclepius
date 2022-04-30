@@ -117,4 +117,3 @@ open class ClaimResponseItem: BackboneElement {
     hasher.combine(detail)
   }
 }
-

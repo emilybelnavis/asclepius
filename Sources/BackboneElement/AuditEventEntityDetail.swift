@@ -68,7 +68,7 @@ open class AuditEventEntityDetail: BackboneElement {
                                                                         debugDescription: "Must have at least one value for \"value\", but has none"))
     }
     
-    var tempValue: ValueX? = nil
+    var tempValue: ValueX?
     if let valueBase64Binary = try FHIRKitPrimitive<FHIRKitBase64Binary>(from: codingKeyContainer, forKeyIfPresent: .valueBase64Binary, auxKey: ._valueBase64Binary) {
       if tempValue != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueBase64Binary, in: codingKeyContainer, debugDescription: "More than one value provided for \"value\"")

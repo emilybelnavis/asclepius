@@ -39,13 +39,13 @@ open class CodableConcept: Element {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     coding: [Coding]? = nil,
     text: FHIRKitPrimitive<FHIRKitString>? = nil
   ) {
     self.init()
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.id = id
     self.coding = coding
     self.text = text
@@ -58,24 +58,24 @@ open class CodableConcept: Element {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.coding = try [Coding](from: _container, forKeyIfPresent: .coding)
-    self.text = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .text, auxiliaryKey: ._text)
+    self.coding = try [Coding](from: codingKeyContainer, forKeyIfPresent: .coding)
+    self.text = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .text, auxKey: ._text)
     
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    try coding?.encode(on: &_container, forKey: .coding)
-    try text?.encode(on: &_container, forKey: .text, auxiliaryKey: ._text)
+    try coding?.encode(on: &codingKeyContainer, forKey: .coding)
+    try text?.encode(on: &codingKeyContainer, forKey: .text, auxKey: ._text)
     
     try super.encode(to: encoder)
   }
   
-  // MARK: - Equatable & Hashable
+  // MARK: - Equatable
   public override func isEqual(to _other: Any?) -> Bool {
     guard let _other = _other as? CodableConcept else {
       return false
@@ -89,6 +89,7 @@ open class CodableConcept: Element {
     && text == _other.text
   }
   
+  // MARK: - Hashable
   public override func hash(into hasher: inout Hasher) {
     super.hash(into: &hasher)
     

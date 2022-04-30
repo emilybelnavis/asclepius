@@ -50,7 +50,7 @@ open class Meta: Element {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     versionId: FHIRKitPrimitive<FHIRKitString>? = nil,
     lastUpdated: FHIRKitPrimitive<FHIRKitInstant>? = nil,
@@ -60,7 +60,7 @@ open class Meta: Element {
     tag: [Coding]? = nil
   ) {
     self.init()
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.id = id
     self.versionId = versionId
     self.lastUpdated = lastUpdated
@@ -81,32 +81,32 @@ open class Meta: Element {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.versionId = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .versionId, auxiliaryKey: ._versionId)
-    self.lastUpdated = try FHIRKitPrimitive<FHIRKitInstant>(from: _container, forKeyIfPresent: .lastUpdated, auxiliaryKey: ._lastUpdated)
-    self.source = try FHIRKitPrimitive<FHIRKitURI>(from: _container, forKeyIfPresent: .source, auxiliaryKey: ._source)
-    self.profile = try [FHIRKitPrimitive<Canonical>](from: _container, forKeyIfPresent: .profile, auxiliaryKey: ._profile)
-    self.security = try [Coding](from: _container, forKeyIfPresent: .security)
-    self.tag = try [Coding](from: _container, forKeyIfPresent: .tag)
+    self.versionId = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .versionId, auxKey: ._versionId)
+    self.lastUpdated = try FHIRKitPrimitive<FHIRKitInstant>(from: codingKeyContainer, forKeyIfPresent: .lastUpdated, auxKey: ._lastUpdated)
+    self.source = try FHIRKitPrimitive<FHIRKitURI>(from: codingKeyContainer, forKeyIfPresent: .source, auxKey: ._source)
+    self.profile = try [FHIRKitPrimitive<Canonical>](from: codingKeyContainer, forKeyIfPresent: .profile, auxKey: ._profile)
+    self.security = try [Coding](from: codingKeyContainer, forKeyIfPresent: .security)
+    self.tag = try [Coding](from: codingKeyContainer, forKeyIfPresent: .tag)
     
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    try versionId?.encode(on: &_container, forKey: .versionId, auxiliaryKey: ._versionId)
-    try lastUpdated?.encode(on: &_container, forKey: .lastUpdated, auxiliaryKey: ._lastUpdated)
-    try source?.encode(on: &_container, forKey: .source, auxiliaryKey: ._source)
-    try profile?.encode(on: &_container, forKey: .profile, auxiliaryKey: ._profile)
-    try security?.encode(on: &_container, forKey: .security)
-    try tag?.encode(on: &_container, forKey: .tag)
+    try versionId?.encode(on: &codingKeyContainer, forKey: .versionId, auxKey: ._versionId)
+    try lastUpdated?.encode(on: &codingKeyContainer, forKey: .lastUpdated, auxKey: ._lastUpdated)
+    try source?.encode(on: &codingKeyContainer, forKey: .source, auxKey: ._source)
+    try profile?.encode(on: &codingKeyContainer, forKey: .profile, auxKey: ._profile)
+    try security?.encode(on: &codingKeyContainer, forKey: .security)
+    try tag?.encode(on: &codingKeyContainer, forKey: .tag)
     
     try super.encode(to: encoder)
   }
   
-  // MARK: - Equatable & Hashable
+  // MARK: - Equatable
   public override func isEqual(to _other: Any?) -> Bool {
     guard let _other = _other as? Meta else {
       return false
@@ -124,6 +124,7 @@ open class Meta: Element {
     && tag == _other.tag
   }
   
+  // MARK: - Hashable
   public override func hash(into hasher: inout Hasher) {
     super.hash(into: &hasher)
     hasher.combine(versionId)

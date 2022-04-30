@@ -128,7 +128,7 @@ open class ClaimItemDetail: BackboneElement {
     self.factor = try FHIRKitPrimitive<FHIRKitDecimal>(from: codingKeyContainer, forKeyIfPresent: .factor, auxKey: ._factor)
     self.net = try Money(from: codingKeyContainer, forKeyIfPresent: .net)
     self.udi = try [Reference](from: codingKeyContainer, forKeyIfPresent: .udi)
-    self.subDetail = try [ClaimItemDetailSubDetail](from: _container, forKeyIfPresent: .subDetail)
+    self.subDetail = try [ClaimItemDetailSubDetail](from: codingKeyContainer, forKeyIfPresent: .subDetail)
     
     try super.init(from: decoder)
   }

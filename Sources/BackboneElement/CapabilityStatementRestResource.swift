@@ -1,6 +1,6 @@
 //
 //  CapabilityStatementRestResource.swift
-//  FHIRKIT
+//  FHIRKit
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
 //
@@ -89,7 +89,7 @@ open class CapabilityStatementRestResource: BackboneElement {
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    type:FHIRKitPrimitive<ResourceType>,
+    type: FHIRKitPrimitive<ResourceType>,
     profile: FHIRKitPrimitive<Canonical>? = nil,
     supportedProfile: [FHIRKitPrimitive<Canonical>]? = nil,
     documentation: FHIRKitPrimitive<FHIRKitString>? = nil,

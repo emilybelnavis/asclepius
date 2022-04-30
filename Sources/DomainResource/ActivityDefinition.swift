@@ -393,7 +393,7 @@ open class ActivityDefinition: DomainResource {
     
     if let subjectReference = try Reference(from: codingKeyContainer, forKeyIfPresent: .subjectReference) {
       if tempSubjectX != nil {
-        throw DecodindError.dataCorruptedError(forKey: .subjectReference, in: codingKeyContainer, debugDescription: "More than one value provided for \"subject\"")
+        throw DecodingError.dataCorruptedError(forKey: .subjectReference, in: codingKeyContainer, debugDescription: "More than one value provided for \"subject\"")
       }
       tempSubjectX = .reference(subjectReference)
     }
@@ -654,7 +654,7 @@ open class ActivityDefinition: DomainResource {
     hasher.combine(observationRequirement)
     hasher.combine(participant)
     hasher.combine(priority)
-    hasher.combine(product)
+    hasher.combine(productX)
     hasher.combine(profile)
     hasher.combine(publisher)
     hasher.combine(purpose)
@@ -663,8 +663,9 @@ open class ActivityDefinition: DomainResource {
     hasher.combine(reviewer)
     hasher.combine(specimenRequirement)
     hasher.combine(status)
+    hasher.combine(subjectX)
     hasher.combine(subtitle)
-    hasher.combine(timing)
+    hasher.combine(timingX)
     hasher.combine(title)
     hasher.combine(topic)
     hasher.combine(transform)

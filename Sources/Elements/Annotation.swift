@@ -28,13 +28,13 @@
  A text note which also contains informatoin about who made the statement and when
  */
 open class Annotation: Element {
-  public enum Author: Hashable {
+  public enum AuthorX: Hashable {
     case reference(Reference)
     case string(FHIRKitPrimitive<FHIRKitString>)
   }
   
   /// Individual responsible for the annotation
-  public var author: Author?
+  public var authorX: AuthorX?
   
   /// When the annotation was made
   public var time: FHIRKitPrimitive<FHIRKitDateTime>?
@@ -48,16 +48,16 @@ open class Annotation: Element {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    author: Author? = nil,
+    authorX: AuthorX? = nil,
     time: FHIRKitPrimitive<FHIRKitDateTime>? = nil,
     text: FHIRKitPrimitive<FHIRKitString>
   ) {
     self.init(text: text)
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.id = id
-    self.author = author
+    self.authorX = authorX
     self.time = time
   }
   
@@ -70,48 +70,49 @@ open class Annotation: Element {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    var _t_author: Author?
-    if let authorReference = try Reference(from: _container, forKeyIfPresent: .authorReference) {
-      if _t_author != nil {
-        throw DecodingError.dataCorruptedError(forKey: .authorReference, in: _container, debugDescription: "More than one value provided for \"Author\"")
+    var tempAuthorX: AuthorX?
+    if let authorReference = try Reference(from: codingKeyContainer, forKeyIfPresent: .authorReference) {
+      if tempAuthorX != nil {
+        throw DecodingError.dataCorruptedError(forKey: .authorReference, in: codingKeyContainer, debugDescription: "More than one value provided for \"Author\"")
       }
-      _t_author = .reference(authorReference)
+      tempAuthorX = .reference(authorReference)
     }
     
-    if let authorString = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .authorString, auxiliaryKey: ._authorString) {
-      if _t_author != nil {
-        throw DecodingError.dataCorruptedError(forKey: .authorString, in: _container, debugDescription: "More than one value provided for \"Author\"")
+    if let authorString = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .authorString, auxKey: ._authorString) {
+      if tempAuthorX != nil {
+        throw DecodingError.dataCorruptedError(forKey: .authorString, in: codingKeyContainer, debugDescription: "More than one value provided for \"Author\"")
       }
-      _t_author = .string(authorString)
+      tempAuthorX = .string(authorString)
     }
     
-    self.author = _t_author
-    self.time = try FHIRKitPrimitive<FHIRKitDateTime>(from: _container, forKeyIfPresent: .time, auxiliaryKey: ._time)
-    self.text = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKey: .text, auxiliaryKey: ._text)
+    self.authorX = tempAuthorX
+    self.time = try FHIRKitPrimitive<FHIRKitDateTime>(from: codingKeyContainer, forKeyIfPresent: .time, auxKey: ._time)
+    self.text = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKey: .text, auxKey: ._text)
     
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    if let _enum = author {
-      switch _enum {
+    if let enumAuthorX = authorX {
+      switch enumAuthorX {
       case.reference(let _value):
-        try _value.encode(on: &_container, forKey: .authorReference)
+        try _value.encode(on: &codingKeyContainer, forKey: .authorReference)
       case .string(let _value):
-        try _value.encode(on: &_container, forKey: .authorString, auxiliaryKey: ._authorString)
+        try _value.encode(on: &codingKeyContainer, forKey: .authorString, auxKey: ._authorString)
       }
     }
     
-    try time?.encode(on: &_container, forKey: .time, auxiliaryKey: ._time)
-    try text?.encode(on: &_container, forKey: .text, auxiliaryKey: ._text)
+    try time?.encode(on: &codingKeyContainer, forKey: .time, auxKey: ._time)
+    try text?.encode(on: &codingKeyContainer, forKey: .text, auxKey: ._text)
     
     try super.encode(to: encoder)
   }
   
+  // MARK: - Equatable
   public override func isEqual(to _other: Any?) -> Bool {
     guard let _other = _other as? Annotation else {
       return false
@@ -121,14 +122,15 @@ open class Annotation: Element {
       return false
     }
     
-    return author == _other.author
+    return authorX == _other.authorX
     && time == _other.time
     && text == _other.text
   }
   
+  // MARK: - Hashable
   public override func hash(into hasher: inout Hasher) {
     super.hash(into: &hasher)
-    hasher.combine(author)
+    hasher.combine(authorX)
     hasher.combine(time)
     hasher.combine(text)
   }

@@ -51,7 +51,7 @@ open class Identifier: Element {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     use: FHIRKitPrimitive<IdentifierUse>? = nil,
     type: CodableConcept? = nil,
@@ -61,7 +61,7 @@ open class Identifier: Element {
     assigner: Reference? = nil
   ) {
     self.init()
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.id = id
     self.use = use
     self.type = type
@@ -82,32 +82,32 @@ open class Identifier: Element {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.use = try FHIRKitPrimitive<IdentifierUse>(from: _container, forKeyIfPresent: .use, auxiliaryKey: ._use)
-    self.type = try CodableConcept(from: _container, forKeyIfPresent: .type)
-    self.system = try FHIRKitPrimitive<FHIRKitURI>(from: _container, forKeyIfPresent: .system, auxiliaryKey: ._system)
-    self.value = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .value, auxiliaryKey: ._value)
-    self.period = try Period(from: _container, forKeyIfPresent: .period)
-    self.assigner = try Reference(from: _container, forKeyIfPresent: .assigner)
+    self.use = try FHIRKitPrimitive<IdentifierUse>(from: codingKeyContainer, forKeyIfPresent: .use, auxKey: ._use)
+    self.type = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .type)
+    self.system = try FHIRKitPrimitive<FHIRKitURI>(from: codingKeyContainer, forKeyIfPresent: .system, auxKey: ._system)
+    self.value = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .value, auxKey: ._value)
+    self.period = try Period(from: codingKeyContainer, forKeyIfPresent: .period)
+    self.assigner = try Reference(from: codingKeyContainer, forKeyIfPresent: .assigner)
     
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    try use?.encode(on: &_container, forKey: .use, auxiliaryKey: ._use)
-    try type?.encode(on: &_container, forKey: .type)
-    try system?.encode(on: &_container, forKey: .system, auxiliaryKey: ._system)
-    try value?.encode(on: &_container, forKey: .value, auxiliaryKey: ._value)
-    try period?.encode(on: &_container, forKey: .period)
-    try assigner?.encode(on: &_container, forKey: .assigner)
+    try use?.encode(on: &codingKeyContainer, forKey: .use, auxKey: ._use)
+    try type?.encode(on: &codingKeyContainer, forKey: .type)
+    try system?.encode(on: &codingKeyContainer, forKey: .system, auxKey: ._system)
+    try value?.encode(on: &codingKeyContainer, forKey: .value, auxKey: ._value)
+    try period?.encode(on: &codingKeyContainer, forKey: .period)
+    try assigner?.encode(on: &codingKeyContainer, forKey: .assigner)
     
     try super.encode(to: encoder)
   }
   
-  // MARK: - Equatable & Hashable
+  // MARK: - Equatable
   public override func isEqual(to _other: Any?) -> Bool {
     guard let _other = _other as? Identifier else {
       return false
@@ -125,6 +125,7 @@ open class Identifier: Element {
     && assigner == _other.assigner
   }
   
+  // MARK: - Hashable
   public override func hash(into hasher: inout Hasher) {
     super.hash(into: &hasher)
     hasher.combine(use)

@@ -47,7 +47,7 @@ open class DataRequirementCodeFilter: Element {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     path: FHIRKitPrimitive<FHIRKitString>? = nil,
     searchParam: FHIRKitPrimitive<FHIRKitString>? = nil,
@@ -55,7 +55,7 @@ open class DataRequirementCodeFilter: Element {
     code: [Coding]? = nil
   ) {
     self.init()
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.id = id
     self.path = path
     self.searchParam = searchParam
@@ -72,28 +72,28 @@ open class DataRequirementCodeFilter: Element {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.path = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .path, auxiliaryKey: ._path)
-    self.searchParam = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .searchParam, auxiliaryKey: ._searchParam)
-    self.valueSet = try FHIRKitPrimitive<Canonical>(from: _container, forKeyIfPresent: .valueSet, auxiliaryKey: .valueSet)
-    self.code = try [Coding](from: _container, forKeyIfPresent: .code)
+    self.path = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .path, auxKey: ._path)
+    self.searchParam = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .searchParam, auxKey: ._searchParam)
+    self.valueSet = try FHIRKitPrimitive<Canonical>(from: codingKeyContainer, forKeyIfPresent: .valueSet, auxKey: .valueSet)
+    self.code = try [Coding](from: codingKeyContainer, forKeyIfPresent: .code)
     
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    try path?.encode(on: &_container, forKey: .path, auxiliaryKey: ._path)
-    try searchParam?.encode(on: &_container, forKey: .searchParam, auxiliaryKey: ._searchParam)
-    try valueSet?.encode(on: &_container, forKey: .valueSet, auxiliaryKey: ._valueSet)
-    try code?.encode(on: &_container, forKey: .code)
+    try path?.encode(on: &codingKeyContainer, forKey: .path, auxKey: ._path)
+    try searchParam?.encode(on: &codingKeyContainer, forKey: .searchParam, auxKey: ._searchParam)
+    try valueSet?.encode(on: &codingKeyContainer, forKey: .valueSet, auxKey: ._valueSet)
+    try code?.encode(on: &codingKeyContainer, forKey: .code)
     
     try super.encode(to: encoder)
   }
   
-  // MARK: - Equatable & Hashable
+  // MARK: - Equatable
   public override func isEqual(to _other: Any?) -> Bool {
     guard let _other = _other as? DataRequirementCodeFilter else {
       return false
@@ -109,6 +109,7 @@ open class DataRequirementCodeFilter: Element {
     && code == _other.code
   }
   
+  // MARK: - Hashable
   public override func hash(into hasher: inout Hasher) {
     super.hash(into: &hasher)
     hasher.combine(path)

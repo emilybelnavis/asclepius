@@ -1,6 +1,6 @@
 //
 //  CapabilityStatementMessagingSupportedMessage.swift
-//  FHIRKIT
+//  FHIRKit
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
 //

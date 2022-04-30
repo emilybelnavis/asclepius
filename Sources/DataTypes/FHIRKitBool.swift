@@ -86,4 +86,3 @@ extension Bool {
     return FHIRKitPrimitive(FHIRKitBool(self))
   }
 }
-

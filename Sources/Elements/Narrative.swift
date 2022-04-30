@@ -41,13 +41,13 @@ open class Narrative: Element {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     status: FHIRKitPrimitive<NarrativeStatus>,
     div: FHIRKitPrimitive<FHIRKitString>
   ) {
     self.init(status: status, div: div)
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.id = id
   }
   
@@ -58,22 +58,24 @@ open class Narrative: Element {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.status = try FHIRKitPrimitive<NarrativeStatus>(from: _container, forKey: .status, auxiliaryKey: ._status)
-    self.div = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKey: .div, auxiliaryKey: ._div)
+    self.status = try FHIRKitPrimitive<NarrativeStatus>(from: codingKeyContainer, forKey: .status, auxKey: ._status)
+    self.div = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKey: .div, auxKey: ._div)
+    
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    try status.encode(on: &_container, forKey: .status, auxiliaryKey: ._status)
-    try div.encode(on: &_container, forKey: .div, auxiliaryKey: ._div)
+    try status.encode(on: &codingKeyContainer, forKey: .status, auxKey: ._status)
+    try div.encode(on: &codingKeyContainer, forKey: .div, auxKey: ._div)
+    
     try super.encode(to: encoder)
   }
   
-  // MARK: - Equatable & Hashable
+  // MARK: - Equatable
   public override func isEqual(to _other: Any?) -> Bool {
     guard let _other = _other as? Narrative else {
       return false
@@ -87,6 +89,7 @@ open class Narrative: Element {
     && div == _other.div
   }
   
+  // MARK: - Hashable
   public override func hash(into hasher: inout Hasher) {
     super.hash(into: &hasher)
     hasher.combine(status)

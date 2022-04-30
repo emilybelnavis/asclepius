@@ -84,7 +84,7 @@ open class ClaimProcedure: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    var tempProcedureX: ProcedureX? = nil
+    var tempProcedureX: ProcedureX?
     if let procedureCodableConcept = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .procedureCodableConcept) {
       if tempProcedureX != nil {
         throw DecodingError.dataCorruptedError(forKey: .procedureCodableConcept, in: codingKeyContainer, debugDescription: "More than one value provided for \"procedure\"")
@@ -101,7 +101,7 @@ open class ClaimProcedure: BackboneElement {
     
     self.sequence = try FHIRKitPrimitive<FHIRKitPositiveInteger>(from: codingKeyContainer, forKey: .sequence, auxKey: ._sequence)
     self.type = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .type)
-    self.date = try FHIRKitPrimitive<FHIRKitDateTime>(from: cp, forKey: .date, auxKey: ._date)
+    self.date = try FHIRKitPrimitive<FHIRKitDateTime>(from: codingKeyContainer, forKey: .date, auxKey: ._date)
     self.procedureX = tempProcedureX!
     self.udi = try [Reference](from: codingKeyContainer, forKeyIfPresent: .udi)
     

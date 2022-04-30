@@ -189,7 +189,7 @@ open class ClaimItem: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    var tempServicedX: ServicedX? = nil
+    var tempServicedX: ServicedX?
     if let servicedDate = try FHIRKitPrimitive<FHIRKitDate>(from: codingKeyContainer, forKeyIfPresent: .servicedDate, auxKey: ._servicedDate) {
       if tempServicedX != nil {
         throw DecodingError.dataCorruptedError(forKey: .servicedDate, in: codingKeyContainer, debugDescription: "More than one value supplied for \"serviced\"")
@@ -204,7 +204,7 @@ open class ClaimItem: BackboneElement {
       tempServicedX = .period(servicedPeriod)
     }
     
-    var tempLocationX: LocationX? = nil
+    var tempLocationX: LocationX?
     if let locationAddress = try Address(from: codingKeyContainer, forKeyIfPresent: .locationAddress) {
       if tempLocationX != nil {
         throw DecodingError.dataCorruptedError(forKey: .locationAddress, in: codingKeyContainer, debugDescription: "More than one value supplied for \"location\"")
@@ -216,7 +216,7 @@ open class ClaimItem: BackboneElement {
       if tempLocationX != nil {
         throw DecodingError.dataCorruptedError(forKey: .locationCodableConcept, in: codingKeyContainer, debugDescription: "More than one value supplied for \"location\"")
       }
-      _location = .codableConcept(locationCodableConcept)
+      tempLocationX = .codableConcept(locationCodableConcept)
     }
     
     if let locationReference = try Reference(from: codingKeyContainer, forKeyIfPresent: .locationReference) {
@@ -240,7 +240,7 @@ open class ClaimItem: BackboneElement {
     self.locationX = tempLocationX
     self.quantity = try Quantity(from: codingKeyContainer, forKeyIfPresent: .quantity)
     self.unitPrice = try Money(from: codingKeyContainer, forKeyIfPresent: .unitPrice)
-    self.factor = try FHIRKitPrimitive<FHIRKitDecimal>(from: codingKeyContainer, forKeyIfPresent: .factor, auxiliaryKey: ._factor)
+    self.factor = try FHIRKitPrimitive<FHIRKitDecimal>(from: codingKeyContainer, forKeyIfPresent: .factor, auxKey: ._factor)
     self.net = try Money(from: codingKeyContainer, forKeyIfPresent: .net)
     self.udi = try [Reference](from: codingKeyContainer, forKeyIfPresent: .udi)
     self.bodySite = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .bodySite)
@@ -355,4 +355,3 @@ open class ClaimItem: BackboneElement {
     hasher.combine(detail)
   }
 }
-

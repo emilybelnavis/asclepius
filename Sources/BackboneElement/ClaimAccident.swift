@@ -72,7 +72,7 @@ open class ClaimAccident: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    var tempLocationX: LocationX? = nil
+    var tempLocationX: LocationX?
     if let locationAddress = try Address(from: codingKeyContainer, forKeyIfPresent: .locationAddress) {
       if tempLocationX != nil {
         throw DecodingError.dataCorruptedError(forKey: .locationAddress, in: codingKeyContainer, debugDescription: "More than one value provided for \"location\"")

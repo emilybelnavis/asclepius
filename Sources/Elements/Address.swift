@@ -111,36 +111,36 @@ open class Address: Element {
   
   /// intitializer for Decodable
   public required init(from decoder: Decoder) throws {
-    let codingContainer = try decoder.container(keyedBy: CodingKeys.self)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.use = try FHIRKitPrimitive<AddressUse>(from: codingContainer, forKeyIfPresent: .use, auxiliaryKey: ._use)
-    self.type = try FHIRKitPrimitive<AddressType>(from: codingContainer, forKeyIfPresent: .type, auxiliaryKey: ._type)
-    self.text = try FHIRKitPrimitive<FHIRKitString>(from: codingContainer, forKeyIfPresent: .text, auxiliaryKey: ._text)
-    self.line = try [FHIRKitPrimitive<FHIRKitString>](from: codingContainer, forKeyIfPresent: .line, auxiliaryKey: ._line)
-    self.city = try FHIRKitPrimitive<FHIRKitString>(from: codingContainer, forKeyIfPresent: .city, auxiliaryKey: ._city)
-    self.district = try FHIRKitPrimitive<FHIRKitString>(from: codingContainer, forKeyIfPresent: .district, auxiliaryKey: ._district)
-    self.state = try FHIRKitPrimitive<FHIRKitString>(from: codingContainer, forKeyIfPresent: .state, auxiliaryKey: ._state)
-    self.postalCode = try FHIRKitPrimitive<FHIRKitString>(from: codingContainer, forKeyIfPresent: .postalCode, auxiliaryKey: ._postalCode)
-    self.country = try FHIRKitPrimitive<FHIRKitString>(from: codingContainer, forKeyIfPresent: .country, auxiliaryKey: ._country)
-    self.period = try Period(from: codingContainer, forKeyIfPresent: .period)
+    self.use = try FHIRKitPrimitive<AddressUse>(from: codingKeyContainer, forKeyIfPresent: .use, auxKey: ._use)
+    self.type = try FHIRKitPrimitive<AddressType>(from: codingKeyContainer, forKeyIfPresent: .type, auxKey: ._type)
+    self.text = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .text, auxKey: ._text)
+    self.line = try [FHIRKitPrimitive<FHIRKitString>](from: codingKeyContainer, forKeyIfPresent: .line, auxKey: ._line)
+    self.city = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .city, auxKey: ._city)
+    self.district = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .district, auxKey: ._district)
+    self.state = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .state, auxKey: ._state)
+    self.postalCode = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .postalCode, auxKey: ._postalCode)
+    self.country = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .country, auxKey: ._country)
+    self.period = try Period(from: codingKeyContainer, forKeyIfPresent: .period)
     
     try super.init(from: decoder)
   }
   
   /// encodable
   public override func encode(to encoder: Encoder) throws {
-    var codingContainer = encoder.container(keyedBy: CodingKeys.self)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    try use?.encode(on: &codingContainer, forKey: .use, auxiliaryKey: ._use)
-    try type?.encode(on: &codingContainer, forKey: .type, auxiliaryKey: ._type)
-    try text?.encode(on: &codingContainer, forKey: .text, auxiliaryKey: ._text)
-    try line?.encode(on: &codingContainer, forKey: .line, auxiliaryKey: ._line)
-    try city?.encode(on: &codingContainer, forKey: .city, auxiliaryKey: ._city)
-    try district?.encode(on: &codingContainer, forKey: .district, auxiliaryKey: ._district)
-    try state?.encode(on: &codingContainer, forKey: .state, auxiliaryKey: ._state)
-    try postalCode?.encode(on: &codingContainer, forKey: .postalCode, auxiliaryKey: ._postalCode)
-    try country?.encode(on: &codingContainer, forKey: .country, auxiliaryKey: ._country)
-    try period?.encode(on: &codingContainer, forKey: .period)
+    try use?.encode(on: &codingKeyContainer, forKey: .use, auxKey: ._use)
+    try type?.encode(on: &codingKeyContainer, forKey: .type, auxKey: ._type)
+    try text?.encode(on: &codingKeyContainer, forKey: .text, auxKey: ._text)
+    try line?.encode(on: &codingKeyContainer, forKey: .line, auxKey: ._line)
+    try city?.encode(on: &codingKeyContainer, forKey: .city, auxKey: ._city)
+    try district?.encode(on: &codingKeyContainer, forKey: .district, auxKey: ._district)
+    try state?.encode(on: &codingKeyContainer, forKey: .state, auxKey: ._state)
+    try postalCode?.encode(on: &codingKeyContainer, forKey: .postalCode, auxKey: ._postalCode)
+    try country?.encode(on: &codingKeyContainer, forKey: .country, auxKey: ._country)
+    try period?.encode(on: &codingKeyContainer, forKey: .period)
     
     try super.encode(to: encoder)
   }

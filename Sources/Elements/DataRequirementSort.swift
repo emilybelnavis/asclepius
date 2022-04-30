@@ -41,13 +41,13 @@ open class DataRequirementSort: Element {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     path: FHIRKitPrimitive<FHIRKitString>,
     direction: FHIRKitPrimitive<SortDirection>
   ) {
     self.init(path: path, direction: direction)
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.id = id
   }
   
@@ -58,24 +58,23 @@ open class DataRequirementSort: Element {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.path = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKey: .path, auxiliaryKey: ._path)
-    self.direction = try FHIRKitPrimitive<SortDirection>(from: _container, forKey: .direction, auxiliaryKey: ._direction)
+    self.path = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKey: .path, auxKey: ._path)
+    self.direction = try FHIRKitPrimitive<SortDirection>(from: codingKeyContainer, forKey: .direction, auxKey: ._direction)
     
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    try path.encode(on: &_container, forKey: .path, auxiliaryKey: ._path)
-    try direction.encode(on: &_container, forKey: .direction, auxiliaryKey: ._direction)
+    try path.encode(on: &codingKeyContainer, forKey: .path, auxKey: ._path)
+    try direction.encode(on: &codingKeyContainer, forKey: .direction, auxKey: ._direction)
     try super.encode(to: encoder)
   }
   
-  // MARK: - Equatable & Hashable
-  
+  // MARK: - Equatable
   public override func isEqual(to _other: Any?) -> Bool {
     guard let _other = _other as? DataRequirementSort else {
       return false
@@ -89,6 +88,7 @@ open class DataRequirementSort: Element {
     && direction == _other.direction
   }
   
+  // MARK: - Hashable
   public override func hash(into hasher: inout Hasher) {
     super.hash(into: &hasher)
     hasher.combine(path)

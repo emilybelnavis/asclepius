@@ -39,13 +39,13 @@ open class Range: Element {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     low: Quantity? = nil,
     high: Quantity? = nil
   ) {
     self.init()
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.id = id
     self.low = low
     self.high = high
@@ -58,21 +58,23 @@ open class Range: Element {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
-    self.low = try Quantity(from: _container, forKeyIfPresent: .low)
-    self.high = try Quantity(from: _container, forKeyIfPresent: .high)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
+    
+    self.low = try Quantity(from: codingKeyContainer, forKeyIfPresent: .low)
+    self.high = try Quantity(from: codingKeyContainer, forKeyIfPresent: .high)
     
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
-    try low?.encode(on: &_container, forKey: .low)
-    try high?.encode(on: &_container, forKey: .high)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
+    try low?.encode(on: &codingKeyContainer, forKey: .low)
+    try high?.encode(on: &codingKeyContainer, forKey: .high)
+    
     try super.encode(to: encoder)
   }
   
-  // MARK: - Equatable & Hashable
+  // MARK: - Equatable
   public override func isEqual(to _other: Any?) -> Bool {
     guard let _other = _other as? Range else {
       return false
@@ -86,6 +88,7 @@ open class Range: Element {
     && high == _other.high
   }
   
+  // MARK: - Hashable
   public override func hash(into hasher: inout Hasher) {
     super.hash(into: &hasher)
     hasher.combine(low)

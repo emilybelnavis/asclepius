@@ -51,7 +51,7 @@ open class RelatedArtifact: Element {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     type: FHIRKitPrimitive<RelatedArtifactType>,
     label: FHIRKitPrimitive<FHIRKitString>? = nil,
@@ -62,7 +62,7 @@ open class RelatedArtifact: Element {
     resource: FHIRKitPrimitive<Canonical>? = nil
   ) {
     self.init(type: type)
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.id = id
     self.label = label
     self.display = display
@@ -84,34 +84,34 @@ open class RelatedArtifact: Element {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.type = try FHIRKitPrimitive<RelatedArtifactType>(from: _container, forKey: .type, auxiliaryKey: ._type)
-    self.label = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .label, auxiliaryKey: ._label)
-    self.display = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .display, auxiliaryKey: ._display)
-    self.citation = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .citation, auxiliaryKey: ._citation)
-    self.url = try FHIRKitPrimitive<FHIRKitURI>(from: _container, forKeyIfPresent: .url, auxiliaryKey: ._url)
-    self.document = try Attachment(from: _container, forKeyIfPresent: .document)
-    self.resource = try FHIRKitPrimitive<Canonical>(from: _container, forKeyIfPresent: .resource, auxiliaryKey: ._resource)
+    self.type = try FHIRKitPrimitive<RelatedArtifactType>(from: codingKeyContainer, forKey: .type, auxKey: ._type)
+    self.label = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .label, auxKey: ._label)
+    self.display = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .display, auxKey: ._display)
+    self.citation = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .citation, auxKey: ._citation)
+    self.url = try FHIRKitPrimitive<FHIRKitURI>(from: codingKeyContainer, forKeyIfPresent: .url, auxKey: ._url)
+    self.document = try Attachment(from: codingKeyContainer, forKeyIfPresent: .document)
+    self.resource = try FHIRKitPrimitive<Canonical>(from: codingKeyContainer, forKeyIfPresent: .resource, auxKey: ._resource)
     
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    try type.encode(on: &_container, forKey: .type, auxiliaryKey: ._type)
-    try label?.encode(on: &_container, forKey: .label, auxiliaryKey: .label)
-    try display?.encode(on: &_container, forKey: .display, auxiliaryKey: ._display)
-    try citation?.encode(on: &_container, forKey: .citation, auxiliaryKey: ._citation)
-    try url?.encode(on: &_container, forKey: .url, auxiliaryKey: ._url)
-    try document?.encode(on: &_container, forKey: .document)
-    try resource?.encode(on: &_container, forKey: .resource, auxiliaryKey: ._resource)
+    try type.encode(on: &codingKeyContainer, forKey: .type, auxKey: ._type)
+    try label?.encode(on: &codingKeyContainer, forKey: .label, auxKey: .label)
+    try display?.encode(on: &codingKeyContainer, forKey: .display, auxKey: ._display)
+    try citation?.encode(on: &codingKeyContainer, forKey: .citation, auxKey: ._citation)
+    try url?.encode(on: &codingKeyContainer, forKey: .url, auxKey: ._url)
+    try document?.encode(on: &codingKeyContainer, forKey: .document)
+    try resource?.encode(on: &codingKeyContainer, forKey: .resource, auxKey: ._resource)
     
     try super.encode(to: encoder)
   }
   
-  // MARK: - Equatable & Hashable
+  // MARK: - Equatable
   public override func isEqual(to _other: Any?) -> Bool {
     guard let _other = _other as? RelatedArtifact else {
       return false
@@ -130,6 +130,7 @@ open class RelatedArtifact: Element {
     && resource == _other.resource
   }
   
+  // MARK: - Hashable
   public override func hash(into hasher: inout Hasher) {
     super.hash(into: &hasher)
     hasher.combine(type)

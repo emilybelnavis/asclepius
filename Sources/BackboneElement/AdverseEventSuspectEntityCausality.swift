@@ -80,7 +80,7 @@ open class AdverseEventSuspectEntityCausality: BackboneElement {
     var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
     try assessment?.encode(on: &codingKeyContainer, forKey: .assessment)
-    try productRelatedness?.encode(on: &codingKeyContainer, forKey: .productRelatedness, auxKey: <#T##_Key?#>: ._productRelatedness)
+    try productRelatedness?.encode(on: &codingKeyContainer, forKey: .productRelatedness, auxKey: ._productRelatedness)
     try author?.encode(on: &codingKeyContainer, forKey: .author)
     try method?.encode(on: &codingKeyContainer, forKey: .method)
     

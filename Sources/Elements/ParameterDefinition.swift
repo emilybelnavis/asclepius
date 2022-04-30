@@ -56,7 +56,7 @@ open class ParameterDefinition: Element {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     name: FHIRKitPrimitive<FHIRKitString>? = nil,
     use: FHIRKitPrimitive<OperationParameterUse>,
@@ -67,7 +67,7 @@ open class ParameterDefinition: Element {
     profile: FHIRKitPrimitive<Canonical>? = nil
   ) {
     self.init(use: use, type: type)
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.id = id
     self.name = name
     self.min = min
@@ -88,34 +88,34 @@ open class ParameterDefinition: Element {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.name = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .name, auxiliaryKey: ._name)
-    self.use = try FHIRKitPrimitive<OperationParameterUse>(from: _container, forKey: .use, auxiliaryKey: ._use)
-    self.min = try FHIRKitPrimitive<FHIRKitInteger>(from: _container, forKeyIfPresent: .min, auxiliaryKey: ._min)
-    self.max = try FHIRKitPrimitive<FHIRKitInteger>(from: _container, forKeyIfPresent: .max, auxiliaryKey: ._max)
-    self.documentation = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .documentation, auxiliaryKey: ._documentation)
-    self.type = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKey: .type, auxiliaryKey: ._type)
-    self.profile = try FHIRKitPrimitive<Canonical>(from: _container, forKey: .profile, auxiliaryKey: ._profile)
+    self.name = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .name, auxKey: ._name)
+    self.use = try FHIRKitPrimitive<OperationParameterUse>(from: codingKeyContainer, forKey: .use, auxKey: ._use)
+    self.min = try FHIRKitPrimitive<FHIRKitInteger>(from: codingKeyContainer, forKeyIfPresent: .min, auxKey: ._min)
+    self.max = try FHIRKitPrimitive<FHIRKitInteger>(from: codingKeyContainer, forKeyIfPresent: .max, auxKey: ._max)
+    self.documentation = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .documentation, auxKey: ._documentation)
+    self.type = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKey: .type, auxKey: ._type)
+    self.profile = try FHIRKitPrimitive<Canonical>(from: codingKeyContainer, forKey: .profile, auxKey: ._profile)
     
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    try name?.encode(on: &_container, forKey: .name, auxiliaryKey: ._name)
-    try use.encode(on: &_container, forKey: .use, auxiliaryKey: ._use)
-    try min?.encode(on: &_container, forKey: .min, auxiliaryKey: ._min)
-    try max?.encode(on: &_container, forKey: .max, auxiliaryKey: ._max)
-    try documentation?.encode(on: &_container, forKey: .documentation, auxiliaryKey: ._documentation)
-    try type.encode(on: &_container, forKey: .type, auxiliaryKey: ._type)
-    try profile?.encode(on: &_container, forKey: .profile, auxiliaryKey: ._profile)
+    try name?.encode(on: &codingKeyContainer, forKey: .name, auxKey: ._name)
+    try use.encode(on: &codingKeyContainer, forKey: .use, auxKey: ._use)
+    try min?.encode(on: &codingKeyContainer, forKey: .min, auxKey: ._min)
+    try max?.encode(on: &codingKeyContainer, forKey: .max, auxKey: ._max)
+    try documentation?.encode(on: &codingKeyContainer, forKey: .documentation, auxKey: ._documentation)
+    try type.encode(on: &codingKeyContainer, forKey: .type, auxKey: ._type)
+    try profile?.encode(on: &codingKeyContainer, forKey: .profile, auxKey: ._profile)
     
     try super.encode(to: encoder)
   }
   
-  // MARK: - Equatable & Hashable
+  // MARK: - Equatable
   public override func isEqual(to _other: Any?) -> Bool {
     guard let _other = _other as? ParameterDefinition else {
       return false
@@ -134,6 +134,7 @@ open class ParameterDefinition: Element {
     && profile == _other.profile
   }
   
+  // MARK: - Hashable
   public override func hash(into hasher: inout Hasher) {
     super.hash(into: &hasher)
     hasher.combine(name)

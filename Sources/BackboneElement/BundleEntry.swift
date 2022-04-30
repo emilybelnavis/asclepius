@@ -1,6 +1,6 @@
 //
 //  BundleEntry.swift
-//  FHIRKIT
+//  FHIRKit
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
 //
@@ -72,7 +72,7 @@ open class BundleEntry: BackboneElement {
   
   // MARK: - Coding
   private enum CodingKeys: String, CodingKey {
-    case link;
+    case link
     case fullUrl; case _fullUrl
     case resource
     case search

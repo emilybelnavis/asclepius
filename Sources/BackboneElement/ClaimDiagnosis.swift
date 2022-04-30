@@ -57,7 +57,7 @@ open class ClaimDiagnosis: BackboneElement {
     modifierExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     sequence: FHIRKitPrimitive<FHIRKitPositiveInteger>,
-    diagnosisX: _DiagnosisX,
+    diagnosisX: DiagnosisX,
     type: [CodableConcept]? = nil,
     onAdmission: CodableConcept? = nil,
     packageCode: CodableConcept? = nil
@@ -84,15 +84,15 @@ open class ClaimDiagnosis: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    var tempDiagnosisX: DiagnosisX? = nil
+    var tempDiagnosisX: DiagnosisX?
     if let diagnosisCodableConcept = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .diagnosisCodableConcept) {
       if tempDiagnosisX != nil {
-        throw DecodingError.dataCorruptedError(forKey: .diagnosisCodableConcept, in: _container, debugDescription: "More than one value provided for \"diagnosis\"")
+        throw DecodingError.dataCorruptedError(forKey: .diagnosisCodableConcept, in: codingKeyContainer, debugDescription: "More than one value provided for \"diagnosis\"")
       }
       tempDiagnosisX = .codableConcept(diagnosisCodableConcept)
     }
     
-    if let diagnosisReference = try Reference(from: _container, forKeyIfPresent: .diagnosisReference) {
+    if let diagnosisReference = try Reference(from: codingKeyContainer, forKeyIfPresent: .diagnosisReference) {
       if tempDiagnosisX != nil {
         throw DecodingError.dataCorruptedError(forKey: .diagnosisReference, in: codingKeyContainer, debugDescription: "More than one value provided for \"diagnosis\"")
       }

@@ -69,23 +69,23 @@ open class Resource: FHIRKitAbstractResource {
   }
   
   public required init(from decoder: Decoder) throws {
-    let codingContainer = try decoder.container(keyedBy: CodingKeys.self)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.id = try FHIRKitPrimitive<FHIRKitString>(from: codingContainer, forKeyIfPresent: .id, auxiliaryKey: ._id)
-    self.meta = try Meta(from: codingContainer, forKeyIfPresent: .meta)
-    self.implicitRules = try FHIRKitPrimitive<FHIRKitURI>(from: codingContainer, forKeyIfPresent: .implicitRules, auxiliaryKey: ._implicitRules)
-    self.language = try FHIRKitPrimitive<FHIRKitString>(from: codingContainer, forKeyIfPresent: .language, auxiliaryKey: ._language)
+    self.id = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .id, auxKey: ._id)
+    self.meta = try Meta(from: codingKeyContainer, forKeyIfPresent: .meta)
+    self.implicitRules = try FHIRKitPrimitive<FHIRKitURI>(from: codingKeyContainer, forKeyIfPresent: .implicitRules, auxKey: ._implicitRules)
+    self.language = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .language, auxKey: ._language)
     
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var codingContainer = encoder.container(keyedBy: CodingKeys.self)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    try id?.encode(on: &codingContainer, forKey: .id, auxiliaryKey: ._id)
-    try meta?.encode(on: &codingContainer, forKey: .id)
-    try implicitRules?.encode(on: &codingContainer, forKey: .implicitRules, auxiliaryKey: ._implicitRules)
-    try language?.encode(on: &codingContainer, forKey: .language, auxiliaryKey: ._language)
+    try id?.encode(on: &codingKeyContainer, forKey: .id, auxKey: ._id)
+    try meta?.encode(on: &codingKeyContainer, forKey: .id)
+    try implicitRules?.encode(on: &codingKeyContainer, forKey: .implicitRules, auxKey: ._implicitRules)
+    try language?.encode(on: &codingKeyContainer, forKey: .language, auxKey: ._language)
     
     try super.encode(to: encoder)
   }

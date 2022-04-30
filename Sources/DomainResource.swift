@@ -54,41 +54,41 @@ open class DomainResource: Resource {
   }
   
   public convenience init(
+    text: Narrative? = nil,
     contained: [ResourceProxy]? = nil,
     fhirExtension: [Extension]? = nil,
+    modifierExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     implicitRules: FHIRKitPrimitive<FHIRKitURI>? = nil,
     language: FHIRKitPrimitive<FHIRKitString>? = nil,
-    meta: Meta? = nil,
-    modifierExtension: [Extension]? = nil,
-    text: Narrative? = nil
+    meta: Meta? = nil
   ) {
     self.init()
+    self.text = text
     self.contained = contained
     self.fhirExtension = fhirExtension
+    self.modifierExtension = modifierExtension
     self.id = id
     self.implicitRules = implicitRules
     self.language = language
     self.meta = meta
-    self.modifierExtension = modifierExtension
-    self.text = text
   }
   
   // MARK: - Codable
   private enum CodingKeys: String, CodingKey {
-    case contained
-    case fhirExtension = "extension" // swiftlint:disable:this redundant_string_enum_value
-    case modifierExtension
     case text
+    case contained
+    case fhirExtension = "extension"
+    case modifierExtension
   }
   
   public required init(from decoder: Decoder) throws {
-    let codingContainer = try decoder.container(keyedBy: CodingKeys.self)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.contained = try [ResourceProxy](from: codingContainer, forKeyIfPresent: .contained)
-    self.fhirExtension = try [Extension](from: codingContainer, forKeyIfPresent: .fhirExtension)
-    self.modifierExtension = try [Extension](from: codingContainer, forKeyIfPresent: .modifierExtension)
-    self.text = try Narrative(from: codingContainer, forKeyIfPresent: .text)
+    self.text = try Narrative(from: codingKeyContainer, forKeyIfPresent: .text)
+    self.contained = try [ResourceProxy](from: codingKeyContainer, forKeyIfPresent: .contained)
+    self.fhirExtension = try [Extension](from: codingKeyContainer, forKeyIfPresent: .fhirExtension)
+    self.modifierExtension = try [Extension](from: codingKeyContainer, forKeyIfPresent: .modifierExtension)
     
     try super.init(from: decoder)
   }

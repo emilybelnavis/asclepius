@@ -55,7 +55,7 @@ open class CarePlanActivityDetail: BackboneElement {
   /// Instantiates an external protocol or definition
   public var instantiatesUri: [FHIRKitPrimitive<FHIRKitURI>]?
   
-  ///Detail type of activity
+  /// Detail type of activity
   public var code: CodableConcept?
   
   /// Why the activity should be done or why the activity was prohibited
@@ -173,7 +173,7 @@ open class CarePlanActivityDetail: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    var tempScheduledX: ScheduledX? = nil
+    var tempScheduledX: ScheduledX?
     if let scheduledPeriod = try Period(from: codingKeyContainer, forKeyIfPresent: .scheduledPeriod) {
       if tempScheduledX != nil {
         throw DecodingError.dataCorruptedError(forKey: .scheduledPeriod, in: codingKeyContainer, debugDescription: "More than one value provided for \"scheduled\"")
@@ -195,7 +195,7 @@ open class CarePlanActivityDetail: BackboneElement {
       tempScheduledX = .timing(scheduledTiming)
     }
     
-    var tempProductX: ProductX? = nil
+    var tempProductX: ProductX?
     if let productCodableConcept = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .productCodableConcept) {
       if tempProductX != nil {
         throw DecodingError.dataCorruptedError(forKey: .productCodableConcept, in: codingKeyContainer, debugDescription: "More than one value provided for \"product\"")

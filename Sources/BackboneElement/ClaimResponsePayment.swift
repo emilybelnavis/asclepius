@@ -100,7 +100,7 @@ open class ClaimResponsePayment: BackboneElement {
     try type.encode(on: &codingKeyContainer, forKey: .type)
     try adjustment?.encode(on: &codingKeyContainer, forKey: .adjustment)
     try adjustmentReason?.encode(on: &codingKeyContainer, forKey: .adjustmentReason)
-    try date?.encode(on: &codingKeyContainer, forKey: .date, auxiliaryKey: ._date)
+    try date?.encode(on: &codingKeyContainer, forKey: .date, auxKey: ._date)
     try amount.encode(on: &codingKeyContainer, forKey: .amount)
     try identifier?.encode(on: &codingKeyContainer, forKey: .identifier)
     

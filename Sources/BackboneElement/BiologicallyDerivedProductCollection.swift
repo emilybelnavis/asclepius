@@ -1,6 +1,6 @@
 //
-//  BiologicallyDerivedProductCollection.swift.swift
-//  FHIRKIT
+//  BiologicallyDerivedProductCollection.swift
+//  FHIRKit
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
 //
@@ -69,7 +69,7 @@ open class BiologicallyDerivedProductCollection: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    var tempCollectedX: CollectedX? = nil
+    var tempCollectedX: CollectedX?
     if let collectedDateTime = try FHIRKitPrimitive<FHIRKitDateTime>(from: codingKeyContainer, forKeyIfPresent: .collectedXDateTime, auxKey: ._collectedXDateTime) {
       if tempCollectedX != nil {
         throw DecodingError.dataCorruptedError(forKey: .collectedXDateTime, in: codingKeyContainer, debugDescription: "More than one value provided for \"value\"")

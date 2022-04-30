@@ -127,4 +127,3 @@ open class ClaimResponseInsurance: BackboneElement {
     hasher.combine(claimResponse)
   }
 }
-

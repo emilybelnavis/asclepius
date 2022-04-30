@@ -35,13 +35,13 @@ open class Money: Element {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     value: FHIRKitPrimitive<FHIRKitDecimal>? = nil,
     currency: FHIRKitPrimitive<FHIRKitString>? = nil
   ) {
     self.init()
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.id = id
     self.value = value
     self.currency = currency
@@ -54,22 +54,24 @@ open class Money: Element {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.value = try FHIRKitPrimitive<FHIRKitDecimal>(from: _container, forKeyIfPresent: .value, auxiliaryKey: ._value)
-    self.currency = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .currency, auxiliaryKey: ._currency)
+    self.value = try FHIRKitPrimitive<FHIRKitDecimal>(from: codingKeyContainer, forKeyIfPresent: .value, auxKey: ._value)
+    self.currency = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .currency, auxKey: ._currency)
+    
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    try value?.encode(on: &_container, forKey: .value, auxiliaryKey: ._value)
-    try currency?.encode(on: &_container, forKey: .currency, auxiliaryKey: ._currency)
+    try value?.encode(on: &codingKeyContainer, forKey: .value, auxKey: ._value)
+    try currency?.encode(on: &codingKeyContainer, forKey: .currency, auxKey: ._currency)
+    
     try super.encode(to: encoder)
   }
   
-  // MARK: - Equatable & Hashable
+  // MARK: - Equatable
   public override func isEqual(to _other: Any?) -> Bool {
     guard let _other = _other as? Money else {
       return false
@@ -83,6 +85,7 @@ open class Money: Element {
     && currency == _other.currency
   }
   
+  // MARK: - Hashable
   public override func hash(into hasher: inout Hasher) {
     super.hash(into: &hasher)
     hasher.combine(value)

@@ -41,7 +41,7 @@ open class Reference: Element {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     reference: FHIRKitPrimitive<FHIRKitString>? = nil,
     type: FHIRKitPrimitive<FHIRKitURI>? = nil,
@@ -49,8 +49,7 @@ open class Reference: Element {
     display: FHIRKitPrimitive<FHIRKitString>? = nil
   ) {
     self.init()
-    
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.id = id
     self.reference = reference
     self.type = type
@@ -67,27 +66,28 @@ open class Reference: Element {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.reference = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .reference, auxiliaryKey: ._reference)
-    self.type = try FHIRKitPrimitive<FHIRKitURI>(from: _container, forKeyIfPresent: .type, auxiliaryKey: ._type)
-    self.identifier = try Identifier(from: _container, forKeyIfPresent: .identifier)
-    self.display = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .display, auxiliaryKey: ._display)
+    self.reference = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .reference, auxKey: ._reference)
+    self.type = try FHIRKitPrimitive<FHIRKitURI>(from: codingKeyContainer, forKeyIfPresent: .type, auxKey: ._type)
+    self.identifier = try Identifier(from: codingKeyContainer, forKeyIfPresent: .identifier)
+    self.display = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .display, auxKey: ._display)
     
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    try reference?.encode(on: &_container, forKey: .reference, auxiliaryKey: ._reference)
-    try type?.encode(on: &_container, forKey: .type, auxiliaryKey: ._type)
-    try identifier?.encode(on: &_container, forKey: .identifier)
-    try display?.encode(on: &_container, forKey: .display, auxiliaryKey: ._display)
+    try reference?.encode(on: &codingKeyContainer, forKey: .reference, auxKey: ._reference)
+    try type?.encode(on: &codingKeyContainer, forKey: .type, auxKey: ._type)
+    try identifier?.encode(on: &codingKeyContainer, forKey: .identifier)
+    try display?.encode(on: &codingKeyContainer, forKey: .display, auxKey: ._display)
     
     try super.encode(to: encoder)
   }
   
+  // MARK: - Equatable
   public override func isEqual(to _other: Any?) -> Bool {
     guard let _other = _other as? Reference else {
       return false
@@ -103,6 +103,7 @@ open class Reference: Element {
     && display == _other.display
   }
   
+  // MARK: - Hashable
   public override func hash(into hasher: inout Hasher) {
     super.hash(into: &hasher)
     

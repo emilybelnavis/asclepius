@@ -93,7 +93,7 @@ open class ClaimCareTeam: BackboneElement {
     try provider.encode(on: &codingKeyContainer, forKey: .provider)
     try responsible?.encode(on: &codingKeyContainer, forKey: .responsible, auxKey: ._responsible)
     try role?.encode(on: &codingKeyContainer, forKey: .role)
-    try qualification?.encode(on: &codingKEyContainer, forKey: .qualification)
+    try qualification?.encode(on: &codingKeyContainer, forKey: .qualification)
     try super.encode(to: encoder)
   }
   

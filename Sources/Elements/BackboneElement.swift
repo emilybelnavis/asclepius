@@ -34,14 +34,14 @@ open class BackboneElement: Element {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    modifierExtension: [Extension]? = nil
+    fhirExtension: [Extension]? = nil,
+    modifierExtension: [Extension]? = nil,
+    id: FHIRKitPrimitive<FHIRKitString>? = nil
   ) {
     self.init()
-    self.`extension` = `extension`
-    self.id = id
+    self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
+    self.id = id
   }
   
   // MARK: - Codable
@@ -50,20 +50,20 @@ open class BackboneElement: Element {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.modifierExtension = try [Extension](from: _container, forKeyIfPresent: .modifierExtension)
+    self.modifierExtension = try [Extension](from: codingKeyContainer, forKeyIfPresent: .modifierExtension)
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    try modifierExtension?.encode(on: &_container, forKey: .modifierExtension)
+    try modifierExtension?.encode(on: &codingKeyContainer, forKey: .modifierExtension)
     try super.encode(to: encoder)
   }
   
-  // MARK: - Equatable & Hashable
+  // MARK: - Equatable
   public override func isEqual(to _other: Any?) -> Bool {
     guard let _other = _other as? BackboneElement else {
       return false
@@ -76,6 +76,7 @@ open class BackboneElement: Element {
     return modifierExtension == _other.modifierExtension
   }
   
+  // MARK: - Hashable
   public override func hash(into hasher: inout Hasher) {
     super .hash(into: &hasher)
     hasher.combine(modifierExtension)

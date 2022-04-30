@@ -104,7 +104,7 @@ open class ClaimSupportingInfo: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    var tempTimingX: TimingX? = nil
+    var tempTimingX: TimingX?
     if let timingDate = try FHIRKitPrimitive<FHIRKitDate>(from: codingKeyContainer, forKeyIfPresent: .timingDate, auxKey: ._timingDate) {
       if tempTimingX != nil {
         throw DecodingError.dataCorruptedError(forKey: .timingDate, in: codingKeyContainer, debugDescription: "More than one value provided for \"timing\"")
@@ -119,7 +119,7 @@ open class ClaimSupportingInfo: BackboneElement {
       tempTimingX = .period(timingPeriod)
     }
     
-    var tempValueX: ValueX? = nil
+    var tempValueX: ValueX?
     if let valueAttachment = try Attachment(from: codingKeyContainer, forKeyIfPresent: .valueAttachment) {
       if tempValueX != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueAttachment, in: codingKeyContainer, debugDescription: "More than one value provided for \"value\"")
