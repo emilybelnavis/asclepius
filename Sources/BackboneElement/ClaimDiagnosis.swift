@@ -26,7 +26,7 @@
  Pertinent diagnosis information - Information about diagnoses that are relevant to the claim item(s).
  */
 open class ClaimDiagnosis: BackboneElement {
-  public enum _Diagnosis: Hashable {
+  public enum DiagnosisX: Hashable {
     case codableConcept(CodableConcept)
     case reference(Reference)
   }
@@ -35,7 +35,7 @@ open class ClaimDiagnosis: BackboneElement {
   public var sequence: FHIRKitPrimitive<FHIRKitPositiveInteger>
   
   /// Nature of illness or problem
-  public var diagnosis: _Diagnosis
+  public var diagnosisX: DiagnosisX
   
   /// Timing or nature of the diagnosis
   public var type: [CodableConcept]?
@@ -46,24 +46,24 @@ open class ClaimDiagnosis: BackboneElement {
   /// Package billing code
   public var packageCode: CodableConcept?
   
-  public init(sequence: FHIRKitPrimitive<FHIRKitPositiveInteger>, diagnosis: _Diagnosis) {
+  public init(sequence: FHIRKitPrimitive<FHIRKitPositiveInteger>, diagnosisX: DiagnosisX) {
     self.sequence = sequence
-    self.diagnosis = diagnosis
+    self.diagnosisX = diagnosisX
     super.init()
   }
 
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     sequence: FHIRKitPrimitive<FHIRKitPositiveInteger>,
-    diagnosis: _Diagnosis,
+    diagnosisX: _DiagnosisX,
     type: [CodableConcept]? = nil,
     onAdmission: CodableConcept? = nil,
     packageCode: CodableConcept? = nil
   ) {
-    self.init(sequence: sequence, diagnosis: diagnosis)
-    self.`extension` = `extension`
+    self.init(sequence: sequence, diagnosisX: diagnosisX)
+    self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
     self.id = id
     self.type = type
@@ -82,46 +82,47 @@ open class ClaimDiagnosis: BackboneElement {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    var _diagnosis: _Diagnosis? = nil
-    if let diagnosisCodableConcept = try CodableConcept(from: _container, forKeyIfPresent: .diagnosisCodableConcept) {
-      if _diagnosis != nil {
+    var tempDiagnosisX: DiagnosisX? = nil
+    if let diagnosisCodableConcept = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .diagnosisCodableConcept) {
+      if tempDiagnosisX != nil {
         throw DecodingError.dataCorruptedError(forKey: .diagnosisCodableConcept, in: _container, debugDescription: "More than one value provided for \"diagnosis\"")
       }
-      _diagnosis = .codableConcept(diagnosisCodableConcept)
+      tempDiagnosisX = .codableConcept(diagnosisCodableConcept)
     }
     
     if let diagnosisReference = try Reference(from: _container, forKeyIfPresent: .diagnosisReference) {
-      if _diagnosis != nil {
-        throw DecodingError.dataCorruptedError(forKey: .diagnosisReference, in: _container, debugDescription: "More than one value provided for \"diagnosis\"")
+      if tempDiagnosisX != nil {
+        throw DecodingError.dataCorruptedError(forKey: .diagnosisReference, in: codingKeyContainer, debugDescription: "More than one value provided for \"diagnosis\"")
       }
-      _diagnosis = .reference(diagnosisReference)
+      tempDiagnosisX = .reference(diagnosisReference)
     }
     
-    self.sequence = try FHIRKitPrimitive<FHIRKitPositiveInteger>(from: _container, forKey: .sequence, auxiliaryKey: ._sequence)
-    self.diagnosis = _diagnosis!
-    self.type = try [CodableConcept](from: _container, forKeyIfPresent: .type)
-    self.onAdmission = try CodableConcept(from: _container, forKeyIfPresent: .onAdmission)
-    self.packageCode = try CodableConcept(from: _container, forKeyIfPresent: .packageCode)
+    self.sequence = try FHIRKitPrimitive<FHIRKitPositiveInteger>(from: codingKeyContainer, forKey: .sequence, auxKey: ._sequence)
+    self.diagnosisX = tempDiagnosisX!
+    self.type = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .type)
+    self.onAdmission = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .onAdmission)
+    self.packageCode = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .packageCode)
     
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    switch diagnosis {
+    switch diagnosisX {
     case .codableConcept(let _value):
-      try _value.encode(on: &_container, forKey: .diagnosisCodableConcept)
+      try _value.encode(on: &codingKeyContainer, forKey: .diagnosisCodableConcept)
     case .reference(let _value):
-      try _value.encode(on: &_container, forKey: .diagnosisReference)
+      try _value.encode(on: &codingKeyContainer, forKey: .diagnosisReference)
     }
     
-    try sequence.encode(on: &_container, forKey: .sequence, auxiliaryKey: ._sequence)
-    try type?.encode(on: &_container, forKey: .type)
-    try onAdmission?.encode(on: &_container, forKey: .onAdmission)
-    try packageCode?.encode(on: &_container, forKey: .packageCode)
+    try sequence.encode(on: &codingKeyContainer, forKey: .sequence, auxKey: ._sequence)
+    try type?.encode(on: &codingKeyContainer, forKey: .type)
+    try onAdmission?.encode(on: &codingKeyContainer, forKey: .onAdmission)
+    try packageCode?.encode(on: &codingKeyContainer, forKey: .packageCode)
+    
     try super.encode(to: encoder)
   }
   
@@ -136,7 +137,7 @@ open class ClaimDiagnosis: BackboneElement {
     }
     
     return sequence == _other.sequence
-    && diagnosis == _other.diagnosis
+    && diagnosisX == _other.diagnosisX
     && type == _other.type
     && onAdmission == _other.onAdmission
     && packageCode == _other.packageCode
@@ -146,7 +147,7 @@ open class ClaimDiagnosis: BackboneElement {
   public override func hash(into hasher: inout Hasher) {
     super.hash(into: &hasher)
     hasher.combine(sequence)
-    hasher.combine(diagnosis)
+    hasher.combine(diagnosisX)
     hasher.combine(type)
     hasher.combine(onAdmission)
     hasher.combine(packageCode)

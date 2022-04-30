@@ -27,12 +27,12 @@
  the condition, situation, prior and/or concurrent issues
  */
 open class ClaimSupportingInfo: BackboneElement {
-  public enum _Timing: Hashable {
+  public enum TimingX: Hashable {
     case date(FHIRKitPrimitive<FHIRKitDate>)
     case period(Period)
   }
   
-  public enum _Value: Hashable {
+  public enum ValueX: Hashable {
     case attachment(Attachment)
     case boolean(FHIRKitPrimitive<FHIRKitBool>)
     case quantity(Quantity)
@@ -50,38 +50,38 @@ open class ClaimSupportingInfo: BackboneElement {
   public var code: CodableConcept?
   
   /// When it occured
-  public var timing: _Timing?
+  public var timingX: TimingX?
   
   /// Data to be provided
-  public var value: _Value
+  public var valueX: ValueX
   
   /// Explaination for the information
   public var reason: CodableConcept?
   
-  public init(sequence: FHIRKitPrimitive<FHIRKitPositiveInteger>, category: CodableConcept, value: _Value) {
+  public init(sequence: FHIRKitPrimitive<FHIRKitPositiveInteger>, category: CodableConcept, valueX: ValueX) {
     self.sequence = sequence
     self.category = category
-    self.value = value
+    self.valueX = valueX
     super.init()
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     sequence: FHIRKitPrimitive<FHIRKitPositiveInteger>,
     category: CodableConcept,
     code: CodableConcept? = nil,
-    timing: _Timing?,
-    value: _Value,
+    timingX: TimingX,
+    valueX: ValueX,
     reason: CodableConcept? = nil
   ) {
-    self.init(sequence: sequence, category: category, value: value)
-    self.`extension` = `extension`
+    self.init(sequence: sequence, category: category, valueX: valueX)
+    self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
     self.id = id
     self.code = code
-    self.timing = timing
+    self.timingX = timingX
     self.reason = reason
   }
   
@@ -102,98 +102,98 @@ open class ClaimSupportingInfo: BackboneElement {
   
   // swiftlint:disable cyclomatic_complexity
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    var _timing: _Timing? = nil
-    if let timingDate = try FHIRKitPrimitive<FHIRKitDate>(from: _container, forKeyIfPresent: .timingDate, auxiliaryKey: ._timingDate) {
-      if _timing != nil {
-        throw DecodingError.dataCorruptedError(forKey: .timingDate, in: _container, debugDescription: "More than one value provided for \"timing\"")
+    var tempTimingX: TimingX? = nil
+    if let timingDate = try FHIRKitPrimitive<FHIRKitDate>(from: codingKeyContainer, forKeyIfPresent: .timingDate, auxKey: ._timingDate) {
+      if tempTimingX != nil {
+        throw DecodingError.dataCorruptedError(forKey: .timingDate, in: codingKeyContainer, debugDescription: "More than one value provided for \"timing\"")
       }
-      _timing = .date(timingDate)
+      tempTimingX = .date(timingDate)
     }
     
-    if let timingPeriod = try Period(from: _container, forKeyIfPresent: .timingPeriod) {
-      if _timing != nil {
-        throw DecodingError.dataCorruptedError(forKey: .timingPeriod, in: _container, debugDescription: "More than one value provided for \"timing\"")
+    if let timingPeriod = try Period(from: codingKeyContainer, forKeyIfPresent: .timingPeriod) {
+      if tempTimingX != nil {
+        throw DecodingError.dataCorruptedError(forKey: .timingPeriod, in: codingKeyContainer, debugDescription: "More than one value provided for \"timing\"")
       }
-      _timing = .period(timingPeriod)
+      tempTimingX = .period(timingPeriod)
     }
     
-    var _value: _Value? = nil
-    if let valueAttachment = try Attachment(from: _container, forKeyIfPresent: .valueAttachment) {
-      if _value != nil {
-        throw DecodingError.dataCorruptedError(forKey: .valueAttachment, in: _container, debugDescription: "More than one value provided for \"value\"")
+    var tempValueX: ValueX? = nil
+    if let valueAttachment = try Attachment(from: codingKeyContainer, forKeyIfPresent: .valueAttachment) {
+      if tempValueX != nil {
+        throw DecodingError.dataCorruptedError(forKey: .valueAttachment, in: codingKeyContainer, debugDescription: "More than one value provided for \"value\"")
       }
-      _value = .attachment(valueAttachment)
+      tempValueX = .attachment(valueAttachment)
     }
     
-    if let valueBoolean = try FHIRKitPrimitive<FHIRKitBool>(from: _container, forKeyIfPresent: .valueBoolean, auxiliaryKey: ._valueBoolean) {
-      if _value != nil {
-        throw DecodingError.dataCorruptedError(forKey: .valueBoolean, in: _container, debugDescription: "More than one value provided for \"value\"")
+    if let valueBoolean = try FHIRKitPrimitive<FHIRKitBool>(from: codingKeyContainer, forKeyIfPresent: .valueBoolean, auxKey: ._valueBoolean) {
+      if tempValueX != nil {
+        throw DecodingError.dataCorruptedError(forKey: .valueBoolean, in: codingKeyContainer, debugDescription: "More than one value provided for \"value\"")
       }
-      _value = .boolean(valueBoolean)
+      tempValueX = .boolean(valueBoolean)
     }
     
-    if let valueQuantity = try Quantity(from: _container, forKeyIfPresent: .valueQuantity) {
-      if _value != nil {
-        throw DecodingError.dataCorruptedError(forKey: .valueQuantity, in: _container, debugDescription: "More than one value provided for \"value\"")
+    if let valueQuantity = try Quantity(from: codingKeyContainer, forKeyIfPresent: .valueQuantity) {
+      if tempValueX != nil {
+        throw DecodingError.dataCorruptedError(forKey: .valueQuantity, in: codingKeyContainer, debugDescription: "More than one value provided for \"value\"")
       }
-      _value = .quantity(valueQuantity)
+      tempValueX = .quantity(valueQuantity)
     }
     
-    if let valueReference = try Reference(from: _container, forKeyIfPresent: .valueReference) {
-      if _value != nil {
-        throw DecodingError.dataCorruptedError(forKey: .valueReference, in: _container, debugDescription: "More than one value provided for \"value\"")
+    if let valueReference = try Reference(from: codingKeyContainer, forKeyIfPresent: .valueReference) {
+      if tempValueX != nil {
+        throw DecodingError.dataCorruptedError(forKey: .valueReference, in: codingKeyContainer, debugDescription: "More than one value provided for \"value\"")
       }
-      _value = .reference(valueReference)
+      tempValueX = .reference(valueReference)
     }
     
-    if let valueString = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .valueString, auxiliaryKey: ._valueString) {
-      if _value != nil {
-        throw DecodingError.dataCorruptedError(forKey: .valueString, in: _container, debugDescription: "More than one value provided for \"value\"")
+    if let valueString = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .valueString, auxKey: ._valueString) {
+      if tempValueX != nil {
+        throw DecodingError.dataCorruptedError(forKey: .valueString, in: codingKeyContainer, debugDescription: "More than one value provided for \"value\"")
       }
-      _value = .string(valueString)
+      tempValueX = .string(valueString)
     }
     
-    self.sequence = try FHIRKitPrimitive<FHIRKitPositiveInteger>(from: _container, forKey: .sequence, auxiliaryKey: ._sequence)
-    self.category = try CodableConcept(from: _container, forKey: .category)
-    self.code = try CodableConcept(from: _container, forKeyIfPresent: .code)
-    self.timing = _timing
-    self.value = _value!
-    self.reason = try CodableConcept(from: _container, forKeyIfPresent: .reason)
+    self.sequence = try FHIRKitPrimitive<FHIRKitPositiveInteger>(from: codingKeyContainer, forKey: .sequence, auxKey: ._sequence)
+    self.category = try CodableConcept(from: codingKeyContainer, forKey: .category)
+    self.code = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .code)
+    self.timingX = tempTimingX
+    self.valueX = tempValueX!
+    self.reason = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .reason)
     
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    if let _timing = timing {
-      switch _timing {
+    if let enumTiming = timingX {
+      switch enumTiming {
       case .date(let _value):
-        try _value.encode(on: &_container, forKey: .timingDate, auxiliaryKey: ._timingDate)
+        try _value.encode(on: &codingKeyContainer, forKey: .timingDate, auxKey: ._timingDate)
       case .period(let _value):
-        try _value.encode(on: &_container, forKey: .timingPeriod)
+        try _value.encode(on: &codingKeyContainer, forKey: .timingPeriod)
       }
     }
     
-    switch value {
+    switch valueX {
     case .attachment(let _value):
-      try _value.encode(on: &_container, forKey: .valueAttachment)
+      try _value.encode(on: &codingKeyContainer, forKey: .valueAttachment)
     case .boolean(let _value):
-      try _value.encode(on: &_container, forKey: .valueBoolean, auxiliaryKey: ._valueBoolean)
+      try _value.encode(on: &codingKeyContainer, forKey: .valueBoolean, auxKey: ._valueBoolean)
     case .quantity(let _value):
-      try _value.encode(on: &_container, forKey: .valueQuantity)
+      try _value.encode(on: &codingKeyContainer, forKey: .valueQuantity)
     case .reference(let _value):
-      try _value.encode(on: &_container, forKey: .valueReference)
+      try _value.encode(on: &codingKeyContainer, forKey: .valueReference)
     case .string(let _value):
-      try _value.encode(on: &_container, forKey: .valueString, auxiliaryKey: ._valueString)
+      try _value.encode(on: &codingKeyContainer, forKey: .valueString, auxKey: ._valueString)
     }
     
-    try sequence.encode(on: &_container, forKey: .sequence, auxiliaryKey: ._sequence)
-    try category.encode(on: &_container, forKey: .category)
-    try code?.encode(on: &_container, forKey: .code)
-    try reason?.encode(on: &_container, forKey: .reason)
+    try sequence.encode(on: &codingKeyContainer, forKey: .sequence, auxKey: ._sequence)
+    try category.encode(on: &codingKeyContainer, forKey: .category)
+    try code?.encode(on: &codingKeyContainer, forKey: .code)
+    try reason?.encode(on: &codingKeyContainer, forKey: .reason)
     
     try super.encode(to: encoder)
   }
@@ -211,8 +211,8 @@ open class ClaimSupportingInfo: BackboneElement {
     return sequence == _other.sequence
     && category == _other.category
     && code == _other.code
-    && timing == _other.timing
-    && value == _other.value
+    && timingX == _other.timingX
+    && valueX == _other.valueX
     && reason == _other.reason
   }
   
@@ -222,8 +222,8 @@ open class ClaimSupportingInfo: BackboneElement {
     hasher.combine(sequence)
     hasher.combine(category)
     hasher.combine(code)
-    hasher.combine(timing)
-    hasher.combine(value)
+    hasher.combine(timingX)
+    hasher.combine(valueX)
     hasher.combine(reason)
   }
 }

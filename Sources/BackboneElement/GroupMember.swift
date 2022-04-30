@@ -39,14 +39,14 @@ open class GroupMember: BackboneElement {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     entity: Reference,
     period: Period? = nil,
     inactive: FHIRKitPrimitive<FHIRKitBool>? = nil
   ) {
     self.init(entity: entity)
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.id = id
     self.period = period
     self.inactive = inactive
@@ -60,25 +60,25 @@ open class GroupMember: BackboneElement {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.entity = try Reference(from: _container, forKey: .entity)
-    self.period = try Period(from: _container, forKeyIfPresent: .period)
-    self.inactive = try FHIRKitPrimitive<FHIRKitBool>(from: _container, forKeyIfPresent: .inactive, auxiliaryKey: ._inactive)
+    self.entity = try Reference(from: codingKeyContainer, forKey: .entity)
+    self.period = try Period(from: codingKeyContainer, forKeyIfPresent: .period)
+    self.inactive = try FHIRKitPrimitive<FHIRKitBool>(from: codingKeyContainer, forKeyIfPresent: .inactive, auxKey: ._inactive)
     
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    try entity.encode(on: &_container, forKey: .entity)
-    try period?.encode(on: &_container, forKey: .period)
-    try inactive?.encode(on: &_container, forKey: .inactive, auxiliaryKey: ._inactive)
+    try entity.encode(on: &codingKeyContainer, forKey: .entity)
+    try period?.encode(on: &codingKeyContainer, forKey: .period)
+    try inactive?.encode(on: &codingKeyContainer, forKey: .inactive, auxKey: ._inactive)
     try super.encode(to: encoder)
   }
   
-  // MARK: - Equatable & Hashable
+  // MARK: - Equatable
   public override func isEqual(to _other: Any?) -> Bool {
     guard let _other = _other as? GroupMember else {
       return false
@@ -93,6 +93,7 @@ open class GroupMember: BackboneElement {
     && inactive == _other.inactive
   }
   
+  // MARK: - Hashable
   public override func hash(into hasher: inout Hasher) {
     super.hash(into: &hasher)
     hasher.combine(entity)

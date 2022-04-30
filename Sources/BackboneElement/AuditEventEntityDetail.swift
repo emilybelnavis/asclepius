@@ -24,7 +24,7 @@
 
 /// Tagged value pairs for conveying additional information about the entity
 open class AuditEventEntityDetail: BackboneElement {
-  public enum _Value: Hashable {
+  public enum ValueX: Hashable {
     case base64binary(FHIRKitPrimitive<FHIRKitBase64Binary>)
     case string(FHIRKitPrimitive<FHIRKitString>)
   }
@@ -33,22 +33,22 @@ open class AuditEventEntityDetail: BackboneElement {
   public var type: FHIRKitPrimitive<FHIRKitString>
   
   /// property value
-  public var value: _Value
+  public var value: ValueX
   
-  public init(type: FHIRKitPrimitive<FHIRKitString>, value: _Value) {
+  public init(type: FHIRKitPrimitive<FHIRKitString>, value: ValueX) {
     self.type = type
     self.value = value
     super.init()
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     type: FHIRKitPrimitive<FHIRKitString>,
-    value: _Value
+    value: ValueX
   ) {
     self.init(type: type, value: value)
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.id = id
   }
   
@@ -60,42 +60,42 @@ open class AuditEventEntityDetail: BackboneElement {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     // validate that the expanded property `value` has at least one of it's mandatory properties
-    guard _container.contains(CodingKeys.valueBase64Binary) || _container.contains(CodingKeys.valueString) else {
+    guard codingKeyContainer.contains(CodingKeys.valueBase64Binary) || codingKeyContainer.contains(CodingKeys.valueString) else {
       throw DecodingError.valueNotFound(Any.self, DecodingError.Context(codingPath: [CodingKeys.valueBase64Binary, CodingKeys.valueString],
                                                                         debugDescription: "Must have at least one value for \"value\", but has none"))
     }
     
-    var _value: _Value? = nil
-    if let valueBase64Binary = try FHIRKitPrimitive<FHIRKitBase64Binary>(from: _container, forKeyIfPresent: .valueBase64Binary, auxiliaryKey: ._valueBase64Binary) {
-      if _value != nil {
-        throw DecodingError.dataCorruptedError(forKey: .valueBase64Binary, in: _container, debugDescription: "More than one value provided for \"value\"")
+    var tempValue: ValueX? = nil
+    if let valueBase64Binary = try FHIRKitPrimitive<FHIRKitBase64Binary>(from: codingKeyContainer, forKeyIfPresent: .valueBase64Binary, auxKey: ._valueBase64Binary) {
+      if tempValue != nil {
+        throw DecodingError.dataCorruptedError(forKey: .valueBase64Binary, in: codingKeyContainer, debugDescription: "More than one value provided for \"value\"")
       }
-      _value = .base64binary(valueBase64Binary)
+      tempValue = .base64binary(valueBase64Binary)
     }
-    if let valueString = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .valueString, auxiliaryKey: ._valueString) {
-      if _value != nil {
-        throw DecodingError.dataCorruptedError(forKey: .valueString, in: _container, debugDescription: "More than one value provided for \"value\"")
+    if let valueString = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .valueString, auxKey: ._valueString) {
+      if tempValue != nil {
+        throw DecodingError.dataCorruptedError(forKey: .valueString, in: codingKeyContainer, debugDescription: "More than one value provided for \"value\"")
       }
-      _value = .string(valueString)
+      tempValue = .string(valueString)
     }
     
-    self.type = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKey: .type, auxiliaryKey: ._type)
-    self.value = _value!
+    self.type = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKey: .type, auxKey: ._type)
+    self.value = tempValue!
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
-    try type.encode(on: &_container, forKey: .type, auxiliaryKey: ._type)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
+    try type.encode(on: &codingKeyContainer, forKey: .type, auxKey: ._type)
     
     switch value {
     case .base64binary(let _value):
-      try _value.encode(on: &_container, forKey: .valueBase64Binary, auxiliaryKey: ._valueBase64Binary)
+      try _value.encode(on: &codingKeyContainer, forKey: .valueBase64Binary, auxKey: ._valueBase64Binary)
     case .string(let _value):
-      try _value.encode(on: &_container, forKey: .valueString, auxiliaryKey: .valueString)
+      try _value.encode(on: &codingKeyContainer, forKey: .valueString, auxKey: .valueString)
     }
     
     try super.encode(to: encoder)

@@ -39,14 +39,14 @@ open class ClaimResponseTotal: BackboneElement {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     category: CodableConcept,
     amount: Money
   ) {
     self.init(category: category, amount: amount)
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
     self.id = id
   }
@@ -58,19 +58,19 @@ open class ClaimResponseTotal: BackboneElement {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.category = try CodableConcept(from: _container, forKey: .category)
-    self.amount = try Money(from: _container, forKey: .amount)
+    self.category = try CodableConcept(from: codingKeyContainer, forKey: .category)
+    self.amount = try Money(from: codingKeyContainer, forKey: .amount)
     
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    try category.encode(on: &_container, forKey: .category)
-    try amount.encode(on: &_container, forKey: .amount)
+    try category.encode(on: &codingKeyContainer, forKey: .category)
+    try amount.encode(on: &codingKeyContainer, forKey: .amount)
     
     try super.encode(to: encoder)
   }

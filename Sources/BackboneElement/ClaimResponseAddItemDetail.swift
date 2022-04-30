@@ -60,7 +60,7 @@ open class ClaimResponseAddItemDetail: BackboneElement {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     productOrService: CodableConcept,
@@ -74,7 +74,7 @@ open class ClaimResponseAddItemDetail: BackboneElement {
     subDetail: [ClaimResponseItemDetailSubDetail]? = nil
   ) {
     self.init(productOrService: productOrService, adjudication: adjudication)
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
     self.id = id
     self.modifier = modifier
@@ -101,32 +101,34 @@ open class ClaimResponseAddItemDetail: BackboneElement {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
-    self.productOrService = try CodableConcept(from: _container, forKey: .productOrService)
-    self.modifier = try [CodableConcept](from: _container, forKeyIfPresent: .modifier)
-    self.quantity = try Quantity(from: _container, forKeyIfPresent: .quantity)
-    self.unitPrice = try Money(from: _container, forKeyIfPresent: .unitPrice)
-    self.factor = try FHIRKitPrimitive<FHIRKitDecimal>(from: _container, forKeyIfPresent: .factor, auxiliaryKey: ._factor)
-    self.net = try Money(from: _container, forKeyIfPresent: .net)
-    self.noteNumber = try [FHIRKitPrimitive<FHIRKitPositiveInteger>](from: _container, forKeyIfPresent: .noteNumber, auxiliaryKey: ._noteNumber)
-    self.adjudication = try [ClaimResponseItemAdjudication](from: _container, forKey: .adjudication)
-    self.subDetail = try [ClaimResponseItemDetailSubDetail](from: _container, forKeyIfPresent: .subDetail)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
+    
+    self.productOrService = try CodableConcept(from: codingKeyContainer, forKey: .productOrService)
+    self.modifier = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .modifier)
+    self.quantity = try Quantity(from: codingKeyContainer, forKeyIfPresent: .quantity)
+    self.unitPrice = try Money(from: codingKeyContainer, forKeyIfPresent: .unitPrice)
+    self.factor = try FHIRKitPrimitive<FHIRKitDecimal>(from: codingKeyContainer, forKeyIfPresent: .factor, auxKey: ._factor)
+    self.net = try Money(from: codingKeyContainer, forKeyIfPresent: .net)
+    self.noteNumber = try [FHIRKitPrimitive<FHIRKitPositiveInteger>](from: codingKeyContainer, forKeyIfPresent: .noteNumber, auxKey: ._noteNumber)
+    self.adjudication = try [ClaimResponseItemAdjudication](from: codingKeyContainer, forKey: .adjudication)
+    self.subDetail = try [ClaimResponseItemDetailSubDetail](from: codingKeyContainer, forKeyIfPresent: .subDetail)
     
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    try productOrService.encode(on: &_container, forKey: .productOrService)
-    try modifier?.encode(on: &_container, forKey: .modifier)
-    try quantity?.encode(on: &_container, forKey: .quantity)
-    try unitPrice?.encode(on: &_container, forKey: .unitPrice)
-    try factor?.encode(on: &_container, forKey: .factor, auxiliaryKey: ._factor)
-    try net?.encode(on: &_container, forKey: .net)
-    try noteNumber?.encode(on: &_container, forKey: .noteNumber, auxiliaryKey: ._noteNumber)
-    try adjudication.encode(on: &_container, forKey: .adjudication)
-    try subDetail?.encode(on: &_container, forKey: .subDetail)
+    try productOrService.encode(on: &codingKeyContainer, forKey: .productOrService)
+    try modifier?.encode(on: &codingKeyContainer, forKey: .modifier)
+    try quantity?.encode(on: &codingKeyContainer, forKey: .quantity)
+    try unitPrice?.encode(on: &codingKeyContainer, forKey: .unitPrice)
+    try factor?.encode(on: &codingKeyContainer, forKey: .factor, auxKey: ._factor)
+    try net?.encode(on: &codingKeyContainer, forKey: .net)
+    try noteNumber?.encode(on: &codingKeyContainer, forKey: .noteNumber, auxKey: ._noteNumber)
+    try adjudication.encode(on: &codingKeyContainer, forKey: .adjudication)
+    try subDetail?.encode(on: &codingKeyContainer, forKey: .subDetail)
+    
     try super.encode(to: encoder)
   }
   

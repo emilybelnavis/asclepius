@@ -44,16 +44,16 @@ open class ActivityDefinitionDynamicValue: BackboneElement {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
+    modifierExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     path: FHIRKitPrimitive<FHIRKitString>,
-    expression: Expression,
-    modifierExtension: [Extension]? = nil
+    expression: Expression
   ) {
     self.init(expression: expression, path: path)
-    self.`extension` = `extension`
-    self.id = id
+    self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
+    self.id = id
   }
   
   // MARK: - Codable
@@ -63,24 +63,24 @@ open class ActivityDefinitionDynamicValue: BackboneElement {
   }
 
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.path = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKey: .path, auxiliaryKey: ._path)
-    self.expression = try Expression(from: _container, forKey: .expression)
+    self.path = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKey: .path, auxKey: ._path)
+    self.expression = try Expression(from: codingKeyContainer, forKey: .expression)
     
     try super.init(from: decoder)
   }
 
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    try path.encode(on: &_container, forKey: .path, auxiliaryKey: ._path)
-    try expression.encode(on: &_container, forKey: .expression)
+    try path.encode(on: &codingKeyContainer, forKey: .path, auxKey: ._path)
+    try expression.encode(on: &codingKeyContainer, forKey: .expression)
     
     try super.encode(to: encoder)
   }
 
-  // MARK: - Equatable & Hashable
+  // MARK: - Equatable
   public override func isEqual(to _other: Any?) -> Bool {
     guard let _other = _other as? ActivityDefinitionDynamicValue else {
       return false
@@ -94,6 +94,7 @@ open class ActivityDefinitionDynamicValue: BackboneElement {
     && expression == _other.expression
   }
   
+  // MARK: - Hashable
   public override func hash(into hasher: inout Hasher) {
     super.hash(into: &hasher)
     hasher.combine(path)

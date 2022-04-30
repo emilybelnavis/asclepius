@@ -36,13 +36,13 @@ open class AdverseEventSuspectEntity: BackboneElement {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     instance: Reference,
     causality: [AdverseEventSuspectEntityCausality]? = nil
   ) {
     self.init(instance: instance)
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.id = id
     self.causality = causality
   }
@@ -54,19 +54,20 @@ open class AdverseEventSuspectEntity: BackboneElement {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.instance = try Reference(from: _container, forKey: .instance)
-    self.causality = try [AdverseEventSuspectEntityCausality](from: _container, forKeyIfPresent: .causality)
+    self.instance = try Reference(from: codingKeyContainer, forKey: .instance)
+    self.causality = try [AdverseEventSuspectEntityCausality](from: codingKeyContainer, forKeyIfPresent: .causality)
     
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    try instance.encode(on: &_container, forKey: .instance)
-    try causality?.encode(on: &_container, forKey: .causality)
+    try instance.encode(on: &codingKeyContainer, forKey: .instance)
+    try causality?.encode(on: &codingKeyContainer, forKey: .causality)
+    
     try super.encode(to: encoder)
   }
   

@@ -52,7 +52,7 @@ open class AllergyIntoleranceReaction: BackboneElement {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     substance: CodableConcept? = nil,
     manifestation: [CodableConcept],
@@ -63,7 +63,7 @@ open class AllergyIntoleranceReaction: BackboneElement {
     note: [Annotation]? = nil
   ) {
     self.init(manifestation: manifestation)
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.id = id
     self.substance = substance
     self.fhirDescription = fhirDescription
@@ -85,29 +85,29 @@ open class AllergyIntoleranceReaction: BackboneElement {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.substance = try CodableConcept(from: _container, forKeyIfPresent: .substance)
-    self.manifestation = try [CodableConcept](from: _container, forKey: .manifestation)
-    self.fhirDescription = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .fhirDescription, auxiliaryKey: ._fhirDescription)
-    self.onset = try FHIRKitPrimitive<FHIRKitDateTime>(from: _container, forKeyIfPresent: .onset, auxiliaryKey: ._onset)
-    self.severity = try FHIRKitPrimitive<AllergyIntoleranceSeverity>(from: _container, forKeyIfPresent: .severity, auxiliaryKey: ._severity)
-    self.exposureRoute = try CodableConcept(from: _container, forKeyIfPresent: .exposureRoute)
-    self.note = try [Annotation](from: _container, forKeyIfPresent: .note)
+    self.substance = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .substance)
+    self.manifestation = try [CodableConcept](from: codingKeyContainer, forKey: .manifestation)
+    self.fhirDescription = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .fhirDescription, auxKey: ._fhirDescription)
+    self.onset = try FHIRKitPrimitive<FHIRKitDateTime>(from: codingKeyContainer, forKeyIfPresent: .onset, auxKey: ._onset)
+    self.severity = try FHIRKitPrimitive<AllergyIntoleranceSeverity>(from: codingKeyContainer, forKeyIfPresent: .severity, auxKey: ._severity)
+    self.exposureRoute = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .exposureRoute)
+    self.note = try [Annotation](from: codingKeyContainer, forKeyIfPresent: .note)
     
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    try substance?.encode(on: &_container, forKey: .substance)
-    try manifestation.encode(on: &_container, forKey: .manifestation)
-    try fhirDescription?.encode(on: &_container, forKey: .fhirDescription, auxiliaryKey: ._fhirDescription)
-    try onset?.encode(on: &_container, forKey: .onset, auxiliaryKey: ._onset)
-    try severity?.encode(on: &_container, forKey: .severity, auxiliaryKey: ._severity)
-    try exposureRoute?.encode(on: &_container, forKey: .exposureRoute)
-    try note?.encode(on: &_container, forKey: .note)
+    try substance?.encode(on: &codingKeyContainer, forKey: .substance)
+    try manifestation.encode(on: &codingKeyContainer, forKey: .manifestation)
+    try fhirDescription?.encode(on: &codingKeyContainer, forKey: .fhirDescription, auxKey: ._fhirDescription)
+    try onset?.encode(on: &codingKeyContainer, forKey: .onset, auxKey: ._onset)
+    try severity?.encode(on: &codingKeyContainer, forKey: .severity, auxKey: ._severity)
+    try exposureRoute?.encode(on: &codingKeyContainer, forKey: .exposureRoute)
+    try note?.encode(on: &codingKeyContainer, forKey: .note)
     
     try super.encode(to: encoder)
   }

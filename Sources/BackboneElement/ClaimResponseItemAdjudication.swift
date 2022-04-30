@@ -45,7 +45,7 @@ open class ClaimResponseItemAdjudication: BackboneElement {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     category: CodableConcept,
@@ -54,7 +54,7 @@ open class ClaimResponseItemAdjudication: BackboneElement {
     value: FHIRKitPrimitive<FHIRKitDecimal>? = nil
   ) {
     self.init(category: category)
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
     self.id = id
     self.category = category
@@ -72,22 +72,23 @@ open class ClaimResponseItemAdjudication: BackboneElement {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.category = try CodableConcept(from: _container, forKey: .category)
-    self.reason = try CodableConcept(from: _container, forKeyIfPresent: .reason)
-    self.amount = try Money(from: _container, forKeyIfPresent: .amount)
-    self.value = try FHIRKitPrimitive<FHIRKitDecimal>(from: _container, forKeyIfPresent: .value, auxiliaryKey: ._value)
+    self.category = try CodableConcept(from: codingKeyContainer, forKey: .category)
+    self.reason = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .reason)
+    self.amount = try Money(from: codingKeyContainer, forKeyIfPresent: .amount)
+    self.value = try FHIRKitPrimitive<FHIRKitDecimal>(from: codingKeyContainer, forKeyIfPresent: .value, auxKey: ._value)
     
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
-    try category.encode(on: &_container, forKey: .category)
-    try reason?.encode(on: &_container, forKey: .reason)
-    try amount?.encode(on: &_container, forKey: .amount)
-    try value?.encode(on: &_container, forKey: .value, auxiliaryKey: ._value)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
+    try category.encode(on: &codingKeyContainer, forKey: .category)
+    try reason?.encode(on: &codingKeyContainer, forKey: .reason)
+    try amount?.encode(on: &codingKeyContainer, forKey: .amount)
+    try value?.encode(on: &codingKeyContainer, forKey: .value, auxKey: ._value)
+    
     try super.encode(to: encoder)
   }
   

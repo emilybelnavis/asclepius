@@ -43,7 +43,7 @@ open class CareTeamParticipant: BackboneElement {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     role: [CodableConcept]? = nil,
@@ -52,7 +52,7 @@ open class CareTeamParticipant: BackboneElement {
     period: Period?
   ) {
     self.init()
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
     self.id = id
     self.role = role
@@ -70,22 +70,24 @@ open class CareTeamParticipant: BackboneElement {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
-    self.role = try [CodableConcept](from: _container, forKeyIfPresent: .role)
-    self.member = try Reference(from: _container, forKeyIfPresent: .member)
-    self.onBehalfOf = try Reference(from: _container, forKeyIfPresent: .onBehalfOf)
-    self.period = try Period(from: _container, forKeyIfPresent: .period)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
+    
+    self.role = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .role)
+    self.member = try Reference(from: codingKeyContainer, forKeyIfPresent: .member)
+    self.onBehalfOf = try Reference(from: codingKeyContainer, forKeyIfPresent: .onBehalfOf)
+    self.period = try Period(from: codingKeyContainer, forKeyIfPresent: .period)
     
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    try role?.encode(on: &_container, forKey: .role)
-    try member?.encode(on: &_container, forKey: .member)
-    try onBehalfOf?.encode(on: &_container, forKey: .onBehalfOf)
-    try period?.encode(on: &_container, forKey: .period)
+    try role?.encode(on: &codingKeyContainer, forKey: .role)
+    try member?.encode(on: &codingKeyContainer, forKey: .member)
+    try onBehalfOf?.encode(on: &codingKeyContainer, forKey: .onBehalfOf)
+    try period?.encode(on: &codingKeyContainer, forKey: .period)
+    
     try super.encode(to: encoder)
   }
   

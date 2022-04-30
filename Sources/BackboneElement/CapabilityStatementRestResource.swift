@@ -86,7 +86,7 @@ open class CapabilityStatementRestResource: BackboneElement {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     type:FHIRKitPrimitive<ResourceType>,
@@ -108,7 +108,7 @@ open class CapabilityStatementRestResource: BackboneElement {
     operation: [CapabilityStatementRestResourceOperation]? = nil
   ) {
     self.init(type: type)
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
     self.id = id
     self.profile = profile
@@ -151,44 +151,45 @@ open class CapabilityStatementRestResource: BackboneElement {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
-    self.type = try FHIRKitPrimitive<ResourceType>(from: _container, forKey: .type, auxiliaryKey: ._type)
-    self.profile = try FHIRKitPrimitive<Canonical>(from: _container, forKeyIfPresent: .profile, auxiliaryKey: ._profile)
-    self.supportedProfile = try [FHIRKitPrimitive<Canonical>](from: _container, forKeyIfPresent: .supportedProfile, auxiliaryKey: ._supportedProfile)
-    self.documentation = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .documentation, auxiliaryKey: ._documentation)
-    self.interaction = try [CapabilityStatementRestResourceInteraction](from: _container, forKeyIfPresent: .interaction)
-    self.versioning = try FHIRKitPrimitive<ResourceVersionPolicy>(from: _container, forKeyIfPresent: .versioning, auxiliaryKey: ._versioning)
-    self.readHistory = try FHIRKitPrimitive<FHIRKitBool>(from: _container, forKeyIfPresent: .readHistory, auxiliaryKey: ._readHistory)
-    self.conditionalCreate = try FHIRKitPrimitive<FHIRKitBool>(from: _container, forKeyIfPresent: .conditionalCreate, auxiliaryKey: ._conditionalCreate)
-    self.conditionalRead = try FHIRKitPrimitive<ConditionalReadStatus>(from: _container, forKeyIfPresent: .conditionalRead, auxiliaryKey: ._conditionalRead)
-    self.conditionalUpdate = try FHIRKitPrimitive<FHIRKitBool>(from: _container, forKeyIfPresent: .conditionalUpdate, auxiliaryKey: ._conditionalUpdate)
-    self.conditionalDelete = try FHIRKitPrimitive<ConditionalDeleteStatus>(from: _container, forKeyIfPresent: .conditionalDelete, auxiliaryKey: ._conditionalDelete)
-    self.referencePolicy = try [FHIRKitPrimitive<ReferenceHandlingPolicy>](from: _container, forKeyIfPresent: .referencePolicy, auxiliaryKey: ._referencePolicy)
-    self.searchInclude = try [FHIRKitPrimitive<FHIRKitString>](from: _container, forKeyIfPresent: .searchInclude, auxiliaryKey: ._searchInclude)
-    self.searchRevInclude = try [FHIRKitPrimitive<FHIRKitString>](from: _container, forKeyIfPresent: .searchRevInclude, auxiliaryKey: ._searchRevInclude)
-    self.searchParam = try [CapabilityStatementRestResourceSearchParam](from: _container, forKeyIfPresent: .searchParam)
-    self.operation = try [CapabilityStatementRestResourceOperation](from: _container, forKeyIfPresent: .operation)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
+    
+    self.type = try FHIRKitPrimitive<ResourceType>(from: codingKeyContainer, forKey: .type, auxKey: ._type)
+    self.profile = try FHIRKitPrimitive<Canonical>(from: codingKeyContainer, forKeyIfPresent: .profile, auxKey: ._profile)
+    self.supportedProfile = try [FHIRKitPrimitive<Canonical>](from: codingKeyContainer, forKeyIfPresent: .supportedProfile, auxKey: ._supportedProfile)
+    self.documentation = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .documentation, auxKey: ._documentation)
+    self.interaction = try [CapabilityStatementRestResourceInteraction](from: codingKeyContainer, forKeyIfPresent: .interaction)
+    self.versioning = try FHIRKitPrimitive<ResourceVersionPolicy>(from: codingKeyContainer, forKeyIfPresent: .versioning, auxKey: ._versioning)
+    self.readHistory = try FHIRKitPrimitive<FHIRKitBool>(from: codingKeyContainer, forKeyIfPresent: .readHistory, auxKey: ._readHistory)
+    self.conditionalCreate = try FHIRKitPrimitive<FHIRKitBool>(from: codingKeyContainer, forKeyIfPresent: .conditionalCreate, auxKey: ._conditionalCreate)
+    self.conditionalRead = try FHIRKitPrimitive<ConditionalReadStatus>(from: codingKeyContainer, forKeyIfPresent: .conditionalRead, auxKey: ._conditionalRead)
+    self.conditionalUpdate = try FHIRKitPrimitive<FHIRKitBool>(from: codingKeyContainer, forKeyIfPresent: .conditionalUpdate, auxKey: ._conditionalUpdate)
+    self.conditionalDelete = try FHIRKitPrimitive<ConditionalDeleteStatus>(from: codingKeyContainer, forKeyIfPresent: .conditionalDelete, auxKey: ._conditionalDelete)
+    self.referencePolicy = try [FHIRKitPrimitive<ReferenceHandlingPolicy>](from: codingKeyContainer, forKeyIfPresent: .referencePolicy, auxKey: ._referencePolicy)
+    self.searchInclude = try [FHIRKitPrimitive<FHIRKitString>](from: codingKeyContainer, forKeyIfPresent: .searchInclude, auxKey: ._searchInclude)
+    self.searchRevInclude = try [FHIRKitPrimitive<FHIRKitString>](from: codingKeyContainer, forKeyIfPresent: .searchRevInclude, auxKey: ._searchRevInclude)
+    self.searchParam = try [CapabilityStatementRestResourceSearchParam](from: codingKeyContainer, forKeyIfPresent: .searchParam)
+    self.operation = try [CapabilityStatementRestResourceOperation](from: codingKeyContainer, forKeyIfPresent: .operation)
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
-    try type.encode(on: &_container, forKey: .type, auxiliaryKey: ._type)
-    try profile?.encode(on: &_container, forKey: .profile, auxiliaryKey: ._profile)
-    try supportedProfile?.encode(on: &_container, forKey: .profile, auxiliaryKey: ._profile)
-    try documentation?.encode(on: &_container, forKey: .documentation, auxiliaryKey: ._documentation)
-    try interaction?.encode(on: &_container, forKey: .interaction)
-    try versioning?.encode(on: &_container, forKey: .versioning, auxiliaryKey: ._versioning)
-    try readHistory?.encode(on: &_container, forKey: .readHistory, auxiliaryKey: ._readHistory)
-    try conditionalCreate?.encode(on: &_container, forKey: .conditionalCreate, auxiliaryKey: ._conditionalCreate)
-    try conditionalRead?.encode(on: &_container, forKey: .conditionalRead, auxiliaryKey: ._conditionalRead)
-    try conditionalUpdate?.encode(on: &_container, forKey: .conditionalUpdate, auxiliaryKey: ._conditionalUpdate)
-    try conditionalDelete?.encode(on: &_container, forKey: .conditionalDelete, auxiliaryKey: ._conditionalDelete)
-    try referencePolicy?.encode(on: &_container, forKey: .referencePolicy, auxiliaryKey: ._referencePolicy)
-    try searchInclude?.encode(on: &_container, forKey: .searchInclude, auxiliaryKey: ._searchInclude)
-    try searchRevInclude?.encode(on: &_container, forKey: .searchRevInclude, auxiliaryKey: ._searchRevInclude)
-    try searchParam?.encode(on: &_container, forKey: .searchParam)
-    try operation?.encode(on: &_container, forKey: .operation)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
+    try type.encode(on: &codingKeyContainer, forKey: .type, auxKey: ._type)
+    try profile?.encode(on: &codingKeyContainer, forKey: .profile, auxKey: ._profile)
+    try supportedProfile?.encode(on: &codingKeyContainer, forKey: .profile, auxKey: ._profile)
+    try documentation?.encode(on: &codingKeyContainer, forKey: .documentation, auxKey: ._documentation)
+    try interaction?.encode(on: &codingKeyContainer, forKey: .interaction)
+    try versioning?.encode(on: &codingKeyContainer, forKey: .versioning, auxKey: ._versioning)
+    try readHistory?.encode(on: &codingKeyContainer, forKey: .readHistory, auxKey: ._readHistory)
+    try conditionalCreate?.encode(on: &codingKeyContainer, forKey: .conditionalCreate, auxKey: ._conditionalCreate)
+    try conditionalRead?.encode(on: &codingKeyContainer, forKey: .conditionalRead, auxKey: ._conditionalRead)
+    try conditionalUpdate?.encode(on: &codingKeyContainer, forKey: .conditionalUpdate, auxKey: ._conditionalUpdate)
+    try conditionalDelete?.encode(on: &codingKeyContainer, forKey: .conditionalDelete, auxKey: ._conditionalDelete)
+    try referencePolicy?.encode(on: &codingKeyContainer, forKey: .referencePolicy, auxKey: ._referencePolicy)
+    try searchInclude?.encode(on: &codingKeyContainer, forKey: .searchInclude, auxKey: ._searchInclude)
+    try searchRevInclude?.encode(on: &codingKeyContainer, forKey: .searchRevInclude, auxKey: ._searchRevInclude)
+    try searchParam?.encode(on: &codingKeyContainer, forKey: .searchParam)
+    try operation?.encode(on: &codingKeyContainer, forKey: .operation)
     try super.encode(to: encoder)
   }
   

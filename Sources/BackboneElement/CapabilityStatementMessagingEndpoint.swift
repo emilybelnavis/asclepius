@@ -25,47 +25,51 @@
 /// An endpoint (network accessible address) to which messages and/or replies are to be sent
 open class CapabilityStatementMessagingEndpoint: BackboneElement {
   /// http | ftp | mllp | etc...
-  public var `protocol`: Coding
+  public var networkProtocol: Coding
   
   /// Network address or identifier of the endpoint
   public var address: FHIRKitPrimitive<FHIRKitURI>
   
-  public init(`protocol`: Coding, address: FHIRKitPrimitive<FHIRKitURI>) {
-    self.`protocol` = `protocol`
+  public init(networkProtocol: Coding, address: FHIRKitPrimitive<FHIRKitURI>) {
+    self.networkProtocol = networkProtocol
     self.address = address
     super.init()
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    `protocol`: Coding,
+    networkProtocol: Coding,
     address: FHIRKitPrimitive<FHIRKitURI>
   ) {
-    self.init(protocol: `protocol`, address: address)
-    self.`extension` = `extension`
+    self.init(networkProtocol: networkProtocol, address: address)
+    self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
     self.id = id
   }
   
   // MARK: - Codable
   private enum CodingKeys: String, CodingKey {
-    case `protocol`
+    case networkProtocol
     case address; case _address
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
-    self.`protocol` = try Coding(from: _container, forKey: .`protocol`)
-    self.address = try FHIRKitPrimitive<FHIRKitURI>(from: _container, forKey: .address, auxiliaryKey: ._address)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
+    
+    self.networkProtocol = try Coding(from: codingKeyContainer, forKey: .networkProtocol)
+    self.address = try FHIRKitPrimitive<FHIRKitURI>(from: codingKeyContainer, forKey: .address, auxKey: ._address)
+    
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
-    try `protocol`.encode(on: &_container, forKey: .`protocol`)
-    try address.encode(on: &_container, forKey: .address, auxiliaryKey: ._address)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
+    
+    try networkProtocol.encode(on: &codingKeyContainer, forKey: .networkProtocol)
+    try address.encode(on: &codingKeyContainer, forKey: .address, auxKey: ._address)
+    
     try super.encode(to: encoder)
   }
   
@@ -79,14 +83,14 @@ open class CapabilityStatementMessagingEndpoint: BackboneElement {
       return false
     }
     
-    return `protocol` == _other.`protocol`
+    return networkProtocol == _other.networkProtocol
     && address == _other.address
   }
   
   // MARK: - Hashable
   public override func hash(into hasher: inout Hasher) {
     super.hash(into: &hasher)
-    hasher.combine(`protocol`)
+    hasher.combine(networkProtocol)
     hasher.combine(address)
   }
 }

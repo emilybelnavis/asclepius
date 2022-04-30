@@ -26,7 +26,7 @@
  Details of the accident which resulted in injures that required the products and services listed in the claim
  */
 open class ClaimAccident: BackboneElement {
-  public enum _Location: Hashable {
+  public enum LocationX: Hashable {
     case address(Address)
     case reference(Reference)
   }
@@ -38,7 +38,7 @@ open class ClaimAccident: BackboneElement {
   public var type: CodableConcept?
   
   /// Where the accident occured
-  public var location: _Location?
+  public var locationX: LocationX?
   
   public init(date: FHIRKitPrimitive<FHIRKitDate>) {
     self.date = date
@@ -46,19 +46,19 @@ open class ClaimAccident: BackboneElement {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     date: FHIRKitPrimitive<FHIRKitDate>,
     type: CodableConcept? = nil,
-    location: _Location? = nil
+    locationX: LocationX? = nil
   ) {
     self.init(date: date)
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
     self.id = id
     self.type = type
-    self.location = location
+    self.locationX = locationX
   }
   
   // MARK: - Codable
@@ -70,42 +70,42 @@ open class ClaimAccident: BackboneElement {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    var _location: _Location? = nil
-    if let locationAddress = try Address(from: _container, forKeyIfPresent: .locationAddress) {
-      if _location != nil {
-        throw DecodingError.dataCorruptedError(forKey: .locationAddress, in: _container, debugDescription: "More than one value provided for \"location\"")
+    var tempLocationX: LocationX? = nil
+    if let locationAddress = try Address(from: codingKeyContainer, forKeyIfPresent: .locationAddress) {
+      if tempLocationX != nil {
+        throw DecodingError.dataCorruptedError(forKey: .locationAddress, in: codingKeyContainer, debugDescription: "More than one value provided for \"location\"")
       }
-      _location = .address(locationAddress)
+      tempLocationX = .address(locationAddress)
     }
     
-    if let locationReference = try Reference(from: _container, forKeyIfPresent: .locationReference) {
-      if _location != nil {
-        throw DecodingError.dataCorruptedError(forKey: .locationReference, in: _container, debugDescription: "More than one value provided for \"location\"")
+    if let locationReference = try Reference(from: codingKeyContainer, forKeyIfPresent: .locationReference) {
+      if tempLocationX != nil {
+        throw DecodingError.dataCorruptedError(forKey: .locationReference, in: codingKeyContainer, debugDescription: "More than one value provided for \"location\"")
       }
-      _location = .reference(locationReference)
+      tempLocationX = .reference(locationReference)
     }
     
-    self.date = try FHIRKitPrimitive<FHIRKitDate>(from: _container, forKey: .date, auxiliaryKey: ._date)
-    self.type = try CodableConcept(from: _container, forKeyIfPresent: .type)
-    self.location = _location
+    self.date = try FHIRKitPrimitive<FHIRKitDate>(from: codingKeyContainer, forKey: .date, auxKey: ._date)
+    self.type = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .type)
+    self.locationX = tempLocationX
     
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    try date.encode(on: &_container, forKey: .date, auxiliaryKey: ._date)
-    try type?.encode(on: &_container, forKey: .type)
+    try date.encode(on: &codingKeyContainer, forKey: .date, auxKey: ._date)
+    try type?.encode(on: &codingKeyContainer, forKey: .type)
     
-    if let _location = location {
-      switch _location {
+    if let enumLocationX = locationX {
+      switch enumLocationX {
       case .address(let _value):
-        try _value.encode(on: &_container, forKey: .locationAddress)
+        try _value.encode(on: &codingKeyContainer, forKey: .locationAddress)
       case .reference(let _value):
-        try _value.encode(on: &_container, forKey: .locationReference)
+        try _value.encode(on: &codingKeyContainer, forKey: .locationReference)
       }
     }
     
@@ -124,7 +124,7 @@ open class ClaimAccident: BackboneElement {
     
     return date == _other.date
     && type == _other.type
-    && location == _other.location
+    && locationX == _other.locationX
   }
   
   // MARK: - Hashable
@@ -132,6 +132,6 @@ open class ClaimAccident: BackboneElement {
     super.hash(into: &hasher)
     hasher.combine(date)
     hasher.combine(type)
-    hasher.combine(location)
+    hasher.combine(locationX)
   }
 }

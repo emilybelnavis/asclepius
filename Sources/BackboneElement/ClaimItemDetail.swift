@@ -69,7 +69,7 @@ open class ClaimItemDetail: BackboneElement {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     sequence: FHIRKitPrimitive<FHIRKitPositiveInteger>,
@@ -85,7 +85,7 @@ open class ClaimItemDetail: BackboneElement {
     subDetail: [ClaimItemDetailSubDetail]?
   ) {
     self.init(sequence: sequence)
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
     self.id = id
     self.revenue = revenue
@@ -116,36 +116,38 @@ open class ClaimItemDetail: BackboneElement {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
-    self.sequence = try FHIRKitPrimitive<FHIRKitPositiveInteger>(from: _container, forKey: .sequence, auxiliaryKey: ._sequence)
-    self.revenue = try CodableConcept(from: _container, forKeyIfPresent: .revenue)
-    self.category = try CodableConcept(from: _container, forKeyIfPresent: .category)
-    self.productOrService = try CodableConcept(from: _container, forKeyIfPresent: .productOrService)
-    self.modifier = try [CodableConcept](from: _container, forKeyIfPresent: .modifier)
-    self.programCode = try [CodableConcept](from: _container, forKeyIfPresent: .programCode)
-    self.quantity = try Quantity(from: _container, forKeyIfPresent: .quantity)
-    self.factor = try FHIRKitPrimitive<FHIRKitDecimal>(from: _container, forKeyIfPresent: .factor, auxiliaryKey: ._factor)
-    self.net = try Money(from: _container, forKeyIfPresent: .net)
-    self.udi = try [Reference](from: _container, forKeyIfPresent: .udi)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
+    
+    self.sequence = try FHIRKitPrimitive<FHIRKitPositiveInteger>(from: codingKeyContainer, forKey: .sequence, auxKey: ._sequence)
+    self.revenue = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .revenue)
+    self.category = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .category)
+    self.productOrService = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .productOrService)
+    self.modifier = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .modifier)
+    self.programCode = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .programCode)
+    self.quantity = try Quantity(from: codingKeyContainer, forKeyIfPresent: .quantity)
+    self.factor = try FHIRKitPrimitive<FHIRKitDecimal>(from: codingKeyContainer, forKeyIfPresent: .factor, auxKey: ._factor)
+    self.net = try Money(from: codingKeyContainer, forKeyIfPresent: .net)
+    self.udi = try [Reference](from: codingKeyContainer, forKeyIfPresent: .udi)
     self.subDetail = try [ClaimItemDetailSubDetail](from: _container, forKeyIfPresent: .subDetail)
     
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    try sequence.encode(on: &_container, forKey: .sequence, auxiliaryKey: ._sequence)
-    try revenue?.encode(on: &_container, forKey: .revenue)
-    try category?.encode(on: &_container, forKey: .category)
-    try productOrService?.encode(on: &_container, forKey: .productOrService)
-    try modifier?.encode(on: &_container, forKey: .modifier)
-    try programCode?.encode(on: &_container, forKey: .programCode)
-    try quantity?.encode(on: &_container, forKey: .quantity)
-    try factor?.encode(on: &_container, forKey: .factor, auxiliaryKey: ._factor)
-    try net?.encode(on: &_container, forKey: .net)
-    try udi?.encode(on: &_container, forKey: .udi)
-    try subDetail?.encode(on: &_container, forKey: .subDetail)
+    try sequence.encode(on: &codingKeyContainer, forKey: .sequence, auxKey: ._sequence)
+    try revenue?.encode(on: &codingKeyContainer, forKey: .revenue)
+    try category?.encode(on: &codingKeyContainer, forKey: .category)
+    try productOrService?.encode(on: &codingKeyContainer, forKey: .productOrService)
+    try modifier?.encode(on: &codingKeyContainer, forKey: .modifier)
+    try programCode?.encode(on: &codingKeyContainer, forKey: .programCode)
+    try quantity?.encode(on: &codingKeyContainer, forKey: .quantity)
+    try factor?.encode(on: &codingKeyContainer, forKey: .factor, auxKey: ._factor)
+    try net?.encode(on: &codingKeyContainer, forKey: .net)
+    try udi?.encode(on: &codingKeyContainer, forKey: .udi)
+    try subDetail?.encode(on: &codingKeyContainer, forKey: .subDetail)
+    
     try super.encode(to: encoder)
   }
   

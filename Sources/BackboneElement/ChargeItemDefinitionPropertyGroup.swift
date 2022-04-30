@@ -38,14 +38,14 @@ open class ChargeItemDefinitionPropertyGroup: BackboneElement {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     applicability: [ChargeItemDefinitionApplicability]? = nil,
     priceComponent: [ChargeItemDefinitionPropertyGroupPriceComponent]? = nil
   ) {
     self.init()
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
     self.id = id
     self.applicability = applicability
@@ -59,18 +59,20 @@ open class ChargeItemDefinitionPropertyGroup: BackboneElement {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
-    self.applicability = try [ChargeItemDefinitionApplicability](from: _container, forKeyIfPresent: .applicability)
-    self.priceComponent = try [ChargeItemDefinitionPropertyGroupPriceComponent](from: _container, forKeyIfPresent: .priceComponent)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
+    
+    self.applicability = try [ChargeItemDefinitionApplicability](from: codingKeyContainer, forKeyIfPresent: .applicability)
+    self.priceComponent = try [ChargeItemDefinitionPropertyGroupPriceComponent](from: codingKeyContainer, forKeyIfPresent: .priceComponent)
     
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    try applicability?.encode(on: &_container, forKey: .applicability)
-    try priceComponent?.encode(on: &_container, forKey: .priceComponent)
+    try applicability?.encode(on: &codingKeyContainer, forKey: .applicability)
+    try priceComponent?.encode(on: &codingKeyContainer, forKey: .priceComponent)
+    
     try super.encode(to: encoder)
   }
   

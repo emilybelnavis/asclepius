@@ -23,7 +23,7 @@
 //  SOFTWARE.
 
 open class BiologicallyDerivedProductCollection: BackboneElement {
-  public enum _Collected: Hashable {
+  public enum CollectedX: Hashable {
     case dateTime(FHIRKitPrimitive<FHIRKitDateTime>)
     case period(Period)
   }
@@ -35,73 +35,73 @@ open class BiologicallyDerivedProductCollection: BackboneElement {
   public var source: Reference?
   
   /// time the product was collected
-  public var collected: _Collected?
+  public var collectedX: CollectedX?
   
   override public init() {
     super.init()
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     collector: Reference? = nil,
     source: Reference? = nil,
-    collected: _Collected? = nil
+    collectedX: CollectedX? = nil
   ) {
     self.init()
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
     self.id = id
     self.collector = collector
     self.source = source
-    self.collected = collected
+    self.collectedX = collectedX
   }
   
   // MARK: - Codable
   private enum CodingKeys: String, CodingKey {
     case collector
     case source
-    case collectedDateTime; case _collectedDateTime
-    case collectedPeriod
+    case collectedXDateTime; case _collectedXDateTime
+    case collectedXPeriod
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    var _collected: _Collected? = nil
-    if let collectedDateTime = try FHIRKitPrimitive<FHIRKitDateTime>(from: _container, forKeyIfPresent: .collectedDateTime, auxiliaryKey: ._collectedDateTime) {
-      if _collected != nil {
-        throw DecodingError.dataCorruptedError(forKey: .collectedDateTime, in: _container, debugDescription: "More than one value provided for \"value\"")
+    var tempCollectedX: CollectedX? = nil
+    if let collectedDateTime = try FHIRKitPrimitive<FHIRKitDateTime>(from: codingKeyContainer, forKeyIfPresent: .collectedXDateTime, auxKey: ._collectedXDateTime) {
+      if tempCollectedX != nil {
+        throw DecodingError.dataCorruptedError(forKey: .collectedXDateTime, in: codingKeyContainer, debugDescription: "More than one value provided for \"value\"")
       }
-      _collected = .dateTime(collectedDateTime)
+      tempCollectedX = .dateTime(collectedDateTime)
     }
     
-    if let collectedPeriod = try Period(from: _container, forKeyIfPresent: .collectedPeriod) {
-      if _collected != nil {
-        throw DecodingError.dataCorruptedError(forKey: .collectedPeriod, in: _container, debugDescription: "More than one value provided for \"value\"")
+    if let collectedPeriod = try Period(from: codingKeyContainer, forKeyIfPresent: .collectedXPeriod) {
+      if tempCollectedX != nil {
+        throw DecodingError.dataCorruptedError(forKey: .collectedXPeriod, in: codingKeyContainer, debugDescription: "More than one value provided for \"value\"")
       }
-      _collected = .period(collectedPeriod)
+      tempCollectedX = .period(collectedPeriod)
     }
     
-    self.collector = try Reference(from: _container, forKeyIfPresent: .collector)
-    self.source = try Reference(from: _container, forKeyIfPresent: .source)
-    self.collected = _collected
+    self.collector = try Reference(from: codingKeyContainer, forKeyIfPresent: .collector)
+    self.source = try Reference(from: codingKeyContainer, forKeyIfPresent: .source)
+    self.collectedX = tempCollectedX
     
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
-    try collector?.encode(on: &_container, forKey: .collector)
-    try source?.encode(on: &_container, forKey: .source)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
+    try collector?.encode(on: &codingKeyContainer, forKey: .collector)
+    try source?.encode(on: &codingKeyContainer, forKey: .source)
     
-    if let _enum = collected {
-      switch _enum {
+    if let enumCollectedX = collectedX {
+      switch enumCollectedX {
       case .dateTime(let _value):
-        try _value.encode(on: &_container, forKey: .collectedDateTime, auxiliaryKey: ._collectedDateTime)
+        try _value.encode(on: &codingKeyContainer, forKey: .collectedXDateTime, auxKey: ._collectedXDateTime)
       case .period(let _value):
-        try _value.encode(on: &_container, forKey: .collectedPeriod)
+        try _value.encode(on: &codingKeyContainer, forKey: .collectedXPeriod)
       }
     }
     
@@ -120,7 +120,7 @@ open class BiologicallyDerivedProductCollection: BackboneElement {
     
     return collector == _other.collector
     && source == _other.source
-    && collected == _other.collected
+    && collectedX == _other.collectedX
   }
   
   // MARK: - Hashable
@@ -128,6 +128,6 @@ open class BiologicallyDerivedProductCollection: BackboneElement {
     super.hash(into: &hasher)
     hasher.combine(collector)
     hasher.combine(source)
-    hasher.combine(collected)
+    hasher.combine(collectedX)
   }
 }

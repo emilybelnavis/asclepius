@@ -42,7 +42,7 @@ open class CapabilityStatementImplementation: BackboneElement {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     fhirDescription: FHIRKitPrimitive<FHIRKitString>,
@@ -50,7 +50,7 @@ open class CapabilityStatementImplementation: BackboneElement {
     custodian: Reference?
   ) {
     self.init(fhirDescription: fhirDescription)
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
     self.id = id
     self.url = url
@@ -65,18 +65,22 @@ open class CapabilityStatementImplementation: BackboneElement {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
-    self.fhirDescription = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKey: .fhirDescription, auxiliaryKey: ._fhirDescription)
-    self.url = try FHIRKitPrimitive<FHIRKitURI>(from: _container, forKeyIfPresent: .url, auxiliaryKey: ._url)
-    self.custodian = try Reference(from: _container, forKeyIfPresent: .custodian)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
+    
+    self.fhirDescription = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKey: .fhirDescription, auxKey: ._fhirDescription)
+    self.url = try FHIRKitPrimitive<FHIRKitURI>(from: codingKeyContainer, forKeyIfPresent: .url, auxKey: ._url)
+    self.custodian = try Reference(from: codingKeyContainer, forKeyIfPresent: .custodian)
+    
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
-    try fhirDescription.encode(on: &_container, forKey: .fhirDescription, auxiliaryKey: ._fhirDescription)
-    try url?.encode(on: &_container, forKey: .url, auxiliaryKey: ._url)
-    try custodian?.encode(on: &_container, forKey: .custodian)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
+    
+    try fhirDescription.encode(on: &codingKeyContainer, forKey: .fhirDescription, auxKey: ._fhirDescription)
+    try url?.encode(on: &codingKeyContainer, forKey: .url, auxKey: ._url)
+    try custodian?.encode(on: &codingKeyContainer, forKey: .custodian)
+    
     try super.encode(to: encoder)
   }
   

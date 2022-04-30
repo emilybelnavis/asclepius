@@ -40,17 +40,17 @@ open class ActivityDefinitionParticipant: BackboneElement {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirDescription: [Extension]? = nil,
+    modifierExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     type: FHIRKitPrimitive<ActionParticipantType>,
-    role: CodableConcept? = nil,
-    modifierExtension: [Extension]? = nil
+    role: CodableConcept? = nil
   ) {
     self.init(type: type)
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
+    self.modifierExtension = modifierExtension
     self.id = id
     self.role = role
-    self.modifierExtension = modifierExtension
   }
   
   // MARK: - Codable
@@ -60,24 +60,24 @@ open class ActivityDefinitionParticipant: BackboneElement {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.type = try FHIRKitPrimitive<ActionParticipantType>(from: _container, forKey: .type, auxiliaryKey: ._type)
-    self.role = try CodableConcept(from: _container, forKeyIfPresent: .role)
+    self.type = try FHIRKitPrimitive<ActionParticipantType>(from: codingKeyContainer, forKey: .type, auxKey: ._type)
+    self.role = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .role)
     
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    try type.encode(on: &_container, forKey: .type, auxiliaryKey: ._type)
-    try role?.encode(on: &_container, forKey: .role)
+    try type.encode(on: &codingKeyContainer, forKey: .type, auxKey: ._type)
+    try role?.encode(on: &codingKeyContainer, forKey: .role)
     
     try super.encode(to: encoder)
   }
   
-  // MARK: - Equatable & Hashable
+  // MARK: - Equatable
   public override func isEqual(to _other: Any?) -> Bool {
     guard let _other = _other as? ActivityDefinitionParticipant else {
       return false
@@ -91,6 +91,7 @@ open class ActivityDefinitionParticipant: BackboneElement {
     && role == _other.role
   }
   
+  // MARK: - Hashable
   public override func hash(into hasher: inout Hasher) {
     super.hash(into: &hasher)
     hasher.combine(type)

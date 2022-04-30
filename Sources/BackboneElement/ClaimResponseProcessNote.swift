@@ -44,7 +44,7 @@ open class ClaimResponseProcessNote: BackboneElement {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     number: FHIRKitPrimitive<FHIRKitPositiveInteger>? = nil,
@@ -53,7 +53,7 @@ open class ClaimResponseProcessNote: BackboneElement {
     language: CodableConcept? = nil
   ) {
     self.init(text: text)
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
     self.id = id
     self.number = number
@@ -70,23 +70,23 @@ open class ClaimResponseProcessNote: BackboneElement {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.number = try FHIRKitPrimitive<FHIRKitPositiveInteger>(from: _container, forKey: .number, auxiliaryKey: ._number)
-    self.type = try FHIRKitPrimitive<NoteType>(from: _container, forKeyIfPresent: .type, auxiliaryKey: ._type)
-    self.text = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKey: .text, auxiliaryKey: ._text)
-    self.language = try CodableConcept(from: _container, forKey: .language)
+    self.number = try FHIRKitPrimitive<FHIRKitPositiveInteger>(from: codingKeyContainer, forKey: .number, auxKey: ._number)
+    self.type = try FHIRKitPrimitive<NoteType>(from: codingKeyContainer, forKeyIfPresent: .type, auxKey: ._type)
+    self.text = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKey: .text, auxKey: ._text)
+    self.language = try CodableConcept(from: codingKeyContainer, forKey: .language)
     
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    try number?.encode(on: &_container, forKey: .number, auxiliaryKey: ._number)
-    try type?.encode(on: &_container, forKey: .type, auxiliaryKey: ._type)
-    try text.encode(on: &_container, forKey: .text, auxiliaryKey: ._text)
-    try language?.encode(on: &_container, forKey: .language)
+    try number?.encode(on: &codingKeyContainer, forKey: .number, auxKey: ._number)
+    try type?.encode(on: &codingKeyContainer, forKey: .type, auxKey: ._type)
+    try text.encode(on: &codingKeyContainer, forKey: .text, auxKey: ._text)
+    try language?.encode(on: &codingKeyContainer, forKey: .language)
   }
   
   // MARK: - Equatable

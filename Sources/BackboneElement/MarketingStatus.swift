@@ -60,21 +60,21 @@ open class MarketingStatus: BackboneElement {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
+    modifierExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     country: CodableConcept,
     jurisdiction: CodableConcept?,
     status: CodableConcept,
     dateRange: Period,
-    restoreDate: FHIRKitPrimitive<FHIRKitDateTime>? = nil,
-    modifierExtension: [Extension]? = nil
+    restoreDate: FHIRKitPrimitive<FHIRKitDateTime>? = nil
   ) {
     self.init(country: country, status: status, dateRange: dateRange)
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
+    self.modifierExtension = modifierExtension
     self.id = id
     self.jurisdiction = jurisdiction
     self.restoreDate = restoreDate
-    self.modifierExtension = modifierExtension
   }
   
   // MARK: - Codable
@@ -87,29 +87,30 @@ open class MarketingStatus: BackboneElement {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.country = try CodableConcept(from: _container, forKey: .country)
-    self.jurisdiction = try CodableConcept(from: _container, forKeyIfPresent: .jurisdiction)
-    self.status = try CodableConcept(from: _container, forKey: .status)
-    self.dateRange = try Period(from: _container, forKey: .dateRange)
-    self.restoreDate = try FHIRKitPrimitive<FHIRKitDateTime>(from: _container, forKeyIfPresent: .restoreDate, auxiliaryKey: ._restoreDate)
+    self.country = try CodableConcept(from: codingKeyContainer, forKey: .country)
+    self.jurisdiction = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .jurisdiction)
+    self.status = try CodableConcept(from: codingKeyContainer, forKey: .status)
+    self.dateRange = try Period(from: codingKeyContainer, forKey: .dateRange)
+    self.restoreDate = try FHIRKitPrimitive<FHIRKitDateTime>(from: codingKeyContainer, forKeyIfPresent: .restoreDate, auxKey: ._restoreDate)
+    
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    try country.encode(on: &_container, forKey: .country)
-    try jurisdiction?.encode(on: &_container, forKey: .jurisdiction)
-    try status.encode(on: &_container, forKey: .status)
-    try dateRange.encode(on: &_container, forKey: .dateRange)
-    try restoreDate?.encode(on: &_container, forKey: .restoreDate, auxiliaryKey: ._restoreDate)
+    try country.encode(on: &codingKeyContainer, forKey: .country)
+    try jurisdiction?.encode(on: &codingKeyContainer, forKey: .jurisdiction)
+    try status.encode(on: &codingKeyContainer, forKey: .status)
+    try dateRange.encode(on: &codingKeyContainer, forKey: .dateRange)
+    try restoreDate?.encode(on: &codingKeyContainer, forKey: .restoreDate, auxKey: ._restoreDate)
     
     try super.encode(to: encoder)
   }
   
-  // MARK: - Equatable & Hashable
+  // MARK: - Equatable
   public override func isEqual(to _other: Any?) -> Bool {
     guard let _other = _other as? MarketingStatus else {
       return false
@@ -126,6 +127,7 @@ open class MarketingStatus: BackboneElement {
     && restoreDate == _other.restoreDate
   }
   
+  // MARK: - Hashable
   public override func hash(into hasher: inout Hasher) {
     super.hash(into: &hasher)
     hasher.combine(country)

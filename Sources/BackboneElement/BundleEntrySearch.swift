@@ -36,14 +36,14 @@ open class BundleEntrySearch: BackboneElement {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     mode: FHIRKitPrimitive<SearchEntryMode>? = nil,
     score: FHIRKitPrimitive<FHIRKitDecimal>? = nil
   ) {
     self.init()
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
     self.id = id
     self.mode = mode
@@ -57,17 +57,20 @@ open class BundleEntrySearch: BackboneElement {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.mode = try FHIRKitPrimitive<SearchEntryMode>(from: _container, forKeyIfPresent: .mode, auxiliaryKey: ._mode)
-    self.score = try FHIRKitPrimitive<FHIRKitDecimal>(from: _container, forKeyIfPresent: .score, auxiliaryKey: ._score)
+    self.mode = try FHIRKitPrimitive<SearchEntryMode>(from: codingKeyContainer, forKeyIfPresent: .mode, auxKey: ._mode)
+    self.score = try FHIRKitPrimitive<FHIRKitDecimal>(from: codingKeyContainer, forKeyIfPresent: .score, auxKey: ._score)
+    
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
-    try mode?.encode(on: &_container, forKey: .mode, auxiliaryKey: ._mode)
-    try score?.encode(on: &_container, forKey: .score, auxiliaryKey: ._score)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
+    
+    try mode?.encode(on: &codingKeyContainer, forKey: .mode, auxKey: ._mode)
+    try score?.encode(on: &codingKeyContainer, forKey: .score, auxKey: ._score)
+    
     try super.encode(to: encoder)
   }
   

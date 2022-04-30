@@ -40,7 +40,7 @@ open class ChargeItemDefinitionApplicability: BackboneElement {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     fhirDescription: FHIRKitPrimitive<FHIRKitString>? = nil,
@@ -48,7 +48,7 @@ open class ChargeItemDefinitionApplicability: BackboneElement {
     expression: FHIRKitPrimitive<FHIRKitString>? = nil
   ) {
     self.init()
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
     self.id = id
     self.fhirDescription = fhirDescription
@@ -64,20 +64,22 @@ open class ChargeItemDefinitionApplicability: BackboneElement {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
-    self.fhirDescription = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKey: .fhirDescription, auxiliaryKey: ._fhirDescription)
-    self.language = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .language, auxiliaryKey: ._language)
-    self.expression = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .expression, auxiliaryKey: ._expression)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
+    
+    self.fhirDescription = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKey: .fhirDescription, auxKey: ._fhirDescription)
+    self.language = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .language, auxKey: ._language)
+    self.expression = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .expression, auxKey: ._expression)
     
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    try fhirDescription?.encode(on: &_container, forKey: .fhirDescription, auxiliaryKey: ._fhirDescription)
-    try language?.encode(on: &_container, forKey: .language, auxiliaryKey: ._language)
-    try expression?.encode(on: &_container, forKey: .expression, auxiliaryKey: ._expression)
+    try fhirDescription?.encode(on: &codingKeyContainer, forKey: .fhirDescription, auxKey: ._fhirDescription)
+    try language?.encode(on: &codingKeyContainer, forKey: .language, auxKey: ._language)
+    try expression?.encode(on: &codingKeyContainer, forKey: .expression, auxKey: ._expression)
+    
     try super.encode(to: encoder)
   }
   

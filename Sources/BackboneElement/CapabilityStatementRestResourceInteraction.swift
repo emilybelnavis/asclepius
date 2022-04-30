@@ -39,14 +39,14 @@ open class CapabilityStatementRestResourceInteraction: BackboneElement {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     code: FHIRKitPrimitive<FHIRRestfulInteractions>,
     documetation: FHIRKitPrimitive<FHIRKitString>? = nil
   ) {
     self.init(code: code)
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
     self.id = id
     self.documentation = documentation
@@ -59,16 +59,20 @@ open class CapabilityStatementRestResourceInteraction: BackboneElement {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
-    self.code = try FHIRKitPrimitive<FHIRRestfulInteractions>(from: _container, forKey: .code, auxiliaryKey: ._code)
-    self.documentation = try FHIRKitPrimitive<FHIRKitString>(from: _container, forKeyIfPresent: .documentation, auxiliaryKey: ._documentation)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
+    
+    self.code = try FHIRKitPrimitive<FHIRRestfulInteractions>(from: codingKeyContainer, forKey: .code, auxKey: ._code)
+    self.documentation = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .documentation, auxKey: ._documentation)
+    
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
-    try code.encode(on: &_container, forKey: .code, auxiliaryKey: ._code)
-    try documentation?.encode(on: &_container, forKey: .documentation, auxiliaryKey: ._documentation)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
+    
+    try code.encode(on: &codingKeyContainer, forKey: .code, auxKey: ._code)
+    try documentation?.encode(on: &codingKeyContainer, forKey: .documentation, auxKey: ._documentation)
+    
     try super.encode(to: encoder)
   }
   

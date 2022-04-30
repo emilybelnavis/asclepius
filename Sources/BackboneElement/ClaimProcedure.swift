@@ -26,7 +26,7 @@
  Clinical procedures performed. Procedures performed on the patient relevant to the billing items with the claim
  */
 open class ClaimProcedure: BackboneElement {
-  public enum _Procedure: Hashable {
+  public enum ProcedureX: Hashable {
     case codableConcept(CodableConcept)
     case reference(Reference)
   }
@@ -41,30 +41,30 @@ open class ClaimProcedure: BackboneElement {
   public var date: FHIRKitPrimitive<FHIRKitDateTime>
   
   /// Specific clinical procedure
-  public var procedure: _Procedure
+  public var procedureX: ProcedureX
   
   /// Unique device initializer
   public var udi: [Reference]?
   
-  public init(sequence: FHIRKitPrimitive<FHIRKitPositiveInteger>, date: FHIRKitPrimitive<FHIRKitDateTime>, procedure: _Procedure) {
+  public init(sequence: FHIRKitPrimitive<FHIRKitPositiveInteger>, date: FHIRKitPrimitive<FHIRKitDateTime>, procedureX: ProcedureX) {
     self.sequence = sequence
     self.date = date
-    self.procedure = procedure
+    self.procedureX = procedureX
     super.init()
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     sequence: FHIRKitPrimitive<FHIRKitPositiveInteger>,
     type: [CodableConcept]? = nil,
     date: FHIRKitPrimitive<FHIRKitDateTime>,
-    procedure: _Procedure,
+    procedureX: ProcedureX,
     udi: [Reference]? = nil
   ) {
-    self.init(sequence: sequence, date: date, procedure: procedure)
-    self.`extension` = `extension`
+    self.init(sequence: sequence, date: date, procedureX: procedureX)
+    self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
     self.id = id
     self.type = type
@@ -82,46 +82,46 @@ open class ClaimProcedure: BackboneElement {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    var _procedure: _Procedure? = nil
-    if let procedureCodableConcept = try CodableConcept(from: _container, forKeyIfPresent: .procedureCodableConcept) {
-      if _procedure != nil {
-        throw DecodingError.dataCorruptedError(forKey: .procedureCodableConcept, in: _container, debugDescription: "More than one value provided for \"procedure\"")
+    var tempProcedureX: ProcedureX? = nil
+    if let procedureCodableConcept = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .procedureCodableConcept) {
+      if tempProcedureX != nil {
+        throw DecodingError.dataCorruptedError(forKey: .procedureCodableConcept, in: codingKeyContainer, debugDescription: "More than one value provided for \"procedure\"")
       }
-      _procedure = .codableConcept(procedureCodableConcept)
+      tempProcedureX = .codableConcept(procedureCodableConcept)
     }
     
-    if let procedureReference = try Reference(from: _container, forKeyIfPresent: .procedureReference) {
-      if _procedure != nil {
-        throw DecodingError.dataCorruptedError(forKey: .procedureReference, in: _container, debugDescription: "More than one value provided for \"procedure\"")
+    if let procedureReference = try Reference(from: codingKeyContainer, forKeyIfPresent: .procedureReference) {
+      if tempProcedureX != nil {
+        throw DecodingError.dataCorruptedError(forKey: .procedureReference, in: codingKeyContainer, debugDescription: "More than one value provided for \"procedure\"")
       }
-      _procedure = .reference(procedureReference)
+      tempProcedureX = .reference(procedureReference)
     }
     
-    self.sequence = try FHIRKitPrimitive<FHIRKitPositiveInteger>(from: _container, forKey: .sequence, auxiliaryKey: ._sequence)
-    self.type = try [CodableConcept](from: _container, forKeyIfPresent: .type)
-    self.date = try FHIRKitPrimitive<FHIRKitDateTime>(from: _container, forKey: .date, auxiliaryKey: ._date)
-    self.procedure = _procedure!
-    self.udi = try [Reference](from: _container, forKeyIfPresent: .udi)
+    self.sequence = try FHIRKitPrimitive<FHIRKitPositiveInteger>(from: codingKeyContainer, forKey: .sequence, auxKey: ._sequence)
+    self.type = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .type)
+    self.date = try FHIRKitPrimitive<FHIRKitDateTime>(from: cp, forKey: .date, auxKey: ._date)
+    self.procedureX = tempProcedureX!
+    self.udi = try [Reference](from: codingKeyContainer, forKeyIfPresent: .udi)
     
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    switch procedure {
+    switch procedureX {
     case .codableConcept(let _value):
-      try _value.encode(on: &_container, forKey: .procedureCodableConcept)
+      try _value.encode(on: &codingKeyContainer, forKey: .procedureCodableConcept)
     case .reference(let _value):
-      try _value.encode(on: &_container, forKey: .procedureReference)
+      try _value.encode(on: &codingKeyContainer, forKey: .procedureReference)
     }
     
-    try sequence.encode(on: &_container, forKey: .sequence, auxiliaryKey: ._sequence)
-    try type?.encode(on: &_container, forKey: .type)
-    try date.encode(on: &_container, forKey: .date, auxiliaryKey: ._date)
-    try udi?.encode(on: &_container, forKey: .udi)
+    try sequence.encode(on: &codingKeyContainer, forKey: .sequence, auxKey: ._sequence)
+    try type?.encode(on: &codingKeyContainer, forKey: .type)
+    try date.encode(on: &codingKeyContainer, forKey: .date, auxKey: ._date)
+    try udi?.encode(on: &codingKeyContainer, forKey: .udi)
   }
   
   // MARK: - Equatable
@@ -137,7 +137,7 @@ open class ClaimProcedure: BackboneElement {
     return sequence == _other.sequence
     && type == _other.type
     && date == _other.date
-    && procedure == _other.procedure
+    && procedureX == _other.procedureX
     && udi == _other.udi
   }
   
@@ -147,7 +147,7 @@ open class ClaimProcedure: BackboneElement {
     hasher.combine(sequence)
     hasher.combine(type)
     hasher.combine(date)
-    hasher.combine(procedure)
+    hasher.combine(procedureX)
     hasher.combine(udi)
   }
 }

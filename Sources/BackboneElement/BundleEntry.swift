@@ -48,7 +48,7 @@ open class BundleEntry: BackboneElement {
   }
   
   public convenience init(
-    `extension`: [Extension]? = nil,
+    fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     link: [BundleLink]? = nil,
@@ -59,7 +59,7 @@ open class BundleEntry: BackboneElement {
     response: BundleEntryResponse? = nil
   ) {
     self.init()
-    self.`extension` = `extension`
+    self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
     self.id = id
     self.link = link
@@ -81,24 +81,27 @@ open class BundleEntry: BackboneElement {
   }
   
   public required init(from decoder: Decoder) throws {
-    let _container = try decoder.container(keyedBy: CodingKeys.self)
-    self.link = try [BundleLink](from: _container, forKeyIfPresent: .link)
-    self.fullUrl = try FHIRKitPrimitive<FHIRKitURI>(from: _container, forKeyIfPresent: .fullUrl, auxiliaryKey: ._fullUrl)
-    self.resource = try ResourceProxy(from: _container, forKeyIfPresent: .resource)
-    self.search = try BundleEntrySearch(from: _container, forKeyIfPresent: .search)
-    self.request = try BundleEntryRequest(from: _container, forKeyIfPresent: .request)
-    self.response = try BundleEntryResponse(from: _container, forKeyIfPresent: .response)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
+    
+    self.link = try [BundleLink](from: codingKeyContainer, forKeyIfPresent: .link)
+    self.fullUrl = try FHIRKitPrimitive<FHIRKitURI>(from: codingKeyContainer, forKeyIfPresent: .fullUrl, auxKey: ._fullUrl)
+    self.resource = try ResourceProxy(from: codingKeyContainer, forKeyIfPresent: .resource)
+    self.search = try BundleEntrySearch(from: codingKeyContainer, forKeyIfPresent: .search)
+    self.request = try BundleEntryRequest(from: codingKeyContainer, forKeyIfPresent: .request)
+    self.response = try BundleEntryResponse(from: codingKeyContainer, forKeyIfPresent: .response)
     try super.init(from: decoder)
   }
   
   public override func encode(to encoder: Encoder) throws {
-    var _container = encoder.container(keyedBy: CodingKeys.self)
-    try link?.encode(on: &_container, forKey: .link)
-    try fullUrl?.encode(on: &_container, forKey: .fullUrl, auxiliaryKey: ._fullUrl)
-    try resource?.encode(on: &_container, forKey: .resource)
-    try search?.encode(on: &_container, forKey: .search)
-    try request?.encode(on: &_container, forKey: .request)
-    try response?.encode(on: &_container, forKey: .response)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
+    
+    try link?.encode(on: &codingKeyContainer, forKey: .link)
+    try fullUrl?.encode(on: &codingKeyContainer, forKey: .fullUrl, auxKey: ._fullUrl)
+    try resource?.encode(on: &codingKeyContainer, forKey: .resource)
+    try search?.encode(on: &codingKeyContainer, forKey: .search)
+    try request?.encode(on: &codingKeyContainer, forKey: .request)
+    try response?.encode(on: &codingKeyContainer, forKey: .response)
+    
     try super.encode(to: encoder)
   }
   
