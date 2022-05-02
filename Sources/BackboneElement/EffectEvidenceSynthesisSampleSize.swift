@@ -1,5 +1,5 @@
 //
-//  ConstraintSeverity.swift
+//  EffectEvidenceSynthesisSampleSize.swift
 //  FHIRKit
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,15 +23,16 @@
 //  SOFTWARE.
 
 /**
- SHALL applications comply with this constraint?
- 
- URL: http://hl7.org/fhir/constraint-severity
- ValueSet: http://hl7.org/fhir/ValueSet/constraint-severity
+ What sample size was involved? - A description of the size of the sample involved in the synthesis
  */
-public enum ConstraintSeverity: String, FHIRKitPrimitiveType {
-  /// If the constraint is violated, the resource is not conformant
-  case error
+open class EffectEvidenceSynthesisSampleSize: BackboneElement {
+  /// Description of sample size
+  public var fhirDescription: FHIRKitPrimitive<FHIRKitString>?
   
-  /// If the constraint is violated, the resource is conformant, but it is not necessarily following best practice
-  case warning
+  /// Number of studies conducted
+  public var numberOfStudies: FHIRKitPrimitive<FHIRKitInteger>?
+  
+  /// Number of participants studied
+  public var numberOfParticipants: FHIRKitPrimitive<FHIRKitInteger>?
+  
 }

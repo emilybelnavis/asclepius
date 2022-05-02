@@ -71,4 +71,62 @@ open class Dosage: BackboneElement {
   /// Upper limit on medication per lifetime of the patient
   public var maxDosePerLifetime: Quantity?
   
+  public override init() {
+    super.init()
+  }
+  
+  public convenience init(
+    fhirExtension: [Extension]? = nil,
+    modifierExtension: [Extension]? = nil,
+    id: FHIRKitPrimitive<FHIRKitString>? = nil,
+    sequence: FHIRKitPrimitive<FHIRKitInteger>? = nil,
+    text: FHIRKitPrimitive<FHIRKitString>? = nil,
+    additionalInstruction: [CodableConcept]? = nil,
+    patientInstruction: FHIRKitPrimitive<FHIRKitString>? = nil,
+    timing: Timing? = nil,
+    asNeeded: AsNeeded? = nil,
+    site: CodableConcept? = nil,
+    route: CodableConcept? = nil,
+    method: CodableConcept? = nil,
+    doseAndRate: [DosageDoseAndRate]? = nil,
+    maxDosePerPeriod: Ratio? = nil,
+    maxDosePerAdministration: Quantity? = nil,
+    maxDosePerLifetime: Quantity? = nil
+  ) {
+    self.init()
+    self.fhirExtension = fhirExtension
+    self.modifierExtension = modifierExtension
+    self.id = id
+    self.sequence = sequence
+    self.text = text
+    self.additionalInstruction = additionalInstruction
+    self.patientInstruction = patientInstruction
+    self.timing = timing
+    self.asNeeded = asNeeded
+    self.site = site
+    self.route = route
+    self.method = method
+    self.doseAndRate = doseAndRate
+    self.maxDosePerPeriod = maxDosePerPeriod
+    self.maxDosePerAdministration = maxDosePerAdministration
+    self.maxDosePerLifetime = maxDosePerLifetime
+  }
+  
+  // MARK: - Codable
+  private enum CodingKeys: String, CodingKey {
+    case sequence; case _sequence
+    case text; case _text
+    case additionalInstruction
+    case patientInstruction; case _patientInstruction
+    case timing
+    case asNeededBoolean; case _asNeededBoolean
+    case asNeededCodableConcept
+    case site
+    case route
+    case method
+    case doseAndRate
+    case maxDosePerPeriod
+    case maxDosePerAdministration
+    case maxDosePerLifetime
+  }
 }

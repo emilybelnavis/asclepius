@@ -1,5 +1,5 @@
 //
-//  ConstraintSeverity.swift
+//  EffectEvidenceSynthesisResultsByExposure.swift
 //  FHIRKit
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,15 +23,19 @@
 //  SOFTWARE.
 
 /**
- SHALL applications comply with this constraint?
- 
- URL: http://hl7.org/fhir/constraint-severity
- ValueSet: http://hl7.org/fhir/ValueSet/constraint-severity
+ What was the result per exposure?; A description of the results for each exposure considered in the effect
+ estimate
  */
-public enum ConstraintSeverity: String, FHIRKitPrimitiveType {
-  /// If the constraint is violated, the resource is not conformant
-  case error
+open class EffectEvidenceSynthesisResultsByExposure: BackboneElement {
+  /// Description of results by exposure
+  public var fhirDescription: FHIRKitPrimitive<FHIRKitString>
   
-  /// If the constraint is violated, the resource is conformant, but it is not necessarily following best practice
-  case warning
+  /// Whether these results are for the exposure state or alternative exposure state
+  public var exposureState: FHIRKitPrimitive<ExposureState>?
+  
+  /// Variant exposure states
+  public var variantState: CodableConcept?
+  
+  /// Risk evidence synthesis
+  public var riskEvidenceSynthesis: Reference
 }

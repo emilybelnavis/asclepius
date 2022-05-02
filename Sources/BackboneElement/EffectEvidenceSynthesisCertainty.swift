@@ -1,5 +1,5 @@
 //
-//  ConstraintSeverity.swift
+//  EffectEvidenceSynthesisCertainty.swift
 //  FHIRKit
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,15 +23,15 @@
 //  SOFTWARE.
 
 /**
- SHALL applications comply with this constraint?
- 
- URL: http://hl7.org/fhir/constraint-severity
- ValueSet: http://hl7.org/fhir/ValueSet/constraint-severity
+ How certain is the effect; A description of the certainty of the the effect estimate.
  */
-public enum ConstraintSeverity: String, FHIRKitPrimitiveType {
-  /// If the constraint is violated, the resource is not conformant
-  case error
+open class EffectEvidenceSynthesisCertainty: BackboneElement {
+  /// Certainty rating
+  public var rating: [CodableConcept]?
   
-  /// If the constraint is violated, the resource is conformant, but it is not necessarily following best practice
-  case warning
+  /// Used for footnotes/explanatory notes
+  public var note: [Annotation]?
+  
+  /// A component that contributes to the overal certainty
+  public var certaintySubcomponent: [EffectEvidenceSynthesisCertaintyCertaintySubcomponent]?
 }

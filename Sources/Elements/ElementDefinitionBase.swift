@@ -1,5 +1,5 @@
 //
-//  ConstraintSeverity.swift
+//  ElementDefinitionBase.swift
 //  FHIRKit
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,15 +23,19 @@
 //  SOFTWARE.
 
 /**
- SHALL applications comply with this constraint?
- 
- URL: http://hl7.org/fhir/constraint-severity
- ValueSet: http://hl7.org/fhir/ValueSet/constraint-severity
+ Base definition information for tools; Information about the base definition of the element, provided to make it
+ unnecessary for tools to trace the deviation of the element through the derived and related profiles. When the
+ element definition is not the original definitoin of an element (e.g. either in a constraint on another type, or for
+ elements from a super type in a snapshot) then the information provided in the element definition may be
+ different to the vase definition. On the original definition of the element, it will be the same
  */
-public enum ConstraintSeverity: String, FHIRKitPrimitiveType {
-  /// If the constraint is violated, the resource is not conformant
-  case error
+open class ElementDefinitionBase: Element {
+  /// Path that identifies the base element
+  public var path: FHIRKitPrimitive<FHIRKitString>
   
-  /// If the constraint is violated, the resource is conformant, but it is not necessarily following best practice
-  case warning
+  /// Min cardinality of the base element
+  public var min: FHIRKitPrimitive<FHIRKitUnsignedInteger>
+  
+  /// Max cardinality of the base element
+  public var max: FHIRKitPrimitive<FHIRKitString>
 }

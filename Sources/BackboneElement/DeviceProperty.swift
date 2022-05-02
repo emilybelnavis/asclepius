@@ -1,5 +1,5 @@
 //
-//  ConstraintSeverity.swift
+//  DeviceProperty.swift
 //  FHIRKit
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,15 +23,16 @@
 //  SOFTWARE.
 
 /**
- SHALL applications comply with this constraint?
- 
- URL: http://hl7.org/fhir/constraint-severity
- ValueSet: http://hl7.org/fhir/ValueSet/constraint-severity
+ The actual configuration settings of a device as it actually operates (e.g. regulation status, time properties)
  */
-public enum ConstraintSeverity: String, FHIRKitPrimitiveType {
-  /// If the constraint is violated, the resource is not conformant
-  case error
+open class DeviceProperty: BackboneElement {
+  /// Code that specifies the property `DeviceDefinitionPropertyCode` (Extensible)
+  public var type: CodableConcept
   
-  /// If the constraint is violated, the resource is conformant, but it is not necessarily following best practice
-  case warning
+  /// Property value as a quantity
+  public var valueQuantity: [Quantity]?
+  
+  /// Property value as a code (e.g. NTP4 (synced to NTP))
+  public var valueCode: [CodableConcept]?
+  
 }

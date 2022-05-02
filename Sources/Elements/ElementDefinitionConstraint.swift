@@ -1,5 +1,5 @@
 //
-//  ConstraintSeverity.swift
+//  ElementDefinitionConstraint.swif
 //  FHIRKit
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,15 +23,29 @@
 //  SOFTWARE.
 
 /**
- SHALL applications comply with this constraint?
- 
- URL: http://hl7.org/fhir/constraint-severity
- ValueSet: http://hl7.org/fhir/ValueSet/constraint-severity
+ Condition that must evaluate to `true` - Formal constraints such as co-occurence and other constraints
+ that can be computationally evaluated within the context of the instance.
  */
-public enum ConstraintSeverity: String, FHIRKitPrimitiveType {
-  /// If the constraint is violated, the resource is not conformant
-  case error
+open class ElementDefinitionContstraint: Element {
+  /// Target of `condition` reference
+  public var key:FHIRKitPrimitive<FHIRKitString>
   
-  /// If the constraint is violated, the resource is conformant, but it is not necessarily following best practice
-  case warning
+  /// Why this constraint is necessary or appropriate
+  public var requirements: FHIRKitPrimitive<FHIRKitString>?
+  
+  /// Identifies the impact constraint violation has on the conformance of the instance.
+  public var severity: FHIRKitPrimitive<ConstraintSeverity>
+  
+  /// Human readable description of the constraint
+  public var human: FHIRKitPrimitive<FHIRKitString>
+  
+  /// FHIRPath expression of the constraint
+  public var expression: FHIRKitPrimitive<FHIRKitString>?
+  
+  /// XPath expression of the constraint
+  public var xpath: FHIRKitPrimitive<FHIRKitString>?
+  
+  /// Reference to the original source of the constraint
+  public var source: FHIRKitPrimitive<Canonical>?
+  
 }
