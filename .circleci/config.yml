@@ -13,10 +13,10 @@ jobs:
       - checkout
       - run:
           name: Run linter
-          command: swiftlint --reporter html> swiftlint.html
+          command: swiftlint --reporter html > swiftlint.html
       - store_artifacts:
           path: ~/project/swiftlint.html
-  build:
+  build-all:
     macos:
       xcode: 13.3.0
     steps:
@@ -37,10 +37,120 @@ jobs:
       - coverage-reporter/send_report:
           coverage-reports: "/Users/distiller/project/lcov.info"
           project-token: $CODACY_PROJECT_TOKEN
-
+  build-r4:
+    macos:
+      xcode: 13.3.0
+    steps:
+      - checkout
+      - run:
+          name: Build and Test FHIRKitCore + R4 Sequence
+          command: swift test --test-product R4 --enable-code-coverage --xunit-output ./results.xml --parallel
+      - run:
+          name: Prepare coverage results
+          command: |
+            xcrun llvm-cov export \
+            -format=lcov \
+            -instr-profile=.build/x86_64-apple-macosx/debug/codecov/default.profdata \
+            .build/x86_64-apple-macosx/debug/FHIRKitPackageTests.xctests/Contents/MacOS/FHIRKitPackageTests \
+            > /Users/distiller/project/lcov.info
+      - store_test_results:
+          path: /Users/distiller/project/lcov.info
+      - store_test_results:
+          path: /Users/distiller/project/results.xml
+      - coverage-reporter/send_report:
+          coverage-reports: "/Users/distiller/project/lcov.info"
+          project-token: $CODACY_PROJECT_TOKEN
+  build-r5:
+    macos:
+      xcode: 13.3.0
+    steps:
+      - checkout
+      - run:
+          name: Build and Test FHIRKitCore + R5 Sequence
+          command: swift test --test-product R5 --enable-code-coverage --xunit-output ./results.xml --parallel
+      - run:
+          name: Prepare coverage results
+          command: |
+            xcrun llvm-cov export \
+            -format=lcov \
+            -instr-profile=.build/x86_64-apple-macosx/debug/codecov/default.profdata \
+            .build/x86_64-apple-macosx/debug/FHIRKitPackageTests.xctests/Contents/MacOS/FHIRKitPackageTests \
+            > /Users/distiller/project/lcov.info
+      - store_test_results:
+          path: /Users/distiller/project/lcov.info
+      - store_test_results:
+          path: /Users/distiller/project/results.xml
+      - coverage-reporter/send_report:
+          coverage-reports: "/Users/distiller/project/lcov.info"
+          project-token: $CODACY_PROJECT_TOKEN
+  build-stu3:
+    macos:
+      xcode: 13.3.0
+    steps:
+      - checkout
+      - run:
+          name: Build and Test FHIRKitCore + STU3 Sequence
+          command: swift test --test-product STU3 --enable-code-coverage --xunit-output ./results.xml --parallel
+      - run:
+          name: Prepare coverage results
+          command: |
+            xcrun llvm-cov export \
+            -format=lcov \
+            -instr-profile=.build/x86_64-apple-macosx/debug/codecov/default.profdata \
+            .build/x86_64-apple-macosx/debug/FHIRKitPackageTests.xctests/Contents/MacOS/FHIRKitPackageTests \
+            > /Users/distiller/project/lcov.info
+      - store_test_results:
+          path: /Users/distiller/project/lcov.info
+      - store_test_results:
+          path: /Users/distiller/project/results.xml
+      - coverage-reporter/send_report:
+          coverage-reports: "/Users/distiller/project/lcov.info"
+          project-token: $CODACY_PROJECT_TOKEN
+  build-dstu2:
+    macos:
+      xcode: 13.3.0
+    steps:
+      - checkout
+      - run:
+          name: Build and Test FHIRKitCore + DSTU2 Sequence
+          command: swift test --test-product DSTU2 --enable-code-coverage --xunit-output ./results.xml --parallel
+      - run:
+          name: Prepare coverage results
+          command: |
+            xcrun llvm-cov export \
+            -format=lcov \
+            -instr-profile=.build/x86_64-apple-macosx/debug/codecov/default.profdata \
+            .build/x86_64-apple-macosx/debug/FHIRKitPackageTests.xctests/Contents/MacOS/FHIRKitPackageTests \
+            > /Users/distiller/project/lcov.info
+      - store_test_results:
+          path: /Users/distiller/project/lcov.info
+      - store_test_results:
+          path: /Users/distiller/project/results.xml
+      - coverage-reporter/send_report:
+          coverage-reports: "/Users/distiller/project/lcov.info"
+          project-token: $CODACY_PROJECT_TOKEN
 workflows:
   version: 2
-  lint-and-build:
+  lint-only:
     jobs:
       - lint
-      - build
+  lint-and-build-all:
+    jobs:
+      - lint
+      - build-all
+  lint-and-build-r4:
+    jobs:
+      - lint
+      - build-r4
+  lint-and-build-r5:
+    jobs:
+      - lint
+      - build-r5
+  lint-and-build-dstu2:
+    jobs:
+      - lint
+      - build-dstu2
+  lint-and-build-stu3:
+    jobs:
+      - lint
+      - build-stu3

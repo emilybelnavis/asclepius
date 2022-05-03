@@ -5,4 +5,62 @@
 [![Maintainability](https://img.shields.io/codeclimate/maintainability-percentage/samanthaerachelb/FHIRKit?logo=codeclimate&style=flat-square)](https://codeclimate.com/github/samanthaerachelb/FHIRKit)
 ![License](https://img.shields.io/github/license/samanthaerachelb/FHIRKit?style=flat-square)
 
-A Fast Healthcare Interoperability Resources (FHIR) Library written in Swift. Compatible with FHIR R4
+FHIRKit is an implementation of the HL7 Fast Healthcare
+Interoperability Resources ([HL7 FHIR][hl7_fhir]) standard for healthcare interoperability in Swift.
+
+FHIRKit is currently being written to support the latest *stable* version of the
+FHIR Specification (v4.0.1: R4 - Mixed [Normative][balloting] and [STU][balloting])
+
+## Features
+
+- Date/Time parsing, validation, and bi-directional `NSDate` conversion
+- Enforced non-nullability of mandatory parameters
+- Enums for most code systems
+- Enums to support `value[x]` types
+- Date/Time parsing, validation, and bi-directional `NSDate` conversion
+- Swift `Codable` support
+
+### Planned Features
+
+- Implementation of separate targets for `DSTU2`, `STU3`, `R4` and `R5`
+versions of the FHIR standard.
+
+Date | Sequence | Version | Description
+:--- | :------- | :------ | :----------
+2020-08-20 | R5 Sequence | 4.6.0 | FHIR Release #5: Preview #3
+2019-10-30 | R4 Sequence | 4.0.1 | FHIR Release #4: First Normative Content
+2019-10-24 | STU 3 Sequence | 3.0.2 | FHIR Release 3 (STU) with 2 technical errata
+2015-10-24 | DSTU 2 Sequence | 1.0.2 | DSTU 2 (Official version) with 1 technical errata
+
+## Requirements
+
+FHIRKit works with Swift 5.1 and later.
+
+## Installation
+
+[Swift Package Manager][spm] is the recommended way to add FHIRKit to your
+project. Just add the following to your `Package.swift` file to add FHIRKit
+as a dependency:
+
+```swift
+dependencies: [
+  .package(url: "https://github.com/samanthaerachelb/FHIRKit.git"
+           upToNextMajor(from: "0.1.0"))
+]
+```
+
+## Usage
+
+Learn how to use FHIRKit in the "How To" section (coming soon™)
+
+## License
+This work is licensed under the [Apache 2.0 License][license].
+
+FHIR® is the registered trademark of Health Level 7 (HL7) and is used with the
+permission of HL7. Use of the HL7 trademark does not constitute endorsement
+of this product by HL7
+
+[hl7_fhir]: https://hl7.org/fhir/
+[spm]: https://github.com/apple/swift-package-manager
+[license]: https://github.com/samanthaerachelb/FHIRKit/blob/main/license
+[balloting]: https://confluence.hl7.org/display/HL7/HL7+Balloting

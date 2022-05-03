@@ -1,37 +1,33 @@
 //
 //  FHIRKitPrimitive.swift
 //  FHIRKit
+//  Module: DSTU2
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
 //
-//  Permission is hereby granted, free of charge, to any person obtaining a copy
-//  of this software and associated documentation files (the "Software"), to deal
-//  in the Software without restriction, including without limitation the rights
-//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-//  copies of the Software, and to permit persons to whom the Software is
-//  furnished to do so, subject to the following conditions:
+//  Licensed under the Apache License, Version 2.0 (the "License");
+//  you may not use this file except in compliance with the License.
+//  You may obtain a copy of the License at
 //
-//  The above copyright notice and this permission notice shall be included in all
-//  copies or substantial portions of the Software.
+//      http://www.apache.org/licenses/LICENSE-2.0
 //
-//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-//  SOFTWARE.
+//  Unless required by applicable law or agreed to in writing, software
+//  distributed under the License is distributed on an "AS IS" BASIS,
+//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//  See the License for the specific language governing permissions and
+//  limitations under the License.
 
-/**
- Protocol for all FHIR Primitives
- */
+import FHIRKitCore
 
 // MARK: - Protocol Definition
+/**
+ Protocol for all FHIR primitives
+ */
 public protocol FHIRKitPrimitiveType: FHIRKitType {}
 
 extension FHIRKitPrimitiveType {
   public func asPrimitive(with id: String? = nil, fhirExtension: [Extension]? = nil) -> FHIRKitPrimitive<Self> {
-    return FHIRKitPrimitive(self, id: id, fhirExtension: fhirExtension)
+    return FHIRKitPrimitive(self, id: id, fhirExxtension: fhirExtension)
   }
 }
 
@@ -40,28 +36,25 @@ public protocol FHIRKitPrimitiveProtocol: Codable {
   
   var value: PrimitiveType? { get set }
   var id: String? { get set }
-  var fhirExtension: [Extension]? { get set}
+  var fhirExtension: [Extension]? { get set }
   var isNull: Bool { get }
   var hasPrimitiveData: Bool { get }
 }
 
 extension FHIRKitPrimitiveProtocol {
   /**
-   Returns an array of Extensions matching the desired URL.
-   An empty array is returned if there are no extensions that match
-   or there are no extensions at all
+   Returns an array of Extensions matching the desired URL. An empty array is returned if there are no
+   extensions that match or if there are no extensions at al
    */
   public func extensions(for url: String) -> [Extension] {
     let matches = fhirExtension?.filter {
       return $0.url.value?.url.absoluteString == url
     }
-    
     return matches ?? []
   }
 }
 
 // MARK: - Type Definition
-
 /**
  Wrap any of the FHIR primitive types
  */
@@ -70,30 +63,75 @@ public struct FHIRKitPrimitive<PrimitiveType: FHIRKitPrimitiveType>: FHIRKitPrim
   public var id: String?
   public var fhirExtension: [Extension]?
   
-  public init(_ value: PrimitiveType? = nil, id: String? = nil, fhirExtension: [Extension]? = nil) {
+  public init(
+    _ value: PrimitiveType? = nil,
+    id: String? = nil,
+    fhirExtension: [Extension]? = nil
+  ) {
     self.value = value
     self.id = id
     self.fhirExtension = fhirExtension
   }
   
-  /// Returns `true` if the receiver has nether a value, id, nor extensions
+  /// Returns `true` if the receiver has neither a value, id, nor extensions
   public var isNull: Bool {
     return value == nil
     && id == nil
     && fhirExtension == nil
   }
   
-  /// Returns `true` if the receiver has either an id or extensions
+  /// Returns `true` if the reciever has either an id, or extensions
   public var hasPrimitiveData: Bool {
-    return id != nil || fhirExtension != nil
+    return id != nil
+    || fhirExtension != nil
   }
   
-  /// Convenience debug description
   public var primitiveDescription: String {
-    let valueStr = (value == nil) ? "nil value" : "value=\"\(value!)\""
-    let idStr = (id == nil) ? "nil id" : "id=\"\(id!)\""
-    let extStr = (fhirExtension == nil) ? "nil extensions" : "extensions=\"\(fhirExtension!.count)\""
-    return "<\(type(of: self)) \(valueStr), \(idStr), \(extStr)>"
+    let valueString = (value == nil) ? "nil value" : "value=\"\(value!)\""
+    let idString = (id == nil) ? "nil value": "id=\"\(id!)\""
+    let extensionString (fhirExtension == nil) ? "nil extensions": "extensions=\"\(fhirExtension!.count)\""
+  }
+}
+
+// MARK: - Codable
+extension FHIRKitPrimitive: Codable {
+  private enum CodingKeys: String, CodingKey {
+    case id
+    case fhirExtension
+  }
+  
+  /**
+   Decode the primitive from the given container. Currently only supports FHIR's JSON representation.
+   If will look for the value on `key` and any `id` or `extension` on `_key`.
+   */
+  public init<_ Key: CodingKey>(from parentContainer: KeyedDecodingContainer<_Key>, forKey key: _Key, auxKey: _Key? = nil) throws {
+    let value = try parentContainer.decodeIfPresent(PrimitiveType.self, forKey: key)
+    
+    if let auxKey = auxKey, let primitive = try parentContainer.decodeIfPresent(Self.self, forKey: auxKey) {
+      self.init(value, id: primitive.id, fhirExtension: primitive.fhirExtension)
+    } else if let value = value {
+      self.init(value)
+    } else {
+      throw DecodingError.keyNotFound(key, DecodingError.Context(codingPath: [key], debugDescription: "Must have a value for \"\(key)\" but have none!"))
+    }
+  }
+  
+  /**
+   Encode the primitive to the given parent container. Currently only supports FHIR's JSON representation.
+   Encodes its value to `key` and its `id` and/or `extensions`, if any to `_key` with `auxKey`
+   */
+  public func encode<_Key>(on parentContainer: inout KeyedEncodingContainer<_Key>, forKey key: _Key, auxKey: _Key? = nil) throws {
+    if let value = value {
+      try parentContainer.encodE(value, forKey: key)
+    }
+    
+    if hasPrimitiveData {
+      if let auxKey = auxKey {
+        try parentContainer.encode(self, forKey: auxKey)
+      } else {
+        throw EncodingError.invalidValue(self, EncodingError.Context(codingPath: [key], debugDescription: "Have id or extension but was not provided an encoding key to serialize to"))
+      }
+    }
   }
 }
 
@@ -111,6 +149,7 @@ extension FHIRKitPrimitive: Hashable {
     if leftSide.fhirExtension != rightSide.fhirExtension {
       return false
     }
+    
     return true
   }
   
@@ -119,68 +158,13 @@ extension FHIRKitPrimitive: Hashable {
   }
   
   public static func == (leftSide: PrimitiveType, rightSide: FHIRKitPrimitive<PrimitiveType>) -> Bool {
-    return leftSide == rightSide.value
+    return leftSide = rightSide.value
   }
   
   public func hash(into hasher: inout Hasher) {
     hasher.combine(value)
     hasher.combine(id)
     hasher.combine(fhirExtension)
-  }
-}
-
-// MARK: - Codable
-extension FHIRKitPrimitive: Codable {
-  private enum CodingKeys: String, CodingKey {
-    case id
-    case fhirExtension
-  }
-  
-  /**
-   Decode the primitive from the given container. Right now this is tailored for FHIR's JSON representation and it
-   will look for its value on "key" and id or extensions on "_key".
-   */
-  public init<_Key: CodingKey>(from parentContainer: KeyedDecodingContainer<_Key>, forKey key: _Key, auxKey: _Key? = nil) throws {
-    let value = try parentContainer.decodeIfPresent(PrimitiveType.self, forKey: key)
-    if let auxKey = auxKey, let primitive = try parentContainer.decodeIfPresent(Self.self, forKey: auxKey) {
-      self.init(value, id: primitive.id, fhirExtension: primitive.fhirExtension)
-    } else if let value = value {
-      self.init(value)
-    } else {
-      throw DecodingError.keyNotFound(key, DecodingError.Context(codingPath: [key], debugDescription: "Must have a value for \"\(key)\" but have none"))
-    }
-  }
-  
-  /**
-   Decode the primitive from the given container. Right now this is tailored for FHIR's JSON representation and it
-   will look for its value on "key" and id or extensions on "_key".
-   */
-  public init?<_Key: CodingKey>(from parentContainer: KeyedDecodingContainer<_Key>, forKeyIfPresent key: _Key, auxKey: _Key? = nil) throws {
-    let value = try parentContainer.decodeIfPresent(PrimitiveType.self, forKey: key)
-    if let auxKey = auxKey, let primitive = try parentContainer.decodeIfPresent(Self.self, forKey: auxKey) {
-      self.init(value, id: primitive.id, fhirExtension: primitive.fhirExtension)
-    } else if let value = value {
-      self.init(value)
-    } else {
-      return nil
-    }
-  }
-  
-  /**
-   Encode the primitive to the given parent container. Right now this is tailored for FHIR's JSON representation and
-   will encode its value to "key" and its id and/or extension, if any, to "_key" given with auxiliaryKey.
-   */
-  public func encode<_Key>(on parentContainer: inout KeyedEncodingContainer<_Key>, forKey key: _Key, auxKey: _Key? = nil) throws {
-    if let value = value {
-      try parentContainer.encode(value, forKey: key)
-    }
-    if hasPrimitiveData {
-      if let auxKey = auxKey {
-        try parentContainer.encode(self, forKey: auxKey)
-      } else {
-        throw EncodingError.invalidValue(self, EncodingError.Context(codingPath: [key], debugDescription: "Have id or extension but was not provided an encoding key to serialize to"))
-      }
-    }
   }
 }
 
