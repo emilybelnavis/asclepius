@@ -18,6 +18,7 @@
 //  limitations under the License.
 
 import Foundation
+import FHIRKitCore
 
 /**
  An instant in time in the format YYYY-MM-DDThh:mm:ss.sss+zz:zz (e.g. 2015-02-07T13:28:17.239+02:00 or

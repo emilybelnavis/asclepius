@@ -1,26 +1,23 @@
 //
 //  DataRequirement.swift
 //  FHIRKit
+//  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
 //
-//  Permission is hereby granted, free of charge, to any person obtaining a copy
-//  of this software and associated documentation files (the "Software"), to deal
-//  in the Software without restriction, including without limitation the rights
-//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-//  copies of the Software, and to permit persons to whom the Software is
-//  furnished to do so, subject to the following conditions:
+//  Licensed under the Apache License, Version 2.0 (the "License");
+//  you may not use this file except in compliance with the License.
+//  You may obtain a copy of the License at
 //
-//  The above copyright notice and this permission notice shall be included in all
-//  copies or substantial portions of the Software.
+//      http://www.apache.org/licenses/LICENSE-2.0
 //
-//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-//  SOFTWARE.
+//  Unless required by applicable law or agreed to in writing, software
+//  distributed under the License is distributed on an "AS IS" BASIS,
+//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//  See the License for the specific language governing permissions and
+//  limitations under the License.
+
+import FHIRKitCore
 
 /**
  Describes a required data item for evaluation in terms of the type of date, along with optional code or
@@ -40,7 +37,7 @@ open class DataRequirement: Element {
   public var profile: [FHIRKitPrimitive<Canonical>]?
   
   /// One of `Subject`; e.g. Patient, practitioner, related person, etc...
-  public var subjectX: SubjectX?
+  public var subject: SubjectX?
   
   /// indicates specific structure elemtnets that are referenced by the knowledge module
   public var mustSupport: [FHIRKitPrimitive<FHIRKitString>]?
@@ -67,7 +64,7 @@ open class DataRequirement: Element {
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     type: FHIRKitPrimitive<FHIRKitString>,
     profile: [FHIRKitPrimitive<Canonical>]? = nil,
-    subjectX: SubjectX? = nil,
+    subject: SubjectX? = nil,
     mustSupport: [FHIRKitPrimitive<FHIRKitString>]? = nil,
     codeFilter: [DataRequirementCodeFilter]? = nil,
     dateFilter: [DataRequirementDateFilter]? = nil,
@@ -78,7 +75,7 @@ open class DataRequirement: Element {
     self.fhirExtension = fhirExtension
     self.id = id
     self.profile = profile
-    self.subjectX = subjectX
+    self.subject = subject
     self.mustSupport = mustSupport
     self.codeFilter = codeFilter
     self.dateFilter = dateFilter
@@ -102,24 +99,24 @@ open class DataRequirement: Element {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    var tempSubjectX: SubjectX?
+    var tempSubject: Subject?
     if let subjectCodableConcept = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .subjectCodableConcept) {
-      if tempSubjectX != nil {
+      if tempSubject != nil {
         throw DecodingError.dataCorruptedError(forKey: .subjectCodableConcept, in: codingKeyContainer, debugDescription: "More than one value provided for \"subject\"")
       }
-      tempSubjectX = .codableConcept(subjectCodableConcept)
+      tempSubject = .codableConcept(subjectCodableConcept)
     }
     
     if let subjectReference = try Reference(from: codingKeyContainer, forKeyIfPresent: .subjectReference) {
-      if tempSubjectX != nil {
+      if tempSubject != nil {
         throw DecodingError.dataCorruptedError(forKey: .subjectReference, in: codingKeyContainer, debugDescription: "More than one value provided for \"subject\"")
       }
-      tempSubjectX = .reference(subjectReference)
+      tempSubject = .reference(subjectReference)
     }
     
     self.type = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKey: .type, auxKey: ._type)
     self.profile = try [FHIRKitPrimitive<Canonical>](from: codingKeyContainer, forKeyIfPresent: .profile, auxKey: ._profile)
-    self.subjectX = tempSubjectX
+    self.subject = tempSubject
     self.mustSupport = try [FHIRKitPrimitive<FHIRKitString>](from: codingKeyContainer, forKeyIfPresent: .mustSupport, auxKey: ._mustSupport)
     self.codeFilter = try [DataRequirementCodeFilter](from: codingKeyContainer, forKeyIfPresent: .codeFilter)
     self.dateFilter = try [DataRequirementDateFilter](from: codingKeyContainer, forKeyIfPresent: .dateFilter)
@@ -131,7 +128,7 @@ open class DataRequirement: Element {
   public override func encode(to encoder: Encoder) throws {
     var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
   
-    if let enumSubject = subjectX {
+    if let enumSubject = subject {
       switch enumSubject {
       case .codableConcept(let _value):
         try _value.encode(on: &codingKeyContainer, forKey: .subjectCodableConcept)
@@ -163,7 +160,7 @@ open class DataRequirement: Element {
     
     return type == _other.type
     && profile == _other.profile
-    && subjectX == _other.subjectX
+    && subject == _other.subject
     && mustSupport == _other.mustSupport
     && codeFilter == _other.codeFilter
     && dateFilter == _other.dateFilter
@@ -176,7 +173,7 @@ open class DataRequirement: Element {
     super.hash(into: &hasher)
     hasher.combine(type)
     hasher.combine(profile)
-    hasher.combine(subjectX)
+    hasher.combine(subject)
     hasher.combine(mustSupport)
     hasher.combine(codeFilter)
     hasher.combine(dateFilter)

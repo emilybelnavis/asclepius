@@ -18,6 +18,7 @@
 //  limitations under the License.
 
 import Foundation
+import FHIRKitCore
 
 /**
  A time during the day, in the format hh:mm:ss. There is no date specified. Seconds must be provided due to schema type

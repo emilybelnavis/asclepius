@@ -17,6 +17,8 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
+import FHIRKitCore
+
 /**
  A resource that has a human-readable XHTML representation of the content inside the resource (`Narrative`), can
  contain additional related resources inside the resource, and can have additional extensions and modifierExtensions

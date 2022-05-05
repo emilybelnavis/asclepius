@@ -18,6 +18,7 @@
 //  limitations under the License.
 
 import Foundation
+import FHIRKitCore
 
 /**
  Class to represent FHIR primitives representing "string", "code", "id", "markdown" and "xhtml", officially:

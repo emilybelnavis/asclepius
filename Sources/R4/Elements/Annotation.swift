@@ -1,26 +1,23 @@
 //
 //  Annotation.swift
 //  FHIRKit
+//  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
 //
-//  Permission is hereby granted, free of charge, to any person obtaining a copy
-//  of this software and associated documentation files (the "Software"), to deal
-//  in the Software without restriction, including without limitation the rights
-//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-//  copies of the Software, and to permit persons to whom the Software is
-//  furnished to do so, subject to the following conditions:
+//  Licensed under the Apache License, Version 2.0 (the "License");
+//  you may not use this file except in compliance with the License.
+//  You may obtain a copy of the License at
 //
-//  The above copyright notice and this permission notice shall be included in all
-//  copies or substantial portions of the Software.
+//      http://www.apache.org/licenses/LICENSE-2.0
 //
-//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-//  SOFTWARE.
+//  Unless required by applicable law or agreed to in writing, software
+//  distributed under the License is distributed on an "AS IS" BASIS,
+//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//  See the License for the specific language governing permissions and
+//  limitations under the License.
+
+import FHIRKitCore
 
 /**
  Text note with attribution
@@ -34,7 +31,7 @@ open class Annotation: Element {
   }
   
   /// Individual responsible for the annotation
-  public var authorX: AuthorX?
+  public var author: AuthorX?
   
   /// When the annotation was made
   public var time: FHIRKitPrimitive<FHIRKitDateTime>?
@@ -50,14 +47,14 @@ open class Annotation: Element {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    authorX: AuthorX? = nil,
+    author: AuthorX? = nil,
     time: FHIRKitPrimitive<FHIRKitDateTime>? = nil,
     text: FHIRKitPrimitive<FHIRKitString>
   ) {
     self.init(text: text)
     self.fhirExtension = fhirExtension
     self.id = id
-    self.authorX = authorX
+    self.author = author
     self.time = time
   }
   
@@ -72,22 +69,22 @@ open class Annotation: Element {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    var tempAuthorX: AuthorX?
+    var tempAuthor: AuthorX?
     if let authorReference = try Reference(from: codingKeyContainer, forKeyIfPresent: .authorReference) {
-      if tempAuthorX != nil {
+      if tempAuthor != nil {
         throw DecodingError.dataCorruptedError(forKey: .authorReference, in: codingKeyContainer, debugDescription: "More than one value provided for \"Author\"")
       }
-      tempAuthorX = .reference(authorReference)
+      tempAuthor = .reference(authorReference)
     }
     
     if let authorString = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .authorString, auxKey: ._authorString) {
-      if tempAuthorX != nil {
+      if tempAuthor != nil {
         throw DecodingError.dataCorruptedError(forKey: .authorString, in: codingKeyContainer, debugDescription: "More than one value provided for \"Author\"")
       }
-      tempAuthorX = .string(authorString)
+      tempAuthor = .string(authorString)
     }
     
-    self.authorX = tempAuthorX
+    self.author = tempAuthor
     self.time = try FHIRKitPrimitive<FHIRKitDateTime>(from: codingKeyContainer, forKeyIfPresent: .time, auxKey: ._time)
     self.text = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKey: .text, auxKey: ._text)
     
@@ -97,8 +94,8 @@ open class Annotation: Element {
   public override func encode(to encoder: Encoder) throws {
     var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    if let enumAuthorX = authorX {
-      switch enumAuthorX {
+    if let enumAuthor = author {
+      switch enumAuthor {
       case.reference(let _value):
         try _value.encode(on: &codingKeyContainer, forKey: .authorReference)
       case .string(let _value):
@@ -122,7 +119,7 @@ open class Annotation: Element {
       return false
     }
     
-    return authorX == _other.authorX
+    return author == _other.author
     && time == _other.time
     && text == _other.text
   }
@@ -130,7 +127,7 @@ open class Annotation: Element {
   // MARK: - Hashable
   public override func hash(into hasher: inout Hasher) {
     super.hash(into: &hasher)
-    hasher.combine(authorX)
+    hasher.combine(author)
     hasher.combine(time)
     hasher.combine(text)
   }

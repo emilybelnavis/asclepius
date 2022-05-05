@@ -22,6 +22,8 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+import FHIRKitCore
+
 /**
  The definition of a specific activity to be taken, independent of any particular patient or context.
  

@@ -80,7 +80,7 @@ open class CodeSystemConcept: BackboneElement {
   }
   
   public required init(from decoder: Decoder) throws {
-    let codingKeyContainer = decoder.container(keyedBy: CodingKeys.self)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     self.code = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKey: .code, auxKey: ._code)
     self.display = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .display, auxKey: ._display)
@@ -90,5 +90,47 @@ open class CodeSystemConcept: BackboneElement {
     self.concept = try [CodeSystemConcept](from: codingKeyContainer, forKeyIfPresent: .concept)
     
     try super.init(from: decoder)
+  }
+  
+  public override func encode(to encoder: Encoder) throws {
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
+    
+    try code.encode(on: &codingKeyContainer, forKey: .code, auxKey: ._code)
+    try display?.encode(on: &codingKeyContainer, forKey: .display, auxKey: ._display)
+    try definition?.encode(on: &codingKeyContainer, forKey: .definition, auxKey: ._definition)
+    try designation?.encode(on: &codingKeyContainer, forKey: .designation)
+    try property?.encode(on: &codingKeyContainer, forKey: .property)
+    try concept?.encode(on: &codingKeyContainer, forKey: .concept)
+    
+    try super.encode(to: encoder)
+  }
+  
+  // MARK: - Equatable
+  public override func isEqual(to _other: Any?) -> Bool {
+    guard let _other = _other as? CodeSystemConcept else {
+      return false
+    }
+    
+    guard super.isEqual(to: _other) else {
+      return false
+    }
+    
+    return code == _other.code
+    && display == _other.display
+    && definition == _other.definition
+    && designation == _other.designation
+    && property == _other.property
+    && concept == _other.concept
+  }
+  
+  // MARK: - Hashable
+  public override func hash(into hasher: inout Hasher) {
+    super.hash(into: &hasher)
+    hasher.combine(code)
+    hasher.combine(display)
+    hasher.combine(definition)
+    hasher.combine(designation)
+    hasher.combine(property)
+    hasher.combine(concept)
   }
 }

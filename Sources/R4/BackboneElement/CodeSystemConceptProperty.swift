@@ -21,6 +21,7 @@ import FHIRKitCore
 
 /// A property value for this concept
 open class CodeSystemConceptProperty: BackboneElement {
+  /// all possible types for `value[x]`
   public enum ValueX: Hashable {
     case boolean(FHIRKitPrimitive<FHIRKitBool>)
     case code(FHIRKitPrimitive<FHIRKitString>)
@@ -31,7 +32,10 @@ open class CodeSystemConceptProperty: BackboneElement {
     case string(FHIRKitPrimitive<FHIRKitString>)
   }
   
+  /// Reference to CodeSystem.property.code
   public var code: FHIRKitPrimitive<FHIRKitString>
+  
+  /// Value of the property for this concept
   public var value: ValueX
   
   public init(code: FHIRKitPrimitive<FHIRKitString>, value: ValueX) {
@@ -57,7 +61,7 @@ open class CodeSystemConceptProperty: BackboneElement {
   
   // MARK: - Codable
   private enum CodingKeys: String, CodingKey {
-    case code
+    case code; case _code
     case valueBoolean; case _valueBoolean
     case valueCode; case _valueCode
     case valueCoding
@@ -92,6 +96,83 @@ open class CodeSystemConceptProperty: BackboneElement {
       tempValue = .coding(valueCoding)
     }
     
-    if let valueDateTime = try FHIRKitPrimitive<FHIRKitDateTime>(from: coding, forKeyIfPresent: <#T##CodingKey#>, auxKey: <#T##CodingKey?#>)
+    if let valueDateTime = try FHIRKitPrimitive<FHIRKitDateTime>(from: codingKeyContainer, forKeyIfPresent: .valueDateTime, auxKey: ._valueDateTime) {
+      if tempValue != nil {
+        throw DecodingError.dataCorruptedError(forKey: .valueDateTime, in: codingKeyContainer, debugDescription: "More than one value provided for \"value\"")
+      }
+      tempValue = .dateTime(valueDateTime)
+    }
+    
+    if let valueDecimal = try FHIRKitPrimitive<FHIRKitDecimal>(from: codingKeyContainer, forKeyIfPresent: .valueDecimal, auxKey: ._valueDecimal) {
+      if tempValue != nil {
+        throw DecodingError.dataCorruptedError(forKey: .valueDecimal, in: codingKeyContainer, debugDescription: "More than one value provided for \"value\"")
+      }
+      tempValue = .decimal(valueDecimal)
+    }
+    
+    if let valueInteger = try FHIRKitPrimitive<FHIRKitInteger>(from: codingKeyContainer, forKeyIfPresent: .valueInteger, auxKey: ._valueInteger) {
+      if tempValue != nil {
+        throw DecodingError.dataCorruptedError(forKey: .valueInteger, in: codingKeyContainer, debugDescription: "More than one value provided for \"value\"")
+      }
+      tempValue = .integer(valueInteger)
+    }
+    
+    if let valueString = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .valueString, auxKey: ._valueString) {
+      if tempValue != nil {
+        throw DecodingError.dataCorruptedError(forKey: .valueString, in: codingKeyContainer, debugDescription: "More than one value provided for \"value\"")
+      }
+      tempValue = .string(valueString)
+    }
+    
+    self.code = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKey: .code, auxKey: ._code)
+    self.value = tempValue!
+    
+    try super.init(from: decoder)
+  }
+  
+  public override func encode(to encoder: Encoder) throws {
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
+    
+    switch value {
+    case .boolean(let _value):
+      try _value.encode(on: &codingKeyContainer, forKey: .valueBoolean, auxKey: ._valueBoolean)
+    case .code(let _value):
+      try _value.encode(on: &codingKeyContainer, forKey: .valueCode, auxKey: ._valueCode)
+    case .coding(let _value):
+      try _value.encode(on: &codingKeyContainer, forKey: .coding)
+    case .dateTime(let _value):
+      try _value.encode(on: &codingKeyContainer, forKey: .valueDateTime, auxKey: ._valueDateTime)
+    case .decimal(let _value):
+      try _value.encode(on: &codingKeyContainer, forKey: .valueDecimal, auxKey: ._valueDecimal)
+    case .integer(let _value):
+      try _value.encode(on: &codingKeyContainer, forKey: .valueInteger, auxKey: ._valueInteger)
+    case .string(let _value):
+      try _value.encode(on: &codingKeyContainer, forKey: .valueString, auxKey: ._valueString)
+    }
+    
+    try code.encode(on: &codingKeyContainer, forKey: .code, auxKey: ._code)
+    
+    try super.encode(to: encoder)
+  }
+  
+  // MARK: - Equatable
+  public override func isEqual(to _other: Any?) -> Bool {
+    guard let _other = _other as? CodeSystemConceptProperty else {
+      return false
+    }
+    
+    guard super.isEqual(to: _other) else {
+      return false
+    }
+    
+    return code == _other.code
+    && value == _other.value
+  }
+  
+  // MARK: - Hashable
+  public override func hash(into hasher: inout Hasher) {
+    super.hash(into: &hasher)
+    hasher.combine(code)
+    hasher.combine(value)
   }
 }

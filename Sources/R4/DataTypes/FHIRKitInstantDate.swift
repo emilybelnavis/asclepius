@@ -18,6 +18,7 @@
 //  limitations under the License.
 
 import Foundation
+import FHIRKitCore
 
 /**
  A stricter version of `FHIRKitDate` which requires month and day to be present, for use in an `Instant`

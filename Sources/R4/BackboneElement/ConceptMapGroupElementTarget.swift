@@ -25,7 +25,7 @@ open class ConceptMapGroupElementTarget: BackboneElement {
   public var code: FHIRKitPrimitive<FHIRKitString>?
   
   /// Display for the code
-  public var display: FHIRKitPrimtive<FHIRKitString>?
+  public var display: FHIRKitPrimitive<FHIRKitString>?
   
   /// The equivalence between the source and target concepts (counting for the dependencies and products).
   /// The equivalence is read from target to source (e.g. the target is "wider" than the "source".)

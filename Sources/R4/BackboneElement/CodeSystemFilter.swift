@@ -34,4 +34,82 @@ open class CodeSystemFilter: BackboneElement {
   
   /// What to use for the value
   public var value: FHIRKitPrimitive<FHIRKitString>
+  
+  public init(code: FHIRKitPrimitive<FHIRKitString>, filterOperator: [FHIRKitPrimitive<FilterOperator>], value: FHIRKitPrimitive<FHIRKitString>) {
+    self.code = code
+    self.filterOperator = filterOperator
+    self.value = value
+    super.init()
+  }
+  
+  public convenience init(
+    fhirExtension: [Extension]? = nil,
+    modifierExtension: [Extension]? = nil,
+    id: FHIRKitPrimitive<FHIRKitString>? = nil,
+    code: FHIRKitPrimitive<FHIRKitString>,
+    fhirDescription: FHIRKitPrimitive<FHIRKitString>? = nil,
+    filterOperator: [FHIRKitPrimitive<FilterOperator>],
+    value: FHIRKitPrimitive<FHIRKitString>
+  ) {
+    self.init(code: code, filterOperator: filterOperator, value: value)
+    self.fhirExtension = fhirExtension
+    self.modifierExtension = modifierExtension
+    self.id = id
+    self.fhirDescription = fhirDescription
+  }
+  
+  // MARK: - Codable
+  private enum CodingKeys: String, CodingKey {
+    case code; case _code
+    case fhirDescription; case _fhirDescription
+    case filterOperator; case _filterOperator
+    case value; case _value
+  }
+  
+  public required init(from decoder: Decoder) throws {
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
+    
+    self.code = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKey: .code, auxKey: ._code)
+    self.fhirDescription = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .fhirDescription, auxKey: ._fhirDescription)
+    self.filterOperator = try [FHIRKitPrimitive<FilterOperator>](from: codingKeyContainer, forKey: .filterOperator, auxKey: ._filterOperator)
+    self.value = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKey: .value, auxKey: ._value)
+    
+    try super.init(from: decoder)
+  }
+  
+  public override func encode(to encoder: Encoder) throws {
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
+    
+    try code.encode(on: &codingKeyContainer, forKey: .code, auxKey: ._code)
+    try fhirDescription?.encode(on: &codingKeyContainer, forKey: .fhirDescription, auxKey: ._fhirDescription)
+    try filterOperator.encode(on: &codingKeyContainer, forKey: .filterOperator, auxKey: ._filterOperator)
+    try value.encode(on: &codingKeyContainer, forKey: .value, auxKey: ._value)
+    
+    try super.encode(to: encoder)
+  }
+  
+  // MARK: - Equatable
+  public override func isEqual(to _other: Any?) -> Bool {
+    guard let _other = _other as? CodeSystemFilter else {
+      return false
+    }
+    
+    guard super.isEqual(to: _other) else {
+      return false
+    }
+    
+    return code == _other.code
+    && fhirDescription == _other.fhirDescription
+    && filterOperator == _other.filterOperator
+    && value == _other.value
+  }
+  
+  // MARK: - Hashable
+  public override func hash(into hasher: inout Hasher) {
+    super.hash(into: &hasher)
+    hasher.combine(code)
+    hasher.combine(fhirDescription)
+    hasher.combine(filterOperator)
+    hasher.combine(value)
+  }
 }

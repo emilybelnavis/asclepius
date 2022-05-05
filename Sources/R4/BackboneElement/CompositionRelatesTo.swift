@@ -30,5 +30,6 @@ open class CompositionRelatesTo: BackboneElement {
   public var code: FHIRKitPrimitive<DocumentRelationshipType>
   
   /// Target of the relationship
-  public var targetX: TargetX
+  public var target: TargetX
+  
  }

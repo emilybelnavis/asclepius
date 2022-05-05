@@ -18,6 +18,7 @@
 //  limitations under the License.
 
 import FHIRKitCore
+
 /**
  The base definition for all elements contained inside a resource. All elements, whether defined as a `Data Type`
  (including primitives) or as a part of a resource structure have this base content; Extensions and an internal ID.

@@ -18,6 +18,7 @@
 //  limitations under the License.
 
 import Foundation
+import FHIRKitCore
 
 /// Any positive integer in the range 1..2,147,483,647
 public struct FHIRKitPositiveInteger: FHIRKitPrimitiveType, FHIRKitIntegerRepresentable {

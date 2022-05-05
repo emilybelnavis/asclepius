@@ -1,26 +1,23 @@
 //
 //  DosageDoseAndRate.swift
 //  FHIRKit
+//  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
 //
-//  Permission is hereby granted, free of charge, to any person obtaining a copy
-//  of this software and associated documentation files (the "Software"), to deal
-//  in the Software without restriction, including without limitation the rights
-//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-//  copies of the Software, and to permit persons to whom the Software is
-//  furnished to do so, subject to the following conditions:
+//  Licensed under the Apache License, Version 2.0 (the "License");
+//  you may not use this file except in compliance with the License.
+//  You may obtain a copy of the License at
 //
-//  The above copyright notice and this permission notice shall be included in all
-//  copies or substantial portions of the Software.
+//      http://www.apache.org/licenses/LICENSE-2.0
 //
-//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-//  SOFTWARE.
+//  Unless required by applicable law or agreed to in writing, software
+//  distributed under the License is distributed on an "AS IS" BASIS,
+//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//  See the License for the specific language governing permissions and
+//  limitations under the License.
+
+import FHIRKitCore
 
 /// The amount of medication administered
 open class DosageDoseAndRate: Element {
@@ -41,10 +38,10 @@ open class DosageDoseAndRate: Element {
   public var type: CodableConcept?
   
   /// Amount of medication per dose
-  public var doseX: DoseX?
+  public var dose: DoseX?
   
   /// Amount of medication per unit of time
-  public var rateX: RateX?
+  public var rate: RateX?
   
   override public init() {
     super.init()
@@ -54,15 +51,15 @@ open class DosageDoseAndRate: Element {
     fhirExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
     type: CodableConcept? = nil,
-    doseX: DoseX? = nil,
-    rateX: RateX? = nil
+    dose: DoseX? = nil,
+    rate: RateX? = nil
   ) {
     self.init()
     self.fhirExtension = fhirExtension
     self.id = id
     self.type = type
-    self.doseX = doseX
-    self.rateX = rateX
+    self.dose = dose
+    self.rate = rate
   }
   
   // MARK: - Codable
@@ -79,49 +76,49 @@ open class DosageDoseAndRate: Element {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     // decode Dose
-    var tempDoseX: DoseX?
+    var tempDose: DoseX?
     
     if let doseQuantity = try Quantity(from: codingKeyContainer, forKeyIfPresent: .doseQuantity) {
-      if tempDoseX != nil {
+      if tempDose != nil {
         throw DecodingError.dataCorruptedError(forKey: .doseQuantity, in: codingKeyContainer, debugDescription: "More than one value provided for \"dose\"")
       }
-      tempDoseX = .quantity(doseQuantity)
+      tempDose = .quantity(doseQuantity)
     }
     
     if let doseRange = try Range(from: codingKeyContainer, forKeyIfPresent: .doseRange) {
-      if tempDoseX != nil {
+      if tempDose != nil {
         throw DecodingError.dataCorruptedError(forKey: .doseRange, in: codingKeyContainer, debugDescription: "More than one value provided for \"dose\"")
       }
-      tempDoseX = .range(doseRange)
+      tempDose = .range(doseRange)
     }
     
     // decode Rate
-    var tempRateX: RateX?
+    var tempRate: RateX?
     if let rateQuantity = try Quantity(from: codingKeyContainer, forKeyIfPresent: .rateQuantity) {
-      if tempRateX != nil {
+      if tempRate != nil {
         throw DecodingError.dataCorruptedError(forKey: .rateQuantity, in: codingKeyContainer, debugDescription: "More than one value provided for \"rate\"")
       }
-      tempRateX = .quantity(rateQuantity)
+      tempRate = .quantity(rateQuantity)
     }
     
     if let rateRange = try Range(from: codingKeyContainer, forKeyIfPresent: .rateRange) {
-      if tempRateX != nil {
+      if tempRate != nil {
         throw DecodingError.dataCorruptedError(forKey: .rateRange, in: codingKeyContainer, debugDescription: "More than one value provided for \"rate\"")
       }
-      tempRateX = .range(rateRange)
+      tempRate = .range(rateRange)
     }
     
     if let rateRatio = try Ratio(from: codingKeyContainer, forKeyIfPresent: .rateRatio) {
-      if tempRateX != nil {
+      if tempRate != nil {
         throw DecodingError.dataCorruptedError(forKey: .rateRatio, in: codingKeyContainer, debugDescription: "More than one value provided for \"rate\"")
       }
       
-      tempRateX = .ratio(rateRatio)
+      tempRate = .ratio(rateRatio)
     }
     
     self.type = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .type)
-    self.doseX = tempDoseX
-    self.rateX = tempRateX
+    self.dose = tempDose
+    self.rate = tempRate
     
     try super.init(from: decoder)
   }
@@ -131,7 +128,7 @@ open class DosageDoseAndRate: Element {
     
     try type?.encode(on: &codingKeyContainer, forKey: .type)
     
-    if let enumDose = doseX {
+    if let enumDose = dose {
       switch enumDose {
       case .quantity(let _value):
         try _value.encode(on: &codingKeyContainer, forKey: .doseQuantity)
@@ -140,7 +137,7 @@ open class DosageDoseAndRate: Element {
       }
     }
     
-    if let enumRate = rateX {
+    if let enumRate = rate {
       switch enumRate {
       case .quantity(let _value):
         try _value.encode(on: &codingKeyContainer, forKey: .rateQuantity)
@@ -165,15 +162,15 @@ open class DosageDoseAndRate: Element {
     }
     
     return type == _other.type
-    && doseX == _other.doseX
-    && rateX == _other.rateX
+    && dose == _other.dose
+    && rate == _other.rate
   }
   
   // MARK: - Hashable
   public override func hash(into hasher: inout Hasher) {
     super.hash(into: &hasher)
     hasher.combine(type)
-    hasher.combine(doseX)
-    hasher.combine(rateX)
+    hasher.combine(dose)
+    hasher.combine(rate)
   }
 }

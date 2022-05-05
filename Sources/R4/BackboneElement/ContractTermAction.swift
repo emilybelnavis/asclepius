@@ -55,7 +55,7 @@ open class ContractTermAction: BackboneElement {
   public var contextLinkId: [FHIRKitPrimitive<FHIRKitString>]?
   
   /// When action happens
-  public var occurenceX: OccurenceX?
+  public var occurenceX: OccurrenceX?
   
   /// Who asked for action
   public var requester: [Reference]?

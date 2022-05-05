@@ -18,6 +18,7 @@
 //  limitations under the License.
 
 import Foundation
+import FHIRKitCore
 
 /// A signed integer in the range -2,147,483,648..2,147,483,647 (32-bit; for larger values, use `FHIRKitDecimal`)
 public struct FHIRKitInteger: FHIRKitPrimitiveType, FHIRKitIntegerRepresentable {

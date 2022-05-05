@@ -1,5 +1,5 @@
 //
-//  ActionType.swift
+//  CodeSystem.swift
 //  FHIRKit
 //  Module: R4
 //
@@ -17,22 +17,8 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-/**
- The type of action to be performed.
- 
- URL: http://terminology.hl7.org/CodeSystem/action-type
- ValueSet: http://hl7.org/fhir/ValueSet/action-type
- */
-public enum ActionType: String, FHIRKitPrimitiveType {
-  /// Create a new resource
-  case create
+import FHIRKitCore
+
+open class CodeSystem: DomainResource {
   
-  /// Update an existing resource
-  case update
-  
-  /// Remove an existing resource
-  case remove
-  
-  /// Fire a specific event
-  case fireEvent = "fire-event"
 }
