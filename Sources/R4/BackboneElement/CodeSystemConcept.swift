@@ -1,26 +1,23 @@
 //
 //  CodeSystemConcept.swift
 //  FHIRKit
+//  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
 //
-//  Permission is hereby granted, free of charge, to any person obtaining a copy
-//  of this software and associated documentation files (the "Software"), to deal
-//  in the Software without restriction, including without limitation the rights
-//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-//  copies of the Software, and to permit persons to whom the Software is
-//  furnished to do so, subject to the following conditions:
+//  Licensed under the Apache License, Version 2.0 (the "License");
+//  you may not use this file except in compliance with the License.
+//  You may obtain a copy of the License at
 //
-//  The above copyright notice and this permission notice shall be included in all
-//  copies or substantial portions of the Software.
+//      http://www.apache.org/licenses/LICENSE-2.0
 //
-//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-//  SOFTWARE.
+//  Unless required by applicable law or agreed to in writing, software
+//  distributed under the License is distributed on an "AS IS" BASIS,
+//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//  See the License for the specific language governing permissions and
+//  limitations under the License.
+
+import FHIRKitCore
 
 /**
  Concepts that are in the code system. The concept definitions are inherently hierarchical, but the definitions
@@ -44,4 +41,54 @@ open class CodeSystemConcept: BackboneElement {
   
   /// Child Concepts (`is-a`, `contains`, `categorizes`)
   public var concept: [CodeSystemConcept]?
+  
+  public init(code: FHIRKitPrimitive<FHIRKitString>) {
+    self.code = code
+    super.init()
+  }
+  
+  public convenience init(
+    fhirExtension: [Extension]? = nil,
+    modifierExtension: [Extension]? = nil,
+    id: FHIRKitPrimitive<FHIRKitString>? = nil,
+    code: FHIRKitPrimitive<FHIRKitString>,
+    display: FHIRKitPrimitive<FHIRKitString>? = nil,
+    definition: FHIRKitPrimitive<FHIRKitString>? = nil,
+    designation: [CodeSystemConceptDesignation]? = nil,
+    property: [CodeSystemConceptProperty]? = nil,
+    concept: [CodeSystemConcept]? = nil
+  ) {
+    self.init(code: code)
+    self.fhirExtension = fhirExtension
+    self.modifierExtension = modifierExtension
+    self.id = id
+    self.display = display
+    self.definition = definition
+    self.designation = designation
+    self.property = property
+    self.concept = concept
+  }
+  
+  // MARK: - Codable
+  private enum CodingKeys: String, CodingKey {
+    case code; case _code
+    case display; case _display
+    case definition; case _definition
+    case designation
+    case property
+    case concept
+  }
+  
+  public required init(from decoder: Decoder) throws {
+    let codingKeyContainer = decoder.container(keyedBy: CodingKeys.self)
+    
+    self.code = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKey: .code, auxKey: ._code)
+    self.display = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .display, auxKey: ._display)
+    self.definition = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .definition, auxKey: ._definition)
+    self.designation = try [CodeSystemConceptDesignation](from: codingKeyContainer, forKeyIfPresent: .designation)
+    self.property = try [CodeSystemConceptProperty](from: codingKeyContainer, forKeyIfPresent: .property)
+    self.concept = try [CodeSystemConcept](from: codingKeyContainer, forKeyIfPresent: .concept)
+    
+    try super.init(from: decoder)
+  }
 }
