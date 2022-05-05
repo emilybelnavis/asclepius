@@ -18,6 +18,7 @@
 //  limitations under the License.
 
 import Foundation
+import FHIRKitCore
 
 /**
  A Uniform Resource Locator (RFC 1738). Note URLs are accessed directly using the speficied protocol.

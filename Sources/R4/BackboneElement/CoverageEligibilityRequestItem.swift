@@ -49,7 +49,7 @@ open class CoverageEligibilityRequestItem: BackboneElement {
   public var facility: Reference?
   
   /// Applicable diagnosis
-  public var diagnosis: [CoverageEligilbilityRequestItemDiagnosis]?
+  public var diagnosis: [CoverageEligibilityRequestItemDiagnosis]?
   
   /// Product or service details
   public var detail: [Reference]?

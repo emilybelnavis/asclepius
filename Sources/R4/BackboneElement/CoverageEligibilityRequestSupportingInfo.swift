@@ -72,7 +72,7 @@ open class CoverageEligibilityRequestSupportingInfo: BackboneElement {
   }
   
   public override func encode(to encoder: Encoder) throws {
-    let codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
   
     try sequence.encode(on: &codingKeyContainer, forKey: .sequence, auxKey: ._sequence)
     try information.encode(on: &codingKeyContainer, forKey: .information)

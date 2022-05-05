@@ -18,6 +18,7 @@
 //  limitations under the License.
 
 import Foundation
+import FHIRKitCore
 
 /**
  A URI that referes to a resource by its canonical URL (resources with a url property). The canonical type

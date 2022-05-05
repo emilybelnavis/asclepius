@@ -17,6 +17,9 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
+import Foundation
+import FHIRKitCore
+
 /**
  Any non-negative integer in the range  0 to 2,147,483,647 (31 bits because the positive int is a constraint on
  the signed int in FHIR)

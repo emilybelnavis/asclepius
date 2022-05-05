@@ -18,6 +18,7 @@
 //  limitations under the License.
 
 import Foundation
+import FHIRKitCore
 
 /**
  Rational numbers that have a decimal representation. See below about the precision of the number:

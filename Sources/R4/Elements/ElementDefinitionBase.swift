@@ -1,26 +1,23 @@
 //
 //  ElementDefinitionBase.swift
 //  FHIRKit
+//  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
 //
-//  Permission is hereby granted, free of charge, to any person obtaining a copy
-//  of this software and associated documentation files (the "Software"), to deal
-//  in the Software without restriction, including without limitation the rights
-//  to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-//  copies of the Software, and to permit persons to whom the Software is
-//  furnished to do so, subject to the following conditions:
+//  Licensed under the Apache License, Version 2.0 (the "License");
+//  you may not use this file except in compliance with the License.
+//  You may obtain a copy of the License at
 //
-//  The above copyright notice and this permission notice shall be included in all
-//  copies or substantial portions of the Software.
+//      http://www.apache.org/licenses/LICENSE-2.0
 //
-//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-//  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-//  SOFTWARE.
+//  Unless required by applicable law or agreed to in writing, software
+//  distributed under the License is distributed on an "AS IS" BASIS,
+//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//  See the License for the specific language governing permissions and
+//  limitations under the License.
+
+import FHIRKitCore
 
 /**
  Base definition information for tools; Information about the base definition of the element, provided to make it
@@ -38,4 +35,65 @@ open class ElementDefinitionBase: Element {
   
   /// Max cardinality of the base element
   public var max: FHIRKitPrimitive<FHIRKitString>
+  
+  public init(path: FHIRKitPrimitive<FHIRKitString>, min: FHIRKitPrimitive<FHIRKitUnsignedInteger>, max: FHIRKitPrimitive<FHIRKitString>) {
+    self.path = path
+    self.min = min
+    self.max = max
+    super.init()
+  }
+  
+  public convenience init(
+    fhirExtension: [Extension]? = nil,
+    id: FHIRKitPrimitive<FHIRKitString>? = nil,
+    path: FHIRKitPrimitive<FHIRKitString>,
+    min: FHIRKitPrimitive<FHIRKitUnsignedInteger>,
+    max: FHIRKitPrimitive<FHIRKitString>
+  ) {
+    self.init(path: path, min: min, max: max)
+    self.fhirExtension = fhirExtension
+    self.id = id
+  }
+  
+  // MARK: - Codable
+  private enum CodingKeys: String, CodingKey {
+    case path; case _path
+    case min; case _min
+    case max; case _max
+  }
+  
+  public required init(from decoder: Decoder) throws {
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
+    
+    self.path = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKey: .path, auxKey: ._path)
+    self.min = try FHIRKitPrimitive<FHIRKitUnsignedInteger>(from: codingKeyContainer, forKey: .min, auxKey: ._min)
+    self.max = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKey: .max, auxKey: ._max)
+    
+    try super.init(from: decoder)
+  }
+  
+  public override func encode(to encoder: Encoder) throws {
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
+    
+    try path.encode(on: &codingKeyContainer, forKey: .path, auxKey: ._path)
+    try min.encode(on: &codingKeyContainer, forKey: .min, auxKey: ._min)
+    try max.encode(on: &codingKeyContainer, forKey: .max, auxKey: ._max)
+    
+    try super.encode(to: encoder)
+  }
+  
+  // MARK: - Equatable
+  public override func isEqual(to _other: Any?) -> Bool {
+    guard let _other = _other as? ElementDefinitionBase else {
+      return false
+    }
+    
+    guard super.isEqual(to: _other) else {
+      return false
+    }
+    
+    return path == _other.path
+    && min == _other.min
+    && max == _other.max
+  }
 }

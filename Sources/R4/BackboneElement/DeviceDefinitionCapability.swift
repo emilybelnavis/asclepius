@@ -67,7 +67,7 @@ open class DeviceDefinitionCapability: BackboneElement {
     var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
     try type.encode(on: &codingKeyContainer, forKey: .type)
-    try fhirDescription?.encode(on: &codingKeyContainer, forKey: <#T##_Key#>: .fhirDescription)
+    try fhirDescription?.encode(on: &codingKeyContainer, forKey: .fhirDescription)
     
     try super.encode(to: encoder)
   }
@@ -83,7 +83,7 @@ open class DeviceDefinitionCapability: BackboneElement {
     }
     
     return type == _other.type
-    fhirDescription == _other.fhirDescription
+    && fhirDescription == _other.fhirDescription
   }
   
   // MARK: - Hashable

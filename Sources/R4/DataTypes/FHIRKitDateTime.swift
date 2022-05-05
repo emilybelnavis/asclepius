@@ -18,6 +18,7 @@
 //  limitations under the License.
 
 import Foundation
+import FHIRKitCore
 
 /**
  A date, date-time, or partial date (e.g, just year or year + month) as used in human communication. The format is

@@ -23,12 +23,101 @@ import FHIRKitCore
  Message payload - Text, attachment(s), or resource(s) that were communicated to the recipient
  */
 open class CommunicationPayload: BackboneElement {
+  /// all possible types for `content[x]`
   public enum ContentX: Hashable {
     case attachment(Attachment)
     case reference(Reference)
     case string(FHIRKitPrimitive<FHIRKitString>)
   }
   
-  public var contentX: ContentX
+  /// message part content
+  public var content: ContentX
+  
+  public init(content: ContentX) {
+    self.content = content
+    super.init()
+  }
+  
+  public convenience init(
+    fhirExtension: [Extension]? = nil,
+    modifierExtension: [Extension]? = nil,
+    id: FHIRKitPrimitive<FHIRKitString>? = nil,
+    content: ContentX
+  ) {
+    self.init(content: content)
+    self.fhirExtension = fhirExtension
+    self.modifierExtension = modifierExtension
+    self.id = id
+  }
+  
+  // MARK: - Codable
+  private enum CodingKeys: String, CodingKey {
+    case contentAttachment
+    case contentReference
+    case contentString; case _contentString
+  }
+  
+  public required init(from decoder: Decoder) throws {
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
+    
+    var tempContent: ContentX
+    if let contentAttachment = try Attachment(from: codingKeyContainer, forKeyIfPresent: .contentAttachment) {
+      if tempContent != nil {
+        throw DecodingError.dataCorruptedError(forKey: .contentAttachment, in: codingKeyContainer, debugDescription: "More than one value provided for \"content\"")
+      }
+      tempContent = .attachment(contentAttachment)
+    }
+    
+    if let contentReference = try Reference(from: codingKeyContainer, forKeyIfPresent: .contentReference) {
+      if tempContent != nil {
+        throw DecodingError.dataCorruptedError(forKey: .contentReference, in: codingKeyContainer, debugDescription: "More than one value provided for \"content\"")
+      }
+      tempContent = .reference(contentReference)
+    }
+    
+    if let contentString = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .contentString, auxKey: ._contentString) {
+      if tempContent != nil {
+        throw DecodingError.dataCorruptedError(forKey: .contentString, in: codingKeyContainer, debugDescription: "More than one value provided for \"content\"")
+      }
+      tempContent = .string(contentString)
+    }
+    
+    self.content = tempContent!
+    
+    try super.init(from: decoder)
+  }
+  
+  public override func encode(to encoder: Encoder) throws {
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
+    
+    switch content {
+    case .attachment(let _value):
+      try _value.encode(on: &codingKeyContainer, forKey: .contentAttachment)
+    case .reference(let _value):
+      try _value.encode(on: &codingKeyContainer, forKey: .contentReference)
+    case .string(let _value):
+      try _value.encode(on: &codingKeyContainer, forKey: .contentString, auxKey: ._contentString)
+    }
+    
+    try super.encode(to: encoder)
+  }
+  
+  // MARK: - Equatable
+  public override func isEqual(to _other: Any?) -> Bool {
+    guard let _other = _other as? CommunicationPayload else {
+      return false
+    }
+    
+    guard super.isEqual(to: _other) else {
+      return false
+    }
+    
+    return content == _other.content
+  }
+  
+  // MARK: - Hashable
+  public override func hash(into hasher: inout Hasher) {
+    super.hash(into: &hasher)
+    hasher.combine(content)
+  }
 }
-

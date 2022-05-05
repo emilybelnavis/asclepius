@@ -47,7 +47,7 @@ open class CoverageEligibilityResponseInsurance: BackboneElement {
     coverage: Reference,
     inForce: FHIRKitPrimitive<FHIRKitBool>? = nil,
     benefitPeriod: Period? = nil,
-    item: [CoverageEligiblityResponseInsuraceItem]? = nil
+    item: [CoverageEligibilityResponseInsuranceItem]? = nil
   ) {
     self.init(coverage: coverage)
     self.fhirExtension = fhirExtension

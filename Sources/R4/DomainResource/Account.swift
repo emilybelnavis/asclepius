@@ -22,6 +22,8 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 //  SOFTWARE.
 
+import FHIRKitCore
+
 /**
  Tracks balances and charges for a patient or cost centre
  

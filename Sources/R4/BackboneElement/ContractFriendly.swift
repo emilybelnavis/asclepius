@@ -28,7 +28,7 @@ import FHIRKitCore
  */
 open class ContractFriendly: BackboneElement {
   public enum ContentX: Hashable {
-    case attachment(Attachement)
+    case attachment(Attachment)
     case reference(Reference)
   }
   

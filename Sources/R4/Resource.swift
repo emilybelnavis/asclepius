@@ -18,6 +18,7 @@
 //  limitations under the License.
 
 import FHIRKitCore
+
 /**
  Base Resource
  
