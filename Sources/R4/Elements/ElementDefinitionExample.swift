@@ -152,6 +152,7 @@ open class ElementDefinitionExample: Element {
     case valueUuid; case _valueUuid
   }
   
+  // swiftlint:disable cyclomatic_complexity
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
@@ -543,9 +544,9 @@ open class ElementDefinitionExample: Element {
     }
     
     // value.usageContext
-    if let valueUsageContext = try UsageContext(from: codingKeyContainer, forKeyIfPresent: .usageContext) {
+    if let valueUsageContext = try UsageContext(from: codingKeyContainer, forKeyIfPresent: .valueUsageContext) {
       if tValue != nil {
-        throw DecodingError.dataCorruptedError(forKey: .usageContext, in: codingKeyContainer, debugDescription: "More than one value supplied for \"value\"")
+        throw DecodingError.dataCorruptedError(forKey: .valueUsageContext, in: codingKeyContainer, debugDescription: "More than one value supplied for \"value\"")
       }
       tValue = .usageContext(valueUsageContext)
     }

@@ -20,10 +20,7 @@
 import Foundation
 import FHIRKitCore
 
-/**
- Protocol for all FHIR Primitives
- */
-
+///Protocol for all FHIR Primitives
 // MARK: - Protocol Definition
 public protocol FHIRKitPrimitiveType: FHIRKitType {}
 

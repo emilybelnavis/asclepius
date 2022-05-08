@@ -103,4 +103,3 @@ open class DeviceDefinitionProperty: BackboneElement {
     hasher.combine(valueCode)
   }
 }
-

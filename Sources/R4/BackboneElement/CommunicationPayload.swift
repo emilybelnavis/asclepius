@@ -60,7 +60,7 @@ open class CommunicationPayload: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    var tempContent: ContentX
+    var tempContent: ContentX?
     if let contentAttachment = try Attachment(from: codingKeyContainer, forKeyIfPresent: .contentAttachment) {
       if tempContent != nil {
         throw DecodingError.dataCorruptedError(forKey: .contentAttachment, in: codingKeyContainer, debugDescription: "More than one value provided for \"content\"")

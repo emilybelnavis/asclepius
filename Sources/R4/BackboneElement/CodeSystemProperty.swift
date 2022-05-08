@@ -115,4 +115,3 @@ open class CodeSystemProperty: BackboneElement {
     hasher.combine(type)
   }
 }
-

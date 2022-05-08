@@ -75,6 +75,7 @@ open class CoverageEligibilityResponseInsuranceItemBenefit: BackboneElement {
     case usedUnsignedInteger; case _usedUnsignedInteger
   }
   
+  // swiftlint:disable cyclomatic_complexity
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     

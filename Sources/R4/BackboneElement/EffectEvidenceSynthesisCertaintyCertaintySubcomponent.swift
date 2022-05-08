@@ -22,7 +22,8 @@ import FHIRKitCore
 /**
  A description of a component that contributes to the overall certainty
  */
-open class EffectEvidenceSynthesisCertaintyCertaintySubcomponent: BackboneElement {
+// 
+open class EffectEvidenceSynthesisCertaintyCertaintySubcomponent: BackboneElement { // swiftlint:disable:this type_name
   /// Type of subcomponent of certainty rating
   public var type: CodableConcept?
   

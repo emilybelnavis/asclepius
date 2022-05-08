@@ -1,5 +1,5 @@
 //
-//  ElementDefinitionConstraint.swif
+//  ElementDefinitionConstraint.swift
 //  FHIRKit
 //  Module: R4
 //
@@ -24,7 +24,7 @@ import FHIRKitCore
  */
 open class ElementDefinitionConstraint: Element {
   /// Target of `condition` reference
-  public var key:FHIRKitPrimitive<FHIRKitString>
+  public var key: FHIRKitPrimitive<FHIRKitString>
   
   /// Why this constraint is necessary or appropriate
   public var requirements: FHIRKitPrimitive<FHIRKitString>?

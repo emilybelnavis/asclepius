@@ -52,4 +52,117 @@ open class CompositionSection: BackboneElement {
   
   /// Nested section
   public var section: [CompositionSection]?
+  
+  override public init() {
+    super.init()
+  }
+  
+  public convenience init(
+    fhirExtension: [Extension]? = nil,
+    modifierExtension: [Extension]? = nil,
+    id: FHIRKitPrimitive<FHIRKitString>? = nil,
+    title: FHIRKitPrimitive<FHIRKitString>? = nil,
+    code: CodableConcept? = nil,
+    author: [Reference]? = nil,
+    focus: Reference? = nil,
+    text: Narrative? = nil,
+    mode: FHIRKitPrimitive<ListMode>? = nil,
+    entry: [Reference]? = nil,
+    emptyReason: CodableConcept? = nil,
+    section: [CompositionSection]? = nil
+  ) {
+    self.init()
+    self.fhirExtension = fhirExtension
+    self.modifierExtension = modifierExtension
+    self.id = id
+    self.title = title
+    self.code = code
+    self.author = author
+    self.focus = focus
+    self.text = text
+    self.mode = mode
+    self.entry = entry
+    self.emptyReason = emptyReason
+    self.section = section
+  }
+  
+  // MARK: - Codable
+  private enum CodingKeys: String, CodingKey {
+    case title; case _title
+    case code
+    case author
+    case focus
+    case text
+    case mode; case _mode
+    case entry
+    case emptyReason
+    case section
+  }
+  
+  public required init(from decoder: Decoder) throws {
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
+    
+    self.title = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .title, auxKey: ._title)
+    self.code = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .code)
+    self.author = try [Reference](from: codingKeyContainer, forKeyIfPresent: .author)
+    self.focus = try Reference(from: codingKeyContainer, forKeyIfPresent: .focus)
+    self.text = try Narrative(from: codingKeyContainer, forKeyIfPresent: .text)
+    self.mode = try FHIRKitPrimitive<ListMode>(from: codingKeyContainer, forKeyIfPresent: .mode, auxKey: ._mode)
+    self.entry = try [Reference](from: codingKeyContainer, forKeyIfPresent: .entry)
+    self.emptyReason = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .emptyReason)
+    self.section = try [CompositionSection](from: codingKeyContainer, forKeyIfPresent: .section)
+    
+    try super.init(from: decoder)
+  }
+  
+  override public func encode(to encoder: Encoder) throws {
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
+    
+    try title?.encode(on: &codingKeyContainer, forKey: .title, auxKey: ._title)
+    try code?.encode(on: &codingKeyContainer, forKey: .code)
+    try author?.encode(on: &codingKeyContainer, forKey: .author)
+    try focus?.encode(on: &codingKeyContainer, forKey: .focus)
+    try text?.encode(on: &codingKeyContainer, forKey: .text)
+    try mode?.encode(on: &codingKeyContainer, forKey: .mode, auxKey: ._mode)
+    try entry?.encode(on: &codingKeyContainer, forKey: .entry)
+    try emptyReason?.encode(on: &codingKeyContainer, forKey: .emptyReason)
+    try section?.encode(on: &codingKeyContainer, forKey: .section)
+    
+    try super.encode(to: encoder)
+  }
+  
+  // MARK: - Equatable
+  override public func isEqual(to _other: Any?) -> Bool {
+    guard let _other = _other as? CompositionSection else {
+      return false
+    }
+    
+    guard super.isEqual(to: _other) else {
+      return false
+    }
+    
+    return title == _other.title
+    && code == _other.code
+    && author == _other.author
+    && focus == _other.focus
+    && text == _other.text
+    && mode == _other.mode
+    && entry == _other.entry
+    && emptyReason == _other.emptyReason
+    && section == _other.section
+  }
+  
+  // MARK: - Hashable
+  override public func hash(into hasher: inout Hasher) {
+    super.hash(into: &hasher)
+    hasher.combine(title)
+    hasher.combine(code)
+    hasher.combine(author)
+    hasher.combine(focus)
+    hasher.combine(text)
+    hasher.combine(mode)
+    hasher.combine(entry)
+    hasher.combine(emptyReason)
+    hasher.combine(section)
+  }
 }

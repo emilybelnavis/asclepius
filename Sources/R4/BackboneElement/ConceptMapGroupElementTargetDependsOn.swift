@@ -35,4 +35,81 @@ open class ConceptMapGroupElementTargetDependsOn: BackboneElement {
   
   /// Display for the code (if value is a code)
   public var display: FHIRKitPrimitive<FHIRKitString>?
+  
+  public init(property: FHIRKitPrimitive<FHIRKitURI>, value: FHIRKitPrimitive<FHIRKitString>) {
+    self.property = property
+    self.value = value
+    super.init()
+  }
+  
+  public convenience init(
+    fhirExtension: [Extension]? = nil,
+    modifierExtension: [Extension]? = nil,
+    id: FHIRKitPrimitive<FHIRKitString>? = nil,
+    property: FHIRKitPrimitive<FHIRKitURI>,
+    system: FHIRKitPrimitive<Canonical>? = nil,
+    value: FHIRKitPrimitive<FHIRKitString>,
+    display: FHIRKitPrimitive<FHIRKitString>? = nil
+  ) {
+    self.init(property: property, value: value)
+    self.fhirExtension = fhirExtension
+    self.modifierExtension = modifierExtension
+    self.id = id
+    self.system = system
+    self.display = display
+  }
+  
+  // MARK: - Codable
+  private enum CodingKeys: String, CodingKey {
+    case property; case _property
+    case system; case _system
+    case value; case _value
+    case display; case _display
+  }
+  
+  public required init(from decoder: Decoder) throws {
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
+    
+    self.property = try FHIRKitPrimitive<FHIRKitURI>(from: codingKeyContainer, forKey: .property, auxKey: ._property)
+    self.system = try FHIRKitPrimitive<Canonical>(from: codingKeyContainer, forKeyIfPresent: .system, auxKey: ._system)
+    self.value = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKey: .value, auxKey: ._value)
+    self.display = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKey: .display, auxKey: ._display)
+    
+    try super.init(from: decoder)
+  }
+  
+  override public func encode(to encoder: Encoder) throws {
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
+    
+    try property.encode(on: &codingKeyContainer, forKey: .property, auxKey: ._property)
+    try system?.encode(on: &codingKeyContainer, forKey: .system, auxKey: ._system)
+    try value.encode(on: &codingKeyContainer, forKey: .value, auxKey: ._value)
+    try display?.encode(on: &codingKeyContainer, forKey: .display, auxKey: ._display)
+    
+    try super.encode(to: encoder)
+  }
+  
+  // MARK: - Equatable
+  override public func isEqual(to _other: Any?) -> Bool {
+    guard let _other = _other as? ConceptMapGroupElementTargetDependsOn else {
+      return false
+    }
+    
+    guard super.isEqual(to: _other) else {
+      return false
+    }
+    
+    return property == _other.property
+    && system == _other.system
+    && value == _other.value
+    && display == _other.display
+  }
+  
+  // MARK: - Hashable
+  override public func hash(into hasher: inout Hasher) {
+    super.hash(into: &hasher)
+    hasher.combine(property)
+    hasher.combine(system)
+    hasher.combine(value)
+  }
 }

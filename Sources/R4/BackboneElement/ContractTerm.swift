@@ -37,7 +37,7 @@ open class ContractTerm: BackboneElement {
   public var applies: Period?
   
   /// Term Concern
-  public var topicX: TopicX?
+  public var topic: TopicX?
   
   /// Contract Term Type or Form
   public var type: CodableConcept?
@@ -62,5 +62,162 @@ open class ContractTerm: BackboneElement {
   
   /// Nested Contract Term Group
   public var group: [ContractTerm]?
+ 
+  public init(offer: ContractTermOffer) {
+    self.offer = offer
+    super.init()
+  }
+  
+  public convenience init(
+    fhirExtension: [Extension]? = nil,
+    modifierExtension: [Extension]? = nil,
+    id: FHIRKitPrimitive<FHIRKitString>? = nil,
+    identifier: Identifier? = nil,
+    issued: FHIRKitPrimitive<FHIRKitDateTime>? = nil,
+    applies: Period? = nil,
+    topic: TopicX? = nil,
+    type: CodableConcept? = nil,
+    subType: CodableConcept? = nil,
+    text: FHIRKitPrimitive<FHIRKitString>? = nil,
+    securityLabel: [ContractTermSecurityLabel]? = nil,
+    offer: ContractTermOffer,
+    asset: [ContractTermAsset]? = nil,
+    action: [ContractTermAction]? = nil,
+    group: [ContractTerm]? = nil
+  ) {
+    self.init(offer: offer)
+    self.fhirExtension = fhirExtension
+    self.modifierExtension = modifierExtension
+    self.id = id
+    self.identifier = identifier
+    self.issued = issued
+    self.applies = applies
+    self.topic = topic
+    self.type = type
+    self.subType = subType
+    self.text = text
+    self.securityLabel = securityLabel
+    self.asset = asset
+    self.action = action
+    self.group = group
+  }
+  
+  // MARK: - Codable
+  private enum CodingKeys: String, CodingKey {
+    case identifier
+    case issued; case _issued
+    case applies
+    case topicCodableConcept
+    case topicReference
+    case type
+    case subType
+    case text; case _text
+    case securityLabel
+    case offer
+    case asset
+    case action
+    case group
+  }
+  
+  public required init(from decoder: Decoder) throws {
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
+    var tTopic: TopicX?
+    if let topicCodableConcept = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .topicCodableConcept) {
+      if tTopic != nil {
+        throw DecodingError.dataCorruptedError(forKey: .topicCodableConcept, in: codingKeyContainer, debugDescription: "More than one value provided for \"topic\"")
+      }
+      tTopic = .codableConcept(topicCodableConcept)
+    }
+    
+    if let topicReference = try Reference(from: codingKeyContainer, forKeyIfPresent: .topicReference) {
+      if tTopic != nil {
+        throw DecodingError.dataCorruptedError(forKey: .topicReference, in: codingKeyContainer, debugDescription: "More than one value provided for \"topic\"")
+      }
+      tTopic = .reference(topicReference)
+    }
+    
+    self.identifier = try Identifier(from: codingKeyContainer, forKey: .identifier)
+    self.issued = try FHIRKitPrimitive<FHIRKitDateTime>(from: codingKeyContainer, forKeyIfPresent: .issued, auxKey: ._issued)
+    self.applies = try Period(from: codingKeyContainer, forKeyIfPresent: .applies)
+    self.topic = tTopic
+    self.type = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .type)
+    self.subType = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .subType)
+    self.text = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .text, auxKey: ._text)
+    self.securityLabel = try [ContractTermSecurityLabel](from: codingKeyContainer, forKeyIfPresent: .securityLabel)
+    self.offer = try ContractTermOffer(from: codingKeyContainer, forKey: .offer)
+    self.asset = try [ContractTermAsset](from: codingKeyContainer, forKeyIfPresent: .asset)
+    self.action = try [ContractTermAction](from: codingKeyContainer, forKeyIfPresent: .action)
+    self.group = try [ContractTerm](from: codingKeyContainer, forKeyIfPresent: .group)
+  
+    try super.init(from: decoder)
+  }
+  
+  override public func encode(to encoder: Encoder) throws {
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
+    
+    if let enumTopic = topic {
+      switch enumTopic {
+      case .codableConcept(let codableConcept):
+        try codableConcept.encode(on: &codingKeyContainer, forKey: .topicCodableConcept)
+      case .reference(let reference):
+        try reference.encode(on: &codingKeyContainer, forKey: .topicReference)
+      }
+    }
+    
+    try identifier?.encode(on: &codingKeyContainer, forKey: .identifier)
+    try issued?.encode(on: &codingKeyContainer, forKey: .issued, auxKey: ._issued)
+    try applies?.encode(on: &codingKeyContainer, forKey: .applies)
+    try type?.encode(on: &codingKeyContainer, forKey: .type)
+    try subType?.encode(on: &codingKeyContainer, forKey: .subType)
+    try text?.encode(on: &codingKeyContainer, forKey: .text, auxKey: ._text)
+    try securityLabel?.encode(on: &codingKeyContainer, forKey: .securityLabel)
+    try offer.encode(on: &codingKeyContainer, forKey: .offer)
+    try asset?.encode(on: &codingKeyContainer, forKey: .asset)
+    try action?.encode(on: &codingKeyContainer, forKey: .action)
+    try group?.encode(on: &codingKeyContainer, forKey: .group)
+    
+    try super.encode(to: encoder)
+  }
+  
+  // MARK: - Equatable
+  override public func isEqual(to _other: Any?) -> Bool {
+    guard let _other = _other as? ContractTerm else {
+      return false
+    }
+    
+    guard super.isEqual(to: _other) else {
+      return false
+    }
+    
+    return identifier == _other.identifier
+    && issued == _other.issued
+    && applies == _other.applies
+    && topic == _other.topic
+    && type == _other.type
+    && subType == _other.subType
+    && text == _other.text
+    && securityLabel == _other.securityLabel
+    && offer == _other.offer
+    && asset == _other.asset
+    && action == _other.action
+    && group == _other.group
+  }
+  
+  // MARK: - Hashable
+  override public func hash(into hasher: inout Hasher) {
+    super.hash(into: &hasher)
+    hasher.combine(identifier)
+    hasher.combine(issued)
+    hasher.combine(applies)
+    hasher.combine(topic)
+    hasher.combine(type)
+    hasher.combine(subType)
+    hasher.combine(text)
+    hasher.combine(securityLabel)
+    hasher.combine(offer)
+    hasher.combine(asset)
+    hasher.combine(action)
+    hasher.combine(group)
+  }
 }

@@ -1,7 +1,7 @@
 //
 //  ContractTermSubtypeCodes.swift
 //  FHIRKit
-////  Module: R4
+//  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
 //

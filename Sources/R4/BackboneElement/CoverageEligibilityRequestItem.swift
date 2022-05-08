@@ -69,7 +69,7 @@ open class CoverageEligibilityRequestItem: BackboneElement {
     provider: Reference? = nil,
     quantity: Quantity? = nil,
     facility: Reference? = nil,
-    diagnosis: [CoverageEligibilityRequestItem]? = nil,
+    diagnosis: [CoverageEligibilityRequestItemDiagnosis]? = nil,
     detail: [Reference]? = nil
   ) {
     self.init()
@@ -110,7 +110,7 @@ open class CoverageEligibilityRequestItem: BackboneElement {
     self.provider = try Reference(from: codingKeyContainer, forKeyIfPresent: .provider)
     self.quantity = try Quantity(from: codingKeyContainer, forKeyIfPresent: .quantity)
     self.facility = try Reference(from: codingKeyContainer, forKeyIfPresent: .facility)
-    self.diagnosis = try [CoverageEligibilityRequestItem](from: codingKeyContainer, forKeyIfPresent: .diagnosis)
+    self.diagnosis = try [CoverageEligibilityRequestItemDiagnosis](from: codingKeyContainer, forKeyIfPresent: .diagnosis)
     self.detail = try [Reference](from: codingKeyContainer, forKeyIfPresent: .detail)
     
     try super.init(from: decoder)

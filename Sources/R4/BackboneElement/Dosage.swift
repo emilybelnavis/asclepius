@@ -68,7 +68,7 @@ open class Dosage: BackboneElement {
   /// Upper limit on medication per lifetime of the patient
   public var maxDosePerLifetime: Quantity?
   
-  public override init() {
+  override public init() {
     super.init()
   }
   
@@ -125,5 +125,111 @@ open class Dosage: BackboneElement {
     case maxDosePerPeriod
     case maxDosePerAdministration
     case maxDosePerLifetime
+  }
+  
+  public required init(from decoder: Decoder) throws {
+    let codingKeyContainer = decoder.container(keyedBy: CodingKeys.self)
+    
+    var tAsNeeded: AsNeeded?
+    if let asNeededBoolean = try FHIRKitPrimitive<FHIRKitBool>(from: codingKeyContainer, forKeyIfPresent: .asNeededBoolean, auxKey: ._asNeededBoolean) {
+      if tAsNeeded != nil {
+        throw DecodingError.dataCorruptedError(forKey: .asNeededBoolean, in: codingKeyContainer, debugDescription: "More than one value provided for \"asNeeded\"")
+      }
+      tAsNeeded = .boolean(asNeededBoolean)
+    }
+    
+    if let asNeededCodableConcept = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .asNeededCodableConcept) {
+      if tAsNeeded != nil {
+        throw DecodingError.dataCorruptedError(forKey: .asNeededCodableConcept, in: codingKeyContainer, debugDescription: "More than one value provided for \"asNeeded\"")
+      }
+      tAsNeeded = .codableConcept(asNeededCodableConcept)
+    }
+    
+    self.sequence = try FHIRKitPrimitive<FHIRKitInteger>(from: codingKeyContainer, forKeyIfPresent: .sequence, auxKey: ._sequence)
+    self.text = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .text, auxKey: ._text)
+    self.additionalInstruction = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .additionalInstruction)
+    self.patientInstruction = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .patientInstruction, auxKey: ._patientInstruction)
+    self.timing = try Timing(from: codingKeyContainer, forKeyIfPresent: .timing)
+    self.asNeeded = tAsNeeded
+    self.site = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .site)
+    self.route = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .route)
+    self.method = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .method)
+    self.doseAndRate = try [DosageDoseAndRate](from: codingKeyContainer, forKeyIfPresent: .doseAndRate)
+    self.maxDosePerPeriod = try Ratio(from: codingKeyContainer, forKeyIfPresent: .maxDosePerPeriod)
+    self.maxDosePerAdministration = try Quantity(from: codingKeyContainer, forKeyIfPresent: .maxDosePerAdministration)
+    self.maxDosePerLifetime = try Quantity(from: codingKeyContainer, forKeyIfPresent: .maxDosePerLifetime)
+    
+    try super.init(from: decoder)
+  }
+  
+  override public func encode(to encoder: Encoder) throws {
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
+    
+    if let enumAsNeeded = asNeeded {
+      switch enumAsNeeded {
+      case .boolean(let boolean):
+        try boolean.encode(on: &codingKeyContainer, forKey: .asNeededBoolean)
+      case .codableConcept(let codableConcept):
+        try codableConcept.encode(on: &codingKeyContainer, forKey: .asNeededCodableConcept)
+      }
+    }
+    
+    try sequence?.encode(on: &codingKeyContainer, forKey: .sequence, auxKey: ._sequence)
+    try text?.encode(on: &codingKeyContainer, forKey: .text, auxKey: ._text)
+    try additionalInstruction?.encode(on: &codingKeyContainer, forKey: .additionalInstruction)
+    try patientInstruction?.encode(on: &codingKeyContainer, forKey: .patientInstruction, auxKey: ._patientInstruction)
+    try timing?.encode(on: &codingKeyContainer, forKey: .timing)
+    try site?.encode(on: &codingKeyContainer, forKey: .site)
+    try route?.encode(on: &codingKeyContainer, forKey: .route)
+    try method?.encode(on: &codingKeyContainer, forKey: .method)
+    try doseAndRate?.encode(on: &codingKeyContainer, forKey: .doseAndRate)
+    try maxDosePerPeriod?.encode(on: &codingKeyContainer, forKey: .maxDosePerPeriod)
+    try maxDosePerAdministration?.encode(on: &codingKeyContainer, forKey: .maxDosePerAdministration)
+    try maxDosePerLifetime?.encode(on: &codingKeyContainer, forKey: .maxDosePerLifetime)
+    
+    try super.encode(to: encoder)
+  }
+  
+  // MARK: - Equatable
+  override public func isEqual(to _other: Any?) -> Bool {
+    guard let _other = _other as? Dosage else {
+      return false
+    }
+    
+    guard super.isEqual(to: _other) else {
+      return false
+    }
+    
+    return sequence == _other.sequence
+    && text == _other.text
+    && additionalInstruction == _other.additionalInstruction
+    && patientInstruction == _other.patientInstruction
+    && timing == _other.timing
+    && asNeeded == _other.asNeeded
+    && site == _other.site
+    && route == _other.route
+    && method == _other.method
+    && doseAndRate == _other.doseAndRate
+    && maxDosePerPeriod == _other.maxDosePerPeriod
+    && maxDosePerAdministration == _other.maxDosePerAdministration
+    && maxDosePerLifetime == _other.maxDosePerLifetime
+  }
+  
+  // MARK: - Hashable
+  override public func hash(into hasher: inout Hasher) {
+    super.hash(into: &hasher)
+    hasher.combine(sequence)
+    hasher.combine(text)
+    hasher.combine(additionalInstruction)
+    hasher.combine(patientInstruction)
+    hasher.combine(timing)
+    hasher.combine(asNeeded)
+    hasher.combine(site)
+    hasher.combine(route)
+    hasher.combine(method)
+    hasher.combine(doseAndRate)
+    hasher.combine(maxDosePerPeriod)
+    hasher.combine(maxDosePerAdministration)
+    hasher.combine(maxDosePerLifetime)
   }
 }

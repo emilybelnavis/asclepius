@@ -66,4 +66,158 @@ open class ContractTermAsset: BackboneElement {
   /// Contract Valued Item List
   public var valuedItem: [ContractTermAssetValuedItem]?
   
+  override public init() {
+    super.init()
+  }
+  
+  public convenience init(
+    fhirExtension: [Extension]? = nil,
+    modifierExtension: [Extension]? = nil,
+    id: FHIRKitPrimitive<FHIRKitString>? = nil,
+    scope: CodableConcept? = nil,
+    type: [CodableConcept]? = nil,
+    typeReference: [Reference]? = nil,
+    subType: [CodableConcept]? = nil,
+    relationship: Coding? = nil,
+    context: [ContractTermAssetContext]? = nil,
+    condition: FHIRKitPrimitive<FHIRKitString>? = nil,
+    periodType: [CodableConcept]? = nil,
+    period: [Period]? = nil,
+    usePeriod: [Period]? = nil,
+    text: FHIRKitPrimitive<FHIRKitString>? = nil,
+    linkId: [FHIRKitPrimitive<FHIRKitString>]? = nil,
+    answer: [ContractTermOfferAnswer]? = nil,
+    securityLabelNumber: [FHIRKitPrimitive<FHIRKitUnsignedInteger>]? = nil,
+    valuedItem: [ContractTermAssetValuedItem]? = nil
+  ) {
+    self.init()
+    self.fhirExtension = fhirExtension
+    self.modifierExtension = modifierExtension
+    self.id = id
+    self.scope = scope
+    self.type = type
+    self.typeReference = typeReference
+    self.subType = subType
+    self.relationship = relationship
+    self.context = context
+    self.condition = condition
+    self.periodType = periodType
+    self.period = period
+    self.usePeriod = usePeriod
+    self.text = text
+    self.linkId = linkId
+    self.answer = answer
+    self.securityLabelNumber = securityLabelNumber
+    self.valuedItem = valuedItem
+  }
+  
+  // MARK: - Codable
+  private enum CodingKeys: String, CodingKey {
+    case scope
+    case type
+    case typeReference
+    case subType
+    case relationship
+    case context
+    case condition; case _condition
+    case periodType
+    case period
+    case usePeriod
+    case text; case _text
+    case linkId; case _linkId
+    case answer
+    case securityLabelNumber; case _securityLabelNumber
+    case valuedItem
+  }
+  
+  public required init(from decoder: Decoder) throws {
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
+    
+    self.scope = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .scope)
+    self.type = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .type)
+    self.typeReference = try [Reference](from: codingKeyContainer, forKeyIfPresent: .typeReference)
+    self.subType = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .subType)
+    self.relationship = try Coding(from: codingKeyContainer, forKeyIfPresent: .relationship)
+    self.context = try [ContractTermAssetContext](from: codingKeyContainer, forKeyIfPresent: .context)
+    self.condition = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .condition, auxKey: ._condition)
+    self.periodType = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .periodType)
+    self.period = try [Period](from: codingKeyContainer, forKeyIfPresent: .period)
+    self.usePeriod = try [Period](from: codingKeyContainer, forKeyIfPresent: .usePeriod)
+    self.text = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .text, auxKey: ._text)
+    self.linkId = try [FHIRKitPrimitive<FHIRKitString>](from: codingKeyContainer, forKeyIfPresent: .linkId, auxKey: ._linkId)
+    self.answer = try [ContractTermOfferAnswer](from: codingKeyContainer, forKeyIfPresent: .answer)
+    self.securityLabelNumber = try [FHIRKitPrimitive<FHIRKitUnsignedInteger>](from: codingKeyContainer, forKeyIfPresent: .securityLabelNumber, auxKey: ._securityLabelNumber)
+    self.valuedItem = try [ContractTermAssetValuedItem](from: codingKeyContainer, forKeyIfPresent: .valuedItem)
+    
+    try super.init(from: decoder)
+  }
+  
+  override public func encode(to encoder: Encoder) throws {
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
+    
+    try scope?.encode(on: &codingKeyContainer, forKey: .scope)
+    try type?.encode(on: &codingKeyContainer, forKey: .type)
+    try typeReference?.encode(on: &codingKeyContainer, forKey: .typeReference)
+    try subType?.encode(on: &codingKeyContainer, forKey: .subType)
+    try relationship?.encode(on: &codingKeyContainer, forKey: .relationship)
+    try context?.encode(on: &codingKeyContainer, forKey: .context)
+    try condition?.encode(on: &codingKeyContainer, forKey: .condition, auxKey: ._condition)
+    try periodType?.encode(on: &codingKeyContainer, forKey: .periodType)
+    try period?.encode(on: &codingKeyContainer, forKey: .period)
+    try usePeriod?.encode(on: &codingKeyContainer, forKey: .usePeriod)
+    try text?.encode(on: &codingKeyContainer, forKey: .text, auxKey: ._text)
+    try linkId?.encode(on: &codingKeyContainer, forKey: .linkId, auxKey: ._linkId)
+    try answer?.encode(on: &codingKeyContainer, forKey: .answer)
+    try securityLabelNumber?.encode(on: &codingKeyContainer, forKey: .securityLabelNumber, auxKey: ._securityLabelNumber)
+    try valuedItem?.encode(on: &codingKeyContainer, forKey: .valuedItem)
+    
+    try super.encode(to: encoder)
+  }
+  
+  // MARK: - Equatable
+  override public func isEqual(to _other: Any?) -> Bool {
+    guard let _other = _other as? ContractTermAsset else {
+      return false
+    }
+    
+    guard super.isEqual(to: _other) else {
+      return false
+    }
+    
+    return scope == _other.scope
+    && type == _other.type
+    && typeReference == _other.typeReference
+    && subType == _other.subType
+    && relationship == _other.relationship
+    && context == _other.context
+    && condition == _other.condition
+    && periodType == _other.periodType
+    && period == _other.period
+    && usePeriod == _other.usePeriod
+    && text == _other.text
+    && linkId == _other.linkId
+    && answer == _other.answer
+    && securityLabelNumber == _other.securityLabelNumber
+    && valuedItem == _other.valuedItem
+  }
+  
+  // MARK: - Hashable
+  override public func hash(into hasher: inout Hasher) {
+    super.hash(into: &hasher)
+    hasher.combine(scope)
+    hasher.combine(type)
+    hasher.combine(typeReference)
+    hasher.combine(subType)
+    hasher.combine(relationship)
+    hasher.combine(context)
+    hasher.combine(condition)
+    hasher.combine(periodType)
+    hasher.combine(period)
+    hasher.combine(usePeriod)
+    hasher.combine(text)
+    hasher.combine(linkId)
+    hasher.combine(answer)
+    hasher.combine(securityLabelNumber)
+    hasher.combine(valuedItem)
+  }
 }

@@ -26,4 +26,68 @@ open class ConsentProvisionData: BackboneElement {
   
   /// The actual data reference
   public var reference: Reference
+  
+  public init(meaning: FHIRKitPrimitive<ConsentDataMeaning>, reference: Reference) {
+    self.meaning = meaning
+    self.reference = reference
+    super.init()
+  }
+  
+  public convenience init(
+    fhirExtension: [Extension]? = nil,
+    modifierExtension: [Extension]? = nil,
+    id: FHIRKitPrimitive<FHIRKitString>? = nil,
+    meaning: FHIRKitPrimitive<ConsentDataMeaning>,
+    reference: Reference
+  ) {
+    self.init(meaning: meaning, reference: reference)
+    self.fhirExtension = fhirExtension
+    self.modifierExtension = modifierExtension
+    self.id = id
+  }
+  
+  // MARK: - Codable
+  private enum CodingKeys: String, CodingKey {
+    case meaning; case _meaning
+    case reference
+  }
+  
+  public required init(from decoder: Decoder) throws {
+    let codingKeyContainer = decoder.container(keyedBy: CodingKeys.self)
+    
+    self.meaning = try FHIRKitPrimitive<ConsentDataMeaning>(from: codingKeyContainer, forKey: .meaning, auxKey: ._meaning)
+    self.reference = try Reference(from: codingKeyContainer, forKey: .reference)
+    
+    try super.init(from: decoder)
+  }
+  
+  override public func encode(to encoder: Encoder) throws {
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
+    
+    try meaning.encode(on: &codingKeyContainer, forKey: .meaning, auxKey: ._meaning)
+    try reference.encode(on: &codingKeyContainer, forKey: .reference)
+    
+    try super.encode(to: encoder)
+  }
+  
+  // MARK: - Equatable
+  override public func isEqual(to _other: Any?) -> Bool {
+    guard let _other = _other as? ConsentProvisionData else {
+      return false
+    }
+    
+    guard super.isEqual(to: _other) else {
+      return false
+    }
+    
+    return meaning == _other.meaning
+    && reference == _other.reference
+  }
+  
+  // MARK: - Hashable
+  override public func hash(into hasher: inout Hasher) {
+    super.hash(into: &hasher)
+    hasher.combine(meaning)
+    hasher.combine(reference)
+  }
 }

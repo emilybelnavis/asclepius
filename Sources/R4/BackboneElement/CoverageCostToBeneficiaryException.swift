@@ -49,7 +49,7 @@ open class CoverageCostToBeneficiaryException: BackboneElement {
     self.period = period
   }
   
-  // MAKR: Codable
+  // MARK: - Codable
   private enum CodingKeys: String, CodingKey {
     case type
     case period
@@ -87,7 +87,7 @@ open class CoverageCostToBeneficiaryException: BackboneElement {
     && period == _other.type
   }
   
-  //MARK: - Hashable
+  // MARK: - Hashable
   public override func hash(into hasher: inout Hasher) {
     super.hash(into: &hasher)
     hasher.combine(type)

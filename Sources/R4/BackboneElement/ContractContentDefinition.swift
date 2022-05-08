@@ -41,4 +41,96 @@ open class ContractContentDefinition: BackboneElement {
   
   /// Publication ownership
   public var copyright: FHIRKitPrimitive<FHIRKitString>?
+  
+  public init(type: CodableConcept, publicationStatus: FHIRKitPrimitive<ContractResourcePublicationStatusCodes>) {
+    self.type = type
+    self.publicationStatus = publicationStatus
+    super.init()
+  }
+  
+  public convenience init(
+    fhirExtension: [Extension]? = nil,
+    modifierExtension: [Extension]? = nil,
+    id: FHIRKitPrimitive<FHIRKitString>? = nil,
+    type: CodableConcept,
+    subType: CodableConcept? = nil,
+    publisher: Reference? = nil,
+    publicationDate: FHIRKitPrimitive<FHIRKitDateTime>? = nil,
+    publicationStatus: FHIRKitPrimitive<ContractResourcePublicationStatusCodes>,
+    copyright: FHIRKitPrimitive<FHIRKitString>? = nil
+  ) {
+    self.init(type: type, publicationStatus: publicationStatus)
+    self.fhirExtension = fhirExtension
+    self.modifierExtension = modifierExtension
+    self.id = id
+    self.subType = subType
+    self.publisher = publisher
+    self.publicationDate = publicationDate
+    self.copyright = copyright
+  }
+  
+  // MARK: - Codable
+  private enum CodingKey: String, CodingKey {
+    case type
+    case subType
+    case publisher
+    case publicationDate; case _publicationDate
+    case publicationStatus; case _publicationStatus
+    case copyright; case _copyright
+  }
+  
+  public required init(from decoder: Decoder) throws {
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
+    
+    self.type = try CodableConcept(from: codingKeyContainer, forKey: .type)
+    self.subType try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .subType)
+    self.publisher = try Reference(from: codingKeyContainer, forKeyIfPresent: .publisher)
+    self.publicationDate = try FHIRKitPrimitive<FHIRKitDateTime>(from: codingKeyContainer, forKeyIfPresent: .publicationDate, auxKey: ._publicationDate)
+    self.publicationStatus = try FHIRKitPrimitive<ContractResourcePublicationStatusCodes>(from: codingKeyContainer, forKey: .publicationStatus, auxKey: ._publicationStatus)
+    self.copyright = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .copyright, auxKey: ._copyright)
+    
+    try super.init(from: decoder)
+  }
+  
+  override public func encode(to encoder: Encoder) throws {
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
+    
+    try type.encode(on: &codingKeyContainer, forKey: .type)
+    try subType?.encode(on: &codingKeyContainer, forKey: .subType)
+    try publisher?.encode(on: &codingKeyContainer, forKey: .publisher)
+    try publicationDate?.encode(on: &codingKeyContainer, forKey: .publicationDate, auxKey: ._publicationDate)
+    try publicationStatus.encode(on: &codingKeyContainer, forKey: .publicationStatus, auxKey: ._publicationStatus)
+    try copyright?.encode(on: &codingKeyContainer, forKey: .copyright, auxKey: ._copyright)
+    
+    try super.encode(to: encoder)
+  }
+  
+  // MARK: - Equatable
+  override public func isEqual(to _other: Any?) -> Bool {
+    guard let _other = _other as? ContractContentDefinition else {
+      return false
+    }
+    
+    guard super.isEqual(to: _other) else {
+      return false
+    }
+    
+    return type == _other.type
+    && subType == _other.subType
+    && publisher == _other.publisher
+    && publicationDate == _other.publicationDate
+    && publicationStatus == _other.publicationStatus
+    && copyright == _other.copyright
+  }
+  
+  // MARK: - Hashable
+  override public func hash(into hasher: inout Hasher) {
+    super.hash(into: &hasher)
+    hasher.combine(type)
+    hasher.combine(subType)
+    hasher.combine(publisher)
+    hasher.combine(publicationDate)
+    hasher.combine(publicationStatus)
+    hasher.combine(copyright)
+  }
 }

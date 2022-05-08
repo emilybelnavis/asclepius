@@ -28,4 +28,68 @@ open class ConditionStage: BackboneElement {
   
   /// Formal record of assessment
   public var assessment: [Reference]?
+  
+  public override init() {
+    super.init()
+  }
+  
+  public convenience init(
+    fhirExtension: [Extension]? = nil,
+    modifierExtension: [Extension]? = nil,
+    id: FHIRKitPrimitive<FHIRKitString>? = nil,
+    summary: CodableConcept? = nil,
+    assessment: [Reference]? = nil
+  ) {
+    self.init()
+    self.fhirExtension = fhirExtension
+    self.modifierExtension = modifierExtension
+    self.id = id
+    self.summary = summary
+    self.assessment = assessment
+  }
+  
+   // MARK: - Codable
+  private enum CodingKeys: String, CodingKey {
+    case summary
+    case assessment
+  }
+  
+  public required init(from decoder: Decoder) throws {
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
+    
+    self.summary = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .summary)
+    self.assessment = try [Reference](from: codingKeyContainer, forKeyIfPresent: .assessment)
+    
+    try super.init(from: decoder)
+  }
+  
+  public override func encode(to encoder: Encoder) throws {
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
+    
+    try summary?.encode(on: &codingKeyContainer, forKey: .summary)
+    try assessment?.encode(on: &codingKeyContainer, forKey: .assessment)
+    
+    try super.encode(to: encoder)
+  }
+  
+  // MARK: - Equatable
+  public override func isEqual(to _other: Any?) -> Bool {
+    guard let _other = _other as? ConditionStage else {
+      return false
+    }
+    
+    guard super.isEqual(to: _other) else {
+      return false
+    }
+    
+    return summary == _other.summary
+    && assessment == _other.assessment
+  }
+  
+  // MARK: - Hashable
+  public override func hash(into hasher: inout Hasher) {
+    super.hash(into: &hasher)
+    hasher.combine(summary)
+    hasher.combine(assessment)
+  }
 }

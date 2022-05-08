@@ -21,7 +21,7 @@ import FHIRKitCore
 /**
  A description of how precise the estimate for the effect is
  */
-open class EffectEvidenceSynthesisEffectEstimatePrecisionEstimate: BackboneElement {
+open class EffectEvidenceSynthesisEffectEstimatePrecisionEstimate: BackboneElement { // swiftlint:disable:this type_name
   /// Type of precision estimate
   public var type: CodableConcept?
   

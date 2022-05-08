@@ -26,5 +26,83 @@ open class ContractRule: BackboneElement {
     case reference(Reference)
   }
   
-  public var contentX: ContentX
+  public var content: ContentX
+  
+  public init(content: ContentX) {
+    self.content = content
+    super.init()
+  }
+  
+  public convenience init(
+    fhirExtension: [Extension]? = nil,
+    modifierExtension: [Extension]? = nil,
+    id: FHIRKitPrimitive<FHIRKitString>? = nil,
+    content: ContentX
+  ) {
+    self.init(content: content)
+    self.fhirExtension = fhirExtension
+    self.modifierExtension = modifierExtension
+    self.id = id
+  }
+  
+  // MARK: - Codable
+  private enum CodingKeys: String, CodingKey {
+    case contentAttachment
+    case contentReference
+  }
+  
+  public required init(from decoder: Decoder) throws {
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
+    
+    var tContent: ContentX?
+    if let contentAttachment = try Attachment(from: codingKeyContainer, forKeyIfPresent: .contentAttachment) {
+      if tContent != nil {
+        throw DecodingError.dataCorruptedError(forKey: .contentAttachment, in: codingKeyContainer, debugDescription: "More than one value provided for \"content\"")
+      }
+      tContent = .attachment(contentAttachment)
+    }
+    
+    if let contentReference = try Reference(from: codingKeyContainer, forKeyIfPresent: .contentReference) {
+      if tContent != nil {
+        throw DecodingError.dataCorruptedError(forKey: .contentReference, in: codingKeyContainer, debugDescription: "More than one value provided for \"content\"")
+      }
+      tContent = .reference(contentReference)
+    }
+    
+    self.content = tContent!
+    
+    try super.init(from: decoder)
+  }
+  
+  override public func encode(to encoder: Encoder) throws {
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
+    
+    switch content {
+    case .attachment(let attachment):
+      try attachment.encode(on: &codingKeyContainer, forKey: .contentAttachment)
+    case .reference(let reference):
+      try reference.encode(on: &codingKeyContainer, forKey: .contentReference)
+    }
+    
+    try super.encode(to: encoder)
+  }
+  
+  // MARK: - Equatable
+  override public func isEqual(to _other: Any?) -> Bool {
+    guard let _other = _other as? ContractRule else {
+      return false
+    }
+    
+    guard super.isEqual(to: _other) else {
+      return false
+    }
+    
+    return content == _other.content
+  }
+  
+  // MARK: - Hashable
+  override public func hash(into hasher: inout Hasher) {
+    super.hash(into: &hasher)
+    hasher.combine(content)
+  }
 }

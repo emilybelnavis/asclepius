@@ -18,7 +18,7 @@
 //  limitations under the License.
 
 import FHIRKitCore
-
+// 
 /// A property value for this concept
 open class CodeSystemConceptProperty: BackboneElement {
   /// all possible types for `value[x]`
@@ -71,6 +71,7 @@ open class CodeSystemConceptProperty: BackboneElement {
     case valueString; case _valueString
   }
   
+  // swiftlint:disable cyclomatic_complexity
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
@@ -139,7 +140,7 @@ open class CodeSystemConceptProperty: BackboneElement {
     case .code(let _value):
       try _value.encode(on: &codingKeyContainer, forKey: .valueCode, auxKey: ._valueCode)
     case .coding(let _value):
-      try _value.encode(on: &codingKeyContainer, forKey: .coding)
+      try _value.encode(on: &codingKeyContainer, forKey: .valueCoding)
     case .dateTime(let _value):
       try _value.encode(on: &codingKeyContainer, forKey: .valueDateTime, auxKey: ._valueDateTime)
     case .decimal(let _value):

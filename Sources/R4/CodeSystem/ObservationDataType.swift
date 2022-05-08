@@ -28,7 +28,7 @@ public enum ObservationDataType: String, FHIRKitPrimitiveType {
   case quantity = "Quantity"
   
   /// A coded concept from a reference terminology and/or text.
-  case codeableConcept = "CodeableConcept"
+  case codableConcept = "CodableConcept"
   
   /// A sequence of Unicode characters.
   case string

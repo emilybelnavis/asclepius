@@ -33,4 +33,75 @@ open class ContractSigner: BackboneElement {
   
   /// Contract documentation signature
   public var signature: [Signature]
+  
+  public init(type: Coding, party: Reference, signature: [Signature]) {
+    self.type = type
+    self.party = party
+    self.signature = signature
+    super.init()
+  }
+  
+  public convenience init(
+    fhirExtension: [Extension]? = nil,
+    modifierExtension: [Extension]? = nil,
+    id: FHIRKitPrimitive<FHIRKitString>? = nil,
+    type: Coding,
+    party: Reference,
+    signature: [Signature]
+  ) {
+    self.init(type: type, party: party, signature: signature)
+    self.fhirExtension = fhirExtension
+    self.modifierExtension = modifierExtension
+    self.id = id
+  }
+  
+  // MARK: - Codable
+  private enum CodingKeys: String, CodingKey {
+    case type
+    case party
+    case signature
+  }
+  
+  public required init(from decoder: Decoder) throws {
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
+    
+    self.type = try Coding(from: codingKeyContainer, forKey: .type)
+    self.party = try Reference(from: codingKeyContainer, forKey: .party)
+    self.signature = try [Signature](from: codingKeyContainer, forKey: .signature)
+    
+    try super.init(from: decoder)
+  }
+  
+  override public func encode(to encoder: Encoder) throws {
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
+    
+    try type.encode(on: &codingKeyContainer, forKey: .type)
+    try party.encode(on: &codingKeyContainer, forKey: .party)
+    try signature.encode(on: &codingKeyContainer, forKey: .signature)
+    
+    try super.encode(to: encoder)
+  }
+  
+  // MARK: - Equatable
+  override public func isEqual(to _other: Any?) -> Bool {
+    guard let _other = _other as? ContractSigner else {
+      return false
+    }
+    
+    guard super.isEqual(to: _other) else {
+      return false
+    }
+    
+    return type == _other.type
+    && party == _other.party
+    && signature == _other.signature
+  }
+  
+  // MARK: - Hashable
+  override public func hash(into hasher: inout Hasher) {
+    super.hash(into: &hasher)
+    hasher.combine(type)
+    hasher.combine(party)
+    hasher.combine(signature)
+  }
 }

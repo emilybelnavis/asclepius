@@ -19,15 +19,77 @@
 
 import FHIRKitCore
 
-/**
- Supporting evidence/manifestations that are the basis of the Condition's verification status, such as evidence
- that confirmed or refuted the condition
- */
+
+/// Supporting evidence/manifestations that are the basis of the Condition's verification status, such as
+/// evidence that confirmed or refuted the condition
 open class ConditionEvidence: BackboneElement {
   /// Manifestation/symptom
   public var code: [CodableConcept]?
   
-  
   /// Supporting information found elsewhere
   public var detail: [Reference]?
+  
+  public override init() {
+    super.init()
+  }
+  
+  public convenience init(
+    fhirExtension: [Extension]? = nil,
+    modifierExtension: [Extension]? = nil,
+    id: FHIRKitPrimitive<FHIRKitString>? = nil,
+    code: [CodableConcept]? = nil,
+    detail: [Reference]? = nil
+  ) {
+    self.init()
+    self.fhirExtension = fhirExtension
+    self.modifierExtension = modifierExtension
+    self.id = id
+    self.code = code
+    self.detail = detail
+  }
+  
+  // MARK: - Codable
+  private enum CodingKeys: String, CodingKey {
+    case code
+    case detail
+  }
+  
+  public required init(from decoder: Decoder) throws {
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
+    
+    self.code = try [CodableConcept](from: codingKeyContainer, forKey: .code)
+    self.detail = try [Reference](from: codingKeyContainer, forKey: .detail)
+    
+    try super.init(from: decoder)
+  }
+  
+  public override func encode(to encoder: Encoder) throws {
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
+    
+    try code?.encode(on: &codingKeyContainer, forKey: .code)
+    try detail?.encode(on: &codingKeyContainer, forKey: .detail)
+    
+    try super.encode(to: encoder)
+  }
+  
+  // MARK: - Equatable
+  public override func isEqual(to _other: Any?) -> Bool {
+    guard let _other = _other as? ConditionEvidence else {
+      return false
+    }
+    
+    guard super.isEqual(to: _other) else {
+      return false
+    }
+    
+    return code == _other.code
+    && detail == _other.detail
+  }
+  
+  // MARK: - Hashable
+  public override func hash(into hasher: inout Hasher) {
+    super.hash(into: &hasher)
+    hasher.combine(code)
+    hasher.combine(detail)
+  }
 }

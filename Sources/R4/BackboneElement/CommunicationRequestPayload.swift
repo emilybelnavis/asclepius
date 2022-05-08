@@ -110,7 +110,7 @@ open class CommunicationRequestPayload: BackboneElement {
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    identifier: Identifier? = nil,
+    identifier: [Identifier]? = nil,
     basedOn: [Reference]? = nil,
     replaces: [Reference]? = nil,
     groupIdentifier: Identifier? = nil,
@@ -156,7 +156,7 @@ open class CommunicationRequestPayload: BackboneElement {
     self.recipient = recipient
     self.sender = sender
     self.reasonCode = reasonCode
-    self.reasonReference = Reference
+    self.reasonReference = reasonReference
     self.note = note
   }
   
@@ -198,20 +198,20 @@ open class CommunicationRequestPayload: BackboneElement {
       tempOccurrence = .dateTime(occurenceDateTime)
     }
     
-    if let occurrencePeriod = try Period(from: codingKeyContainer, forKey: .occurrencePeriod) {
+    if let occurrencePeriod = try Period(from: codingKeyContainer, forKeyIfPresent: .occurrencePeriod) {
       if tempOccurrence != nil {
         throw DecodingError.dataCorruptedError(forKey: .occurrencePeriod, in: codingKeyContainer, debugDescription: "More than one value provided for \"occurrence\"")
       }
       tempOccurrence = .period(occurrencePeriod)
     }
     
-    self.identifier = try Identifier(from: codingKeyContainer, forKeyIfPresent: .identifier)
+    self.identifier = try [Identifier](from: codingKeyContainer, forKeyIfPresent: .identifier)
     self.basedOn = try [Reference](from: codingKeyContainer, forKeyIfPresent: .basedOn)
     self.replaces = try [Reference](from: codingKeyContainer, forKeyIfPresent: .replaces)
     self.groupIdentifier = try Identifier(from: codingKeyContainer, forKeyIfPresent: .groupIdentifier)
     self.status = try FHIRKitPrimitive<RequestStatus>(from: codingKeyContainer, forKey: .status, auxKey: ._status)
     self.statusReason = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .statusReason)
-    self.category = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .category)
+    self.category = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .category)
     self.priority = try FHIRKitPrimitive<RequestPriority>(from: codingKeyContainer, forKeyIfPresent: .priority, auxKey: ._priority)
     self.doNotPerform = try FHIRKitPrimitive<FHIRKitBool>(from: codingKeyContainer, forKeyIfPresent: .doNotPerform, auxKey: ._doNotPerform)
     self.medium = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .medium)
@@ -234,11 +234,13 @@ open class CommunicationRequestPayload: BackboneElement {
   public override func encode(to encoder: Encoder) throws {
     var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    switch occurrence {
-    case .dateTime(let _value):
-      try _value.encode(on: &codingKeyContainer, forKey: .occurrenceDateTime, auxKey: ._occurrenceDateTime)
-    case .period(let _value):
-      try _value.encode(on: &codingKeyContainer, forKey: .occurrencePeriod)
+    if let occurrenceEnum = occurrence {
+      switch occurrenceEnum {
+      case .dateTime(let _value):
+        try _value.encode(on: &codingKeyContainer, forKey: .occurrenceDateTime, auxKey: ._occurrenceDateTime)
+      case .period(let _value):
+        try _value.encode(on: &codingKeyContainer, forKey: .occurrencePeriod)
+      }
     }
     
     try identifier?.encode(on: &codingKeyContainer, forKey: .identifier)

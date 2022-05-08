@@ -32,4 +32,89 @@ open class CompositionRelatesTo: BackboneElement {
   /// Target of the relationship
   public var target: TargetX
   
- }
+  public init (code: FHIRKitPrimitive<DocumentRelationshipType>, target: TargetX) {
+    self.code = code
+    self.target = target
+    super.init()
+  }
+  
+  public convenience init(
+    fhirExtension: [Extension]? = nil,
+    modifierExtension: [Extension]? = nil,
+    id: FHIRKitPrimitive<FHIRKitString>? = nil,
+    code: FHIRKitPrimitive<DocumentRelationshipType>,
+    target: TargetX
+  ) {
+    self.init(code: code, target: target)
+    self.fhirExtension = fhirExtension
+    self.modifierExtension = modifierExtension
+    self.id = id
+  }
+  
+  // MARK: - Codable
+  private enum CodingKeys: String, CodingKey {
+    case code; case _code
+    case targetIdentifier
+    case targetReference
+  }
+  
+  public required init(from decoder: Decoder) throws {
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
+    
+    var tTarget: TargetX?
+    if let targetIdentifier = try Identifier(from: codingKeyContainer, forKeyIfPresent: .targetIdentifier) {
+      if tTarget != nil {
+        throw DecodingError.dataCorruptedError(forKey: .targetIdentifier, in: codingKeyContainer, debugDescription: "More than one value provided for \"target\"")
+      }
+      tTarget = .identifier(targetIdentifier)
+    }
+    
+    if let targetReference = try Reference(from: codingKeyContainer, forKeyIfPresent: .targetReference) {
+      if tTarget != nil {
+        throw DecodingError.dataCorruptedError(forKey: .targetReference, in: codingKeyContainer, debugDescription: "More than one value provided for \"target\"")
+      }
+      tTarget = .reference(targetReference)
+    }
+    
+    self.code = try FHIRKitPrimitive<DocumentRelationshipType>(from: codingKeyContainer, forKey: .code, auxKey: ._code)
+    self.target = tTarget!
+    
+    try super.init(from: decoder)
+  }
+  
+  override public func encode(to encoder: Encoder) throws {
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
+    
+    switch target {
+    case .identifier(let _value):
+      try _value.encode(on: &codingKeyContainer, forKey: .targetIdentifier)
+    case .reference(let _value):
+      try _value.encode(on: &codingKeyContainer, forKey: .targetReference)
+    }
+    
+    try code.encode(on: &codingKeyContainer, forKey: .code, auxKey: ._code)
+    
+    try super.encode(to: encoder)
+  }
+  
+  // MARK: - Equatable
+  override public func isEqual(to _other: Any?) -> Bool {
+    guard let _other = _other as? CompositionRelatesTo else {
+      return false
+    }
+    
+    guard super.isEqual(to: _other) else {
+      return false
+    }
+    
+    return code == _other.code
+    && target == _other.target
+  }
+  
+  // MARK: - Hashable
+  override public func hash(into hasher: inout Hasher) {
+    super.hash(into: &hasher)
+    hasher.combine(code)
+    hasher.combine(target)
+  }
+}
