@@ -1,0 +1,35 @@
+//
+//  ResourceVersionPolicy.swift
+//  AlexandriaHRM
+//  Module: STU3
+//
+//  Copyright (c) 2022 Bitmatic Ltd.
+//
+//  Licensed under the Apache License, Version 2.0 (the "License");
+//  you may not use this file except in compliance with the License.
+//  You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+//  Unless required by applicable law or agreed to in writing, software
+//  distributed under the License is distributed on an "AS IS" BASIS,
+//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//  See the License for the specific language governing permissions and
+//  limitations under the License.
+
+/**
+ How the system supports versioning for a resource.
+ 
+ URL: http://hl7.org/fhir/versioning-policy
+ ValueSet: http://hl7.org/fhir/ValueSet/versioning-policy
+ */
+public enum ResourceVersionPolicy: String, AlexandriaHRMPrimitiveType {
+  /// VersionId meta-property is not supported (server) or used (client).
+  case noVersion = "no-version"
+  
+  /// VersionId meta-property is supported (server) or used (client).
+  case versioned
+  
+  /// VersionId must be correct for updates (server) or will be specified (If-match header) for updates (client).
+  case versionedUpdate = "versioned-update"
+}

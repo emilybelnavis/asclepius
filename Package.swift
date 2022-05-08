@@ -21,8 +21,8 @@ let package = Package(
     .target(name: "STU3", dependencies: ["AlexandriaHRMCore"], path: "Sources/STU3"),
     .target(name: "DSTU2", dependencies: ["AlexandriaHRMCore"], path: "Sources/DSTU2"),
     .testTarget(name: "AlexandriaHRMCoreTests", dependencies: ["AlexandriaHRMCore"]),
-    .testTarget(name: "DateTimeTests", dependencies: ["AlexandriaHRMCore","R4"]),
-    .testTarget(name: "SequenceTests", dependencies: ["AlexandriaHRMCore", "R4"]),
-    .testTarget(name: "PrimitiveTests", dependencies: ["AlexandriaHRMCore", "R4"])
+    .testTarget(name: "DateTimeTests", dependencies: ["DSTU2", "STU3", "R4", "R5"]),
+    .testTarget(name: "SequenceTests", dependencies: ["DSTU2", "STU3", "R4", "R5"]),
+    .testTarget(name: "PrimitiveTests", dependencies: ["DSTU2", "STU3", "R4", "R5"])
   ]
 )

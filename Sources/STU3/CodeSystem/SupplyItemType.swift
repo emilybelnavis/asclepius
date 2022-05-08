@@ -1,0 +1,32 @@
+//
+//  SupplyItemType.swift
+//  AlexandriaHRM
+//  Module: STU3
+//
+//  Copyright (c) 2022 Bitmatic Ltd.
+//
+//  Licensed under the Apache License, Version 2.0 (the "License");
+//  you may not use this file except in compliance with the License.
+//  You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+//  Unless required by applicable law or agreed to in writing, software
+//  distributed under the License is distributed on an "AS IS" BASIS,
+//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//  See the License for the specific language governing permissions and
+//  limitations under the License.
+
+/**
+ This value sets refers to a specific supply item.
+ 
+ URL: http://terminology.hl7.org/CodeSystem/supply-item-type
+ ValueSet: http://hl7.org/fhir/ValueSet/supplydelivery-type
+ */
+public enum SupplyItemType: String, AlexandriaHRMPrimitiveType {
+  /// Supply is a kind of medication.
+  case medication
+  
+  /// What is supplied (or requested) is a device.
+  case device
+}
