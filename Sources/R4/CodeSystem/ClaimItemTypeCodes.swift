@@ -1,6 +1,6 @@
 //
 //  ClaimItemTypeCodes.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/ex-claimitemtype
  ValueSet: http://hl7.org/fhir/ValueSet/fm-itemtype
  */
-public enum ClaimItemTypeCodes: String, FHIRKitPrimitiveType {
+public enum ClaimItemTypeCodes: String, AlexandriaHRMPrimitiveType {
   /// A group of products and/or services, amount ar the summary or detail level products and services
   case group
   

@@ -1,6 +1,6 @@
 //
 //  QuestionnaireTextCategories.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/questionnaire-display-category
  ValueSet: http://hl7.org/fhir/ValueSet/questionnaire-display-category
  */
-public enum QuestionnaireTextCategories: String, FHIRKitPrimitiveType {
+public enum QuestionnaireTextCategories: String, AlexandriaHRMPrimitiveType {
   /// The text provides guidance on how to populate or use a portion of the questionnaire (or the questionnaire as a
   /// whole).
   case instructions

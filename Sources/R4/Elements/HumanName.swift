@@ -1,6 +1,6 @@
 //
 //  HumanName.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,27 +17,27 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /// A human name with the ability to identify parts and usage
 open class HumanName: Element {
   /// identifies the purpose for this name
-  public var use: FHIRKitPrimitive<NameUse>?
+  public var use: AlexandriaHRMPrimitive<NameUse>?
   
   /// text representation of the full name
-  public var text: FHIRKitPrimitive<FHIRKitString>?
+  public var text: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// family name (often called 'surname' or 'last name'
-  public var family: FHIRKitPrimitive<FHIRKitString>?
+  public var family: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// given names (not always first), includes middle names
-  public var given: [FHIRKitPrimitive<FHIRKitString>]?
+  public var given: [AlexandriaHRMPrimitive<AlexandriaHRMString>]?
   
   /// parts that come before the name
-  public var prefix: [FHIRKitPrimitive<FHIRKitString>]?
+  public var prefix: [AlexandriaHRMPrimitive<AlexandriaHRMString>]?
   
   /// parts that come after the name
-  public var suffix: [FHIRKitPrimitive<FHIRKitString>]?
+  public var suffix: [AlexandriaHRMPrimitive<AlexandriaHRMString>]?
   
   /// time period when name was/is in use
   public var period: Period?
@@ -48,18 +48,18 @@ open class HumanName: Element {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    use: FHIRKitPrimitive<NameUse>? = nil,
-    text: FHIRKitPrimitive<FHIRKitString>? = nil,
-    family: FHIRKitPrimitive<FHIRKitString>? = nil,
-    given: [FHIRKitPrimitive<FHIRKitString>]? = nil,
-    prefix: [FHIRKitPrimitive<FHIRKitString>]? = nil,
-    suffix: [FHIRKitPrimitive<FHIRKitString>]? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    use: AlexandriaHRMPrimitive<NameUse>? = nil,
+    text: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    family: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    given: [AlexandriaHRMPrimitive<AlexandriaHRMString>]? = nil,
+    prefix: [AlexandriaHRMPrimitive<AlexandriaHRMString>]? = nil,
+    suffix: [AlexandriaHRMPrimitive<AlexandriaHRMString>]? = nil,
     period: Period? = nil
   ) {
     self.init()
     self.fhirExtension = fhirExtension
-    self.id = id
+    self.fhirId = fhirId
     self.use = use
     self.text = text
     self.family = family
@@ -83,12 +83,12 @@ open class HumanName: Element {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.use = try FHIRKitPrimitive<NameUse>(from: codingKeyContainer, forKeyIfPresent: .use, auxKey: ._use)
-    self.text = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .text, auxKey: ._text)
-    self.family = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .family, auxKey: ._family)
-    self.given = try [FHIRKitPrimitive<FHIRKitString>](from: codingKeyContainer, forKeyIfPresent: .given, auxKey: ._given)
-    self.prefix = try [FHIRKitPrimitive<FHIRKitString>](from: codingKeyContainer, forKeyIfPresent: .prefix, auxKey: ._prefix)
-    self.suffix = try [FHIRKitPrimitive<FHIRKitString>](from: codingKeyContainer, forKeyIfPresent: .suffix, auxKey: ._suffix)
+    self.use = try AlexandriaHRMPrimitive<NameUse>(from: codingKeyContainer, forKeyIfPresent: .use, auxKey: ._use)
+    self.text = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .text, auxKey: ._text)
+    self.family = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .family, auxKey: ._family)
+    self.given = try [AlexandriaHRMPrimitive<AlexandriaHRMString>](from: codingKeyContainer, forKeyIfPresent: .given, auxKey: ._given)
+    self.prefix = try [AlexandriaHRMPrimitive<AlexandriaHRMString>](from: codingKeyContainer, forKeyIfPresent: .prefix, auxKey: ._prefix)
+    self.suffix = try [AlexandriaHRMPrimitive<AlexandriaHRMString>](from: codingKeyContainer, forKeyIfPresent: .suffix, auxKey: ._suffix)
     self.period = try Period(from: codingKeyContainer, forKeyIfPresent: .period)
     
     try super.init(from: decoder)

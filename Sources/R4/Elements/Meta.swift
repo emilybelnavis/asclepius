@@ -1,6 +1,6 @@
 //
 //  Meta.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  The metadata about a resource. This is content in the resource that is maintained by the infrastructure.
@@ -25,16 +25,16 @@ import FHIRKitCore
  */
 open class Meta: Element {
   /// Version specific identifier
-  public var versionId: FHIRKitPrimitive<FHIRKitString>?
+  public var versionId: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// When the resource version last changed
-  public var lastUpdated: FHIRKitPrimitive<FHIRKitInstant>?
+  public var lastUpdated: AlexandriaHRMPrimitive<AlexandriaHRMInstant>?
   
   /// Identifies where the resource comes from
-  public var source: FHIRKitPrimitive<FHIRKitURI>?
+  public var source: AlexandriaHRMPrimitive<AlexandriaHRMURI>?
   
   /// Profiles this resource claims to conform to
-  public var profile: [FHIRKitPrimitive<Canonical>]?
+  public var profile: [AlexandriaHRMPrimitive<Canonical>]?
   
   /// Security labels applied to this resource
   public var security: [Coding]?
@@ -48,17 +48,17 @@ open class Meta: Element {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    versionId: FHIRKitPrimitive<FHIRKitString>? = nil,
-    lastUpdated: FHIRKitPrimitive<FHIRKitInstant>? = nil,
-    source: FHIRKitPrimitive<FHIRKitURI>? = nil,
-    profile: [FHIRKitPrimitive<Canonical>]? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    versionId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    lastUpdated: AlexandriaHRMPrimitive<AlexandriaHRMInstant>? = nil,
+    source: AlexandriaHRMPrimitive<AlexandriaHRMURI>? = nil,
+    profile: [AlexandriaHRMPrimitive<Canonical>]? = nil,
     security: [Coding]? = nil,
     tag: [Coding]? = nil
   ) {
     self.init()
     self.fhirExtension = fhirExtension
-    self.id = id
+    self.fhirId = fhirId
     self.versionId = versionId
     self.lastUpdated = lastUpdated
     self.source = source
@@ -80,10 +80,10 @@ open class Meta: Element {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.versionId = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .versionId, auxKey: ._versionId)
-    self.lastUpdated = try FHIRKitPrimitive<FHIRKitInstant>(from: codingKeyContainer, forKeyIfPresent: .lastUpdated, auxKey: ._lastUpdated)
-    self.source = try FHIRKitPrimitive<FHIRKitURI>(from: codingKeyContainer, forKeyIfPresent: .source, auxKey: ._source)
-    self.profile = try [FHIRKitPrimitive<Canonical>](from: codingKeyContainer, forKeyIfPresent: .profile, auxKey: ._profile)
+    self.versionId = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .versionId, auxKey: ._versionId)
+    self.lastUpdated = try AlexandriaHRMPrimitive<AlexandriaHRMInstant>(from: codingKeyContainer, forKeyIfPresent: .lastUpdated, auxKey: ._lastUpdated)
+    self.source = try AlexandriaHRMPrimitive<AlexandriaHRMURI>(from: codingKeyContainer, forKeyIfPresent: .source, auxKey: ._source)
+    self.profile = try [AlexandriaHRMPrimitive<Canonical>](from: codingKeyContainer, forKeyIfPresent: .profile, auxKey: ._profile)
     self.security = try [Coding](from: codingKeyContainer, forKeyIfPresent: .security)
     self.tag = try [Coding](from: codingKeyContainer, forKeyIfPresent: .tag)
     

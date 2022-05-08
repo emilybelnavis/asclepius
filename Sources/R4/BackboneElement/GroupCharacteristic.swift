@@ -1,6 +1,6 @@
 //
 //  GroupCharacteristic.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,11 +17,11 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 /// Identifies traits whos presence or absence are shared by members of the group
 open class GroupCharacteristic: BackboneElement {
   public enum ValueX: Hashable {
-    case boolean(FHIRKitPrimitive<FHIRKitBool>)
+    case boolean(AlexandriaHRMPrimitive<AlexandriaHRMBool>)
     case codableConcept(CodableConcept)
     case quantity(Quantity)
     case range(Range)
@@ -35,12 +35,12 @@ open class GroupCharacteristic: BackboneElement {
   public var valueX: ValueX
   
   /// group includes or excludes
-  public var exclude: FHIRKitPrimitive<FHIRKitBool>
+  public var exclude: AlexandriaHRMPrimitive<AlexandriaHRMBool>
   
   /// period over which characteristic is tested
   public var period: Period?
 
-  public init(code: CodableConcept, valueX: ValueX, exclude: FHIRKitPrimitive<FHIRKitBool>) {
+  public init(code: CodableConcept, valueX: ValueX, exclude: AlexandriaHRMPrimitive<AlexandriaHRMBool>) {
     self.code = code
     self.valueX = valueX
     self.exclude = exclude
@@ -49,15 +49,15 @@ open class GroupCharacteristic: BackboneElement {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     code: CodableConcept,
     valueX: ValueX,
-    exclude: FHIRKitPrimitive<FHIRKitBool>,
+    exclude: AlexandriaHRMPrimitive<AlexandriaHRMBool>,
     period: Period? = nil
   ) {
     self.init(code: code, valueX: valueX, exclude: exclude)
     self.fhirExtension = fhirExtension
-    self.id = id
+    self.fhirId = fhirId
     self.period = period
   }
   
@@ -90,7 +90,7 @@ open class GroupCharacteristic: BackboneElement {
     
     // decode values for expanded prop. `value`
     var tempValueX: ValueX? = nil // swiftlint:disable:this redundant_optional_initialization
-    if let valueBool = try FHIRKitPrimitive<FHIRKitBool>(from: codingKeyContainer, forKeyIfPresent: .valueBool, auxKey: ._valueBool) {
+    if let valueBool = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKeyIfPresent: .valueBool, auxKey: ._valueBool) {
       if tempValueX != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueBool, in: codingKeyContainer, debugDescription: "More than one value provided for \"value\"")
       }
@@ -127,7 +127,7 @@ open class GroupCharacteristic: BackboneElement {
     
     self.code = try CodableConcept(from: codingKeyContainer, forKey: .code)
     self.valueX = tempValueX!
-    self.exclude = try FHIRKitPrimitive<FHIRKitBool>(from: codingKeyContainer, forKey: .exclude, auxKey: ._exclude)
+    self.exclude = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKey: .exclude, auxKey: ._exclude)
     self.period = try Period(from: codingKeyContainer, forKeyIfPresent: .period)
     
     try super.init(from: decoder)

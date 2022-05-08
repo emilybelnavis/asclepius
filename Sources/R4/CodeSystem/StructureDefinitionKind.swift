@@ -1,6 +1,6 @@
 //
 //  StructureDefinitionKind.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/structure-definition-kind
  ValueSet: http://hl7.org/fhir/ValueSet/structure-definition-kind
  */
-public enum StructureDefinitionKind: String, FHIRKitPrimitiveType {
+public enum StructureDefinitionKind: String, AlexandriaHRMPrimitiveType {
   /// A primitive type that has a value and an extension. These can be used throughout complex datatype, Resource and
   /// extension definitions. Only the base specification can define primitive types.
   case primitiveType = "primitive-type"

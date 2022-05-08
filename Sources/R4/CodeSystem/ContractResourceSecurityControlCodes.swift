@@ -1,6 +1,6 @@
 //
 //  ContractResourceSecurityControlCodes.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/contract-security-control
  ValueSet: http://hl7.org/fhir/ValueSet/contract-security-control
  */
-public enum ContractResourceSecurityControlCodes: String, FHIRKitPrimitiveType {
+public enum ContractResourceSecurityControlCodes: String, AlexandriaHRMPrimitiveType {
   /// To be completed
   case policy
 }

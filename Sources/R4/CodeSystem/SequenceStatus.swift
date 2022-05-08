@@ -1,6 +1,6 @@
 //
 //  SequenceStatus.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/variant-state
  ValueSet: http://hl7.org/fhir/ValueSet/variant-state
  */
-public enum SequenceStatus: String, FHIRKitPrimitiveType {
+public enum SequenceStatus: String, AlexandriaHRMPrimitiveType {
   /// the variant is detected.
   case positive
   

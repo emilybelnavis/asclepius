@@ -1,6 +1,6 @@
 //
 //  ConsentPolicy.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,16 +17,16 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /// Policies covered by this consent - The references to the policies that are included in this consent scope.
 /// Policies may be organizational, but are often defined jurisdicionally or by law
 open class ConsentPolicy: BackboneElement {
   /// Enforcement source for policy
-  public var authority: FHIRKitPrimitive<FHIRKitURI>?
+  public var authority: AlexandriaHRMPrimitive<AlexandriaHRMURI>?
   
   /// Specific policy covered by this consent
-  public var uri: FHIRKitPrimitive<FHIRKitURI>?
+  public var uri: AlexandriaHRMPrimitive<AlexandriaHRMURI>?
   
   override public init() {
     super.init()
@@ -35,14 +35,14 @@ open class ConsentPolicy: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    authority: FHIRKitPrimitive<FHIRKitURI>? = nil,
-    uri: FHIRKitPrimitive<FHIRKitURI>? = nil
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    authority: AlexandriaHRMPrimitive<AlexandriaHRMURI>? = nil,
+    uri: AlexandriaHRMPrimitive<AlexandriaHRMURI>? = nil
   ) {
     self.init()
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.authority = authority
     self.uri = uri
   }
@@ -56,8 +56,8 @@ open class ConsentPolicy: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.authority = try FHIRKitPrimitive<FHIRKitURI>(from: codingKeyContainer, forKeyIfPresent: .authority, auxKey: ._authority)
-    self.uri = try FHIRKitPrimitive<FHIRKitURI>(from: codingKeyContainer, forKeyIfPresent: .uri, auxKey: ._uri)
+    self.authority = try AlexandriaHRMPrimitive<AlexandriaHRMURI>(from: codingKeyContainer, forKeyIfPresent: .authority, auxKey: ._authority)
+    self.uri = try AlexandriaHRMPrimitive<AlexandriaHRMURI>(from: codingKeyContainer, forKeyIfPresent: .uri, auxKey: ._uri)
     
     try super.init(from: decoder)
   }

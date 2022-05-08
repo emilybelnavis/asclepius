@@ -1,6 +1,6 @@
 //
 //  ClaimResponseProcessNote.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,25 +17,25 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Note concerning adjudication; A note that describes or explains adjudication results in a human-readable form
  */
 open class ClaimResponseProcessNote: BackboneElement {
   /// Note instance identifier
-  public var number: FHIRKitPrimitive<FHIRKitPositiveInteger>?
+  public var number: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>?
   
   /// The business purpose of the note text
-  public var type: FHIRKitPrimitive<NoteType>?
+  public var type: AlexandriaHRMPrimitive<NoteType>?
   
   /// Note explanatory text
-  public var text: FHIRKitPrimitive<FHIRKitString>
+  public var text: AlexandriaHRMPrimitive<AlexandriaHRMString>
   
   /// Language of the text
   public var language: CodableConcept?
   
-  public init(text: FHIRKitPrimitive<FHIRKitString>) {
+  public init(text: AlexandriaHRMPrimitive<AlexandriaHRMString>) {
     self.text = text
     super.init()
   }
@@ -43,16 +43,16 @@ open class ClaimResponseProcessNote: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    number: FHIRKitPrimitive<FHIRKitPositiveInteger>? = nil,
-    type: FHIRKitPrimitive<NoteType>? = nil,
-    text: FHIRKitPrimitive<FHIRKitString>,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    number: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>? = nil,
+    type: AlexandriaHRMPrimitive<NoteType>? = nil,
+    text: AlexandriaHRMPrimitive<AlexandriaHRMString>,
     language: CodableConcept? = nil
   ) {
     self.init(text: text)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.number = number
     self.type = type
     self.language = language
@@ -69,9 +69,9 @@ open class ClaimResponseProcessNote: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.number = try FHIRKitPrimitive<FHIRKitPositiveInteger>(from: codingKeyContainer, forKey: .number, auxKey: ._number)
-    self.type = try FHIRKitPrimitive<NoteType>(from: codingKeyContainer, forKeyIfPresent: .type, auxKey: ._type)
-    self.text = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKey: .text, auxKey: ._text)
+    self.number = try AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>(from: codingKeyContainer, forKey: .number, auxKey: ._number)
+    self.type = try AlexandriaHRMPrimitive<NoteType>(from: codingKeyContainer, forKeyIfPresent: .type, auxKey: ._type)
+    self.text = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .text, auxKey: ._text)
     self.language = try CodableConcept(from: codingKeyContainer, forKey: .language)
     
     try super.init(from: decoder)

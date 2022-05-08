@@ -1,6 +1,6 @@
 //
 //  EffectEvidenceSynthesisResultsByExposure.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  What was the result per exposure?; A description of the results for each exposure considered in the effect
@@ -25,10 +25,10 @@ import FHIRKitCore
  */
 open class EffectEvidenceSynthesisResultsByExposure: BackboneElement {
   /// Description of results by exposure
-  public var fhirDescription: FHIRKitPrimitive<FHIRKitString>
+  public var fhirDescription: AlexandriaHRMPrimitive<AlexandriaHRMString>
   
   /// Whether these results are for the exposure state or alternative exposure state
-  public var exposureState: FHIRKitPrimitive<ExposureState>?
+  public var exposureState: AlexandriaHRMPrimitive<ExposureState>?
   
   /// Variant exposure states
   public var variantState: CodableConcept?

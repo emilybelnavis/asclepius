@@ -1,6 +1,6 @@
 //
 //  DefinitionResourceType.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/definition-resource-types
  ValueSet: http://hl7.org/fhir/ValueSet/definition-resource-types
  */
-public enum DefinitionResourceType: String, FHIRKitPrimitiveType {
+public enum DefinitionResourceType: String, AlexandriaHRMPrimitiveType {
   /// This resource allows for the definition of some activity to be performed, independent of a particular patient,
   /// practitioner, or other performance context.
   case activityDefinition = "ActivityDefinition"

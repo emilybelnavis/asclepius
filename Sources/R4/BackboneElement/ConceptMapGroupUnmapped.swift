@@ -1,6 +1,6 @@
 //
 //  ConceptMapGroupUnmapped.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  What to do when there is no mapping for the source concept. "Unmapped" does not include codes that are
@@ -30,18 +30,18 @@ open class ConceptMapGroupUnmapped: BackboneElement {
    mapping between version and only a few codes have changed), use a fixed code (a default code), or
    alternatively, a reference to a different concept map can be provided (by canonical URL)
    */
-  public var mode: FHIRKitPrimitive<ConceptMapGroupUnmappedMode>
+  public var mode: AlexandriaHRMPrimitive<ConceptMapGroupUnmappedMode>
   
   /// Fixed code when mode = fixed
-  public var code: FHIRKitPrimitive<FHIRKitString>?
+  public var code: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// Display for the code
-  public var display: FHIRKitPrimitive<FHIRKitString>?
+  public var display: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// Canonical reference to an additional ConceptMap to use for mapping if the source concept is unmapped
-  public var url: FHIRKitPrimitive<Canonical>?
+  public var url: AlexandriaHRMPrimitive<Canonical>?
   
-  public init(mode: FHIRKitPrimitive<ConceptMapGroupUnmappedMode>) {
+  public init(mode: AlexandriaHRMPrimitive<ConceptMapGroupUnmappedMode>) {
     self.mode = mode
     super.init()
   }
@@ -49,16 +49,16 @@ open class ConceptMapGroupUnmapped: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    mode: FHIRKitPrimitive<ConceptMapGroupUnmappedMode>,
-    code: FHIRKitPrimitive<FHIRKitString>? = nil,
-    display: FHIRKitPrimitive<FHIRKitString>? = nil,
-    url: FHIRKitPrimitive<Canonical>? = nil
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    mode: AlexandriaHRMPrimitive<ConceptMapGroupUnmappedMode>,
+    code: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    display: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    url: AlexandriaHRMPrimitive<Canonical>? = nil
   ) {
     self.init(mode: mode)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.code = code
     self.display = display
     self.url = url
@@ -75,10 +75,10 @@ open class ConceptMapGroupUnmapped: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.mode = try FHIRKitPrimitive<ConceptMapGroupUnmappedMode>(from: codingKeyContainer, forKey: .mode, auxKey: ._mode)
-    self.code = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .code, auxKey: ._code)
-    self.display = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .display, auxKey: ._display)
-    self.url = try FHIRKitPrimitive<Canonical>(from: codingKeyContainer, forKeyIfPresent: .url, auxKey: ._url)
+    self.mode = try AlexandriaHRMPrimitive<ConceptMapGroupUnmappedMode>(from: codingKeyContainer, forKey: .mode, auxKey: ._mode)
+    self.code = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .code, auxKey: ._code)
+    self.display = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .display, auxKey: ._display)
+    self.url = try AlexandriaHRMPrimitive<Canonical>(from: codingKeyContainer, forKeyIfPresent: .url, auxKey: ._url)
     
     try super.init(from: decoder)
   }

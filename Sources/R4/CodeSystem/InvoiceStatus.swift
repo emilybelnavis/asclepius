@@ -1,6 +1,6 @@
 //
 //  InvoiceStatus.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/invoice-status
  ValueSet: http://hl7.org/fhir/ValueSet/invoice-status
  */
-public enum InvoiceStatus: String, FHIRKitPrimitiveType {
+public enum InvoiceStatus: String, AlexandriaHRMPrimitiveType {
   /// the invoice has been prepared but not yet finalized.
   case draft
   

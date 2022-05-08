@@ -1,6 +1,6 @@
 //
 //  AllergyIntoleranceSubstanceExposureRisk.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -24,7 +24,7 @@
  URL: http://terminology.hl7.org/CodeSystem/allerg-intol-substance-exp-risk
  ValueSet: http://hl7.org/fhir/ValueSet/allerg-intol-substance-exp-risk
  */
-public enum AllergyIntoleranceSubstanceExposureRisk: String, FHIRKitPrimitiveType {
+public enum AllergyIntoleranceSubstanceExposureRisk: String, AlexandriaHRMPrimitiveType {
   /// Known risk of allergy or intolerance reaction upon exposure to the specified substance
   case knownReactionRisk = "known-reaction-risk"
   

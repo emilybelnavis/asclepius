@@ -1,6 +1,6 @@
 //
 //  ContractResourceDecisionModeCodes.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/contract-decision-mode
  ValueSet: http://hl7.org/fhir/ValueSet/contract-decision-mode
  */
-public enum ContractResourceDecisionModeCodes: String, FHIRKitPrimitiveType {
+public enum ContractResourceDecisionModeCodes: String, AlexandriaHRMPrimitiveType {
   /// To be completed
   case policy
 }

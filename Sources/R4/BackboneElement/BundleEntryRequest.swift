@@ -1,6 +1,6 @@
 //
 //  BundleEntryRequest.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Additional information about how this entry should be processed when as a part of a transaction or batch.
@@ -26,24 +26,24 @@ import FHIRKitCore
 open class BundleEntryRequest: BackboneElement {
   /// In a transactoin or batch, this is the HTTP action to be executed for this entry. In a history bundle, this
   /// indicates the HTTP action that occured.
-  public var method: FHIRKitPrimitive<HTTPVerb>
+  public var method: AlexandriaHRMPrimitive<HTTPVerb>
   
   /// URL for HTTP equivalent of this entry
-  public var url: FHIRKitPrimitive<FHIRKitURI>
+  public var url: AlexandriaHRMPrimitive<AlexandriaHRMURI>
   
   /// For cache managment
-  public var ifNoneMatch: FHIRKitPrimitive<FHIRKitString>?
+  public var ifNoneMatch: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// For cache management
-  public var ifModifiedSince: FHIRKitPrimitive<FHIRKitInstant>?
+  public var ifModifiedSince: AlexandriaHRMPrimitive<AlexandriaHRMInstant>?
   
   /// For cache management
-  public var ifMatch: FHIRKitPrimitive<FHIRKitString>?
+  public var ifMatch: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// For cache management
-  public var ifNoneExist: FHIRKitPrimitive<FHIRKitString>?
+  public var ifNoneExist: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
-  public init(method: FHIRKitPrimitive<HTTPVerb>, url: FHIRKitPrimitive<FHIRKitURI>) {
+  public init(method: AlexandriaHRMPrimitive<HTTPVerb>, url: AlexandriaHRMPrimitive<AlexandriaHRMURI>) {
     self.method = method
     self.url = url
     super.init()
@@ -52,18 +52,18 @@ open class BundleEntryRequest: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    method: FHIRKitPrimitive<HTTPVerb>,
-    url: FHIRKitPrimitive<FHIRKitURI>,
-    ifNoneMatch: FHIRKitPrimitive<FHIRKitString>? = nil,
-    ifModifiedSince: FHIRKitPrimitive<FHIRKitInstant>? = nil,
-    ifMatch: FHIRKitPrimitive<FHIRKitString>? = nil,
-    ifNoneExist: FHIRKitPrimitive<FHIRKitString>? = nil
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    method: AlexandriaHRMPrimitive<HTTPVerb>,
+    url: AlexandriaHRMPrimitive<AlexandriaHRMURI>,
+    ifNoneMatch: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    ifModifiedSince: AlexandriaHRMPrimitive<AlexandriaHRMInstant>? = nil,
+    ifMatch: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    ifNoneExist: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil
   ) {
     self.init(method: method, url: url)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.url = url
     self.ifNoneMatch = ifNoneMatch
     self.ifModifiedSince = ifModifiedSince
@@ -84,12 +84,12 @@ open class BundleEntryRequest: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.method = try FHIRKitPrimitive<HTTPVerb>(from: codingKeyContainer, forKey: .method, auxKey: ._method)
-    self.url = try FHIRKitPrimitive<FHIRKitURI>(from: codingKeyContainer, forKey: .url, auxKey: ._url)
-    self.ifNoneMatch = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .ifNoneMatch, auxKey: ._ifNoneMatch)
-    self.ifModifiedSince = try FHIRKitPrimitive<FHIRKitInstant>(from: codingKeyContainer, forKeyIfPresent: .ifModifiedSince, auxKey: ._ifModifiedSince)
-    self.ifMatch = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .ifMatch, auxKey: ._ifMatch)
-    self.ifNoneExist = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .ifNoneExist, auxKey: ._ifNoneExist)
+    self.method = try AlexandriaHRMPrimitive<HTTPVerb>(from: codingKeyContainer, forKey: .method, auxKey: ._method)
+    self.url = try AlexandriaHRMPrimitive<AlexandriaHRMURI>(from: codingKeyContainer, forKey: .url, auxKey: ._url)
+    self.ifNoneMatch = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .ifNoneMatch, auxKey: ._ifNoneMatch)
+    self.ifModifiedSince = try AlexandriaHRMPrimitive<AlexandriaHRMInstant>(from: codingKeyContainer, forKeyIfPresent: .ifModifiedSince, auxKey: ._ifModifiedSince)
+    self.ifMatch = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .ifMatch, auxKey: ._ifMatch)
+    self.ifNoneExist = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .ifNoneExist, auxKey: ._ifNoneExist)
     
     try super.init(from: decoder)
   }

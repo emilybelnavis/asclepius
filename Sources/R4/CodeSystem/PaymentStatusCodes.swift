@@ -1,6 +1,6 @@
 //
 //  File.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/paymentstatus
  ValueSet: http://hl7.org/fhir/ValueSet/payment-status
  */
-public enum PaymentStatusCodes: String, FHIRKitPrimitiveType {
+public enum PaymentStatusCodes: String, AlexandriaHRMPrimitiveType {
   /// The payment has been sent physically or electronically.
   case paid
   

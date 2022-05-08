@@ -1,6 +1,6 @@
 //
 //  ReferralMethod.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/service-referral-method
  ValueSet: http://hl7.org/fhir/ValueSet/service-referral-method
  */
-public enum ReferralMethod: String, FHIRKitPrimitiveType {
+public enum ReferralMethod: String, AlexandriaHRMPrimitiveType {
   /// Referrals may be accepted by fax.
   case fax
   

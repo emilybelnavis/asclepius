@@ -1,6 +1,6 @@
 //
 //  CommunicationCategory.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/communication-category
  ValueSet: http://hl7.org/fhir/ValueSet/communication-category
  */
-public enum CommunicationCategory: String, FHIRKitPrimitiveType {
+public enum CommunicationCategory: String, AlexandriaHRMPrimitiveType {
   /// The communication conveys an alert
   case alert
   

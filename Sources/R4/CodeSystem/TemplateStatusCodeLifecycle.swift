@@ -1,6 +1,6 @@
 //
 //  TemplateStatusCodeLifecycle.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -20,10 +20,10 @@
 /**
  Life cycle of the Status Code of a Template Design (Version)
  
- URL: urn:oid:2.16.840.1.113883.3.1937.98.5.8
- ValueSet: urn:oid:2.16.840.1.113883.3.1937.98.11.8
+ URL: urn:ofhirId:2.16.840.1.113883.3.1937.98.5.8
+ ValueSet: urn:ofhirId:2.16.840.1.113883.3.1937.98.11.8
  */
-public enum TemplateStatusCodeLifecycle: String, FHIRKitPrimitiveType {
+public enum TemplateStatusCodeLifecycle: String, AlexandriaHRMPrimitiveType {
   /// Design is under development (nascent).
   case draft
   

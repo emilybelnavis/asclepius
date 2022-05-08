@@ -1,6 +1,6 @@
 //
 //  TestReportStatus.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/report-status-codes
  ValueSet: http://hl7.org/fhir/ValueSet/report-status-codes
  */
-public enum TestReportStatus: String, FHIRKitPrimitiveType {
+public enum TestReportStatus: String, AlexandriaHRMPrimitiveType {
   /// All test operations have completed.
   case completed
   

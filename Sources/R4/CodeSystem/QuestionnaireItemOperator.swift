@@ -1,6 +1,6 @@
 //
 //  QuestionnaireItemOperator.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/questionnaire-enable-operator
  ValueSet: http://hl7.org/fhir/ValueSet/questionnaire-enable-operator
  */
-public enum QuestionnaireItemOperator: String, FHIRKitPrimitiveType {
+public enum QuestionnaireItemOperator: String, AlexandriaHRMPrimitiveType {
   /// True if whether an answer exists is equal to the enableWhen answer (which must be a boolean).
   case exists
   

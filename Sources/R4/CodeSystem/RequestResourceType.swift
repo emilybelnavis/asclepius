@@ -1,6 +1,6 @@
 //
 //  RequestResourceType.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/request-resource-types
  ValueSet: http://hl7.org/fhir/ValueSet/request-resource-types
  */
-public enum RequestResourceType: String, FHIRKitPrimitiveType {
+public enum RequestResourceType: String, AlexandriaHRMPrimitiveType {
   /// A booking of a healthcare event among patient(s), practitioner(s), related person(s) and/or device(s) for a
   /// specific date/time. This may result in one or more Encounter(s).
   case appointment = "Appointment"

@@ -1,6 +1,6 @@
 //
 //  DiagnosisRole.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -24,7 +24,7 @@
  URL: http://terminology.hl7.org/CodeSystem/diagnosis-role
  ValueSet: http://hl7.org/fhir/ValueSet/diagnosis-role
  */
-public enum DiagnosisRole: String, FHIRKitPrimitiveType {
+public enum DiagnosisRole: String, AlexandriaHRMPrimitiveType {
   /// AD
   case AD
   

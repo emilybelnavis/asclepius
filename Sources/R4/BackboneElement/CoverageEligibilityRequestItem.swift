@@ -1,6 +1,6 @@
 //
 //  CoverageEligibilityRequestItem.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Item to be evaluated for eligibility; Service categories or billable services for which benefit details and/or
@@ -25,7 +25,7 @@ import FHIRKitCore
  */
 open class CoverageEligibilityRequestItem: BackboneElement {
   /// Applicable exception or supporting information
-  public var supportingInfoSequence: [FHIRKitPrimitive<FHIRKitPositiveInteger>]?
+  public var supportingInfoSequence: [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>]?
   
   /// Benefit classification
   public var category: CodableConcept?
@@ -61,8 +61,8 @@ open class CoverageEligibilityRequestItem: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    supportingInfoSequence: [FHIRKitPrimitive<FHIRKitPositiveInteger>]? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    supportingInfoSequence: [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>]? = nil,
     category: CodableConcept? = nil,
     productOrService: CodableConcept? = nil,
     modifier: [CodableConcept]? = nil,
@@ -75,7 +75,7 @@ open class CoverageEligibilityRequestItem: BackboneElement {
     self.init()
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.supportingInfoSequence = supportingInfoSequence
     self.category = category
     self.productOrService = productOrService
@@ -103,7 +103,7 @@ open class CoverageEligibilityRequestItem: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.supportingInfoSequence = try [FHIRKitPrimitive<FHIRKitPositiveInteger>](from: codingKeyContainer, forKeyIfPresent: .supportingInfoSequence, auxKey: ._supportingInfoSequence)
+    self.supportingInfoSequence = try [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>](from: codingKeyContainer, forKeyIfPresent: .supportingInfoSequence, auxKey: ._supportingInfoSequence)
     self.category = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .category)
     self.productOrService = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .productOrService)
     self.modifier = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .modifier)

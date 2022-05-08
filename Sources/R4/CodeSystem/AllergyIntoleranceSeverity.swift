@@ -1,6 +1,6 @@
 //
 //  AllergyIntoleranceSeverity.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -24,7 +24,7 @@
  URL: http://hl7.org/fhir/reaction-event-severity
  ValueSet: http://hl7.org/fhir/ValueSet/reaction-event-severity
  */
-public enum AllergyIntoleranceSeverity: String, FHIRKitPrimitiveType {
+public enum AllergyIntoleranceSeverity: String, AlexandriaHRMPrimitiveType {
   /// Causes mild physiological effects
   case mild
   

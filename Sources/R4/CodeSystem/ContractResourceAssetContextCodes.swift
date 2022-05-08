@@ -1,6 +1,6 @@
 //
 //  ContractResourceAssetContextCodes.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/contract-asset-context
  ValueSet: http://hl7.org/fhir/ValueSet/contract-assetcontext
  */
-public enum ContractResourceAssetContextCodes: String, FHIRKitPrimitiveType {
+public enum ContractResourceAssetContextCodes: String, AlexandriaHRMPrimitiveType {
   /// todo: to be completed
   case custodian
 }

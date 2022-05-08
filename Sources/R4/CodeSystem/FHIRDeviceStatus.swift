@@ -1,6 +1,6 @@
 //
 //  FHIRDeviceStatus.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/device-status
  ValueSet: http://hl7.org/fhir/ValueSet/device-status
  */
-public enum FHIRDeviceStatus: String, FHIRKitPrimitiveType {
+public enum FHIRDeviceStatus: String, AlexandriaHRMPrimitiveType {
   /// The device is available for use.  Note: For *implanted devices*  this means that the device is implanted in the
   /// patient.
   case active

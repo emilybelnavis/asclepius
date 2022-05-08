@@ -1,6 +1,6 @@
 //
 //  MedicationStatusCodes.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/CodeSystem/medication-status
  ValueSet: http://hl7.org/fhir/ValueSet/medication-status
  */
-public enum MedicationStatusCodes: String, FHIRKitPrimitiveType {
+public enum MedicationStatusCodes: String, AlexandriaHRMPrimitiveType {
   /// The medication is available for use.
   case active
   

@@ -1,6 +1,6 @@
 //
 //  MedicationRequestCategoryCodes.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/medicationrequest-category
  ValueSet: http://hl7.org/fhir/ValueSet/medicationrequest-category
  */
-public enum MedicationRequestCategoryCodes: String, FHIRKitPrimitiveType {
+public enum MedicationRequestCategoryCodes: String, AlexandriaHRMPrimitiveType {
   
   /// Includes requests for medications to be administered or consumed in an inpatient or acute care setting
   case inpatient

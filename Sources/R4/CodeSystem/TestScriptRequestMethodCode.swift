@@ -1,6 +1,6 @@
 //
 //  TestScriptRequestMethodCode.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/http-operations
  ValueSet: http://hl7.org/fhir/ValueSet/http-operations
  */
-public enum TestScriptRequestMethodCode: String, FHIRKitPrimitiveType {
+public enum TestScriptRequestMethodCode: String, AlexandriaHRMPrimitiveType {
   /// HTTP DELETE operation.
   case delete
   

@@ -1,6 +1,6 @@
 //
 //  ContractContentDerivationCodes.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -26,7 +26,7 @@
  URL: http://terminology.hl7.org/CodeSystem/contract-content-derivative
  ValueSet: http://hl7.org/fhir/ValueSet/contract-content-derivative
  */
-public enum ContractContentDerivationCodes: String, FHIRKitPrimitiveType {
+public enum ContractContentDerivationCodes: String, AlexandriaHRMPrimitiveType {
   
     /// Content derivative that conveys sufficient information needed to register the source basal content from which it
     /// is derived.  This derivative content may be used to register the basal content as it changes status in its

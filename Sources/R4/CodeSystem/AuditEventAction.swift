@@ -1,6 +1,6 @@
 //
 //  AuditEventAction.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -24,7 +24,7 @@
  ValueSet: http://hl7.org/fhir/ValueSet/audit-event-action
  */
 // swiftlint:disable identifier_name
-public enum AuditEventAction: String, FHIRKitPrimitiveType {
+public enum AuditEventAction: String, AlexandriaHRMPrimitiveType {
   /// Create new database object (ex: placing an order)
   case C
   

@@ -1,6 +1,6 @@
 //
 //  AdverseEventSeverity.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/adverse-event-severity
  ValueSet: http://hl7.org/fhir/ValueSet/adverse-event-severity
  */
-public enum AdverseEventSeverity: String, FHIRKitPrimitiveType {
+public enum AdverseEventSeverity: String, AlexandriaHRMPrimitiveType {
   /// Mild
   case mild
   

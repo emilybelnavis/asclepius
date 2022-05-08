@@ -1,6 +1,6 @@
 //
 //  RelatedArtifact.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,50 +17,50 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /// Related artifacts such as additional documentation, justification, or bibliograpic references
 open class RelatedArtifact: Element {
   /// the type of relationship to the related artifact
-  public var type: FHIRKitPrimitive<RelatedArtifactType>
+  public var type: AlexandriaHRMPrimitive<RelatedArtifactType>
   
   /// short label
-  public var label: FHIRKitPrimitive<FHIRKitString>?
+  public var label: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// a brief description of the related artifact
-  public var display: FHIRKitPrimitive<FHIRKitString>?
+  public var display: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// bibliographic citation for the artifact
-  public var citation: FHIRKitPrimitive<FHIRKitString>?
+  public var citation: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// where the artifact can be accessed
-  public var url: FHIRKitPrimitive<FHIRKitURI>?
+  public var url: AlexandriaHRMPrimitive<AlexandriaHRMURI>?
   
   /// what document is being referenced
   public var document: Attachment?
   
   /// what resource is being referenced
-  public var resource: FHIRKitPrimitive<Canonical>?
+  public var resource: AlexandriaHRMPrimitive<Canonical>?
   
-  public init(type: FHIRKitPrimitive<RelatedArtifactType>) {
+  public init(type: AlexandriaHRMPrimitive<RelatedArtifactType>) {
     self.type = type
     super.init()
   }
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    type: FHIRKitPrimitive<RelatedArtifactType>,
-    label: FHIRKitPrimitive<FHIRKitString>? = nil,
-    display: FHIRKitPrimitive<FHIRKitString>? = nil,
-    citation: FHIRKitPrimitive<FHIRKitString>? = nil,
-    url: FHIRKitPrimitive<FHIRKitURI>? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    type: AlexandriaHRMPrimitive<RelatedArtifactType>,
+    label: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    display: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    citation: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    url: AlexandriaHRMPrimitive<AlexandriaHRMURI>? = nil,
     document: Attachment? = nil,
-    resource: FHIRKitPrimitive<Canonical>? = nil
+    resource: AlexandriaHRMPrimitive<Canonical>? = nil
   ) {
     self.init(type: type)
     self.fhirExtension = fhirExtension
-    self.id = id
+    self.fhirId = fhirId
     self.label = label
     self.display = display
     self.citation = citation
@@ -83,13 +83,13 @@ open class RelatedArtifact: Element {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.type = try FHIRKitPrimitive<RelatedArtifactType>(from: codingKeyContainer, forKey: .type, auxKey: ._type)
-    self.label = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .label, auxKey: ._label)
-    self.display = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .display, auxKey: ._display)
-    self.citation = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .citation, auxKey: ._citation)
-    self.url = try FHIRKitPrimitive<FHIRKitURI>(from: codingKeyContainer, forKeyIfPresent: .url, auxKey: ._url)
+    self.type = try AlexandriaHRMPrimitive<RelatedArtifactType>(from: codingKeyContainer, forKey: .type, auxKey: ._type)
+    self.label = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .label, auxKey: ._label)
+    self.display = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .display, auxKey: ._display)
+    self.citation = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .citation, auxKey: ._citation)
+    self.url = try AlexandriaHRMPrimitive<AlexandriaHRMURI>(from: codingKeyContainer, forKeyIfPresent: .url, auxKey: ._url)
     self.document = try Attachment(from: codingKeyContainer, forKeyIfPresent: .document)
-    self.resource = try FHIRKitPrimitive<Canonical>(from: codingKeyContainer, forKeyIfPresent: .resource, auxKey: ._resource)
+    self.resource = try AlexandriaHRMPrimitive<Canonical>(from: codingKeyContainer, forKeyIfPresent: .resource, auxKey: ._resource)
     
     try super.init(from: decoder)
   }

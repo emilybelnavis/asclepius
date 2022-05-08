@@ -1,6 +1,6 @@
 //
 //  ConceptMapGroupElementTargetDependsOn.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  A set of additional dependencies for this mapping to hold. This mapping is only applicable if the specified
@@ -25,18 +25,18 @@ import FHIRKitCore
  */
 open class ConceptMapGroupElementTargetDependsOn: BackboneElement {
   /// Reference to property that mapping depends on
-  public var property: FHIRKitPrimitive<FHIRKitURI>
+  public var property: AlexandriaHRMPrimitive<AlexandriaHRMURI>
   
   /// Code system (if necessary)
-  public var system: FHIRKitPrimitive<Canonical>?
+  public var system: AlexandriaHRMPrimitive<Canonical>?
   
   /// Value of the referenced element
-  public var value: FHIRKitPrimitive<FHIRKitString>
+  public var value: AlexandriaHRMPrimitive<AlexandriaHRMString>
   
   /// Display for the code (if value is a code)
-  public var display: FHIRKitPrimitive<FHIRKitString>?
+  public var display: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
-  public init(property: FHIRKitPrimitive<FHIRKitURI>, value: FHIRKitPrimitive<FHIRKitString>) {
+  public init(property: AlexandriaHRMPrimitive<AlexandriaHRMURI>, value: AlexandriaHRMPrimitive<AlexandriaHRMString>) {
     self.property = property
     self.value = value
     super.init()
@@ -45,16 +45,16 @@ open class ConceptMapGroupElementTargetDependsOn: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    property: FHIRKitPrimitive<FHIRKitURI>,
-    system: FHIRKitPrimitive<Canonical>? = nil,
-    value: FHIRKitPrimitive<FHIRKitString>,
-    display: FHIRKitPrimitive<FHIRKitString>? = nil
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    property: AlexandriaHRMPrimitive<AlexandriaHRMURI>,
+    system: AlexandriaHRMPrimitive<Canonical>? = nil,
+    value: AlexandriaHRMPrimitive<AlexandriaHRMString>,
+    display: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil
   ) {
     self.init(property: property, value: value)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.system = system
     self.display = display
   }
@@ -70,10 +70,10 @@ open class ConceptMapGroupElementTargetDependsOn: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.property = try FHIRKitPrimitive<FHIRKitURI>(from: codingKeyContainer, forKey: .property, auxKey: ._property)
-    self.system = try FHIRKitPrimitive<Canonical>(from: codingKeyContainer, forKeyIfPresent: .system, auxKey: ._system)
-    self.value = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKey: .value, auxKey: ._value)
-    self.display = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKey: .display, auxKey: ._display)
+    self.property = try AlexandriaHRMPrimitive<AlexandriaHRMURI>(from: codingKeyContainer, forKey: .property, auxKey: ._property)
+    self.system = try AlexandriaHRMPrimitive<Canonical>(from: codingKeyContainer, forKeyIfPresent: .system, auxKey: ._system)
+    self.value = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .value, auxKey: ._value)
+    self.display = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .display, auxKey: ._display)
     
     try super.init(from: decoder)
   }

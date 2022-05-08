@@ -1,6 +1,6 @@
 //
 //  ExtensionContextType.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/extension-context-type
  ValueSet: http://hl7.org/fhir/ValueSet/extension-context-type
  */
-public enum ExtensionContextType: String, FHIRKitPrimitiveType {
+public enum ExtensionContextType: String, AlexandriaHRMPrimitiveType {
   /// The context is all elements that match the FHIRPath query found in the expression.
   case fhirpath
   

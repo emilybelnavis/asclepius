@@ -1,6 +1,6 @@
 //
 //  ElementDefinitionBinding.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  ValueSet details if this is coded; Binds to a value set if this element is coded (`code`, `Coding`, `CodableConcept`,
@@ -26,29 +26,29 @@ import FHIRKitCore
 open class ElementDefinitionBinding: Element {
   /// Indicates the degree of conformance expectations associated with this binding (the degree to which the
   /// provided value set must be adhered to in the instances.)
-  public var strength: FHIRKitPrimitive<BindingStrength>
+  public var strength: AlexandriaHRMPrimitive<BindingStrength>
   
   /// Human explanation of the value set
-  public var fhirDescription: FHIRKitPrimitive<FHIRKitString>?
+  public var fhirDescription: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// Source of the value set
-  public var valueSet: FHIRKitPrimitive<Canonical>?
+  public var valueSet: AlexandriaHRMPrimitive<Canonical>?
   
-  public init(strength: FHIRKitPrimitive<BindingStrength>) {
+  public init(strength: AlexandriaHRMPrimitive<BindingStrength>) {
     self.strength = strength
     super.init()
   }
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    strength: FHIRKitPrimitive<BindingStrength>,
-    fhirDescription: FHIRKitPrimitive<FHIRKitString>? = nil,
-    valueSet: FHIRKitPrimitive<Canonical>? = nil
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    strength: AlexandriaHRMPrimitive<BindingStrength>,
+    fhirDescription: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    valueSet: AlexandriaHRMPrimitive<Canonical>? = nil
   ) {
     self.init(strength: strength)
     self.fhirExtension = fhirExtension
-    self.id = id
+    self.fhirId = fhirId
     self.fhirDescription = fhirDescription
     self.valueSet = valueSet
   }
@@ -63,9 +63,9 @@ open class ElementDefinitionBinding: Element {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.strength = try FHIRKitPrimitive<BindingStrength>(from: codingKeyContainer, forKey: .strength, auxKey: ._strength)
-    self.fhirDescription = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .fhirDescription, auxKey: ._fhirDescription)
-    self.valueSet = try FHIRKitPrimitive<Canonical>(from: codingKeyContainer, forKeyIfPresent: .valueSet, auxKey: ._valueSet)
+    self.strength = try AlexandriaHRMPrimitive<BindingStrength>(from: codingKeyContainer, forKey: .strength, auxKey: ._strength)
+    self.fhirDescription = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .fhirDescription, auxKey: ._fhirDescription)
+    self.valueSet = try AlexandriaHRMPrimitive<Canonical>(from: codingKeyContainer, forKeyIfPresent: .valueSet, auxKey: ._valueSet)
     
     try super.init(from: decoder)
   }

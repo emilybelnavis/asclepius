@@ -1,6 +1,6 @@
 //
 //  EndpointPayloadType.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  
  URL: http://terminology.hl7.org/CodeSystem/endpoint-payload-type
  */
-public enum EndpointPayloadType: String, FHIRKitPrimitiveType {
+public enum EndpointPayloadType: String, AlexandriaHRMPrimitiveType {
   /// Any payload type can be used with this endpoint, it is either a payload agnostic infrastructure (such as a
   /// storage repository), or some other type of endpoint where payload considerations are internally handled, and not
   /// available

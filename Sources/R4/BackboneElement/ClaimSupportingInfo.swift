@@ -1,6 +1,6 @@
 //
 //  ClaimSupportingInfo.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Supporting information for a Claim. Additional information codes regarding exceptions, special considerations,
@@ -25,20 +25,20 @@ import FHIRKitCore
  */
 open class ClaimSupportingInfo: BackboneElement {
   public enum TimingX: Hashable {
-    case date(FHIRKitPrimitive<FHIRKitDate>)
+    case date(AlexandriaHRMPrimitive<AlexandriaHRMDate>)
     case period(Period)
   }
   
   public enum ValueX: Hashable {
     case attachment(Attachment)
-    case boolean(FHIRKitPrimitive<FHIRKitBool>)
+    case boolean(AlexandriaHRMPrimitive<AlexandriaHRMBool>)
     case quantity(Quantity)
     case reference(Reference)
-    case string(FHIRKitPrimitive<FHIRKitString>)
+    case string(AlexandriaHRMPrimitive<AlexandriaHRMString>)
   }
   
   /// Information instance identifier
-  public var sequence: FHIRKitPrimitive<FHIRKitPositiveInteger>
+  public var sequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>
   
   /// Classification of the supplied information
   public var category: CodableConcept
@@ -55,7 +55,7 @@ open class ClaimSupportingInfo: BackboneElement {
   /// Explaination for the information
   public var reason: CodableConcept?
   
-  public init(sequence: FHIRKitPrimitive<FHIRKitPositiveInteger>, category: CodableConcept, valueX: ValueX) {
+  public init(sequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>, category: CodableConcept, valueX: ValueX) {
     self.sequence = sequence
     self.category = category
     self.valueX = valueX
@@ -65,8 +65,8 @@ open class ClaimSupportingInfo: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    sequence: FHIRKitPrimitive<FHIRKitPositiveInteger>,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    sequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>,
     category: CodableConcept,
     code: CodableConcept? = nil,
     timingX: TimingX,
@@ -76,7 +76,7 @@ open class ClaimSupportingInfo: BackboneElement {
     self.init(sequence: sequence, category: category, valueX: valueX)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.code = code
     self.timingX = timingX
     self.reason = reason
@@ -102,7 +102,7 @@ open class ClaimSupportingInfo: BackboneElement {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     var tempTimingX: TimingX?
-    if let timingDate = try FHIRKitPrimitive<FHIRKitDate>(from: codingKeyContainer, forKeyIfPresent: .timingDate, auxKey: ._timingDate) {
+    if let timingDate = try AlexandriaHRMPrimitive<AlexandriaHRMDate>(from: codingKeyContainer, forKeyIfPresent: .timingDate, auxKey: ._timingDate) {
       if tempTimingX != nil {
         throw DecodingError.dataCorruptedError(forKey: .timingDate, in: codingKeyContainer, debugDescription: "More than one value provided for \"timing\"")
       }
@@ -124,7 +124,7 @@ open class ClaimSupportingInfo: BackboneElement {
       tempValueX = .attachment(valueAttachment)
     }
     
-    if let valueBoolean = try FHIRKitPrimitive<FHIRKitBool>(from: codingKeyContainer, forKeyIfPresent: .valueBoolean, auxKey: ._valueBoolean) {
+    if let valueBoolean = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKeyIfPresent: .valueBoolean, auxKey: ._valueBoolean) {
       if tempValueX != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueBoolean, in: codingKeyContainer, debugDescription: "More than one value provided for \"value\"")
       }
@@ -145,14 +145,14 @@ open class ClaimSupportingInfo: BackboneElement {
       tempValueX = .reference(valueReference)
     }
     
-    if let valueString = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .valueString, auxKey: ._valueString) {
+    if let valueString = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .valueString, auxKey: ._valueString) {
       if tempValueX != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueString, in: codingKeyContainer, debugDescription: "More than one value provided for \"value\"")
       }
       tempValueX = .string(valueString)
     }
     
-    self.sequence = try FHIRKitPrimitive<FHIRKitPositiveInteger>(from: codingKeyContainer, forKey: .sequence, auxKey: ._sequence)
+    self.sequence = try AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>(from: codingKeyContainer, forKey: .sequence, auxKey: ._sequence)
     self.category = try CodableConcept(from: codingKeyContainer, forKey: .category)
     self.code = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .code)
     self.timingX = tempTimingX

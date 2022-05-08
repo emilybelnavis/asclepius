@@ -1,6 +1,6 @@
 //
 //  ParticipantRequired.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/participantrequired
  ValueSet: http://hl7.org/fhir/ValueSet/participantrequired
  */
-public enum ParticipantRequired: String, FHIRKitPrimitiveType {
+public enum ParticipantRequired: String, AlexandriaHRMPrimitiveType {
   /// The participant is required to attend the appointment.
   case required
   

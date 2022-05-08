@@ -1,6 +1,6 @@
 //
 //  OrientationType.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/orientation-type
  ValueSet: http://hl7.org/fhir/ValueSet/orientation-type
  */
-public enum OrientationType: String, FHIRKitPrimitiveType {
+public enum OrientationType: String, AlexandriaHRMPrimitiveType {
   /// Sense orientation of reference sequence.
   case sense
   

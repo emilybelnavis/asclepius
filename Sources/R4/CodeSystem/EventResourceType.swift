@@ -1,6 +1,6 @@
 //
 //  EventResourceType.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/event-resource-types
  ValueSet: http://hl7.org/fhir/ValueSet/event-resource-types
  */
-public enum EventResourceType: String, FHIRKitPrimitiveType {
+public enum EventResourceType: String, AlexandriaHRMPrimitiveType {
   /// Item containing charge code(s) associated with the provision of healthcare provider products.
   case chargeItem = "ChargeItem"
   

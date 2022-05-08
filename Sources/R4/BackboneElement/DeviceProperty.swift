@@ -1,6 +1,6 @@
 //
 //  DeviceProperty.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 /**
  The actual configuration settings of a device as it actually operates (e.g. regulation status, time properties)
  */

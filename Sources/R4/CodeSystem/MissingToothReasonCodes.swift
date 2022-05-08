@@ -1,6 +1,6 @@
 //
 //  MissingToothReasonCodes.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -24,7 +24,7 @@
  ValueSet: http://hl7.org/fhir/ValueSet/missing-tooth-reason
  */
 // swiftlint:disable identifier_name
-public enum MissingToothReasonCodes: String, FHIRKitPrimitiveType {
+public enum MissingToothReasonCodes: String, AlexandriaHRMPrimitiveType {
   /// Extraction
   case E = "e"
   

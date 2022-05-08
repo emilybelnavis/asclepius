@@ -1,6 +1,6 @@
 //
 //  ActionParticipantType.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/action-participant-type
  ValueSet: http://hl7.org/fhir/ValueSet/action-participant-type
  */
-public enum ActionParticipantType: String, FHIRKitPrimitiveType {
+public enum ActionParticipantType: String, AlexandriaHRMPrimitiveType {
   /// The participant is the patient under evaluation
   case patient
   

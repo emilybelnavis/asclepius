@@ -1,6 +1,6 @@
 //
 //  ContributorType.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/contributor-type
  ValueSet: http://hl7.org/fhir/ValueSet/contributor-type
  */
-public enum ContributorType: String, FHIRKitPrimitiveType {
+public enum ContributorType: String, AlexandriaHRMPrimitiveType {
   /// An author of the content of the module.
   case author
   

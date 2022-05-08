@@ -1,6 +1,6 @@
 //
 //  ChargeItemStatus.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/chargeitem-status
  ValueSet: http://hl7.org/fhir/ValueSet/chargeitem-status
  */
-public enum ChargeItemStatus: String, FHIRKitPrimitiveType {
+public enum ChargeItemStatus: String, AlexandriaHRMPrimitiveType {
   /// The charge item has been entered, but the charged service is not yet complete, so it shall not be billed
   /// yet, but might be used in the context of pre-authorization
   case planned

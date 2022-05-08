@@ -1,6 +1,6 @@
 //
 //  ConsentProvision.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 /**
  Constraints to the base `Consent.policyRule`.
  
@@ -27,7 +27,7 @@ import FHIRKitCore
 open class ConsentProvision: BackboneElement {
   /// Action to take (permit/deny) when the rule conditions are met. Not permitted in root rule
   /// required in all nested rules.
-  public var type: FHIRKitPrimitive<ConsentProvisionType>
+  public var type: AlexandriaHRMPrimitive<ConsentProvisionType>
   
   /// Timeframe for this rule
   public var period: Period?
@@ -59,7 +59,7 @@ open class ConsentProvision: BackboneElement {
   /// Nested Exception Rules
   public var provision: [ConsentProvision]?
   
-  public init(type: FHIRKitPrimitive<ConsentProvisionType>) {
+  public init(type: AlexandriaHRMPrimitive<ConsentProvisionType>) {
     self.type = type
     super.init()
   }
@@ -67,8 +67,8 @@ open class ConsentProvision: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    type: FHIRKitPrimitive<ConsentProvisionType>,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    type: AlexandriaHRMPrimitive<ConsentProvisionType>,
     period: Period? = nil,
     actor: [ConsentProvisionActor]? = nil,
     securityLabel: [Coding]? = nil,
@@ -82,7 +82,7 @@ open class ConsentProvision: BackboneElement {
     self.init(type: type)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.period = period
     self.actor = actor
     self.securityLabel = securityLabel
@@ -111,7 +111,7 @@ open class ConsentProvision: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.type = try FHIRKitPrimitive<ConsentProvisionType>(from: codingKeyContainer, forKey: .type, auxKey: ._type)
+    self.type = try AlexandriaHRMPrimitive<ConsentProvisionType>(from: codingKeyContainer, forKey: .type, auxKey: ._type)
     self.period = try Period(from: codingKeyContainer, forKeyIfPresent: .period)
     self.actor = try [ConsentProvisionActor](from: codingKeyContainer, forKeyIfPresent: .actor)
     self.securityLabel = try [Coding](from: codingKeyContainer, forKeyIfPresent: .securityLabel)

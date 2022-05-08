@@ -1,6 +1,6 @@
 //
 //  DataRequirementCodeFilter.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  What codes are expected.
@@ -28,13 +28,13 @@ import FHIRKitCore
  */
 open class DataRequirementCodeFilter: Element {
   /// A code-valued attribute to filter on
-  public var path: FHIRKitPrimitive<FHIRKitString>?
+  public var path: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// A coded parameter to search on
-  public var searchParam: FHIRKitPrimitive<FHIRKitString>?
+  public var searchParam: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// Valueset for the filter
-  public var valueSet: FHIRKitPrimitive<Canonical>?
+  public var valueSet: AlexandriaHRMPrimitive<Canonical>?
   
   /// What code is expected
   public var code: [Coding]?
@@ -45,15 +45,15 @@ open class DataRequirementCodeFilter: Element {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    path: FHIRKitPrimitive<FHIRKitString>? = nil,
-    searchParam: FHIRKitPrimitive<FHIRKitString>? = nil,
-    valueSet: FHIRKitPrimitive<Canonical>? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    path: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    searchParam: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    valueSet: AlexandriaHRMPrimitive<Canonical>? = nil,
     code: [Coding]? = nil
   ) {
     self.init()
     self.fhirExtension = fhirExtension
-    self.id = id
+    self.fhirId = fhirId
     self.path = path
     self.searchParam = searchParam
     self.valueSet = valueSet
@@ -71,9 +71,9 @@ open class DataRequirementCodeFilter: Element {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.path = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .path, auxKey: ._path)
-    self.searchParam = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .searchParam, auxKey: ._searchParam)
-    self.valueSet = try FHIRKitPrimitive<Canonical>(from: codingKeyContainer, forKeyIfPresent: .valueSet, auxKey: .valueSet)
+    self.path = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .path, auxKey: ._path)
+    self.searchParam = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .searchParam, auxKey: ._searchParam)
+    self.valueSet = try AlexandriaHRMPrimitive<Canonical>(from: codingKeyContainer, forKeyIfPresent: .valueSet, auxKey: .valueSet)
     self.code = try [Coding](from: codingKeyContainer, forKeyIfPresent: .code)
     
     try super.init(from: decoder)

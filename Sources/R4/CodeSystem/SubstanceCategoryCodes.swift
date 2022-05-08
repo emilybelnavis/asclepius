@@ -1,6 +1,6 @@
 //
 //  SubstanceCategoryCodes.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/substance-category
  ValueSet: http://hl7.org/fhir/ValueSet/substance-category
  */
-public enum SubstanceCategoryCodes: String, FHIRKitPrimitiveType {
+public enum SubstanceCategoryCodes: String, AlexandriaHRMPrimitiveType {
   /// A substance that causes an allergic reaction.
   case allergen
   

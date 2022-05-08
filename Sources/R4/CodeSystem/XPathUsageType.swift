@@ -1,6 +1,6 @@
 //
 //  XPathUsageType.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/search-xpath-usage
  ValueSet: http://hl7.org/fhir/ValueSet/search-xpath-usage
  */
-public enum XPathUsageType: String, FHIRKitPrimitiveType {
+public enum XPathUsageType: String, AlexandriaHRMPrimitiveType {
   /// The search parameter is derived directly from the selected nodes based on the
   /// type definitions
   case normal

@@ -1,6 +1,6 @@
 //
 //  SupplyRequestReason.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/supplyrequest-reason
  ValueSet: http://hl7.org/fhir/ValueSet/supplyrequest-reason
  */
-public enum SupplyRequestReason: String, FHIRKitPrimitiveType {
+public enum SupplyRequestReason: String, AlexandriaHRMPrimitiveType {
   /// The supply has been requested for use in direct patient care.
   case patientCare = "patient-care"
   

@@ -1,6 +1,6 @@
 //
 //  CareTeamParticipant.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Identifies all people and organizations who are expected to be involved in the care team
@@ -42,7 +42,7 @@ open class CareTeamParticipant: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     role: [CodableConcept]? = nil,
     member: Reference? = nil,
     onBehalfOf: Reference? = nil,
@@ -51,7 +51,7 @@ open class CareTeamParticipant: BackboneElement {
     self.init()
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.role = role
     self.member = member
     self.onBehalfOf = onBehalfOf

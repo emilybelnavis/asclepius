@@ -1,6 +1,6 @@
 //
 //  DataRequirement.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Describes a required data item for evaluation in terms of the type of date, along with optional code or
@@ -31,16 +31,16 @@ open class DataRequirement: Element {
   }
   
   /// type of the required data
-  public var type: FHIRKitPrimitive<FHIRKitString>
+  public var type: AlexandriaHRMPrimitive<AlexandriaHRMString>
   
   /// the profile of the required data
-  public var profile: [FHIRKitPrimitive<Canonical>]?
+  public var profile: [AlexandriaHRMPrimitive<Canonical>]?
   
   /// One of `Subject`; e.g. Patient, practitioner, related person, etc...
   public var subject: SubjectX?
   
   /// indicates specific structure elemtnets that are referenced by the knowledge module
-  public var mustSupport: [FHIRKitPrimitive<FHIRKitString>]?
+  public var mustSupport: [AlexandriaHRMPrimitive<AlexandriaHRMString>]?
   
   /// what codes are expected
   public var codeFilter: [DataRequirementCodeFilter]?
@@ -49,31 +49,31 @@ open class DataRequirement: Element {
   public var dateFilter: [DataRequirementDateFilter]?
   
   /// number of results
-  public var limit: FHIRKitPrimitive<FHIRKitPositiveInteger>?
+  public var limit: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>?
   
   /// order of the results
   public var sort: [DataRequirementSort]?
   
-  public init(type: FHIRKitPrimitive<FHIRKitString>) {
+  public init(type: AlexandriaHRMPrimitive<AlexandriaHRMString>) {
     self.type = type
     super.init()
   }
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    type: FHIRKitPrimitive<FHIRKitString>,
-    profile: [FHIRKitPrimitive<Canonical>]? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    type: AlexandriaHRMPrimitive<AlexandriaHRMString>,
+    profile: [AlexandriaHRMPrimitive<Canonical>]? = nil,
     subject: SubjectX? = nil,
-    mustSupport: [FHIRKitPrimitive<FHIRKitString>]? = nil,
+    mustSupport: [AlexandriaHRMPrimitive<AlexandriaHRMString>]? = nil,
     codeFilter: [DataRequirementCodeFilter]? = nil,
     dateFilter: [DataRequirementDateFilter]? = nil,
-    limit: FHIRKitPrimitive<FHIRKitPositiveInteger>? = nil,
+    limit: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>? = nil,
     sort: [DataRequirementSort]? = nil
   ) {
     self.init(type: type)
     self.fhirExtension = fhirExtension
-    self.id = id
+    self.fhirId = fhirId
     self.profile = profile
     self.subject = subject
     self.mustSupport = mustSupport
@@ -114,13 +114,13 @@ open class DataRequirement: Element {
       tempSubject = .reference(subjectReference)
     }
     
-    self.type = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKey: .type, auxKey: ._type)
-    self.profile = try [FHIRKitPrimitive<Canonical>](from: codingKeyContainer, forKeyIfPresent: .profile, auxKey: ._profile)
+    self.type = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .type, auxKey: ._type)
+    self.profile = try [AlexandriaHRMPrimitive<Canonical>](from: codingKeyContainer, forKeyIfPresent: .profile, auxKey: ._profile)
     self.subject = tempSubject
-    self.mustSupport = try [FHIRKitPrimitive<FHIRKitString>](from: codingKeyContainer, forKeyIfPresent: .mustSupport, auxKey: ._mustSupport)
+    self.mustSupport = try [AlexandriaHRMPrimitive<AlexandriaHRMString>](from: codingKeyContainer, forKeyIfPresent: .mustSupport, auxKey: ._mustSupport)
     self.codeFilter = try [DataRequirementCodeFilter](from: codingKeyContainer, forKeyIfPresent: .codeFilter)
     self.dateFilter = try [DataRequirementDateFilter](from: codingKeyContainer, forKeyIfPresent: .dateFilter)
-    self.limit = try FHIRKitPrimitive<FHIRKitPositiveInteger>(from: codingKeyContainer, forKeyIfPresent: .limit, auxKey: ._limit)
+    self.limit = try AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>(from: codingKeyContainer, forKeyIfPresent: .limit, auxKey: ._limit)
     self.sort = try [DataRequirementSort](from: codingKeyContainer, forKeyIfPresent: .sort)
     try super.init(from: decoder)
   }

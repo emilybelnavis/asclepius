@@ -1,6 +1,6 @@
 //
 //  MedicationDispenseCategoryCodes.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-category
  ValueSet: http://hl7.org/fhir/ValueSet/medicationdispense-category
  */
-public enum MedicationDispenseCategoryCodes: String, FHIRKitPrimitiveType {
+public enum MedicationDispenseCategoryCodes: String, AlexandriaHRMPrimitiveType {
   /// Includes dispenses for medications to be administered or consumed in an inpatient or acute care setting.
   case inpatient
   

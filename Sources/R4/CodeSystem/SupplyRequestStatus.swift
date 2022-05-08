@@ -1,6 +1,6 @@
 //
 //  SupplyRequestStatus.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/supplyrequest-status
  ValueSet: http://hl7.org/fhir/ValueSet/supplyrequest-status
  */
-public enum SupplyRequestStatus: String, FHIRKitPrimitiveType {
+public enum SupplyRequestStatus: String, AlexandriaHRMPrimitiveType {
   /// The request has been created but is not yet complete or ready for action.
   case draft
   

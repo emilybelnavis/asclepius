@@ -1,6 +1,6 @@
 //
 //  ClaimProcessingCodes.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/remittance-outcome
  ValueSet: http://hl7.org/fhir/ValueSet/remittance-outcome
  */
-public enum ClaimProcessingCodes: String, FHIRKitPrimitiveType {
+public enum ClaimProcessingCodes: String, AlexandriaHRMPrimitiveType {
   /// The claim/pre-authorization/pre-determination has been received but processing has not begun
   case queued
   

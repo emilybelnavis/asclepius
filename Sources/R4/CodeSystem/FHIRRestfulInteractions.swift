@@ -1,6 +1,6 @@
 //
 //  FHIRRestfulInteractions.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/restful-interaction
  ValueSet: http://hl7.org/fhir/ValueSet/restful-interaction
  */
-public enum FHIRRestfulInteractions: String, FHIRKitPrimitiveType {
+public enum FHIRRestfulInteractions: String, AlexandriaHRMPrimitiveType {
   /// Read the current state of the resource.
   case read
   

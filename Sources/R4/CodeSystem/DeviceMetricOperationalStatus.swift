@@ -1,6 +1,6 @@
 //
 //  DeviceMetricOperationalStatus.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/metric-operational-status
  ValueSet: http://hl7.org/fhir/ValueSet/metric-operational-status
  */
-public enum DeviceMetricOperationalStatus: String, FHIRKitPrimitiveType {
+public enum DeviceMetricOperationalStatus: String, AlexandriaHRMPrimitiveType {
   /// The DeviceMetric is operating and will generate DeviceObservations.
   case on
   

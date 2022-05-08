@@ -1,6 +1,6 @@
 //
 //  CompartmentType.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/compartment-type
  ValueSet: http://hl7.org/fhir/ValueSet/compartment-type
  */
-public enum CompartmentType: String, FHIRKitPrimitiveType {
+public enum CompartmentType: String, AlexandriaHRMPrimitiveType {
   /// The compartment definition is for the patient compartment
   case patient = "Patient"
   

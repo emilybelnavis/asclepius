@@ -1,6 +1,6 @@
 //
 //  ContractTermAssetContext.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /// Circumstance of the asset
 open class ContractTermAssetContext: BackboneElement {
@@ -28,7 +28,7 @@ open class ContractTermAssetContext: BackboneElement {
   public var code: [CodableConcept]?
   
   /// Context description
-  public var text: FHIRKitPrimitive<FHIRKitString>?
+  public var text: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   override public init() {
     super.init(
@@ -38,15 +38,15 @@ open class ContractTermAssetContext: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     reference: Reference? = nil,
     code: [CodableConcept]? = nil,
-    text: FHIRKitPrimitive<FHIRKitString>? = nil
+    text: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil
   ) {
     self.init()
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.reference = reference
     self.code = code
     self.text = text
@@ -64,7 +64,7 @@ open class ContractTermAssetContext: BackboneElement {
     
     self.reference = try Reference(from: codingKeyContainer, forKeyIfPresent: .reference)
     self.code = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .code)
-    self.text = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .text, auxKey: ._text)
+    self.text = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .text, auxKey: ._text)
     
     try super.init(from: decoder)
   }

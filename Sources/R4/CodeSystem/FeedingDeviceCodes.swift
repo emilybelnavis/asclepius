@@ -1,6 +1,6 @@
 //
 //  FeedingDeviceCodes.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -22,7 +22,7 @@
  
  URL: http://hl7.org/fhir/feeding-device
  */
-public enum FeedingDeviceCodes: String, FHIRKitPrimitiveType {
+public enum FeedingDeviceCodes: String, AlexandriaHRMPrimitiveType {
   /// Standard nipple definition:
   case standardNipple = "standard-nipple"
   

@@ -1,6 +1,6 @@
 //
 //  CompositionRelatesTo.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /// Relationships that this composition has with other compositions or documents that already exist
 open class CompositionRelatesTo: BackboneElement {
@@ -27,12 +27,12 @@ open class CompositionRelatesTo: BackboneElement {
   }
   
   /// The type of relationship that this composition has with another composition or document
-  public var code: FHIRKitPrimitive<DocumentRelationshipType>
+  public var code: AlexandriaHRMPrimitive<DocumentRelationshipType>
   
   /// Target of the relationship
   public var target: TargetX
   
-  public init (code: FHIRKitPrimitive<DocumentRelationshipType>, target: TargetX) {
+  public init (code: AlexandriaHRMPrimitive<DocumentRelationshipType>, target: TargetX) {
     self.code = code
     self.target = target
     super.init()
@@ -41,14 +41,14 @@ open class CompositionRelatesTo: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    code: FHIRKitPrimitive<DocumentRelationshipType>,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    code: AlexandriaHRMPrimitive<DocumentRelationshipType>,
     target: TargetX
   ) {
     self.init(code: code, target: target)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
   }
   
   // MARK: - Codable
@@ -76,7 +76,7 @@ open class CompositionRelatesTo: BackboneElement {
       tTarget = .reference(targetReference)
     }
     
-    self.code = try FHIRKitPrimitive<DocumentRelationshipType>(from: codingKeyContainer, forKey: .code, auxKey: ._code)
+    self.code = try AlexandriaHRMPrimitive<DocumentRelationshipType>(from: codingKeyContainer, forKey: .code, auxKey: ._code)
     self.target = tTarget!
     
     try super.init(from: decoder)

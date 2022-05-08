@@ -1,6 +1,6 @@
 //
 //  ClaimAccident.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Details of the accident which resulted in injures that required the products and services listed in the claim
@@ -29,7 +29,7 @@ open class ClaimAccident: BackboneElement {
   }
   
   /// When the accident occured
-  public var date: FHIRKitPrimitive<FHIRKitDate>
+  public var date: AlexandriaHRMPrimitive<AlexandriaHRMDate>
   
   /// The nature of the accident
   public var type: CodableConcept?
@@ -37,7 +37,7 @@ open class ClaimAccident: BackboneElement {
   /// Where the accident occured
   public var locationX: LocationX?
   
-  public init(date: FHIRKitPrimitive<FHIRKitDate>) {
+  public init(date: AlexandriaHRMPrimitive<AlexandriaHRMDate>) {
     self.date = date
     super.init()
   }
@@ -45,15 +45,15 @@ open class ClaimAccident: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    date: FHIRKitPrimitive<FHIRKitDate>,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    date: AlexandriaHRMPrimitive<AlexandriaHRMDate>,
     type: CodableConcept? = nil,
     locationX: LocationX? = nil
   ) {
     self.init(date: date)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.type = type
     self.locationX = locationX
   }
@@ -84,7 +84,7 @@ open class ClaimAccident: BackboneElement {
       tempLocationX = .reference(locationReference)
     }
     
-    self.date = try FHIRKitPrimitive<FHIRKitDate>(from: codingKeyContainer, forKey: .date, auxKey: ._date)
+    self.date = try AlexandriaHRMPrimitive<AlexandriaHRMDate>(from: codingKeyContainer, forKey: .date, auxKey: ._date)
     self.type = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .type)
     self.locationX = tempLocationX
     

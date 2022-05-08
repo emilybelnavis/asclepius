@@ -1,6 +1,6 @@
 //
 //  GoalLifecycleStatus.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/goal-status
  ValueSet: http://hl7.org/fhir/ValueSet/goal-status
  */
-public enum GoalLifecycleStatus: String, FHIRKitPrimitiveType {
+public enum GoalLifecycleStatus: String, AlexandriaHRMPrimitiveType {
   /// A goal is proposed for this patient.
   case proposed
   

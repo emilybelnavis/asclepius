@@ -1,6 +1,6 @@
 //
 //  DeviceDefinitionSpecialization.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  The capabilities supported on a device, the standards to which the device conforms for a particular purpose and
@@ -25,12 +25,12 @@ import FHIRKitCore
  */
 open class DeviceDefinitionSpecialization: BackboneElement {
   /// The standard that is used to operate and communicate
-  public var systemType: FHIRKitPrimitive<FHIRKitString>
+  public var systemType: AlexandriaHRMPrimitive<AlexandriaHRMString>
   
   /// The version of the standard that is used to operate and communicate
-  public var version: FHIRKitPrimitive<FHIRKitString>?
+  public var version: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
-  public init(systemType: FHIRKitPrimitive<FHIRKitString>) {
+  public init(systemType: AlexandriaHRMPrimitive<AlexandriaHRMString>) {
     self.systemType = systemType
     super.init()
   }
@@ -38,14 +38,14 @@ open class DeviceDefinitionSpecialization: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    systemType: FHIRKitPrimitive<FHIRKitString>,
-    version: FHIRKitPrimitive<FHIRKitString>? = nil
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    systemType: AlexandriaHRMPrimitive<AlexandriaHRMString>,
+    version: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil
   ) {
     self.init(systemType: systemType)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.version = version
   }
   
@@ -58,8 +58,8 @@ open class DeviceDefinitionSpecialization: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.systemType = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKey: .systemType, auxKey: ._systemType)
-    self.version = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKey: .version, auxKey: ._version)
+    self.systemType = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .systemType, auxKey: ._systemType)
+    self.version = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .version, auxKey: ._version)
     
     try super.init(from: decoder)
   }

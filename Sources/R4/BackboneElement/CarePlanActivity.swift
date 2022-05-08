@@ -1,6 +1,6 @@
 //
 //  CarePlanActivity.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Identifies a planned action to occur as part of the care plan. For example, a medication to be used, lab tests
@@ -48,7 +48,7 @@ open class CarePlanActivity: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     outcomeCodableConcept: [CodableConcept]? = nil,
     outcomeReference: [Reference]? = nil,
     progress: [Annotation]? = nil,
@@ -58,7 +58,7 @@ open class CarePlanActivity: BackboneElement {
     self.init()
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.outcomeCodableConcept = outcomeCodableConcept
     self.outcomeReference = outcomeReference
     self.progress = progress

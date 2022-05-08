@@ -1,6 +1,6 @@
 //
 //  Address.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  An address expressed using postal conventions (as opposed to GPS or other location definition formats). This
@@ -30,32 +30,32 @@ import FHIRKitCore
  */
 open class Address: Element {
   /// Purpose of this address ( home | work | temp | old | billing )
-  public var use: FHIRKitPrimitive<AddressUse>?
+  public var use: AlexandriaHRMPrimitive<AddressUse>?
   /// Type of address ( postal | physical | both)
-  public var type: FHIRKitPrimitive<AddressType>?
+  public var type: AlexandriaHRMPrimitive<AddressType>?
   
   /// Text representatoin of the address
-  public var text: FHIRKitPrimitive<FHIRKitString>?
+  public var text: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// Street name, number, direction & P.O Box etc.
   /// This repeating element order: The order in which the lines should appear in an address
   /// label
-  public var line: [FHIRKitPrimitive<FHIRKitString>]?
+  public var line: [AlexandriaHRMPrimitive<AlexandriaHRMString>]?
   
   /// Name of city, town, etc...
-  public var city: FHIRKitPrimitive<FHIRKitString>?
+  public var city: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// Name of district/county
-  public var district: FHIRKitPrimitive<FHIRKitString>?
+  public var district: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// Sub-unit of country (abbreviations can be used here)
-  public var state: FHIRKitPrimitive<FHIRKitString>?
+  public var state: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// Postal code for address
-  public var postalCode: FHIRKitPrimitive<FHIRKitString>?
+  public var postalCode: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// Country code using either ISO:3166 2 or 3 letter country code
-  public var country: FHIRKitPrimitive<FHIRKitString>?
+  public var country: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// Time period when address was/is in use
   public var period: Period?
@@ -66,20 +66,20 @@ open class Address: Element {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    use: FHIRKitPrimitive<AddressUse>? = nil,
-    type: FHIRKitPrimitive<AddressType>? = nil,
-    line: [FHIRKitPrimitive<FHIRKitString>]? = nil,
-    city: FHIRKitPrimitive<FHIRKitString>? = nil,
-    district: FHIRKitPrimitive<FHIRKitString>? = nil,
-    state: FHIRKitPrimitive<FHIRKitString>? = nil,
-    postalCode: FHIRKitPrimitive<FHIRKitString>? = nil,
-    country: FHIRKitPrimitive<FHIRKitString>? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    use: AlexandriaHRMPrimitive<AddressUse>? = nil,
+    type: AlexandriaHRMPrimitive<AddressType>? = nil,
+    line: [AlexandriaHRMPrimitive<AlexandriaHRMString>]? = nil,
+    city: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    district: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    state: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    postalCode: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    country: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     period: Period? = nil
   ) {
     self.init()
     self.fhirExtension = fhirExtension
-    self.id = id
+    self.fhirId = fhirId
     self.use = use
     self.type = type
     self.text = text
@@ -110,15 +110,15 @@ open class Address: Element {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.use = try FHIRKitPrimitive<AddressUse>(from: codingKeyContainer, forKeyIfPresent: .use, auxKey: ._use)
-    self.type = try FHIRKitPrimitive<AddressType>(from: codingKeyContainer, forKeyIfPresent: .type, auxKey: ._type)
-    self.text = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .text, auxKey: ._text)
-    self.line = try [FHIRKitPrimitive<FHIRKitString>](from: codingKeyContainer, forKeyIfPresent: .line, auxKey: ._line)
-    self.city = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .city, auxKey: ._city)
-    self.district = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .district, auxKey: ._district)
-    self.state = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .state, auxKey: ._state)
-    self.postalCode = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .postalCode, auxKey: ._postalCode)
-    self.country = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .country, auxKey: ._country)
+    self.use = try AlexandriaHRMPrimitive<AddressUse>(from: codingKeyContainer, forKeyIfPresent: .use, auxKey: ._use)
+    self.type = try AlexandriaHRMPrimitive<AddressType>(from: codingKeyContainer, forKeyIfPresent: .type, auxKey: ._type)
+    self.text = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .text, auxKey: ._text)
+    self.line = try [AlexandriaHRMPrimitive<AlexandriaHRMString>](from: codingKeyContainer, forKeyIfPresent: .line, auxKey: ._line)
+    self.city = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .city, auxKey: ._city)
+    self.district = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .district, auxKey: ._district)
+    self.state = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .state, auxKey: ._state)
+    self.postalCode = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .postalCode, auxKey: ._postalCode)
+    self.country = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .country, auxKey: ._country)
     self.period = try Period(from: codingKeyContainer, forKeyIfPresent: .period)
     
     try super.init(from: decoder)

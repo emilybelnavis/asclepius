@@ -1,6 +1,6 @@
 //
 //  CanonicalStatusCodesForFHIRResources.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/resource-status
  ValueSet: http://hl7.org/fhir/ValueSet/resource-status
  */
-public enum CanonicalStatusCodesForFHIRResources: String, FHIRKitPrimitiveType {
+public enum CanonicalStatusCodesForFHIRResources: String, AlexandriaHRMPrimitiveType {
   /// The resource was created in error, and should not be treated as valid (note: in many cases, for various data
   /// integrity related reasons, the information cannot be removed from the record)
   case error

@@ -1,6 +1,6 @@
 //
 //  EffectEvidenceSynthesisEffectEstimatePrecisionEstimate.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 /**
  A description of how precise the estimate for the effect is
  */
@@ -26,11 +26,11 @@ open class EffectEvidenceSynthesisEffectEstimatePrecisionEstimate: BackboneEleme
   public var type: CodableConcept?
   
   /// Level of confidence interval
-  public var level: FHIRKitPrimitive<FHIRKitDecimal>?
+  public var level: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>?
   
   /// Lower bound
-  public var from: FHIRKitPrimitive<FHIRKitDecimal>?
+  public var from: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>?
   
   /// Upper bound
-  public var to: FHIRKitPrimitive<FHIRKitDecimal>?
+  public var to: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>?
 }

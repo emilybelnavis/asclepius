@@ -1,6 +1,6 @@
 //
 //  Resource.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Base Resource
@@ -25,33 +25,33 @@ import FHIRKitCore
  This is the base resource type for everything
  https://www.hl7.org/fhir/resource.html
  */
-open class Resource: FHIRKitAbstractResource {
+open class Resource: AlexandriaHRMAbstractResource {
   override open class var resourceType: ResourceType { return .resource }
   
   /// Logical id of this artifact
-  public var id: FHIRKitPrimitive<FHIRKitString>?
+  public var fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// Metadata about the resource
   public var meta: Meta?
   
   /// A set of rules under which this content was created
-  public var implicitRules: FHIRKitPrimitive<FHIRKitURI>?
+  public var implicitRules: AlexandriaHRMPrimitive<AlexandriaHRMURI>?
   
   /// Language of the resource content
-  public var language: FHIRKitPrimitive<FHIRKitString>?
+  public var language: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   override public init() {
     super.init()
   }
   
   public convenience init(
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     meta: Meta? = nil,
-    implicitRules: FHIRKitPrimitive<FHIRKitURI>? = nil,
-    language: FHIRKitPrimitive<FHIRKitString>? = nil
+    implicitRules: AlexandriaHRMPrimitive<AlexandriaHRMURI>? = nil,
+    language: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil
   ) {
     self.init()
-    self.id = id
+    self.fhirId = fhirId
     self.meta = meta
     self.implicitRules = implicitRules
     self.language = language
@@ -59,7 +59,7 @@ open class Resource: FHIRKitAbstractResource {
   
   // MARK: - Codable
   private enum CodingKeys: String, CodingKey {
-    case id; case _id
+    case fhirId; case _fhirId
     case meta
     case implicitRules; case _implicitRules
     case language; case _language
@@ -68,10 +68,10 @@ open class Resource: FHIRKitAbstractResource {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.id = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .id, auxKey: ._id)
+    self.fhirId = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .fhirId, auxKey: ._fhirId)
     self.meta = try Meta(from: codingKeyContainer, forKeyIfPresent: .meta)
-    self.implicitRules = try FHIRKitPrimitive<FHIRKitURI>(from: codingKeyContainer, forKeyIfPresent: .implicitRules, auxKey: ._implicitRules)
-    self.language = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .language, auxKey: ._language)
+    self.implicitRules = try AlexandriaHRMPrimitive<AlexandriaHRMURI>(from: codingKeyContainer, forKeyIfPresent: .implicitRules, auxKey: ._implicitRules)
+    self.language = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .language, auxKey: ._language)
     
     try super.init(from: decoder)
   }
@@ -79,7 +79,7 @@ open class Resource: FHIRKitAbstractResource {
   public override func encode(to encoder: Encoder) throws {
     var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    try id?.encode(on: &codingKeyContainer, forKey: .id, auxKey: ._id)
+    try fhirId?.encode(on: &codingKeyContainer, forKey: .fhirId, auxKey: ._fhirId)
     try meta?.encode(on: &codingKeyContainer, forKey: .id)
     try implicitRules?.encode(on: &codingKeyContainer, forKey: .implicitRules, auxKey: ._implicitRules)
     try language?.encode(on: &codingKeyContainer, forKey: .language, auxKey: ._language)
@@ -97,7 +97,7 @@ open class Resource: FHIRKitAbstractResource {
       return false
     }
     
-    return id == _other.id
+    return fhirId == _other.fhirId
       && meta == _other.meta
       && implicitRules == _other.implicitRules
       && language == _other.language
@@ -107,7 +107,7 @@ open class Resource: FHIRKitAbstractResource {
   public override func hash(into hasher: inout Hasher) {
     super.hash(into: &hasher)
     
-    hasher.combine(id)
+    hasher.combine(fhirId)
     hasher.combine(meta)
     hasher.combine(implicitRules)
     hasher.combine(language)

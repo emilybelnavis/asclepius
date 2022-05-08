@@ -1,6 +1,6 @@
 //
 //  SpecimenStatus.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/specimen-status
  ValueSet: http://hl7.org/fhir/ValueSet/specimen-status
  */
-public enum SpecimenStatus: String, FHIRKitPrimitiveType {
+public enum SpecimenStatus: String, AlexandriaHRMPrimitiveType {
   /// The physical specimen is present and in good condition.
   case available
   

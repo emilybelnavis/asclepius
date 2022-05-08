@@ -1,6 +1,6 @@
 //
 //  ProcessPriorityCodes.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/processpriority
  ValueSet: http://hl7.org/fhir/ValueSet/process-priority
  */
-public enum ProcessPriorityCodes: String, FHIRKitPrimitiveType {
+public enum ProcessPriorityCodes: String, AlexandriaHRMPrimitiveType {
   /// Immediately in real time.
   case stat
   

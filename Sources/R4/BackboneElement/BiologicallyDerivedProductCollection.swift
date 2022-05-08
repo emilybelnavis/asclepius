@@ -1,6 +1,6 @@
 //
 //  BiologicallyDerivedProductCollection.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,11 +17,11 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 open class BiologicallyDerivedProductCollection: BackboneElement {
   public enum CollectedX: Hashable {
-    case dateTime(FHIRKitPrimitive<FHIRKitDateTime>)
+    case dateTime(AlexandriaHRMPrimitive<AlexandriaHRMDateTime>)
     case period(Period)
   }
   
@@ -41,7 +41,7 @@ open class BiologicallyDerivedProductCollection: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     collector: Reference? = nil,
     source: Reference? = nil,
     collectedX: CollectedX? = nil
@@ -49,7 +49,7 @@ open class BiologicallyDerivedProductCollection: BackboneElement {
     self.init()
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.collector = collector
     self.source = source
     self.collectedX = collectedX
@@ -67,7 +67,7 @@ open class BiologicallyDerivedProductCollection: BackboneElement {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     var tempCollectedX: CollectedX?
-    if let collectedDateTime = try FHIRKitPrimitive<FHIRKitDateTime>(from: codingKeyContainer, forKeyIfPresent: .collectedXDateTime, auxKey: ._collectedXDateTime) {
+    if let collectedDateTime = try AlexandriaHRMPrimitive<AlexandriaHRMDateTime>(from: codingKeyContainer, forKeyIfPresent: .collectedXDateTime, auxKey: ._collectedXDateTime) {
       if tempCollectedX != nil {
         throw DecodingError.dataCorruptedError(forKey: .collectedXDateTime, in: codingKeyContainer, debugDescription: "More than one value provided for \"value\"")
       }

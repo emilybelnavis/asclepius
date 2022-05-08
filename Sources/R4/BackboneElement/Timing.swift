@@ -1,6 +1,6 @@
 //
 //  Timing.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  A timing schedule that specifies an event that may occur multiple times.
@@ -29,7 +29,7 @@ import FHIRKitCore
  */
 open class Timing: BackboneElement {
   /// When the event occurs
-  public var event: [FHIRKitPrimitive<FHIRKitDateTime>]?
+  public var event: [AlexandriaHRMPrimitive<AlexandriaHRMDateTime>]?
   
   /// When the event is to occur
   public var timingRepeat: TimingRepeat?
@@ -44,15 +44,15 @@ open class Timing: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    event: [FHIRKitPrimitive<FHIRKitDateTime>]? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    event: [AlexandriaHRMPrimitive<AlexandriaHRMDateTime>]? = nil,
     timingRepeat: TimingRepeat? = nil,
     code: CodableConcept? = nil
   ) {
     self.init()
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.event = event
     self.timingRepeat = timingRepeat
     self.code = code
@@ -68,7 +68,7 @@ open class Timing: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.event = try [FHIRKitPrimitive<FHIRKitDateTime>](from: codingKeyContainer, forKeyIfPresent: .event, auxKey: ._event)
+    self.event = try [AlexandriaHRMPrimitive<AlexandriaHRMDateTime>](from: codingKeyContainer, forKeyIfPresent: .event, auxKey: ._event)
     self.timingRepeat = try TimingRepeat(from: codingKeyContainer, forKeyIfPresent: .timingRepeat)
     self.code = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .code)
     

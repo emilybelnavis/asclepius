@@ -1,6 +1,6 @@
 //
 //  CareTeamStatus.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/care-team-status
  ValueSet: http://hl7.org/fhir/ValueSet/care-team-status
  */
-public enum CareTeamStatus: String, FHIRKitPrimitiveType {
+public enum CareTeamStatus: String, AlexandriaHRMPrimitiveType {
   /// The care team has been drafted and proposed, but not yet participating in the coordination and
   /// delivery of patient care
   case proposed

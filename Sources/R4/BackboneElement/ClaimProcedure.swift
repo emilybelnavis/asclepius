@@ -1,6 +1,6 @@
 //
 //  ClaimProcedure.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Clinical procedures performed. Procedures performed on the patient relevant to the billing items with the claim
@@ -29,13 +29,13 @@ open class ClaimProcedure: BackboneElement {
   }
   
   /// Procedure instance identifier
-  public var sequence: FHIRKitPrimitive<FHIRKitPositiveInteger>
+  public var sequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>
   
   /// Category of procedure
   public var type: [CodableConcept]?
   
   /// When the procedure was perfomed
-  public var date: FHIRKitPrimitive<FHIRKitDateTime>
+  public var date: AlexandriaHRMPrimitive<AlexandriaHRMDateTime>
   
   /// Specific clinical procedure
   public var procedureX: ProcedureX
@@ -43,7 +43,7 @@ open class ClaimProcedure: BackboneElement {
   /// Unique device initializer
   public var udi: [Reference]?
   
-  public init(sequence: FHIRKitPrimitive<FHIRKitPositiveInteger>, date: FHIRKitPrimitive<FHIRKitDateTime>, procedureX: ProcedureX) {
+  public init(sequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>, date: AlexandriaHRMPrimitive<AlexandriaHRMDateTime>, procedureX: ProcedureX) {
     self.sequence = sequence
     self.date = date
     self.procedureX = procedureX
@@ -53,17 +53,17 @@ open class ClaimProcedure: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    sequence: FHIRKitPrimitive<FHIRKitPositiveInteger>,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    sequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>,
     type: [CodableConcept]? = nil,
-    date: FHIRKitPrimitive<FHIRKitDateTime>,
+    date: AlexandriaHRMPrimitive<AlexandriaHRMDateTime>,
     procedureX: ProcedureX,
     udi: [Reference]? = nil
   ) {
     self.init(sequence: sequence, date: date, procedureX: procedureX)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.type = type
     self.udi = udi
   }
@@ -96,9 +96,9 @@ open class ClaimProcedure: BackboneElement {
       tempProcedureX = .reference(procedureReference)
     }
     
-    self.sequence = try FHIRKitPrimitive<FHIRKitPositiveInteger>(from: codingKeyContainer, forKey: .sequence, auxKey: ._sequence)
+    self.sequence = try AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>(from: codingKeyContainer, forKey: .sequence, auxKey: ._sequence)
     self.type = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .type)
-    self.date = try FHIRKitPrimitive<FHIRKitDateTime>(from: codingKeyContainer, forKey: .date, auxKey: ._date)
+    self.date = try AlexandriaHRMPrimitive<AlexandriaHRMDateTime>(from: codingKeyContainer, forKey: .date, auxKey: ._date)
     self.procedureX = tempProcedureX!
     self.udi = try [Reference](from: codingKeyContainer, forKeyIfPresent: .udi)
     

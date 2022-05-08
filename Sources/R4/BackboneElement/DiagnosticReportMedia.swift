@@ -1,6 +1,6 @@
 //
 //  DiagnosticReportMedia.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Key images associated with this report; A list of key images associated with this report. The images are generally
@@ -26,7 +26,7 @@ import FHIRKitCore
  */
 open class DiagnosticReportMedia: BackboneElement {
   /// Comment about the image (e.g. explanation)
-  public var comment: FHIRKitPrimitive<FHIRKitString>?
+  public var comment: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// Reference to the image source
   public var link: Reference
@@ -39,14 +39,14 @@ open class DiagnosticReportMedia: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    comment: FHIRKitPrimitive<FHIRKitString>? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    comment: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     link: Reference
   ) {
     self.init(link: link)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.comment = comment
   }
   
@@ -59,7 +59,7 @@ open class DiagnosticReportMedia: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.comment = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .comment, auxKey: ._comment)
+    self.comment = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .comment, auxKey: ._comment)
     self.link = try Reference(from: codingKeyContainer, forKey: .link)
     
     try super.init(from: decoder)

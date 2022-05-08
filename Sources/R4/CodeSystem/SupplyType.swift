@@ -1,6 +1,6 @@
 //
 //  SupplyType.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/supply-kind
  ValueSet: http://hl7.org/fhir/ValueSet/supplyrequest-kind
  */
-public enum SupplyType: String, FHIRKitPrimitiveType {
+public enum SupplyType: String, AlexandriaHRMPrimitiveType {
   /// Supply is stored and requested from central supply.
   case central
   

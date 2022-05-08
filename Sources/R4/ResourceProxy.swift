@@ -1,6 +1,6 @@
 //
 //  ResourceProxy.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,10 +17,10 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 // swiftlint:disable file_length
-public enum ResourceProxy: FHIRKitType {
+public enum ResourceProxy: AlexandriaHRMType {
   case account(Account)
   case activityDefinition(ActivityDefinition)
 //  case adverseEvent(AdverseEvent)
@@ -579,7 +579,7 @@ public enum ResourceProxy: FHIRKitType {
       return "Subscription"
     case .substance:
       return "Substance"
-    case .substanceNucleicAcid:
+    case .substanceNucleicAcfhirId:
       return "SubstanceNucleicAcid"
     case .substancePolymer:
       return "SubstancePolymer"
@@ -882,7 +882,7 @@ public enum ResourceProxy: FHIRKitType {
       self = .subscription(resource) // todo
     case .substance:
       self = .substance(resource) // todo
-    case .substanceNucleicAcid:
+    case .substanceNucleicAcfhirId:
       self = .substanceNucleicAcid(resource) // todo
     case .substancePolymer:
       self = .substancePolymer(resource) // todo

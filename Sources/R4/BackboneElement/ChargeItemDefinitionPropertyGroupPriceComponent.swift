@@ -1,6 +1,6 @@
 //
 //  ChargeItemDefinitionPropertyGroupPriceComponent.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  The price for a `ChargeItem` may be calculated as a base price with surcharges/deductions that apply
@@ -28,18 +28,18 @@ import FHIRKitCore
  */
 open class ChargeItemDefinitionPropertyGroupPriceComponent: BackboneElement {
   /// This code identifies the type of the component
-  public var type: FHIRKitPrimitive<InvoicePriceComponentType>
+  public var type: AlexandriaHRMPrimitive<InvoicePriceComponentType>
   
   /// Code identifiying the specific component
   public var code: CodableConcept?
   
   /// Factor used for calculating this component
-  public var factor: FHIRKitPrimitive<FHIRKitDecimal>?
+  public var factor: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>?
   
   /// Monetary amount associated with this component
   public var amount: Money?
   
-  public init(type: FHIRKitPrimitive<InvoicePriceComponentType>) {
+  public init(type: AlexandriaHRMPrimitive<InvoicePriceComponentType>) {
     self.type = type
     super.init()
   }
@@ -47,16 +47,16 @@ open class ChargeItemDefinitionPropertyGroupPriceComponent: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    type: FHIRKitPrimitive<InvoicePriceComponentType>,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    type: AlexandriaHRMPrimitive<InvoicePriceComponentType>,
     code: CodableConcept? = nil,
-    factor: FHIRKitPrimitive<FHIRKitDecimal>? = nil,
+    factor: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>? = nil,
     amount: Money? = nil
   ) {
     self.init(type: type)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.code = code
     self.factor = factor
     self.amount = amount
@@ -73,9 +73,9 @@ open class ChargeItemDefinitionPropertyGroupPriceComponent: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.type = try FHIRKitPrimitive<InvoicePriceComponentType>(from: codingKeyContainer, forKey: .type, auxKey: ._type)
+    self.type = try AlexandriaHRMPrimitive<InvoicePriceComponentType>(from: codingKeyContainer, forKey: .type, auxKey: ._type)
     self.code = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .code)
-    self.factor = try FHIRKitPrimitive<FHIRKitDecimal>(from: codingKeyContainer, forKeyIfPresent: .factor, auxKey: ._factor)
+    self.factor = try AlexandriaHRMPrimitive<AlexandriaHRMDecimal>(from: codingKeyContainer, forKeyIfPresent: .factor, auxKey: ._factor)
     self.amount = try Money(from: codingKeyContainer, forKeyIfPresent: .amount)
     
     try super.init(from: decoder)

@@ -1,6 +1,6 @@
 //
 //  CommonTags.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/common-tags
  ValueSet: http://hl7.org/fhir/ValueSet/common-tags
  */
-public enum CommonTags: String, FHIRKitPrimitiveType {
+public enum CommonTags: String, AlexandriaHRMPrimitiveType {
   /// This request is intended to be acted upon, not merely stored
   case actionable
 }

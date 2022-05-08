@@ -1,6 +1,6 @@
 //
 //  ExplanationOfBenefitStatus.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/explanationofbenefit-status
  ValueSet: http://hl7.org/fhir/ValueSet/explanationofbenefit-status
  */
-public enum ExplanationOfBenefitStatus: String, FHIRKitPrimitiveType {
+public enum ExplanationOfBenefitStatus: String, AlexandriaHRMPrimitiveType {
   /// The resource instance is currently in-force.
   case active
   

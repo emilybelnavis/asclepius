@@ -1,6 +1,6 @@
 //
 //  CatalogEntryRelationType.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/relation-type
  ValueSet: http://hl7.org/fhir/ValueSet/relation-type
  */
-public enum CatalogEntryRelationType: String, FHIRKitPrimitiveType {
+public enum CatalogEntryRelationType: String, AlexandriaHRMPrimitiveType {
   /// The related entry represents an activity that may be triggered by the current item
   case triggers
   

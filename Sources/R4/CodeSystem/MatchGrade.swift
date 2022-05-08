@@ -1,6 +1,6 @@
 //
 //  MatchGrade.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/match-grade
  ValueSet: http://hl7.org/fhir/ValueSet/match-grade
  */
-public enum MatchGrade: String, FHIRKitPrimitiveType {
+public enum MatchGrade: String, AlexandriaHRMPrimitiveType {
   /// This record meets the matching criteria to be automatically considered as a full match.
   case certain
   

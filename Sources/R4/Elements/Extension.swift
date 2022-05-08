@@ -1,6 +1,6 @@
 //
 //  Extension.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Optional Extensions Element - Found in all FHIR resources.
@@ -34,10 +34,10 @@ open class Extension: Element {
     case age(Age)
     case annotation(Annotation)
     case attachment(Attachment)
-    case base64Binary(FHIRKitPrimitive<FHIRKitBase64Binary>)
-    case boolean(FHIRKitPrimitive<FHIRKitBool>)
-    case canonical(FHIRKitPrimitive<Canonical>)
-    case code(FHIRKitPrimitive<FHIRKitString>)
+    case base64Binary(AlexandriaHRMPrimitive<AlexandriaHRMBase64Binary>)
+    case boolean(AlexandriaHRMPrimitive<AlexandriaHRMBool>)
+    case canonical(AlexandriaHRMPrimitive<Canonical>)
+    case code(AlexandriaHRMPrimitive<AlexandriaHRMString>)
     case codableConcept(CodableConcept)
     case coding(Coding)
     case contactDetail(ContactDetail)
@@ -45,25 +45,25 @@ open class Extension: Element {
     case contributor(Contributor)
     case count(Count)
     case dataRequirement(DataRequirement)
-    case date(FHIRKitPrimitive<FHIRKitDate>)
-    case dateTime(FHIRKitPrimitive<FHIRKitDateTime>)
-    case decimal(FHIRKitPrimitive<FHIRKitDecimal>)
+    case date(AlexandriaHRMPrimitive<AlexandriaHRMDate>)
+    case dateTime(AlexandriaHRMPrimitive<AlexandriaHRMDateTime>)
+    case decimal(AlexandriaHRMPrimitive<AlexandriaHRMDecimal>)
     case distance(Distance)
     case dosage(Dosage)
     case duration(Duration)
     case expression(Expression)
     case humanName(HumanName)
-    case id(FHIRKitPrimitive<FHIRKitString>)
+    case id(AlexandriaHRMPrimitive<AlexandriaHRMString>)
     case identifier(Identifier)
-    case instant(FHIRKitPrimitive<FHIRKitInstant>)
-    case integer(FHIRKitPrimitive<FHIRKitInteger>)
-    case markdown(FHIRKitPrimitive<FHIRKitString>)
+    case instant(AlexandriaHRMPrimitive<AlexandriaHRMInstant>)
+    case integer(AlexandriaHRMPrimitive<AlexandriaHRMInteger>)
+    case markdown(AlexandriaHRMPrimitive<AlexandriaHRMString>)
     case meta(Meta)
     case money(Money)
-    case oid(FHIRKitPrimitive<FHIRKitURI>)
+    case oid(AlexandriaHRMPrimitive<AlexandriaHRMURI>)
     case parameterDefinition(ParameterDefinition)
     case period(Period)
-    case positiveInt(FHIRKitPrimitive<FHIRKitPositiveInteger>)
+    case positiveInt(AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>)
     case quantity(Quantity)
     case range(Range)
     case ratio(Ratio)
@@ -71,37 +71,37 @@ open class Extension: Element {
     case relatedArtifact(RelatedArtifact)
     case sampledData(SampledData)
     case signature(Signature)
-    case string(FHIRKitPrimitive<FHIRKitString>)
-    case time(FHIRKitPrimitive<FHIRKitTime>)
+    case string(AlexandriaHRMPrimitive<AlexandriaHRMString>)
+    case time(AlexandriaHRMPrimitive<AlexandriaHRMTime>)
     case timing(Timing)
     case triggerDefinition(TriggerDefinition)
-    case unsignedInt(FHIRKitPrimitive<FHIRKitUnsignedInteger>)
-    case uri(FHIRKitPrimitive<FHIRKitURI>)
-    case url(FHIRKitPrimitive<FHIRKitURI>)
+    case unsignedInt(AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>)
+    case uri(AlexandriaHRMPrimitive<AlexandriaHRMURI>)
+    case url(AlexandriaHRMPrimitive<AlexandriaHRMURI>)
     case usageContext(UsageContext)
-    case uuid(FHIRKitPrimitive<FHIRKitURI>)
+    case uuid(AlexandriaHRMPrimitive<AlexandriaHRMURI>)
   }
   
   /// identifies the meaning of the extension
-  public var url: FHIRKitPrimitive<FHIRKitURI>
+  public var url: AlexandriaHRMPrimitive<AlexandriaHRMURI>
   
   /// Value of extension
   public var valueX: ValueX?
 
-  public init(url: FHIRKitPrimitive<FHIRKitURI>) {
+  public init(url: AlexandriaHRMPrimitive<AlexandriaHRMURI>) {
     self.url = url
     super.init()
   }
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    url: FHIRKitPrimitive<FHIRKitURI>,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    url: AlexandriaHRMPrimitive<AlexandriaHRMURI>,
     valueX: ValueX? = nil
   ) {
     self.init(url: url)
     self.fhirExtension = fhirExtension
-    self.id = id
+    self.fhirId = fhirId
     self.valueX = valueX
   }
   
@@ -166,7 +166,7 @@ open class Extension: Element {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     let debugDescription: String = "More than one value provided for \"value\""
     
-    self.url = try FHIRKitPrimitive<FHIRKitURI>(from: codingKeyContainer, forKey: .url, auxKey: ._url)
+    self.url = try AlexandriaHRMPrimitive<AlexandriaHRMURI>(from: codingKeyContainer, forKey: .url, auxKey: ._url)
     
     var tempValueX: ValueX?
     
@@ -203,7 +203,7 @@ open class Extension: Element {
     }
     
     // Base64Binary
-    if let valueBase64Binary = try FHIRKitPrimitive<FHIRKitBase64Binary>(from: codingKeyContainer, forKeyIfPresent: .valueBase64Binary, auxKey: ._valueBase64Binary) {
+    if let valueBase64Binary = try AlexandriaHRMPrimitive<AlexandriaHRMBase64Binary>(from: codingKeyContainer, forKeyIfPresent: .valueBase64Binary, auxKey: ._valueBase64Binary) {
       if tempValueX != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueBase64Binary, in: codingKeyContainer, debugDescription: debugDescription)
       }
@@ -211,7 +211,7 @@ open class Extension: Element {
     }
 
     // Boolean
-    if let valueBoolean = try FHIRKitPrimitive<FHIRKitBool>(from: codingKeyContainer, forKeyIfPresent: .valueBoolean, auxKey: ._valueBoolean) {
+    if let valueBoolean = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKeyIfPresent: .valueBoolean, auxKey: ._valueBoolean) {
       if tempValueX != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueBoolean, in: codingKeyContainer, debugDescription: debugDescription)
       }
@@ -219,7 +219,7 @@ open class Extension: Element {
     }
     
     // Canonical
-    if let valueCanonical = try FHIRKitPrimitive<Canonical>(from: codingKeyContainer, forKeyIfPresent: .valueCanonical, auxKey: ._valueCanonical) {
+    if let valueCanonical = try AlexandriaHRMPrimitive<Canonical>(from: codingKeyContainer, forKeyIfPresent: .valueCanonical, auxKey: ._valueCanonical) {
       if tempValueX != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueCanonical, in: codingKeyContainer, debugDescription: debugDescription)
       }
@@ -227,7 +227,7 @@ open class Extension: Element {
     }
     
     // Code
-    if let valueCode = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .valueCode, auxKey: ._valueCode) {
+    if let valueCode = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .valueCode, auxKey: ._valueCode) {
       if tempValueX != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueCode, in: codingKeyContainer, debugDescription: debugDescription)
       }
@@ -291,7 +291,7 @@ open class Extension: Element {
     }
     
     // Date
-    if let valueDate = try FHIRKitPrimitive<FHIRKitDate>(from: codingKeyContainer, forKeyIfPresent: .valueDate, auxKey: ._valueDate) {
+    if let valueDate = try AlexandriaHRMPrimitive<AlexandriaHRMDate>(from: codingKeyContainer, forKeyIfPresent: .valueDate, auxKey: ._valueDate) {
       if tempValueX != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueDate, in: codingKeyContainer, debugDescription: debugDescription)
       }
@@ -299,7 +299,7 @@ open class Extension: Element {
     }
     
     // DateTime
-    if let valueDateTime = try FHIRKitPrimitive<FHIRKitDateTime>(from: codingKeyContainer, forKeyIfPresent: .valueDateTime, auxKey: ._valueDateTime) {
+    if let valueDateTime = try AlexandriaHRMPrimitive<AlexandriaHRMDateTime>(from: codingKeyContainer, forKeyIfPresent: .valueDateTime, auxKey: ._valueDateTime) {
       if tempValueX != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueDateTime, in: codingKeyContainer, debugDescription: debugDescription)
       }
@@ -307,7 +307,7 @@ open class Extension: Element {
     }
     
     // Decimal
-    if let valueDecimal = try FHIRKitPrimitive<FHIRKitDecimal>(from: codingKeyContainer, forKeyIfPresent: .valueDecimal, auxKey: ._valueDecimal) {
+    if let valueDecimal = try AlexandriaHRMPrimitive<AlexandriaHRMDecimal>(from: codingKeyContainer, forKeyIfPresent: .valueDecimal, auxKey: ._valueDecimal) {
       if tempValueX != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueDecimal, in: codingKeyContainer, debugDescription: debugDescription)
       }
@@ -347,7 +347,7 @@ open class Extension: Element {
     }
     
     // ID
-    if let valueId = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .valueId, auxKey: ._valueId) {
+    if let valueId = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .valueId, auxKey: ._valueId) {
       if tempValueX != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueId, in: codingKeyContainer, debugDescription: debugDescription)
       }
@@ -363,7 +363,7 @@ open class Extension: Element {
     }
     
     // Instant
-    if let valueInstant = try FHIRKitPrimitive<FHIRKitInstant>(from: codingKeyContainer, forKeyIfPresent: .valueInstant, auxKey: ._valueInstant) {
+    if let valueInstant = try AlexandriaHRMPrimitive<AlexandriaHRMInstant>(from: codingKeyContainer, forKeyIfPresent: .valueInstant, auxKey: ._valueInstant) {
       if tempValueX != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueInstant, in: codingKeyContainer, debugDescription: debugDescription)
       }
@@ -371,7 +371,7 @@ open class Extension: Element {
     }
     
     // Integer
-    if let valueInteger = try FHIRKitPrimitive<FHIRKitInteger>(from: codingKeyContainer, forKeyIfPresent: .valueInteger, auxKey: ._valueInteger) {
+    if let valueInteger = try AlexandriaHRMPrimitive<AlexandriaHRMInteger>(from: codingKeyContainer, forKeyIfPresent: .valueInteger, auxKey: ._valueInteger) {
       if tempValueX != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueInteger, in: codingKeyContainer, debugDescription: debugDescription)
       }
@@ -379,7 +379,7 @@ open class Extension: Element {
     }
     
     // Markdown
-    if let valueMarkdown = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .valueMarkdown, auxKey: ._valueMarkdown) {
+    if let valueMarkdown = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .valueMarkdown, auxKey: ._valueMarkdown) {
       if tempValueX != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueMarkdown, in: codingKeyContainer, debugDescription: debugDescription)
       }
@@ -403,7 +403,7 @@ open class Extension: Element {
     }
     
     // OID
-    if let valueOID = try FHIRKitPrimitive<FHIRKitURI>(from: codingKeyContainer, forKeyIfPresent: .valueOid, auxKey: ._valueOid) {
+    if let valueOID = try AlexandriaHRMPrimitive<AlexandriaHRMURI>(from: codingKeyContainer, forKeyIfPresent: .valueOid, auxKey: ._valueOid) {
       if tempValueX != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueOid, in: codingKeyContainer, debugDescription: debugDescription)
       }
@@ -427,7 +427,7 @@ open class Extension: Element {
     }
     
     // Positive Integer
-    if let valuePositiveInteger = try FHIRKitPrimitive<FHIRKitPositiveInteger>(from: codingKeyContainer, forKeyIfPresent: .valuePositiveInt, auxKey: ._valuePositiveInt) {
+    if let valuePositiveInteger = try AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>(from: codingKeyContainer, forKeyIfPresent: .valuePositiveInt, auxKey: ._valuePositiveInt) {
       if tempValueX != nil {
         throw DecodingError.dataCorruptedError(forKey: .valuePositiveInt, in: codingKeyContainer, debugDescription: debugDescription)
       }
@@ -491,7 +491,7 @@ open class Extension: Element {
     }
     
     // Time
-    if let valueTime = try FHIRKitPrimitive<FHIRKitTime>(from: codingKeyContainer, forKeyIfPresent: .valueTime, auxKey: ._valueTime) {
+    if let valueTime = try AlexandriaHRMPrimitive<AlexandriaHRMTime>(from: codingKeyContainer, forKeyIfPresent: .valueTime, auxKey: ._valueTime) {
       if tempValueX != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueTime, in: codingKeyContainer, debugDescription: debugDescription)
       }
@@ -515,7 +515,7 @@ open class Extension: Element {
     }
     
     // URI
-    if let valueURI = try FHIRKitPrimitive<FHIRKitURI>(from: codingKeyContainer, forKeyIfPresent: .valueUri, auxKey: ._valueUri) {
+    if let valueURI = try AlexandriaHRMPrimitive<AlexandriaHRMURI>(from: codingKeyContainer, forKeyIfPresent: .valueUri, auxKey: ._valueUri) {
       if tempValueX != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueUri, in: codingKeyContainer, debugDescription: debugDescription)
       }
@@ -523,7 +523,7 @@ open class Extension: Element {
     }
     
     // URL
-    if let valueURL = try FHIRKitPrimitive<FHIRKitURI>(from: codingKeyContainer, forKeyIfPresent: .valueUrl, auxKey: ._valueUrl) {
+    if let valueURL = try AlexandriaHRMPrimitive<AlexandriaHRMURI>(from: codingKeyContainer, forKeyIfPresent: .valueUrl, auxKey: ._valueUrl) {
       if tempValueX != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueUrl, in: codingKeyContainer, debugDescription: debugDescription)
       }
@@ -539,7 +539,7 @@ open class Extension: Element {
     }
     
     // UUID
-    if let valueUUID = try FHIRKitPrimitive<FHIRKitURI>(from: codingKeyContainer, forKeyIfPresent: .valueUuid, auxKey: ._valueUuid) {
+    if let valueUUID = try AlexandriaHRMPrimitive<AlexandriaHRMURI>(from: codingKeyContainer, forKeyIfPresent: .valueUuid, auxKey: ._valueUuid) {
       if tempValueX != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueUuid, in: codingKeyContainer, debugDescription: debugDescription)
       }

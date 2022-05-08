@@ -1,6 +1,6 @@
 //
 //  CapabilityStatementDocument.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,20 +17,20 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /// A document definition
 open class CapabilityStatementDocument: BackboneElement {
   /// Mode of this document declaration - whether application is a producer or consumer
-  public var mode: FHIRKitPrimitive<DocumentMode>
+  public var mode: AlexandriaHRMPrimitive<DocumentMode>
   
   /// Description of document support
-  public var documentation: FHIRKitPrimitive<FHIRKitString>?
+  public var documentation: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// Constraint on the resources used in the document
-  public var profile: FHIRKitPrimitive<Canonical>
+  public var profile: AlexandriaHRMPrimitive<Canonical>
   
-  public init(mode: FHIRKitPrimitive<DocumentMode>, profile: FHIRKitPrimitive<Canonical>) {
+  public init(mode: AlexandriaHRMPrimitive<DocumentMode>, profile: AlexandriaHRMPrimitive<Canonical>) {
     self.mode = mode
     self.profile = profile
     super.init()
@@ -39,15 +39,15 @@ open class CapabilityStatementDocument: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    mode: FHIRKitPrimitive<DocumentMode>,
-    documentation: FHIRKitPrimitive<FHIRKitString>? = nil,
-    profile: FHIRKitPrimitive<Canonical>
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    mode: AlexandriaHRMPrimitive<DocumentMode>,
+    documentation: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    profile: AlexandriaHRMPrimitive<Canonical>
   ) {
     self.init(mode: mode, profile: profile)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.documentation = documentation
   }
   
@@ -61,9 +61,9 @@ open class CapabilityStatementDocument: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.mode = try FHIRKitPrimitive<DocumentMode>(from: codingKeyContainer, forKey: .mode, auxKey: ._mode)
-    self.documentation = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .documentation, auxKey: ._documentation)
-    self.profile = try FHIRKitPrimitive<Canonical>(from: codingKeyContainer, forKey: .profile, auxKey: ._profile)
+    self.mode = try AlexandriaHRMPrimitive<DocumentMode>(from: codingKeyContainer, forKey: .mode, auxKey: ._mode)
+    self.documentation = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .documentation, auxKey: ._documentation)
+    self.profile = try AlexandriaHRMPrimitive<Canonical>(from: codingKeyContainer, forKey: .profile, auxKey: ._profile)
     
     try super.init(from: decoder)
   }

@@ -1,6 +1,6 @@
 //
 //  ClaimResponseAddItem.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,14 +17,14 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Insurer added line items; The first-tier service adjudication for payor added product or service lines
  */
 open class ClaimResponseAddItem: BackboneElement {
   public enum ServicedX: Hashable {
-    case date(FHIRKitPrimitive<FHIRKitDate>)
+    case date(AlexandriaHRMPrimitive<AlexandriaHRMDate>)
     case period(Period)
   }
   public enum LocationX: Hashable {
@@ -34,13 +34,13 @@ open class ClaimResponseAddItem: BackboneElement {
   }
 
   /// Item sequence number
-  public var itemSequence: [FHIRKitPrimitive<FHIRKitPositiveInteger>]?
+  public var itemSequence: [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>]?
   
   /// Detail sequence number
-  public var detailSequence: [FHIRKitPrimitive<FHIRKitPositiveInteger>]?
+  public var detailSequence: [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>]?
   
   /// Subdetail sequence number
-  public var subdetailSequence: [FHIRKitPrimitive<FHIRKitPositiveInteger>]?
+  public var subdetailSequence: [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>]?
   
   /// Authorized provider
   public var provider: [Reference]?
@@ -67,7 +67,7 @@ open class ClaimResponseAddItem: BackboneElement {
   public var unitPrice: Money?
   
   /// Price scaling factor
-  public var factor: FHIRKitPrimitive<FHIRKitDecimal>?
+  public var factor: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>?
   
   /// Total item cost
   public var net: Money?
@@ -79,7 +79,7 @@ open class ClaimResponseAddItem: BackboneElement {
   public var subSite: [CodableConcept]?
   
   /// Applicable note numbers
-  public var noteNumber: [FHIRKitPrimitive<FHIRKitPositiveInteger>]?
+  public var noteNumber: [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>]?
   
   /// Added Items adjudication
   public var adjudication: [ClaimResponseItemAdjudication]
@@ -96,10 +96,10 @@ open class ClaimResponseAddItem: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    itemSequence: [FHIRKitPrimitive<FHIRKitPositiveInteger>]? = nil,
-    detailSequence: [FHIRKitPrimitive<FHIRKitPositiveInteger>]? = nil,
-    subdetailSequence: [FHIRKitPrimitive<FHIRKitPositiveInteger>]? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    itemSequence: [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>]? = nil,
+    detailSequence: [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>]? = nil,
+    subdetailSequence: [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>]? = nil,
     provider: [Reference]? = nil,
     productOrService: CodableConcept,
     modifier: [CodableConcept]? = nil,
@@ -108,18 +108,18 @@ open class ClaimResponseAddItem: BackboneElement {
     locationX: LocationX? = nil,
     quantity: Quantity? = nil,
     unitPrice: Money? = nil,
-    factor: FHIRKitPrimitive<FHIRKitDecimal>? = nil,
+    factor: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>? = nil,
     net: Money? = nil,
     bodySite: CodableConcept? = nil,
     subSite: [CodableConcept]? = nil,
-    noteNumber: [FHIRKitPrimitive<FHIRKitPositiveInteger>]? = nil,
+    noteNumber: [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>]? = nil,
     adjudication: [ClaimResponseItemAdjudication],
     detail: [ClaimResponseAddItemDetail]? = nil
   ) {
     self.init(productOrService: productOrService, adjudication: adjudication)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.itemSequence = itemSequence
     self.detailSequence = detailSequence
     self.subdetailSequence = subdetailSequence
@@ -166,7 +166,7 @@ open class ClaimResponseAddItem: BackboneElement {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     var tempServicedX: ServicedX?
-    if let servicedDate = try FHIRKitPrimitive<FHIRKitDate>(from: codingKeyContainer, forKeyIfPresent: .servicedDate) {
+    if let servicedDate = try AlexandriaHRMPrimitive<AlexandriaHRMDate>(from: codingKeyContainer, forKeyIfPresent: .servicedDate) {
       if tempServicedX != nil {
         throw DecodingError.dataCorruptedError(forKey: .servicedDate, in: codingKeyContainer, debugDescription: "More than one value provided for \"serviced\"")
       }
@@ -202,9 +202,9 @@ open class ClaimResponseAddItem: BackboneElement {
       tempLocationX = .reference(locationReference)
     }
     
-    self.itemSequence = try [FHIRKitPrimitive<FHIRKitPositiveInteger>](from: codingKeyContainer, forKeyIfPresent: .itemSequence, auxKey: ._itemSequence)
-    self.detailSequence = try [FHIRKitPrimitive<FHIRKitPositiveInteger>](from: codingKeyContainer, forKeyIfPresent: .detailSequence, auxKey: ._detailSequence)
-    self.subdetailSequence = try [FHIRKitPrimitive<FHIRKitPositiveInteger>](from: codingKeyContainer, forKeyIfPresent: .subdetailSequence, auxKey: ._subdetailSequence)
+    self.itemSequence = try [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>](from: codingKeyContainer, forKeyIfPresent: .itemSequence, auxKey: ._itemSequence)
+    self.detailSequence = try [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>](from: codingKeyContainer, forKeyIfPresent: .detailSequence, auxKey: ._detailSequence)
+    self.subdetailSequence = try [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>](from: codingKeyContainer, forKeyIfPresent: .subdetailSequence, auxKey: ._subdetailSequence)
     self.provider = try [Reference](from: codingKeyContainer, forKeyIfPresent: .provider)
     self.productOrService = try CodableConcept(from: codingKeyContainer, forKey: .productOrService)
     self.modifier = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .modifier)
@@ -213,11 +213,11 @@ open class ClaimResponseAddItem: BackboneElement {
     self.locationX = tempLocationX
     self.quantity = try Quantity(from: codingKeyContainer, forKeyIfPresent: .quantity)
     self.unitPrice = try Money(from: codingKeyContainer, forKeyIfPresent: .unitPrice)
-    self.factor = try FHIRKitPrimitive<FHIRKitDecimal>(from: codingKeyContainer, forKeyIfPresent: .factor, auxKey: ._factor)
+    self.factor = try AlexandriaHRMPrimitive<AlexandriaHRMDecimal>(from: codingKeyContainer, forKeyIfPresent: .factor, auxKey: ._factor)
     self.net = try Money(from: codingKeyContainer, forKeyIfPresent: .net)
     self.bodySite = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .bodySite)
     self.subSite = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .subSite)
-    self.noteNumber = try [FHIRKitPrimitive<FHIRKitPositiveInteger>](from: codingKeyContainer, forKey: .noteNumber, auxKey: ._noteNumber)
+    self.noteNumber = try [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>](from: codingKeyContainer, forKey: .noteNumber, auxKey: ._noteNumber)
     self.adjudication = try [ClaimResponseItemAdjudication](from: codingKeyContainer, forKey: .adjudication)
     self.detail = try [ClaimResponseAddItemDetail](from: codingKeyContainer, forKeyIfPresent: .detail)
     

@@ -1,6 +1,6 @@
 //
 //  AdmitSource.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/admit-source
  ValueSet: http://hl7.org/fhir/ValueSet/encounter-admit-source
  */
-public enum AdmitSource: String, FHIRKitPrimitiveType {
+public enum AdmitSource: String, AlexandriaHRMPrimitiveType {
   /// The patient has been transferred from another hospital for this encounter
   case hospTrans = "hosp-trans"
   

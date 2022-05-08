@@ -1,6 +1,6 @@
 //
 //  ResearchStudyStatus.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/research-study-status
  ValueSet: http://hl7.org/fhir/ValueSet/research-study-status
  */
-public enum ResearchStudyStatus: String, FHIRKitPrimitiveType {
+public enum ResearchStudyStatus: String, AlexandriaHRMPrimitiveType {
   /// Study is opened for accrual.
   case active
   

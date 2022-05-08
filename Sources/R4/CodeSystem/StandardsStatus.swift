@@ -1,6 +1,6 @@
 //
 //  StandardsStatus.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/standards-status
  ValueSet: http://hl7.org/fhir/ValueSet/standards-status
  */
-public enum StandardsStatus: String, FHIRKitPrimitiveType {
+public enum StandardsStatus: String, AlexandriaHRMPrimitiveType {
   /// This portion of the specification is not considered to be complete enough or sufficiently reviewed to be safe
   /// for implementation. It may have known issues or still be in the "in development" stage. It is included in the
   /// publication as a place-holder, to solicit feedback from the implementation community and/or to give implementers

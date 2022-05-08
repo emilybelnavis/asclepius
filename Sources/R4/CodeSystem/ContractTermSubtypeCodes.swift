@@ -1,6 +1,6 @@
 //
 //  ContractTermSubtypeCodes.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/contracttermsubtypecodes
  ValueSet: http://hl7.org/fhir/ValueSet/contract-term-subtype
  */
-public enum ContractTermSubtypeCodes: String, FHIRKitPrimitiveType {
+public enum ContractTermSubtypeCodes: String, AlexandriaHRMPrimitiveType {
   /// Terms that go to the very root of a contract.
   case condition
   

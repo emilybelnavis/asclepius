@@ -1,6 +1,6 @@
 //
 //  Period.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,13 +17,13 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 /**
  Time range defined by a start and end date, and optionally time
  */
 open class Period: Element {
-  public var start: FHIRKitPrimitive<FHIRKitDateTime>?
-  public var end: FHIRKitPrimitive<FHIRKitDateTime>?
+  public var start: AlexandriaHRMPrimitive<AlexandriaHRMDateTime>?
+  public var end: AlexandriaHRMPrimitive<AlexandriaHRMDateTime>?
   
   override public init() {
     super.init()
@@ -31,13 +31,13 @@ open class Period: Element {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    start: FHIRKitPrimitive<FHIRKitDateTime>? = nil,
-    end: FHIRKitPrimitive<FHIRKitDateTime>? = nil
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    start: AlexandriaHRMPrimitive<AlexandriaHRMDateTime>? = nil,
+    end: AlexandriaHRMPrimitive<AlexandriaHRMDateTime>? = nil
   ) {
     self.init()
     self.fhirExtension = fhirExtension
-    self.id = id
+    self.fhirId = fhirId
     self.start = start
     self.end = end
   }
@@ -50,8 +50,8 @@ open class Period: Element {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.start = try FHIRKitPrimitive<FHIRKitDateTime>(from: codingKeyContainer, forKeyIfPresent: .start, auxKey: ._start)
-    self.end = try FHIRKitPrimitive<FHIRKitDateTime>(from: codingKeyContainer, forKeyIfPresent: .end, auxKey: ._end)
+    self.start = try AlexandriaHRMPrimitive<AlexandriaHRMDateTime>(from: codingKeyContainer, forKeyIfPresent: .start, auxKey: ._start)
+    self.end = try AlexandriaHRMPrimitive<AlexandriaHRMDateTime>(from: codingKeyContainer, forKeyIfPresent: .end, auxKey: ._end)
     
     try super.init(from: decoder)
   }

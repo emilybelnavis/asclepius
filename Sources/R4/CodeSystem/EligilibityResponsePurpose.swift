@@ -1,6 +1,6 @@
 //
 //  EligibilityResponsePurpose.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/eligibilityresponse-purpose
  ValueSet: http://hl7.org/fhir/ValueSet/eligibilityresponse-purpose
  */
-public enum EligibilityResponsePurpose: String, FHIRKitPrimitiveType {
+public enum EligibilityResponsePurpose: String, AlexandriaHRMPrimitiveType {
   /// The prior authorization requirements for the listed, or discovered if specified, converages for the categories
   /// of service and/or specifed biling codes are requested.
   case authRequirements = "auth-requirements"

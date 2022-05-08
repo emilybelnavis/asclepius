@@ -1,6 +1,6 @@
 //
 //  StructureMapTransform.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/map-transform
  ValueSet: http://hl7.org/fhir/ValueSet/map-transform
  */
-public enum StructureMapTransform: String, FHIRKitPrimitiveType {
+public enum StructureMapTransform: String, AlexandriaHRMPrimitiveType {
   /// create(type : string) - type is passed through to the application on the standard API, and must be known by it.
   case create
   

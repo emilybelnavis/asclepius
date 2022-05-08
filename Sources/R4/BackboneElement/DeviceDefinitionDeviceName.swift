@@ -1,6 +1,6 @@
 //
 //  DeviceDefinitionDeviceName.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,20 +17,20 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  A name given to the device to identify it
  */
 open class DeviceDefinitionDeviceName: BackboneElement {
   /// The name of the device
-  public var name: FHIRKitPrimitive<FHIRKitString>
+  public var name: AlexandriaHRMPrimitive<AlexandriaHRMString>
   
   /// The type of `deviceName`
   /// `UDILabelName` | `UserFriendlyName` | `PatientReportedName` | `ManufactureDeviceName` | `ModelName`
-  public var type: FHIRKitPrimitive<DeviceNameType>
+  public var type: AlexandriaHRMPrimitive<DeviceNameType>
   
-  public init(name: FHIRKitPrimitive<FHIRKitString>, type: FHIRKitPrimitive<DeviceNameType>) {
+  public init(name: AlexandriaHRMPrimitive<AlexandriaHRMString>, type: AlexandriaHRMPrimitive<DeviceNameType>) {
     self.name = name
     self.type = type
     super.init()
@@ -39,14 +39,14 @@ open class DeviceDefinitionDeviceName: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    name: FHIRKitPrimitive<FHIRKitString>,
-    type: FHIRKitPrimitive<DeviceNameType>
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    name: AlexandriaHRMPrimitive<AlexandriaHRMString>,
+    type: AlexandriaHRMPrimitive<DeviceNameType>
   ) {
     self.init(name: name, type: type)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
   }
   
   // MARK: - Codable
@@ -58,8 +58,8 @@ open class DeviceDefinitionDeviceName: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.name = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKey: .name, auxKey: ._name)
-    self.type = try FHIRKitPrimitive<DeviceNameType>(from: codingKeyContainer, forKey: .type, auxKey: ._type)
+    self.name = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .name, auxKey: ._name)
+    self.type = try AlexandriaHRMPrimitive<DeviceNameType>(from: codingKeyContainer, forKey: .type, auxKey: ._type)
     
     try super.init(from: decoder)
   }

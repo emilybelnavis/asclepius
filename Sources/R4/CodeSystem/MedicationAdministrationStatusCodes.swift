@@ -1,6 +1,6 @@
 //
 //  MedicationAdministrationStatusCodes.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/medication-admin-status
  ValueSet: http://hl7.org/fhir/ValueSet/medication-admin-status
  */
-public enum MedicationAdministrationStatusCodes: String, FHIRKitPrimitiveType {
+public enum MedicationAdministrationStatusCodes: String, AlexandriaHRMPrimitiveType {
   /// The administration has started but has not yet completed.
   case inProgress = "in-progress"
   

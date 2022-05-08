@@ -1,6 +1,6 @@
 //
 //  ClaimRelated.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Prior or corollary claims. Other claims which are related to this claim such as prior submissions or claims for
@@ -40,7 +40,7 @@ open class ClaimRelated: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     claim: Reference? = nil,
     relationship: CodableConcept? = nil,
     reference: Identifier? = nil
@@ -48,7 +48,7 @@ open class ClaimRelated: BackboneElement {
     self.init()
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.claim = claim
     self.relationship = relationship
     self.reference = reference

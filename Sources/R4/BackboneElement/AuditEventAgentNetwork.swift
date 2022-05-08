@@ -1,6 +1,6 @@
 //
 //  AuditEventAgentNetwork.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,15 +17,15 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /// Logical network location for application activity, if the activity has a network location that is
 open class AuditEventAgentNetwork: BackboneElement {
   /// Identifier for the network access point of the user device
-  public var address: FHIRKitPrimitive<FHIRKitString>?
+  public var address: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// The type of network access point
-  public var type: FHIRKitPrimitive<FHIRKitString>?
+  public var type: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   override public init() {
     super.init()
@@ -34,14 +34,14 @@ open class AuditEventAgentNetwork: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    address: FHIRKitPrimitive<FHIRKitString>? = nil,
-    type: FHIRKitPrimitive<FHIRKitString>? = nil
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    address: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    type: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil
   ) {
     self.init()
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.address = address
     self.type = type
   }
@@ -55,8 +55,8 @@ open class AuditEventAgentNetwork: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.address = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .address, auxKey: ._address)
-    self.type = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .type, auxKey: ._type)
+    self.address = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .address, auxKey: ._address)
+    self.type = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .type, auxKey: ._type)
     
     try super.init(from: decoder)
   }

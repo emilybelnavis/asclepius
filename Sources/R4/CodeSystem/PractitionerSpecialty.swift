@@ -1,6 +1,6 @@
 //
 //  PractitionerSpecialty.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/practitioner-specialty
  ValueSet: http://hl7.org/fhir/ValueSet/practitioner-specialty
  */
-public enum PractitionerSpecialty: String, FHIRKitPrimitiveType {
+public enum PractitionerSpecialty: String, AlexandriaHRMPrimitiveType {
   /// cardio
   case cardio
   

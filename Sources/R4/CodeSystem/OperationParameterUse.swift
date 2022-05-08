@@ -1,6 +1,6 @@
 //
 //  OperationParameterUse.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/operation-parameter-use
  ValueSet: http://hl7.org/fhir/ValueSet/operation-parameter-use
  */
-public enum OperationParameterUse: String, FHIRKitPrimitiveType {
+public enum OperationParameterUse: String, AlexandriaHRMPrimitiveType {
   /// This is an input parameter.
   case `in`
   

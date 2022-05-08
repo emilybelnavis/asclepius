@@ -1,6 +1,6 @@
 //
 //  MedicationRequestStatusCodes.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/CodeSystem/medicationrequest-status
  ValueSet: http://hl7.org/fhir/ValueSet/medicationrequest-status
  */
-public enum MedicationRequestStatusCodes: String, FHIRKitPrimitiveType {
+public enum MedicationRequestStatusCodes: String, AlexandriaHRMPrimitiveType {
   /// The prescription is 'actionable', but not all actions that are implied by it have occurred yet.
   case active
   

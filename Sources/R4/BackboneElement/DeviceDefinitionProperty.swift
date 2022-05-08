@@ -1,6 +1,6 @@
 //
 //  DeviceDefinitionProperty.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  The actual configuration settings of a device as it actually operates (e.g regulation status, time properties)
@@ -40,7 +40,7 @@ open class DeviceDefinitionProperty: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     type: CodableConcept,
     valueQuantity: [Quantity]? = nil,
     valueCode: [CodableConcept]? = nil
@@ -48,7 +48,7 @@ open class DeviceDefinitionProperty: BackboneElement {
     self.init(type: type)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.valueQuantity = valueQuantity
     self.valueCode = valueCode
   }

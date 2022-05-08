@@ -1,6 +1,6 @@
 //
 //  CapabilityStatementRestResourceSearchParam.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Search parameters for implementations to support and/or make use of - either references to ones defined in
@@ -25,18 +25,18 @@ import FHIRKitCore
  */
 open class CapabilityStatementRestResourceSearchParam: BackboneElement {
   /// Name of the search parameter
-  public var name: FHIRKitPrimitive<FHIRKitString>
+  public var name: AlexandriaHRMPrimitive<AlexandriaHRMString>
   
   /// Source of the definition for parameter
-  public var definition: FHIRKitPrimitive<Canonical>?
+  public var definition: AlexandriaHRMPrimitive<Canonical>?
   
   /// The type of value a search parameter refers to and how the content is interpreted
-  public var type: FHIRKitPrimitive<SearchParamType>
+  public var type: AlexandriaHRMPrimitive<SearchParamType>
   
   /// Server-specific usage
-  public var documentation: FHIRKitPrimitive<FHIRKitString>?
+  public var documentation: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
-  public init(name: FHIRKitPrimitive<FHIRKitString>, type: FHIRKitPrimitive<SearchParamType>) {
+  public init(name: AlexandriaHRMPrimitive<AlexandriaHRMString>, type: AlexandriaHRMPrimitive<SearchParamType>) {
     self.name = name
     self.type = type
     super.init()
@@ -45,16 +45,16 @@ open class CapabilityStatementRestResourceSearchParam: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    name: FHIRKitPrimitive<FHIRKitString>,
-    definition: FHIRKitPrimitive<Canonical>? = nil,
-    type: FHIRKitPrimitive<SearchParamType>,
-    documentation: FHIRKitPrimitive<FHIRKitString>?
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    name: AlexandriaHRMPrimitive<AlexandriaHRMString>,
+    definition: AlexandriaHRMPrimitive<Canonical>? = nil,
+    type: AlexandriaHRMPrimitive<SearchParamType>,
+    documentation: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   ) {
     self.init(name: name, type: type)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.definition = definition
     self.documentation = documentation
   }
@@ -70,10 +70,10 @@ open class CapabilityStatementRestResourceSearchParam: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.name = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKey: .name, auxKey: ._name)
-    self.definition = try FHIRKitPrimitive<Canonical>(from: codingKeyContainer, forKeyIfPresent: .definition, auxKey: ._definition)
-    self.type = try FHIRKitPrimitive<SearchParamType>(from: codingKeyContainer, forKey: .type, auxKey: ._type)
-    self.documentation = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .documentation, auxKey: ._documentation)
+    self.name = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .name, auxKey: ._name)
+    self.definition = try AlexandriaHRMPrimitive<Canonical>(from: codingKeyContainer, forKeyIfPresent: .definition, auxKey: ._definition)
+    self.type = try AlexandriaHRMPrimitive<SearchParamType>(from: codingKeyContainer, forKey: .type, auxKey: ._type)
+    self.documentation = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .documentation, auxKey: ._documentation)
     
     try super.init(from: decoder)
   }

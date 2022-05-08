@@ -1,6 +1,6 @@
 //
 //  ContractSubtypeCodes.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/contractsubtypecodes
  ValueSet: http://hl7.org/fhir/ValueSet/contract-subtype
  */
-public enum ContractSubtypeCodes: String, FHIRKitPrimitiveType {
+public enum ContractSubtypeCodes: String, AlexandriaHRMPrimitiveType {
   /// Canadian health information disclosure policy.
   case disclosureCa = "disclosure-ca"
   

@@ -1,6 +1,6 @@
 //
 //  DeviceMetricCategory.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/metric-category
  ValueSet: http://hl7.org/fhir/ValueSet/metric-category
  */
-public enum DeviceMetricCategory: String, FHIRKitPrimitiveType {
+public enum DeviceMetricCategory: String, AlexandriaHRMPrimitiveType {
   /// DeviceObservations generated for this DeviceMetric are measured.
   case measurement
   

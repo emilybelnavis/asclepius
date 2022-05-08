@@ -1,6 +1,6 @@
 //
 //  StructureMapContextType.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/map-context-type
  ValueSet: http://hl7.org/fhir/ValueSet/map-context-type
  */
-public enum StructureMapContextType: String, FHIRKitPrimitiveType {
+public enum StructureMapContextType: String, AlexandriaHRMPrimitiveType {
   /// The context specifies a type.
   case type
   

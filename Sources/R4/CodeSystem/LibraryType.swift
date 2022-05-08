@@ -1,6 +1,6 @@
 //
 //  LibraryType.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/library-type
  ValueSet: http://hl7.org/fhir/ValueSet/library-type
  */
-public enum LibraryType: String, FHIRKitPrimitiveType {
+public enum LibraryType: String, AlexandriaHRMPrimitiveType {
   /// The resource is a shareable library of formalized knowledge.
   case logicLibrary = "logic-library"
   

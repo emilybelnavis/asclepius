@@ -1,6 +1,6 @@
 //
 //  ContractTermAsset.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /// Contract Term Asset List
 open class ContractTermAsset: BackboneElement {
@@ -40,7 +40,7 @@ open class ContractTermAsset: BackboneElement {
   public var context: [ContractTermAssetContext]?
   
   /// Quality description of the asset
-  public var condition: FHIRKitPrimitive<FHIRKitString>?
+  public var condition: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// Asset availability types
   public var periodType: [CodableConcept]?
@@ -52,16 +52,16 @@ open class ContractTermAsset: BackboneElement {
   public var usePeriod: [Period]?
   
   /// Asset clause or question text
-  public var text: FHIRKitPrimitive<FHIRKitString>?
+  public var text: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// Pointer to asset text
-  public var linkId: [FHIRKitPrimitive<FHIRKitString>]?
+  public var linkId: [AlexandriaHRMPrimitive<AlexandriaHRMString>]?
   
   /// Response to assets
   public var answer: [ContractTermOfferAnswer]?
   
   /// Asset restriction numbers
-  public var securityLabelNumber: [FHIRKitPrimitive<FHIRKitUnsignedInteger>]?
+  public var securityLabelNumber: [AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>]?
   
   /// Contract Valued Item List
   public var valuedItem: [ContractTermAssetValuedItem]?
@@ -73,27 +73,27 @@ open class ContractTermAsset: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     scope: CodableConcept? = nil,
     type: [CodableConcept]? = nil,
     typeReference: [Reference]? = nil,
     subType: [CodableConcept]? = nil,
     relationship: Coding? = nil,
     context: [ContractTermAssetContext]? = nil,
-    condition: FHIRKitPrimitive<FHIRKitString>? = nil,
+    condition: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     periodType: [CodableConcept]? = nil,
     period: [Period]? = nil,
     usePeriod: [Period]? = nil,
-    text: FHIRKitPrimitive<FHIRKitString>? = nil,
-    linkId: [FHIRKitPrimitive<FHIRKitString>]? = nil,
+    text: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    linkId: [AlexandriaHRMPrimitive<AlexandriaHRMString>]? = nil,
     answer: [ContractTermOfferAnswer]? = nil,
-    securityLabelNumber: [FHIRKitPrimitive<FHIRKitUnsignedInteger>]? = nil,
+    securityLabelNumber: [AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>]? = nil,
     valuedItem: [ContractTermAssetValuedItem]? = nil
   ) {
     self.init()
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.scope = scope
     self.type = type
     self.typeReference = typeReference
@@ -139,14 +139,14 @@ open class ContractTermAsset: BackboneElement {
     self.subType = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .subType)
     self.relationship = try Coding(from: codingKeyContainer, forKeyIfPresent: .relationship)
     self.context = try [ContractTermAssetContext](from: codingKeyContainer, forKeyIfPresent: .context)
-    self.condition = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .condition, auxKey: ._condition)
+    self.condition = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .condition, auxKey: ._condition)
     self.periodType = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .periodType)
     self.period = try [Period](from: codingKeyContainer, forKeyIfPresent: .period)
     self.usePeriod = try [Period](from: codingKeyContainer, forKeyIfPresent: .usePeriod)
-    self.text = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .text, auxKey: ._text)
-    self.linkId = try [FHIRKitPrimitive<FHIRKitString>](from: codingKeyContainer, forKeyIfPresent: .linkId, auxKey: ._linkId)
+    self.text = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .text, auxKey: ._text)
+    self.linkId = try [AlexandriaHRMPrimitive<AlexandriaHRMString>](from: codingKeyContainer, forKeyIfPresent: .linkId, auxKey: ._linkId)
     self.answer = try [ContractTermOfferAnswer](from: codingKeyContainer, forKeyIfPresent: .answer)
-    self.securityLabelNumber = try [FHIRKitPrimitive<FHIRKitUnsignedInteger>](from: codingKeyContainer, forKeyIfPresent: .securityLabelNumber, auxKey: ._securityLabelNumber)
+    self.securityLabelNumber = try [AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>](from: codingKeyContainer, forKeyIfPresent: .securityLabelNumber, auxKey: ._securityLabelNumber)
     self.valuedItem = try [ContractTermAssetValuedItem](from: codingKeyContainer, forKeyIfPresent: .valuedItem)
     
     try super.init(from: decoder)

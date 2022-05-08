@@ -1,6 +1,6 @@
 //
 //  MessageTransport.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/message-transport
  ValueSet: http://hl7.org/fhir/ValueSet/message-transport
  */
-public enum MessageTransport: String, FHIRKitPrimitiveType {
+public enum MessageTransport: String, AlexandriaHRMPrimitiveType {
   /// The application sends or receives messages using HTTP POST (may be over http: or https:).
   case http
   

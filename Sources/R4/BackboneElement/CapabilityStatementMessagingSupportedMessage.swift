@@ -1,6 +1,6 @@
 //
 //  CapabilityStatementMessagingSupportedMessage.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,17 +17,17 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /// References to message definitions for messages this system can send or receive
 open class CapabilityStatementMessagingSupportMessage: BackboneElement {
   /// The mode of this event declaration - whether application is sender or receiver
-  public var mode: FHIRKitPrimitive<EventCapabilityMode>
+  public var mode: AlexandriaHRMPrimitive<EventCapabilityMode>
   
   /// Mesage supported by this system
-  public var definition: FHIRKitPrimitive<Canonical>
+  public var definition: AlexandriaHRMPrimitive<Canonical>
  
-  public init(mode: FHIRKitPrimitive<EventCapabilityMode>, definition: FHIRKitPrimitive<Canonical>) {
+  public init(mode: AlexandriaHRMPrimitive<EventCapabilityMode>, definition: AlexandriaHRMPrimitive<Canonical>) {
     self.mode = mode
     self.definition = definition
     super.init()
@@ -36,14 +36,14 @@ open class CapabilityStatementMessagingSupportMessage: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    mode: FHIRKitPrimitive<EventCapabilityMode>,
-    definition: FHIRKitPrimitive<Canonical>
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    mode: AlexandriaHRMPrimitive<EventCapabilityMode>,
+    definition: AlexandriaHRMPrimitive<Canonical>
   ) {
     self.init(mode: mode, definition: definition)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
   }
   
   // MARK: - Codable
@@ -55,8 +55,8 @@ open class CapabilityStatementMessagingSupportMessage: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.mode = try FHIRKitPrimitive<EventCapabilityMode>(from: codingKeyContainer, forKey: .mode, auxKey: ._mode)
-    self.definition = try FHIRKitPrimitive<Canonical>(from: codingKeyContainer, forKey: .definition, auxKey: ._definition)
+    self.mode = try AlexandriaHRMPrimitive<EventCapabilityMode>(from: codingKeyContainer, forKey: .mode, auxKey: ._mode)
+    self.definition = try AlexandriaHRMPrimitive<Canonical>(from: codingKeyContainer, forKey: .definition, auxKey: ._definition)
     
     try super.init(from: decoder)
   }

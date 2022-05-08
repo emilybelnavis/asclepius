@@ -1,6 +1,6 @@
 //
 //  RiskEstimateType.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -24,7 +24,7 @@
  URL: http://terminology.hl7.org/CodeSystem/risk-estimate-type
  ValueSet: http://hl7.org/fhir/ValueSet/risk-estimate-type
  */
-public enum RiskEstimateType: String, FHIRKitPrimitiveType {
+public enum RiskEstimateType: String, AlexandriaHRMPrimitiveType {
   /// dichotomous measure (present or absent) reported as a ratio compared to the denominator of 1 (A percentage is a
   /// proportion with denominator of 100).
   case proportion

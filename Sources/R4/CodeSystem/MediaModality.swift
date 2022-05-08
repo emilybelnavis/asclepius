@@ -1,6 +1,6 @@
 //
 //  MediaModality.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -22,7 +22,7 @@
  
  URL: http://terminology.hl7.org/CodeSystem/media-modality
  */
-public enum MediaModality: String, FHIRKitPrimitiveType {
+public enum MediaModality: String, AlexandriaHRMPrimitiveType {
   /// A diagram. Often used in diagnostic reports
   case diagram
   

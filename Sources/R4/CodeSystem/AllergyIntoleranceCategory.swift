@@ -1,6 +1,6 @@
 //
 //  AllergyIntoleranceCategory.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/allergy-intolerance-category
  ValueSet: http://hl7.org/fhir/ValueSet/allergy-intolerance-category
  */
-public enum AllergyIntoleranceCategory: String, FHIRKitPrimitiveType {
+public enum AllergyIntoleranceCategory: String, AlexandriaHRMPrimitiveType {
   /// Any substance comsumed to provide nutritional support for the body
   case food
   

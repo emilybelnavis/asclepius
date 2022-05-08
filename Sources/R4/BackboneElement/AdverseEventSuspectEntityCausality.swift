@@ -1,6 +1,6 @@
 //
 //  AdverseEventSuspectEntityCausality.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /// Information on the possible cause of the adverse event
 open class AdverseEventSuspectEntityCausality: BackboneElement {
@@ -25,7 +25,7 @@ open class AdverseEventSuspectEntityCausality: BackboneElement {
   public var assessment: CodableConcept?
   
   /// AdverseEvent.suspectEntity.causalityProductRelatedness
-  public var productRelatedness: FHIRKitPrimitive<FHIRKitString>?
+  public var productRelatedness: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// AdverseEvent.suspectEntity.causalityAuthor
   public var author: Reference?
@@ -39,15 +39,15 @@ open class AdverseEventSuspectEntityCausality: BackboneElement {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     assessment: CodableConcept? = nil,
-    productRelatedness: FHIRKitPrimitive<FHIRKitString>? = nil,
+    productRelatedness: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     author: Reference? = nil,
     method: CodableConcept? = nil
   ) {
     self.init()
     self.fhirExtension = fhirExtension
-    self.id = id
+    self.fhirId = fhirId
     self.assessment = assessment
     self.productRelatedness = productRelatedness
     self.author = author
@@ -66,7 +66,7 @@ open class AdverseEventSuspectEntityCausality: BackboneElement {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     self.assessment = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .assessment)
-    self.productRelatedness = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .productRelatedness, auxKey: ._productRelatedness)
+    self.productRelatedness = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .productRelatedness, auxKey: ._productRelatedness)
     self.author = try Reference(from: codingKeyContainer, forKeyIfPresent: .author)
     self.method = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .method)
     

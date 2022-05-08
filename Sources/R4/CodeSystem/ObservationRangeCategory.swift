@@ -1,6 +1,6 @@
 //
 //  ObservationRangeCategory.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/observation-range-category
  ValueSet: http://hl7.org/fhir/ValueSet/observation-range-category
  */
-public enum ObservationRangeCategory: String, FHIRKitPrimitiveType {
+public enum ObservationRangeCategory: String, AlexandriaHRMPrimitiveType {
   /// Reference (Normal) Range for Ordinal and Continuous Observations.
   case reference
   

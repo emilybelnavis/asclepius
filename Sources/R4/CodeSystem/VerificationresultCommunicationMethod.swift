@@ -1,6 +1,6 @@
 //
 //  VerificationmethodCommunicationMethod.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -26,7 +26,7 @@
  URL: http://terminology.hl7.org/CodeSystem/verificationresult-communication-method
  ValueSet: http://hl7.org/fhir/ValueSet/verificationresult-communication-method
  */
-public enum VerificationresultCommunicationMethod: String, FHIRKitPrimitiveType {
+public enum VerificationresultCommunicationMethod: String, AlexandriaHRMPrimitiveType {
   /// The information is submitted/retrieved manually (e.g. by phone, fax, paper-based)
   case manual
   

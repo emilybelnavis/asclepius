@@ -1,6 +1,6 @@
 //
 //  ConceptMapGroupElementTarget.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,22 +17,22 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /// A concept from the target value set that this concept maps to
 open class ConceptMapGroupElementTarget: BackboneElement {
   /// Code that identifies the target element
-  public var code: FHIRKitPrimitive<FHIRKitString>?
+  public var code: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// Display for the code
-  public var display: FHIRKitPrimitive<FHIRKitString>?
+  public var display: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// The equivalence between the source and target concepts (counting for the dependencies and products).
   /// The equivalence is read from target to source (e.g. the target is "wider" than the "source".)
-  public var equivalence: FHIRKitPrimitive<ConceptMapEquivalence>
+  public var equivalence: AlexandriaHRMPrimitive<ConceptMapEquivalence>
   
   /// Description of status/issues in mapping
-  public var comment: FHIRKitPrimitive<FHIRKitString>?
+  public var comment: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// Other elements required for this mapping (from context)
   public var dependsOn: [ConceptMapGroupElementTargetDependsOn]?
@@ -40,7 +40,7 @@ open class ConceptMapGroupElementTarget: BackboneElement {
   /// Other concepts that this mapping produces
   public var product: [ConceptMapGroupElementTargetDependsOn]?
   
-  public init(equivalence: FHIRKitPrimitive<ConceptMapEquivalence>) {
+  public init(equivalence: AlexandriaHRMPrimitive<ConceptMapEquivalence>) {
     self.equivalence = equivalence
     super.init()
   }
@@ -48,18 +48,18 @@ open class ConceptMapGroupElementTarget: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    code: FHIRKitPrimitive<FHIRKitString>? = nil,
-    display: FHIRKitPrimitive<FHIRKitString>? = nil,
-    equivalence: FHIRKitPrimitive<ConceptMapEquivalence>,
-    comment: FHIRKitPrimitive<FHIRKitString>? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    code: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    display: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    equivalence: AlexandriaHRMPrimitive<ConceptMapEquivalence>,
+    comment: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     dependsOn: [ConceptMapGroupElementTargetDependsOn]? = nil,
     product: [ConceptMapGroupElementTargetDependsOn]? = nil
   ) {
     self.init(equivalence: equivalence)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.code = code
     self.display = display
     self.comment = comment
@@ -80,10 +80,10 @@ open class ConceptMapGroupElementTarget: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.code = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .code, auxKey: ._code)
-    self.display = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .display, auxKey: ._display)
-    self.equivalence = try FHIRKitPrimitive<ConceptMapEquivalence>(from: codingKeyContainer, forKey: .equivalence, auxKey: ._equjvalence)
-    self.comment = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .comment, auxKey: ._comment)
+    self.code = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .code, auxKey: ._code)
+    self.display = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .display, auxKey: ._display)
+    self.equivalence = try AlexandriaHRMPrimitive<ConceptMapEquivalence>(from: codingKeyContainer, forKey: .equivalence, auxKey: ._equjvalence)
+    self.comment = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .comment, auxKey: ._comment)
     self.dependsOn = try [ConceptMapGroupElementTargetDependsOn](from: codingKeyContainer, forKeyIfPresent: .dependsOn)
     self.product = try [ConceptMapGroupElementTargetDependsOn](from: codingKeyContainer, forKeyIfPresent: .product)
     

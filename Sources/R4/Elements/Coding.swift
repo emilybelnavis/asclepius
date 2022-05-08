@@ -1,6 +1,6 @@
 //
 //  Coding.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,26 +17,26 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  A representatoin of a defined concept using a sympbol from a defined "code system"
  */
 open class Coding: Element {
   /// Identity of the terminology system
-  public var system: FHIRKitPrimitive<FHIRKitURI>?
+  public var system: AlexandriaHRMPrimitive<AlexandriaHRMURI>?
   
   /// Version of the system (if relevant)
-  public var version: FHIRKitPrimitive<FHIRKitString>?
+  public var version: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// Symbol in syntax defined by the system
-  public var code: FHIRKitPrimitive<FHIRKitString>?
+  public var code: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// Representation defined by the system
-  public var display: FHIRKitPrimitive<FHIRKitString>?
+  public var display: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// Was this coding chosen directly by the user?
-  public var userSelected: FHIRKitPrimitive<FHIRKitBool>?
+  public var userSelected: AlexandriaHRMPrimitive<AlexandriaHRMBool>?
   
   override public init() {
     super.init()
@@ -44,16 +44,16 @@ open class Coding: Element {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    system: FHIRKitPrimitive<FHIRKitURI>? = nil,
-    version: FHIRKitPrimitive<FHIRKitString>? = nil,
-    code: FHIRKitPrimitive<FHIRKitString>? = nil,
-    display: FHIRKitPrimitive<FHIRKitString>? = nil,
-    userSelected: FHIRKitPrimitive<FHIRKitBool>? = nil
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    system: AlexandriaHRMPrimitive<AlexandriaHRMURI>? = nil,
+    version: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    code: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    display: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    userSelected: AlexandriaHRMPrimitive<AlexandriaHRMBool>? = nil
   ) {
     self.init()
     self.fhirExtension = fhirExtension
-    self.id = id
+    self.fhirId = fhirId
     self.system = system
     self.version = version
     self.code = code
@@ -73,11 +73,11 @@ open class Coding: Element {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.system = try FHIRKitPrimitive<FHIRKitURI>(from: codingKeyContainer, forKeyIfPresent: .system, auxKey: ._system)
-    self.version = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .version, auxKey: ._version)
-    self.code = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .code, auxKey: ._code)
-    self.display = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .display, auxKey: ._display)
-    self.userSelected = try FHIRKitPrimitive<FHIRKitBool>(from: codingKeyContainer, forKeyIfPresent: .userSelected, auxKey: ._userSelected)
+    self.system = try AlexandriaHRMPrimitive<AlexandriaHRMURI>(from: codingKeyContainer, forKeyIfPresent: .system, auxKey: ._system)
+    self.version = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .version, auxKey: ._version)
+    self.code = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .code, auxKey: ._code)
+    self.display = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .display, auxKey: ._display)
+    self.userSelected = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKeyIfPresent: .userSelected, auxKey: ._userSelected)
     
     try super.init(from: decoder)
   }

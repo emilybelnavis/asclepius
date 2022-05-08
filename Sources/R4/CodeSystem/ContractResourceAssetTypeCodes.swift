@@ -1,6 +1,6 @@
 //
 //  ContractResourceAssetTypeCodes.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/contract-asset-type
  ValueSet: http://hl7.org/fhir/ValueSet/contract-assettype
  */
-public enum ContractResourceAssetTypeCodes: String, FHIRKitPrimitiveType {
+public enum ContractResourceAssetTypeCodes: String, AlexandriaHRMPrimitiveType {
   /// To be completed
   case participation
 }

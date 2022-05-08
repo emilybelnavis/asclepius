@@ -1,6 +1,6 @@
 //
 //  DocumentManifestRelated.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Related identifiers or resources associated with the `DocumentManifest`
@@ -36,15 +36,15 @@ open class DocumentManifestRelated: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     identifier: Identifier? = nil,
     reference: Reference?
   ) {
     self.init()
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
-    self.identifier = identifier
+    self.fhirId = fhirId
+    self.fhirIdentifier = fhirIdentifier
     self.reference = reference
   }
   
@@ -57,7 +57,7 @@ open class DocumentManifestRelated: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.identifier = try Identifier(from: codingKeyContainer, forKeyIfPresent: .identifier)
+    self.fhirIdentifier = try Identifier(from: codingKeyContainer, forKeyIfPresent: .identifier)
     self.reference = try Reference(from: codingKeyContainer, forKeyIfPresent: .reference)
     
     try super.init(from: decoder)

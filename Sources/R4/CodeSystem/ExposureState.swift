@@ -1,6 +1,6 @@
 //
 //  ExposureState.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -24,7 +24,7 @@
  URL: http://hl7.org/fhir/exposure-state
  ValueSet: http://hl7.org/fhir/ValueSet/exposure-state
  */
-public enum ExposureState: String, FHIRKitPrimitiveType {
+public enum ExposureState: String, AlexandriaHRMPrimitiveType {
   /// used when the results by exposure is describing the results for the primary exposure of interest.
   case exposure
   

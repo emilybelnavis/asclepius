@@ -1,6 +1,6 @@
 //
 //  CatalogEntryRelatedEntry.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  An item that this catalog entry is related to. Used for example to point to a substance or a device used to
@@ -26,12 +26,12 @@ import FHIRKitCore
 open class CatalogEntryRelatedEntry: BackboneElement {
   /// The type of relation to the related item: e.g. `child`, `parent`, `packageContent`,
   /// `containerPackage`, `usedIn`, `uses`, `requires`, etc...
-  public var relationType: FHIRKitPrimitive<CatalogEntryRelationType>
+  public var relationType: AlexandriaHRMPrimitive<CatalogEntryRelationType>
   
   /// The reference to the related item
   public var item: Reference
   
-  public init(relationType: FHIRKitPrimitive<CatalogEntryRelationType>, item: Reference) {
+  public init(relationType: AlexandriaHRMPrimitive<CatalogEntryRelationType>, item: Reference) {
     self.relationType = relationType
     self.item = item
     super.init()
@@ -40,14 +40,14 @@ open class CatalogEntryRelatedEntry: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    relationType: FHIRKitPrimitive<CatalogEntryRelationType>,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    relationType: AlexandriaHRMPrimitive<CatalogEntryRelationType>,
     item: Reference
   ) {
     self.init(relationType: relationType, item: item)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
   }
   
   // MARK: - Codable
@@ -59,7 +59,7 @@ open class CatalogEntryRelatedEntry: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.relationType = try FHIRKitPrimitive<CatalogEntryRelationType>(from: codingKeyContainer, forKey: .relationType, auxKey: ._relationType)
+    self.relationType = try AlexandriaHRMPrimitive<CatalogEntryRelationType>(from: codingKeyContainer, forKey: .relationType, auxKey: ._relationType)
     self.item = try Reference(from: codingKeyContainer, forKey: .item)
     
     try super.init(from: decoder)

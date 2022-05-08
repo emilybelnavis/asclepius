@@ -1,6 +1,6 @@
 //
 //  ProcedureDeviceActionCodes.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  
  URL: http://hl7.org/fhir/device-action
  */
-public enum ProcedureDeviceActionCodes: String, FHIRKitPrimitiveType {
+public enum ProcedureDeviceActionCodes: String, AlexandriaHRMPrimitiveType {
   /// The device was implanted in the patient during the procedure.
   case implanted
   

@@ -1,6 +1,6 @@
 //
 //  DeviceUdiCarrier.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Unique Device Identifier (UDI) Barcode String; Unique Device Identifier (UDI) assigned to the device label or
@@ -26,22 +26,22 @@ import FHIRKitCore
  */
 open class DeviceUdiCarrier: BackboneElement {
   /// Mandatory fixed portion of UDI
-  public var deviceIdentifier: FHIRKitPrimitive<FHIRKitString>?
+  public var deviceIdentifier: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// UDI Issuing organization
-  public var issuer: FHIRKitPrimitive<FHIRKitURI>?
+  public var issuer: AlexandriaHRMPrimitive<AlexandriaHRMURI>?
   
   /// Regional UDI authority
-  public var jurisdiction: FHIRKitPrimitive<FHIRKitURI>?
+  public var jurisdiction: AlexandriaHRMPrimitive<AlexandriaHRMURI>?
   
   /// UDI Machine Readable Barcode String
-  public var carrierAIDC: FHIRKitPrimitive<FHIRKitBase64Binary>?
+  public var carrierAIDC: AlexandriaHRMPrimitive<AlexandriaHRMBase64Binary>?
   
   /// UDI Human Readable Barcode String
-  public var carrierHRF: FHIRKitPrimitive<FHIRKitString>?
+  public var carrierHRF: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// A coded entry to indicate how the data was entered
-  public var entryTime: FHIRKitPrimitive<UDIEntryType>?
+  public var entryTime: AlexandriaHRMPrimitive<UDIEntryType>?
   
   public override init() {
     super.init()
@@ -50,18 +50,18 @@ open class DeviceUdiCarrier: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    deviceIdentifier: FHIRKitPrimitive<FHIRKitString>? = nil,
-    issuer: FHIRKitPrimitive<FHIRKitURI>? = nil,
-    jurisdiction: FHIRKitPrimitive<FHIRKitURI>? = nil,
-    carrierAIDC: FHIRKitPrimitive<FHIRKitBase64Binary>? = nil,
-    carrierHRF: FHIRKitPrimitive<FHIRKitString>? = nil,
-    entryTime: FHIRKitPrimitive<UDIEntryType>? = nil
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    deviceIdentifier: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    issuer: AlexandriaHRMPrimitive<AlexandriaHRMURI>? = nil,
+    jurisdiction: AlexandriaHRMPrimitive<AlexandriaHRMURI>? = nil,
+    carrierAIDC: AlexandriaHRMPrimitive<AlexandriaHRMBase64Binary>? = nil,
+    carrierHRF: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    entryTime: AlexandriaHRMPrimitive<UDIEntryType>? = nil
   ) {
     self.init()
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.deviceIdentifier = deviceIdentifier
     self.issuer = issuer
     self.jurisdiction = jurisdiction
@@ -83,12 +83,12 @@ open class DeviceUdiCarrier: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.deviceIdentifier = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .deviceIdentifier, auxKey: ._deviceIdentifier)
-    self.issuer = try FHIRKitPrimitive<FHIRKitURI>(from: codingKeyContainer, forKeyIfPresent: .issuer, auxKey: ._issuer)
-    self.jurisdiction = try FHIRKitPrimitive<FHIRKitURI>(from: codingKeyContainer, forKeyIfPresent: .jurisdiction, auxKey: ._jurisdiction)
-    self.carrierAIDC = try FHIRKitPrimitive<FHIRKitBase64Binary>(from: codingKeyContainer, forKeyIfPresent: .carrierAIDC, auxKey: ._carrierAIDC)
-    self.carrierHRF = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .carrierHRF, auxKey: ._carrierHRF)
-    self.entryTime = try FHIRKitPrimitive<UDIEntryType>(from: codingKeyContainer, forKeyIfPresent: .entryTime, auxKey: ._entryTime)
+    self.deviceIdentifier = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .deviceIdentifier, auxKey: ._deviceIdentifier)
+    self.issuer = try AlexandriaHRMPrimitive<AlexandriaHRMURI>(from: codingKeyContainer, forKeyIfPresent: .issuer, auxKey: ._issuer)
+    self.jurisdiction = try AlexandriaHRMPrimitive<AlexandriaHRMURI>(from: codingKeyContainer, forKeyIfPresent: .jurisdiction, auxKey: ._jurisdiction)
+    self.carrierAIDC = try AlexandriaHRMPrimitive<AlexandriaHRMBase64Binary>(from: codingKeyContainer, forKeyIfPresent: .carrierAIDC, auxKey: ._carrierAIDC)
+    self.carrierHRF = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .carrierHRF, auxKey: ._carrierHRF)
+    self.entryTime = try AlexandriaHRMPrimitive<UDIEntryType>(from: codingKeyContainer, forKeyIfPresent: .entryTime, auxKey: ._entryTime)
     
     try super.init(from: decoder)
   }

@@ -1,6 +1,6 @@
 //
 //  ContactPointUse.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/contact-point-use
  ValueSet: http://hl7.org/fhir/ValueSet/contact-point-use
  */
-public enum ContactPointUse: String, FHIRKitPrimitiveType {
+public enum ContactPointUse: String, AlexandriaHRMPrimitiveType {
   /// A communication contact point at a home; attempted contacts for business purposes may intrude
   /// privacy and chances are one will contact family or other household members instead of the person
   /// one wishes to call. Typically used with urgent cases, or if no other contacts are available.

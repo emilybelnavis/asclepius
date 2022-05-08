@@ -1,6 +1,6 @@
 //
 //  ListEmptyReasons.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -24,7 +24,7 @@
  URL: http://terminology.hl7.org/CodeSystem/list-empty-reason
  ValueSet: http://hl7.org/fhir/ValueSet/list-empty-reason
  */
-public enum ListEmptyReasons: String, FHIRKitPrimitiveType {
+public enum ListEmptyReasons: String, AlexandriaHRMPrimitiveType {
   /// Clinical judgment that there are no known items for this list after reasonable investigation. Note that this a
   /// positive statement by a clinical user, and not a default position asserted by a computer system in the lack of
   /// other information. Example uses:  * For allergies: the patient or patient's agent/guardian has asserted that

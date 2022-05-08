@@ -1,6 +1,6 @@
 //
 //  ClaimResponsePayment.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Payment details for the adjudication of the claims
@@ -33,7 +33,7 @@ open class ClaimResponsePayment: BackboneElement {
   public var adjustmentReason: CodableConcept?
   
   /// Expected date of payment
-  public var date: FHIRKitPrimitive<FHIRKitDate>?
+  public var date: AlexandriaHRMPrimitive<AlexandriaHRMDate>?
   
   /// Payable amount after adjustment
   public var amount: Money
@@ -50,22 +50,22 @@ open class ClaimResponsePayment: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     type: CodableConcept,
     adjustment: Money? = nil,
     adjustmentReason: CodableConcept? = nil,
-    date: FHIRKitPrimitive<FHIRKitDate>? = nil,
+    date: AlexandriaHRMPrimitive<AlexandriaHRMDate>? = nil,
     amount: Money,
     identifier: Identifier?
   ) {
     self.init(type: type, amount: amount)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.adjustment = adjustment
     self.adjustmentReason = adjustmentReason
     self.date = date
-    self.identifier = identifier
+    self.fhirIdentifier = fhirIdentifier
   }
   
   // MARK: - Codable
@@ -84,9 +84,9 @@ open class ClaimResponsePayment: BackboneElement {
     self.type = try CodableConcept(from: codingKeyContainer, forKey: .type)
     self.adjustment = try Money(from: codingKeyContainer, forKeyIfPresent: .adjustment)
     self.adjustmentReason = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .adjustmentReason)
-    self.date = try FHIRKitPrimitive<FHIRKitDate>(from: codingKeyContainer, forKeyIfPresent: .date, auxKey: ._date)
+    self.date = try AlexandriaHRMPrimitive<AlexandriaHRMDate>(from: codingKeyContainer, forKeyIfPresent: .date, auxKey: ._date)
     self.amount = try Money(from: codingKeyContainer, forKey: .amount)
-    self.identifier = try Identifier(from: codingKeyContainer, forKeyIfPresent: .identifier)
+    self.fhirIdentifier = try Identifier(from: codingKeyContainer, forKeyIfPresent: .identifier)
     
     try super.init(from: decoder)
   }

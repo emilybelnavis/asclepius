@@ -1,6 +1,6 @@
 //
 //  ElementDefinition.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Definition of an element in a resource or extension; Captures constraints on each element within the resource,
@@ -30,10 +30,10 @@ open class ElementDefinition: BackboneElement {
     case age(Age)
     case annotation(Annotation)
     case attachment(Attachment)
-    case base64Binary(FHIRKitPrimitive<FHIRKitBase64Binary>)
-    case boolean(FHIRKitPrimitive<FHIRKitBool>)
-    case canonical(FHIRKitPrimitive<Canonical>)
-    case code(FHIRKitPrimitive<FHIRKitString>)
+    case base64Binary(AlexandriaHRMPrimitive<AlexandriaHRMBase64Binary>)
+    case boolean(AlexandriaHRMPrimitive<AlexandriaHRMBool>)
+    case canonical(AlexandriaHRMPrimitive<Canonical>)
+    case code(AlexandriaHRMPrimitive<AlexandriaHRMString>)
     case codableConcept(CodableConcept)
     case coding(Coding)
     case contactDetail(ContactDetail)
@@ -41,25 +41,25 @@ open class ElementDefinition: BackboneElement {
     case contributor(Contributor)
     case count(Count)
     case dataRequirement(DataRequirement)
-    case date(FHIRKitPrimitive<FHIRKitDate>)
-    case dateTime(FHIRKitPrimitive<FHIRKitDateTime>)
-    case decimal(FHIRKitPrimitive<FHIRKitDecimal>)
+    case date(AlexandriaHRMPrimitive<AlexandriaHRMDate>)
+    case dateTime(AlexandriaHRMPrimitive<AlexandriaHRMDateTime>)
+    case decimal(AlexandriaHRMPrimitive<AlexandriaHRMDecimal>)
     case distance(Distance)
     case dosage(Dosage)
     case duration(Duration)
     case expression(Expression)
     case humanName(HumanName)
-    case id(FHIRKitPrimitive<FHIRKitString>)
+    case id(AlexandriaHRMPrimitive<AlexandriaHRMString>)
     case identifier(Identifier)
-    case instant(FHIRKitPrimitive<FHIRKitInstant>)
-    case integer(FHIRKitPrimitive<FHIRKitInteger>)
-    case markdown(FHIRKitPrimitive<FHIRKitString>)
+    case instant(AlexandriaHRMPrimitive<AlexandriaHRMInstant>)
+    case integer(AlexandriaHRMPrimitive<AlexandriaHRMInteger>)
+    case markdown(AlexandriaHRMPrimitive<AlexandriaHRMString>)
     case meta(Meta)
     case money(Money)
-    case oid(FHIRKitPrimitive<FHIRKitURI>)
+    case oid(AlexandriaHRMPrimitive<AlexandriaHRMURI>)
     case parameterDefinition(ParameterDefinition)
     case period(Period)
-    case positiveInteger(FHIRKitPrimitive<FHIRKitPositiveInteger>)
+    case positiveInteger(AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>)
     case quantity(Quantity)
     case range(Range)
     case ratio(Ratio)
@@ -67,15 +67,15 @@ open class ElementDefinition: BackboneElement {
     case relatedArtifact(RelatedArtifact)
     case sampledData(SampledData)
     case signature(Signature)
-    case string(FHIRKitPrimitive<FHIRKitString>)
-    case time(FHIRKitPrimitive<FHIRKitTime>)
+    case string(AlexandriaHRMPrimitive<AlexandriaHRMString>)
+    case time(AlexandriaHRMPrimitive<AlexandriaHRMTime>)
     case timing(Timing)
     case triggerDefinition(TriggerDefinition)
-    case unsignedInteger(FHIRKitPrimitive<FHIRKitUnsignedInteger>)
-    case uri(FHIRKitPrimitive<FHIRKitURI>)
-    case url(FHIRKitPrimitive<FHIRKitURI>)
+    case unsignedInteger(AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>)
+    case uri(AlexandriaHRMPrimitive<AlexandriaHRMURI>)
+    case url(AlexandriaHRMPrimitive<AlexandriaHRMURI>)
     case usageContext(UsageContext)
-    case uuid(FHIRKitPrimitive<FHIRKitURI>)
+    case uuid(AlexandriaHRMPrimitive<AlexandriaHRMURI>)
   }
   
   /// All possible types for `fixed[x]`
@@ -84,35 +84,35 @@ open class ElementDefinition: BackboneElement {
     case age(Age)
     case annotation(Annotation)
     case attachment(Attachment)
-    case base64Binary(FHIRKitPrimitive<FHIRKitBase64Binary>)
-    case boolean(FHIRKitPrimitive<FHIRKitBool>)
-    case canonical(FHIRKitPrimitive<Canonical>)
-    case code(FHIRKitPrimitive<FHIRKitString>)
+    case base64Binary(AlexandriaHRMPrimitive<AlexandriaHRMBase64Binary>)
+    case boolean(AlexandriaHRMPrimitive<AlexandriaHRMBool>)
+    case canonical(AlexandriaHRMPrimitive<Canonical>)
+    case code(AlexandriaHRMPrimitive<AlexandriaHRMString>)
     case coding(Coding)
     case contactDetail(ContactDetail)
     case contactPoint(ContactPoint)
     case contributor(Contributor)
     case count(Count)
     case dataRequirement(DataRequirement)
-    case date(FHIRKitPrimitive<FHIRKitDate>)
-    case dateTime(FHIRKitPrimitive<FHIRKitDateTime>)
-    case decimal(FHIRKitPrimitive<FHIRKitDecimal>)
+    case date(AlexandriaHRMPrimitive<AlexandriaHRMDate>)
+    case dateTime(AlexandriaHRMPrimitive<AlexandriaHRMDateTime>)
+    case decimal(AlexandriaHRMPrimitive<AlexandriaHRMDecimal>)
     case distance(Distance)
     case dosage(Dosage)
     case duration(Duration)
     case expression(Expression)
     case humanName(HumanName)
-    case id(FHIRKitPrimitive<FHIRKitString>)
+    case id(AlexandriaHRMPrimitive<AlexandriaHRMString>)
     case identifier(Identifier)
-    case instant(FHIRKitPrimitive<FHIRKitInstant>)
-    case integer(FHIRKitPrimitive<FHIRKitInteger>)
-    case markdown(FHIRKitPrimitive<FHIRKitString>)
+    case instant(AlexandriaHRMPrimitive<AlexandriaHRMInstant>)
+    case integer(AlexandriaHRMPrimitive<AlexandriaHRMInteger>)
+    case markdown(AlexandriaHRMPrimitive<AlexandriaHRMString>)
     case meta(Meta)
     case money(Money)
-    case oid(FHIRKitPrimitive<FHIRKitURI>)
+    case oid(AlexandriaHRMPrimitive<AlexandriaHRMURI>)
     case parameterDefinition(ParameterDefinition)
     case period(Period)
-    case positiveInteger(FHIRKitPrimitive<FHIRKitPositiveInteger>)
+    case positiveInteger(AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>)
     case quantity(Quantity)
     case range(Range)
     case ratio(Ratio)
@@ -120,41 +120,41 @@ open class ElementDefinition: BackboneElement {
     case relatedArtifact(RelatedArtifact)
     case sampledData(SampledData)
     case signature(Signature)
-    case string(FHIRKitPrimitive<FHIRKitString>)
-    case time(FHIRKitPrimitive<FHIRKitTime>)
+    case string(AlexandriaHRMPrimitive<AlexandriaHRMString>)
+    case time(AlexandriaHRMPrimitive<AlexandriaHRMTime>)
     case timing(Timing)
     case triggerDefinition(TriggerDefinition)
-    case unsignedInteger(FHIRKitPrimitive<FHIRKitUnsignedInteger>)
-    case uri(FHIRKitPrimitive<FHIRKitURI>)
-    case url(FHIRKitPrimitive<FHIRKitURI>)
+    case unsignedInteger(AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>)
+    case uri(AlexandriaHRMPrimitive<AlexandriaHRMURI>)
+    case url(AlexandriaHRMPrimitive<AlexandriaHRMURI>)
     case usageContext(UsageContext)
-    case uuid(FHIRKitPrimitive<FHIRKitURI>)
+    case uuid(AlexandriaHRMPrimitive<AlexandriaHRMURI>)
   }
   
   /// All possible types for `maxValue`
   public enum MaxValueX: Hashable {
-    case date(FHIRKitPrimitive<FHIRKitDate>)
-    case dateTime(FHIRKitPrimitive<FHIRKitDateTime>)
-    case decimal(FHIRKitPrimitive<FHIRKitDecimal>)
-    case instant(FHIRKitPrimitive<FHIRKitInstant>)
-    case integer(FHIRKitPrimitive<FHIRKitInteger>)
-    case positiveInteger(FHIRKitPrimitive<FHIRKitPositiveInteger>)
+    case date(AlexandriaHRMPrimitive<AlexandriaHRMDate>)
+    case dateTime(AlexandriaHRMPrimitive<AlexandriaHRMDateTime>)
+    case decimal(AlexandriaHRMPrimitive<AlexandriaHRMDecimal>)
+    case instant(AlexandriaHRMPrimitive<AlexandriaHRMInstant>)
+    case integer(AlexandriaHRMPrimitive<AlexandriaHRMInteger>)
+    case positiveInteger(AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>)
     case quantity(Quantity)
-    case time(FHIRKitPrimitive<FHIRKitTime>)
-    case unsignedInteger(FHIRKitPrimitive<FHIRKitUnsignedInteger>)
+    case time(AlexandriaHRMPrimitive<AlexandriaHRMTime>)
+    case unsignedInteger(AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>)
   }
   
   /// All possible types for `minValue`
   public enum MinValueX: Hashable {
-    case date(FHIRKitPrimitive<FHIRKitDate>)
-    case dateTime(FHIRKitPrimitive<FHIRKitDateTime>)
-    case decimal(FHIRKitPrimitive<FHIRKitDecimal>)
-    case instant(FHIRKitPrimitive<FHIRKitInstant>)
-    case integer(FHIRKitPrimitive<FHIRKitInteger>)
-    case positiveInteger(FHIRKitPrimitive<FHIRKitPositiveInteger>)
+    case date(AlexandriaHRMPrimitive<AlexandriaHRMDate>)
+    case dateTime(AlexandriaHRMPrimitive<AlexandriaHRMDateTime>)
+    case decimal(AlexandriaHRMPrimitive<AlexandriaHRMDecimal>)
+    case instant(AlexandriaHRMPrimitive<AlexandriaHRMInstant>)
+    case integer(AlexandriaHRMPrimitive<AlexandriaHRMInteger>)
+    case positiveInteger(AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>)
     case quantity(Quantity)
-    case time(FHIRKitPrimitive<FHIRKitTime>)
-    case unsignedInteger(FHIRKitPrimitive<FHIRKitUnsignedInteger>)
+    case time(AlexandriaHRMPrimitive<AlexandriaHRMTime>)
+    case unsignedInteger(AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>)
   }
   
   /// All possible types for `pattern[x]`
@@ -163,35 +163,35 @@ open class ElementDefinition: BackboneElement {
     case age(Age)
     case annotation(Annotation)
     case attachment(Attachment)
-    case base64Binary(FHIRKitPrimitive<FHIRKitBase64Binary>)
-    case boolean(FHIRKitPrimitive<FHIRKitBool>)
-    case canonical(FHIRKitPrimitive<Canonical>)
-    case code(FHIRKitPrimitive<FHIRKitString>)
+    case base64Binary(AlexandriaHRMPrimitive<AlexandriaHRMBase64Binary>)
+    case boolean(AlexandriaHRMPrimitive<AlexandriaHRMBool>)
+    case canonical(AlexandriaHRMPrimitive<Canonical>)
+    case code(AlexandriaHRMPrimitive<AlexandriaHRMString>)
     case coding(Coding)
     case contactDetail(ContactDetail)
     case contactPoint(ContactPoint)
     case contributor(Contributor)
     case count(Count)
     case dataRequirement(DataRequirement)
-    case date(FHIRKitPrimitive<FHIRKitDate>)
-    case dateTime(FHIRKitPrimitive<FHIRKitDateTime>)
-    case decimal(FHIRKitPrimitive<FHIRKitDecimal>)
+    case date(AlexandriaHRMPrimitive<AlexandriaHRMDate>)
+    case dateTime(AlexandriaHRMPrimitive<AlexandriaHRMDateTime>)
+    case decimal(AlexandriaHRMPrimitive<AlexandriaHRMDecimal>)
     case distance(Distance)
     case dosage(Dosage)
     case duration(Duration)
     case expression(Expression)
     case humanName(HumanName)
-    case id(FHIRKitPrimitive<FHIRKitString>)
+    case id(AlexandriaHRMPrimitive<AlexandriaHRMString>)
     case identifier(Identifier)
-    case instant(FHIRKitPrimitive<FHIRKitInstant>)
-    case integer(FHIRKitPrimitive<FHIRKitInteger>)
-    case markdown(FHIRKitPrimitive<FHIRKitString>)
+    case instant(AlexandriaHRMPrimitive<AlexandriaHRMInstant>)
+    case integer(AlexandriaHRMPrimitive<AlexandriaHRMInteger>)
+    case markdown(AlexandriaHRMPrimitive<AlexandriaHRMString>)
     case meta(Meta)
     case money(Money)
-    case oid(FHIRKitPrimitive<FHIRKitURI>)
+    case oid(AlexandriaHRMPrimitive<AlexandriaHRMURI>)
     case parameterDefinition(ParameterDefinition)
     case period(Period)
-    case positiveInteger(FHIRKitPrimitive<FHIRKitPositiveInteger>)
+    case positiveInteger(AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>)
     case quantity(Quantity)
     case range(Range)
     case ratio(Ratio)
@@ -199,30 +199,30 @@ open class ElementDefinition: BackboneElement {
     case relatedArtifact(RelatedArtifact)
     case sampledData(SampledData)
     case signature(Signature)
-    case string(FHIRKitPrimitive<FHIRKitString>)
-    case time(FHIRKitPrimitive<FHIRKitTime>)
+    case string(AlexandriaHRMPrimitive<AlexandriaHRMString>)
+    case time(AlexandriaHRMPrimitive<AlexandriaHRMTime>)
     case timing(Timing)
     case triggerDefinition(TriggerDefinition)
-    case uri(FHIRKitPrimitive<FHIRKitURI>)
-    case url(FHIRKitPrimitive<FHIRKitURI>)
+    case uri(AlexandriaHRMPrimitive<AlexandriaHRMURI>)
+    case url(AlexandriaHRMPrimitive<AlexandriaHRMURI>)
     case usageContext(UsageContext)
-    case uuid(FHIRKitPrimitive<FHIRKitURI>)
+    case uuid(AlexandriaHRMPrimitive<AlexandriaHRMURI>)
   }
   
   /// Path of the element in the hierarchy of elements
-  public var path: FHIRKitPrimitive<FHIRKitString>
+  public var path: AlexandriaHRMPrimitive<AlexandriaHRMString>
   
   /// Codes that define how this element is represented in instances when the deviation varies from the normal case
-  public var representation: [FHIRKitPrimitive<PropertyRepresentation>]?
+  public var representation: [AlexandriaHRMPrimitive<PropertyRepresentation>]?
   
   /// Name for this particular element (in a set of slices)
-  public var sliceName: FHIRKitPrimitive<FHIRKitString>?
+  public var sliceName: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// If this slice definition constrains an inherited slice definition (or not)
-  public var sliceIsConstraining: FHIRKitPrimitive<FHIRKitBool>?
+  public var sliceIsConstraining: AlexandriaHRMPrimitive<AlexandriaHRMBool>?
   
   /// Name for element prompt or to display with
-  public var label: FHIRKitPrimitive<FHIRKitString>?
+  public var label: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// Corresponding codes in terminologies
   public var code: [Coding]?
@@ -231,31 +231,31 @@ open class ElementDefinition: BackboneElement {
   public var slicing: ElementDefinitionSlicing?
   
   /// Concise definition for space-constrained presentation
-  public var short: FHIRKitPrimitive<FHIRKitString>?
+  public var short: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// Full formal definitoin as narrative text
-  public var definition: FHIRKitPrimitive<FHIRKitString>?
+  public var definition: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// Comments about the use of this element
-  public var comment: FHIRKitPrimitive<FHIRKitString>?
+  public var comment: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// Why this resource has been created
-  public var requirements: FHIRKitPrimitive<FHIRKitString>?
+  public var requirements: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// Other names
-  public var alias: [FHIRKitPrimitive<FHIRKitString>?]
+  public var alias: [AlexandriaHRMPrimitive<AlexandriaHRMString>?]
   
   /// Minimum cardinality
-  public var min: FHIRKitPrimitive<FHIRKitUnsignedInteger>?
+  public var min: AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>?
   
   /// Maximum cardinality (a number or *)
-  public var max: FHIRKitPrimitive<FHIRKitString>?
+  public var max: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// Base definitoin information for tools
   public var base: ElementDefinitionBase?
   
   /// Reference to definition of content for the element
-  public var contentReference: FHIRKitPrimitive<FHIRKitURI>?
+  public var contentReference: AlexandriaHRMPrimitive<AlexandriaHRMURI>?
   
   /// Data type and Profile for this element
   public var type: [ElementDefinitionType]?
@@ -264,10 +264,10 @@ open class ElementDefinition: BackboneElement {
   public var defaultValue: DefaultValueX?
   
   /// Implicit meaning when this element is meaning
-  public var meaningWhenMissing: FHIRKitPrimitive<FHIRKitString>?
+  public var meaningWhenMissing: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// What the order of the elements means
-  public var orderMeaning: FHIRKitPrimitive<FHIRKitString>
+  public var orderMeaning: AlexandriaHRMPrimitive<AlexandriaHRMString>
   
   /// Value must be exactly this (`value[x]`)
   public var fixed: FixedX?
@@ -285,25 +285,25 @@ open class ElementDefinition: BackboneElement {
   public var maxValue: MaxValueX?
   
   /// Maximum length for strings
-  public var maxLength: FHIRKitPrimitive<FHIRKitInteger>?
+  public var maxLength: AlexandriaHRMPrimitive<AlexandriaHRMInteger>?
   
   /// Reference to invariant about presence
-  public var condition: [FHIRKitPrimitive<FHIRKitString>]?
+  public var condition: [AlexandriaHRMPrimitive<AlexandriaHRMString>]?
   
   /// Condition that must evaluate to `true`
   public var constraint: [ElementDefinitionConstraint]?
   
   /// If the element must be supported
-  public var mustSupport: FHIRKitPrimitive<FHIRKitBool>?
+  public var mustSupport: AlexandriaHRMPrimitive<AlexandriaHRMBool>?
   
   /// If this modifies the meaning of other elements
-  public var isModifier: FHIRKitPrimitive<FHIRKitBool>?
+  public var isModifier: AlexandriaHRMPrimitive<AlexandriaHRMBool>?
   
   /// Reason that this modifier is marked as a modifier
-  public var isModifierReason: FHIRKitPrimitive<FHIRKitString>?
+  public var isModifierReason: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// Include when `_summary = true`?
-  public var isSummary: FHIRKitPrimitive<FHIRKitBool>?
+  public var isSummary: AlexandriaHRMPrimitive<AlexandriaHRMBool>?
   
   /// ValueSet details if this is coded
   public var binding: ElementDefinitionBinding?

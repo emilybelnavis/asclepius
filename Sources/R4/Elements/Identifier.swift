@@ -1,6 +1,6 @@
 //
 //  Identifier.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  An identifier intended for computation
@@ -26,16 +26,16 @@ import FHIRKitCore
  */
 open class Identifier: Element {
   /// The purpose of this identifier
-  public var use: FHIRKitPrimitive<IdentifierUse>?
+  public var use: AlexandriaHRMPrimitive<IdentifierUse>?
   
   /// Description of identifier
   public var type: CodableConcept?
   
   /// The namespace for the identifier value
-  public var system: FHIRKitPrimitive<FHIRKitURI>?
+  public var system: AlexandriaHRMPrimitive<AlexandriaHRMURI>?
   
   /// The value that is unique
-  public var value: FHIRKitPrimitive<FHIRKitString>?
+  public var value: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// Time period when is/was valid for use
   public var period: Period?
@@ -49,17 +49,17 @@ open class Identifier: Element {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    use: FHIRKitPrimitive<IdentifierUse>? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    use: AlexandriaHRMPrimitive<IdentifierUse>? = nil,
     type: CodableConcept? = nil,
-    system: FHIRKitPrimitive<FHIRKitURI>? = nil,
-    value: FHIRKitPrimitive<FHIRKitString>? = nil,
+    system: AlexandriaHRMPrimitive<AlexandriaHRMURI>? = nil,
+    value: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     period: Period? = nil,
     assigner: Reference? = nil
   ) {
     self.init()
     self.fhirExtension = fhirExtension
-    self.id = id
+    self.fhirId = fhirId
     self.use = use
     self.type = type
     self.system = system
@@ -81,10 +81,10 @@ open class Identifier: Element {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.use = try FHIRKitPrimitive<IdentifierUse>(from: codingKeyContainer, forKeyIfPresent: .use, auxKey: ._use)
+    self.use = try AlexandriaHRMPrimitive<IdentifierUse>(from: codingKeyContainer, forKeyIfPresent: .use, auxKey: ._use)
     self.type = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .type)
-    self.system = try FHIRKitPrimitive<FHIRKitURI>(from: codingKeyContainer, forKeyIfPresent: .system, auxKey: ._system)
-    self.value = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .value, auxKey: ._value)
+    self.system = try AlexandriaHRMPrimitive<AlexandriaHRMURI>(from: codingKeyContainer, forKeyIfPresent: .system, auxKey: ._system)
+    self.value = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .value, auxKey: ._value)
     self.period = try Period(from: codingKeyContainer, forKeyIfPresent: .period)
     self.assigner = try Reference(from: codingKeyContainer, forKeyIfPresent: .assigner)
     

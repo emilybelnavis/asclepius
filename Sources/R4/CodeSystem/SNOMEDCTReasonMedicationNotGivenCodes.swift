@@ -1,6 +1,6 @@
 //
 //  SNOMEDCTReasonMedicationNotGivenCodes.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  
  URL: http://hl7.org/fhir/reason-medication-not-given
  */
-public enum SNOMEDCTReasonMedicationNotGivenCodes: String, FHIRKitPrimitiveType {
+public enum SNOMEDCTReasonMedicationNotGivenCodes: String, AlexandriaHRMPrimitiveType {
   /// No reason known.
   case A = "a" // swiftlint:disable:this identifier_name
   

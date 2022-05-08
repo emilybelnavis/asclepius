@@ -1,6 +1,6 @@
 //
 //  ContactDetail.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,11 +17,11 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 open class ContactDetail: Element {
   /// name of an individual to contact
-  public var name: FHIRKitPrimitive<FHIRKitString>?
+  public var name: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// contact details for individual or organization
   public var telecom: [ContactPoint]?
@@ -32,13 +32,13 @@ open class ContactDetail: Element {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    name: FHIRKitPrimitive<FHIRKitString>? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    name: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     telecom: [ContactPoint]? = nil
   ) {
     self.init()
     self.fhirExtension = fhirExtension
-    self.id = id
+    self.fhirId = fhirId
     self.name = name
     self.telecom = telecom
   }
@@ -52,7 +52,7 @@ open class ContactDetail: Element {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.name = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .name, auxKey: ._name)
+    self.name = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .name, auxKey: ._name)
     self.telecom = try [ContactPoint](from: codingKeyContainer, forKeyIfPresent: .telecom)
     
     try super.init(from: decoder)

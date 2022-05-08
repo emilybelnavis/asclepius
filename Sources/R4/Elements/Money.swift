@@ -1,6 +1,6 @@
 //
 //  Money.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,15 +17,15 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /// An amount of economic utility in some recognized currency
 open class Money: Element {
   /// numerical value (with implicit precision)
-  public var value: FHIRKitPrimitive<FHIRKitDecimal>?
+  public var value: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>?
   
   /// ISO 4217 currency code
-  public var currency: FHIRKitPrimitive<FHIRKitString>?
+  public var currency: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   override public init() {
     super.init()
@@ -33,13 +33,13 @@ open class Money: Element {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    value: FHIRKitPrimitive<FHIRKitDecimal>? = nil,
-    currency: FHIRKitPrimitive<FHIRKitString>? = nil
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    value: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>? = nil,
+    currency: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil
   ) {
     self.init()
     self.fhirExtension = fhirExtension
-    self.id = id
+    self.fhirId = fhirId
     self.value = value
     self.currency = currency
   }
@@ -53,8 +53,8 @@ open class Money: Element {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.value = try FHIRKitPrimitive<FHIRKitDecimal>(from: codingKeyContainer, forKeyIfPresent: .value, auxKey: ._value)
-    self.currency = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .currency, auxKey: ._currency)
+    self.value = try AlexandriaHRMPrimitive<AlexandriaHRMDecimal>(from: codingKeyContainer, forKeyIfPresent: .value, auxKey: ._value)
+    self.currency = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .currency, auxKey: ._currency)
     
     try super.init(from: decoder)
   }

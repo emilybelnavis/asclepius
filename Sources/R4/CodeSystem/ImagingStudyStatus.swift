@@ -1,6 +1,6 @@
 //
 //  ImagingStudyStatus.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/imagingstudy-status
  ValueSet: http://hl7.org/fhir/ValueSet/imagingstudy-status
  */
-public enum ImagingStudyStatus: String, FHIRKitPrimitiveType {
+public enum ImagingStudyStatus: String, AlexandriaHRMPrimitiveType {
   /// The existence of the imaging study is registered, but there is nothing yet available.
   case registered
   

@@ -1,6 +1,6 @@
 //
 //  AdverseEventSuspectEntity.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /// Describes the entity that is suspected to have caused the adverse event
 open class AdverseEventSuspectEntity: BackboneElement {
@@ -34,13 +34,13 @@ open class AdverseEventSuspectEntity: BackboneElement {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     instance: Reference,
     causality: [AdverseEventSuspectEntityCausality]? = nil
   ) {
     self.init(instance: instance)
     self.fhirExtension = fhirExtension
-    self.id = id
+    self.fhirId = fhirId
     self.causality = causality
   }
   

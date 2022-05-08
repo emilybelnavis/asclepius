@@ -1,6 +1,6 @@
 //
 //  ConceptMapGroupElement.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,15 +17,15 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /// Mappings for an individual concept in the source to one or more concepts in the target
 open class ConceptMapGroupElement: BackboneElement {
   /// Identifies element being mapped
-  public var code: FHIRKitPrimitive<FHIRKitString>?
+  public var code: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// Display for the code
-  public var display: FHIRKitPrimitive<FHIRKitString>?
+  public var display: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// Concept in target system for element
   public var target: [ConceptMapGroupElementTarget]?
@@ -37,15 +37,15 @@ open class ConceptMapGroupElement: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    code: FHIRKitPrimitive<FHIRKitString>? = nil,
-    display: FHIRKitPrimitive<FHIRKitString>? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    code: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    display: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     target: [ConceptMapGroupElementTarget]? = nil
   ) {
     self.init()
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.code = code
     self.display = display
     self.target = target
@@ -61,8 +61,8 @@ open class ConceptMapGroupElement: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.code = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .code, auxKey: ._code)
-    self.display = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .display, auxKey: ._display)
+    self.code = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .code, auxKey: ._code)
+    self.display = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .display, auxKey: ._display)
     self.target = try [ConceptMapGroupElementTarget](from: codingKeyContainer, forKeyIfPresent: .target)
     
     try super.init(from: decoder)

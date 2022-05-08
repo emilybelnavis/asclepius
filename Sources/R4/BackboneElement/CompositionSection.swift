@@ -1,6 +1,6 @@
 //
 //  CompositionSection.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,12 +17,12 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /// Composition is broken into sections - The root of the sections that make up the composition
 open class CompositionSection: BackboneElement {
   /// Label for section (e.g. for ToC)
-  public var title: FHIRKitPrimitive<FHIRKitString>?
+  public var title: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// Classification of section
   public var code: CodableConcept?
@@ -39,7 +39,7 @@ open class CompositionSection: BackboneElement {
   /// How the entry list was prepared - wheter it is a working list that is suitable for being maintained
   /// on an ongoing basis or if it represents a snapshot of a list of items from another source, or
   /// whether it is a prepared list where items may be marked as added, modified, or deleted
-  public var mode: FHIRKitPrimitive<ListMode>?
+  public var mode: AlexandriaHRMPrimitive<ListMode>?
   
   /// Order of section entries
   public var orderedBy: CodableConcept?
@@ -60,13 +60,13 @@ open class CompositionSection: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    title: FHIRKitPrimitive<FHIRKitString>? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    title: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     code: CodableConcept? = nil,
     author: [Reference]? = nil,
     focus: Reference? = nil,
     text: Narrative? = nil,
-    mode: FHIRKitPrimitive<ListMode>? = nil,
+    mode: AlexandriaHRMPrimitive<ListMode>? = nil,
     entry: [Reference]? = nil,
     emptyReason: CodableConcept? = nil,
     section: [CompositionSection]? = nil
@@ -74,7 +74,7 @@ open class CompositionSection: BackboneElement {
     self.init()
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.title = title
     self.code = code
     self.author = author
@@ -102,12 +102,12 @@ open class CompositionSection: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.title = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .title, auxKey: ._title)
+    self.title = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .title, auxKey: ._title)
     self.code = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .code)
     self.author = try [Reference](from: codingKeyContainer, forKeyIfPresent: .author)
     self.focus = try Reference(from: codingKeyContainer, forKeyIfPresent: .focus)
     self.text = try Narrative(from: codingKeyContainer, forKeyIfPresent: .text)
-    self.mode = try FHIRKitPrimitive<ListMode>(from: codingKeyContainer, forKeyIfPresent: .mode, auxKey: ._mode)
+    self.mode = try AlexandriaHRMPrimitive<ListMode>(from: codingKeyContainer, forKeyIfPresent: .mode, auxKey: ._mode)
     self.entry = try [Reference](from: codingKeyContainer, forKeyIfPresent: .entry)
     self.emptyReason = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .emptyReason)
     self.section = try [CompositionSection](from: codingKeyContainer, forKeyIfPresent: .section)

@@ -1,6 +1,6 @@
 //
 //  FlagStatus.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -24,7 +24,7 @@
  URL: http://hl7.org/fhir/flag-status
  ValueSet: http://hl7.org/fhir/ValueSet/flag-status
  */
-public enum FlagStatus: String, FHIRKitPrimitiveType {
+public enum FlagStatus: String, AlexandriaHRMPrimitiveType {
   /// A current flag that should be displayed to a user. A system may use the category to determine which user roles
   /// should view the flag.
   case active

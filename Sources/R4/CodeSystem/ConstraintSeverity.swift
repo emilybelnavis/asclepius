@@ -1,6 +1,6 @@
 //
 //  ConstraintSeverity.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/constraint-severity
  ValueSet: http://hl7.org/fhir/ValueSet/constraint-severity
  */
-public enum ConstraintSeverity: String, FHIRKitPrimitiveType {
+public enum ConstraintSeverity: String, AlexandriaHRMPrimitiveType {
   /// If the constraint is violated, the resource is not conformant
   case error
   

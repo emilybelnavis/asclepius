@@ -1,6 +1,6 @@
 //
 //  SearchComparator.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/search-comparator
  ValueSet: http://hl7.org/fhir/ValueSet/search-comparator
  */
-public enum SearchComparator: String, FHIRKitPrimitiveType {
+public enum SearchComparator: String, AlexandriaHRMPrimitiveType {
   
     /// the value for the parameter in the resource is equal to the provided value.
   case eq

@@ -1,6 +1,6 @@
 //
 //  ClinicalImpressionFinding.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /// Specific fnidings or diagnoses that werwe considered likely or relevant to ongoing treatment
 open class ClinicalImpressionFinding: BackboneElement {
@@ -28,7 +28,7 @@ open class ClinicalImpressionFinding: BackboneElement {
   public var itemReference: Reference?
   
   /// Which investigations support finding
-  public var basis: FHIRKitPrimitive<FHIRKitString>?
+  public var basis: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   public override init() {
     super.init()
@@ -37,15 +37,15 @@ open class ClinicalImpressionFinding: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     itemCodableConcept: CodableConcept? = nil,
     itemReference: Reference? = nil,
-    basis: FHIRKitPrimitive<FHIRKitString>? = nil
+    basis: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil
   ) {
     self.init()
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.itemCodableConcept = itemCodableConcept
     self.itemReference = itemReference
     self.basis = basis
@@ -63,7 +63,7 @@ open class ClinicalImpressionFinding: BackboneElement {
     
     self.itemCodableConcept = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .itemCodableConcept)
     self.itemReference = try Reference(from: codingKeyContainer, forKeyIfPresent: .itemReference)
-    self.basis = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .basis, auxKey: ._basis)
+    self.basis = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .basis, auxKey: ._basis)
     
     try super.init(from: decoder)
   }

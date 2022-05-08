@@ -1,6 +1,6 @@
 //
 //  ClaimResponseItemAdjudication.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Adjudication Details; If this item is a group then values here are a summary of the adjudication of the detail
@@ -34,7 +34,7 @@ open class ClaimResponseItemAdjudication: BackboneElement {
   public var amount: Money?
   
   /// Non-monetary value
-  public var value: FHIRKitPrimitive<FHIRKitDecimal>?
+  public var value: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>?
   
   public init(category: CodableConcept) {
     self.category = category
@@ -44,16 +44,16 @@ open class ClaimResponseItemAdjudication: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     category: CodableConcept,
     reason: CodableConcept? = nil,
     amount: Money? = nil,
-    value: FHIRKitPrimitive<FHIRKitDecimal>? = nil
+    value: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>? = nil
   ) {
     self.init(category: category)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.category = category
     self.reason = reason
     self.amount = amount
@@ -74,7 +74,7 @@ open class ClaimResponseItemAdjudication: BackboneElement {
     self.category = try CodableConcept(from: codingKeyContainer, forKey: .category)
     self.reason = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .reason)
     self.amount = try Money(from: codingKeyContainer, forKeyIfPresent: .amount)
-    self.value = try FHIRKitPrimitive<FHIRKitDecimal>(from: codingKeyContainer, forKeyIfPresent: .value, auxKey: ._value)
+    self.value = try AlexandriaHRMPrimitive<AlexandriaHRMDecimal>(from: codingKeyContainer, forKeyIfPresent: .value, auxKey: ._value)
     
     try super.init(from: decoder)
   }

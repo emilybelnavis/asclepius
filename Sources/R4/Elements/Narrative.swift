@@ -1,6 +1,6 @@
 //
 //  Narrative.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 /**
  A human-readable summary of the resouce conveying the essential clinical and business information for the
  resource.
@@ -25,12 +25,12 @@ import FHIRKitCore
 open class Narrative: Element {
   /// The status of the narrative - whether it's entirely generated, or wheter a human authored it and it may
   /// contain additional data.
-  public var status: FHIRKitPrimitive<NarrativeStatus>
+  public var status: AlexandriaHRMPrimitive<NarrativeStatus>
   
   /// Limited XHTML content
-  public var div: FHIRKitPrimitive<FHIRKitString>
+  public var div: AlexandriaHRMPrimitive<AlexandriaHRMString>
   
-  public init(status: FHIRKitPrimitive<NarrativeStatus>, div: FHIRKitPrimitive<FHIRKitString>) {
+  public init(status: AlexandriaHRMPrimitive<NarrativeStatus>, div: AlexandriaHRMPrimitive<AlexandriaHRMString>) {
     self.status = status
     self.div = div
     super.init()
@@ -38,13 +38,13 @@ open class Narrative: Element {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    status: FHIRKitPrimitive<NarrativeStatus>,
-    div: FHIRKitPrimitive<FHIRKitString>
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    status: AlexandriaHRMPrimitive<NarrativeStatus>,
+    div: AlexandriaHRMPrimitive<AlexandriaHRMString>
   ) {
     self.init(status: status, div: div)
     self.fhirExtension = fhirExtension
-    self.id = id
+    self.fhirId = fhirId
   }
   
   // MARK: - Codable
@@ -56,8 +56,8 @@ open class Narrative: Element {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.status = try FHIRKitPrimitive<NarrativeStatus>(from: codingKeyContainer, forKey: .status, auxKey: ._status)
-    self.div = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKey: .div, auxKey: ._div)
+    self.status = try AlexandriaHRMPrimitive<NarrativeStatus>(from: codingKeyContainer, forKey: .status, auxKey: ._status)
+    self.div = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .div, auxKey: ._div)
     
     try super.init(from: decoder)
   }

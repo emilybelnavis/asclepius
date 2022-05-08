@@ -1,6 +1,6 @@
 //
 //  ValidationProcess.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/validation-process
  ValueSet: http://hl7.org/fhir/ValueSet/verificationresult-validation-process
  */
-public enum ValidationProcess: String, FHIRKitPrimitiveType {
+public enum ValidationProcess: String, AlexandriaHRMPrimitiveType {
   /// editCheck
   case editCheck = "edit-check"
   

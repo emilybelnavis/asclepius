@@ -1,6 +1,6 @@
 //
 //  ServiceProvisionConditions.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/service-provision-conditions
  ValueSet: http://hl7.org/fhir/ValueSet/service-provision-conditions
  */
-public enum ServiceProvisionConditions: String, FHIRKitPrimitiveType {
+public enum ServiceProvisionConditions: String, AlexandriaHRMPrimitiveType {
   /// This service is available for no patient cost.
   case free
   

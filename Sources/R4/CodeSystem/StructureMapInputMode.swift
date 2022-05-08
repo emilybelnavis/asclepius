@@ -1,6 +1,6 @@
 //
 //  StructureMapInputMode.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/map-input-mode
  ValueSet: http://hl7.org/fhir/ValueSet/map-input-mode
  */
-public enum StructureMapInputMode: String, FHIRKitPrimitiveType {
+public enum StructureMapInputMode: String, AlexandriaHRMPrimitiveType {
   /// Names an input instance used a source for mapping.
   case source
   

@@ -1,6 +1,6 @@
 //
 //  HumanNameAssemblyOrder.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -22,7 +22,7 @@
  
  URL: http://terminology.hl7.org/CodeSystem/name-assembly-order
  */
-public enum HumanNameAssemblyOrder: String, FHIRKitPrimitiveType {
+public enum HumanNameAssemblyOrder: String, AlexandriaHRMPrimitiveType {
   /// NL1
   case NL1
   

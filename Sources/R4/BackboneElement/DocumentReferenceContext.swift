@@ -1,6 +1,6 @@
 //
 //  DocumentReferenceContext.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  The clinical context in which the document was prepared
@@ -51,7 +51,7 @@ open class DocumentReferenceContext: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     encounter: [Reference]? = nil,
     event: [CodableConcept]? = nil,
     period: Period? = nil,
@@ -63,7 +63,7 @@ open class DocumentReferenceContext: BackboneElement {
     self.init()
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.encounter = encounter
     self.event = event
     self.period = period

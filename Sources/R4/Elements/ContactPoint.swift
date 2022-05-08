@@ -1,6 +1,6 @@
 //
 //  ContactPoint.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,23 +17,23 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Details of a Technology mediated contact point (phone, fax, email, etc.)
  */
 open class ContactPoint: Element {
   /// Telecommunications form for contact point
-  public var system: FHIRKitPrimitive<ContactPointSystem>?
+  public var system: AlexandriaHRMPrimitive<ContactPointSystem>?
   
   /// The actual contact point details
-  public var value: FHIRKitPrimitive<FHIRKitString>?
+  public var value: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// Identifies the purpose for the contact point
-  public var use: FHIRKitPrimitive<ContactPointUse>?
+  public var use: AlexandriaHRMPrimitive<ContactPointUse>?
   
   /// Specified preferred order of use (1 = highest)
-  public var rank: FHIRKitPrimitive<FHIRKitPositiveInteger>?
+  public var rank: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>?
   
   /// Time period when the contact point was/is in use
   public var period: Period?
@@ -44,16 +44,16 @@ open class ContactPoint: Element {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    system: FHIRKitPrimitive<ContactPointSystem>? = nil,
-    value: FHIRKitPrimitive<FHIRKitString>? = nil,
-    use: FHIRKitPrimitive<ContactPointUse>? = nil,
-    rank: FHIRKitPrimitive<FHIRKitPositiveInteger>? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    system: AlexandriaHRMPrimitive<ContactPointSystem>? = nil,
+    value: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    use: AlexandriaHRMPrimitive<ContactPointUse>? = nil,
+    rank: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>? = nil,
     period: Period? = nil
   ) {
     self.init()
     self.fhirExtension = fhirExtension
-    self.id = id
+    self.fhirId = fhirId
     self.system = system
     self.value = value
     self.use = use
@@ -73,10 +73,10 @@ open class ContactPoint: Element {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.system = try FHIRKitPrimitive<ContactPointSystem>(from: codingKeyContainer, forKeyIfPresent: .system, auxKey: ._system)
-    self.value = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .value, auxKey: ._value)
-    self.use = try FHIRKitPrimitive<ContactPointUse>(from: codingKeyContainer, forKeyIfPresent: .use, auxKey: ._use)
-    self.rank = try FHIRKitPrimitive<FHIRKitPositiveInteger>(from: codingKeyContainer, forKeyIfPresent: ._rank, auxKey: ._rank)
+    self.system = try AlexandriaHRMPrimitive<ContactPointSystem>(from: codingKeyContainer, forKeyIfPresent: .system, auxKey: ._system)
+    self.value = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .value, auxKey: ._value)
+    self.use = try AlexandriaHRMPrimitive<ContactPointUse>(from: codingKeyContainer, forKeyIfPresent: .use, auxKey: ._use)
+    self.rank = try AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>(from: codingKeyContainer, forKeyIfPresent: ._rank, auxKey: ._rank)
     self.period = try Period(from: codingKeyContainer, forKeyIfPresent: .period)
     
     try super.init(from: decoder)

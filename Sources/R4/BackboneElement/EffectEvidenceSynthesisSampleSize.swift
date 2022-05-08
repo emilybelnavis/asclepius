@@ -1,6 +1,6 @@
 //
 //  EffectEvidenceSynthesisSampleSize.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,19 +17,19 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  What sample size was involved? - A description of the size of the sample involved in the synthesis
  */
 open class EffectEvidenceSynthesisSampleSize: BackboneElement {
   /// Description of sample size
-  public var fhirDescription: FHIRKitPrimitive<FHIRKitString>?
+  public var fhirDescription: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// Number of studies conducted
-  public var numberOfStudies: FHIRKitPrimitive<FHIRKitInteger>?
+  public var numberOfStudies: AlexandriaHRMPrimitive<AlexandriaHRMInteger>?
   
   /// Number of participants studied
-  public var numberOfParticipants: FHIRKitPrimitive<FHIRKitInteger>?
+  public var numberOfParticipants: AlexandriaHRMPrimitive<AlexandriaHRMInteger>?
   
 }

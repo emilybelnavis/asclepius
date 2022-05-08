@@ -1,6 +1,6 @@
 //
 //  BundleEntryResponse.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Indicates the results of processing the corresponding `request` entry in the batch or transaction being
@@ -25,21 +25,21 @@ import FHIRKitCore
  */
 open class BundleEntryResponse: BackboneElement {
   /// Status response code (text is optional)
-  public var status: FHIRKitPrimitive<FHIRKitString>
+  public var status: AlexandriaHRMPrimitive<AlexandriaHRMString>
   
   /// The locaation (if the operation returns a location)
-  public var location: FHIRKitPrimitive<FHIRKitURI>?
+  public var location: AlexandriaHRMPrimitive<AlexandriaHRMURI>?
   
   /// The eTag for the resource (if relevant)
-  public var etag: FHIRKitPrimitive<FHIRKitString>?
+  public var etag: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// Server's date/time modified
-  public var lastModified: FHIRKitPrimitive<FHIRKitInstant>?
+  public var lastModified: AlexandriaHRMPrimitive<AlexandriaHRMInstant>?
   
   /// Operation outcome with hints/warnings for batch/transaction
   public var outcome: ResourceProxy?
   
-  public init(status: FHIRKitPrimitive<FHIRKitString>) {
+  public init(status: AlexandriaHRMPrimitive<AlexandriaHRMString>) {
     self.status = status
     super.init()
   }
@@ -47,17 +47,17 @@ open class BundleEntryResponse: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    status: FHIRKitPrimitive<FHIRKitString>,
-    location: FHIRKitPrimitive<FHIRKitURI>? = nil,
-    etag: FHIRKitPrimitive<FHIRKitString>? = nil,
-    lastModified: FHIRKitPrimitive<FHIRKitInstant>? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    status: AlexandriaHRMPrimitive<AlexandriaHRMString>,
+    location: AlexandriaHRMPrimitive<AlexandriaHRMURI>? = nil,
+    etag: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    lastModified: AlexandriaHRMPrimitive<AlexandriaHRMInstant>? = nil,
     outcome: ResourceProxy? = nil
   ) {
     self.init(status: status)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.status = status
     self.location = location
     self.etag = etag
@@ -77,10 +77,10 @@ open class BundleEntryResponse: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.status = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKey: .status, auxKey: ._status)
-    self.location = try FHIRKitPrimitive<FHIRKitURI>(from: codingKeyContainer, forKeyIfPresent: .location, auxKey: ._location)
-    self.etag = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .etag, auxKey: ._etag)
-    self.lastModified = try FHIRKitPrimitive<FHIRKitInstant>(from: codingKeyContainer, forKeyIfPresent: .lastModified, auxKey: ._lastModified)
+    self.status = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .status, auxKey: ._status)
+    self.location = try AlexandriaHRMPrimitive<AlexandriaHRMURI>(from: codingKeyContainer, forKeyIfPresent: .location, auxKey: ._location)
+    self.etag = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .etag, auxKey: ._etag)
+    self.lastModified = try AlexandriaHRMPrimitive<AlexandriaHRMInstant>(from: codingKeyContainer, forKeyIfPresent: .lastModified, auxKey: ._lastModified)
     self.outcome = try ResourceProxy(from: codingKeyContainer, forKeyIfPresent: .outcome)
     
     try super.init(from: decoder)

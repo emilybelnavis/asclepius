@@ -1,6 +1,6 @@
 //
 //  ContractActorRoleCodes.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/contractactorrole
  ValueSet: http://hl7.org/fhir/ValueSet/contract-actorrole
  */
-public enum ContractActorRoleCodes: String, FHIRKitPrimitiveType {
+public enum ContractActorRoleCodes: String, AlexandriaHRMPrimitiveType {
   
     /// Someone who provides health care related services to people or animals including both clinical and support
     /// services.

@@ -1,6 +1,6 @@
 //
 //  DeviceNameType.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/device-nametype
  ValueSet: http://hl7.org/fhir/ValueSet/device-nametype
  */
-public enum DeviceNameType: String, FHIRKitPrimitiveType {
+public enum DeviceNameType: String, AlexandriaHRMPrimitiveType {
   /// UDI Label name.
   case udiLabelName = "udi-label-name"
   

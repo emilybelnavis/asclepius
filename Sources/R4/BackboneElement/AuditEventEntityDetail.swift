@@ -1,6 +1,6 @@
 //
 //  AuditEventEntityDetail.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,22 +17,22 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /// Tagged value pairs for conveying additional information about the entity
 open class AuditEventEntityDetail: BackboneElement {
   public enum ValueX: Hashable {
-    case base64binary(FHIRKitPrimitive<FHIRKitBase64Binary>)
-    case string(FHIRKitPrimitive<FHIRKitString>)
+    case base64binary(AlexandriaHRMPrimitive<AlexandriaHRMBase64Binary>)
+    case string(AlexandriaHRMPrimitive<AlexandriaHRMString>)
   }
   
   /// name of the property
-  public var type: FHIRKitPrimitive<FHIRKitString>
+  public var type: AlexandriaHRMPrimitive<AlexandriaHRMString>
   
   /// property value
   public var value: ValueX
   
-  public init(type: FHIRKitPrimitive<FHIRKitString>, value: ValueX) {
+  public init(type: AlexandriaHRMPrimitive<AlexandriaHRMString>, value: ValueX) {
     self.type = type
     self.value = value
     super.init()
@@ -40,13 +40,13 @@ open class AuditEventEntityDetail: BackboneElement {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    type: FHIRKitPrimitive<FHIRKitString>,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    type: AlexandriaHRMPrimitive<AlexandriaHRMString>,
     value: ValueX
   ) {
     self.init(type: type, value: value)
     self.fhirExtension = fhirExtension
-    self.id = id
+    self.fhirId = fhirId
   }
   
   // MARK: - Codable
@@ -66,20 +66,20 @@ open class AuditEventEntityDetail: BackboneElement {
     }
     
     var tempValue: ValueX?
-    if let valueBase64Binary = try FHIRKitPrimitive<FHIRKitBase64Binary>(from: codingKeyContainer, forKeyIfPresent: .valueBase64Binary, auxKey: ._valueBase64Binary) {
+    if let valueBase64Binary = try AlexandriaHRMPrimitive<AlexandriaHRMBase64Binary>(from: codingKeyContainer, forKeyIfPresent: .valueBase64Binary, auxKey: ._valueBase64Binary) {
       if tempValue != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueBase64Binary, in: codingKeyContainer, debugDescription: "More than one value provided for \"value\"")
       }
       tempValue = .base64binary(valueBase64Binary)
     }
-    if let valueString = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .valueString, auxKey: ._valueString) {
+    if let valueString = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .valueString, auxKey: ._valueString) {
       if tempValue != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueString, in: codingKeyContainer, debugDescription: "More than one value provided for \"value\"")
       }
       tempValue = .string(valueString)
     }
     
-    self.type = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKey: .type, auxKey: ._type)
+    self.type = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .type, auxKey: ._type)
     self.value = tempValue!
     try super.init(from: decoder)
   }

@@ -1,6 +1,6 @@
 //
 //  ParameterDefinition.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  The parameters to the module. This collection specifies both the input and output parameters. Input
@@ -26,27 +26,27 @@ import FHIRKitCore
  */
 open class ParameterDefinition: Element {
   /// Name used to access the parameter value
-  public var name: FHIRKitPrimitive<FHIRKitString>?
+  public var name: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// Whether the parameter is input or output for the module
-  public var use: FHIRKitPrimitive<OperationParameterUse>
+  public var use: AlexandriaHRMPrimitive<OperationParameterUse>
   
   /// Minimum cardinality
-  public var min: FHIRKitPrimitive<FHIRKitInteger>?
+  public var min: AlexandriaHRMPrimitive<AlexandriaHRMInteger>?
   
   /// Maximum cardinality
-  public var max: FHIRKitPrimitive<FHIRKitInteger>?
+  public var max: AlexandriaHRMPrimitive<AlexandriaHRMInteger>?
   
   /// A brief description of the parameter
-  public var documentation: FHIRKitPrimitive<FHIRKitString>?
+  public var documentation: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// What type of value
-  public var type: FHIRKitPrimitive<FHIRKitString>
+  public var type: AlexandriaHRMPrimitive<AlexandriaHRMString>
   
   /// What profile the value is expected to be
-  public var profile: FHIRKitPrimitive<Canonical>?
+  public var profile: AlexandriaHRMPrimitive<Canonical>?
   
-  public init(use: FHIRKitPrimitive<OperationParameterUse>, type: FHIRKitPrimitive<FHIRKitString>) {
+  public init(use: AlexandriaHRMPrimitive<OperationParameterUse>, type: AlexandriaHRMPrimitive<AlexandriaHRMString>) {
     self.use = use
     self.type = type
     super.init()
@@ -54,18 +54,18 @@ open class ParameterDefinition: Element {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    name: FHIRKitPrimitive<FHIRKitString>? = nil,
-    use: FHIRKitPrimitive<OperationParameterUse>,
-    min: FHIRKitPrimitive<FHIRKitInteger>? = nil,
-    max: FHIRKitPrimitive<FHIRKitInteger>? = nil,
-    documentation: FHIRKitPrimitive<FHIRKitString>? = nil,
-    type: FHIRKitPrimitive<FHIRKitString>,
-    profile: FHIRKitPrimitive<Canonical>? = nil
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    name: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    use: AlexandriaHRMPrimitive<OperationParameterUse>,
+    min: AlexandriaHRMPrimitive<AlexandriaHRMInteger>? = nil,
+    max: AlexandriaHRMPrimitive<AlexandriaHRMInteger>? = nil,
+    documentation: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    type: AlexandriaHRMPrimitive<AlexandriaHRMString>,
+    profile: AlexandriaHRMPrimitive<Canonical>? = nil
   ) {
     self.init(use: use, type: type)
     self.fhirExtension = fhirExtension
-    self.id = id
+    self.fhirId = fhirId
     self.name = name
     self.min = min
     self.max = max
@@ -87,13 +87,13 @@ open class ParameterDefinition: Element {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.name = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .name, auxKey: ._name)
-    self.use = try FHIRKitPrimitive<OperationParameterUse>(from: codingKeyContainer, forKey: .use, auxKey: ._use)
-    self.min = try FHIRKitPrimitive<FHIRKitInteger>(from: codingKeyContainer, forKeyIfPresent: .min, auxKey: ._min)
-    self.max = try FHIRKitPrimitive<FHIRKitInteger>(from: codingKeyContainer, forKeyIfPresent: .max, auxKey: ._max)
-    self.documentation = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .documentation, auxKey: ._documentation)
-    self.type = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKey: .type, auxKey: ._type)
-    self.profile = try FHIRKitPrimitive<Canonical>(from: codingKeyContainer, forKey: .profile, auxKey: ._profile)
+    self.name = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .name, auxKey: ._name)
+    self.use = try AlexandriaHRMPrimitive<OperationParameterUse>(from: codingKeyContainer, forKey: .use, auxKey: ._use)
+    self.min = try AlexandriaHRMPrimitive<AlexandriaHRMInteger>(from: codingKeyContainer, forKeyIfPresent: .min, auxKey: ._min)
+    self.max = try AlexandriaHRMPrimitive<AlexandriaHRMInteger>(from: codingKeyContainer, forKeyIfPresent: .max, auxKey: ._max)
+    self.documentation = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .documentation, auxKey: ._documentation)
+    self.type = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .type, auxKey: ._type)
+    self.profile = try AlexandriaHRMPrimitive<Canonical>(from: codingKeyContainer, forKey: .profile, auxKey: ._profile)
     
     try super.init(from: decoder)
   }

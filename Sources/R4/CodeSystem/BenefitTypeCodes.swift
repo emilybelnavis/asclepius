@@ -1,6 +1,6 @@
 //
 //  BenefitTypeCodes.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/benefit-type
  ValueSet: http://hl7.org/fhir/ValueSet/benefit-type
  */
-public enum BenefitTypeCodes: String, FHIRKitPrimitiveType {
+public enum BenefitTypeCodes: String, AlexandriaHRMPrimitiveType {
   /// Maximum benefit allowable
   case benefit
   

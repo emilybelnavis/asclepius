@@ -1,6 +1,6 @@
 //
 //  AccountGuarantor.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  The parties responsible for balancing the account if other payment options fall short
@@ -27,7 +27,7 @@ open class AccountGuarantor: BackboneElement {
   public var party: Reference
   
   /// Credit or other hold applied
-  public var onHold: FHIRKitPrimitive<FHIRKitBool>?
+  public var onHold: AlexandriaHRMPrimitive<AlexandriaHRMBool>?
   
   /// Guarantee account during
   public var period: Period?
@@ -40,15 +40,15 @@ open class AccountGuarantor: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     party: Reference,
-    onHold: FHIRKitPrimitive<FHIRKitBool>? = nil,
+    onHold: AlexandriaHRMPrimitive<AlexandriaHRMBool>? = nil,
     period: Period? = nil
   ) {
     self.init(party: party)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.onHold = onHold
     self.period = period
   }
@@ -64,7 +64,7 @@ open class AccountGuarantor: BackboneElement {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     self.party = try Reference(from: codingKeyContainer, forKey: .party)
-    self.onHold = try FHIRKitPrimitive<FHIRKitBool>(from: codingKeyContainer, forKeyIfPresent: .onHold, auxKey: ._onHold)
+    self.onHold = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKeyIfPresent: .onHold, auxKey: ._onHold)
     self.period = try Period(from: codingKeyContainer, forKeyIfPresent: .period)
     
     try super.init(from: decoder)

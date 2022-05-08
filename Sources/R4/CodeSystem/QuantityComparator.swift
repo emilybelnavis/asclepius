@@ -1,6 +1,6 @@
 //
 //  QuantityComparator.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/quantity-comparator
  ValueSet: http://hl7.org/fhir/ValueSet/quantity-comparator
  */
-public enum QuantityComparator: String, FHIRKitPrimitiveType {
+public enum QuantityComparator: String, AlexandriaHRMPrimitiveType {
   /// The actual value is less than the given value.
   case lessThan = "<"
   

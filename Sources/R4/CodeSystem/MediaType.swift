@@ -1,6 +1,6 @@
 //
 //  MediaType.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/media-type
  ValueSet: http://hl7.org/fhir/ValueSet/media-type
  */
-public enum MediaType: String, FHIRKitPrimitiveType {
+public enum MediaType: String, AlexandriaHRMPrimitiveType {
   /// The media consists of one or more unmoving images, including photographs, computer-generated graphs and charts,
   /// and scanned documents
   case image

@@ -1,6 +1,6 @@
 //
 //  ConditionCategoryCodes.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/condition-category
  ValueSet: http://hl7.org/fhir/ValueSet/condition-category
  */
-public enum ConditionCategoryCodes: String, FHIRKitPrimitiveType {
+public enum ConditionCategoryCodes: String, AlexandriaHRMPrimitiveType {
   /// An item on a problem list that can be managed over time and can be expressed by a practitioner
   /// (e.g. physician, nurse), patient, or related person
   case problemListItem = "problem-list-item"

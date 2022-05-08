@@ -1,6 +1,6 @@
 //
 //  CapabilityStatementMessaging.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /// A description of the messaging capabilities of the solution
 open class CapabilityStatementMessaging: BackboneElement {
@@ -25,10 +25,10 @@ open class CapabilityStatementMessaging: BackboneElement {
   public var endpoint: [CapabilityStatementMessagingEndpoint]?
   
   /// Reliable message cache length (in minutes)
-  public var reliableCache: FHIRKitPrimitive<FHIRKitUnsignedInteger>?
+  public var reliableCache: AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>?
   
   /// Messaging interface behaviour details
-  public var documentation: FHIRKitPrimitive<FHIRKitString>?
+  public var documentation: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// Messages supported by this system
   public var supportedMessage: [CapabilityStatementMessagingSupportMessage]?
@@ -40,16 +40,16 @@ open class CapabilityStatementMessaging: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     endpoint: [CapabilityStatementMessagingEndpoint]? = nil,
-    reliableCache: FHIRKitPrimitive<FHIRKitUnsignedInteger>? = nil,
-    documentation: FHIRKitPrimitive<FHIRKitString>? = nil,
+    reliableCache: AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>? = nil,
+    documentation: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     supportedMessage: [CapabilityStatementMessagingSupportMessage]? = nil
   ) {
     self.init()
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.endpoint = endpoint
     self.reliableCache = reliableCache
     self.documentation = documentation
@@ -68,8 +68,8 @@ open class CapabilityStatementMessaging: BackboneElement {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     self.endpoint = try [CapabilityStatementMessagingEndpoint](from: codingKeyContainer, forKeyIfPresent: .endpoint)
-    self.reliableCache = try FHIRKitPrimitive<FHIRKitUnsignedInteger>(from: codingKeyContainer, forKeyIfPresent: .reliableCache, auxKey: ._reliableCache)
-    self.documentation = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .documentation, auxKey: ._documentation)
+    self.reliableCache = try AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>(from: codingKeyContainer, forKeyIfPresent: .reliableCache, auxKey: ._reliableCache)
+    self.documentation = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .documentation, auxKey: ._documentation)
     self.supportedMessage = try [CapabilityStatementMessagingSupportMessage](from: codingKeyContainer, forKeyIfPresent: .supportedMessage)
     
     try super.init(from: decoder)

@@ -1,6 +1,6 @@
 //
 //  AuditEventSource.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,12 +17,12 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /// The system that is reporting the event
 open class AuditEventSource: BackboneElement {
   /// Logical source location within the enterprise
-  public var site: FHIRKitPrimitive<FHIRKitString>?
+  public var site: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// The identity of the source detecting the event
   public var observer: Reference
@@ -37,14 +37,14 @@ open class AuditEventSource: BackboneElement {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    site: FHIRKitPrimitive<FHIRKitString>? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    site: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     observer: Reference,
     type: [Coding]? = nil
   ) {
     self.init(observer: observer)
     self.fhirExtension = fhirExtension
-    self.id = id
+    self.fhirId = fhirId
     self.site = site
     self.observer = observer
     self.type = type
@@ -60,7 +60,7 @@ open class AuditEventSource: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.site = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .site, auxKey: ._site)
+    self.site = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .site, auxKey: ._site)
     self.observer = try Reference(from: codingKeyContainer, forKey: .observer)
     self.type = try [Coding](from: codingKeyContainer, forKeyIfPresent: .type)
     

@@ -1,6 +1,6 @@
 //
 //  FHIRDefinedConceptProperties.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/concept-properties
  ValueSet: http://hl7.org/fhir/ValueSet/concept-properties
  */
-public enum FHIRDefinedConceptProperties: String, FHIRKitPrimitiveType {
+public enum FHIRDefinedConceptProperties: String, AlexandriaHRMPrimitiveType {
   /// True if the concept is not considered active - e.g. not a valid concept any more. Property type is boolean,
   /// default value is false
   case inactive

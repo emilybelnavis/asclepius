@@ -1,6 +1,6 @@
 //
 //  TestScriptProfileOriginType.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -24,7 +24,7 @@
  URL: http://terminology.hl7.org/CodeSystem/testscript-profile-origin-types
  ValueSet: http://hl7.org/fhir/ValueSet/testscript-profile-origin-types
  */
-public enum TestScriptProfileOriginType: String, FHIRKitPrimitiveType {
+public enum TestScriptProfileOriginType: String, AlexandriaHRMPrimitiveType {
   /// General FHIR client used to initiate operations against a FHIR server.
   case fHIRClient = "FHIR-Client"
   

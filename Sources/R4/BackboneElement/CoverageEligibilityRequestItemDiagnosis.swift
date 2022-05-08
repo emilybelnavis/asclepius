@@ -1,6 +1,6 @@
 //
 //  CoverageEligibilityRequestItemDiagnosis.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Applicable diagnosis; Patient diagnosis for which care is sought
@@ -37,7 +37,7 @@ open class CoverageEligibilityRequestItemDiagnosis: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     diagnosis: DiagnosisX? = nil
   ) {
     self.init()

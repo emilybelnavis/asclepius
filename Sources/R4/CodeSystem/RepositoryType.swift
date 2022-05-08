@@ -1,6 +1,6 @@
 //
 //  RepositoryType.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/repository-type
  ValueSet: http://hl7.org/fhir/ValueSet/repository-type
  */
-public enum RepositoryType: String, FHIRKitPrimitiveType {
+public enum RepositoryType: String, AlexandriaHRMPrimitiveType {
   /// When URL is clicked, the resource can be seen directly (by webpage or by download link format).
   case directlink
   

@@ -1,6 +1,6 @@
 //
 //  ClaimResponseItemDetail.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Adjudication for claim details;  A claim detail containing either a simple item (a product or service) or a "group"
@@ -25,10 +25,10 @@ import FHIRKitCore
  */
 open class ClaimResponseItemDetail: BackboneElement {
   /// Claim detail instance identifier
-  public var detailSequence: FHIRKitPrimitive<FHIRKitPositiveInteger>
+  public var detailSequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>
   
   /// Applicable note numbers
-  public var noteNumber: [FHIRKitPrimitive<FHIRKitPositiveInteger>]?
+  public var noteNumber: [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>]?
   
   /// Detail level adjudication details
   public var adjudication: [ClaimResponseItemAdjudication]
@@ -36,7 +36,7 @@ open class ClaimResponseItemDetail: BackboneElement {
   /// Adjudication for claim sub-details
   public var subDetail: [ClaimResponseItemDetailSubDetail]?
   
-  public init(detailSequence: FHIRKitPrimitive<FHIRKitPositiveInteger>, adjudication: [ClaimResponseItemAdjudication]) {
+  public init(detailSequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>, adjudication: [ClaimResponseItemAdjudication]) {
     self.detailSequence = detailSequence
     self.adjudication = adjudication
     super.init()
@@ -45,16 +45,16 @@ open class ClaimResponseItemDetail: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    detailSequence: FHIRKitPrimitive<FHIRKitPositiveInteger>,
-    noteNumber: [FHIRKitPrimitive<FHIRKitPositiveInteger>]? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    detailSequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>,
+    noteNumber: [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>]? = nil,
     adjudication: [ClaimResponseItemAdjudication],
     subDetail: [ClaimResponseItemDetailSubDetail]? = nil
   ) {
     self.init(detailSequence: detailSequence, adjudication: adjudication)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.detailSequence = detailSequence
     self.noteNumber = noteNumber
     self.adjudication = adjudication
@@ -72,8 +72,8 @@ open class ClaimResponseItemDetail: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.detailSequence = try FHIRKitPrimitive<FHIRKitPositiveInteger>(from: codingKeyContainer, forKey: .detailSequence, auxKey: ._detailSequence)
-    self.noteNumber = try [FHIRKitPrimitive<FHIRKitPositiveInteger>](from: codingKeyContainer, forKeyIfPresent: .noteNumber, auxKey: ._noteNumber)
+    self.detailSequence = try AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>(from: codingKeyContainer, forKey: .detailSequence, auxKey: ._detailSequence)
+    self.noteNumber = try [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>](from: codingKeyContainer, forKeyIfPresent: .noteNumber, auxKey: ._noteNumber)
     self.adjudication = try [ClaimResponseItemAdjudication](from: codingKeyContainer, forKey: .adjudication)
     self.subDetail = try [ClaimResponseItemDetailSubDetail](from: codingKeyContainer, forKeyIfPresent: .subDetail)
     

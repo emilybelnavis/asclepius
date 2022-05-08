@@ -1,6 +1,6 @@
 //
 //  ClaimResponseError.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,20 +17,20 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Processing Errors - Errors encountered during the processing of the adjudication
  */
 open class ClaimResponseError: BackboneElement {
   /// Item sequence number
-  public var itemSequence: FHIRKitPrimitive<FHIRKitPositiveInteger>?
+  public var itemSequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>?
   
   /// Detail sequence number
-  public var detailSequence: FHIRKitPrimitive<FHIRKitPositiveInteger>?
+  public var detailSequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>?
   
   /// Subdetail sequence number
-  public var subDetailSequence: FHIRKitPrimitive<FHIRKitPositiveInteger>?
+  public var subDetailSequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>?
   
   /// Error code detailing processing issues
   public var code: CodableConcept
@@ -43,16 +43,16 @@ open class ClaimResponseError: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    itemSequence: FHIRKitPrimitive<FHIRKitPositiveInteger>? = nil,
-    detailSequence: FHIRKitPrimitive<FHIRKitPositiveInteger>? = nil,
-    subDetailSequence: FHIRKitPrimitive<FHIRKitPositiveInteger>? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    itemSequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>? = nil,
+    detailSequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>? = nil,
+    subDetailSequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>? = nil,
     code: CodableConcept
   ) {
     self.init(code: code)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.itemSequence = itemSequence
     self.detailSequence = detailSequence
     self.subDetailSequence = subDetailSequence
@@ -69,9 +69,9 @@ open class ClaimResponseError: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.itemSequence = try FHIRKitPrimitive<FHIRKitPositiveInteger>(from: codingKeyContainer, forKeyIfPresent: .itemSequence, auxKey: .itemSequence)
-    self.detailSequence = try FHIRKitPrimitive<FHIRKitPositiveInteger>(from: codingKeyContainer, forKeyIfPresent: .detailSequence, auxKey: ._detailSequence)
-    self.subDetailSequence = try FHIRKitPrimitive<FHIRKitPositiveInteger>(from: codingKeyContainer, forKeyIfPresent: .subDetailSequence, auxKey: ._subDetailSequence)
+    self.itemSequence = try AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>(from: codingKeyContainer, forKeyIfPresent: .itemSequence, auxKey: .itemSequence)
+    self.detailSequence = try AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>(from: codingKeyContainer, forKeyIfPresent: .detailSequence, auxKey: ._detailSequence)
+    self.subDetailSequence = try AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>(from: codingKeyContainer, forKeyIfPresent: .subDetailSequence, auxKey: ._subDetailSequence)
     self.code = try CodableConcept(from: codingKeyContainer, forKey: .code)
     
     try super.init(from: decoder)

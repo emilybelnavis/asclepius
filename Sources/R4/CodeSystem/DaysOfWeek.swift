@@ -1,6 +1,6 @@
 //
 //  DaysOfWeek.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/days-of-week
  ValueSet: http://hl7.org/fhir/ValueSet/days-of-week
  */
-public enum DaysOfWeek: String, FHIRKitPrimitiveType {
+public enum DaysOfWeek: String, AlexandriaHRMPrimitiveType {
   /// Monday.
   case mon
   

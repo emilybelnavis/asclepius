@@ -1,6 +1,6 @@
 //
 //  AdjudicationValueCodes.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -24,7 +24,7 @@
  URL: http://terminology.hl7.org/CodeSystem/adjudication
  ValueSet: http://hl7.org/fhir/ValueSet/adjudication
  */
-public enum AdjudicationValueCodes: String, FHIRKitPrimitiveType {
+public enum AdjudicationValueCodes: String, AlexandriaHRMPrimitiveType {
   /// Total submitted amount for the claim, group, or line item
   case submitted
   

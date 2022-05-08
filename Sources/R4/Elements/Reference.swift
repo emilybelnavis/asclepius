@@ -1,6 +1,6 @@
 //
 //  Reference.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,21 +17,21 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /// A reference from one resource to another
 open class Reference: Element {
   /// Literal reference, relative, internal, or absolute URL
-  public var reference: FHIRKitPrimitive<FHIRKitString>?
+  public var reference: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// Type the reference refers to (e.g. "Patient")
-  public var type: FHIRKitPrimitive<FHIRKitURI>?
+  public var type: AlexandriaHRMPrimitive<AlexandriaHRMURI>?
   
   /// Logical reference for when literal reference is not known
   public var identifier: Identifier?
   
   /// Text alternative for the resource
-  public var display: FHIRKitPrimitive<FHIRKitString>?
+  public var display: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   override public init() {
     super.init()
@@ -39,18 +39,18 @@ open class Reference: Element {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    reference: FHIRKitPrimitive<FHIRKitString>? = nil,
-    type: FHIRKitPrimitive<FHIRKitURI>? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    reference: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    type: AlexandriaHRMPrimitive<AlexandriaHRMURI>? = nil,
     identifier: Identifier? = nil,
-    display: FHIRKitPrimitive<FHIRKitString>? = nil
+    display: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil
   ) {
     self.init()
     self.fhirExtension = fhirExtension
-    self.id = id
+    self.fhirId = fhirId
     self.reference = reference
     self.type = type
-    self.identifier = identifier
+    self.fhirIdentifier = fhirIdentifier
     self.display = display
   }
   
@@ -65,10 +65,10 @@ open class Reference: Element {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.reference = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .reference, auxKey: ._reference)
-    self.type = try FHIRKitPrimitive<FHIRKitURI>(from: codingKeyContainer, forKeyIfPresent: .type, auxKey: ._type)
-    self.identifier = try Identifier(from: codingKeyContainer, forKeyIfPresent: .identifier)
-    self.display = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .display, auxKey: ._display)
+    self.reference = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .reference, auxKey: ._reference)
+    self.type = try AlexandriaHRMPrimitive<AlexandriaHRMURI>(from: codingKeyContainer, forKeyIfPresent: .type, auxKey: ._type)
+    self.fhirIdentifier = try Identifier(from: codingKeyContainer, forKeyIfPresent: .identifier)
+    self.display = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .display, auxKey: ._display)
     
     try super.init(from: decoder)
   }

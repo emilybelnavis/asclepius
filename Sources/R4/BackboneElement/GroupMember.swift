@@ -1,6 +1,6 @@
 //
 //  GroupMember.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /// Identifies the resource instances that are members of the group
 open class GroupMember: BackboneElement {
@@ -28,7 +28,7 @@ open class GroupMember: BackboneElement {
   public var period: Period?
   
   /// if member is no longer in group
-  public var inactive: FHIRKitPrimitive<FHIRKitBool>?
+  public var inactive: AlexandriaHRMPrimitive<AlexandriaHRMBool>?
   
   public init(entity: Reference) {
     self.entity = entity
@@ -37,14 +37,14 @@ open class GroupMember: BackboneElement {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     entity: Reference,
     period: Period? = nil,
-    inactive: FHIRKitPrimitive<FHIRKitBool>? = nil
+    inactive: AlexandriaHRMPrimitive<AlexandriaHRMBool>? = nil
   ) {
     self.init(entity: entity)
     self.fhirExtension = fhirExtension
-    self.id = id
+    self.fhirId = fhirId
     self.period = period
     self.inactive = inactive
   }
@@ -61,7 +61,7 @@ open class GroupMember: BackboneElement {
     
     self.entity = try Reference(from: codingKeyContainer, forKey: .entity)
     self.period = try Period(from: codingKeyContainer, forKeyIfPresent: .period)
-    self.inactive = try FHIRKitPrimitive<FHIRKitBool>(from: codingKeyContainer, forKeyIfPresent: .inactive, auxKey: ._inactive)
+    self.inactive = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKeyIfPresent: .inactive, auxKey: ._inactive)
     
     try super.init(from: decoder)
   }

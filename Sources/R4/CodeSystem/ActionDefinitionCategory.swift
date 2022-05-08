@@ -1,6 +1,6 @@
 //
 //  ActionDefinitionCategory.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/activity-definition-category
  ValueSet: http://hl7.or/fhir/ValueSet/activity-definition-category
  */
-public enum ActivityDefinitionCategory: String, FHIRKitPrimitiveType {
+public enum ActivityDefinitionCategory: String, AlexandriaHRMPrimitiveType {
   /// The activity is intended to provide or is related to treatment of the patient.
   case treatment
   

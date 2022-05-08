@@ -1,6 +1,6 @@
 //
 //  Diet.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -24,7 +24,7 @@
  URL: http://terminology.hl7.org/CodeSystem/diet
  ValueSet: http://hl7.org/fhir/ValueSet/encounter-diet
  */
-public enum Diet: String, FHIRKitPrimitiveType {
+public enum Diet: String, AlexandriaHRMPrimitiveType {
   /// Food without meat, poultry or seafood.
   case vegetarian
   

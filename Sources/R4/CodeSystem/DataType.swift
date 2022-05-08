@@ -1,6 +1,6 @@
 //
 //  DataType.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  
  URL: http://hl7.org/fhir/data-types
  */
-public enum DataType: String, FHIRKitPrimitiveType {
+public enum DataType: String, AlexandriaHRMPrimitiveType {
   /// An address expressed using postal conventions (as opposed to GPS or other location definition formats).  This
   /// data type may be used to convey addresses for use in delivering mail as well as for visiting locations which
   /// might not be valid for mail delivery.  There are a variety of postal address formats defined around the world.

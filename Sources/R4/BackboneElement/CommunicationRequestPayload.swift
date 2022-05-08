@@ -1,6 +1,6 @@
 //
 //  CommunicationRequestPayload.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  A request for information to be sent to a receiver.
@@ -30,7 +30,7 @@ open class CommunicationRequestPayload: BackboneElement {
   
   /// all possible types for `occurrence[x]`
   public enum OccurrenceX: Hashable {
-    case dateTime(FHIRKitPrimitive<FHIRKitDateTime>)
+    case dateTime(AlexandriaHRMPrimitive<AlexandriaHRMDateTime>)
     case period(Period)
   }
   
@@ -47,7 +47,7 @@ open class CommunicationRequestPayload: BackboneElement {
   public var groupIdentifier: Identifier?
   
   /// Status of the proposal/order
-  public var status: FHIRKitPrimitive<RequestStatus>
+  public var status: AlexandriaHRMPrimitive<RequestStatus>
   
   /// Reason for the current proposal/order status
   public var statusReason: CodableConcept?
@@ -57,10 +57,10 @@ open class CommunicationRequestPayload: BackboneElement {
   
   /// How quickly should the proposed act be initialized? Includes concepts such as `stat`
   /// `urgent`, and `routine`
-  public var priority: FHIRKitPrimitive<RequestPriority>?
+  public var priority: AlexandriaHRMPrimitive<RequestPriority>?
   
   /// Is this request a prohibiting action?
-  public var doNotPerform: FHIRKitPrimitive<FHIRKitBool>?
+  public var doNotPerform: AlexandriaHRMPrimitive<AlexandriaHRMBool>?
   
   /// A channel of communication
   public var medium: [CodableConcept]?
@@ -81,7 +81,7 @@ open class CommunicationRequestPayload: BackboneElement {
   public var occurrence: OccurrenceX?
   
   /// When request transitioned to being actionable
-  public var authoredOn: FHIRKitPrimitive<FHIRKitDateTime>?
+  public var authoredOn: AlexandriaHRMPrimitive<AlexandriaHRMDateTime>?
   
   /// Who/what is requesting service
   public var requester: Reference?
@@ -101,7 +101,7 @@ open class CommunicationRequestPayload: BackboneElement {
   /// Commends made about this communication request
   public var note: [Annotation]?
   
-  public init(status: FHIRKitPrimitive<RequestStatus>) {
+  public init(status: AlexandriaHRMPrimitive<RequestStatus>) {
     self.status = status
     super.init()
   }
@@ -109,23 +109,23 @@ open class CommunicationRequestPayload: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     identifier: [Identifier]? = nil,
     basedOn: [Reference]? = nil,
     replaces: [Reference]? = nil,
     groupIdentifier: Identifier? = nil,
-    status: FHIRKitPrimitive<RequestStatus>,
+    status: AlexandriaHRMPrimitive<RequestStatus>,
     statusReason: CodableConcept? = nil,
     category: [CodableConcept]? = nil,
-    priority: FHIRKitPrimitive<RequestPriority>? = nil,
-    doNotPerform: FHIRKitPrimitive<FHIRKitBool>? = nil,
+    priority: AlexandriaHRMPrimitive<RequestPriority>? = nil,
+    doNotPerform: AlexandriaHRMPrimitive<AlexandriaHRMBool>? = nil,
     medium: [CodableConcept]? = nil,
     subject: Reference? = nil,
     about: [Reference]? = nil,
     encounter: Reference? = nil,
     payload: [CommunicationRequestPayload]? = nil,
     occurrence: OccurrenceX? = nil,
-    authoredOn: FHIRKitPrimitive<FHIRKitDateTime>? = nil,
+    authoredOn: AlexandriaHRMPrimitive<AlexandriaHRMDateTime>? = nil,
     requester: Reference? = nil,
     recipient: [Reference]? = nil,
     sender: Reference? = nil,
@@ -136,8 +136,8 @@ open class CommunicationRequestPayload: BackboneElement {
     self.init(status: status)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
-    self.identifier = identifier
+    self.fhirId = fhirId
+    self.fhirIdentifier = fhirIdentifier
     self.basedOn = basedOn
     self.replaces = replaces
     self.groupIdentifier = groupIdentifier
@@ -191,7 +191,7 @@ open class CommunicationRequestPayload: BackboneElement {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     var tempOccurrence: OccurrenceX?
-    if let occurenceDateTime = try FHIRKitPrimitive<FHIRKitDateTime>(from: codingKeyContainer, forKeyIfPresent: .occurrenceDateTime, auxKey: ._occurrenceDateTime) {
+    if let occurenceDateTime = try AlexandriaHRMPrimitive<AlexandriaHRMDateTime>(from: codingKeyContainer, forKeyIfPresent: .occurrenceDateTime, auxKey: ._occurrenceDateTime) {
       if tempOccurrence != nil {
         throw DecodingError.dataCorruptedError(forKey: .occurrenceDateTime, in: codingKeyContainer, debugDescription: "More than one value provided for \"occurrence\"")
       }
@@ -205,22 +205,22 @@ open class CommunicationRequestPayload: BackboneElement {
       tempOccurrence = .period(occurrencePeriod)
     }
     
-    self.identifier = try [Identifier](from: codingKeyContainer, forKeyIfPresent: .identifier)
+    self.fhirIdentifier = try [Identifier](from: codingKeyContainer, forKeyIfPresent: .identifier)
     self.basedOn = try [Reference](from: codingKeyContainer, forKeyIfPresent: .basedOn)
     self.replaces = try [Reference](from: codingKeyContainer, forKeyIfPresent: .replaces)
     self.groupIdentifier = try Identifier(from: codingKeyContainer, forKeyIfPresent: .groupIdentifier)
-    self.status = try FHIRKitPrimitive<RequestStatus>(from: codingKeyContainer, forKey: .status, auxKey: ._status)
+    self.status = try AlexandriaHRMPrimitive<RequestStatus>(from: codingKeyContainer, forKey: .status, auxKey: ._status)
     self.statusReason = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .statusReason)
     self.category = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .category)
-    self.priority = try FHIRKitPrimitive<RequestPriority>(from: codingKeyContainer, forKeyIfPresent: .priority, auxKey: ._priority)
-    self.doNotPerform = try FHIRKitPrimitive<FHIRKitBool>(from: codingKeyContainer, forKeyIfPresent: .doNotPerform, auxKey: ._doNotPerform)
+    self.priority = try AlexandriaHRMPrimitive<RequestPriority>(from: codingKeyContainer, forKeyIfPresent: .priority, auxKey: ._priority)
+    self.doNotPerform = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKeyIfPresent: .doNotPerform, auxKey: ._doNotPerform)
     self.medium = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .medium)
     self.subject = try Reference(from: codingKeyContainer, forKeyIfPresent: .subject)
     self.about = try [Reference](from: codingKeyContainer, forKeyIfPresent: .about)
     self.encounter = try Reference(from: codingKeyContainer, forKeyIfPresent: .encounter)
     self.payload = try [CommunicationRequestPayload](from: codingKeyContainer, forKeyIfPresent: .payload)
     self.occurrence = tempOccurrence
-    self.authoredOn = try FHIRKitPrimitive<FHIRKitDateTime>(from: codingKeyContainer, forKeyIfPresent: .authoredOn, auxKey: ._authoredOn)
+    self.authoredOn = try AlexandriaHRMPrimitive<AlexandriaHRMDateTime>(from: codingKeyContainer, forKeyIfPresent: .authoredOn, auxKey: ._authoredOn)
     self.requester = try Reference(from: codingKeyContainer, forKeyIfPresent: .requester)
     self.recipient = try [Reference](from: codingKeyContainer, forKeyIfPresent: .recipient)
     self.sender = try Reference(from: codingKeyContainer, forKeyIfPresent: .sender)

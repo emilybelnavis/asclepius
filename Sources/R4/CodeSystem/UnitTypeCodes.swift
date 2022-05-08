@@ -1,6 +1,6 @@
 //
 //  UnitTypeCodes.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/benefit-unit
  ValueSet: http://hl7.org/fhir/ValueSet/benefit-unit
  */
-public enum UnitTypeCodes: String, FHIRKitPrimitiveType {
+public enum UnitTypeCodes: String, AlexandriaHRMPrimitiveType {
   /// A single individual
   case individual
   

@@ -1,6 +1,6 @@
 //
 //  DeviceMetricCalibrartionState.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/metric-calibration-state
  ValueSet: http://hl7.org/fhir/ValueSet/metric-calibration-state
  */
-public enum DeviceMetricCalibrationState: String, FHIRKitPrimitiveType {
+public enum DeviceMetricCalibrationState: String, AlexandriaHRMPrimitiveType {
   /// The metric has not been calibrated.
   case notCalibrated = "not-calibrated"
   

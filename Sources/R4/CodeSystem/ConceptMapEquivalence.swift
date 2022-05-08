@@ -1,6 +1,6 @@
 //
 //  ConceptMapEquivalence.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/concept-map-equivalence
  ValueSet: http://hl7.org/fhir/ValueSet/concept-map-equivalence
  */
-public enum ConceptMapEquivalence: String, FHIRKitPrimitiveType {
+public enum ConceptMapEquivalence: String, AlexandriaHRMPrimitiveType {
   /// The concepts are related to eachother and have at least some overlap in meaning but the exact
   /// relationship is not known
   case relatedto

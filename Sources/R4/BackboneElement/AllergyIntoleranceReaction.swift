@@ -1,6 +1,6 @@
 //
 //  AllergyIntoleranceReaction.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /// Details about each adverse reaction event linked to an exposure to the identified substance
 open class AllergyIntoleranceReaction: BackboneElement {
@@ -28,14 +28,14 @@ open class AllergyIntoleranceReaction: BackboneElement {
   public var manifestation: [CodableConcept]
   
   /// Description of the event as a whole
-  public var fhirDescription: FHIRKitPrimitive<FHIRKitString>?
+  public var fhirDescription: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// Date(and if available, time) when manifestations occured
-  public var onset: FHIRKitPrimitive<FHIRKitDateTime>?
+  public var onset: AlexandriaHRMPrimitive<AlexandriaHRMDateTime>?
   
   /// Clinical assessment of the severity of the reaction event as a whole. Potentially considering multiple
   /// different manifestations
-  public var severity: FHIRKitPrimitive<AllergyIntoleranceSeverity>?
+  public var severity: AlexandriaHRMPrimitive<AllergyIntoleranceSeverity>?
 
   /// How the subject was exposed to the substance
   public var exposureRoute: CodableConcept?
@@ -50,18 +50,18 @@ open class AllergyIntoleranceReaction: BackboneElement {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     substance: CodableConcept? = nil,
     manifestation: [CodableConcept],
-    fhirDescription: FHIRKitPrimitive<FHIRKitString>? = nil,
-    onset: FHIRKitPrimitive<FHIRKitDateTime>? = nil,
-    severity: FHIRKitPrimitive<AllergyIntoleranceSeverity>? = nil,
+    fhirDescription: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    onset: AlexandriaHRMPrimitive<AlexandriaHRMDateTime>? = nil,
+    severity: AlexandriaHRMPrimitive<AllergyIntoleranceSeverity>? = nil,
     exposureRoute: CodableConcept? = nil,
     note: [Annotation]? = nil
   ) {
     self.init(manifestation: manifestation)
     self.fhirExtension = fhirExtension
-    self.id = id
+    self.fhirId = fhirId
     self.substance = substance
     self.fhirDescription = fhirDescription
     self.onset = onset
@@ -86,9 +86,9 @@ open class AllergyIntoleranceReaction: BackboneElement {
     
     self.substance = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .substance)
     self.manifestation = try [CodableConcept](from: codingKeyContainer, forKey: .manifestation)
-    self.fhirDescription = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .fhirDescription, auxKey: ._fhirDescription)
-    self.onset = try FHIRKitPrimitive<FHIRKitDateTime>(from: codingKeyContainer, forKeyIfPresent: .onset, auxKey: ._onset)
-    self.severity = try FHIRKitPrimitive<AllergyIntoleranceSeverity>(from: codingKeyContainer, forKeyIfPresent: .severity, auxKey: ._severity)
+    self.fhirDescription = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .fhirDescription, auxKey: ._fhirDescription)
+    self.onset = try AlexandriaHRMPrimitive<AlexandriaHRMDateTime>(from: codingKeyContainer, forKeyIfPresent: .onset, auxKey: ._onset)
+    self.severity = try AlexandriaHRMPrimitive<AllergyIntoleranceSeverity>(from: codingKeyContainer, forKeyIfPresent: .severity, auxKey: ._severity)
     self.exposureRoute = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .exposureRoute)
     self.note = try [Annotation](from: codingKeyContainer, forKeyIfPresent: .note)
     

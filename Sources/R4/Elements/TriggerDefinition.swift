@@ -1,6 +1,6 @@
 //
 //  TriggerDefinition.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  A description of a triggering event. Triggering events can be named events, data events, or periodic as
@@ -26,17 +26,17 @@ import FHIRKitCore
 open class TriggerDefinition: Element {
   /// All possible types for `timing` variable
   public enum TimingX: Hashable {
-    case date(FHIRKitPrimitive<FHIRKitDate>)
-    case dateTime(FHIRKitPrimitive<FHIRKitDateTime>)
+    case date(AlexandriaHRMPrimitive<AlexandriaHRMDate>)
+    case dateTime(AlexandriaHRMPrimitive<AlexandriaHRMDateTime>)
     case reference(Reference)
     case timing(Timing)
   }
   
   /// the type of triggering event
-  public var type: FHIRKitPrimitive<TriggerType>
+  public var type: AlexandriaHRMPrimitive<TriggerType>
   
   /// event identifier
-  public var name: FHIRKitPrimitive<FHIRKitString>?
+  public var name: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// timing of the trigger
   public var timingX: TimingX?
@@ -47,23 +47,23 @@ open class TriggerDefinition: Element {
   /// whether the event should be triggered
   public var condition: Expression?
   
-  public init(type: FHIRKitPrimitive<TriggerType>) {
+  public init(type: AlexandriaHRMPrimitive<TriggerType>) {
     self.type = type
     super.init()
   }
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    type: FHIRKitPrimitive<TriggerType>,
-    name: FHIRKitPrimitive<FHIRKitString>? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    type: AlexandriaHRMPrimitive<TriggerType>,
+    name: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     timingX: TimingX? = nil,
     condition: Expression? = nil,
     data: [DataRequirement]? = nil
   ) {
     self.init(type: type)
     self.fhirExtension = fhirExtension
-    self.id = id
+    self.fhirId = fhirId
     self.name = name
     self.timingX = timingX
     self.condition = condition
@@ -86,14 +86,14 @@ open class TriggerDefinition: Element {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     var tempTimingX: TimingX?
-    if let timingDate = try FHIRKitPrimitive<FHIRKitDate>(from: codingKeyContainer, forKeyIfPresent: .timingDate, auxKey: ._timingDate) {
+    if let timingDate = try AlexandriaHRMPrimitive<AlexandriaHRMDate>(from: codingKeyContainer, forKeyIfPresent: .timingDate, auxKey: ._timingDate) {
       if tempTimingX != nil {
         throw DecodingError.dataCorruptedError(forKey: .timingDate, in: codingKeyContainer, debugDescription: "More than one value provided for \"timing\"")
       }
       tempTimingX = .date(timingDate)
     }
     
-    if let timingDateTime = try FHIRKitPrimitive<FHIRKitDateTime>(from: codingKeyContainer, forKeyIfPresent: .timingDateTime, auxKey: ._timingDateTime) {
+    if let timingDateTime = try AlexandriaHRMPrimitive<AlexandriaHRMDateTime>(from: codingKeyContainer, forKeyIfPresent: .timingDateTime, auxKey: ._timingDateTime) {
       if tempTimingX != nil {
         throw DecodingError.dataCorruptedError(forKey: .timingDateTime, in: codingKeyContainer, debugDescription: "More than one value provided for \"timing\"")
       }
@@ -114,8 +114,8 @@ open class TriggerDefinition: Element {
       tempTimingX = .timing(timingTiming)
     }
     
-    self.type = try FHIRKitPrimitive<TriggerType>(from: codingKeyContainer, forKey: .type, auxKey: ._type)
-    self.name = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .name, auxKey: ._name)
+    self.type = try AlexandriaHRMPrimitive<TriggerType>(from: codingKeyContainer, forKey: .type, auxKey: ._type)
+    self.name = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .name, auxKey: ._name)
     self.timingX = tempTimingX
     self.condition = try Expression(from: codingKeyContainer, forKeyIfPresent: .condition)
     self.data = try [DataRequirement](from: codingKeyContainer, forKeyIfPresent: .data)

@@ -1,6 +1,6 @@
 //
 //  ClaimItemDetail.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Product or service provided. A claim detail line containing either a simple item (a product or service), or a
@@ -25,7 +25,7 @@ import FHIRKitCore
  */
 open class ClaimItemDetail: BackboneElement {
   /// Item instance identifier
-  public var sequence: FHIRKitPrimitive<FHIRKitPositiveInteger>
+  public var sequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>
   
   /// Revenue or cost center code
   public var revenue: CodableConcept?
@@ -49,7 +49,7 @@ open class ClaimItemDetail: BackboneElement {
   public var unitPrice: Money?
   
   /// Price scaling factor
-  public var factor: FHIRKitPrimitive<FHIRKitDecimal>?
+  public var factor: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>?
   
   /// Total item cost
   public var net: Money?
@@ -60,7 +60,7 @@ open class ClaimItemDetail: BackboneElement {
   /// Product or service provided
   public var subDetail: [ClaimItemDetailSubDetail]?
   
-  public init(sequence: FHIRKitPrimitive<FHIRKitPositiveInteger>) {
+  public init(sequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>) {
     self.sequence = sequence
     super.init()
   }
@@ -68,15 +68,15 @@ open class ClaimItemDetail: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    sequence: FHIRKitPrimitive<FHIRKitPositiveInteger>,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    sequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>,
     revenue: CodableConcept? = nil,
     category: CodableConcept? = nil,
     productOrService: CodableConcept? = nil,
     modifier: [CodableConcept]? = nil,
     programCode: [CodableConcept]? = nil,
     quantity: Quantity? = nil,
-    factor: FHIRKitPrimitive<FHIRKitDecimal>? = nil,
+    factor: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>? = nil,
     net: Money? = nil,
     udi: [Reference]? = nil,
     subDetail: [ClaimItemDetailSubDetail]?
@@ -84,7 +84,7 @@ open class ClaimItemDetail: BackboneElement {
     self.init(sequence: sequence)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.revenue = revenue
     self.category = category
     self.productOrService = productOrService
@@ -115,14 +115,14 @@ open class ClaimItemDetail: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.sequence = try FHIRKitPrimitive<FHIRKitPositiveInteger>(from: codingKeyContainer, forKey: .sequence, auxKey: ._sequence)
+    self.sequence = try AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>(from: codingKeyContainer, forKey: .sequence, auxKey: ._sequence)
     self.revenue = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .revenue)
     self.category = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .category)
     self.productOrService = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .productOrService)
     self.modifier = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .modifier)
     self.programCode = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .programCode)
     self.quantity = try Quantity(from: codingKeyContainer, forKeyIfPresent: .quantity)
-    self.factor = try FHIRKitPrimitive<FHIRKitDecimal>(from: codingKeyContainer, forKeyIfPresent: .factor, auxKey: ._factor)
+    self.factor = try AlexandriaHRMPrimitive<AlexandriaHRMDecimal>(from: codingKeyContainer, forKeyIfPresent: .factor, auxKey: ._factor)
     self.net = try Money(from: codingKeyContainer, forKeyIfPresent: .net)
     self.udi = try [Reference](from: codingKeyContainer, forKeyIfPresent: .udi)
     self.subDetail = try [ClaimItemDetailSubDetail](from: codingKeyContainer, forKeyIfPresent: .subDetail)

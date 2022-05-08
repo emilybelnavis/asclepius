@@ -1,6 +1,6 @@
 //
 //  UnknownContentCode.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/unknown-content-code
  ValueSet: http://hl7.org/fhir/ValueSet/unknown-content-code
  */
-public enum UnknownContentCode: String, FHIRKitPrimitiveType {
+public enum UnknownContentCode: String, AlexandriaHRMPrimitiveType {
   /// The application does not accept either unknown elements or extensions.
   case no
   

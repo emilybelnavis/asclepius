@@ -1,6 +1,6 @@
 //
 //  ConsentProvisionData.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,17 +17,17 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /// Data controlled by this rule - The resources controlled by this rule if specific resources are referenced
 open class ConsentProvisionData: BackboneElement {
   /// How the resource reference is interpreted when testing consent restrictions
-  public var meaning: FHIRKitPrimitive<ConsentDataMeaning>
+  public var meaning: AlexandriaHRMPrimitive<ConsentDataMeaning>
   
   /// The actual data reference
   public var reference: Reference
   
-  public init(meaning: FHIRKitPrimitive<ConsentDataMeaning>, reference: Reference) {
+  public init(meaning: AlexandriaHRMPrimitive<ConsentDataMeaning>, reference: Reference) {
     self.meaning = meaning
     self.reference = reference
     super.init()
@@ -36,14 +36,14 @@ open class ConsentProvisionData: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    meaning: FHIRKitPrimitive<ConsentDataMeaning>,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    meaning: AlexandriaHRMPrimitive<ConsentDataMeaning>,
     reference: Reference
   ) {
     self.init(meaning: meaning, reference: reference)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
   }
   
   // MARK: - Codable
@@ -55,7 +55,7 @@ open class ConsentProvisionData: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = decoder.container(keyedBy: CodingKeys.self)
     
-    self.meaning = try FHIRKitPrimitive<ConsentDataMeaning>(from: codingKeyContainer, forKey: .meaning, auxKey: ._meaning)
+    self.meaning = try AlexandriaHRMPrimitive<ConsentDataMeaning>(from: codingKeyContainer, forKey: .meaning, auxKey: ._meaning)
     self.reference = try Reference(from: codingKeyContainer, forKey: .reference)
     
     try super.init(from: decoder)

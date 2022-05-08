@@ -1,6 +1,6 @@
 //
 //  IssueSeverity.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/issue-severity
  ValueSet: http://hl7.org/fhir/ValueSet/issue-severity
  */
-public enum IssueSeverity: String, FHIRKitPrimitiveType {
+public enum IssueSeverity: String, AlexandriaHRMPrimitiveType {
   /// The issue caused the action to fail and no further checking could be performed.
   case fatal
   

@@ -1,6 +1,6 @@
 //
 //  ClaimDiagnosis.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Pertinent diagnosis information - Information about diagnoses that are relevant to the claim item(s).
@@ -29,7 +29,7 @@ open class ClaimDiagnosis: BackboneElement {
   }
   
   /// Diagnosis instance identifier
-  public var sequence: FHIRKitPrimitive<FHIRKitPositiveInteger>
+  public var sequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>
   
   /// Nature of illness or problem
   public var diagnosisX: DiagnosisX
@@ -43,7 +43,7 @@ open class ClaimDiagnosis: BackboneElement {
   /// Package billing code
   public var packageCode: CodableConcept?
   
-  public init(sequence: FHIRKitPrimitive<FHIRKitPositiveInteger>, diagnosisX: DiagnosisX) {
+  public init(sequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>, diagnosisX: DiagnosisX) {
     self.sequence = sequence
     self.diagnosisX = diagnosisX
     super.init()
@@ -52,8 +52,8 @@ open class ClaimDiagnosis: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    sequence: FHIRKitPrimitive<FHIRKitPositiveInteger>,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    sequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>,
     diagnosisX: DiagnosisX,
     type: [CodableConcept]? = nil,
     onAdmission: CodableConcept? = nil,
@@ -62,7 +62,7 @@ open class ClaimDiagnosis: BackboneElement {
     self.init(sequence: sequence, diagnosisX: diagnosisX)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.type = type
     self.onAdmission = onAdmission
     self.packageCode = packageCode
@@ -96,7 +96,7 @@ open class ClaimDiagnosis: BackboneElement {
       tempDiagnosisX = .reference(diagnosisReference)
     }
     
-    self.sequence = try FHIRKitPrimitive<FHIRKitPositiveInteger>(from: codingKeyContainer, forKey: .sequence, auxKey: ._sequence)
+    self.sequence = try AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>(from: codingKeyContainer, forKey: .sequence, auxKey: ._sequence)
     self.diagnosisX = tempDiagnosisX!
     self.type = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .type)
     self.onAdmission = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .onAdmission)
