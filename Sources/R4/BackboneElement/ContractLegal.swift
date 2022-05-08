@@ -28,6 +28,11 @@ open class ContractLegal: BackboneElement {
   
   public var content: ContentX
   
+  public init(content: ContentX) {
+    self.content = content
+    super.init()
+  }
+  
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,

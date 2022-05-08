@@ -70,7 +70,7 @@ open class ContractTermSecurityLabel: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.number = try AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>(from: codingKeyContainer, forKeyIfPresent: .number, auxKey: ._number)
+    self.number = try [AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>](from: codingKeyContainer, forKeyIfPresent: .number, auxKey: ._number)
     self.classification = try Coding(from: codingKeyContainer, forKey: .classification)
     self.category = try [Coding](from: codingKeyContainer, forKeyIfPresent: .category)
     self.control = try [Coding](from: codingKeyContainer, forKeyIfPresent: .control)

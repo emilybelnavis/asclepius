@@ -35,4 +35,82 @@ open class EffectEvidenceSynthesisResultsByExposure: BackboneElement {
   
   /// Risk evidence synthesis
   public var riskEvidenceSynthesis: Reference
+  
+  public init(fhirDescription: AlexandriaHRMPrimitive<AlexandriaHRMString>, riskEvidenceSynthesis: Reference) {
+    self.fhirDescription = fhirDescription
+    self.riskEvidenceSynthesis = riskEvidenceSynthesis
+    super.init()
+  }
+  
+  public convenience init(
+    fhirExtension: [Extension]? = nil,
+    modifierExtension: [Extension]? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirDescription: AlexandriaHRMPrimitive<AlexandriaHRMString>,
+    exposureState: AlexandriaHRMPrimitive<ExposureState>? = nil,
+    variantState: CodeableConcept? = nil,
+    riskEvidenceSynthesis: Reference
+  ) {
+    self.init(fhirDescription: fhirDescription, riskEvidenceSynthesis: riskEvidenceSynthesis)
+    self.fhirExtension = fhirExtension
+    self.modifierExtension = modifierExtension
+    self.fhirId = fhirId
+    self.exposureState = exposureState
+    self.variantState = variantState
+  }
+  
+  // MARK: - Codable
+  private enum CodingKeys: String, CodingKey {
+    case fhirDescription; case _fhirDescription
+    case exposureState; case _exposureState
+    case variantState
+    case riskEvidenceSynthesis
+  }
+  
+  public required init(from decoder: Decoder) throws {
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
+    
+    self.fhirDescription = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .fhirDescription, auxKey: ._fhirDescription)
+    self.exposureState = try AlexandriaHRMPrimitive<ExposureState>(from: codingKeyContainer, forKeyIfPresent: .exposureState, auxKey: ._exposureState)
+    self.variantState = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .variantState)
+    self.riskEvidenceSynthesis = try Reference(from: codingKeyContainer, forKey: .riskEvidenceSynthesis)
+    
+    try super.init(from: decoder)
+  }
+  
+  override public func encode(to encoder: Encoder) throws {
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
+    
+    try fhirDescription.encode(on: &codingKeyContainer, forKey: .fhirDescription, auxKey: ._fhirDescription)
+    try exposureState?.encode(on: &codingKeyContainer, forKey: .exposureState, auxKey: ._exposureState)
+    try variantState?.encode(on: &codingKeyContainer, forKey: .variantState)
+    try riskEvidenceSynthesis.encode(on: &codingKeyContainer, forKey: .riskEvidenceSynthesis)
+    
+    try super.encode(to: encoder)
+  }
+  
+  // MARK: - Equatable
+  override public func isEqual(to _other: Any?) -> Bool {
+    guard let _other = _other as? EffectEvidenceSynthesisResultsByExposure else {
+      return false
+    }
+    
+    guard super.isEqual(to: _other) else {
+      return false
+    }
+    
+    return fhirDescription == _other.fhirDescription
+    && exposureState == _other.exposureState
+    && variantState == _other.variantState
+    && riskEvidenceSynthesis == _other.riskEvidenceSynthesis
+  }
+  
+  // MARK: - Hashable
+  override public func hash(into hasher: inout Hasher) {
+    super.hash(into: &hasher)
+    hasher.combine(fhirDescription)
+    hasher.combine(exposureState)
+    hasher.combine(variantState)
+    hasher.combine(riskEvidenceSynthesis)
+  }
 }

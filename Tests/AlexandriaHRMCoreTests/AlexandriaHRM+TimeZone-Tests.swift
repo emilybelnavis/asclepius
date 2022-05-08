@@ -1,6 +1,6 @@
 //
-//  FHIRKit+TimeZone-Tests.swift
-//  FHIRKit
+//  AlexandriaHRM+TimeZone-Tests.swift
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -18,7 +18,7 @@
 //  limitations under the License.
 
 import Foundation
-import FHIRKitCore
+import AlexandriaHRMCore
 import XCTest
 
 class TimeZoneTests: XCTestCase {
@@ -72,8 +72,8 @@ class TimeZoneTests: XCTestCase {
             do {
                 let timezone = try TimeZone(string)
                 XCTFail("Should fail to parse \"\(string)\" but succeeded, parsed \(timezone)")
-            } catch FHIRKitDateParserError.invalidTimeZonePrefix(let position) {
-                let expectedPosition = FHIRKitDateParserErrorPosition(string: string, location: location)
+            } catch AlexandriaHRMDateParserError.invalidTimeZonePrefix(let position) {
+                let expectedPosition = AlexandriaHRMDateParserErrorPosition(string: string, location: location)
                 XCTAssertEqual(position, expectedPosition)
             } catch {
                 XCTFail("Should throw FHIRDateParserError.invalidTimeZonePrefix but threw \(error)")
@@ -89,8 +89,8 @@ class TimeZoneTests: XCTestCase {
             do {
                 let timezone = try TimeZone(string)
                 XCTFail("Should fail to parse \"\(string)\" but succeeded, parsed \(timezone)")
-            } catch FHIRKitDateParserError.invalidTimeZoneHour(let position) {
-                let expectedPosition = FHIRKitDateParserErrorPosition(string: string, location: location)
+            } catch AlexandriaHRMDateParserError.invalidTimeZoneHour(let position) {
+                let expectedPosition = AlexandriaHRMDateParserErrorPosition(string: string, location: location)
                 XCTAssertEqual(position, expectedPosition)
             } catch {
                 XCTFail("Should throw FHIRDateParserError.invalidTimeZoneHour but threw \(error)")
@@ -110,8 +110,8 @@ class TimeZoneTests: XCTestCase {
             do {
                 let timezone = try TimeZone(string)
                 XCTFail("Should fail to parse \"\(string)\" but succeeded, parsed \(timezone)")
-            } catch FHIRKitDateParserError.invalidTimeZoneMinute(let position) {
-                let expectedPosition = FHIRKitDateParserErrorPosition(string: string, location: location)
+            } catch AlexandriaHRMDateParserError.invalidTimeZoneMinute(let position) {
+                let expectedPosition = AlexandriaHRMDateParserErrorPosition(string: string, location: location)
                 XCTAssertEqual(position, expectedPosition)
             } catch {
                 XCTFail("Should throw FHIRDateParserError.invalidTimeZoneMinute but threw \(error)")
@@ -133,8 +133,8 @@ class TimeZoneTests: XCTestCase {
             do {
                 let timezone = try TimeZone(string)
                 XCTFail("Should fail to parse \"\(string)\" but succeeded, parsed \(timezone)")
-            } catch FHIRKitDateParserError.invalidSeparator(let position) {
-                let expectedPosition = FHIRKitDateParserErrorPosition(string: string, location: location)
+            } catch AlexandriaHRMDateParserError.invalidSeparator(let position) {
+                let expectedPosition = AlexandriaHRMDateParserErrorPosition(string: string, location: location)
                 XCTAssertEqual(position, expectedPosition)
             } catch {
                 XCTFail("Should throw FHIRDateParserError.invalidSeparator but threw \(error)")
@@ -150,8 +150,8 @@ class TimeZoneTests: XCTestCase {
             do {
                 let timezone = try TimeZone(string)
                 XCTFail("Should fail to parse \"\(string)\" but succeeded, parsed \(timezone)")
-            } catch FHIRKitDateParserError.additionalCharacters(let position) {
-                let expectedPosition = FHIRKitDateParserErrorPosition(string: string, location: location)
+            } catch AlexandriaHRMDateParserError.additionalCharacters(let position) {
+                let expectedPosition = AlexandriaHRMDateParserErrorPosition(string: string, location: location)
                 XCTAssertEqual(position, expectedPosition)
             } catch {
                 XCTFail("Should throw FHIRDateParserError.additionalCharacters but threw \(error)")

@@ -54,7 +54,7 @@ open class CoverageEligibilityRequestItem: BackboneElement {
   /// Product or service details
   public var detail: [Reference]?
   
-  public override init() {
+  override public init() {
     super.init()
   }
   
@@ -116,7 +116,7 @@ open class CoverageEligibilityRequestItem: BackboneElement {
     try super.init(from: decoder)
   }
   
-  public override func encode(to encoder: Encoder) throws {
+  override public func encode(to encoder: Encoder) throws {
     var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
     try supportingInfoSequence?.encode(on: &codingKeyContainer, forKey: .supportingInfoSequence, auxKey: ._supportingInfoSequence)
@@ -132,7 +132,7 @@ open class CoverageEligibilityRequestItem: BackboneElement {
   }
   
   // MARK: - Equatable
-  public override func isEqual(to _other: Any?) -> Bool {
+  override public func isEqual(to _other: Any?) -> Bool {
     guard let _other = _other as? CoverageEligibilityRequestItem else {
       return false
     }

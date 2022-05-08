@@ -18,7 +18,7 @@
 //  limitations under the License.
 
 import AlexandriaHRMCore
-// 
+
 /// A property value for this concept
 open class CodeSystemConceptProperty: BackboneElement {
   /// all possible types for `value[x]`
@@ -72,6 +72,7 @@ open class CodeSystemConceptProperty: BackboneElement {
   }
   
   // swiftlint:disable cyclomatic_complexity
+  // todo: refactor this mess into a class
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
@@ -131,7 +132,7 @@ open class CodeSystemConceptProperty: BackboneElement {
     try super.init(from: decoder)
   }
   
-  public override func encode(to encoder: Encoder) throws {
+  override public func encode(to encoder: Encoder) throws {
     var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
     switch value {
@@ -157,7 +158,7 @@ open class CodeSystemConceptProperty: BackboneElement {
   }
   
   // MARK: - Equatable
-  public override func isEqual(to _other: Any?) -> Bool {
+  override public func isEqual(to _other: Any?) -> Bool {
     guard let _other = _other as? CodeSystemConceptProperty else {
       return false
     }
@@ -171,7 +172,7 @@ open class CodeSystemConceptProperty: BackboneElement {
   }
   
   // MARK: - Hashable
-  public override func hash(into hasher: inout Hasher) {
+  override public func hash(into hasher: inout Hasher) {
     super.hash(into: &hasher)
     hasher.combine(code)
     hasher.combine(value)

@@ -579,7 +579,7 @@ public enum ResourceProxy: AlexandriaHRMType {
       return "Subscription"
     case .substance:
       return "Substance"
-    case .substanceNucleicAcfhirId:
+    case .substanceNucleicAcid:
       return "SubstanceNucleicAcid"
     case .substancePolymer:
       return "SubstancePolymer"
@@ -882,7 +882,7 @@ public enum ResourceProxy: AlexandriaHRMType {
       self = .subscription(resource) // todo
     case .substance:
       self = .substance(resource) // todo
-    case .substanceNucleicAcfhirId:
+    case .substanceNucleicAcid:
       self = .substanceNucleicAcid(resource) // todo
     case .substancePolymer:
       self = .substancePolymer(resource) // todo

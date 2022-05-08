@@ -70,7 +70,7 @@ open class ContractContentDefinition: BackboneElement {
   }
   
   // MARK: - Codable
-  private enum CodingKey: String, CodingKey {
+  private enum CodingKeys: String, CodingKey {
     case type
     case subType
     case publisher
@@ -83,7 +83,7 @@ open class ContractContentDefinition: BackboneElement {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     self.type = try CodeableConcept(from: codingKeyContainer, forKey: .type)
-    self.subType try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .subType)
+    self.subType = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .subType)
     self.publisher = try Reference(from: codingKeyContainer, forKeyIfPresent: .publisher)
     self.publicationDate = try AlexandriaHRMPrimitive<AlexandriaHRMDateTime>(from: codingKeyContainer, forKeyIfPresent: .publicationDate, auxKey: ._publicationDate)
     self.publicationStatus = try AlexandriaHRMPrimitive<ContractResourcePublicationStatusCodes>(from: codingKeyContainer, forKey: .publicationStatus, auxKey: ._publicationStatus)

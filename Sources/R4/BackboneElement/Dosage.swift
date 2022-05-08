@@ -128,7 +128,7 @@ open class Dosage: BackboneElement {
   }
   
   public required init(from decoder: Decoder) throws {
-    let codingKeyContainer = decoder.container(keyedBy: CodingKeys.self)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     var tAsNeeded: AsNeeded?
     if let asNeededBoolean = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKeyIfPresent: .asNeededBoolean, auxKey: ._asNeededBoolean) {

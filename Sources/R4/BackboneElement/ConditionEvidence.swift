@@ -19,7 +19,6 @@
 
 import AlexandriaHRMCore
 
-
 /// Supporting evidence/manifestations that are the basis of the Condition's verification status, such as
 /// evidence that confirmed or refuted the condition
 open class ConditionEvidence: BackboneElement {
@@ -29,7 +28,7 @@ open class ConditionEvidence: BackboneElement {
   /// Supporting information found elsewhere
   public var detail: [Reference]?
   
-  public override init() {
+  override public init() {
     super.init()
   }
   
@@ -63,7 +62,7 @@ open class ConditionEvidence: BackboneElement {
     try super.init(from: decoder)
   }
   
-  public override func encode(to encoder: Encoder) throws {
+  override public func encode(to encoder: Encoder) throws {
     var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
     try code?.encode(on: &codingKeyContainer, forKey: .code)
@@ -73,7 +72,7 @@ open class ConditionEvidence: BackboneElement {
   }
   
   // MARK: - Equatable
-  public override func isEqual(to _other: Any?) -> Bool {
+  override public func isEqual(to _other: Any?) -> Bool {
     guard let _other = _other as? ConditionEvidence else {
       return false
     }
@@ -87,7 +86,7 @@ open class ConditionEvidence: BackboneElement {
   }
   
   // MARK: - Hashable
-  public override func hash(into hasher: inout Hasher) {
+  override public func hash(into hasher: inout Hasher) {
     super.hash(into: &hasher)
     hasher.combine(code)
     hasher.combine(detail)

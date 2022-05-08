@@ -1,7 +1,7 @@
 //
 //  ConstructableFromNSDate.swift
-//  Alexandria
-//  Module: Alexandria
+//  AlexandriaHRM
+//  Module: AlexandriaHRMCore
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
 //

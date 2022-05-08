@@ -53,7 +53,7 @@ open class ConsentProvisionData: BackboneElement {
   }
   
   public required init(from decoder: Decoder) throws {
-    let codingKeyContainer = decoder.container(keyedBy: CodingKeys.self)
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     self.meaning = try AlexandriaHRMPrimitive<ConsentDataMeaning>(from: codingKeyContainer, forKey: .meaning, auxKey: ._meaning)
     self.reference = try Reference(from: codingKeyContainer, forKey: .reference)

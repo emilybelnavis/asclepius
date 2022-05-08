@@ -72,6 +72,8 @@ open class ContractTermOfferAnswer: BackboneElement {
     case valueUri; case _valueUri
   }
   
+  // swiftlint:disable cyclomatic_complexity
+  // todo: refactor this mess into a class
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
@@ -125,17 +127,18 @@ open class ContractTermOfferAnswer: BackboneElement {
       tValue = .integer(valueInteger)
     }
     
-    if let valueQuantity = try Quantity(from: codingKeyContainer, forKey: .valueQuantity) {
+    if let valueQuantity = try Quantity(from: codingKeyContainer, forKeyIfPresent: .valueQuantity) {
       if tValue != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueQuantity, in: codingKeyContainer, debugDescription: "More than one value provided for \"value\"")
       }
       tValue = .quantity(valueQuantity)
     }
     
-    if let valueReference = try Reference(from: codingKeyContainer, forKey: .valueReference) {
+    if let valueReference = try Reference(from: codingKeyContainer, forKeyIfPresent: .valueReference) {
       if tValue != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueReference, in: codingKeyContainer, debugDescription: "More than one value provided for \"value\"")
       }
+      tValue = .reference(valueReference)
     }
     
     if let valueString = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .valueString, auxKey: ._valueString) {

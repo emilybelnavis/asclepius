@@ -291,7 +291,7 @@ class PrimitiveConstructionTests: XCTestCase {
     let decoder = JSONDecoder()
     let encoder = JSONEncoder()
     
-    if #available(macOS 10.15, *), #available(iOS 14.0, *) {
+    if #available(macOS 10.13, *), #available(iOS 15.0, *) {
       encoder.outputFormatting = [.sortedKeys, .prettyPrinted, .withoutEscapingSlashes]
     } else {
       encoder.outputFormatting = [.sortedKeys, .prettyPrinted]
@@ -318,7 +318,7 @@ class PrimitiveConstructionTests: XCTestCase {
     {
       "active" : false,
       "actual" : true,
-      "id" : "test-group",
+      "fhirId" : "test-group",
       "name" : "My Test Group",
       "quantity" : 69,
       "resourceType" : "Group",
@@ -334,7 +334,7 @@ class PrimitiveConstructionTests: XCTestCase {
     let decoder = JSONDecoder()
     let encoder = JSONEncoder()
     
-    if #available(macOS 10.15, *), #available(iOS 14.0, *) {
+    if #available(macOS 10.15, *), #available(iOS 15.0, *) {
       encoder.outputFormatting = [.sortedKeys, .prettyPrinted, .withoutEscapingSlashes]
     } else {
       encoder.outputFormatting = [.sortedKeys, .prettyPrinted]
@@ -342,9 +342,9 @@ class PrimitiveConstructionTests: XCTestCase {
     
     do {
       let group = try decoder.decode(Group.self, from: data)
-      XCTAssertEqual(group.id?.value?.string, "test-group")
-      XCTAssertEqual(group.id?.value, "test-group")
-      XCTAssertEqual(group.id, "test-group")
+      XCTAssertEqual(group.fhirId?.value?.string, "test-group")
+      XCTAssertEqual(group.fhirId?.value, "test-group")
+      XCTAssertEqual(group.fhirId, "test-group")
       XCTAssertEqual(group.type.value?.rawValue, "person")
       XCTAssertEqual(group.active, false)
       XCTAssertEqual(group.actual, true)

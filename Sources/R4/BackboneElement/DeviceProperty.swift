@@ -26,9 +26,79 @@ open class DeviceProperty: BackboneElement {
   public var type: CodeableConcept
   
   /// Property value as a quantity
-  public var valueQuantity: [Quantity]?
+  public var quantity: [Quantity]?
   
   /// Property value as a code (e.g. NTP4 (synced to NTP))
-  public var valueCode: [CodeableConcept]?
+  public var code: [CodeableConcept]?
   
+  public init(type: CodeableConcept) {
+    self.type = type
+    super.init()
+  }
+  
+  public convenience init(
+    fhirExtension: [Extension]? = nil,
+    modifierExtension: [Extension]? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    type: CodeableConcept,
+    quantity: [Quantity]? = nil,
+    code: [CodeableConcept]? = nil
+  ) {
+    self.init(type: type)
+    self.fhirExtension = fhirExtension
+    self.modifierExtension = modifierExtension
+    self.fhirId = fhirId
+    self.quantity = quantity
+    self.code = code
+  }
+  
+  // MARK: - Codable
+  private enum CodingKeys: String, CodingKey {
+    case type
+    case quantity
+    case code
+  }
+  
+  public required init(from decoder: Decoder) throws {
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
+    
+    self.type = try CodeableConcept(from: codingKeyContainer, forKey: .type)
+    self.quantity = try [Quantity](from: codingKeyContainer, forKeyIfPresent: .quantity)
+    self.code = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .code)
+    
+    try super.init(from: decoder)
+  }
+  
+  override public func encode(to encoder: Encoder) throws {
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
+    
+    try type.encode(on: &codingKeyContainer, forKey: .type)
+    try quantity?.encode(on: &codingKeyContainer, forKey: .quantity)
+    try code?.encode(on: &codingKeyContainer, forKey: .code)
+    
+    try super.encode(to: encoder)
+  }
+  
+  // MARK: - Equatable
+  override public func isEqual(to _other: Any?) -> Bool {
+    guard let _other = _other as? DeviceProperty else {
+      return false
+    }
+    
+    guard super.isEqual(to: _other) else {
+      return false
+    }
+    
+    return type == _other.type
+    && quantity == _other.quantity
+    && code == _other.code
+  }
+  
+  // MARK: - Hashable
+  override public func hash(into hasher: inout Hasher) {
+    super.hash(into: &hasher)
+    hasher.combine(type)
+    hasher.combine(quantity)
+    hasher.combine(code)
+  }
 }

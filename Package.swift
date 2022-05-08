@@ -5,7 +5,7 @@ import PackageDescription
 let package = Package(
   name: "AlexandriaHRM",
   platforms: [
-    .macOS(.v12),
+    .macOS(.v10_13),
     .iOS(.v15)
   ],
   products: [
@@ -21,8 +21,8 @@ let package = Package(
     .target(name: "STU3", dependencies: ["AlexandriaHRMCore"], path: "Sources/STU3"),
     .target(name: "DSTU2", dependencies: ["AlexandriaHRMCore"], path: "Sources/DSTU2"),
     .testTarget(name: "AlexandriaHRMCoreTests", dependencies: ["AlexandriaHRMCore"]),
-    .testTarget(name: "DateTimeTests", dependencies: ["R5", "R4", "STU3", "DSTU2"]),
-    .testTarget(name: "SequenceTests", dependencies: ["R5", "R4", "STU3", "DSTU2"]),
-    .testTarget(name: "PrimitiveTests", dependencies: ["R5", "R4", "STU3", "DSTU2"])
+    .testTarget(name: "DateTimeTests", dependencies: ["AlexandriaHRMCore","R4"]),
+    .testTarget(name: "SequenceTests", dependencies: ["AlexandriaHRMCore", "R4"]),
+    .testTarget(name: "PrimitiveTests", dependencies: ["AlexandriaHRMCore", "R4"])
   ]
 )

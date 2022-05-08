@@ -121,7 +121,7 @@ open class Group: DomainResource {
     try super.init(from: decoder)
   }
   
-  public override func encode(to encoder: Encoder) throws {
+  override public func encode(to encoder: Encoder) throws {
     var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
     try identifier?.encode(on: &codingKeyContainer, forKey: .identifier)
@@ -139,7 +139,7 @@ open class Group: DomainResource {
   }
   
   // MARK: - Equatable
-  public override func isEqual(to _other: Any?) -> Bool {
+  override public func isEqual(to _other: Any?) -> Bool {
     guard let _other = _other as? Group else {
       return false
     }
@@ -161,7 +161,7 @@ open class Group: DomainResource {
   }
   
   // MARK: - Hashable
-  public override func hash(into hasher: inout Hasher) {
+  override public func hash(into hasher: inout Hasher) {
     super.hash(into: &hasher)
     hasher.combine(identifier)
     hasher.combine(active)

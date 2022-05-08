@@ -32,4 +32,74 @@ open class EffectEvidenceSynthesisSampleSize: BackboneElement {
   /// Number of participants studied
   public var numberOfParticipants: AlexandriaHRMPrimitive<AlexandriaHRMInteger>?
   
+  override public init() {
+    super.init()
+  }
+  
+  public convenience init(
+    fhirExtension: [Extension]? = nil,
+    modifierExtension: [Extension]? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirDescription: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    numberOfStudies: AlexandriaHRMPrimitive<AlexandriaHRMInteger>? = nil,
+    numberOfParticipants: AlexandriaHRMPrimitive<AlexandriaHRMInteger>? = nil
+  ) {
+    self.init()
+    self.fhirExtension = fhirExtension
+    self.modifierExtension = modifierExtension
+    self.fhirId = fhirId
+    self.fhirDescription = fhirDescription
+    self.numberOfStudies = numberOfStudies
+    self.numberOfParticipants = numberOfParticipants
+  }
+  
+  // MARK: - Codable
+  private enum CodingKeys: String, CodingKey {
+    case fhirDescription; case _fhirDescription
+    case numberOfStudies; case _numberOfStudies
+    case numberOfParticipants; case _numberOfParticipants
+  }
+  
+  public required init(from decoder: Decoder) throws {
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
+    
+    self.fhirDescription = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .fhirDescription, auxKey: ._fhirDescription)
+    self.numberOfStudies = try AlexandriaHRMPrimitive<AlexandriaHRMInteger>(from: codingKeyContainer, forKeyIfPresent: .numberOfStudies, auxKey: ._numberOfStudies)
+    self.numberOfParticipants = try AlexandriaHRMPrimitive<AlexandriaHRMInteger>(from: codingKeyContainer, forKeyIfPresent: .numberOfParticipants, auxKey: ._numberOfParticipants)
+    
+    try super.init(from: decoder)
+  }
+  
+  override public func encode(to encoder: Encoder) throws {
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
+    
+    try fhirDescription?.encode(on: &codingKeyContainer, forKey: .fhirDescription, auxKey: ._fhirDescription)
+    try numberOfStudies?.encode(on: &codingKeyContainer, forKey: .numberOfStudies, auxKey: ._numberOfStudies)
+    try numberOfParticipants?.encode(on: &codingKeyContainer, forKey: .numberOfParticipants, auxKey: ._numberOfParticipants)
+    
+    try super.encode(to: encoder)
+  }
+  
+  // MARK: - Equatable
+  override public func isEqual(to _other: Any?) -> Bool {
+    guard let _other = _other as? EffectEvidenceSynthesisSampleSize else {
+      return false
+    }
+    
+    guard super.isEqual(to: _other) else {
+      return false
+    }
+    
+    return fhirDescription == _other.fhirDescription
+    && numberOfStudies == _other.numberOfStudies
+    && numberOfParticipants == _other.numberOfParticipants
+  }
+  
+  // MARK: - Hashable
+  override public func hash(into hasher: inout Hasher) {
+    super.hash(into: &hasher)
+    hasher.combine(fhirDescription)
+    hasher.combine(numberOfStudies)
+    hasher.combine(numberOfParticipants)
+  }
 }

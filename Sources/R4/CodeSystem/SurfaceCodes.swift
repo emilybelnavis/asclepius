@@ -46,7 +46,7 @@ public enum SurfaceCodes: String, AlexandriaHRMPrimitiveType {
   case L // swiftlint:disable:this identifier_name
   
   /// The Mesioclusal surfaces of a tooth.
-  case MO 
+  case MO
   
   /// The Distoclusal surfaces of a tooth.
   case DO

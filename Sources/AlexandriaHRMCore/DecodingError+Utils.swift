@@ -1,7 +1,7 @@
 //
 //  DecodingError+Utils.swift
-//  Alexandria
-//  Module: AlexandriaCore
+//  AlexandriaHRM
+//  Module: AlexandriaHRMCore
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
 //

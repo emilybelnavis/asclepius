@@ -64,7 +64,7 @@ open class ConsentVerification: BackboneElement {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     self.verified = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKey: .verified, auxKey: ._verified)
-    self.verifiedWith = try Reference(from: codingKeyContainer, forKeyIfPresent: .verifiedwith)
+    self.verifiedWith = try Reference(from: codingKeyContainer, forKeyIfPresent: .verifiedWith)
     self.verificationDate = try AlexandriaHRMPrimitive<AlexandriaHRMDateTime>(from: codingKeyContainer, forKey: .verificationDate, auxKey: ._verificationDate)
     
     try super.init(from: decoder)
@@ -74,7 +74,7 @@ open class ConsentVerification: BackboneElement {
     var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
     try verified.encode(on: &codingKeyContainer, forKey: .verified, auxKey: ._verified)
-    try verifiedWith?.encode(on: &codingKeyContaineer, forKey: .verifiedWith)
+    try verifiedWith?.encode(on: &codingKeyContainer, forKey: .verifiedWith)
     try verificationDate?.encode(on: &codingKeyContainer, forKey: .verificationDate, auxKey: ._verificationDate)
     
     try super.encode(to: encoder)

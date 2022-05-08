@@ -191,7 +191,7 @@ extension AlexandriaHRMTime: Codable {
 
 // MARK: - CustomStringConvertable
 extension AlexandriaHRMTime: CustomStringConvertible {
-  static let secondsFormatter: NumberFormatter = {
+  public static let secondsFormatter: NumberFormatter = {
     let formatter = NumberFormatter()
     formatter.allowsFloats = true
     formatter.decimalSeparator = "."

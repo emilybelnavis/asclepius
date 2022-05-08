@@ -45,7 +45,7 @@ open class Element: AlexandriaHRMType {
   // MARK: - Codable
   private enum CodingKeys: String, CodingKey {
     case fhirExtension = "extension"
-    case fhirId = "fhirId"; case _fhirId = "_fhirId"
+    case fhirId = "id"; case _fhirId = "_id"
   }
   
   public required init(from decoder: Decoder) throws {

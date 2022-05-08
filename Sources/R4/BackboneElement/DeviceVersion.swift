@@ -70,7 +70,7 @@ open class DeviceVersion: BackboneElement {
     try super.init(from: decoder)
   }
   
-  public override func encode(to encoder: Encoder) throws {
+  override public func encode(to encoder: Encoder) throws {
     var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
     try type?.encode(on: &codingKeyContainer, forKey: .type)
@@ -81,7 +81,7 @@ open class DeviceVersion: BackboneElement {
   }
   
   // MARK: - Equatable
-  public override func isEqual(to _other: Any?) -> Bool {
+  override public func isEqual(to _other: Any?) -> Bool {
     guard let _other = _other as? DeviceVersion else {
       return false
     }
@@ -96,7 +96,7 @@ open class DeviceVersion: BackboneElement {
   }
   
   // MARK: - Hashable
-  public override func hash(into hasher: inout Hasher) {
+  override public func hash(into hasher: inout Hasher) {
     super.hash(into: &hasher)
     hasher.combine(type)
     hasher.combine(component)

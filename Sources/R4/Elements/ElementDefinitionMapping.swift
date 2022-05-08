@@ -37,7 +37,7 @@ open class ElementDefinitionMapping: Element {
   public var comment: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   public init(identity: AlexandriaHRMPrimitive<AlexandriaHRMString>, map: AlexandriaHRMPrimitive<AlexandriaHRMString>) {
-    self.fhirIdentity = fhirIdentity
+    self.identity = identity
     self.map = map
     super.init()
   }
@@ -68,7 +68,7 @@ open class ElementDefinitionMapping: Element {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.fhirIdentity = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .identity, auxKey: ._identity)
+    self.identity = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .identity, auxKey: ._identity)
     self.language = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .language, auxKey: ._language)
     self.map = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .map, auxKey: ._map)
     self.comment = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .comment, auxKey: ._comment)
@@ -76,7 +76,7 @@ open class ElementDefinitionMapping: Element {
     try super.init(from: decoder)
   }
   
-  public override func encode(to encoder: Encoder) throws {
+  override public func encode(to encoder: Encoder) throws {
     var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
     try identity.encode(on: &codingKeyContainer, forKey: .identity, auxKey: ._identity)

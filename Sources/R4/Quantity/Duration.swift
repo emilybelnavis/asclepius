@@ -21,7 +21,7 @@ import AlexandriaHRMCore
 
 /// A length of time
 open class Duration: Quantity {
-  override public public init() {
+  override public init() {
     super.init()
   }
   

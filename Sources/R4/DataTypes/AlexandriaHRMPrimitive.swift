@@ -20,13 +20,13 @@
 import Foundation
 import AlexandriaHRMCore
 
-///Protocol for all FHIR Primitives
+/// Protocol for all FHIR Primitives
 // MARK: - Protocol Definition
 public protocol AlexandriaHRMPrimitiveType: AlexandriaHRMType {}
 
 extension AlexandriaHRMPrimitiveType {
   public func asPrimitive(with fhirId: String? = nil, fhirExtension: [Extension]? = nil) -> AlexandriaHRMPrimitive<Self> {
-    return AlexandriaHRMPrimitive(self, fhirId: id, fhirExtension: fhirExtension)
+    return AlexandriaHRMPrimitive(self, fhirId: fhirId, fhirExtension: fhirExtension)
   }
 }
 
@@ -74,19 +74,19 @@ public struct AlexandriaHRMPrimitive<PrimitiveType: AlexandriaHRMPrimitiveType>:
   /// Returns `true` if the receiver has nether a value, id, nor extensions
   public var isNull: Bool {
     return value == nil
-    && id == nil
+    && fhirId == nil
     && fhirExtension == nil
   }
   
   /// Returns `true` if the receiver has either an id or extensions
   public var hasPrimitiveData: Bool {
-    return id != nil || fhirExtension != nil
+    return fhirId != nil || fhirExtension != nil
   }
   
   /// Convenience debug description
   public var primitiveDescription: String {
     let valueStr = (value == nil) ? "nil value" : "value=\"\(value!)\""
-    let idStr = (id == nil) ? "nil id" : "id=\"\(id!)\""
+    let idStr = (fhirId == nil) ? "nil id" : "id=\"\(fhirId!)\""
     let extStr = (fhirExtension == nil) ? "nil extensions" : "extensions=\"\(fhirExtension!.count)\""
     return "<\(type(of: self)) \(valueStr), \(idStr), \(extStr)>"
   }
@@ -99,7 +99,7 @@ extension AlexandriaHRMPrimitive: Hashable {
       return false
     }
     
-    if leftSide.id != rightSide.id {
+    if leftSide.fhirId != rightSide.fhirId {
       return false
     }
     
@@ -119,7 +119,7 @@ extension AlexandriaHRMPrimitive: Hashable {
   
   public func hash(into hasher: inout Hasher) {
     hasher.combine(value)
-    hasher.combine(id)
+    hasher.combine(fhirId)
     hasher.combine(fhirExtension)
   }
 }
@@ -127,7 +127,7 @@ extension AlexandriaHRMPrimitive: Hashable {
 // MARK: - Codable
 extension AlexandriaHRMPrimitive: Codable {
   private enum CodingKeys: String, CodingKey {
-    case id
+    case fhirId
     case fhirExtension
   }
   
@@ -138,7 +138,7 @@ extension AlexandriaHRMPrimitive: Codable {
   public init<_Key: CodingKey>(from parentContainer: KeyedDecodingContainer<_Key>, forKey key: _Key, auxKey: _Key? = nil) throws {
     let value = try parentContainer.decodeIfPresent(PrimitiveType.self, forKey: key)
     if let auxKey = auxKey, let primitive = try parentContainer.decodeIfPresent(Self.self, forKey: auxKey) {
-      self.init(value, fhirId: primitive.id, fhirExtension: primitive.fhirExtension)
+      self.init(value, fhirId: primitive.fhirId, fhirExtension: primitive.fhirExtension)
     } else if let value = value {
       self.init(value)
     } else {
@@ -153,7 +153,7 @@ extension AlexandriaHRMPrimitive: Codable {
   public init?<_Key: CodingKey>(from parentContainer: KeyedDecodingContainer<_Key>, forKeyIfPresent key: _Key, auxKey: _Key? = nil) throws {
     let value = try parentContainer.decodeIfPresent(PrimitiveType.self, forKey: key)
     if let auxKey = auxKey, let primitive = try parentContainer.decodeIfPresent(Self.self, forKey: auxKey) {
-      self.init(value, fhirId: primitive.id, fhirExtension: primitive.fhirExtension)
+      self.init(value, fhirId: primitive.fhirId, fhirExtension: primitive.fhirExtension)
     } else if let value = value {
       self.init(value)
     } else {
@@ -192,7 +192,7 @@ extension Array where Element: AlexandriaHRMPrimitiveProtocol {
         for (i, v) in values.enumerated() {
           let p = primitives[safe: i]
           if let v = v {
-            arr.append(v.asPrimitive(with: p??.id, fhirExtension: p??.fhirExtension) as! Element) // swiftlint:disable:this force_cast
+            arr.append(v.asPrimitive(with: p??.fhirId, fhirExtension: p??.fhirExtension) as! Element) // swiftlint:disable:this force_cast
           } else if let pidx = p, let p = pidx {
             arr.append(p)
           }
@@ -218,7 +218,7 @@ extension Array where Element: AlexandriaHRMPrimitiveProtocol {
         for (i, v) in values.enumerated() {
           let p = primitives[safe: i]
           if let v = v {
-            arr.append(v.asPrimitive(with: p??.id, fhirExtension: p??.fhirExtension) as! Element) // swiftlint:disable:this force_cast
+            arr.append(v.asPrimitive(with: p??.fhirId, fhirExtension: p??.fhirExtension) as! Element) // swiftlint:disable:this force_cast
           } else if let pidx = p, let p = pidx {
             arr.append(p)
           }
@@ -264,7 +264,7 @@ extension Array where Element: AlexandriaHRMPrimitiveProtocol {
 
 // MARK: - Extends Collection
 extension Collection {
-  subscript(safe index: Index) -> Iterator.Element? {
+  subscript(safe index: Index) -> Iterator.Element? { // swiftlint:disable:this explicit_acl
     guard indices.contains(index) else {
       return nil
     }

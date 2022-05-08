@@ -125,7 +125,7 @@ open class DataRequirement: Element {
     try super.init(from: decoder)
   }
   
-  public override func encode(to encoder: Encoder) throws {
+  override public func encode(to encoder: Encoder) throws {
     var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
   
     if let enumSubject = subject {
@@ -149,7 +149,7 @@ open class DataRequirement: Element {
   }
   
   // MARK: - Equatable
-  public override func isEqual(to _other: Any?) -> Bool {
+  override public func isEqual(to _other: Any?) -> Bool {
     guard let _other = _other as? DataRequirement else {
       return false
     }
@@ -169,7 +169,7 @@ open class DataRequirement: Element {
   }
   
   // MARK: - Hashable
-  public override func hash(into hasher: inout Hasher) {
+  override public func hash(into hasher: inout Hasher) {
     super.hash(into: &hasher)
     hasher.combine(type)
     hasher.combine(profile)

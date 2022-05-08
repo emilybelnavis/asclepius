@@ -253,7 +253,7 @@ extension Array where Element: AlexandriaHRMPrimitiveProtocol {
 
 // MARK: - Extends Collection
 extension Collection {
-  subscript(safe index: Index) -> Iterator.Element? {
+  subscript(safe index: Index) -> Iterator.Element? { // swiftlint:disable:this explicit_acl
     guard indices.contains(index) else {
       return nil
     }

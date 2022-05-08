@@ -20,7 +20,7 @@
 import AlexandriaHRMCore
 import XCTest
 
-class FHIRDateComponentsTests: XCTestCase {
+class AlexandriaHRMDateComponentsTests: XCTestCase {
     
     // All these were calculated in GMT
     let date0 = Date(timeIntervalSinceReferenceDate: 662733296.0) // 2022-01-01 at 12:34:56.00

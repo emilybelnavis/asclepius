@@ -31,4 +31,75 @@ open class EffectEvidenceSynthesisCertainty: BackboneElement {
   
   /// A component that contributes to the overal certainty
   public var certaintySubcomponent: [EffectEvidenceSynthesisCertaintyCertaintySubcomponent]?
+  
+  override public init() {
+    super.init()
+  }
+  
+  public convenience init(
+    fhirExtension: [Extension]? = nil,
+    modifierExtension: [Extension]? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    rating: [CodeableConcept]? = nil,
+    note: [Annotation]? = nil,
+    certaintySubcomponent: [EffectEvidenceSynthesisCertaintyCertaintySubcomponent]? = nil
+  ) {
+    self.init()
+    self.fhirExtension = fhirExtension
+    self.modifierExtension = modifierExtension
+    self.fhirId = fhirId
+    self.rating = rating
+    self.note = note
+    self.certaintySubcomponent = certaintySubcomponent
+  }
+  
+  // MARK: - Codable
+  private enum CodingKeys: String, CodingKey {
+    case rating
+    case note
+    case certaintySubcomponent
+  }
+  
+  public required init(from decoder: Decoder) throws {
+    let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
+    
+    self.rating = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .rating)
+    self.note = try [Annotation](from: codingKeyContainer, forKeyIfPresent: .note)
+    self.certaintySubcomponent = try [EffectEvidenceSynthesisCertaintyCertaintySubcomponent](from: codingKeyContainer, forKeyIfPresent: .certaintySubcomponent)
+    
+    try super.init(from: decoder)
+  }
+  
+  override public func encode(to encoder: Encoder) throws {
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
+    
+    try rating?.encode(on: &codingKeyContainer, forKey: .rating)
+    try note?.encode(on: &codingKeyContainer, forKey: .note)
+    try certaintySubcomponent?.encode(on: &codingKeyContainer, forKey: .certaintySubcomponent)
+    
+    try super.encode(to: encoder)
+  }
+  
+  // MARK: - Equatable
+  override public func isEqual(to _other: Any?) -> Bool {
+    guard let _other = _other as? EffectEvidenceSynthesisCertainty else {
+      return false
+    }
+    
+    guard super.isEqual(to: _other) else {
+      return false
+    }
+    
+    return rating == _other.rating
+    && note == _other.note
+    && certaintySubcomponent == _other.certaintySubcomponent
+  }
+  
+  // MARK: - Hashable
+  override public func hash(into hasher: inout Hasher) {
+    super.hash(into: &hasher)
+    hasher.combine(rating)
+    hasher.combine(note)
+    hasher.combine(certaintySubcomponent)
+  }
 }

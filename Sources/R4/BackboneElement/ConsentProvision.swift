@@ -157,7 +157,7 @@ open class ConsentProvision: BackboneElement {
     && actor == _other.actor
     && securityLabel == _other.securityLabel
     && purpose == _other.purpose
-    && provisionClass = _other.provisionClass
+    && provisionClass == _other.provisionClass
     && code == _other.code
     && dataPeriod == _other.dataPeriod
     && data == _other.data

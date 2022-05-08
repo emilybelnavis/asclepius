@@ -1,6 +1,6 @@
 //
-//  File.swift
-//  FHIRKit
+//  Canonical.swift
+//  AlexandriaHRM
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.

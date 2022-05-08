@@ -21,15 +21,15 @@ import Foundation
 
 public struct AlexandriaHRMDateComponents: ExpressibleAsNSDate {
     
-    static var calendar = Calendar(identifier: .gregorian)
+    public static var calendar = Calendar(identifier: .gregorian)
     
-    let year: Int
-    let month: UInt8?
-    let day: UInt8?
-    let hour: UInt8?
-    let minute: UInt8?
-    let second: Decimal?
-    let timeZone: TimeZone?
+    public let year: Int
+    public let month: UInt8?
+    public let day: UInt8?
+    public let hour: UInt8?
+    public let minute: UInt8?
+    public let second: Decimal?
+    public let timeZone: TimeZone?
     
     public init(year: Int, month: UInt8? = nil, day: UInt8? = nil, hour: UInt8? = nil, minute: UInt8? = nil, second: Decimal? = nil, timeZone: TimeZone? = nil) {
         self.year = year
