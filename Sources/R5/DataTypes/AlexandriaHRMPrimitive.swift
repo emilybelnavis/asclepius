@@ -26,8 +26,8 @@ import AlexandriaHRMCore
 public protocol AlexandriaHRMPrimitiveType: AlexandriaHRMType {}
 
 extension AlexandriaHRMPrimitiveType {
-  public func asPrimitive(with id: String? = nil, fhirExtension: [Extension]? = nil) -> AlexandriaHRMPrimitive<Self> {
-    return AlexandriaHRMPrimitive(self, id: id, fhirExxtension: fhirExtension)
+  public func asPrimitive(with fhirId: String? = nil, fhirExtension: [Extension]? = nil) -> AlexandriaHRMPrimitive<Self> {
+    return AlexandriaHRMPrimitive(self, fhirId: id, fhirExxtension: fhirExtension)
   }
 }
 
@@ -35,7 +35,7 @@ public protocol AlexandriaHRMPrimitiveProtocol: Codable {
   associatedtype PrimitiveType: AlexandriaHRMPrimitiveType
   
   var value: PrimitiveType? { get set }
-  var id: String? { get set }
+  var fhirId: String? { get set }
   var fhirExtension: [Extension]? { get set }
   var isNull: Bool { get }
   var hasPrimitiveData: Bool { get }
@@ -60,16 +60,16 @@ extension AlexandriaHRMPrimitiveProtocol {
  */
 public struct AlexandriaHRMPrimitive<PrimitiveType: AlexandriaHRMPrimitiveType>: AlexandriaHRMPrimitiveProtocol {
   public var value: PrimitiveType?
-  public var id: String?
+  public var fhirId: String?
   public var fhirExtension: [Extension]?
   
   public init(
     _ value: PrimitiveType? = nil,
-    id: String? = nil,
+    fhirId: String? = nil,
     fhirExtension: [Extension]? = nil
   ) {
     self.value = value
-    self.id = id
+    self.fhirId = fhirId
     self.fhirExtension = fhirExtension
   }
   
@@ -108,7 +108,7 @@ extension AlexandriaHRMPrimitive: Codable {
     let value = try parentContainer.decodeIfPresent(PrimitiveType.self, forKey: key)
     
     if let auxKey = auxKey, let primitive = try parentContainer.decodeIfPresent(Self.self, forKey: auxKey) {
-      self.init(value, id: primitive.id, fhirExtension: primitive.fhirExtension)
+      self.init(value, fhirId: primitive.id, fhirExtension: primitive.fhirExtension)
     } else if let value = value {
       self.init(value)
     } else {

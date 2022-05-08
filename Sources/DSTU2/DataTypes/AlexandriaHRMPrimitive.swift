@@ -26,8 +26,8 @@ import AlexandriaHRMCore
 public protocol AlexandriaHRMPrimitiveType: AlexandriaHRMType {}
 
 extension AlexandriaHRMPrimitiveType {
-  public func asPrimitive(with id: String? = nil, fhirExtension: [Extension]? = nil) -> AlexandriaHRMPrimitive<Self> {
-    return AlexandriaHRMPrimitive(self, id: id, fhirExxtension: fhirExtension)
+  public func asPrimitive(with fhirId: String? = nil, fhirExtension: [Extension]? = nil) -> AlexandriaHRMPrimitive<Self> {
+    return AlexandriaHRMPrimitive(self, fhirId: fhirId, fhirExxtension: fhirExtension)
   }
 }
 
@@ -35,7 +35,7 @@ public protocol AlexandriaHRMPrimitiveProtocol: Codable {
   associatedtype PrimitiveType: AlexandriaHRMPrimitiveType
   
   var value: PrimitiveType? { get set }
-  var id: String? { get set }
+  var fhirId: String? { get set }
   var fhirExtension: [Extension]? { get set }
   var isNull: Bool { get }
   var hasPrimitiveData: Bool { get }
@@ -60,35 +60,35 @@ extension AlexandriaHRMPrimitiveProtocol {
  */
 public struct AlexandriaHRMPrimitive<PrimitiveType: AlexandriaHRMPrimitiveType>: AlexandriaHRMPrimitiveProtocol {
   public var value: PrimitiveType?
-  public var id: String?
+  public var fhirId: String?
   public var fhirExtension: [Extension]?
   
   public init(
     _ value: PrimitiveType? = nil,
-    id: String? = nil,
+    fhirId: String? = nil,
     fhirExtension: [Extension]? = nil
   ) {
     self.value = value
-    self.id = id
+    self.fhirId = fhirId
     self.fhirExtension = fhirExtension
   }
   
   /// Returns `true` if the receiver has neither a value, id, nor extensions
   public var isNull: Bool {
     return value == nil
-    && id == nil
+    && fhirId == nil
     && fhirExtension == nil
   }
   
   /// Returns `true` if the reciever has either an id, or extensions
   public var hasPrimitiveData: Bool {
-    return id != nil
+    return fhirId != nil
     || fhirExtension != nil
   }
   
   public var primitiveDescription: String {
     let valueString = (value == nil) ? "nil value" : "value=\"\(value!)\""
-    let idString = (id == nil) ? "nil value": "id=\"\(id!)\""
+    let idString = (fhirId == nil) ? "nil value": "id=\"\(fhirId!)\""
     let extensionString (fhirExtension == nil) ? "nil extensions": "extensions=\"\(fhirExtension!.count)\""
   }
 }
@@ -96,19 +96,19 @@ public struct AlexandriaHRMPrimitive<PrimitiveType: AlexandriaHRMPrimitiveType>:
 // MARK: - Codable
 extension AlexandriaHRMPrimitive: Codable {
   private enum CodingKeys: String, CodingKey {
-    case id
+    case fhirId
     case fhirExtension
   }
   
   /**
    Decode the primitive from the given container. Currently only supports FHIR's JSON representation.
-   If will look for the value on `key` and any `id` or `extension` on `_key`.
+   If will look for the value on `key` and any `fhirId` or `extension` on `_key`.
    */
   public init<_ Key: CodingKey>(from parentContainer: KeyedDecodingContainer<_Key>, forKey key: _Key, auxKey: _Key? = nil) throws {
     let value = try parentContainer.decodeIfPresent(PrimitiveType.self, forKey: key)
     
     if let auxKey = auxKey, let primitive = try parentContainer.decodeIfPresent(Self.self, forKey: auxKey) {
-      self.init(value, id: primitive.id, fhirExtension: primitive.fhirExtension)
+      self.init(value, fhirId: primitive.fhirId, fhirExtension: primitive.fhirExtension)
     } else if let value = value {
       self.init(value)
     } else {
@@ -118,7 +118,7 @@ extension AlexandriaHRMPrimitive: Codable {
   
   /**
    Encode the primitive to the given parent container. Currently only supports FHIR's JSON representation.
-   Encodes its value to `key` and its `id` and/or `extensions`, if any to `_key` with `auxKey`
+   Encodes its value to `key` and its `fhirId` and/or `extensions`, if any to `_key` with `auxKey`
    */
   public func encode<_Key>(on parentContainer: inout KeyedEncodingContainer<_Key>, forKey key: _Key, auxKey: _Key? = nil) throws {
     if let value = value {
@@ -142,7 +142,7 @@ extension AlexandriaHRMPrimitive: Hashable {
       return false
     }
     
-    if leftSide.id != rightSide.id {
+    if leftSide.fhirId != rightSide.fhirId {
       return false
     }
     
@@ -163,7 +163,7 @@ extension AlexandriaHRMPrimitive: Hashable {
   
   public func hash(into hasher: inout Hasher) {
     hasher.combine(value)
-    hasher.combine(id)
+    hasher.combine(fhirId)
     hasher.combine(fhirExtension)
   }
 }
