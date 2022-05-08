@@ -23,15 +23,13 @@ FHIR Specification (v4.0.1: R4 - Mixed [Normative][balloting] and [STU][ballotin
 
 ### Planned Features
 
-- Implementation of separate targets for `DSTU2`, `STU3`, `R4` and `R5`
+- Implementation of separate targets for `STU3` and `R4`
 versions of the FHIR standard.
 
 Date | Sequence | Version | Description
 :--- | :------- | :------ | :----------
-2020-08-20 | R5 Sequence | 4.6.0 | FHIR Release #5: Preview #3
 2019-10-30 | R4 Sequence | 4.0.1 | FHIR Release #4: First Normative Content
 2019-10-24 | STU 3 Sequence | 3.0.2 | FHIR Release 3 (STU) with 2 technical errata
-2015-10-24 | DSTU 2 Sequence | 1.0.2 | DSTU 2 (Official version) with 1 technical errata
 
 ## Requirements
 

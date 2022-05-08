@@ -18,16 +18,15 @@
 //  limitations under the License.
 
 import AlexandriaHRMCore
+import Foundation
 
 // MARK: - Protocol Definition
-/**
- Protocol for all FHIR primitives
- */
-public protocol AlexandriaHRMPrimitiveType: AlexandriaHRMType {}
+/// Protocol for all FHIR Primitives
+public protocol AlexandriaHRMPrimitiveType: AlexandriaHRMType { }
 
 extension AlexandriaHRMPrimitiveType {
   public func asPrimitive(with fhirId: String? = nil, fhirExtension: [Extension]? = nil) -> AlexandriaHRMPrimitive<Self> {
-    return AlexandriaHRMPrimitive(self, fhirId: id, fhirExxtension: fhirExtension)
+    return AlexandriaHRMPrimitive(self, fhirId: fhirId, fhirExtension: fhirExtension)
   }
 }
 
@@ -42,10 +41,8 @@ public protocol AlexandriaHRMPrimitiveProtocol: Codable {
 }
 
 extension AlexandriaHRMPrimitiveProtocol {
-  /**
-   Returns an array of Extensions matching the desired URL. An empty array is returned if there are no
-   extensions that match or if there are no extensions at al
-   */
+  /// Returns an array of `Extension`s matching the desired URL. An empty array is returned
+  /// if there are no extensions that match or if there are no extensions at all
   public func extensions(for url: String) -> [Extension] {
     let matches = fhirExtension?.filter {
       return $0.url.value?.url.absoluteString == url
@@ -54,84 +51,34 @@ extension AlexandriaHRMPrimitiveProtocol {
   }
 }
 
-// MARK: - Type Definition
-/**
- Wrap any of the FHIR primitive types
- */
+// MARK: - Type Defintion
+/// Wrapper for any of the FHIR primitive types
 public struct AlexandriaHRMPrimitive<PrimitiveType: AlexandriaHRMPrimitiveType>: AlexandriaHRMPrimitiveProtocol {
   public var value: PrimitiveType?
   public var fhirId: String?
   public var fhirExtension: [Extension]?
   
-  public init(
-    _ value: PrimitiveType? = nil,
-    fhirId: String? = nil,
-    fhirExtension: [Extension]? = nil
-  ) {
+  public init(_ value: PrimitiveType? = nil, fhirId: String? = nil, fhirExtension: [Extension]? = nil) {
     self.value = value
     self.fhirId = fhirId
     self.fhirExtension = fhirExtension
   }
   
-  /// Returns `true` if the receiver has neither a value, id, nor extensions
   public var isNull: Bool {
     return value == nil
-    && id == nil
+    && fhirId == nil
     && fhirExtension == nil
   }
   
-  /// Returns `true` if the reciever has either an id, or extensions
   public var hasPrimitiveData: Bool {
-    return id != nil
-    || fhirExtension != nil
+    return fhirId != nil || fhirExtension != nil
   }
   
   public var primitiveDescription: String {
-    let valueString = (value == nil) ? "nil value" : "value=\"\(value!)\""
-    let idString = (id == nil) ? "nil value": "id=\"\(id!)\""
-    let extensionString (fhirExtension == nil) ? "nil extensions": "extensions=\"\(fhirExtension!.count)\""
-  }
-}
-
-// MARK: - Codable
-extension AlexandriaHRMPrimitive: Codable {
-  private enum CodingKeys: String, CodingKey {
-    case id
-    case fhirExtension
-  }
-  
-  /**
-   Decode the primitive from the given container. Currently only supports FHIR's JSON representation.
-   If will look for the value on `key` and any `id` or `extension` on `_key`.
-   */
-  public init<_ Key: CodingKey>(from parentContainer: KeyedDecodingContainer<_Key>, forKey key: _Key, auxKey: _Key? = nil) throws {
-    let value = try parentContainer.decodeIfPresent(PrimitiveType.self, forKey: key)
-    
-    if let auxKey = auxKey, let primitive = try parentContainer.decodeIfPresent(Self.self, forKey: auxKey) {
-      self.init(value, fhirId: primitive.id, fhirExtension: primitive.fhirExtension)
-    } else if let value = value {
-      self.init(value)
-    } else {
-      throw DecodingError.keyNotFound(key, DecodingError.Context(codingPath: [key], debugDescription: "Must have a value for \"\(key)\" but have none!"))
-    }
-  }
-  
-  /**
-   Encode the primitive to the given parent container. Currently only supports FHIR's JSON representation.
-   Encodes its value to `key` and its `id` and/or `extensions`, if any to `_key` with `auxKey`
-   */
-  public func encode<_Key>(on parentContainer: inout KeyedEncodingContainer<_Key>, forKey key: _Key, auxKey: _Key? = nil) throws {
-    if let value = value {
-      try parentContainer.encodE(value, forKey: key)
-    }
-    
-    if hasPrimitiveData {
-      if let auxKey = auxKey {
-        try parentContainer.encode(self, forKey: auxKey)
-      } else {
-        throw EncodingError.invalidValue(self, EncodingError.Context(codingPath: [key], debugDescription: "Have id or extension but was not provided an encoding key to serialize to"))
-      }
-    }
+    let valueStr = (value == nil) ? "nil value" : "value=\"\(value!)\""
+    let idStr = (fhirId == nil) ? "nil id" : "id=\"\(fhirId!)\""
+    let extStr = (fhirExtension == nil) ? "nil extensions" : "extensions=\"\(fhirExtension!.count)\""
+    return "<\(type(of: self)) \(valueStr), \(idStr), \(extStr)>"
   }
 }
 
@@ -142,14 +89,13 @@ extension AlexandriaHRMPrimitive: Hashable {
       return false
     }
     
-    if leftSide.id != rightSide.id {
+    if leftSide.fhirId != rightSide.fhirId {
       return false
     }
     
     if leftSide.fhirExtension != rightSide.fhirExtension {
       return false
     }
-    
     return true
   }
   
@@ -158,13 +104,68 @@ extension AlexandriaHRMPrimitive: Hashable {
   }
   
   public static func == (leftSide: PrimitiveType, rightSide: AlexandriaHRMPrimitive<PrimitiveType>) -> Bool {
-    return leftSide = rightSide.value
+    return leftSide == rightSide.value
   }
   
   public func hash(into hasher: inout Hasher) {
     hasher.combine(value)
-    hasher.combine(id)
+    hasher.combine(fhirId)
     hasher.combine(fhirExtension)
+  }
+}
+
+// MARK: - Codable
+extension AlexandriaHRMPrimitive: Codable {
+  private enum CodingKeys: String, CodingKey {
+    case fhirId
+    case fhirExtension
+  }
+  
+  /**
+   Decode the primitive from the given container. Right now this is tailored for FHIR's JSON representation and it
+   will look for its value on "key" and id or extensions on "_key".
+   */
+  public init<_Key: CodingKey>(from parentContainer: KeyedDecodingContainer<_Key>, forKey key: _Key, auxKey: _Key? = nil) throws {
+    let value = try parentContainer.decodeIfPresent(PrimitiveType.self, forKey: key)
+    if let auxKey = auxKey, let primitive = try parentContainer.decodeIfPresent(Self.self, forKey: auxKey) {
+      self.init(value, fhirId: primitive.fhirId, fhirExtension: primitive.fhirExtension)
+    } else if let value = value {
+      self.init(value)
+    } else {
+      throw DecodingError.keyNotFound(key, DecodingError.Context(codingPath: [key], debugDescription: "Must have a value for \"\(key)\" but have none"))
+    }
+  }
+  
+  /**
+   Decode the primitive from the given container. Right now this is tailored for FHIR's JSON representation and it
+   will look for its value on "key" and id or extensions on "_key".
+   */
+  public init?<_Key: CodingKey>(from parentContainer: KeyedDecodingContainer<_Key>, forKeyIfPresent key: _Key, auxKey: _Key? = nil) throws {
+    let value = try parentContainer.decodeIfPresent(PrimitiveType.self, forKey: key)
+    if let auxKey = auxKey, let primitive = try parentContainer.decodeIfPresent(Self.self, forKey: auxKey) {
+      self.init(value, fhirId: primitive.fhirId, fhirExtension: primitive.fhirExtension)
+    } else if let value = value {
+      self.init(value)
+    } else {
+      return nil
+    }
+  }
+  
+  /**
+   Encode the primitive to the given parent container. Right now this is tailored for FHIR's JSON representation and
+   will encode its value to "key" and its id and/or extension, if any, to "_key" given with auxiliaryKey.
+   */
+  public func encode<_Key>(on parentContainer: inout KeyedEncodingContainer<_Key>, forKey key: _Key, auxKey: _Key? = nil) throws {
+    if let value = value {
+      try parentContainer.encode(value, forKey: key)
+    }
+    if hasPrimitiveData {
+      if let auxKey = auxKey {
+        try parentContainer.encode(self, forKey: auxKey)
+      } else {
+        throw EncodingError.invalidValue(self, EncodingError.Context(codingPath: [key], debugDescription: "Have id or extension but was not provided an encoding key to serialize to"))
+      }
+    }
   }
 }
 
@@ -181,7 +182,7 @@ extension Array where Element: AlexandriaHRMPrimitiveProtocol {
         for (i, v) in values.enumerated() {
           let p = primitives[safe: i]
           if let v = v {
-            arr.append(v.asPrimitive(with: p??.id, fhirExtension: p??.fhirExtension) as! Element) // swiftlint:disable:this force_cast
+            arr.append(v.asPrimitive(with: p??.fhirId, fhirExtension: p??.fhirExtension) as! Element) // swiftlint:disable:this force_cast
           } else if let pidx = p, let p = pidx {
             arr.append(p)
           }
@@ -207,7 +208,7 @@ extension Array where Element: AlexandriaHRMPrimitiveProtocol {
         for (i, v) in values.enumerated() {
           let p = primitives[safe: i]
           if let v = v {
-            arr.append(v.asPrimitive(with: p??.id, fhirExtension: p??.fhirExtension) as! Element) // swiftlint:disable:this force_cast
+            arr.append(v.asPrimitive(with: p??.fhirId, fhirExtension: p??.fhirExtension) as! Element) // swiftlint:disable:this force_cast
           } else if let pidx = p, let p = pidx {
             arr.append(p)
           }
