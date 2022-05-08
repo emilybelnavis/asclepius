@@ -1,7 +1,7 @@
 //
-//  AbstractResource.swift
+//  AlexandriaHRMAbstractResource.swift
 //  AlexandriaHRM
-//  Module: R4
+//  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
 //
