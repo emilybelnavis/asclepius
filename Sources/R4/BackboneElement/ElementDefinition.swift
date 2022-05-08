@@ -34,7 +34,7 @@ open class ElementDefinition: BackboneElement {
     case boolean(AlexandriaHRMPrimitive<AlexandriaHRMBool>)
     case canonical(AlexandriaHRMPrimitive<Canonical>)
     case code(AlexandriaHRMPrimitive<AlexandriaHRMString>)
-    case codableConcept(CodableConcept)
+    case codeableConcept(CodeableConcept)
     case coding(Coding)
     case contactDetail(ContactDetail)
     case contactPoint(ContactPoint)

@@ -23,12 +23,12 @@ import AlexandriaHRMCore
  */
 open class DeviceProperty: BackboneElement {
   /// Code that specifies the property `DeviceDefinitionPropertyCode` (Extensible)
-  public var type: CodableConcept
+  public var type: CodeableConcept
   
   /// Property value as a quantity
   public var valueQuantity: [Quantity]?
   
   /// Property value as a code (e.g. NTP4 (synced to NTP))
-  public var valueCode: [CodableConcept]?
+  public var valueCode: [CodeableConcept]?
   
 }

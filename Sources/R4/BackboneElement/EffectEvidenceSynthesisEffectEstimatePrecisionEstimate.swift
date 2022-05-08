@@ -23,7 +23,7 @@ import AlexandriaHRMCore
  */
 open class EffectEvidenceSynthesisEffectEstimatePrecisionEstimate: BackboneElement { // swiftlint:disable:this type_name
   /// Type of precision estimate
-  public var type: CodableConcept?
+  public var type: CodeableConcept?
   
   /// Level of confidence interval
   public var level: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>?

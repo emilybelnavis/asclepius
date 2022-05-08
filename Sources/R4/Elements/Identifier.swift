@@ -29,7 +29,7 @@ open class Identifier: Element {
   public var use: AlexandriaHRMPrimitive<IdentifierUse>?
   
   /// Description of identifier
-  public var type: CodableConcept?
+  public var type: CodeableConcept?
   
   /// The namespace for the identifier value
   public var system: AlexandriaHRMPrimitive<AlexandriaHRMURI>?
@@ -51,7 +51,7 @@ open class Identifier: Element {
     fhirExtension: [Extension]? = nil,
     fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     use: AlexandriaHRMPrimitive<IdentifierUse>? = nil,
-    type: CodableConcept? = nil,
+    type: CodeableConcept? = nil,
     system: AlexandriaHRMPrimitive<AlexandriaHRMURI>? = nil,
     value: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     period: Period? = nil,
@@ -82,7 +82,7 @@ open class Identifier: Element {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     self.use = try AlexandriaHRMPrimitive<IdentifierUse>(from: codingKeyContainer, forKeyIfPresent: .use, auxKey: ._use)
-    self.type = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .type)
+    self.type = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .type)
     self.system = try AlexandriaHRMPrimitive<AlexandriaHRMURI>(from: codingKeyContainer, forKeyIfPresent: .system, auxKey: ._system)
     self.value = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .value, auxKey: ._value)
     self.period = try Period(from: codingKeyContainer, forKeyIfPresent: .period)

@@ -24,7 +24,7 @@ import AlexandriaHRMCore
  */
 open class ConditionStage: BackboneElement {
   /// Simple summary (disease specific)
-  public var summary: CodableConcept?
+  public var summary: CodeableConcept?
   
   /// Formal record of assessment
   public var assessment: [Reference]?
@@ -37,7 +37,7 @@ open class ConditionStage: BackboneElement {
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    summary: CodableConcept? = nil,
+    summary: CodeableConcept? = nil,
     assessment: [Reference]? = nil
   ) {
     self.init()
@@ -57,7 +57,7 @@ open class ConditionStage: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.summary = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .summary)
+    self.summary = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .summary)
     self.assessment = try [Reference](from: codingKeyContainer, forKeyIfPresent: .assessment)
     
     try super.init(from: decoder)

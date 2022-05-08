@@ -24,10 +24,10 @@ import AlexandriaHRMCore
  */
 open class ClaimResponseAddItemDetail: BackboneElement {
   /// Billing, service, product, or drug code
-  public var productOrService: CodableConcept
+  public var productOrService: CodeableConcept
   
   /// Service/product billing modifiers
-  public var modifier: [CodableConcept]?
+  public var modifier: [CodeableConcept]?
   
   /// Count of product or services
   public var quantity: Quantity?
@@ -50,7 +50,7 @@ open class ClaimResponseAddItemDetail: BackboneElement {
   /// Insurer added line items
   public var subDetail: [ClaimResponseItemDetailSubDetail]?
   
-  public init(productOrService: CodableConcept, adjudication: [ClaimResponseItemAdjudication]) {
+  public init(productOrService: CodeableConcept, adjudication: [ClaimResponseItemAdjudication]) {
     self.productOrService = productOrService
     self.adjudication = adjudication
     super.init()
@@ -60,8 +60,8 @@ open class ClaimResponseAddItemDetail: BackboneElement {
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    productOrService: CodableConcept,
-    modifier: [CodableConcept]? = nil,
+    productOrService: CodeableConcept,
+    modifier: [CodeableConcept]? = nil,
     quantity: Quantity? = nil,
     unitPrice: Money? = nil,
     factor: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>? = nil,
@@ -100,8 +100,8 @@ open class ClaimResponseAddItemDetail: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.productOrService = try CodableConcept(from: codingKeyContainer, forKey: .productOrService)
-    self.modifier = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .modifier)
+    self.productOrService = try CodeableConcept(from: codingKeyContainer, forKey: .productOrService)
+    self.modifier = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .modifier)
     self.quantity = try Quantity(from: codingKeyContainer, forKeyIfPresent: .quantity)
     self.unitPrice = try Money(from: codingKeyContainer, forKeyIfPresent: .unitPrice)
     self.factor = try AlexandriaHRMPrimitive<AlexandriaHRMDecimal>(from: codingKeyContainer, forKeyIfPresent: .factor, auxKey: ._factor)

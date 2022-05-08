@@ -25,7 +25,7 @@ open class CapabilityStatementRestSecurity: BackboneElement {
   public var cors: AlexandriaHRMPrimitive<AlexandriaHRMBool>?
   
   /// OAuth | SMART-on-FHIR | NTLM | Basic | Kerberos | Certificates
-  public var service: [CodableConcept]?
+  public var service: [CodeableConcept]?
   
   /// General description of how security works
   public var fhirDescription: AlexandriaHRMPrimitive<AlexandriaHRMString>?
@@ -39,7 +39,7 @@ open class CapabilityStatementRestSecurity: BackboneElement {
     modifierExtension: [Extension]? = nil,
     fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     cors: AlexandriaHRMPrimitive<AlexandriaHRMBool>? = nil,
-    service: [CodableConcept]? = nil,
+    service: [CodeableConcept]? = nil,
     fhirDescription: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil
   ) {
     self.init()
@@ -62,7 +62,7 @@ open class CapabilityStatementRestSecurity: BackboneElement {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     self.cors = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKeyIfPresent: .cors, auxKey: ._cors)
-    self.service = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .service)
+    self.service = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .service)
     self.fhirDescription = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .fhirDescription, auxKey: ._fhirDescription)
     
     try super.init(from: decoder)

@@ -22,7 +22,7 @@ import AlexandriaHRMCore
 /// Information on the possible cause of the adverse event
 open class AdverseEventSuspectEntityCausality: BackboneElement {
   /// Assessment of if the entity caused the event
-  public var assessment: CodableConcept?
+  public var assessment: CodeableConcept?
   
   /// AdverseEvent.suspectEntity.causalityProductRelatedness
   public var productRelatedness: AlexandriaHRMPrimitive<AlexandriaHRMString>?
@@ -31,7 +31,7 @@ open class AdverseEventSuspectEntityCausality: BackboneElement {
   public var author: Reference?
   
   /// ProbabilityScale | Bayesian | Checklist
-  public var method: CodableConcept?
+  public var method: CodeableConcept?
   
   override public init() {
     super.init()
@@ -40,10 +40,10 @@ open class AdverseEventSuspectEntityCausality: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    assessment: CodableConcept? = nil,
+    assessment: CodeableConcept? = nil,
     productRelatedness: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     author: Reference? = nil,
-    method: CodableConcept? = nil
+    method: CodeableConcept? = nil
   ) {
     self.init()
     self.fhirExtension = fhirExtension
@@ -65,10 +65,10 @@ open class AdverseEventSuspectEntityCausality: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.assessment = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .assessment)
+    self.assessment = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .assessment)
     self.productRelatedness = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .productRelatedness, auxKey: ._productRelatedness)
     self.author = try Reference(from: codingKeyContainer, forKeyIfPresent: .author)
-    self.method = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .method)
+    self.method = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .method)
     
     try super.init(from: decoder)
   }

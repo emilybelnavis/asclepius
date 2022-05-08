@@ -33,7 +33,7 @@ open class ClaimResponseProcessNote: BackboneElement {
   public var text: AlexandriaHRMPrimitive<AlexandriaHRMString>
   
   /// Language of the text
-  public var language: CodableConcept?
+  public var language: CodeableConcept?
   
   public init(text: AlexandriaHRMPrimitive<AlexandriaHRMString>) {
     self.text = text
@@ -47,7 +47,7 @@ open class ClaimResponseProcessNote: BackboneElement {
     number: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>? = nil,
     type: AlexandriaHRMPrimitive<NoteType>? = nil,
     text: AlexandriaHRMPrimitive<AlexandriaHRMString>,
-    language: CodableConcept? = nil
+    language: CodeableConcept? = nil
   ) {
     self.init(text: text)
     self.fhirExtension = fhirExtension
@@ -72,7 +72,7 @@ open class ClaimResponseProcessNote: BackboneElement {
     self.number = try AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>(from: codingKeyContainer, forKey: .number, auxKey: ._number)
     self.type = try AlexandriaHRMPrimitive<NoteType>(from: codingKeyContainer, forKeyIfPresent: .type, auxKey: ._type)
     self.text = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .text, auxKey: ._text)
-    self.language = try CodableConcept(from: codingKeyContainer, forKey: .language)
+    self.language = try CodeableConcept(from: codingKeyContainer, forKey: .language)
     
     try super.init(from: decoder)
   }

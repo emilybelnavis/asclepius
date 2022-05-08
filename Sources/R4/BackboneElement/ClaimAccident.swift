@@ -32,7 +32,7 @@ open class ClaimAccident: BackboneElement {
   public var date: AlexandriaHRMPrimitive<AlexandriaHRMDate>
   
   /// The nature of the accident
-  public var type: CodableConcept?
+  public var type: CodeableConcept?
   
   /// Where the accident occured
   public var locationX: LocationX?
@@ -47,7 +47,7 @@ open class ClaimAccident: BackboneElement {
     modifierExtension: [Extension]? = nil,
     fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     date: AlexandriaHRMPrimitive<AlexandriaHRMDate>,
-    type: CodableConcept? = nil,
+    type: CodeableConcept? = nil,
     locationX: LocationX? = nil
   ) {
     self.init(date: date)
@@ -85,7 +85,7 @@ open class ClaimAccident: BackboneElement {
     }
     
     self.date = try AlexandriaHRMPrimitive<AlexandriaHRMDate>(from: codingKeyContainer, forKey: .date, auxKey: ._date)
-    self.type = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .type)
+    self.type = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .type)
     self.locationX = tempLocationX
     
     try super.init(from: decoder)

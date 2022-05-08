@@ -24,7 +24,7 @@ import AlexandriaHRMCore
  */
 open class ClaimProcedure: BackboneElement {
   public enum ProcedureX: Hashable {
-    case codableConcept(CodableConcept)
+    case codeableConcept(CodeableConcept)
     case reference(Reference)
   }
   
@@ -32,7 +32,7 @@ open class ClaimProcedure: BackboneElement {
   public var sequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>
   
   /// Category of procedure
-  public var type: [CodableConcept]?
+  public var type: [CodeableConcept]?
   
   /// When the procedure was perfomed
   public var date: AlexandriaHRMPrimitive<AlexandriaHRMDateTime>
@@ -55,7 +55,7 @@ open class ClaimProcedure: BackboneElement {
     modifierExtension: [Extension]? = nil,
     fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     sequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>,
-    type: [CodableConcept]? = nil,
+    type: [CodeableConcept]? = nil,
     date: AlexandriaHRMPrimitive<AlexandriaHRMDateTime>,
     procedureX: ProcedureX,
     udi: [Reference]? = nil
@@ -73,7 +73,7 @@ open class ClaimProcedure: BackboneElement {
     case sequence; case _sequence
     case type
     case date; case _date
-    case procedureCodableConcept
+    case procedureCodeableConcept
     case procedureReference
     case udi
   }
@@ -82,11 +82,11 @@ open class ClaimProcedure: BackboneElement {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     var tempProcedureX: ProcedureX?
-    if let procedureCodableConcept = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .procedureCodableConcept) {
+    if let procedureCodeableConcept = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .procedureCodeableConcept) {
       if tempProcedureX != nil {
-        throw DecodingError.dataCorruptedError(forKey: .procedureCodableConcept, in: codingKeyContainer, debugDescription: "More than one value provided for \"procedure\"")
+        throw DecodingError.dataCorruptedError(forKey: .procedureCodeableConcept, in: codingKeyContainer, debugDescription: "More than one value provided for \"procedure\"")
       }
-      tempProcedureX = .codableConcept(procedureCodableConcept)
+      tempProcedureX = .codeableConcept(procedureCodeableConcept)
     }
     
     if let procedureReference = try Reference(from: codingKeyContainer, forKeyIfPresent: .procedureReference) {
@@ -97,7 +97,7 @@ open class ClaimProcedure: BackboneElement {
     }
     
     self.sequence = try AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>(from: codingKeyContainer, forKey: .sequence, auxKey: ._sequence)
-    self.type = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .type)
+    self.type = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .type)
     self.date = try AlexandriaHRMPrimitive<AlexandriaHRMDateTime>(from: codingKeyContainer, forKey: .date, auxKey: ._date)
     self.procedureX = tempProcedureX!
     self.udi = try [Reference](from: codingKeyContainer, forKeyIfPresent: .udi)
@@ -109,8 +109,8 @@ open class ClaimProcedure: BackboneElement {
     var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
     switch procedureX {
-    case .codableConcept(let _value):
-      try _value.encode(on: &codingKeyContainer, forKey: .procedureCodableConcept)
+    case .codeableConcept(let _value):
+      try _value.encode(on: &codingKeyContainer, forKey: .procedureCodeableConcept)
     case .reference(let _value):
       try _value.encode(on: &codingKeyContainer, forKey: .procedureReference)
     }

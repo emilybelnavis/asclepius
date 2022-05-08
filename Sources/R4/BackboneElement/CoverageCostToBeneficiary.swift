@@ -30,7 +30,7 @@ open class CoverageCostToBeneficiary: BackboneElement {
   }
   
   /// Cost category
-  public var type: CodableConcept?
+  public var type: CodeableConcept?
   
   /// The amount or percentage due from the beneficiary
   public var value: ValueX
@@ -47,7 +47,7 @@ open class CoverageCostToBeneficiary: BackboneElement {
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    type: CodableConcept? = nil,
+    type: CodeableConcept? = nil,
     value: ValueX,
     exception: [CoverageCostToBeneficiaryException]? = nil
   ) {
@@ -85,7 +85,7 @@ open class CoverageCostToBeneficiary: BackboneElement {
       tempValue = .quantity(valueQuantity)
     }
     
-    self.type = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .type)
+    self.type = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .type)
     self.value = tempValue!
     self.exception = try [CoverageCostToBeneficiaryException](from: codingKeyContainer, forKeyIfPresent: .exception)
     

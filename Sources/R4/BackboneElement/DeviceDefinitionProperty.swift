@@ -24,15 +24,15 @@ import AlexandriaHRMCore
  */
 open class DeviceDefinitionProperty: BackboneElement {
   /// Code that specifies the property `DeviceDefinitionPropertyCode` (extensible
-  public var type: CodableConcept
+  public var type: CodeableConcept
   
   /// Property value as a quantity
   public var valueQuantity: [Quantity]?
   
   /// Property value as a code (e.g. NTP4 (synced to NTP))
-  public var valueCode: [CodableConcept]?
+  public var valueCode: [CodeableConcept]?
   
-  public init(type: CodableConcept) {
+  public init(type: CodeableConcept) {
     self.type = type
     super.init()
   }
@@ -41,9 +41,9 @@ open class DeviceDefinitionProperty: BackboneElement {
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    type: CodableConcept,
+    type: CodeableConcept,
     valueQuantity: [Quantity]? = nil,
-    valueCode: [CodableConcept]? = nil
+    valueCode: [CodeableConcept]? = nil
   ) {
     self.init(type: type)
     self.fhirExtension = fhirExtension
@@ -63,9 +63,9 @@ open class DeviceDefinitionProperty: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.type = try CodableConcept(from: codingKeyContainer, forKey: .type)
+    self.type = try CodeableConcept(from: codingKeyContainer, forKey: .type)
     self.valueQuantity = try [Quantity](from: codingKeyContainer, forKeyIfPresent: .valueQuantity)
-    self.valueCode = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .valueCode)
+    self.valueCode = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .valueCode)
     
     try super.init(from: decoder)
   }

@@ -25,7 +25,7 @@ open class ContractTermAssetContext: BackboneElement {
   public var reference: Reference?
   
   /// Codable asset context
-  public var code: [CodableConcept]?
+  public var code: [CodeableConcept]?
   
   /// Context description
   public var text: AlexandriaHRMPrimitive<AlexandriaHRMString>?
@@ -40,7 +40,7 @@ open class ContractTermAssetContext: BackboneElement {
     modifierExtension: [Extension]? = nil,
     fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     reference: Reference? = nil,
-    code: [CodableConcept]? = nil,
+    code: [CodeableConcept]? = nil,
     text: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil
   ) {
     self.init()
@@ -63,7 +63,7 @@ open class ContractTermAssetContext: BackboneElement {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     self.reference = try Reference(from: codingKeyContainer, forKeyIfPresent: .reference)
-    self.code = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .code)
+    self.code = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .code)
     self.text = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .text, auxKey: ._text)
     
     try super.init(from: decoder)

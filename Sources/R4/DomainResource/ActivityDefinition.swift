@@ -31,12 +31,12 @@ open class ActivityDefinition: DomainResource {
   }
   
   public enum ProductX: Hashable {
-    case codableConcept(CodableConcept)
+    case codeableConcept(CodeableConcept)
     case reference(Reference)
   }
   
   public enum SubjectX: Hashable {
-    case codableConcept(CodableConcept)
+    case codeableConcept(CodeableConcept)
     case reference(Reference)
   }
   
@@ -92,7 +92,7 @@ open class ActivityDefinition: DomainResource {
   public var useContext: [UsageContext]?
   
   /// intended jurisdiction for activity definition
-  public var jurisdiction: [CodableConcept]?
+  public var jurisdiction: [CodeableConcept]?
   
   /// why this activity definition is defined
   public var purpose: AlexandriaHRMPrimitive<AlexandriaHRMString>?
@@ -113,7 +113,7 @@ open class ActivityDefinition: DomainResource {
   public var effectivePeriod: Period?
   
   /// activity definition topic
-  public var topic: [CodableConcept]?
+  public var topic: [CodeableConcept]?
   
   /// who authored the activity definition
   public var author: [ContactDetail]?
@@ -140,7 +140,7 @@ open class ActivityDefinition: DomainResource {
   public var profile: AlexandriaHRMPrimitive<Canonical>?
   
   /// detail type of activity
-  public var code: CodableConcept?
+  public var code: CodeableConcept?
   
   /// indicates the level of authorirty/intentionality assocated with the activity and where the request
   /// should fit into the workflow chain
@@ -171,7 +171,7 @@ open class ActivityDefinition: DomainResource {
   public var dosage: [Dosage]?
   
   /// which part of the body to perform activity on
-  public var bodySite: [CodableConcept]?
+  public var bodySite: [CodeableConcept]?
   
   /// what specimens are required to perform this action
   public var specimenRequirement: [Reference]?
@@ -199,8 +199,8 @@ open class ActivityDefinition: DomainResource {
     fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     approvalDate: AlexandriaHRMPrimitive<AlexandriaHRMDate>? = nil,
     author: [ContactDetail]? = nil,
-    bodySite: [CodableConcept]? = nil,
-    code: CodableConcept? = nil,
+    bodySite: [CodeableConcept]? = nil,
+    code: CodeableConcept? = nil,
     contact: [ContactDetail]? = nil,
     contained: [ResourceProxy]? = nil,
     copyright: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
@@ -216,7 +216,7 @@ open class ActivityDefinition: DomainResource {
     identifier: [Identifier]? = nil,
     implicitRules: AlexandriaHRMPrimitive<AlexandriaHRMURI>? = nil,
     intent: AlexandriaHRMPrimitive<RequestIntent>? = nil,
-    jurisdiction: [CodableConcept]? = nil,
+    jurisdiction: [CodeableConcept]? = nil,
     kind: AlexandriaHRMPrimitive<RequestResourceType>? = nil,
     language: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     lastReviewDate: AlexandriaHRMPrimitive<AlexandriaHRMDate>? = nil,
@@ -242,7 +242,7 @@ open class ActivityDefinition: DomainResource {
     text: Narrative? = nil,
     timingX: TimingX? = nil,
     title: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    topic: [CodableConcept]? = nil,
+    topic: [CodeableConcept]? = nil,
     transform: AlexandriaHRMPrimitive<Canonical>? = nil,
     url: AlexandriaHRMPrimitive<AlexandriaHRMURI>? = nil,
     usage: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
@@ -268,7 +268,7 @@ open class ActivityDefinition: DomainResource {
     self.effectivePeriod = effectivePeriod
     self.endorser = endorser
     self.experimental = experimental
-    self.fhirIdentifier = fhirIdentifier
+    self.identifier = identifier
     self.implicitRules = implicitRules
     self.intent = intent
     self.jurisdiction = jurisdiction
@@ -332,7 +332,7 @@ open class ActivityDefinition: DomainResource {
     case observationResultRequirement
     case participant
     case priority; case _priority
-    case productCodableConcept
+    case productCodeableConcept
     case productReference
     case profile; case _profile
     case publisher; case _publisher
@@ -342,7 +342,7 @@ open class ActivityDefinition: DomainResource {
     case reviewer
     case specimenRequirement
     case status; case _status
-    case subjectCodableConcept
+    case subjectCodeableConcept
     case subjectReference
     case subtitle; case _subtitle
     case timingAge
@@ -366,11 +366,11 @@ open class ActivityDefinition: DomainResource {
     
     // product
     var tempProductX: ProductX?
-    if let productCodableConcept = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .productCodableConcept) {
+    if let productCodeableConcept = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .productCodeableConcept) {
       if tempProductX != nil {
-        throw DecodingError.dataCorruptedError(forKey: .productCodableConcept, in: codingKeyContainer, debugDescription: "More than one value provided for \"product\"")
+        throw DecodingError.dataCorruptedError(forKey: .productCodeableConcept, in: codingKeyContainer, debugDescription: "More than one value provided for \"product\"")
       }
-      tempProductX = .codableConcept(productCodableConcept)
+      tempProductX = .codeableConcept(productCodeableConcept)
     }
     if let productReference = try Reference(from: codingKeyContainer, forKeyIfPresent: .productReference) {
       if tempProductX != nil {
@@ -381,11 +381,11 @@ open class ActivityDefinition: DomainResource {
     
     // subject
     var tempSubjectX: SubjectX?
-    if let subjectCodableConcept = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .subjectCodableConcept) {
+    if let subjectCodeableConcept = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .subjectCodeableConcept) {
       if tempSubjectX != nil {
-        throw DecodingError.dataCorruptedError(forKey: .subjectCodableConcept, in: codingKeyContainer, debugDescription: "More than one value provided for \"subject\"")
+        throw DecodingError.dataCorruptedError(forKey: .subjectCodeableConcept, in: codingKeyContainer, debugDescription: "More than one value provided for \"subject\"")
       }
-      tempSubjectX = .codableConcept(subjectCodableConcept)
+      tempSubjectX = .codeableConcept(subjectCodeableConcept)
     }
     
     if let subjectReference = try Reference(from: codingKeyContainer, forKeyIfPresent: .subjectReference) {
@@ -433,8 +433,8 @@ open class ActivityDefinition: DomainResource {
     
     self.approvalDate = try AlexandriaHRMPrimitive<AlexandriaHRMDate>(from: codingKeyContainer, forKeyIfPresent: .approvalDate, auxKey: ._approvalDate)
     self.author = try [ContactDetail](from: codingKeyContainer, forKeyIfPresent: .author)
-    self.bodySite = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .bodySite)
-    self.code = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .code)
+    self.bodySite = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .bodySite)
+    self.code = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .code)
     self.contact = try [ContactDetail](from: codingKeyContainer, forKeyIfPresent: .contact)
     self.copyright = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .copyright, auxKey: ._copyright)
     self.date = try AlexandriaHRMPrimitive<AlexandriaHRMDateTime>(from: codingKeyContainer, forKeyIfPresent: .date, auxKey: ._date)
@@ -446,9 +446,9 @@ open class ActivityDefinition: DomainResource {
     self.endorser = try [ContactDetail](from: codingKeyContainer, forKeyIfPresent: .endorser)
     self.experimental = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKeyIfPresent: .experimental, auxKey: ._experimental)
     self.fhirDescription = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .fhirDescription, auxKey: ._fhirDescription)
-    self.fhirIdentifier = try [Identifier](from: codingKeyContainer, forKeyIfPresent: .identifier)
+    self.identifier = try [Identifier](from: codingKeyContainer, forKeyIfPresent: .identifier)
     self.intent = try AlexandriaHRMPrimitive<RequestIntent>(from: codingKeyContainer, forKeyIfPresent: .intent, auxKey: ._intent)
-    self.jurisdiction = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .jurisdiction)
+    self.jurisdiction = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .jurisdiction)
     self.kind = try AlexandriaHRMPrimitive<RequestResourceType>(from: codingKeyContainer, forKeyIfPresent: .kind, auxKey: ._kind)
     self.lastReviewDate = try AlexandriaHRMPrimitive<AlexandriaHRMDate>(from: codingKeyContainer, forKeyIfPresent: .lastReviewDate, auxKey: ._lastReviewDate)
     self.library = try [AlexandriaHRMPrimitive<Canonical>](from: codingKeyContainer, forKeyIfPresent: .library, auxKey: ._library)
@@ -470,7 +470,7 @@ open class ActivityDefinition: DomainResource {
     self.subjectX = tempSubjectX
     self.timingX = tempTimingX
     self.title = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .title, auxKey: ._title)
-    self.topic = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .topic)
+    self.topic = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .topic)
     self.transform = try AlexandriaHRMPrimitive<Canonical>(from: codingKeyContainer, forKeyIfPresent: .transform, auxKey: ._transform)
     self.url = try AlexandriaHRMPrimitive<AlexandriaHRMURI>(from: codingKeyContainer, forKeyIfPresent: .url, auxKey: ._url)
     self.usage = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .usage, auxKey: ._usage)
@@ -484,8 +484,8 @@ open class ActivityDefinition: DomainResource {
     
     if let enumProduct = productX {
       switch enumProduct {
-      case .codableConcept(let _value):
-        try _value.encode(on: &codingKeyContainer, forKey: .productCodableConcept)
+      case .codeableConcept(let _value):
+        try _value.encode(on: &codingKeyContainer, forKey: .productCodeableConcept)
       case .reference(let _value):
         try _value.encode(on: &codingKeyContainer, forKey: .productReference)
       }
@@ -493,8 +493,8 @@ open class ActivityDefinition: DomainResource {
     
     if let enumSubject = subjectX {
       switch enumSubject {
-      case .codableConcept(let _value):
-        try _value.encode(on: &codingKeyContainer, forKey: .subjectCodableConcept)
+      case .codeableConcept(let _value):
+        try _value.encode(on: &codingKeyContainer, forKey: .subjectCodeableConcept)
       case .reference(let _value):
         try _value.encode(on: &codingKeyContainer, forKey: .subjectReference)
       }

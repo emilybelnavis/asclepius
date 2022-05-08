@@ -24,12 +24,12 @@ import AlexandriaHRMCore
  */
 open class DeviceDefinitionCapability: BackboneElement {
   /// Type of capability
-  public var type: CodableConcept
+  public var type: CodeableConcept
   
   /// Description of the capability
-  public var fhirDescription: [CodableConcept]?
+  public var fhirDescription: [CodeableConcept]?
   
-  public init(type: CodableConcept) {
+  public init(type: CodeableConcept) {
     self.type = type
     super.init()
   }
@@ -38,8 +38,8 @@ open class DeviceDefinitionCapability: BackboneElement {
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    type: CodableConcept,
-    fhirDescription: [CodableConcept]? = nil
+    type: CodeableConcept,
+    fhirDescription: [CodeableConcept]? = nil
   ) {
     self.init(type: type)
     self.fhirExtension = fhirExtension
@@ -57,8 +57,8 @@ open class DeviceDefinitionCapability: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.type = try CodableConcept(from: codingKeyContainer, forKey: .type)
-    self.fhirDescription = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .fhirDescription)
+    self.type = try CodeableConcept(from: codingKeyContainer, forKey: .type)
+    self.fhirDescription = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .fhirDescription)
     
     try super.init(from: decoder)
   }

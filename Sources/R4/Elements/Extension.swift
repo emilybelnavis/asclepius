@@ -38,7 +38,7 @@ open class Extension: Element {
     case boolean(AlexandriaHRMPrimitive<AlexandriaHRMBool>)
     case canonical(AlexandriaHRMPrimitive<Canonical>)
     case code(AlexandriaHRMPrimitive<AlexandriaHRMString>)
-    case codableConcept(CodableConcept)
+    case codeableConcept(CodeableConcept)
     case coding(Coding)
     case contactDetail(ContactDetail)
     case contactPoint(ContactPoint)
@@ -116,7 +116,7 @@ open class Extension: Element {
     case valueBoolean; case _valueBoolean
     case valueCanonical; case _valueCanonical
     case valueCode; case _valueCode
-    case valueCodableConcept
+    case valueCodeableConcept
     case valueCoding
     case valueContactDetail
     case valueContactPoint
@@ -234,12 +234,12 @@ open class Extension: Element {
       tempValueX = .code(valueCode)
     }
     
-    // CodableConcept
-    if let valueCodableConcept = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .valueCodableConcept) {
+    // CodeableConcept
+    if let valueCodeableConcept = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .valueCodeableConcept) {
       if tempValueX != nil {
-        throw DecodingError.dataCorruptedError(forKey: .valueCodableConcept, in: codingKeyContainer, debugDescription: debugDescription)
+        throw DecodingError.dataCorruptedError(forKey: .valueCodeableConcept, in: codingKeyContainer, debugDescription: debugDescription)
       }
-      tempValueX = .codableConcept(valueCodableConcept)
+      tempValueX = .codeableConcept(valueCodeableConcept)
     }
     
     // Coding
@@ -573,8 +573,8 @@ open class Extension: Element {
         try _value.encode(on: &codingKeyContainer, forKey: .valueCanonical, auxKey: ._valueCanonical)
       case .code(let _value):
         try _value.encode(on: &codingKeyContainer, forKey: .valueCode, auxKey: ._valueCode)
-      case .codableConcept(let _value):
-        try _value.encode(on: &codingKeyContainer, forKey: .valueCodableConcept)
+      case .codeableConcept(let _value):
+        try _value.encode(on: &codingKeyContainer, forKey: .valueCodeableConcept)
       case .coding(let _value):
         try _value.encode(on: &codingKeyContainer, forKey: .valueCoding)
       case .contactDetail(let _value):

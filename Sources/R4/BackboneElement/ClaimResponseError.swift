@@ -33,9 +33,9 @@ open class ClaimResponseError: BackboneElement {
   public var subDetailSequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>?
   
   /// Error code detailing processing issues
-  public var code: CodableConcept
+  public var code: CodeableConcept
   
-  public init(code: CodableConcept) {
+  public init(code: CodeableConcept) {
     self.code = code
     super.init()
   }
@@ -47,7 +47,7 @@ open class ClaimResponseError: BackboneElement {
     itemSequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>? = nil,
     detailSequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>? = nil,
     subDetailSequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>? = nil,
-    code: CodableConcept
+    code: CodeableConcept
   ) {
     self.init(code: code)
     self.fhirExtension = fhirExtension
@@ -72,7 +72,7 @@ open class ClaimResponseError: BackboneElement {
     self.itemSequence = try AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>(from: codingKeyContainer, forKeyIfPresent: .itemSequence, auxKey: .itemSequence)
     self.detailSequence = try AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>(from: codingKeyContainer, forKeyIfPresent: .detailSequence, auxKey: ._detailSequence)
     self.subDetailSequence = try AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>(from: codingKeyContainer, forKeyIfPresent: .subDetailSequence, auxKey: ._subDetailSequence)
-    self.code = try CodableConcept(from: codingKeyContainer, forKey: .code)
+    self.code = try CodeableConcept(from: codingKeyContainer, forKey: .code)
     
     try super.init(from: decoder)
   }

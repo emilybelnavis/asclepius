@@ -36,7 +36,7 @@ open class ConsentProvision: BackboneElement {
   public var actor: [ConsentProvisionActor]?
   
   /// Actions controlled by this rule
-  public var action: [CodableConcept]?
+  public var action: [CodeableConcept]?
   
   /// Security lables that define affected resources
   public var securityLabel: [Coding]?
@@ -48,7 +48,7 @@ open class ConsentProvision: BackboneElement {
   public var provisionClass: [Coding]?
   
   /// e.g. `LOINC` or `SNOMED CT` code, etc, in the content
-  public var code: [CodableConcept]?
+  public var code: [CodeableConcept]?
   
   /// Timeframe for data controlled by this rule
   public var dataPeriod: Period?
@@ -74,7 +74,7 @@ open class ConsentProvision: BackboneElement {
     securityLabel: [Coding]? = nil,
     purpose: [Coding]? = nil,
     provisionClass: [Coding]? = nil,
-    code: [CodableConcept]? = nil,
+    code: [CodeableConcept]? = nil,
     dataPeriod: Period? = nil,
     data: [ConsentProvisionData]? = nil,
     provision: [ConsentProvision]? = nil
@@ -117,7 +117,7 @@ open class ConsentProvision: BackboneElement {
     self.securityLabel = try [Coding](from: codingKeyContainer, forKeyIfPresent: .securityLabel)
     self.purpose = try [Coding](from: codingKeyContainer, forKeyIfPresent: .purpose)
     self.provisionClass = try [Coding](from: codingKeyContainer, forKeyIfPresent: .provisionClass)
-    self.code = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .code)
+    self.code = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .code)
     self.dataPeriod = try Period(from: codingKeyContainer, forKeyIfPresent: .dataPeriod)
     self.data = try [ConsentProvisionData](from: codingKeyContainer, forKeyIfPresent: .data)
     self.provision = try [ConsentProvision](from: codingKeyContainer, forKeyIfPresent: .provision)

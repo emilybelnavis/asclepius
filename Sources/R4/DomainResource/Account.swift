@@ -32,7 +32,7 @@ open class Account: DomainResource {
   
   public var identifier: [Identifier]?
   public var status: AlexandriaHRMPrimitive<AccountStatus>
-  public var type: CodableConcept?
+  public var type: CodeableConcept?
   public var name: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   public var subject: [Reference]?
   public var servicePeriod: Period?
@@ -53,7 +53,7 @@ open class Account: DomainResource {
     fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     identifier: [Identifier]? = nil,
     status: AlexandriaHRMPrimitive<AccountStatus>,
-    type: CodableConcept? = nil,
+    type: CodeableConcept? = nil,
     name: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     subject: [Reference]? = nil,
     servicePeriod: Period? = nil,
@@ -71,7 +71,7 @@ open class Account: DomainResource {
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
     self.fhirId = fhirId
-    self.fhirIdentifier = fhirIdentifier
+    self.identifier = identifier
     self.type = type
     self.name = name
     self.subject = subject
@@ -105,9 +105,9 @@ open class Account: DomainResource {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.fhirIdentifier = try [Identifier](from: codingKeyContainer, forKeyIfPresent: .identifier)
+    self.identifier = try [Identifier](from: codingKeyContainer, forKeyIfPresent: .identifier)
     self.status = try AlexandriaHRMPrimitive<AccountStatus>(from: codingKeyContainer, forKey: .status, auxKey: ._status)
-    self.type = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .type)
+    self.type = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .type)
     self.name = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .name, auxKey: ._name)
     self.subject = try [Reference](from: codingKeyContainer, forKeyIfPresent: .subject)
     self.servicePeriod = try Period(from: codingKeyContainer, forKeyIfPresent: .servicePeriod)

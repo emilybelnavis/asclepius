@@ -41,10 +41,10 @@ open class ClaimSupportingInfo: BackboneElement {
   public var sequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>
   
   /// Classification of the supplied information
-  public var category: CodableConcept
+  public var category: CodeableConcept
   
   /// Type of information
-  public var code: CodableConcept?
+  public var code: CodeableConcept?
   
   /// When it occured
   public var timingX: TimingX?
@@ -53,9 +53,9 @@ open class ClaimSupportingInfo: BackboneElement {
   public var valueX: ValueX
   
   /// Explaination for the information
-  public var reason: CodableConcept?
+  public var reason: CodeableConcept?
   
-  public init(sequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>, category: CodableConcept, valueX: ValueX) {
+  public init(sequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>, category: CodeableConcept, valueX: ValueX) {
     self.sequence = sequence
     self.category = category
     self.valueX = valueX
@@ -67,11 +67,11 @@ open class ClaimSupportingInfo: BackboneElement {
     modifierExtension: [Extension]? = nil,
     fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     sequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>,
-    category: CodableConcept,
-    code: CodableConcept? = nil,
+    category: CodeableConcept,
+    code: CodeableConcept? = nil,
     timingX: TimingX,
     valueX: ValueX,
-    reason: CodableConcept? = nil
+    reason: CodeableConcept? = nil
   ) {
     self.init(sequence: sequence, category: category, valueX: valueX)
     self.fhirExtension = fhirExtension
@@ -153,11 +153,11 @@ open class ClaimSupportingInfo: BackboneElement {
     }
     
     self.sequence = try AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>(from: codingKeyContainer, forKey: .sequence, auxKey: ._sequence)
-    self.category = try CodableConcept(from: codingKeyContainer, forKey: .category)
-    self.code = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .code)
+    self.category = try CodeableConcept(from: codingKeyContainer, forKey: .category)
+    self.code = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .code)
     self.timingX = tempTimingX
     self.valueX = tempValueX!
-    self.reason = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .reason)
+    self.reason = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .reason)
     
     try super.init(from: decoder)
   }

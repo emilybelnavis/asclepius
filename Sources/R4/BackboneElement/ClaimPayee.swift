@@ -25,12 +25,12 @@ import AlexandriaHRMCore
  */
 open class ClaimPayee: BackboneElement {
   // Category of the recipient
-  public var type: CodableConcept
+  public var type: CodeableConcept
   
   /// Recipient reference
   public var party: Reference?
   
-  public init(type: CodableConcept) {
+  public init(type: CodeableConcept) {
     self.type = type
     super.init()
   }
@@ -39,7 +39,7 @@ open class ClaimPayee: BackboneElement {
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    type: CodableConcept,
+    type: CodeableConcept,
     party: Reference? = nil
   ) {
     self.init(type: type)
@@ -58,7 +58,7 @@ open class ClaimPayee: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.type = try CodableConcept(from: codingKeyContainer, forKey: .type)
+    self.type = try CodeableConcept(from: codingKeyContainer, forKey: .type)
     self.party = try Reference(from: codingKeyContainer, forKeyIfPresent: .party)
     
     try super.init(from: decoder)

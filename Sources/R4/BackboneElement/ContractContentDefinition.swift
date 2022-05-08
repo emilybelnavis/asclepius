@@ -25,10 +25,10 @@ import AlexandriaHRMCore
  */
 open class ContractContentDefinition: BackboneElement {
   /// Content structure and use
-  public var type: CodableConcept
+  public var type: CodeableConcept
   
   /// Detauled content type definition
-  public var subType: CodableConcept?
+  public var subType: CodeableConcept?
   
   /// Publisher entity
   public var publisher: Reference?
@@ -42,7 +42,7 @@ open class ContractContentDefinition: BackboneElement {
   /// Publication ownership
   public var copyright: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
-  public init(type: CodableConcept, publicationStatus: AlexandriaHRMPrimitive<ContractResourcePublicationStatusCodes>) {
+  public init(type: CodeableConcept, publicationStatus: AlexandriaHRMPrimitive<ContractResourcePublicationStatusCodes>) {
     self.type = type
     self.publicationStatus = publicationStatus
     super.init()
@@ -52,8 +52,8 @@ open class ContractContentDefinition: BackboneElement {
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    type: CodableConcept,
-    subType: CodableConcept? = nil,
+    type: CodeableConcept,
+    subType: CodeableConcept? = nil,
     publisher: Reference? = nil,
     publicationDate: AlexandriaHRMPrimitive<AlexandriaHRMDateTime>? = nil,
     publicationStatus: AlexandriaHRMPrimitive<ContractResourcePublicationStatusCodes>,
@@ -82,8 +82,8 @@ open class ContractContentDefinition: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.type = try CodableConcept(from: codingKeyContainer, forKey: .type)
-    self.subType try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .subType)
+    self.type = try CodeableConcept(from: codingKeyContainer, forKey: .type)
+    self.subType try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .subType)
     self.publisher = try Reference(from: codingKeyContainer, forKeyIfPresent: .publisher)
     self.publicationDate = try AlexandriaHRMPrimitive<AlexandriaHRMDateTime>(from: codingKeyContainer, forKeyIfPresent: .publicationDate, auxKey: ._publicationDate)
     self.publicationStatus = try AlexandriaHRMPrimitive<ContractResourcePublicationStatusCodes>(from: codingKeyContainer, forKey: .publicationStatus, auxKey: ._publicationStatus)

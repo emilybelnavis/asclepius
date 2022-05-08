@@ -44,7 +44,7 @@ open class DocumentManifestRelated: BackboneElement {
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
     self.fhirId = fhirId
-    self.fhirIdentifier = fhirIdentifier
+    self.identifier = identifier
     self.reference = reference
   }
   
@@ -57,7 +57,7 @@ open class DocumentManifestRelated: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.fhirIdentifier = try Identifier(from: codingKeyContainer, forKeyIfPresent: .identifier)
+    self.identifier = try Identifier(from: codingKeyContainer, forKeyIfPresent: .identifier)
     self.reference = try Reference(from: codingKeyContainer, forKeyIfPresent: .reference)
     
     try super.init(from: decoder)

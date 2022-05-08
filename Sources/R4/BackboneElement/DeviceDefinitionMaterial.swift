@@ -24,7 +24,7 @@ import AlexandriaHRMCore
  */
 open class DeviceDefinitionMaterial: BackboneElement {
   /// The substance
-  public var substance: CodableConcept
+  public var substance: CodeableConcept
   
   /// Indicates an alternative material of the device
   public var alternate: AlexandriaHRMPrimitive<AlexandriaHRMBool>?
@@ -32,7 +32,7 @@ open class DeviceDefinitionMaterial: BackboneElement {
   /// Whether the substance is a known or suspected allergen
   public var allergenicIndicator: AlexandriaHRMPrimitive<AlexandriaHRMBool>?
   
-  public init(substance: CodableConcept) {
+  public init(substance: CodeableConcept) {
     self.substance = substance
     super.init()
   }
@@ -41,7 +41,7 @@ open class DeviceDefinitionMaterial: BackboneElement {
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    substance: CodableConcept,
+    substance: CodeableConcept,
     alternate: AlexandriaHRMPrimitive<AlexandriaHRMBool>? = nil,
     allergenicIndicator: AlexandriaHRMPrimitive<AlexandriaHRMBool>? = nil
   ) {
@@ -63,7 +63,7 @@ open class DeviceDefinitionMaterial: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.substance = try CodableConcept(from: codingKeyContainer, forKey: .substance)
+    self.substance = try CodeableConcept(from: codingKeyContainer, forKey: .substance)
     self.alternate = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKeyIfPresent: .alternate, auxKey: ._alternate)
     self.allergenicIndicator = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKeyIfPresent: .allergenicIndicator, auxKey: ._allergenicIndicator)
     

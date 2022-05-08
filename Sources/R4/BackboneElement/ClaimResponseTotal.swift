@@ -24,12 +24,12 @@ import AlexandriaHRMCore
  */
 open class ClaimResponseTotal: BackboneElement {
   /// Type of adjudication information
-  public var category: CodableConcept
+  public var category: CodeableConcept
   
   /// Financial total for the category
   public var amount: Money
   
-  public init(category: CodableConcept, amount: Money) {
+  public init(category: CodeableConcept, amount: Money) {
     self.category = category
     self.amount = amount
     super.init()
@@ -39,7 +39,7 @@ open class ClaimResponseTotal: BackboneElement {
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    category: CodableConcept,
+    category: CodeableConcept,
     amount: Money
   ) {
     self.init(category: category, amount: amount)
@@ -57,7 +57,7 @@ open class ClaimResponseTotal: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.category = try CodableConcept(from: codingKeyContainer, forKey: .category)
+    self.category = try CodeableConcept(from: codingKeyContainer, forKey: .category)
     self.amount = try Money(from: codingKeyContainer, forKey: .amount)
     
     try super.init(from: decoder)

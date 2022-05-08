@@ -25,13 +25,13 @@ import AlexandriaHRMCore
 open class DeviceRequestParameter: BackboneElement {
   public enum ValueX: Hashable {
     case boolean(AlexandriaHRMPrimitive<AlexandriaHRMBool>)
-    case codableConcept(CodableConcept)
+    case codeableConcept(CodeableConcept)
     case quantity(Quantity)
     case range(Range)
   }
   
   /// Device detail
-  public var code: CodableConcept?
+  public var code: CodeableConcept?
   
   /// Value of detail
   public var value: ValueX?
@@ -44,7 +44,7 @@ open class DeviceRequestParameter: BackboneElement {
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    code: CodableConcept? = nil,
+    code: CodeableConcept? = nil,
     value: ValueX? = nil
   ) {
     self.init()
@@ -59,7 +59,7 @@ open class DeviceRequestParameter: BackboneElement {
   private enum CodingKeys: String, CodingKey {
     case code
     case valueBoolean; case _valueBoolean
-    case valueCodableConcept
+    case valueCodeableConcept
     case valueQuantity
     case valueRange
   }
@@ -75,11 +75,11 @@ open class DeviceRequestParameter: BackboneElement {
       tempValue = .boolean(valueBoolean)
     }
     
-    if let valueCodableConcept = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .valueCodableConcept) {
+    if let valueCodeableConcept = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .valueCodeableConcept) {
       if tempValue != nil {
-        throw DecodingError.dataCorruptedError(forKey: .valueCodableConcept, in: codingKeyContainer, debugDescription: "More than one value provided for \"value\"")
+        throw DecodingError.dataCorruptedError(forKey: .valueCodeableConcept, in: codingKeyContainer, debugDescription: "More than one value provided for \"value\"")
       }
-      tempValue = .codableConcept(valueCodableConcept)
+      tempValue = .codeableConcept(valueCodeableConcept)
     }
     
     if let valueQuantity = try Quantity(from: codingKeyContainer, forKeyIfPresent: .valueQuantity) {
@@ -96,7 +96,7 @@ open class DeviceRequestParameter: BackboneElement {
       tempValue = .range(valueRange)
     }
     
-    self.code = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .code)
+    self.code = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .code)
     self.value = tempValue
   
     try super.init(from: decoder)
@@ -109,8 +109,8 @@ open class DeviceRequestParameter: BackboneElement {
       switch enumValue {
       case .boolean(let _value):
         try _value.encode(on: &codingKeyContainer, forKey: .valueBoolean, auxKey: ._valueBoolean)
-      case .codableConcept(let _value):
-        try _value.encode(on: &codingKeyContainer, forKey: .valueCodableConcept)
+      case .codeableConcept(let _value):
+        try _value.encode(on: &codingKeyContainer, forKey: .valueCodeableConcept)
       case .quantity(let _value):
         try _value.encode(on: &codingKeyContainer, forKey: .valueQuantity)
       case .range(let _value):

@@ -25,7 +25,7 @@ open class CompositionSection: BackboneElement {
   public var title: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// Classification of section
-  public var code: CodableConcept?
+  public var code: CodeableConcept?
   
   /// Who and/or what authored the section
   public var author: [Reference]?
@@ -42,13 +42,13 @@ open class CompositionSection: BackboneElement {
   public var mode: AlexandriaHRMPrimitive<ListMode>?
   
   /// Order of section entries
-  public var orderedBy: CodableConcept?
+  public var orderedBy: CodeableConcept?
   
   /// A reference to data that supports this section
   public var entry: [Reference]?
   
   /// Why the section is empty
-  public var emptyReason: CodableConcept?
+  public var emptyReason: CodeableConcept?
   
   /// Nested section
   public var section: [CompositionSection]?
@@ -62,13 +62,13 @@ open class CompositionSection: BackboneElement {
     modifierExtension: [Extension]? = nil,
     fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     title: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    code: CodableConcept? = nil,
+    code: CodeableConcept? = nil,
     author: [Reference]? = nil,
     focus: Reference? = nil,
     text: Narrative? = nil,
     mode: AlexandriaHRMPrimitive<ListMode>? = nil,
     entry: [Reference]? = nil,
-    emptyReason: CodableConcept? = nil,
+    emptyReason: CodeableConcept? = nil,
     section: [CompositionSection]? = nil
   ) {
     self.init()
@@ -103,13 +103,13 @@ open class CompositionSection: BackboneElement {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     self.title = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .title, auxKey: ._title)
-    self.code = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .code)
+    self.code = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .code)
     self.author = try [Reference](from: codingKeyContainer, forKeyIfPresent: .author)
     self.focus = try Reference(from: codingKeyContainer, forKeyIfPresent: .focus)
     self.text = try Narrative(from: codingKeyContainer, forKeyIfPresent: .text)
     self.mode = try AlexandriaHRMPrimitive<ListMode>(from: codingKeyContainer, forKeyIfPresent: .mode, auxKey: ._mode)
     self.entry = try [Reference](from: codingKeyContainer, forKeyIfPresent: .entry)
-    self.emptyReason = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .emptyReason)
+    self.emptyReason = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .emptyReason)
     self.section = try [CompositionSection](from: codingKeyContainer, forKeyIfPresent: .section)
     
     try super.init(from: decoder)

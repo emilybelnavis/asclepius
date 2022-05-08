@@ -22,14 +22,14 @@ import AlexandriaHRMCore
 open class GroupCharacteristic: BackboneElement {
   public enum ValueX: Hashable {
     case boolean(AlexandriaHRMPrimitive<AlexandriaHRMBool>)
-    case codableConcept(CodableConcept)
+    case codeableConcept(CodeableConcept)
     case quantity(Quantity)
     case range(Range)
     case reference(Reference)
   }
   
   ///  type of characteristic
-  public var code: CodableConcept
+  public var code: CodeableConcept
   
   /// value held by characteristic
   public var valueX: ValueX
@@ -40,7 +40,7 @@ open class GroupCharacteristic: BackboneElement {
   /// period over which characteristic is tested
   public var period: Period?
 
-  public init(code: CodableConcept, valueX: ValueX, exclude: AlexandriaHRMPrimitive<AlexandriaHRMBool>) {
+  public init(code: CodeableConcept, valueX: ValueX, exclude: AlexandriaHRMPrimitive<AlexandriaHRMBool>) {
     self.code = code
     self.valueX = valueX
     self.exclude = exclude
@@ -50,7 +50,7 @@ open class GroupCharacteristic: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    code: CodableConcept,
+    code: CodeableConcept,
     valueX: ValueX,
     exclude: AlexandriaHRMPrimitive<AlexandriaHRMBool>,
     period: Period? = nil
@@ -65,7 +65,7 @@ open class GroupCharacteristic: BackboneElement {
   private enum CodingKeys: String, CodingKey {
     case code
     case valueBool; case _valueBool
-    case valueCodableConcept
+    case valueCodeableConcept
     case valueQuantity
     case valueRange
     case valueReference
@@ -78,10 +78,10 @@ open class GroupCharacteristic: BackboneElement {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     // Validate that the expanded properties `value` contains at least one of the mandatory properties
-    guard codingKeyContainer.contains(CodingKeys.valueBool) || codingKeyContainer.contains(CodingKeys.valueCodableConcept) || codingKeyContainer.contains(CodingKeys.valueQuantity) || codingKeyContainer.contains(CodingKeys.valueRange) || codingKeyContainer.contains(CodingKeys.valueReference) else { // swiftlint:disable:this line_length
+    guard codingKeyContainer.contains(CodingKeys.valueBool) || codingKeyContainer.contains(CodingKeys.valueCodeableConcept) || codingKeyContainer.contains(CodingKeys.valueQuantity) || codingKeyContainer.contains(CodingKeys.valueRange) || codingKeyContainer.contains(CodingKeys.valueReference) else { // swiftlint:disable:this line_length
       throw DecodingError.valueNotFound(Any.self, DecodingError.Context(codingPath: [
         CodingKeys.valueBool,
-        CodingKeys.valueCodableConcept,
+        CodingKeys.valueCodeableConcept,
         CodingKeys.valueQuantity,
         CodingKeys.valueRange,
         CodingKeys.valueReference
@@ -97,11 +97,11 @@ open class GroupCharacteristic: BackboneElement {
       tempValueX = .boolean(valueBool)
     }
     
-    if let valueCodableConcept = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .valueCodableConcept) {
+    if let valueCodeableConcept = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .valueCodeableConcept) {
       if tempValueX != nil {
-        throw DecodingError.dataCorruptedError(forKey: .valueCodableConcept, in: codingKeyContainer, debugDescription: "More than one value provided for \"value\"")
+        throw DecodingError.dataCorruptedError(forKey: .valueCodeableConcept, in: codingKeyContainer, debugDescription: "More than one value provided for \"value\"")
       }
-      tempValueX = .codableConcept(valueCodableConcept)
+      tempValueX = .codeableConcept(valueCodeableConcept)
     }
     
     if let valueQuantity = try Quantity(from: codingKeyContainer, forKeyIfPresent: .valueQuantity) {
@@ -125,7 +125,7 @@ open class GroupCharacteristic: BackboneElement {
       tempValueX = .reference(valueReference)
     }
     
-    self.code = try CodableConcept(from: codingKeyContainer, forKey: .code)
+    self.code = try CodeableConcept(from: codingKeyContainer, forKey: .code)
     self.valueX = tempValueX!
     self.exclude = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKey: .exclude, auxKey: ._exclude)
     self.period = try Period(from: codingKeyContainer, forKeyIfPresent: .period)
@@ -139,8 +139,8 @@ open class GroupCharacteristic: BackboneElement {
     switch valueX {
     case .boolean(let _value):
       try _value.encode(on: &codingKeyContainer, forKey: .valueBool)
-    case .codableConcept(let _value):
-      try _value.encode(on: &codingKeyContainer, forKey: .valueCodableConcept)
+    case .codeableConcept(let _value):
+      try _value.encode(on: &codingKeyContainer, forKey: .valueCodeableConcept)
     case .quantity(let _value):
       try _value.encode(on: &codingKeyContainer, forKey: .valueQuantity)
     case .range(let _value):

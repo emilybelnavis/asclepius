@@ -29,7 +29,7 @@ open class ClaimResponseAddItem: BackboneElement {
   }
   public enum LocationX: Hashable {
     case address(Address)
-    case codableConcept(CodableConcept)
+    case codeableConcept(CodeableConcept)
     case reference(Reference)
   }
 
@@ -46,13 +46,13 @@ open class ClaimResponseAddItem: BackboneElement {
   public var provider: [Reference]?
   
   /// Billing, service, product, or drug code
-  public var productOrService: CodableConcept
+  public var productOrService: CodeableConcept
   
   /// Service/product billing modifiers
-  public var modifier: [CodableConcept]?
+  public var modifier: [CodeableConcept]?
   
   /// Program that the product or service is provided under
-  public var programCode: [CodableConcept]?
+  public var programCode: [CodeableConcept]?
   
   /// Date(s) of service or product delivery
   public var servicedX: ServicedX?
@@ -73,10 +73,10 @@ open class ClaimResponseAddItem: BackboneElement {
   public var net: Money?
   
   /// Anatomical location
-  public var bodySite: CodableConcept?
+  public var bodySite: CodeableConcept?
   
   /// Anatomical sub-location
-  public var subSite: [CodableConcept]?
+  public var subSite: [CodeableConcept]?
   
   /// Applicable note numbers
   public var noteNumber: [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>]?
@@ -87,7 +87,7 @@ open class ClaimResponseAddItem: BackboneElement {
   /// Insurer added line details
   public var detail: [ClaimResponseAddItemDetail]?
   
-  public init(productOrService: CodableConcept, adjudication: [ClaimResponseItemAdjudication]) {
+  public init(productOrService: CodeableConcept, adjudication: [ClaimResponseItemAdjudication]) {
     self.productOrService = productOrService
     self.adjudication = adjudication
     super.init()
@@ -101,17 +101,17 @@ open class ClaimResponseAddItem: BackboneElement {
     detailSequence: [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>]? = nil,
     subdetailSequence: [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>]? = nil,
     provider: [Reference]? = nil,
-    productOrService: CodableConcept,
-    modifier: [CodableConcept]? = nil,
-    programCode: [CodableConcept]? = nil,
+    productOrService: CodeableConcept,
+    modifier: [CodeableConcept]? = nil,
+    programCode: [CodeableConcept]? = nil,
     servicedX: ServicedX? = nil,
     locationX: LocationX? = nil,
     quantity: Quantity? = nil,
     unitPrice: Money? = nil,
     factor: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>? = nil,
     net: Money? = nil,
-    bodySite: CodableConcept? = nil,
-    subSite: [CodableConcept]? = nil,
+    bodySite: CodeableConcept? = nil,
+    subSite: [CodeableConcept]? = nil,
     noteNumber: [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>]? = nil,
     adjudication: [ClaimResponseItemAdjudication],
     detail: [ClaimResponseAddItemDetail]? = nil
@@ -149,7 +149,7 @@ open class ClaimResponseAddItem: BackboneElement {
     case servicedDate; case _servicedDate
     case servicedPeriod
     case locationAddress
-    case locationCodableConcept
+    case locationCodeableConcept
     case locationReference
     case quantity
     case unitPrice
@@ -188,11 +188,11 @@ open class ClaimResponseAddItem: BackboneElement {
       tempLocationX = .address(locationAddress)
     }
     
-    if let locationCodableConcept = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .locationCodableConcept) {
+    if let locationCodeableConcept = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .locationCodeableConcept) {
       if tempLocationX != nil {
-        throw DecodingError.dataCorruptedError(forKey: .locationCodableConcept, in: codingKeyContainer, debugDescription: "More than one value provided for \"location\"")
+        throw DecodingError.dataCorruptedError(forKey: .locationCodeableConcept, in: codingKeyContainer, debugDescription: "More than one value provided for \"location\"")
       }
-      tempLocationX = .codableConcept(locationCodableConcept)
+      tempLocationX = .codeableConcept(locationCodeableConcept)
     }
     
     if let locationReference = try Reference(from: codingKeyContainer, forKeyIfPresent: .locationReference) {
@@ -206,17 +206,17 @@ open class ClaimResponseAddItem: BackboneElement {
     self.detailSequence = try [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>](from: codingKeyContainer, forKeyIfPresent: .detailSequence, auxKey: ._detailSequence)
     self.subdetailSequence = try [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>](from: codingKeyContainer, forKeyIfPresent: .subdetailSequence, auxKey: ._subdetailSequence)
     self.provider = try [Reference](from: codingKeyContainer, forKeyIfPresent: .provider)
-    self.productOrService = try CodableConcept(from: codingKeyContainer, forKey: .productOrService)
-    self.modifier = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .modifier)
-    self.programCode = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .programCode)
+    self.productOrService = try CodeableConcept(from: codingKeyContainer, forKey: .productOrService)
+    self.modifier = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .modifier)
+    self.programCode = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .programCode)
     self.servicedX = tempServicedX
     self.locationX = tempLocationX
     self.quantity = try Quantity(from: codingKeyContainer, forKeyIfPresent: .quantity)
     self.unitPrice = try Money(from: codingKeyContainer, forKeyIfPresent: .unitPrice)
     self.factor = try AlexandriaHRMPrimitive<AlexandriaHRMDecimal>(from: codingKeyContainer, forKeyIfPresent: .factor, auxKey: ._factor)
     self.net = try Money(from: codingKeyContainer, forKeyIfPresent: .net)
-    self.bodySite = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .bodySite)
-    self.subSite = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .subSite)
+    self.bodySite = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .bodySite)
+    self.subSite = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .subSite)
     self.noteNumber = try [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>](from: codingKeyContainer, forKey: .noteNumber, auxKey: ._noteNumber)
     self.adjudication = try [ClaimResponseItemAdjudication](from: codingKeyContainer, forKey: .adjudication)
     self.detail = try [ClaimResponseAddItemDetail](from: codingKeyContainer, forKeyIfPresent: .detail)
@@ -240,8 +240,8 @@ open class ClaimResponseAddItem: BackboneElement {
       switch enumLocationX {
       case .address(let _value):
         try _value.encode(on: &codingKeyContainer, forKey: .locationAddress)
-      case .codableConcept(let _value):
-        try _value.encode(on: &codingKeyContainer, forKey: .locationCodableConcept)
+      case .codeableConcept(let _value):
+        try _value.encode(on: &codingKeyContainer, forKey: .locationCodeableConcept)
       case .reference(let _value):
         try _value.encode(on: &codingKeyContainer, forKey: .locationReference)
       }

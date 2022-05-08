@@ -24,7 +24,7 @@ import AlexandriaHRMCore
  */
 open class DeviceVersion: BackboneElement {
   /// The type of the device version
-  public var type: CodableConcept?
+  public var type: CodeableConcept?
   
   /// A single component of the device version
   public var component: Identifier?
@@ -41,7 +41,7 @@ open class DeviceVersion: BackboneElement {
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    type: CodableConcept? = nil,
+    type: CodeableConcept? = nil,
     component: Identifier? = nil,
     value: AlexandriaHRMPrimitive<AlexandriaHRMString>
   ) {
@@ -63,7 +63,7 @@ open class DeviceVersion: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.type = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .type)
+    self.type = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .type)
     self.component = try Identifier(from: codingKeyContainer, forKeyIfPresent: .component)
     self.value = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .value, auxKey: ._value)
     

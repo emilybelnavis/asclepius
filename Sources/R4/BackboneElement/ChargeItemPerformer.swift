@@ -24,7 +24,7 @@ import AlexandriaHRMCore
  */
 open class ChargeItemPerformer: BackboneElement {
   /// What type of service was done
-  public var function: CodableConcept?
+  public var function: CodeableConcept?
   
   /// Individual who performed the service
   public var actor: Reference
@@ -38,7 +38,7 @@ open class ChargeItemPerformer: BackboneElement {
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    function: CodableConcept? = nil,
+    function: CodeableConcept? = nil,
     actor: Reference
   ) {
     self.init(actor: actor)
@@ -56,7 +56,7 @@ open class ChargeItemPerformer: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.function = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .function)
+    self.function = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .function)
     self.actor = try Reference(from: codingKeyContainer, forKey: .actor)
     
     try super.init(from: decoder)

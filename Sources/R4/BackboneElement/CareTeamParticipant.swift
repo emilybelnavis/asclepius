@@ -24,7 +24,7 @@ import AlexandriaHRMCore
  */
 open class CareTeamParticipant: BackboneElement {
   /// Type of involvement
-  public var role: [CodableConcept]?
+  public var role: [CodeableConcept]?
   
   /// Who is involved
   public var member: Reference?
@@ -43,7 +43,7 @@ open class CareTeamParticipant: BackboneElement {
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    role: [CodableConcept]? = nil,
+    role: [CodeableConcept]? = nil,
     member: Reference? = nil,
     onBehalfOf: Reference? = nil,
     period: Period?
@@ -69,7 +69,7 @@ open class CareTeamParticipant: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.role = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .role)
+    self.role = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .role)
     self.member = try Reference(from: codingKeyContainer, forKeyIfPresent: .member)
     self.onBehalfOf = try Reference(from: codingKeyContainer, forKeyIfPresent: .onBehalfOf)
     self.period = try Period(from: codingKeyContainer, forKeyIfPresent: .period)

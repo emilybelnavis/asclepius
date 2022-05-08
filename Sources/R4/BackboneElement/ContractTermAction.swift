@@ -34,19 +34,19 @@ open class ContractTermAction: BackboneElement {
   public var doNotPerform: AlexandriaHRMPrimitive<AlexandriaHRMBool>?
   
   /// Type or form of the action
-  public var type: CodableConcept
+  public var type: CodeableConcept
   
   /// Entity of the action
   public var subject: [ContractTermActionSubject]?
   
   /// Purpose for the Contract Term Action
-  public var intent: CodableConcept
+  public var intent: CodeableConcept
   
   /// Pointer to specific item
   public var linkId: [AlexandriaHRMPrimitive<AlexandriaHRMString>]?
   
   /// State of the action
-  public var status: CodableConcept
+  public var status: CodeableConcept
   
   /// Episode associated with action
   public var context: Reference?
@@ -64,10 +64,10 @@ open class ContractTermAction: BackboneElement {
   public var requesterLinkId: [AlexandriaHRMPrimitive<AlexandriaHRMString>]?
   
   /// Kind of service performer
-  public var performerType: [CodableConcept]?
+  public var performerType: [CodeableConcept]?
   
   /// Competency of the performer
-  public var performerRole: CodableConcept?
+  public var performerRole: CodeableConcept?
   
   /// Actor that will (or won't) execute the action
   public var performer: Reference?
@@ -76,7 +76,7 @@ open class ContractTermAction: BackboneElement {
   public var performerLinkId: [AlexandriaHRMPrimitive<AlexandriaHRMString>]?
   
   /// Why the action is/isn't needed
-  public var reasonCode: [CodableConcept]?
+  public var reasonCode: [CodeableConcept]?
   
   /// Why the action is/isn't needed
   public var reasonReference: [Reference]?
@@ -93,7 +93,7 @@ open class ContractTermAction: BackboneElement {
   /// Action restriction numbers
   public var securityLabelNumber: [AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>]?
   
-  public init(type: CodableConcept, intent: CodableConcept, status: CodableConcept) {
+  public init(type: CodeableConcept, intent: CodeableConcept, status: CodeableConcept) {
     self.type = type
     self.intent = intent
     self.status = status
@@ -105,21 +105,21 @@ open class ContractTermAction: BackboneElement {
     modifierExtension: [Extension]? = nil,
     fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     doNotPerform: AlexandriaHRMPrimitive<AlexandriaHRMBool>? = nil,
-    type: CodableConcept,
+    type: CodeableConcept,
     subject: [ContractTermActionSubject]? = nil,
-    intent: CodableConcept,
+    intent: CodeableConcept,
     linkId: [AlexandriaHRMPrimitive<AlexandriaHRMString>]? = nil,
-    status: CodableConcept,
+    status: CodeableConcept,
     context: Reference? = nil,
     contextLinkId: [AlexandriaHRMPrimitive<AlexandriaHRMString>]? = nil,
     occurrence: OccurrenceX? = nil,
     requester: [Reference]? = nil,
     requesterLinkId: [AlexandriaHRMPrimitive<AlexandriaHRMString>]? = nil,
-    performerType: [CodableConcept]? = nil,
-    performerRole: CodableConcept? = nil,
+    performerType: [CodeableConcept]? = nil,
+    performerRole: CodeableConcept? = nil,
     performer: Reference? = nil,
     performerLinkId: [AlexandriaHRMPrimitive<AlexandriaHRMString>]? = nil,
-    reasonCode: [CodableConcept]? = nil,
+    reasonCode: [CodeableConcept]? = nil,
     reasonReference: [Reference]? = nil,
     reason: [AlexandriaHRMPrimitive<AlexandriaHRMString>]? = nil,
     reasonLinkId: [AlexandriaHRMPrimitive<AlexandriaHRMString>]? = nil,
@@ -203,21 +203,21 @@ open class ContractTermAction: BackboneElement {
     }
     
     self.doNotPerform = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKeyIfPresent: .doNotPerform, auxKey: ._doNotPerform)
-    self.type = try CodableConcept(from: codingKeyContainer, forKey: .type)
+    self.type = try CodeableConcept(from: codingKeyContainer, forKey: .type)
     self.subject = try [ContractTermActionSubject](from: codingKeyContainer, forKeyIfPresent: .subject)
-    self.intent = try CodableConcept(from: codingKeyContainer, forKey: .intent)
+    self.intent = try CodeableConcept(from: codingKeyContainer, forKey: .intent)
     self.linkId = try [AlexandriaHRMPrimitive<AlexandriaHRMString>](from: codingKeyContainer, forKeyIfPresent: .linkId, auxKey: ._linkId)
-    self.status = try CodableConcept(from: codingKeyContainer, forKey: .status)
+    self.status = try CodeableConcept(from: codingKeyContainer, forKey: .status)
     self.context = try Reference(from: codingKeyContainer, forKeyIfPresent: .context)
     self.contextLinkId = try [AlexandriaHRMPrimitive<AlexandriaHRMString>](from: codingKeyContainer, forKeyIfPresent: .contextLinkId, auxKey: ._contextLinkId)
     self.occurrence = tOccurrence
     self.requester = try [Reference](from: codingKeyContainer, forKeyIfPresent: .requester)
     self.requesterLinkId = try [AlexandriaHRMPrimitive<AlexandriaHRMString>](from: codingKeyContainer, forKeyIfPresent: .requesterLinkId, auxKey: ._requesterLinkId)
-    self.performerType = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .performerType)
-    self.performerRole = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .performerRole)
+    self.performerType = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .performerType)
+    self.performerRole = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .performerRole)
     self.performer = try Reference(from: codingKeyContainer, forKey: .performer)
     self.performerLinkId = try [AlexandriaHRMPrimitive<AlexandriaHRMString>](from: codingKeyContainer, forKeyIfPresent: .performerLinkId, auxKey: ._performerLinkId)
-    self.reasonCode = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .reasonCode)
+    self.reasonCode = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .reasonCode)
     self.reasonReference = try [Reference](from: codingKeyContainer, forKeyIfPresent: .reasonReference)
     self.reason = try [AlexandriaHRMPrimitive<AlexandriaHRMString>](from: codingKeyContainer, forKeyIfPresent: .reason, auxKey: ._reason)
     self.reasonLinkId = try [AlexandriaHRMPrimitive<AlexandriaHRMString>](from: codingKeyContainer, forKeyIfPresent: .reasonLinkId, auxKey: ._reasonLinkId)

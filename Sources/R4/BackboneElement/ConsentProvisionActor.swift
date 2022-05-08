@@ -25,12 +25,12 @@ import AlexandriaHRMCore
  */
 open class ConsentProvisionActor: BackboneElement {
   /// How the actor is involved
-  public var role: CodableConcept
+  public var role: CodeableConcept
   
   /// Resource for the actor (or group, by role)
   public var reference: Reference
   
-  public init(role: CodableConcept, reference: Reference) {
+  public init(role: CodeableConcept, reference: Reference) {
     self.role = role
     self.reference = reference
     super.init()
@@ -40,7 +40,7 @@ open class ConsentProvisionActor: BackboneElement {
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    role: CodableConcept,
+    role: CodeableConcept,
     reference: Reference
   ) {
     self.init(role: role, reference: reference)
@@ -58,7 +58,7 @@ open class ConsentProvisionActor: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.role = try CodableConcept(from: codingKeyContainer, forKey: .role)
+    self.role = try CodeableConcept(from: codingKeyContainer, forKey: .role)
     self.reference = try Reference(from: codingKeyContainer, forKey: .reference)
     
     try super.init(from: decoder)

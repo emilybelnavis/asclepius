@@ -3,7 +3,7 @@
 import PackageDescription
 
 let package = Package(
-  name: "AlexandriaCDR",
+  name: "AlexandriaHRM",
   platforms: [
     .macOS(.v12),
     .iOS(.v15)

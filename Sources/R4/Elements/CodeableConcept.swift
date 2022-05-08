@@ -1,5 +1,5 @@
 //
-//  CodableConcept.swift
+//  CodeableConcept.swift
 //  AlexandriaHRM
 //  Module: R4
 //
@@ -24,7 +24,7 @@ import AlexandriaHRMCore
  
  A concept that may be defined by a formal reference to a terminology, ontology, or may be provided by text
  */
-open class CodableConcept: Element {
+open class CodeableConcept: Element {
   /// Code defined by a terminology system
   public var coding: [Coding]?
   
@@ -74,7 +74,7 @@ open class CodableConcept: Element {
   
   // MARK: - Equatable
   public override func isEqual(to _other: Any?) -> Bool {
-    guard let _other = _other as? CodableConcept else {
+    guard let _other = _other as? CodeableConcept else {
       return false
     }
     

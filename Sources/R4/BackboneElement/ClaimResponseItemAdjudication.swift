@@ -25,10 +25,10 @@ import AlexandriaHRMCore
  */
 open class ClaimResponseItemAdjudication: BackboneElement {
   /// Type of adjudication information
-  public var category: CodableConcept
+  public var category: CodeableConcept
   
   /// Explanation of adjudication outcome
-  public var reason: CodableConcept?
+  public var reason: CodeableConcept?
   
   /// Monetary amount
   public var amount: Money?
@@ -36,7 +36,7 @@ open class ClaimResponseItemAdjudication: BackboneElement {
   /// Non-monetary value
   public var value: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>?
   
-  public init(category: CodableConcept) {
+  public init(category: CodeableConcept) {
     self.category = category
     super.init()
   }
@@ -45,8 +45,8 @@ open class ClaimResponseItemAdjudication: BackboneElement {
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    category: CodableConcept,
-    reason: CodableConcept? = nil,
+    category: CodeableConcept,
+    reason: CodeableConcept? = nil,
     amount: Money? = nil,
     value: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>? = nil
   ) {
@@ -71,8 +71,8 @@ open class ClaimResponseItemAdjudication: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.category = try CodableConcept(from: codingKeyContainer, forKey: .category)
-    self.reason = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .reason)
+    self.category = try CodeableConcept(from: codingKeyContainer, forKey: .category)
+    self.reason = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .reason)
     self.amount = try Money(from: codingKeyContainer, forKeyIfPresent: .amount)
     self.value = try AlexandriaHRMPrimitive<AlexandriaHRMDecimal>(from: codingKeyContainer, forKeyIfPresent: .value, auxKey: ._value)
     

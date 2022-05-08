@@ -33,10 +33,10 @@ open class ClaimCareTeam: BackboneElement {
   public var responsible: AlexandriaHRMPrimitive<AlexandriaHRMBool>?
   
   /// Function within the team
-  public var role: CodableConcept?
+  public var role: CodeableConcept?
   
   /// Practitioner credential or specialization
-  public var qualification: CodableConcept?
+  public var qualification: CodeableConcept?
   
   public init(sequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>, provider: Reference) {
     self.sequence = sequence
@@ -51,8 +51,8 @@ open class ClaimCareTeam: BackboneElement {
     sequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>,
     provider: Reference,
     responsible: AlexandriaHRMPrimitive<AlexandriaHRMBool>? = nil,
-    role: CodableConcept? = nil,
-    qualification: CodableConcept? = nil
+    role: CodeableConcept? = nil,
+    qualification: CodeableConcept? = nil
   ) {
     self.init(sequence: sequence, provider: provider)
     self.fhirExtension = fhirExtension
@@ -77,8 +77,8 @@ open class ClaimCareTeam: BackboneElement {
     self.sequence = try AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>(from: codingKeyContainer, forKey: .sequence, auxKey: ._sequence)
     self.provider = try Reference(from: codingKeyContainer, forKey: .provider)
     self.responsible = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKeyIfPresent: .responsible, auxKey: ._responsible)
-    self.role = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .role)
-    self.qualification = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .qualification)
+    self.role = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .role)
+    self.qualification = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .qualification)
     
     try super.init(from: decoder)
   }

@@ -28,7 +28,7 @@ open class ClaimRelated: BackboneElement {
   public var claim: Reference?
   
   /// How the reference claim is related
-  public var relationship: CodableConcept?
+  public var relationship: CodeableConcept?
   
   /// File or case reference
   public var reference: Identifier?
@@ -42,7 +42,7 @@ open class ClaimRelated: BackboneElement {
     modifierExtension: [Extension]? = nil,
     fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     claim: Reference? = nil,
-    relationship: CodableConcept? = nil,
+    relationship: CodeableConcept? = nil,
     reference: Identifier? = nil
   ) {
     self.init()
@@ -65,7 +65,7 @@ open class ClaimRelated: BackboneElement {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     self.claim = try Reference(from: codingKeyContainer, forKeyIfPresent: .claim)
-    self.relationship = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .relationship)
+    self.relationship = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .relationship)
     self.reference = try Identifier(from: codingKeyContainer, forKeyIfPresent: .reference)
     
     try super.init(from: decoder)

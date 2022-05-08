@@ -22,7 +22,7 @@ import AlexandriaHRMCore
 /// Additional Coverage Classification;  A suite of underwriter specific classifiers
 open class CoverageClass: BackboneElement {
   /// Type of class such as "group" or "plan"
-  public var type: CodableConcept
+  public var type: CodeableConcept
   
   /// Value associated with the type
   public var value: AlexandriaHRMPrimitive<AlexandriaHRMString>
@@ -30,7 +30,7 @@ open class CoverageClass: BackboneElement {
   /// Human readable description of the type and value
   public var name: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
-  public init(type: CodableConcept, value: AlexandriaHRMPrimitive<AlexandriaHRMString>) {
+  public init(type: CodeableConcept, value: AlexandriaHRMPrimitive<AlexandriaHRMString>) {
     self.type = type
     self.value = value
     super.init()
@@ -40,7 +40,7 @@ open class CoverageClass: BackboneElement {
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    type: CodableConcept,
+    type: CodeableConcept,
     value: AlexandriaHRMPrimitive<AlexandriaHRMString>,
     name: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil
   ) {
@@ -61,7 +61,7 @@ open class CoverageClass: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.type = try CodableConcept(from: codingKeyContainer, forKey: .type)
+    self.type = try CodeableConcept(from: codingKeyContainer, forKey: .type)
     self.value = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .value, auxKey: ._value)
     self.name = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .name, auxKey: ._name)
     

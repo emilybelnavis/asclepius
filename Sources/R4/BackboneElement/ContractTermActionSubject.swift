@@ -25,7 +25,7 @@ open class ContractTermActionSubject: BackboneElement {
   public var reference: [Reference]
   
   /// Role type of the agent
-  public var role: CodableConcept?
+  public var role: CodeableConcept?
   
   public init(reference: [Reference]) {
     self.reference = reference
@@ -37,7 +37,7 @@ open class ContractTermActionSubject: BackboneElement {
     modifierExtension: [Extension]? = nil,
     fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     reference: [Reference],
-    role: CodableConcept
+    role: CodeableConcept
   ) {
     self.init(reference: reference)
     self.fhirExtension = fhirExtension
@@ -56,7 +56,7 @@ open class ContractTermActionSubject: BackboneElement {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     self.reference = try [Reference](from: codingKeyContainer, forKey: .reference)
-    self.role = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .role)
+    self.role = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .role)
     
     try super.init(from: decoder)
   }

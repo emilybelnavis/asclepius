@@ -22,7 +22,7 @@ import AlexandriaHRMCore
 /// Specific fnidings or diagnoses that werwe considered likely or relevant to ongoing treatment
 open class ClinicalImpressionFinding: BackboneElement {
   /// What was found
-  public var itemCodableConcept: CodableConcept?
+  public var itemCodeableConcept: CodeableConcept?
   
   /// What was found
   public var itemReference: Reference?
@@ -38,7 +38,7 @@ open class ClinicalImpressionFinding: BackboneElement {
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    itemCodableConcept: CodableConcept? = nil,
+    itemCodeableConcept: CodeableConcept? = nil,
     itemReference: Reference? = nil,
     basis: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil
   ) {
@@ -46,14 +46,14 @@ open class ClinicalImpressionFinding: BackboneElement {
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
     self.fhirId = fhirId
-    self.itemCodableConcept = itemCodableConcept
+    self.itemCodeableConcept = itemCodeableConcept
     self.itemReference = itemReference
     self.basis = basis
   }
   
   // MARK: - Codable
   private enum CodingKeys: String, CodingKey {
-    case itemCodableConcept
+    case itemCodeableConcept
     case itemReference
     case basis; case _basis
   }
@@ -61,7 +61,7 @@ open class ClinicalImpressionFinding: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.itemCodableConcept = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .itemCodableConcept)
+    self.itemCodeableConcept = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .itemCodeableConcept)
     self.itemReference = try Reference(from: codingKeyContainer, forKeyIfPresent: .itemReference)
     self.basis = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .basis, auxKey: ._basis)
     
@@ -71,7 +71,7 @@ open class ClinicalImpressionFinding: BackboneElement {
   public override func encode(to encoder: Encoder) throws {
     var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    try itemCodableConcept?.encode(on: &codingKeyContainer, forKey: .itemCodableConcept)
+    try itemCodeableConcept?.encode(on: &codingKeyContainer, forKey: .itemCodeableConcept)
     try itemReference?.encode(on: &codingKeyContainer, forKey: .itemReference)
     try basis?.encode(on: &codingKeyContainer, forKey: .basis, auxKey: ._basis)
     
@@ -88,7 +88,7 @@ open class ClinicalImpressionFinding: BackboneElement {
       return false
     }
     
-    return itemCodableConcept == _other.itemCodableConcept
+    return itemCodeableConcept == _other.itemCodeableConcept
     && itemReference == _other.itemReference
     && basis == _other.basis
   }
@@ -96,7 +96,7 @@ open class ClinicalImpressionFinding: BackboneElement {
   // MARK: - Hashable
   public override func hash(into hasher: inout Hasher) {
     super.hash(into: &hasher)
-    hasher.combine(itemCodableConcept)
+    hasher.combine(itemCodeableConcept)
     hasher.combine(itemReference)
     hasher.combine(basis)
   }

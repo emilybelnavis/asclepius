@@ -29,7 +29,7 @@ open class ActivityDefinitionParticipant: BackboneElement {
   public var type: AlexandriaHRMPrimitive<ActionParticipantType>
   
   /// E.g. nurse, surgeon, parent, etc...
-  public var role: CodableConcept?
+  public var role: CodeableConcept?
   
   public init(type: AlexandriaHRMPrimitive<ActionParticipantType>) {
     self.type = type
@@ -41,7 +41,7 @@ open class ActivityDefinitionParticipant: BackboneElement {
     modifierExtension: [Extension]? = nil,
     fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     type: AlexandriaHRMPrimitive<ActionParticipantType>,
-    role: CodableConcept? = nil
+    role: CodeableConcept? = nil
   ) {
     self.init(type: type)
     self.fhirExtension = fhirExtension
@@ -60,7 +60,7 @@ open class ActivityDefinitionParticipant: BackboneElement {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     self.type = try AlexandriaHRMPrimitive<ActionParticipantType>(from: codingKeyContainer, forKey: .type, auxKey: ._type)
-    self.role = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .role)
+    self.role = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .role)
     
     try super.init(from: decoder)
   }

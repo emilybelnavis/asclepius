@@ -25,10 +25,10 @@ import AlexandriaHRMCore
 // 
 open class EffectEvidenceSynthesisCertaintyCertaintySubcomponent: BackboneElement { // swiftlint:disable:this type_name
   /// Type of subcomponent of certainty rating
-  public var type: CodableConcept?
+  public var type: CodeableConcept?
   
   /// Subcomponent certainty rating
-  public var rating: [CodableConcept]?
+  public var rating: [CodeableConcept]?
   
   /// Used for footnotes/explanatory notes
   public var note: [Annotation]?

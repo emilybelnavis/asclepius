@@ -27,12 +27,12 @@ import AlexandriaHRMCore
  */
 open class ClinicalImpressionInvestigation: BackboneElement {
   /// A name/code for the set
-  public var code: CodableConcept
+  public var code: CodeableConcept
   
   /// Record of a specific investigation
   public var item: [Reference]?
   
-  public init(code: CodableConcept) {
+  public init(code: CodeableConcept) {
     self.code = code
     super.init()
   }
@@ -41,7 +41,7 @@ open class ClinicalImpressionInvestigation: BackboneElement {
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    code: CodableConcept,
+    code: CodeableConcept,
     item: [Reference]?
   ) {
     self.init(code: code)
@@ -60,7 +60,7 @@ open class ClinicalImpressionInvestigation: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.code = try CodableConcept(from: codingKeyContainer, forKey: .code)
+    self.code = try CodeableConcept(from: codingKeyContainer, forKey: .code)
     self.item = try [Reference](from: codingKeyContainer, forKeyIfPresent: .item)
     
     try super.init(from: decoder)

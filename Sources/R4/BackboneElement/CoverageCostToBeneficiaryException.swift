@@ -25,12 +25,12 @@ import AlexandriaHRMCore
  */
 open class CoverageCostToBeneficiaryException: BackboneElement {
   /// Exception category
-  public var type: CodableConcept
+  public var type: CodeableConcept
   
   /// The effective period of the exception
   public var period: Period?
   
-  public init(type: CodableConcept) {
+  public init(type: CodeableConcept) {
     self.type = type
     super.init()
   }
@@ -39,7 +39,7 @@ open class CoverageCostToBeneficiaryException: BackboneElement {
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    type: CodableConcept,
+    type: CodeableConcept,
     period: Period? = nil
   ) {
     self.init(type: type)
@@ -58,7 +58,7 @@ open class CoverageCostToBeneficiaryException: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.type = try CodableConcept(from: codingKeyContainer, forKey: .type)
+    self.type = try CodeableConcept(from: codingKeyContainer, forKey: .type)
     self.period = try Period(from: codingKeyContainer, forKeyIfPresent: .period)
     
     try super.init(from: decoder)

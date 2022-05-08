@@ -50,10 +50,10 @@ open class CommunicationRequestPayload: BackboneElement {
   public var status: AlexandriaHRMPrimitive<RequestStatus>
   
   /// Reason for the current proposal/order status
-  public var statusReason: CodableConcept?
+  public var statusReason: CodeableConcept?
   
   /// Message category
-  public var category: [CodableConcept]?
+  public var category: [CodeableConcept]?
   
   /// How quickly should the proposed act be initialized? Includes concepts such as `stat`
   /// `urgent`, and `routine`
@@ -63,7 +63,7 @@ open class CommunicationRequestPayload: BackboneElement {
   public var doNotPerform: AlexandriaHRMPrimitive<AlexandriaHRMBool>?
   
   /// A channel of communication
-  public var medium: [CodableConcept]?
+  public var medium: [CodeableConcept]?
   
   /// Focus of the message
   public var subject: Reference?
@@ -93,7 +93,7 @@ open class CommunicationRequestPayload: BackboneElement {
   public var sender: Reference?
   
   /// Why is this communication needed?
-  public var reasonCode: [CodableConcept]?
+  public var reasonCode: [CodeableConcept]?
   
   /// Why is this communication needed
   public var reasonReference: [Reference]?
@@ -115,11 +115,11 @@ open class CommunicationRequestPayload: BackboneElement {
     replaces: [Reference]? = nil,
     groupIdentifier: Identifier? = nil,
     status: AlexandriaHRMPrimitive<RequestStatus>,
-    statusReason: CodableConcept? = nil,
-    category: [CodableConcept]? = nil,
+    statusReason: CodeableConcept? = nil,
+    category: [CodeableConcept]? = nil,
     priority: AlexandriaHRMPrimitive<RequestPriority>? = nil,
     doNotPerform: AlexandriaHRMPrimitive<AlexandriaHRMBool>? = nil,
-    medium: [CodableConcept]? = nil,
+    medium: [CodeableConcept]? = nil,
     subject: Reference? = nil,
     about: [Reference]? = nil,
     encounter: Reference? = nil,
@@ -129,7 +129,7 @@ open class CommunicationRequestPayload: BackboneElement {
     requester: Reference? = nil,
     recipient: [Reference]? = nil,
     sender: Reference? = nil,
-    reasonCode: [CodableConcept]? = nil,
+    reasonCode: [CodeableConcept]? = nil,
     reasonReference: [Reference]? = nil,
     note: [Annotation]? = nil
   ) {
@@ -137,7 +137,7 @@ open class CommunicationRequestPayload: BackboneElement {
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
     self.fhirId = fhirId
-    self.fhirIdentifier = fhirIdentifier
+    self.identifier = identifier
     self.basedOn = basedOn
     self.replaces = replaces
     self.groupIdentifier = groupIdentifier
@@ -205,16 +205,16 @@ open class CommunicationRequestPayload: BackboneElement {
       tempOccurrence = .period(occurrencePeriod)
     }
     
-    self.fhirIdentifier = try [Identifier](from: codingKeyContainer, forKeyIfPresent: .identifier)
+    self.identifier = try [Identifier](from: codingKeyContainer, forKeyIfPresent: .identifier)
     self.basedOn = try [Reference](from: codingKeyContainer, forKeyIfPresent: .basedOn)
     self.replaces = try [Reference](from: codingKeyContainer, forKeyIfPresent: .replaces)
     self.groupIdentifier = try Identifier(from: codingKeyContainer, forKeyIfPresent: .groupIdentifier)
     self.status = try AlexandriaHRMPrimitive<RequestStatus>(from: codingKeyContainer, forKey: .status, auxKey: ._status)
-    self.statusReason = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .statusReason)
-    self.category = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .category)
+    self.statusReason = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .statusReason)
+    self.category = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .category)
     self.priority = try AlexandriaHRMPrimitive<RequestPriority>(from: codingKeyContainer, forKeyIfPresent: .priority, auxKey: ._priority)
     self.doNotPerform = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKeyIfPresent: .doNotPerform, auxKey: ._doNotPerform)
-    self.medium = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .medium)
+    self.medium = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .medium)
     self.subject = try Reference(from: codingKeyContainer, forKeyIfPresent: .subject)
     self.about = try [Reference](from: codingKeyContainer, forKeyIfPresent: .about)
     self.encounter = try Reference(from: codingKeyContainer, forKeyIfPresent: .encounter)
@@ -224,7 +224,7 @@ open class CommunicationRequestPayload: BackboneElement {
     self.requester = try Reference(from: codingKeyContainer, forKeyIfPresent: .requester)
     self.recipient = try [Reference](from: codingKeyContainer, forKeyIfPresent: .recipient)
     self.sender = try Reference(from: codingKeyContainer, forKeyIfPresent: .sender)
-    self.reasonCode = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .reasonCode)
+    self.reasonCode = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .reasonCode)
     self.reasonReference = try [Reference](from: codingKeyContainer, forKeyIfPresent: .reasonReference)
     self.note = try [Annotation](from: codingKeyContainer, forKeyIfPresent: .note)
     

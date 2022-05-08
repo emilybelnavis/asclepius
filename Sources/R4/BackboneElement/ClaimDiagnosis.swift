@@ -24,7 +24,7 @@ import AlexandriaHRMCore
  */
 open class ClaimDiagnosis: BackboneElement {
   public enum DiagnosisX: Hashable {
-    case codableConcept(CodableConcept)
+    case codeableConcept(CodeableConcept)
     case reference(Reference)
   }
   
@@ -35,13 +35,13 @@ open class ClaimDiagnosis: BackboneElement {
   public var diagnosisX: DiagnosisX
   
   /// Timing or nature of the diagnosis
-  public var type: [CodableConcept]?
+  public var type: [CodeableConcept]?
   
   /// Present on admission
-  public var onAdmission: CodableConcept?
+  public var onAdmission: CodeableConcept?
   
   /// Package billing code
-  public var packageCode: CodableConcept?
+  public var packageCode: CodeableConcept?
   
   public init(sequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>, diagnosisX: DiagnosisX) {
     self.sequence = sequence
@@ -55,9 +55,9 @@ open class ClaimDiagnosis: BackboneElement {
     fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     sequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>,
     diagnosisX: DiagnosisX,
-    type: [CodableConcept]? = nil,
-    onAdmission: CodableConcept? = nil,
-    packageCode: CodableConcept? = nil
+    type: [CodeableConcept]? = nil,
+    onAdmission: CodeableConcept? = nil,
+    packageCode: CodeableConcept? = nil
   ) {
     self.init(sequence: sequence, diagnosisX: diagnosisX)
     self.fhirExtension = fhirExtension
@@ -71,7 +71,7 @@ open class ClaimDiagnosis: BackboneElement {
   // MARK: - Codable
   private enum CodingKeys: String, CodingKey {
     case sequence; case _sequence
-    case diagnosisCodableConcept
+    case diagnosisCodeableConcept
     case diagnosisReference
     case type
     case onAdmission
@@ -82,11 +82,11 @@ open class ClaimDiagnosis: BackboneElement {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     var tempDiagnosisX: DiagnosisX?
-    if let diagnosisCodableConcept = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .diagnosisCodableConcept) {
+    if let diagnosisCodeableConcept = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .diagnosisCodeableConcept) {
       if tempDiagnosisX != nil {
-        throw DecodingError.dataCorruptedError(forKey: .diagnosisCodableConcept, in: codingKeyContainer, debugDescription: "More than one value provided for \"diagnosis\"")
+        throw DecodingError.dataCorruptedError(forKey: .diagnosisCodeableConcept, in: codingKeyContainer, debugDescription: "More than one value provided for \"diagnosis\"")
       }
-      tempDiagnosisX = .codableConcept(diagnosisCodableConcept)
+      tempDiagnosisX = .codeableConcept(diagnosisCodeableConcept)
     }
     
     if let diagnosisReference = try Reference(from: codingKeyContainer, forKeyIfPresent: .diagnosisReference) {
@@ -98,9 +98,9 @@ open class ClaimDiagnosis: BackboneElement {
     
     self.sequence = try AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>(from: codingKeyContainer, forKey: .sequence, auxKey: ._sequence)
     self.diagnosisX = tempDiagnosisX!
-    self.type = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .type)
-    self.onAdmission = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .onAdmission)
-    self.packageCode = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .packageCode)
+    self.type = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .type)
+    self.onAdmission = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .onAdmission)
+    self.packageCode = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .packageCode)
     
     try super.init(from: decoder)
   }
@@ -109,8 +109,8 @@ open class ClaimDiagnosis: BackboneElement {
     var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
     switch diagnosisX {
-    case .codableConcept(let _value):
-      try _value.encode(on: &codingKeyContainer, forKey: .diagnosisCodableConcept)
+    case .codeableConcept(let _value):
+      try _value.encode(on: &codingKeyContainer, forKey: .diagnosisCodeableConcept)
     case .reference(let _value):
       try _value.encode(on: &codingKeyContainer, forKey: .diagnosisReference)
     }

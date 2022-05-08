@@ -27,16 +27,16 @@ open class EffectEvidenceSynthesisEffectEstimate: BackboneElement {
   public var fhirDescription: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// Type of effect estimate
-  public var type: CodableConcept?
+  public var type: CodeableConcept?
   
   /// Variant exposure states
-  public var variantState: CodableConcept?
+  public var variantState: CodeableConcept?
   
   /// Point estimate
   public var value: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>?
   
   /// What unit is the outcome described in
-  public var unitOfMeasure: CodableConcept?
+  public var unitOfMeasure: CodeableConcept?
   
   /// How precise the esitmate is 
   public var precisionEsitmate: [EffectEvidenceSynthesisEffectEstimatePrecisionEstimate]?

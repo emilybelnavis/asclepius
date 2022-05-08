@@ -20,7 +20,7 @@
 import AlexandriaHRMCore
 
 /**
- ValueSet details if this is coded; Binds to a value set if this element is coded (`code`, `Coding`, `CodableConcept`,
+ ValueSet details if this is coded; Binds to a value set if this element is coded (`code`, `Coding`, `CodeableConcept`,
  `Quantity`), or the data types (`string`, `uri`)
  */
 open class ElementDefinitionBinding: Element {

@@ -24,7 +24,7 @@ import AlexandriaHRMCore
 /// evidence that confirmed or refuted the condition
 open class ConditionEvidence: BackboneElement {
   /// Manifestation/symptom
-  public var code: [CodableConcept]?
+  public var code: [CodeableConcept]?
   
   /// Supporting information found elsewhere
   public var detail: [Reference]?
@@ -37,7 +37,7 @@ open class ConditionEvidence: BackboneElement {
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    code: [CodableConcept]? = nil,
+    code: [CodeableConcept]? = nil,
     detail: [Reference]? = nil
   ) {
     self.init()
@@ -57,7 +57,7 @@ open class ConditionEvidence: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.code = try [CodableConcept](from: codingKeyContainer, forKey: .code)
+    self.code = try [CodeableConcept](from: codingKeyContainer, forKey: .code)
     self.detail = try [Reference](from: codingKeyContainer, forKey: .detail)
     
     try super.init(from: decoder)

@@ -35,7 +35,7 @@ open class CoverageEligibilityResponseInsuranceItemBenefit: BackboneElement {
   }
   
   /// Benefit classification
-  public var type: CodableConcept
+  public var type: CodeableConcept
   
   /// Benefits allowed
   public var allowed: AllowedX?
@@ -43,7 +43,7 @@ open class CoverageEligibilityResponseInsuranceItemBenefit: BackboneElement {
   /// Benefits used
   public var used: UsedX?
   
-  public init(type: CodableConcept) {
+  public init(type: CodeableConcept) {
     self.type = type
     super.init()
   }
@@ -52,7 +52,7 @@ open class CoverageEligibilityResponseInsuranceItemBenefit: BackboneElement {
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    type: CodableConcept,
+    type: CodeableConcept,
     allowed: AllowedX?,
     used: UsedX?
   ) {
@@ -123,7 +123,7 @@ open class CoverageEligibilityResponseInsuranceItemBenefit: BackboneElement {
       tempUsed = .unsignedInteger(usedUnsignedInteger)
     }
     
-    self.type = try CodableConcept(from: codingKeyContainer, forKey: .type)
+    self.type = try CodeableConcept(from: codingKeyContainer, forKey: .type)
     self.allowed = tempAllowed
     self.used = tempUsed
     

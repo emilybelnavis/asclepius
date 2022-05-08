@@ -24,9 +24,9 @@ import AlexandriaHRMCore
  */
 open class CoverageEligibilityResponseError: BackboneElement {
   /// Error code detailing processing issues
-  public var code: CodableConcept
+  public var code: CodeableConcept
   
-  public init(code: CodableConcept) {
+  public init(code: CodeableConcept) {
     self.code = code
     super.init()
   }
@@ -35,7 +35,7 @@ open class CoverageEligibilityResponseError: BackboneElement {
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    code: CodableConcept
+    code: CodeableConcept
   ) {
     self.init(code: code)
     self.fhirExtension = fhirExtension
@@ -51,7 +51,7 @@ open class CoverageEligibilityResponseError: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.code = try CodableConcept(from: codingKeyContainer, forKey: .code)
+    self.code = try CodeableConcept(from: codingKeyContainer, forKey: .code)
     
     try super.init(from: decoder)
   }

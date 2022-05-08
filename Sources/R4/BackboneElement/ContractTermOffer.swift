@@ -31,13 +31,13 @@ open class ContractTermOffer: BackboneElement {
   public var topic: Reference?
   
   /// Contract offer type or form
-  public var type: CodableConcept?
+  public var type: CodeableConcept?
   
   /// Accepting party choice
-  public var decision: CodableConcept?
+  public var decision: CodeableConcept?
   
   /// How decision is conveyed
-  public var decisionMode: [CodableConcept]?
+  public var decisionMode: [CodeableConcept]?
   
   /// Response to offer text
   public var answer: [ContractTermOfferAnswer]?
@@ -62,9 +62,9 @@ open class ContractTermOffer: BackboneElement {
     identifier: [Identifier]? = nil,
     party: [ContractTermOfferParty]? = nil,
     topic: Reference? = nil,
-    type: CodableConcept? = nil,
-    decision: CodableConcept? = nil,
-    decisionMode: [CodableConcept]? = nil,
+    type: CodeableConcept? = nil,
+    decision: CodeableConcept? = nil,
+    decisionMode: [CodeableConcept]? = nil,
     answer: [ContractTermOfferAnswer]? = nil,
     text: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     linkId: [AlexandriaHRMPrimitive<AlexandriaHRMString>]? = nil,
@@ -74,7 +74,7 @@ open class ContractTermOffer: BackboneElement {
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
     self.fhirId = fhirId
-    self.fhirIdentifier = fhirIdentifier
+    self.identifier = identifier
     self.party = party
     self.topic = topic
     self.type = type
@@ -103,12 +103,12 @@ open class ContractTermOffer: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.fhirIdentifier = try [Identifier](from: codingKeyContainer, forKeyIfPresent: .identifier)
+    self.identifier = try [Identifier](from: codingKeyContainer, forKeyIfPresent: .identifier)
     self.party = try [ContractTermOfferParty](from: codingKeyContainer, forKeyIfPresent: .party)
     self.topic = try Reference(from: codingKeyContainer, forKeyIfPresent: .topic)
-    self.type = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .type)
-    self.decision = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .decision)
-    self.decisionMode = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .decisionMode)
+    self.type = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .type)
+    self.decision = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .decision)
+    self.decisionMode = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .decisionMode)
     self.answer = try [ContractTermOfferAnswer](from: codingKeyContainer, forKeyIfPresent: .answer)
     self.text = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .text, auxKey: .text)
     self.linkId = try [AlexandriaHRMPrimitive<AlexandriaHRMString>](from: codingKeyContainer, forKeyIfPresent: .linkId, auxKey: ._linkId)

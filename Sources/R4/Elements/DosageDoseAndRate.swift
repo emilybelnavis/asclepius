@@ -35,7 +35,7 @@ open class DosageDoseAndRate: Element {
   }
   
   /// The kind of dose or rate specified
-  public var type: CodableConcept?
+  public var type: CodeableConcept?
   
   /// Amount of medication per dose
   public var dose: DoseX?
@@ -50,7 +50,7 @@ open class DosageDoseAndRate: Element {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    type: CodableConcept? = nil,
+    type: CodeableConcept? = nil,
     dose: DoseX? = nil,
     rate: RateX? = nil
   ) {
@@ -116,7 +116,7 @@ open class DosageDoseAndRate: Element {
       tempRate = .ratio(rateRatio)
     }
     
-    self.type = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .type)
+    self.type = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .type)
     self.dose = tempDose
     self.rate = tempRate
     

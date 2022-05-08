@@ -26,7 +26,7 @@ import AlexandriaHRMCore
 open class DataRequirement: Element {
   /// all possible types for `Subject`
   public enum SubjectX: Hashable {
-    case codableConcept(CodableConcept)
+    case codeableConcept(CodeableConcept)
     case reference(Reference)
   }
   
@@ -92,7 +92,7 @@ open class DataRequirement: Element {
     case dateFilter
     case limit; case _limit
     case sort
-    case subjectCodableConcept
+    case subjectCodeableConcept
     case subjectReference
   }
   
@@ -100,11 +100,11 @@ open class DataRequirement: Element {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     var tempSubject: SubjectX?
-    if let subjectCodableConcept = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .subjectCodableConcept) {
+    if let subjectCodeableConcept = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .subjectCodeableConcept) {
       if tempSubject != nil {
-        throw DecodingError.dataCorruptedError(forKey: .subjectCodableConcept, in: codingKeyContainer, debugDescription: "More than one value provided for \"subject\"")
+        throw DecodingError.dataCorruptedError(forKey: .subjectCodeableConcept, in: codingKeyContainer, debugDescription: "More than one value provided for \"subject\"")
       }
-      tempSubject = .codableConcept(subjectCodableConcept)
+      tempSubject = .codeableConcept(subjectCodeableConcept)
     }
     
     if let subjectReference = try Reference(from: codingKeyContainer, forKeyIfPresent: .subjectReference) {
@@ -130,8 +130,8 @@ open class DataRequirement: Element {
   
     if let enumSubject = subject {
       switch enumSubject {
-      case .codableConcept(let _value):
-        try _value.encode(on: &codingKeyContainer, forKey: .subjectCodableConcept)
+      case .codeableConcept(let _value):
+        try _value.encode(on: &codingKeyContainer, forKey: .subjectCodeableConcept)
       case .reference(let _value):
         try _value.encode(on: &codingKeyContainer, forKey: .subjectReference)
       }

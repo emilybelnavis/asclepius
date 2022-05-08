@@ -22,10 +22,10 @@ import AlexandriaHRMCore
 /// Details about each adverse reaction event linked to an exposure to the identified substance
 open class AllergyIntoleranceReaction: BackboneElement {
   /// Specific substance or pharmaceutical product considered to be responsible for the event
-  public var substance: CodableConcept?
+  public var substance: CodeableConcept?
   
   /// Clinical symptoms/signs associated with the event
-  public var manifestation: [CodableConcept]
+  public var manifestation: [CodeableConcept]
   
   /// Description of the event as a whole
   public var fhirDescription: AlexandriaHRMPrimitive<AlexandriaHRMString>?
@@ -38,12 +38,12 @@ open class AllergyIntoleranceReaction: BackboneElement {
   public var severity: AlexandriaHRMPrimitive<AllergyIntoleranceSeverity>?
 
   /// How the subject was exposed to the substance
-  public var exposureRoute: CodableConcept?
+  public var exposureRoute: CodeableConcept?
   
   /// Details about event not captured in other fields
   public var note: [Annotation]?
   
-  public init(manifestation: [CodableConcept]) {
+  public init(manifestation: [CodeableConcept]) {
     self.manifestation = manifestation
     super.init()
   }
@@ -51,12 +51,12 @@ open class AllergyIntoleranceReaction: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    substance: CodableConcept? = nil,
-    manifestation: [CodableConcept],
+    substance: CodeableConcept? = nil,
+    manifestation: [CodeableConcept],
     fhirDescription: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     onset: AlexandriaHRMPrimitive<AlexandriaHRMDateTime>? = nil,
     severity: AlexandriaHRMPrimitive<AllergyIntoleranceSeverity>? = nil,
-    exposureRoute: CodableConcept? = nil,
+    exposureRoute: CodeableConcept? = nil,
     note: [Annotation]? = nil
   ) {
     self.init(manifestation: manifestation)
@@ -84,12 +84,12 @@ open class AllergyIntoleranceReaction: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.substance = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .substance)
-    self.manifestation = try [CodableConcept](from: codingKeyContainer, forKey: .manifestation)
+    self.substance = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .substance)
+    self.manifestation = try [CodeableConcept](from: codingKeyContainer, forKey: .manifestation)
     self.fhirDescription = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .fhirDescription, auxKey: ._fhirDescription)
     self.onset = try AlexandriaHRMPrimitive<AlexandriaHRMDateTime>(from: codingKeyContainer, forKeyIfPresent: .onset, auxKey: ._onset)
     self.severity = try AlexandriaHRMPrimitive<AllergyIntoleranceSeverity>(from: codingKeyContainer, forKeyIfPresent: .severity, auxKey: ._severity)
-    self.exposureRoute = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .exposureRoute)
+    self.exposureRoute = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .exposureRoute)
     self.note = try [Annotation](from: codingKeyContainer, forKeyIfPresent: .note)
     
     try super.init(from: decoder)

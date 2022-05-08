@@ -27,7 +27,7 @@ import AlexandriaHRMCore
 */
 open class CarePlanActivityDetail: BackboneElement {
   public enum ProductX: Hashable {
-    case codableConcept(CodableConcept)
+    case codeableConcept(CodeableConcept)
     case reference(Reference)
   }
   
@@ -53,10 +53,10 @@ open class CarePlanActivityDetail: BackboneElement {
   public var instantiatesUri: [AlexandriaHRMPrimitive<AlexandriaHRMURI>]?
   
   /// Detail type of activity
-  public var code: CodableConcept?
+  public var code: CodeableConcept?
   
   /// Why the activity should be done or why the activity was prohibited
-  public var reasonCode: [CodableConcept]?
+  public var reasonCode: [CodeableConcept]?
   
   /// Why the activity is needed
   public var reasonReference: [Reference]?
@@ -68,7 +68,7 @@ open class CarePlanActivityDetail: BackboneElement {
   public var status: AlexandriaHRMPrimitive<CarePlanActivityStatus>
   
   /// Reason for current status
-  public var statusReason: CodableConcept?
+  public var statusReason: CodeableConcept?
   
   /// Is activity prohibited
   public var doNotPerform: AlexandriaHRMPrimitive<AlexandriaHRMBool>
@@ -107,12 +107,12 @@ open class CarePlanActivityDetail: BackboneElement {
     kind: AlexandriaHRMPrimitive<ResourceType>? = nil,
     instantiatesCanonical: [AlexandriaHRMPrimitive<Canonical>]? = nil,
     instantiatesUri: [AlexandriaHRMPrimitive<AlexandriaHRMURI>]? = nil,
-    code: CodableConcept? = nil,
-    reasonCode: [CodableConcept]? = nil,
+    code: CodeableConcept? = nil,
+    reasonCode: [CodeableConcept]? = nil,
     reasonReference: [Reference]? = nil,
     goal: [Reference]? = nil,
     status: AlexandriaHRMPrimitive<CarePlanActivityStatus>,
-    statusReason: CodableConcept? = nil,
+    statusReason: CodeableConcept? = nil,
     doNotPerform: AlexandriaHRMPrimitive<AlexandriaHRMBool>,
     scheduledX: ScheduledX? = nil,
     location: Reference? = nil,
@@ -159,7 +159,7 @@ open class CarePlanActivityDetail: BackboneElement {
     case scheduledString; case _scheduledString
     case scheduledTiming
     case location
-    case productCodableConcept
+    case productCodeableConcept
     case productReference
     case performer
     case dailyAmount
@@ -193,11 +193,11 @@ open class CarePlanActivityDetail: BackboneElement {
     }
     
     var tempProductX: ProductX?
-    if let productCodableConcept = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .productCodableConcept) {
+    if let productCodeableConcept = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .productCodeableConcept) {
       if tempProductX != nil {
-        throw DecodingError.dataCorruptedError(forKey: .productCodableConcept, in: codingKeyContainer, debugDescription: "More than one value provided for \"product\"")
+        throw DecodingError.dataCorruptedError(forKey: .productCodeableConcept, in: codingKeyContainer, debugDescription: "More than one value provided for \"product\"")
       }
-      tempProductX = .codableConcept(productCodableConcept)
+      tempProductX = .codeableConcept(productCodeableConcept)
     }
     
     if let productReference = try Reference(from: codingKeyContainer, forKeyIfPresent: .productReference) {
@@ -210,12 +210,12 @@ open class CarePlanActivityDetail: BackboneElement {
     self.kind = try AlexandriaHRMPrimitive<ResourceType>(from: codingKeyContainer, forKeyIfPresent: .kind, auxKey: ._kind)
     self.instantiatesCanonical = try [AlexandriaHRMPrimitive<Canonical>](from: codingKeyContainer, forKeyIfPresent: .instantiatesCanonical, auxKey: ._instantiatesCanonical)
     self.instantiatesUri = try [AlexandriaHRMPrimitive<AlexandriaHRMURI>](from: codingKeyContainer, forKeyIfPresent: .instantiatesUri, auxKey: ._instantiatesUri)
-    self.code = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .code)
-    self.reasonCode = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .reasonCode)
+    self.code = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .code)
+    self.reasonCode = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .reasonCode)
     self.reasonReference = try [Reference](from: codingKeyContainer, forKeyIfPresent: .reasonReference)
     self.goal = try [Reference](from: codingKeyContainer, forKeyIfPresent: .goal)
     self.status = try AlexandriaHRMPrimitive<CarePlanActivityStatus>(from: codingKeyContainer, forKey: .status, auxKey: ._status)
-    self.statusReason = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .statusReason)
+    self.statusReason = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .statusReason)
     self.doNotPerform = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKey: .doNotPerform, auxKey: ._doNotPerform)
     self.scheduledX = tempScheduledX
     self.location = try Reference(from: codingKeyContainer, forKeyIfPresent: .location)
@@ -244,8 +244,8 @@ open class CarePlanActivityDetail: BackboneElement {
     
     if let enumProductX = productX {
       switch enumProductX {
-      case .codableConcept(let _value):
-        try _value.encode(on: &codingKeyContainer, forKey: .productCodableConcept)
+      case .codeableConcept(let _value):
+        try _value.encode(on: &codingKeyContainer, forKey: .productCodeableConcept)
       case .reference(let _value):
         try _value.encode(on: &codingKeyContainer, forKey: .productReference)
       }

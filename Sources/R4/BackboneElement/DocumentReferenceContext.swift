@@ -27,16 +27,16 @@ open class DocumentReferenceContext: BackboneElement {
   public var encounter: [Reference]?
   
   /// Main clinical acts documented
-  public var event: [CodableConcept]?
+  public var event: [CodeableConcept]?
   
   /// Time of service that is being documented
   public var period: Period?
   
   /// Kind of facility where patient was seen
-  public var facilityType: CodableConcept?
+  public var facilityType: CodeableConcept?
   
   /// Additional details about where the content was created (e.g. clinical specialty)
-  public var practiceSetting: CodableConcept?
+  public var practiceSetting: CodeableConcept?
   
   /// Patient demographics from source
   public var sourcePatientInfo: Reference?
@@ -53,10 +53,10 @@ open class DocumentReferenceContext: BackboneElement {
     modifierExtension: [Extension]? = nil,
     fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     encounter: [Reference]? = nil,
-    event: [CodableConcept]? = nil,
+    event: [CodeableConcept]? = nil,
     period: Period? = nil,
-    facilityType: CodableConcept? = nil,
-    practiceSetting: CodableConcept? = nil,
+    facilityType: CodeableConcept? = nil,
+    practiceSetting: CodeableConcept? = nil,
     sourcePatientInfo: Reference? = nil,
     related: [Reference]? = nil
   ) {
@@ -88,10 +88,10 @@ open class DocumentReferenceContext: BackboneElement {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     self.encounter = try [Reference](from: codingKeyContainer, forKeyIfPresent: .encounter)
-    self.event = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .event)
+    self.event = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .event)
     self.period = try Period(from: codingKeyContainer, forKeyIfPresent: .period)
-    self.facilityType = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .facilityType)
-    self.practiceSetting = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .practiceSetting)
+    self.facilityType = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .facilityType)
+    self.practiceSetting = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .practiceSetting)
     self.sourcePatientInfo = try Reference(from: codingKeyContainer, forKeyIfPresent: .sourcePatientInfo)
     self.related = try [Reference](from: codingKeyContainer, forKeyIfPresent: .related)
     

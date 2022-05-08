@@ -22,7 +22,7 @@ import AlexandriaHRMCore
 /// Contract Valued Item List
 open class ContractTermAssetValuedItem: BackboneElement {
   public enum EntityX: Hashable {
-    case codableConcept(CodableConcept)
+    case codeableConcept(CodeableConcept)
     case reference(Reference)
   }
   
@@ -95,7 +95,7 @@ open class ContractTermAssetValuedItem: BackboneElement {
     self.modifierExtension = modifierExtension
     self.fhirId = fhirId
     self.entity = entity
-    self.fhirIdentifier = fhirIdentifier
+    self.identifier = identifier
     self.effectiveTime = effectiveTime
     self.quantity = quantity
     self.unitPrice = unitPrice
@@ -111,7 +111,7 @@ open class ContractTermAssetValuedItem: BackboneElement {
   
   // MARK: - Codable
   private enum CodingKeys: String, CodingKey {
-    case entityCodableConcept
+    case entityCodeableConcept
     case entityReference
     case identifier
     case effectiveTime; case _effectiveTime
@@ -131,11 +131,11 @@ open class ContractTermAssetValuedItem: BackboneElement {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     var tEntity: EntityX?
-    if let entityCodableConcept = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .entityCodableConcept) {
+    if let entityCodeableConcept = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .entityCodeableConcept) {
       if tEntity != nil {
-        throw DecodingError.dataCorruptedError(forKey: .entityCodableConcept, in: codingKeyContainer, debugDescription: "More than one value provided for \"entity\"")
+        throw DecodingError.dataCorruptedError(forKey: .entityCodeableConcept, in: codingKeyContainer, debugDescription: "More than one value provided for \"entity\"")
       }
-      tEntity = .codableConcept(entityCodableConcept)
+      tEntity = .codeableConcept(entityCodeableConcept)
     }
     
     if let entityReference = try Reference(from: codingKeyContainer, forKeyIfPresent: .entityReference) {
@@ -146,7 +146,7 @@ open class ContractTermAssetValuedItem: BackboneElement {
     }
     
     self.entity = tEntity
-    self.fhirIdentifier = try Identifier(from: codingKeyContainer, forKeyIfPresent: .identifier)
+    self.identifier = try Identifier(from: codingKeyContainer, forKeyIfPresent: .identifier)
     self.effectiveTime = try AlexandriaHRMPrimitive<AlexandriaHRMDateTime>(from: codingKeyContainer, forKeyIfPresent: .effectiveTime, auxKey: ._effectiveTime)
     self.quantity = try Quantity(from: codingKeyContainer, forKeyIfPresent: .quantity)
     self.unitPrice = try Money(from: codingKeyContainer, forKeyIfPresent: .unitPrice)
@@ -167,8 +167,8 @@ open class ContractTermAssetValuedItem: BackboneElement {
     
     if let entityEnum = entity {
       switch entityEnum {
-      case .codableConcept(let codableConcept):
-        try codableConcept.encode(on: &codingKeyContainer, forKey: .entityCodableConcept)
+      case .codeableConcept(let codeableConcept):
+        try codeableConcept.encode(on: &codingKeyContainer, forKey: .entityCodeableConcept)
       case .reference(let reference):
         try reference.encode(on: &codingKeyContainer, forKey: .entityReference)
       }

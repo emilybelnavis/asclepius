@@ -28,7 +28,7 @@ open class ElementDefinitionDefaultValueX: Element {
   public var boolean: AlexandriaHRMPrimitive<AlexandriaHRMBool>?
   public var canonical: AlexandriaHRMPrimitive<Canonical>?
   public var code: AlexandriaHRMPrimitive<AlexandriaHRMString>?
-  public var codableConcept: CodableConcept?
+  public var codeableConcept: CodeableConcept?
   public var coding: Coding?
   public var contactDetail: ContactDetail?
   public var contactPoint: ContactPoint?
@@ -69,7 +69,7 @@ open class ElementDefinitionDefaultValueX: Element {
   public var uri: AlexandriaHRMPrimitive<AlexandriaHRMURI>?
   public var url: AlexandriaHRMPrimitive<AlexandriaHRMURI>?
   public var usageContext: UsageContext?
-  public var uufhirId: AlexandriaHRMPrimitive<AlexandriaHRMURI>?
+  public var uuid: AlexandriaHRMPrimitive<AlexandriaHRMURI>?
   
   override public init() {
     super.init()
@@ -86,7 +86,7 @@ open class ElementDefinitionDefaultValueX: Element {
     boolean: AlexandriaHRMPrimitive<AlexandriaHRMBool>? = nil,
     canonical: AlexandriaHRMPrimitive<Canonical>? = nil,
     code: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    codableConcept: CodableConcept? = nil,
+    codeableConcept: CodeableConcept? = nil,
     coding: Coding? = nil,
     contactDetail: ContactDetail? = nil,
     contactPoint: ContactPoint? = nil,
@@ -101,6 +101,7 @@ open class ElementDefinitionDefaultValueX: Element {
     duration: Duration? = nil,
     expression: Expression? = nil,
     humanName: HumanName? = nil,
+    id: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     identifier: Identifier? = nil,
     instant: AlexandriaHRMPrimitive<AlexandriaHRMInstant>? = nil,
     integer: AlexandriaHRMPrimitive<AlexandriaHRMInteger>? = nil,
@@ -126,7 +127,7 @@ open class ElementDefinitionDefaultValueX: Element {
     uri: AlexandriaHRMPrimitive<AlexandriaHRMURI>? = nil,
     url: AlexandriaHRMPrimitive<AlexandriaHRMURI>? = nil,
     usageContext: UsageContext? = nil,
-    uufhirId: AlexandriaHRMPrimitive<AlexandriaHRMURI>? = nil
+    uuid: AlexandriaHRMPrimitive<AlexandriaHRMURI>? = nil
   ) {
     self.init()
     self.fhirExtension = fhirExtension
@@ -139,7 +140,7 @@ open class ElementDefinitionDefaultValueX: Element {
     self.boolean = boolean
     self.canonical = canonical
     self.code = code
-    self.codableConcept = codableConcept
+    self.codeableConcept = codeableConcept
     self.coding = coding
     self.contactDetail = contactDetail
     self.contactPoint = contactPoint
@@ -154,7 +155,7 @@ open class ElementDefinitionDefaultValueX: Element {
     self.duration = duration
     self.expression = expression
     self.humanName = humanName
-    self.fhirIdentifier = fhirIdentifier
+    self.identifier = identifier
     self.instant = instant
     self.integer = integer
     self.markdown = markdown
@@ -170,6 +171,15 @@ open class ElementDefinitionDefaultValueX: Element {
     self.reference = reference
     self.relatedArtifact = relatedArtifact
     self.sampledData = sampledData
-    
+    self.signature = signature
+    self.string = string
+    self.time = time
+    self.timing = timing
+    self.triggerDefinition = triggerDefinition
+    self.unsignedInteger = unsignedInteger
+    self.uri = uri
+    self.url = url
+    self.usageContext = usageContext
+    self.uuid = uuid
   }
 }

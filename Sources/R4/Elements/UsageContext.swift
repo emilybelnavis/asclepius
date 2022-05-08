@@ -26,7 +26,7 @@ import AlexandriaHRMCore
  */
 open class UsageContext: Element {
   public enum ValueX: Hashable {
-    case codableConcept(CodableConcept)
+    case codeableConcept(CodeableConcept)
     case quantity(Quantity)
     case range(Range)
     case reference(Reference)
@@ -58,7 +58,7 @@ open class UsageContext: Element {
   // MARK: - Codable
   private enum CodingKeys: String, CodingKey {
     case code
-    case valueCodableConcept
+    case valueCodeableConcept
     case valueQuantity
     case valueRange
     case valueReference
@@ -68,11 +68,11 @@ open class UsageContext: Element {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     var tempValueX: ValueX?
-    if let valueCodableConcept = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .valueCodableConcept) {
+    if let valueCodeableConcept = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .valueCodeableConcept) {
       if tempValueX != nil {
-        throw DecodingError.dataCorruptedError(forKey: .valueCodableConcept, in: codingKeyContainer, debugDescription: "More than one value provided for \"value\"")
+        throw DecodingError.dataCorruptedError(forKey: .valueCodeableConcept, in: codingKeyContainer, debugDescription: "More than one value provided for \"value\"")
       }
-      tempValueX = .codableConcept(valueCodableConcept)
+      tempValueX = .codeableConcept(valueCodeableConcept)
     }
     
     if let valueQuantity = try Quantity(from: codingKeyContainer, forKeyIfPresent: .valueQuantity) {
@@ -106,8 +106,8 @@ open class UsageContext: Element {
     var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
     switch valueX {
-    case .codableConcept(let _value):
-      try _value.encode(on: &codingKeyContainer, forKey: .valueCodableConcept)
+    case .codeableConcept(let _value):
+      try _value.encode(on: &codingKeyContainer, forKey: .valueCodeableConcept)
     case .quantity(let _value):
       try _value.encode(on: &codingKeyContainer, forKey: .valueQuantity)
     case .range(let _value):

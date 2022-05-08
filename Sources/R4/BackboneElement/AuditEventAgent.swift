@@ -22,10 +22,10 @@ import AlexandriaHRMCore
 /// An actor taking an active role in the event or activity that is logged
 open class AuditEventAgent: BackboneElement {
   /// How agent participated
-  public var type: CodableConcept?
+  public var type: CodeableConcept?
   
   /// Agent role in the event
-  public var role: [CodableConcept]?
+  public var role: [CodeableConcept]?
   
   /// Identifier of who
   public var who: Reference?
@@ -52,7 +52,7 @@ open class AuditEventAgent: BackboneElement {
   public var network: AuditEventAgentNetwork?
   
   /// Reason given for this user
-  public var purposeOfUse: [CodableConcept]?
+  public var purposeOfUse: [CodeableConcept]?
   
   public init(requestor: AlexandriaHRMPrimitive<AlexandriaHRMBool>) {
     self.requestor = requestor
@@ -63,8 +63,8 @@ open class AuditEventAgent: BackboneElement {
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    type: CodableConcept? = nil,
-    role: [CodableConcept]? = nil,
+    type: CodeableConcept? = nil,
+    role: [CodeableConcept]? = nil,
     who: Reference? = nil,
     altId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     name: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
@@ -73,7 +73,7 @@ open class AuditEventAgent: BackboneElement {
     policy: [AlexandriaHRMPrimitive<AlexandriaHRMURI>]? = nil,
     media: Coding? = nil,
     network: AuditEventAgentNetwork? = nil,
-    purposeOfUse: [CodableConcept]? = nil
+    purposeOfUse: [CodeableConcept]? = nil
   ) {
     self.init(requestor: requestor)
     self.fhirExtension = fhirExtension
@@ -109,8 +109,8 @@ open class AuditEventAgent: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.type = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .type)
-    self.role = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .role)
+    self.type = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .type)
+    self.role = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .role)
     self.altId = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .altId, auxKey: ._altId)
     self.name = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .name, auxKey: ._name)
     self.requestor = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKey: .requestor, auxKey: ._requestor)
@@ -118,7 +118,7 @@ open class AuditEventAgent: BackboneElement {
     self.policy = try [AlexandriaHRMPrimitive<AlexandriaHRMURI>](from: codingKeyContainer, forKeyIfPresent: .policy, auxKey: ._policy)
     self.media = try Coding(from: codingKeyContainer, forKeyIfPresent: .media)
     self.network = try AuditEventAgentNetwork(from: codingKeyContainer, forKeyIfPresent: .network)
-    self.purposeOfUse = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .purposeOfUse)
+    self.purposeOfUse = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .purposeOfUse)
     
     try super.init(from: decoder)
   }

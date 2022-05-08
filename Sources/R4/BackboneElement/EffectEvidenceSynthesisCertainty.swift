@@ -24,7 +24,7 @@ import AlexandriaHRMCore
  */
 open class EffectEvidenceSynthesisCertainty: BackboneElement {
   /// Certainty rating
-  public var rating: [CodableConcept]?
+  public var rating: [CodeableConcept]?
   
   /// Used for footnotes/explanatory notes
   public var note: [Annotation]?

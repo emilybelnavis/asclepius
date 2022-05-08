@@ -28,7 +28,7 @@ jobs:
           xcrun llvm-cov export \
           -format=lcov \
           -instr-profile=.build/x86_64-apple-macosx/debug/codecov/default.profdata \
-          .build/x86_64-apple-macosx/debug/FHIRKitPackageTests.xctest/Contents/MacOS/FHIRKitPackageTests \
+          .build/x86_64-apple-macosx/debug/AlexandriaHRMPackageTests.xctest/Contents/MacOS/AlexandriaHRMPackageTests \
           > /Users/distiller/project/lcov.info
       - store_test_results:
           path: /Users/distiller/project/lcov.info
@@ -43,7 +43,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Build and Test FHIRKitCore + R4 Sequence
+          name: Build and Test AlexandriaHRMCore + R4 Sequence
           command: swift test --test-product R4 --enable-code-coverage --xunit-output ./results.xml --parallel
       - run:
           name: Prepare coverage results
@@ -51,7 +51,7 @@ jobs:
             xcrun llvm-cov export \
             -format=lcov \
             -instr-profile=.build/x86_64-apple-macosx/debug/codecov/default.profdata \
-            .build/x86_64-apple-macosx/debug/FHIRKitPackageTests.xctests/Contents/MacOS/FHIRKitPackageTests \
+            .build/x86_64-apple-macosx/debug/AlexandriaHRMPackageTests.xctests/Contents/MacOS/AlexandriaHRMPackageTests \
             > /Users/distiller/project/lcov.info
       - store_test_results:
           path: /Users/distiller/project/lcov.info
@@ -66,7 +66,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Build and Test FHIRKitCore + R5 Sequence
+          name: Build and Test AlexandriaHRMCore + R5 Sequence
           command: swift test --test-product R5 --enable-code-coverage --xunit-output ./results.xml --parallel
       - run:
           name: Prepare coverage results
@@ -74,7 +74,7 @@ jobs:
             xcrun llvm-cov export \
             -format=lcov \
             -instr-profile=.build/x86_64-apple-macosx/debug/codecov/default.profdata \
-            .build/x86_64-apple-macosx/debug/FHIRKitPackageTests.xctests/Contents/MacOS/FHIRKitPackageTests \
+            .build/x86_64-apple-macosx/debug/AlexandriaHRMPackageTests.xctests/Contents/MacOS/AlexandriaHRMPackageTests \
             > /Users/distiller/project/lcov.info
       - store_test_results:
           path: /Users/distiller/project/lcov.info
@@ -89,7 +89,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Build and Test FHIRKitCore + STU3 Sequence
+          name: Build and Test AlexandriaHRMCore + STU3 Sequence
           command: swift test --test-product STU3 --enable-code-coverage --xunit-output ./results.xml --parallel
       - run:
           name: Prepare coverage results
@@ -97,7 +97,7 @@ jobs:
             xcrun llvm-cov export \
             -format=lcov \
             -instr-profile=.build/x86_64-apple-macosx/debug/codecov/default.profdata \
-            .build/x86_64-apple-macosx/debug/FHIRKitPackageTests.xctests/Contents/MacOS/FHIRKitPackageTests \
+            .build/x86_64-apple-macosx/debug/AlexandriaHRMPackageTests.xctests/Contents/MacOS/AlexandriaHRMPackageTests \
             > /Users/distiller/project/lcov.info
       - store_test_results:
           path: /Users/distiller/project/lcov.info
@@ -112,7 +112,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Build and Test FHIRKitCore + DSTU2 Sequence
+          name: Build and Test AlexandriaHRMCore + DSTU2 Sequence
           command: swift test --test-product DSTU2 --enable-code-coverage --xunit-output ./results.xml --parallel
       - run:
           name: Prepare coverage results
@@ -120,7 +120,7 @@ jobs:
             xcrun llvm-cov export \
             -format=lcov \
             -instr-profile=.build/x86_64-apple-macosx/debug/codecov/default.profdata \
-            .build/x86_64-apple-macosx/debug/FHIRKitPackageTests.xctests/Contents/MacOS/FHIRKitPackageTests \
+            .build/x86_64-apple-macosx/debug/AlexandriaHRMPackageTests.xctests/Contents/MacOS/AlexandriaHRMPackageTests \
             > /Users/distiller/project/lcov.info
       - store_test_results:
           path: /Users/distiller/project/lcov.info

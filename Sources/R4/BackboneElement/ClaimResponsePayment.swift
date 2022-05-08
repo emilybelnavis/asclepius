@@ -24,13 +24,13 @@ import AlexandriaHRMCore
  */
 open class ClaimResponsePayment: BackboneElement {
   /// Partial or complete payment
-  public var type: CodableConcept
+  public var type: CodeableConcept
   
   /// Payment adjustment for non-claim issues
   public var adjustment: Money?
   
   /// Explanation for the adjustment
-  public var adjustmentReason: CodableConcept?
+  public var adjustmentReason: CodeableConcept?
   
   /// Expected date of payment
   public var date: AlexandriaHRMPrimitive<AlexandriaHRMDate>?
@@ -41,7 +41,7 @@ open class ClaimResponsePayment: BackboneElement {
   /// Business identifier for the payment
   public var identifier: Identifier?
   
-  public init(type: CodableConcept, amount: Money) {
+  public init(type: CodeableConcept, amount: Money) {
     self.type = type
     self.amount = amount
     super.init()
@@ -51,9 +51,9 @@ open class ClaimResponsePayment: BackboneElement {
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    type: CodableConcept,
+    type: CodeableConcept,
     adjustment: Money? = nil,
-    adjustmentReason: CodableConcept? = nil,
+    adjustmentReason: CodeableConcept? = nil,
     date: AlexandriaHRMPrimitive<AlexandriaHRMDate>? = nil,
     amount: Money,
     identifier: Identifier?
@@ -65,7 +65,7 @@ open class ClaimResponsePayment: BackboneElement {
     self.adjustment = adjustment
     self.adjustmentReason = adjustmentReason
     self.date = date
-    self.fhirIdentifier = fhirIdentifier
+    self.identifier = identifier
   }
   
   // MARK: - Codable
@@ -81,12 +81,12 @@ open class ClaimResponsePayment: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.type = try CodableConcept(from: codingKeyContainer, forKey: .type)
+    self.type = try CodeableConcept(from: codingKeyContainer, forKey: .type)
     self.adjustment = try Money(from: codingKeyContainer, forKeyIfPresent: .adjustment)
-    self.adjustmentReason = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .adjustmentReason)
+    self.adjustmentReason = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .adjustmentReason)
     self.date = try AlexandriaHRMPrimitive<AlexandriaHRMDate>(from: codingKeyContainer, forKeyIfPresent: .date, auxKey: ._date)
     self.amount = try Money(from: codingKeyContainer, forKey: .amount)
-    self.fhirIdentifier = try Identifier(from: codingKeyContainer, forKeyIfPresent: .identifier)
+    self.identifier = try Identifier(from: codingKeyContainer, forKeyIfPresent: .identifier)
     
     try super.init(from: decoder)
   }

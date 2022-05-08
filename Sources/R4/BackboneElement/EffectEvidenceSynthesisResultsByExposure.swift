@@ -31,7 +31,7 @@ open class EffectEvidenceSynthesisResultsByExposure: BackboneElement {
   public var exposureState: AlexandriaHRMPrimitive<ExposureState>?
   
   /// Variant exposure states
-  public var variantState: CodableConcept?
+  public var variantState: CodeableConcept?
   
   /// Risk evidence synthesis
   public var riskEvidenceSynthesis: Reference

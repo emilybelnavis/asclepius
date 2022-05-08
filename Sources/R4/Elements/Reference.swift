@@ -50,7 +50,7 @@ open class Reference: Element {
     self.fhirId = fhirId
     self.reference = reference
     self.type = type
-    self.fhirIdentifier = fhirIdentifier
+    self.identifier = identifier
     self.display = display
   }
   
@@ -67,7 +67,7 @@ open class Reference: Element {
     
     self.reference = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .reference, auxKey: ._reference)
     self.type = try AlexandriaHRMPrimitive<AlexandriaHRMURI>(from: codingKeyContainer, forKeyIfPresent: .type, auxKey: ._type)
-    self.fhirIdentifier = try Identifier(from: codingKeyContainer, forKeyIfPresent: .identifier)
+    self.identifier = try Identifier(from: codingKeyContainer, forKeyIfPresent: .identifier)
     self.display = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .display, auxKey: ._display)
     
     try super.init(from: decoder)

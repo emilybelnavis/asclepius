@@ -25,13 +25,13 @@ import AlexandriaHRMCore
  */
 open class CoverageEligibilityResponseInsuranceItem: BackboneElement {
   /// Benefit classification
-  public var category: CodableConcept?
+  public var category: CodeableConcept?
   
   /// Billing, service, product, or drug code
-  public var productOrService: CodableConcept?
+  public var productOrService: CodeableConcept?
   
   /// Product or service billing modifiers
-  public var modifier: [CodableConcept]?
+  public var modifier: [CodeableConcept]?
   
   /// Performing practitioner
   public var provider: Reference?
@@ -46,13 +46,13 @@ open class CoverageEligibilityResponseInsuranceItem: BackboneElement {
   public var fhirDescription: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// In or out of network
-  public var network: CodableConcept?
+  public var network: CodeableConcept?
   
   /// Individual or family benefit
-  public var unit: CodableConcept?
+  public var unit: CodeableConcept?
   
   /// Annual or lifetime benefit
-  public var term: CodableConcept?
+  public var term: CodeableConcept?
   
   /// Benefit summary
   public var benefit: [CoverageEligibilityResponseInsuranceItemBenefit]?
@@ -61,7 +61,7 @@ open class CoverageEligibilityResponseInsuranceItem: BackboneElement {
   public var authorizationRequired: AlexandriaHRMPrimitive<AlexandriaHRMBool>?
   
   /// Type of required supporting materials
-  public var authorizationSupporting: [CodableConcept]?
+  public var authorizationSupporting: [CodeableConcept]?
   
   /// Pre-authorization requirements endpoint
   public var authorizationUrl: AlexandriaHRMPrimitive<AlexandriaHRMURI>?
@@ -74,19 +74,19 @@ open class CoverageEligibilityResponseInsuranceItem: BackboneElement {
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    category: CodableConcept? = nil,
-    productOrService: CodableConcept? = nil,
-    modifier: [CodableConcept]? = nil,
+    category: CodeableConcept? = nil,
+    productOrService: CodeableConcept? = nil,
+    modifier: [CodeableConcept]? = nil,
     provider: Reference? = nil,
     excluded: AlexandriaHRMPrimitive<AlexandriaHRMBool>? = nil,
     name: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     fhirDescription: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    network: CodableConcept? = nil,
-    unit: CodableConcept? = nil,
-    term: CodableConcept? = nil,
+    network: CodeableConcept? = nil,
+    unit: CodeableConcept? = nil,
+    term: CodeableConcept? = nil,
     benefit: [CoverageEligibilityResponseInsuranceItemBenefit]? = nil,
     authorizationRequired: AlexandriaHRMPrimitive<AlexandriaHRMBool>? = nil,
-    authorizationSupporting: [CodableConcept]? = nil,
+    authorizationSupporting: [CodeableConcept]? = nil,
     authorizationUrl: AlexandriaHRMPrimitive<AlexandriaHRMURI>? = nil
   ) {
     self.init()
@@ -130,19 +130,19 @@ open class CoverageEligibilityResponseInsuranceItem: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.category = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .category)
-    self.productOrService = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .productOrService)
-    self.modifier = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .modifier)
+    self.category = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .category)
+    self.productOrService = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .productOrService)
+    self.modifier = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .modifier)
     self.provider = try Reference(from: codingKeyContainer, forKeyIfPresent: .provider)
     self.excluded = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKeyIfPresent: .excluded, auxKey: ._excluded)
     self.name = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .name, auxKey: ._name)
     self.fhirDescription = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .fhirDescription, auxKey: ._fhirDescription)
-    self.network = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .network)
-    self.unit = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .unit)
-    self.term = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .term)
+    self.network = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .network)
+    self.unit = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .unit)
+    self.term = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .term)
     self.benefit = try [CoverageEligibilityResponseInsuranceItemBenefit](from: codingKeyContainer, forKeyIfPresent: .benefit)
     self.authorizationRequired = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKeyIfPresent: .authorizationRequired, auxKey: ._authorizationRequired)
-    self.authorizationSupporting = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .authorizationSupporting)
+    self.authorizationSupporting = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .authorizationSupporting)
     self.authorizationUrl = try AlexandriaHRMPrimitive<AlexandriaHRMURI>(from: codingKeyContainer, forKeyIfPresent: .authorizationUrl, auxKey: ._authorizationUrl)
     
     try super.init(from: decoder)

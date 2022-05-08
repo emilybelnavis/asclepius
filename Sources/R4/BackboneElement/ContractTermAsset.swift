@@ -22,16 +22,16 @@ import AlexandriaHRMCore
 /// Contract Term Asset List
 open class ContractTermAsset: BackboneElement {
   /// Range of asset
-  public var scope: CodableConcept?
+  public var scope: CodeableConcept?
   
   /// Asset category
-  public var type: [CodableConcept]?
+  public var type: [CodeableConcept]?
   
   /// Associated entities
   public var typeReference: [Reference]?
   
   /// Asset sub-category
-  public var subType: [CodableConcept]?
+  public var subType: [CodeableConcept]?
   
   /// Relationship of the asset
   public var relationship: Coding?
@@ -43,7 +43,7 @@ open class ContractTermAsset: BackboneElement {
   public var condition: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// Asset availability types
-  public var periodType: [CodableConcept]?
+  public var periodType: [CodeableConcept]?
   
   /// Time period of the asset
   public var period: [Period]?
@@ -74,14 +74,14 @@ open class ContractTermAsset: BackboneElement {
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    scope: CodableConcept? = nil,
-    type: [CodableConcept]? = nil,
+    scope: CodeableConcept? = nil,
+    type: [CodeableConcept]? = nil,
     typeReference: [Reference]? = nil,
-    subType: [CodableConcept]? = nil,
+    subType: [CodeableConcept]? = nil,
     relationship: Coding? = nil,
     context: [ContractTermAssetContext]? = nil,
     condition: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    periodType: [CodableConcept]? = nil,
+    periodType: [CodeableConcept]? = nil,
     period: [Period]? = nil,
     usePeriod: [Period]? = nil,
     text: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
@@ -133,14 +133,14 @@ open class ContractTermAsset: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.scope = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .scope)
-    self.type = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .type)
+    self.scope = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .scope)
+    self.type = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .type)
     self.typeReference = try [Reference](from: codingKeyContainer, forKeyIfPresent: .typeReference)
-    self.subType = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .subType)
+    self.subType = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .subType)
     self.relationship = try Coding(from: codingKeyContainer, forKeyIfPresent: .relationship)
     self.context = try [ContractTermAssetContext](from: codingKeyContainer, forKeyIfPresent: .context)
     self.condition = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .condition, auxKey: ._condition)
-    self.periodType = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .periodType)
+    self.periodType = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .periodType)
     self.period = try [Period](from: codingKeyContainer, forKeyIfPresent: .period)
     self.usePeriod = try [Period](from: codingKeyContainer, forKeyIfPresent: .usePeriod)
     self.text = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .text, auxKey: ._text)

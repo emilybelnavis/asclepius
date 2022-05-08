@@ -22,7 +22,7 @@ import AlexandriaHRMCore
 /// The clinical service(s) being documented
 open class CompositionEvent: BackboneElement {
   /// Code(s) that apply to the event being documented
-  public var code: [CodableConcept]?
+  public var code: [CodeableConcept]?
   
   /// The period covered by the documentation
   public var period: Period?
@@ -38,7 +38,7 @@ open class CompositionEvent: BackboneElement {
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    code: [CodableConcept]? = nil,
+    code: [CodeableConcept]? = nil,
     period: Period? = nil,
     detail: [Reference]? = nil
   ) {
@@ -61,7 +61,7 @@ open class CompositionEvent: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.code = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .code)
+    self.code = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .code)
     self.period = try Period(from: codingKeyContainer, forKeyIfPresent: .period)
     self.detail = try [Reference](from: codingKeyContainer, forKey: .detail)
     

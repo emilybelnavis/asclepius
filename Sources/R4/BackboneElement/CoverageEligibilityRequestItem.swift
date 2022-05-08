@@ -28,13 +28,13 @@ open class CoverageEligibilityRequestItem: BackboneElement {
   public var supportingInfoSequence: [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>]?
   
   /// Benefit classification
-  public var category: CodableConcept?
+  public var category: CodeableConcept?
   
   /// Billing, service, product, or drug code
-  public var productOrService: CodableConcept?
+  public var productOrService: CodeableConcept?
   
   /// Product or service billing modifiers
-  public var modifier: [CodableConcept]?
+  public var modifier: [CodeableConcept]?
   
   /// Performing practitioner
   public var provider: Reference?
@@ -63,9 +63,9 @@ open class CoverageEligibilityRequestItem: BackboneElement {
     modifierExtension: [Extension]? = nil,
     fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     supportingInfoSequence: [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>]? = nil,
-    category: CodableConcept? = nil,
-    productOrService: CodableConcept? = nil,
-    modifier: [CodableConcept]? = nil,
+    category: CodeableConcept? = nil,
+    productOrService: CodeableConcept? = nil,
+    modifier: [CodeableConcept]? = nil,
     provider: Reference? = nil,
     quantity: Quantity? = nil,
     facility: Reference? = nil,
@@ -104,9 +104,9 @@ open class CoverageEligibilityRequestItem: BackboneElement {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     self.supportingInfoSequence = try [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>](from: codingKeyContainer, forKeyIfPresent: .supportingInfoSequence, auxKey: ._supportingInfoSequence)
-    self.category = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .category)
-    self.productOrService = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .productOrService)
-    self.modifier = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .modifier)
+    self.category = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .category)
+    self.productOrService = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .productOrService)
+    self.modifier = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .modifier)
     self.provider = try Reference(from: codingKeyContainer, forKeyIfPresent: .provider)
     self.quantity = try Quantity(from: codingKeyContainer, forKeyIfPresent: .quantity)
     self.facility = try Reference(from: codingKeyContainer, forKeyIfPresent: .facility)

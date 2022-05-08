@@ -31,7 +31,7 @@ open class ChargeItemDefinitionPropertyGroupPriceComponent: BackboneElement {
   public var type: AlexandriaHRMPrimitive<InvoicePriceComponentType>
   
   /// Code identifiying the specific component
-  public var code: CodableConcept?
+  public var code: CodeableConcept?
   
   /// Factor used for calculating this component
   public var factor: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>?
@@ -49,7 +49,7 @@ open class ChargeItemDefinitionPropertyGroupPriceComponent: BackboneElement {
     modifierExtension: [Extension]? = nil,
     fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     type: AlexandriaHRMPrimitive<InvoicePriceComponentType>,
-    code: CodableConcept? = nil,
+    code: CodeableConcept? = nil,
     factor: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>? = nil,
     amount: Money? = nil
   ) {
@@ -74,7 +74,7 @@ open class ChargeItemDefinitionPropertyGroupPriceComponent: BackboneElement {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     self.type = try AlexandriaHRMPrimitive<InvoicePriceComponentType>(from: codingKeyContainer, forKey: .type, auxKey: ._type)
-    self.code = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .code)
+    self.code = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .code)
     self.factor = try AlexandriaHRMPrimitive<AlexandriaHRMDecimal>(from: codingKeyContainer, forKeyIfPresent: .factor, auxKey: ._factor)
     self.amount = try Money(from: codingKeyContainer, forKeyIfPresent: .amount)
     

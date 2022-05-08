@@ -28,7 +28,7 @@ public enum ObservationDataType: String, AlexandriaHRMPrimitiveType {
   case quantity = "Quantity"
   
   /// A coded concept from a reference terminology and/or text.
-  case codableConcept = "CodableConcept"
+  case codeableConcept = "CodeableConcept"
   
   /// A sequence of Unicode characters.
   case string

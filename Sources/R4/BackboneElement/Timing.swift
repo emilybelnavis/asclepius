@@ -35,7 +35,7 @@ open class Timing: BackboneElement {
   public var timingRepeat: TimingRepeat?
   
   /// BID | TID | QID | AM | PM | QD | QOD | +
-  public var code: CodableConcept?
+  public var code: CodeableConcept?
   
   override public init() {
     super.init()
@@ -47,7 +47,7 @@ open class Timing: BackboneElement {
     fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     event: [AlexandriaHRMPrimitive<AlexandriaHRMDateTime>]? = nil,
     timingRepeat: TimingRepeat? = nil,
-    code: CodableConcept? = nil
+    code: CodeableConcept? = nil
   ) {
     self.init()
     self.fhirExtension = fhirExtension
@@ -70,7 +70,7 @@ open class Timing: BackboneElement {
     
     self.event = try [AlexandriaHRMPrimitive<AlexandriaHRMDateTime>](from: codingKeyContainer, forKeyIfPresent: .event, auxKey: ._event)
     self.timingRepeat = try TimingRepeat(from: codingKeyContainer, forKeyIfPresent: .timingRepeat)
-    self.code = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .code)
+    self.code = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .code)
     
     try super.init(from: decoder)
   }

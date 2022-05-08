@@ -22,7 +22,7 @@ import AlexandriaHRMCore
 /// List of participants involved in the appointment
 open class AppointmentParticipant: BackboneElement {
   /// role of the participant in the appointment
-  public var type: [CodableConcept]?
+  public var type: [CodeableConcept]?
   
   /// person, location/healthcare service, or device
   public var `actor`: Reference?
@@ -46,7 +46,7 @@ open class AppointmentParticipant: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    type: [CodableConcept]? = nil,
+    type: [CodeableConcept]? = nil,
     `actor`: Reference? = nil,
     `required`: AlexandriaHRMPrimitive<ParticipantRequired>? = nil,
     status: AlexandriaHRMPrimitive<ParticipationStatus>,
@@ -73,7 +73,7 @@ open class AppointmentParticipant: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.type = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .type)
+    self.type = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .type)
     self.`actor` = try Reference(from: codingKeyContainer, forKeyIfPresent: .actor)
     self.`required` = try AlexandriaHRMPrimitive<ParticipantRequired>(from: codingKeyContainer, forKeyIfPresent: .required, auxKey: ._required)
     self.status = try AlexandriaHRMPrimitive<ParticipationStatus>(from: codingKeyContainer, forKey: .status, auxKey: ._status)

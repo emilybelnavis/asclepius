@@ -25,12 +25,12 @@ import AlexandriaHRMCore
  */
 open class DeviceSpecialization: BackboneElement {
   /// The standard that is used to operate and communicate
-  public var systemType: CodableConcept
+  public var systemType: CodeableConcept
   
   /// The version of the standard that is used to operate and communicate
   public var version: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
-  public init(systemType: CodableConcept) {
+  public init(systemType: CodeableConcept) {
     self.systemType = systemType
     super.init()
   }
@@ -39,7 +39,7 @@ open class DeviceSpecialization: BackboneElement {
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
     fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    systemType: CodableConcept,
+    systemType: CodeableConcept,
     version: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil
   ) {
     self.init(systemType: systemType)
@@ -57,7 +57,7 @@ open class DeviceSpecialization: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.systemType = try CodableConcept(from: codingKeyContainer, forKey: .systemType)
+    self.systemType = try CodeableConcept(from: codingKeyContainer, forKey: .systemType)
     self.version = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .version, auxKey: ._version)
     
     try super.init(from: decoder)

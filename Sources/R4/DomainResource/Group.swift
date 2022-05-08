@@ -40,7 +40,7 @@ open class Group: DomainResource {
   public var actual: AlexandriaHRMPrimitive<AlexandriaHRMBool>
   
   /// kind of group members
-  public var code: CodableConcept?
+  public var code: CodeableConcept?
   
   /// label for group
   public var name: AlexandriaHRMPrimitive<AlexandriaHRMString>?
@@ -70,7 +70,7 @@ open class Group: DomainResource {
     active: AlexandriaHRMPrimitive<AlexandriaHRMBool>? = nil,
     type: AlexandriaHRMPrimitive<GroupType>,
     actual: AlexandriaHRMPrimitive<AlexandriaHRMBool>,
-    code: CodableConcept? = nil,
+    code: CodeableConcept? = nil,
     name: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     quantity: AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>? = nil,
     managingEntity: Reference? = nil,
@@ -80,7 +80,7 @@ open class Group: DomainResource {
     self.init(type: type, actual: actual)
     self.fhirExtension = fhirExtension
     self.fhirId = fhirId
-    self.fhirIdentifier = fhirIdentifier
+    self.identifier = identifier
     self.active = active
     self.code = code
     self.name = name
@@ -107,11 +107,11 @@ open class Group: DomainResource {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.fhirIdentifier = try [Identifier](from: codingKeyContainer, forKeyIfPresent: .identifier)
+    self.identifier = try [Identifier](from: codingKeyContainer, forKeyIfPresent: .identifier)
     self.active = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKeyIfPresent: .active, auxKey: ._active)
     self.type = try AlexandriaHRMPrimitive<GroupType>(from: codingKeyContainer, forKey: .type, auxKey: ._type)
     self.actual = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKey: .actual, auxKey: ._actual)
-    self.code = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .code)
+    self.code = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .code)
     self.name = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .name, auxKey: ._name)
     self.quantity = try AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>(from: codingKeyContainer, forKeyIfPresent: .quantity, auxKey: ._quantity)
     self.managingEntity = try Reference(from: codingKeyContainer, forKeyIfPresent: .managingEntity)

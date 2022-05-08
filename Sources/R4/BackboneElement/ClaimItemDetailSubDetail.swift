@@ -28,19 +28,19 @@ open class ClaimItemDetailSubDetail: BackboneElement {
   public var sequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>
   
   /// Revenue or cost center code
-  public var revenue: CodableConcept?
+  public var revenue: CodeableConcept?
   
   /// Benefit classification
-  public var category: CodableConcept?
+  public var category: CodeableConcept?
   
   /// Billing, service, product, or drug code
-  public var productOrService: CodableConcept
+  public var productOrService: CodeableConcept
   
   /// Service/product billing modifiers
-  public var modifier: [CodableConcept]?
+  public var modifier: [CodeableConcept]?
   
   /// Program the product or service is provided under
-  public var programCode: [CodableConcept]?
+  public var programCode: [CodeableConcept]?
   
   /// Count of products or services
   public var quantity: Quantity?
@@ -57,7 +57,7 @@ open class ClaimItemDetailSubDetail: BackboneElement {
   /// Unique device identifier
   public var udi: [Reference]?
   
-  public init(sequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>, productOrService: CodableConcept) {
+  public init(sequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>, productOrService: CodeableConcept) {
     self.sequence = sequence
     self.productOrService = productOrService
     super.init()
@@ -68,11 +68,11 @@ open class ClaimItemDetailSubDetail: BackboneElement {
     modifierExtension: [Extension]? = nil,
     fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     sequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>,
-    revenue: CodableConcept? = nil,
-    category: CodableConcept? = nil,
-    productOrService: CodableConcept,
-    modifier: [CodableConcept]? = nil,
-    programCode: [CodableConcept]? = nil,
+    revenue: CodeableConcept? = nil,
+    category: CodeableConcept? = nil,
+    productOrService: CodeableConcept,
+    modifier: [CodeableConcept]? = nil,
+    programCode: [CodeableConcept]? = nil,
     quantity: Quantity? = nil,
     unitPrice: Money? = nil,
     factor: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>? = nil,
@@ -115,10 +115,10 @@ open class ClaimItemDetailSubDetail: BackboneElement {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     self.sequence = try AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>(from: codingKeyContainer, forKey: .sequence, auxKey: ._sequence)
-    self.revenue = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .revenue)
-    self.category = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .category)
-    self.productOrService = try CodableConcept(from: codingKeyContainer, forKey: .productOrService)
-    self.modifier = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .modifier)
+    self.revenue = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .revenue)
+    self.category = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .category)
+    self.productOrService = try CodeableConcept(from: codingKeyContainer, forKey: .productOrService)
+    self.modifier = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .modifier)
     self.quantity = try Quantity(from: codingKeyContainer, forKeyIfPresent: .quantity)
     self.unitPrice = try Money(from: codingKeyContainer, forKeyIfPresent: .unitPrice)
     self.factor = try AlexandriaHRMPrimitive<AlexandriaHRMDecimal>(from: codingKeyContainer, forKey: .factor, auxKey: ._factor)
