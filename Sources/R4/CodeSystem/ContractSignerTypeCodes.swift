@@ -1,6 +1,6 @@
 //
 //  ContractSignerTypeCodes.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/contractsignertypecodes
  ValueSet: http://hl7.org/fhir/ValueSet/contract-signer-type
  */
-public enum ContractSignerTypeCodes: String, FHIRKitPrimitiveType {
+public enum ContractSignerTypeCodes: String, AlexandriaHRMPrimitiveType {
   /// A person who has corrected, edited, or amended pre-existing information.
   case AMENDER
   

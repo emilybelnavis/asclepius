@@ -1,6 +1,6 @@
 //
 //  CoverageEligibilityResponseInsuranceItem.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Benefits and authorization details; Benefits and optionally current balances, and authorization details by
@@ -25,46 +25,46 @@ import FHIRKitCore
  */
 open class CoverageEligibilityResponseInsuranceItem: BackboneElement {
   /// Benefit classification
-  public var category: CodableConcept?
+  public var category: CodeableConcept?
   
   /// Billing, service, product, or drug code
-  public var productOrService: CodableConcept?
+  public var productOrService: CodeableConcept?
   
   /// Product or service billing modifiers
-  public var modifier: [CodableConcept]?
+  public var modifier: [CodeableConcept]?
   
   /// Performing practitioner
   public var provider: Reference?
   
   /// Excluded from the plan
-  public var excluded: FHIRKitPrimitive<FHIRKitBool>?
+  public var excluded: AlexandriaHRMPrimitive<AlexandriaHRMBool>?
   
   /// Short name for the benefit
-  public var name: FHIRKitPrimitive<FHIRKitString>?
+  public var name: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// Description of the benefit or services covered
-  public var fhirDescription: FHIRKitPrimitive<FHIRKitString>?
+  public var fhirDescription: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// In or out of network
-  public var network: CodableConcept?
+  public var network: CodeableConcept?
   
   /// Individual or family benefit
-  public var unit: CodableConcept?
+  public var unit: CodeableConcept?
   
   /// Annual or lifetime benefit
-  public var term: CodableConcept?
+  public var term: CodeableConcept?
   
   /// Benefit summary
   public var benefit: [CoverageEligibilityResponseInsuranceItemBenefit]?
   
   /// Authorization required flag
-  public var authorizationRequired: FHIRKitPrimitive<FHIRKitBool>?
+  public var authorizationRequired: AlexandriaHRMPrimitive<AlexandriaHRMBool>?
   
   /// Type of required supporting materials
-  public var authorizationSupporting: [CodableConcept]?
+  public var authorizationSupporting: [CodeableConcept]?
   
   /// Pre-authorization requirements endpoint
-  public var authorizationUrl: FHIRKitPrimitive<FHIRKitURI>?
+  public var authorizationUrl: AlexandriaHRMPrimitive<AlexandriaHRMURI>?
   
   override public init() {
     super.init()
@@ -73,26 +73,26 @@ open class CoverageEligibilityResponseInsuranceItem: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    category: CodableConcept? = nil,
-    productOrService: CodableConcept? = nil,
-    modifier: [CodableConcept]? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    category: CodeableConcept? = nil,
+    productOrService: CodeableConcept? = nil,
+    modifier: [CodeableConcept]? = nil,
     provider: Reference? = nil,
-    excluded: FHIRKitPrimitive<FHIRKitBool>? = nil,
-    name: FHIRKitPrimitive<FHIRKitString>? = nil,
-    fhirDescription: FHIRKitPrimitive<FHIRKitString>? = nil,
-    network: CodableConcept? = nil,
-    unit: CodableConcept? = nil,
-    term: CodableConcept? = nil,
+    excluded: AlexandriaHRMPrimitive<AlexandriaHRMBool>? = nil,
+    name: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirDescription: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    network: CodeableConcept? = nil,
+    unit: CodeableConcept? = nil,
+    term: CodeableConcept? = nil,
     benefit: [CoverageEligibilityResponseInsuranceItemBenefit]? = nil,
-    authorizationRequired: FHIRKitPrimitive<FHIRKitBool>? = nil,
-    authorizationSupporting: [CodableConcept]? = nil,
-    authorizationUrl: FHIRKitPrimitive<FHIRKitURI>? = nil
+    authorizationRequired: AlexandriaHRMPrimitive<AlexandriaHRMBool>? = nil,
+    authorizationSupporting: [CodeableConcept]? = nil,
+    authorizationUrl: AlexandriaHRMPrimitive<AlexandriaHRMURI>? = nil
   ) {
     self.init()
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.category = category
     self.productOrService = productOrService
     self.modifier = modifier
@@ -130,20 +130,20 @@ open class CoverageEligibilityResponseInsuranceItem: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.category = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .category)
-    self.productOrService = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .productOrService)
-    self.modifier = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .modifier)
+    self.category = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .category)
+    self.productOrService = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .productOrService)
+    self.modifier = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .modifier)
     self.provider = try Reference(from: codingKeyContainer, forKeyIfPresent: .provider)
-    self.excluded = try FHIRKitPrimitive<FHIRKitBool>(from: codingKeyContainer, forKeyIfPresent: .excluded, auxKey: ._excluded)
-    self.name = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .name, auxKey: ._name)
-    self.fhirDescription = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .fhirDescription, auxKey: ._fhirDescription)
-    self.network = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .network)
-    self.unit = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .unit)
-    self.term = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .term)
+    self.excluded = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKeyIfPresent: .excluded, auxKey: ._excluded)
+    self.name = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .name, auxKey: ._name)
+    self.fhirDescription = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .fhirDescription, auxKey: ._fhirDescription)
+    self.network = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .network)
+    self.unit = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .unit)
+    self.term = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .term)
     self.benefit = try [CoverageEligibilityResponseInsuranceItemBenefit](from: codingKeyContainer, forKeyIfPresent: .benefit)
-    self.authorizationRequired = try FHIRKitPrimitive<FHIRKitBool>(from: codingKeyContainer, forKeyIfPresent: .authorizationRequired, auxKey: ._authorizationRequired)
-    self.authorizationSupporting = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .authorizationSupporting)
-    self.authorizationUrl = try FHIRKitPrimitive<FHIRKitURI>(from: codingKeyContainer, forKeyIfPresent: .authorizationUrl, auxKey: ._authorizationUrl)
+    self.authorizationRequired = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKeyIfPresent: .authorizationRequired, auxKey: ._authorizationRequired)
+    self.authorizationSupporting = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .authorizationSupporting)
+    self.authorizationUrl = try AlexandriaHRMPrimitive<AlexandriaHRMURI>(from: codingKeyContainer, forKeyIfPresent: .authorizationUrl, auxKey: ._authorizationUrl)
     
     try super.init(from: decoder)
   }

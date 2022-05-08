@@ -1,6 +1,6 @@
 //
 //  CapabilityStatementSoftware.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Software that is covered by this capability statement. It is used when the capability statement describes the
@@ -25,15 +25,15 @@ import FHIRKitCore
  */
 open class CapabilityStatementSoftware: BackboneElement {
   /// A name the software is known by
-  public var name: FHIRKitPrimitive<FHIRKitString>
+  public var name: AlexandriaHRMPrimitive<AlexandriaHRMString>
   
   /// Version covered by this statement
-  public var version: FHIRKitPrimitive<FHIRKitString>?
+  public var version: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// Date this version was released
-  public var releaseDate: FHIRKitPrimitive<FHIRKitDateTime>?
+  public var releaseDate: AlexandriaHRMPrimitive<AlexandriaHRMDateTime>?
   
-  public init(name: FHIRKitPrimitive<FHIRKitString>) {
+  public init(name: AlexandriaHRMPrimitive<AlexandriaHRMString>) {
     self.name = name
     super.init()
   }
@@ -41,14 +41,14 @@ open class CapabilityStatementSoftware: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    name: FHIRKitPrimitive<FHIRKitString>,
-    version: FHIRKitPrimitive<FHIRKitString>? = nil,
-    releaseDate: FHIRKitPrimitive<FHIRKitDateTime>? = nil
+    name: AlexandriaHRMPrimitive<AlexandriaHRMString>,
+    version: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    releaseDate: AlexandriaHRMPrimitive<AlexandriaHRMDateTime>? = nil
   ) {
     self.init(name: name)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.version = version
     self.releaseDate = releaseDate
   }
@@ -63,9 +63,9 @@ open class CapabilityStatementSoftware: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.name = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKey: .name, auxKey: ._name)
-    self.version = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .version, auxKey: ._version)
-    self.releaseDate = try FHIRKitPrimitive<FHIRKitDateTime>(from: codingKeyContainer, forKeyIfPresent: .releaseDate, auxKey: ._releaseDate)
+    self.name = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .name, auxKey: ._name)
+    self.version = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .version, auxKey: ._version)
+    self.releaseDate = try AlexandriaHRMPrimitive<AlexandriaHRMDateTime>(from: codingKeyContainer, forKeyIfPresent: .releaseDate, auxKey: ._releaseDate)
     
     try super.init(from: decoder)
   }

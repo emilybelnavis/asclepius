@@ -1,6 +1,6 @@
 //
 //  SampledData.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  A series of measurements taken by a device with upper and lower limits. There may be more than one
@@ -28,24 +28,24 @@ open class SampledData: Element {
   public var origin: Quantity
   
   /// number of milliseconds between samples (resolution)
-  public var period: FHIRKitPrimitive<FHIRKitDecimal>
+  public var period: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>
   
   /// multiply data by this value before adding to origin
-  public var factor: FHIRKitPrimitive<FHIRKitDecimal>?
+  public var factor: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>?
   
   /// lower detection bound
-  public var lowerLimit: FHIRKitPrimitive<FHIRKitDecimal>?
+  public var lowerLimit: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>?
   
   /// upper detection bound
-  public var upperLimit: FHIRKitPrimitive<FHIRKitDecimal>?
+  public var upperLimit: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>?
   
   /// number of sample points at each time point
-  public var dimensions: FHIRKitPrimitive<FHIRKitPositiveInteger>
+  public var dimensions: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>
   
   /// decimal values with spaces, or "E" | "U" | "L"
-  public var data: FHIRKitPrimitive<FHIRKitString>?
+  public var data: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
-  public init(origin: Quantity, period: FHIRKitPrimitive<FHIRKitDecimal>, dimensions: FHIRKitPrimitive<FHIRKitPositiveInteger>) {
+  public init(origin: Quantity, period: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>, dimensions: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>) {
     self.origin = origin
     self.period = period
     self.dimensions = dimensions
@@ -54,18 +54,18 @@ open class SampledData: Element {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     origin: Quantity,
-    period: FHIRKitPrimitive<FHIRKitDecimal>,
-    factor: FHIRKitPrimitive<FHIRKitDecimal>? = nil,
-    lowerLimit: FHIRKitPrimitive<FHIRKitDecimal>? = nil,
-    upperLimit: FHIRKitPrimitive<FHIRKitDecimal>? = nil,
-    dimensions: FHIRKitPrimitive<FHIRKitPositiveInteger>,
-    data: FHIRKitPrimitive<FHIRKitString>? = nil
+    period: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>,
+    factor: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>? = nil,
+    lowerLimit: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>? = nil,
+    upperLimit: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>? = nil,
+    dimensions: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>,
+    data: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil
   ) {
     self.init(origin: origin, period: period, dimensions: dimensions)
     self.fhirExtension = fhirExtension
-    self.id = id
+    self.fhirId = fhirId
     self.factor = factor
     self.lowerLimit = lowerLimit
     self.upperLimit = upperLimit
@@ -87,12 +87,12 @@ open class SampledData: Element {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     self.origin = try Quantity(from: codingKeyContainer, forKey: .origin)
-    self.period = try FHIRKitPrimitive<FHIRKitDecimal>(from: codingKeyContainer, forKey: .period, auxKey: ._period)
-    self.factor = try FHIRKitPrimitive<FHIRKitDecimal>(from: codingKeyContainer, forKeyIfPresent: .factor, auxKey: ._factor)
-    self.lowerLimit = try FHIRKitPrimitive<FHIRKitDecimal>(from: codingKeyContainer, forKeyIfPresent: .lowerLimit, auxKey: ._lowerLimit)
-    self.upperLimit = try FHIRKitPrimitive<FHIRKitDecimal>(from: codingKeyContainer, forKeyIfPresent: .upperLimit, auxKey: ._upperLimit)
-    self.dimensions = try FHIRKitPrimitive<FHIRKitPositiveInteger>(from: codingKeyContainer, forKey: .dimensions, auxKey: ._dimensions)
-    self.data = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .data, auxKey: ._data)
+    self.period = try AlexandriaHRMPrimitive<AlexandriaHRMDecimal>(from: codingKeyContainer, forKey: .period, auxKey: ._period)
+    self.factor = try AlexandriaHRMPrimitive<AlexandriaHRMDecimal>(from: codingKeyContainer, forKeyIfPresent: .factor, auxKey: ._factor)
+    self.lowerLimit = try AlexandriaHRMPrimitive<AlexandriaHRMDecimal>(from: codingKeyContainer, forKeyIfPresent: .lowerLimit, auxKey: ._lowerLimit)
+    self.upperLimit = try AlexandriaHRMPrimitive<AlexandriaHRMDecimal>(from: codingKeyContainer, forKeyIfPresent: .upperLimit, auxKey: ._upperLimit)
+    self.dimensions = try AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>(from: codingKeyContainer, forKey: .dimensions, auxKey: ._dimensions)
+    self.data = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .data, auxKey: ._data)
     
     try super.init(from: decoder)
   }

@@ -1,6 +1,6 @@
 //
 //  ClinicalImpressionInvestigation.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  One or more sets of investigations (signs, symptoms, etc...). The actual grouping of investigations varies greatly
@@ -27,12 +27,12 @@ import FHIRKitCore
  */
 open class ClinicalImpressionInvestigation: BackboneElement {
   /// A name/code for the set
-  public var code: CodableConcept
+  public var code: CodeableConcept
   
   /// Record of a specific investigation
   public var item: [Reference]?
   
-  public init(code: CodableConcept) {
+  public init(code: CodeableConcept) {
     self.code = code
     super.init()
   }
@@ -40,14 +40,14 @@ open class ClinicalImpressionInvestigation: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    code: CodableConcept,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    code: CodeableConcept,
     item: [Reference]?
   ) {
     self.init(code: code)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.item = item
   }
   
@@ -60,7 +60,7 @@ open class ClinicalImpressionInvestigation: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.code = try CodableConcept(from: codingKeyContainer, forKey: .code)
+    self.code = try CodeableConcept(from: codingKeyContainer, forKey: .code)
     self.item = try [Reference](from: codingKeyContainer, forKeyIfPresent: .item)
     
     try super.init(from: decoder)

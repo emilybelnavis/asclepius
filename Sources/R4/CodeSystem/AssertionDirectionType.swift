@@ -1,6 +1,6 @@
 //
 //  AssertionDirectionType.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/assert-direction-codes
  ValueSet: http://hl7.org/fhir/ValueSet/assert-direction-codes
  */
-public enum AssertionDirectionType: String, FHIRKitPrimitiveType {
+public enum AssertionDirectionType: String, AlexandriaHRMPrimitiveType {
   /// The assertion is evaluated on the response. This is the default value.
   case response
   

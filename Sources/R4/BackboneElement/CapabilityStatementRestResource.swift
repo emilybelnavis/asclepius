@@ -1,6 +1,6 @@
 //
 //  CapabilityStatementRestResource.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,21 +17,21 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /// A specification of the restful capabilities of the solution for a specific resource type
 open class CapabilityStatementRestResource: BackboneElement {
   /// A type of resource exposed via the restful interface
-  public var type: FHIRKitPrimitive<ResourceType>
+  public var type: AlexandriaHRMPrimitive<ResourceType>
   
   /// Base system profile for all uses of resource
-  public var profile: FHIRKitPrimitive<Canonical>?
+  public var profile: AlexandriaHRMPrimitive<Canonical>?
   
   /// Profiles for use case suported
-  public var supportedProfile: [FHIRKitPrimitive<Canonical>]?
+  public var supportedProfile: [AlexandriaHRMPrimitive<Canonical>]?
   
   /// Additional information about the use of the resouce type
-  public var documentation: FHIRKitPrimitive<FHIRKitString>?
+  public var documentation: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// What operations are supported?
   public var interaction: [CapabilityStatementRestResourceInteraction]?
@@ -42,34 +42,34 @@ open class CapabilityStatementRestResource: BackboneElement {
    populate the versionId meta-property on resources. If the value is `versioned-update` then the server
    supports all the versioning features, including using e-tags for version integrity in the API
    */
-  public var versioning: FHIRKitPrimitive<ResourceVersionPolicy>?
+  public var versioning: AlexandriaHRMPrimitive<ResourceVersionPolicy>?
   
   /// Wheter vRead can return past versions
-  public var readHistory: FHIRKitPrimitive<FHIRKitBool>?
+  public var readHistory: AlexandriaHRMPrimitive<AlexandriaHRMBool>?
   
   /// If update can commit to a new identity
-  public var updateCreate: FHIRKitPrimitive<FHIRKitBool>?
+  public var updateCreate: AlexandriaHRMPrimitive<AlexandriaHRMBool>?
   
   /// If allow/uses conditional create
-  public var conditionalCreate: FHIRKitPrimitive<FHIRKitBool>?
+  public var conditionalCreate: AlexandriaHRMPrimitive<AlexandriaHRMBool>?
   
   /// A code that indicates how the server supports conditional read
-  public var conditionalRead: FHIRKitPrimitive<ConditionalReadStatus>?
+  public var conditionalRead: AlexandriaHRMPrimitive<ConditionalReadStatus>?
 
   /// If allows/uses conditional update
-  public var conditionalUpdate: FHIRKitPrimitive<FHIRKitBool>?
+  public var conditionalUpdate: AlexandriaHRMPrimitive<AlexandriaHRMBool>?
   
   /// A code that indicates how the server supports conditional delete
-  public var conditionalDelete: FHIRKitPrimitive<ConditionalDeleteStatus>?
+  public var conditionalDelete: AlexandriaHRMPrimitive<ConditionalDeleteStatus>?
   
   /// A set of flags that defins how references are supported
-  public var referencePolicy: [FHIRKitPrimitive<ReferenceHandlingPolicy>]?
+  public var referencePolicy: [AlexandriaHRMPrimitive<ReferenceHandlingPolicy>]?
   
   /// `_include` values supported by the server
-  public var searchInclude: [FHIRKitPrimitive<FHIRKitString>]?
+  public var searchInclude: [AlexandriaHRMPrimitive<AlexandriaHRMString>]?
   
   /// `_revinclude` values suported by the server
-  public var searchRevInclude: [FHIRKitPrimitive<FHIRKitString>]?
+  public var searchRevInclude: [AlexandriaHRMPrimitive<AlexandriaHRMString>]?
   
   /// search parameters supported by the implementation
   public var searchParam: [CapabilityStatementRestResourceSearchParam]?
@@ -77,7 +77,7 @@ open class CapabilityStatementRestResource: BackboneElement {
   /// definition of a resource operation
   public var operation: [CapabilityStatementRestResourceOperation]?
   
-  public init(type: FHIRKitPrimitive<ResourceType>) {
+  public init(type: AlexandriaHRMPrimitive<ResourceType>) {
     self.type = type
     super.init()
   }
@@ -85,29 +85,29 @@ open class CapabilityStatementRestResource: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    type: FHIRKitPrimitive<ResourceType>,
-    profile: FHIRKitPrimitive<Canonical>? = nil,
-    supportedProfile: [FHIRKitPrimitive<Canonical>]? = nil,
-    documentation: FHIRKitPrimitive<FHIRKitString>? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    type: AlexandriaHRMPrimitive<ResourceType>,
+    profile: AlexandriaHRMPrimitive<Canonical>? = nil,
+    supportedProfile: [AlexandriaHRMPrimitive<Canonical>]? = nil,
+    documentation: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     interaction: [CapabilityStatementRestResourceInteraction]? = nil,
-    versioning: FHIRKitPrimitive<ResourceVersionPolicy>? = nil,
-    readHistory: FHIRKitPrimitive<FHIRKitBool>? = nil,
-    updateCreate: FHIRKitPrimitive<FHIRKitBool>? = nil,
-    conditionalCreate: FHIRKitPrimitive<FHIRKitBool>? = nil,
-    conditionalRead: FHIRKitPrimitive<ConditionalReadStatus>? = nil,
-    conditionalUpdate: FHIRKitPrimitive<FHIRKitBool>? = nil,
-    conditionalDelete: FHIRKitPrimitive<ConditionalDeleteStatus>? = nil,
-    referencePolicy: [FHIRKitPrimitive<ReferenceHandlingPolicy>]? = nil,
-    searchInclude: [FHIRKitPrimitive<FHIRKitString>]? = nil,
-    searchRevInclude: [FHIRKitPrimitive<FHIRKitString>]? = nil,
+    versioning: AlexandriaHRMPrimitive<ResourceVersionPolicy>? = nil,
+    readHistory: AlexandriaHRMPrimitive<AlexandriaHRMBool>? = nil,
+    updateCreate: AlexandriaHRMPrimitive<AlexandriaHRMBool>? = nil,
+    conditionalCreate: AlexandriaHRMPrimitive<AlexandriaHRMBool>? = nil,
+    conditionalRead: AlexandriaHRMPrimitive<ConditionalReadStatus>? = nil,
+    conditionalUpdate: AlexandriaHRMPrimitive<AlexandriaHRMBool>? = nil,
+    conditionalDelete: AlexandriaHRMPrimitive<ConditionalDeleteStatus>? = nil,
+    referencePolicy: [AlexandriaHRMPrimitive<ReferenceHandlingPolicy>]? = nil,
+    searchInclude: [AlexandriaHRMPrimitive<AlexandriaHRMString>]? = nil,
+    searchRevInclude: [AlexandriaHRMPrimitive<AlexandriaHRMString>]? = nil,
     searchParam: [CapabilityStatementRestResourceSearchParam]? = nil,
     operation: [CapabilityStatementRestResourceOperation]? = nil
   ) {
     self.init(type: type)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.profile = profile
     self.supportedProfile = supportedProfile
     self.documentation = documentation
@@ -150,20 +150,20 @@ open class CapabilityStatementRestResource: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.type = try FHIRKitPrimitive<ResourceType>(from: codingKeyContainer, forKey: .type, auxKey: ._type)
-    self.profile = try FHIRKitPrimitive<Canonical>(from: codingKeyContainer, forKeyIfPresent: .profile, auxKey: ._profile)
-    self.supportedProfile = try [FHIRKitPrimitive<Canonical>](from: codingKeyContainer, forKeyIfPresent: .supportedProfile, auxKey: ._supportedProfile)
-    self.documentation = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .documentation, auxKey: ._documentation)
+    self.type = try AlexandriaHRMPrimitive<ResourceType>(from: codingKeyContainer, forKey: .type, auxKey: ._type)
+    self.profile = try AlexandriaHRMPrimitive<Canonical>(from: codingKeyContainer, forKeyIfPresent: .profile, auxKey: ._profile)
+    self.supportedProfile = try [AlexandriaHRMPrimitive<Canonical>](from: codingKeyContainer, forKeyIfPresent: .supportedProfile, auxKey: ._supportedProfile)
+    self.documentation = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .documentation, auxKey: ._documentation)
     self.interaction = try [CapabilityStatementRestResourceInteraction](from: codingKeyContainer, forKeyIfPresent: .interaction)
-    self.versioning = try FHIRKitPrimitive<ResourceVersionPolicy>(from: codingKeyContainer, forKeyIfPresent: .versioning, auxKey: ._versioning)
-    self.readHistory = try FHIRKitPrimitive<FHIRKitBool>(from: codingKeyContainer, forKeyIfPresent: .readHistory, auxKey: ._readHistory)
-    self.conditionalCreate = try FHIRKitPrimitive<FHIRKitBool>(from: codingKeyContainer, forKeyIfPresent: .conditionalCreate, auxKey: ._conditionalCreate)
-    self.conditionalRead = try FHIRKitPrimitive<ConditionalReadStatus>(from: codingKeyContainer, forKeyIfPresent: .conditionalRead, auxKey: ._conditionalRead)
-    self.conditionalUpdate = try FHIRKitPrimitive<FHIRKitBool>(from: codingKeyContainer, forKeyIfPresent: .conditionalUpdate, auxKey: ._conditionalUpdate)
-    self.conditionalDelete = try FHIRKitPrimitive<ConditionalDeleteStatus>(from: codingKeyContainer, forKeyIfPresent: .conditionalDelete, auxKey: ._conditionalDelete)
-    self.referencePolicy = try [FHIRKitPrimitive<ReferenceHandlingPolicy>](from: codingKeyContainer, forKeyIfPresent: .referencePolicy, auxKey: ._referencePolicy)
-    self.searchInclude = try [FHIRKitPrimitive<FHIRKitString>](from: codingKeyContainer, forKeyIfPresent: .searchInclude, auxKey: ._searchInclude)
-    self.searchRevInclude = try [FHIRKitPrimitive<FHIRKitString>](from: codingKeyContainer, forKeyIfPresent: .searchRevInclude, auxKey: ._searchRevInclude)
+    self.versioning = try AlexandriaHRMPrimitive<ResourceVersionPolicy>(from: codingKeyContainer, forKeyIfPresent: .versioning, auxKey: ._versioning)
+    self.readHistory = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKeyIfPresent: .readHistory, auxKey: ._readHistory)
+    self.conditionalCreate = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKeyIfPresent: .conditionalCreate, auxKey: ._conditionalCreate)
+    self.conditionalRead = try AlexandriaHRMPrimitive<ConditionalReadStatus>(from: codingKeyContainer, forKeyIfPresent: .conditionalRead, auxKey: ._conditionalRead)
+    self.conditionalUpdate = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKeyIfPresent: .conditionalUpdate, auxKey: ._conditionalUpdate)
+    self.conditionalDelete = try AlexandriaHRMPrimitive<ConditionalDeleteStatus>(from: codingKeyContainer, forKeyIfPresent: .conditionalDelete, auxKey: ._conditionalDelete)
+    self.referencePolicy = try [AlexandriaHRMPrimitive<ReferenceHandlingPolicy>](from: codingKeyContainer, forKeyIfPresent: .referencePolicy, auxKey: ._referencePolicy)
+    self.searchInclude = try [AlexandriaHRMPrimitive<AlexandriaHRMString>](from: codingKeyContainer, forKeyIfPresent: .searchInclude, auxKey: ._searchInclude)
+    self.searchRevInclude = try [AlexandriaHRMPrimitive<AlexandriaHRMString>](from: codingKeyContainer, forKeyIfPresent: .searchRevInclude, auxKey: ._searchRevInclude)
     self.searchParam = try [CapabilityStatementRestResourceSearchParam](from: codingKeyContainer, forKeyIfPresent: .searchParam)
     self.operation = try [CapabilityStatementRestResourceOperation](from: codingKeyContainer, forKeyIfPresent: .operation)
     try super.init(from: decoder)

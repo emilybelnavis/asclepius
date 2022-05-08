@@ -1,6 +1,6 @@
 //
 //  MedicationDispensePerformerFunctionCodes.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/medicationdispense-performer-function
  ValueSet: http://hl7.org/fhir/ValueSet/medicationdispense-performer-function
  */
-public enum MedicationDispensePerformerFunctionCodes: String, FHIRKitPrimitiveType {
+public enum MedicationDispensePerformerFunctionCodes: String, AlexandriaHRMPrimitiveType {
   /// Recorded the details of the request
   case dataenterer
   

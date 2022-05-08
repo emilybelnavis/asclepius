@@ -1,6 +1,6 @@
 //
 //  GoalPriority.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/goal-priority
  ValueSet: http://hl7.org/fhir/ValueSet/goal-priority
  */
-public enum GoalPriority: String, FHIRKitPrimitiveType {
+public enum GoalPriority: String, AlexandriaHRMPrimitiveType {
   /// Indicates that the goal is of considerable importance and should be a primary focus of care delivery.
   case highPriority = "high-priority"
   

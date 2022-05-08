@@ -1,6 +1,6 @@
 //
 //  DocumentManifestRelated.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Related identifiers or resources associated with the `DocumentManifest`
@@ -36,14 +36,14 @@ open class DocumentManifestRelated: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     identifier: Identifier? = nil,
     reference: Reference?
   ) {
     self.init()
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.identifier = identifier
     self.reference = reference
   }

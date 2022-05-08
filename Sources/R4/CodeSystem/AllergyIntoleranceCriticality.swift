@@ -1,6 +1,6 @@
 //
 //  AllergyIntoleranceCriticality.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/allergy-intolerance-criticality
  ValueSet: http://hl7.org/fhir/ValueSet/allergy-intolerance-criticality
  */
-public enum AllergyIntoleranceCriticality: String, FHIRKitPrimitiveType {
+public enum AllergyIntoleranceCriticality: String, AlexandriaHRMPrimitiveType {
   /// Worst case result of a future exposure is not assessed to be life-threatening or having
   /// high-potential for organ system failure
   case low

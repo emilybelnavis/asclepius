@@ -1,6 +1,6 @@
 //
 //  QualityOfEvidenceRating.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/evidence-quality
  ValueSet: http://hl7.org/fhir/ValueSet/evidence-quality
  */
-public enum QualityOfEvidenceRating: String, FHIRKitPrimitiveType {
+public enum QualityOfEvidenceRating: String, AlexandriaHRMPrimitiveType {
   /// High quality evidence.
   case high
   

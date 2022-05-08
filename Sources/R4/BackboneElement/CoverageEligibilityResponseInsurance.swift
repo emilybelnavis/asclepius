@@ -1,6 +1,6 @@
 //
 //  CoverageEligibilityResponseInsurance.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Patient insurance information; Financial instruments for reimbursement for the healthcare products and services
@@ -27,7 +27,7 @@ open class CoverageEligibilityResponseInsurance: BackboneElement {
   public var coverage: Reference
   
   /// Coverage inforce indicator
-  public var inForce: FHIRKitPrimitive<FHIRKitBool>?
+  public var inForce: AlexandriaHRMPrimitive<AlexandriaHRMBool>?
   
   /// When the benefits are applicable
   public var benefitPeriod: Period?
@@ -43,16 +43,16 @@ open class CoverageEligibilityResponseInsurance: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     coverage: Reference,
-    inForce: FHIRKitPrimitive<FHIRKitBool>? = nil,
+    inForce: AlexandriaHRMPrimitive<AlexandriaHRMBool>? = nil,
     benefitPeriod: Period? = nil,
     item: [CoverageEligibilityResponseInsuranceItem]? = nil
   ) {
     self.init(coverage: coverage)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.inForce = inForce
     self.benefitPeriod = benefitPeriod
     self.item = item
@@ -70,7 +70,7 @@ open class CoverageEligibilityResponseInsurance: BackboneElement {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     self.coverage = try Reference(from: codingKeyContainer, forKey: .coverage)
-    self.inForce = try FHIRKitPrimitive<FHIRKitBool>(from: codingKeyContainer, forKeyIfPresent: .inForce, auxKey: ._inForce)
+    self.inForce = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKeyIfPresent: .inForce, auxKey: ._inForce)
     self.benefitPeriod = try Period(from: codingKeyContainer, forKeyIfPresent: .benefitPeriod)
     self.item = try [CoverageEligibilityResponseInsuranceItem](from: codingKeyContainer, forKeyIfPresent: .item)
     

@@ -1,6 +1,6 @@
 //
 //  DeviceDefinitionCapability.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,19 +17,19 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Device capabilities
  */
 open class DeviceDefinitionCapability: BackboneElement {
   /// Type of capability
-  public var type: CodableConcept
+  public var type: CodeableConcept
   
   /// Description of the capability
-  public var fhirDescription: [CodableConcept]?
+  public var fhirDescription: [CodeableConcept]?
   
-  public init(type: CodableConcept) {
+  public init(type: CodeableConcept) {
     self.type = type
     super.init()
   }
@@ -37,14 +37,14 @@ open class DeviceDefinitionCapability: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    type: CodableConcept,
-    fhirDescription: [CodableConcept]? = nil
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    type: CodeableConcept,
+    fhirDescription: [CodeableConcept]? = nil
   ) {
     self.init(type: type)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.fhirDescription = fhirDescription
   }
   
@@ -57,8 +57,8 @@ open class DeviceDefinitionCapability: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.type = try CodableConcept(from: codingKeyContainer, forKey: .type)
-    self.fhirDescription = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .fhirDescription)
+    self.type = try CodeableConcept(from: codingKeyContainer, forKey: .type)
+    self.fhirDescription = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .fhirDescription)
     
     try super.init(from: decoder)
   }

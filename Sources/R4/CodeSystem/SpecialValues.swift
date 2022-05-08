@@ -1,6 +1,6 @@
 //
 //  SpecialValues.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/special-values
  ValueSet: http://hl7.org/fhir/ValueSet/special-values
  */
-public enum SpecialValues: String, FHIRKitPrimitiveType {
+public enum SpecialValues: String, AlexandriaHRMPrimitiveType {
   /// Boolean true.
   case `true`
   

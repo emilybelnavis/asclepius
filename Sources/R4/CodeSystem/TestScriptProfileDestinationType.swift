@@ -1,6 +1,6 @@
 //
 //  TestScriptProfileDestinationType.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -24,7 +24,7 @@
  URL: http://terminology.hl7.org/CodeSystem/testscript-profile-destination-types
  ValueSet: http://hl7.org/fhir/ValueSet/testscript-profile-destination-types
  */
-public enum TestScriptProfileDestinationType: String, FHIRKitPrimitiveType {
+public enum TestScriptProfileDestinationType: String, AlexandriaHRMPrimitiveType {
   /// General FHIR server used to respond to operations sent from a FHIR client.
   case fHIRServer = "FHIR-Server"
   

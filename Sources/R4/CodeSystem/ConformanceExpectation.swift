@@ -1,6 +1,6 @@
 //
 //  ConformanceExpectation.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -24,7 +24,7 @@
  URL: http://terminology.hl7.org/CodeSystem/conformance-expectation
  ValueSet: http://hl7.org/fhir/ValueSet/conformance-expectation
  */
-public enum ConformanceExpectation: String, FHIRKitPrimitiveType {
+public enum ConformanceExpectation: String, AlexandriaHRMPrimitiveType {
   /// Support for the specified capability is required to be considered conformant
   case SHALL
   

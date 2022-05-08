@@ -1,6 +1,6 @@
 //
 //  Need.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/need
  ValueSet: http://hl7.org/fhir/ValueSet/verificationresult-need
  */
-public enum Need: String, FHIRKitPrimitiveType {
+public enum Need: String, AlexandriaHRMPrimitiveType {
   /// ***TODO***
   case none
   

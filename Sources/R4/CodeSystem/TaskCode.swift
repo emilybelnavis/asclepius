@@ -1,6 +1,6 @@
 //
 //  TaskCode.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/CodeSystem/task-code
  ValueSet: http://hl7.org/fhir/ValueSet/task-code
  */
-public enum TaskCode: String, FHIRKitPrimitiveType {
+public enum TaskCode: String, AlexandriaHRMPrimitiveType {
   /// Take what actions are needed to transition the focus resource from 'draft' to 'active' or 'in-progress', as
   /// appropriate for the resource type.  This may involve additing additional content, approval, validation, etc.
   case approve

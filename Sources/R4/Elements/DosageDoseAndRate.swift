@@ -1,6 +1,6 @@
 //
 //  DosageDoseAndRate.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /// The amount of medication administered
 open class DosageDoseAndRate: Element {
@@ -35,7 +35,7 @@ open class DosageDoseAndRate: Element {
   }
   
   /// The kind of dose or rate specified
-  public var type: CodableConcept?
+  public var type: CodeableConcept?
   
   /// Amount of medication per dose
   public var dose: DoseX?
@@ -49,14 +49,14 @@ open class DosageDoseAndRate: Element {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    type: CodableConcept? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    type: CodeableConcept? = nil,
     dose: DoseX? = nil,
     rate: RateX? = nil
   ) {
     self.init()
     self.fhirExtension = fhirExtension
-    self.id = id
+    self.fhirId = fhirId
     self.type = type
     self.dose = dose
     self.rate = rate
@@ -116,7 +116,7 @@ open class DosageDoseAndRate: Element {
       tempRate = .ratio(rateRatio)
     }
     
-    self.type = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .type)
+    self.type = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .type)
     self.dose = tempDose
     self.rate = tempRate
     

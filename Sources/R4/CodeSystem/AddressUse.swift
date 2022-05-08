@@ -1,6 +1,6 @@
 //
 //  AddressUse.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/address-use
  ValueSet: http://hl7.org/fhir/ValueSet/address-use
  */
-public enum AddressUse: String, FHIRKitPrimitiveType {
+public enum AddressUse: String, AlexandriaHRMPrimitiveType {
   /// A communication address at home
   case home
   

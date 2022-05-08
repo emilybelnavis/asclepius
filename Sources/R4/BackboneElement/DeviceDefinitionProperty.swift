@@ -1,6 +1,6 @@
 //
 //  DeviceDefinitionProperty.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,22 +17,22 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  The actual configuration settings of a device as it actually operates (e.g regulation status, time properties)
  */
 open class DeviceDefinitionProperty: BackboneElement {
   /// Code that specifies the property `DeviceDefinitionPropertyCode` (extensible
-  public var type: CodableConcept
+  public var type: CodeableConcept
   
   /// Property value as a quantity
   public var valueQuantity: [Quantity]?
   
   /// Property value as a code (e.g. NTP4 (synced to NTP))
-  public var valueCode: [CodableConcept]?
+  public var valueCode: [CodeableConcept]?
   
-  public init(type: CodableConcept) {
+  public init(type: CodeableConcept) {
     self.type = type
     super.init()
   }
@@ -40,15 +40,15 @@ open class DeviceDefinitionProperty: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    type: CodableConcept,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    type: CodeableConcept,
     valueQuantity: [Quantity]? = nil,
-    valueCode: [CodableConcept]? = nil
+    valueCode: [CodeableConcept]? = nil
   ) {
     self.init(type: type)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.valueQuantity = valueQuantity
     self.valueCode = valueCode
   }
@@ -63,9 +63,9 @@ open class DeviceDefinitionProperty: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.type = try CodableConcept(from: codingKeyContainer, forKey: .type)
+    self.type = try CodeableConcept(from: codingKeyContainer, forKey: .type)
     self.valueQuantity = try [Quantity](from: codingKeyContainer, forKeyIfPresent: .valueQuantity)
-    self.valueCode = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .valueCode)
+    self.valueCode = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .valueCode)
     
     try super.init(from: decoder)
   }

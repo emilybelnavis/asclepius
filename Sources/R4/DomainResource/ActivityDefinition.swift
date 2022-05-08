@@ -1,6 +1,6 @@
 //
 //  ActivityDefinition.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  The definition of a specific activity to be taken, independent of any particular patient or context.
@@ -31,18 +31,18 @@ open class ActivityDefinition: DomainResource {
   }
   
   public enum ProductX: Hashable {
-    case codableConcept(CodableConcept)
+    case codeableConcept(CodeableConcept)
     case reference(Reference)
   }
   
   public enum SubjectX: Hashable {
-    case codableConcept(CodableConcept)
+    case codeableConcept(CodeableConcept)
     case reference(Reference)
   }
   
   public enum TimingX: Hashable {
     case age(Age)
-    case dateTime(FHIRKitPrimitive<FHIRKitDateTime>)
+    case dateTime(AlexandriaHRMPrimitive<AlexandriaHRMDateTime>)
     case duration(Duration)
     case period(Period)
     case range(Range)
@@ -50,70 +50,70 @@ open class ActivityDefinition: DomainResource {
   }
   
   /// Canonical identifier for this activity definition, represented as a URI (globally unique)
-  public var url: FHIRKitPrimitive<FHIRKitURI>?
+  public var url: AlexandriaHRMPrimitive<AlexandriaHRMURI>?
   
   /// Additional idenfier for the activity definition
   public var identifier: [Identifier]?
   
   /// Business version of the activity definition
-  public var version: FHIRKitPrimitive<FHIRKitString>?
+  public var version: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// computer-friendly name for this activity definition
-  public var name: FHIRKitPrimitive<FHIRKitString>?
+  public var name: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// human-friendly name for this activity definition
-  public var title: FHIRKitPrimitive<FHIRKitString>?
+  public var title: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// subtitle of the activity definition
-  public var subtitle: FHIRKitPrimitive<FHIRKitString>?
+  public var subtitle: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// status of the activity definition
-  public var status: FHIRKitPrimitive<PublicationStatus>
+  public var status: AlexandriaHRMPrimitive<PublicationStatus>
   
   /// definition is for experimental purposes
-  public var experimental: FHIRKitPrimitive<FHIRKitBool>?
+  public var experimental: AlexandriaHRMPrimitive<AlexandriaHRMBool>?
   
   /// type of individual the activity definition is intended for
   public var subjectX: SubjectX?
   
   /// date last changed
-  public var date: FHIRKitPrimitive<FHIRKitDateTime>?
+  public var date: AlexandriaHRMPrimitive<AlexandriaHRMDateTime>?
   
   /// name of the publisher (org/individual)
-  public var publisher: FHIRKitPrimitive<FHIRKitString>?
+  public var publisher: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// contact details for the publisher
   public var contact: [ContactDetail]?
   
   /// natural language description of the activity definitoin
-  public var fhirDescription: FHIRKitPrimitive<FHIRKitString>?
+  public var fhirDescription: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// the context that the content is intended to support
   public var useContext: [UsageContext]?
   
   /// intended jurisdiction for activity definition
-  public var jurisdiction: [CodableConcept]?
+  public var jurisdiction: [CodeableConcept]?
   
   /// why this activity definition is defined
-  public var purpose: FHIRKitPrimitive<FHIRKitString>?
+  public var purpose: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// clinical usage for thie activity definition
-  public var usage: FHIRKitPrimitive<FHIRKitString>?
+  public var usage: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// use and/or publishin restrictions
-  public var copyright: FHIRKitPrimitive<FHIRKitString>?
+  public var copyright: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// when the activity definition was approved by the publisher
-  public var approvalDate: FHIRKitPrimitive<FHIRKitDate>?
+  public var approvalDate: AlexandriaHRMPrimitive<AlexandriaHRMDate>?
   
   /// when the activity definition was last reviewed by the publisher
-  public var lastReviewDate: FHIRKitPrimitive<FHIRKitDate>?
+  public var lastReviewDate: AlexandriaHRMPrimitive<AlexandriaHRMDate>?
   
   /// when the activity definition is expected to be used
   public var effectivePeriod: Period?
   
   /// activity definition topic
-  public var topic: [CodableConcept]?
+  public var topic: [CodeableConcept]?
   
   /// who authored the activity definition
   public var author: [ContactDetail]?
@@ -131,26 +131,26 @@ open class ActivityDefinition: DomainResource {
   public var relatedArtifact: [RelatedArtifact]?
   
   /// logic used by the activity definition
-  public var library: [FHIRKitPrimitive<Canonical>]?
+  public var library: [AlexandriaHRMPrimitive<Canonical>]?
   
   /// a description of the kind of resource the definition is representing
-  public var kind: FHIRKitPrimitive<RequestResourceType>?
+  public var kind: AlexandriaHRMPrimitive<RequestResourceType>?
   
   /// what profile the resource needs to conform to
-  public var profile: FHIRKitPrimitive<Canonical>?
+  public var profile: AlexandriaHRMPrimitive<Canonical>?
   
   /// detail type of activity
-  public var code: CodableConcept?
+  public var code: CodeableConcept?
   
   /// indicates the level of authorirty/intentionality assocated with the activity and where the request
   /// should fit into the workflow chain
-  public var intent: FHIRKitPrimitive<RequestIntent>?
+  public var intent: AlexandriaHRMPrimitive<RequestIntent>?
   
   /// indicates how quickly the activty should be addressed with respect to other requests
-  public var priority: FHIRKitPrimitive<RequestPriority>?
+  public var priority: AlexandriaHRMPrimitive<RequestPriority>?
   
   /// should the activity be performed
-  public var doNotPerform: FHIRKitPrimitive<FHIRKitBool>?
+  public var doNotPerform: AlexandriaHRMPrimitive<AlexandriaHRMBool>?
   
   /// when the activity is to be performed
   public var timingX: TimingX?
@@ -171,7 +171,7 @@ open class ActivityDefinition: DomainResource {
   public var dosage: [Dosage]?
   
   /// which part of the body to perform activity on
-  public var bodySite: [CodableConcept]?
+  public var bodySite: [CodeableConcept]?
   
   /// what specimens are required to perform this action
   public var specimenRequirement: [Reference]?
@@ -183,12 +183,12 @@ open class ActivityDefinition: DomainResource {
   public var observationResultRequirement: [Reference]?
   
   /// transform to apply template
-  public var transform: FHIRKitPrimitive<Canonical>?
+  public var transform: AlexandriaHRMPrimitive<Canonical>?
   
   /// dynamic aspects of the activity definition
   public var dynamicValue: [ActivityDefinitionDynamicValue]?
   
-  public init(status: FHIRKitPrimitive<PublicationStatus>) {
+  public init(status: AlexandriaHRMPrimitive<PublicationStatus>) {
     self.status = status
     super.init()
   }
@@ -196,63 +196,63 @@ open class ActivityDefinition: DomainResource {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    approvalDate: FHIRKitPrimitive<FHIRKitDate>? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    approvalDate: AlexandriaHRMPrimitive<AlexandriaHRMDate>? = nil,
     author: [ContactDetail]? = nil,
-    bodySite: [CodableConcept]? = nil,
-    code: CodableConcept? = nil,
+    bodySite: [CodeableConcept]? = nil,
+    code: CodeableConcept? = nil,
     contact: [ContactDetail]? = nil,
     contained: [ResourceProxy]? = nil,
-    copyright: FHIRKitPrimitive<FHIRKitString>? = nil,
-    date: FHIRKitPrimitive<FHIRKitDateTime>? = nil,
-    doNotPerform: FHIRKitPrimitive<FHIRKitBool>? = nil,
+    copyright: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    date: AlexandriaHRMPrimitive<AlexandriaHRMDateTime>? = nil,
+    doNotPerform: AlexandriaHRMPrimitive<AlexandriaHRMBool>? = nil,
     dosage: [Dosage]? = nil,
     dynamicValue: [ActivityDefinitionDynamicValue]? = nil,
     editor: [ContactDetail]? = nil,
     effectivePeriod: Period? = nil,
     endorser: [ContactDetail]? = nil,
-    experimental: FHIRKitPrimitive<FHIRKitBool>? = nil,
-    fhirDescription: FHIRKitPrimitive<FHIRKitString>? = nil,
+    experimental: AlexandriaHRMPrimitive<AlexandriaHRMBool>? = nil,
+    fhirDescription: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     identifier: [Identifier]? = nil,
-    implicitRules: FHIRKitPrimitive<FHIRKitURI>? = nil,
-    intent: FHIRKitPrimitive<RequestIntent>? = nil,
-    jurisdiction: [CodableConcept]? = nil,
-    kind: FHIRKitPrimitive<RequestResourceType>? = nil,
-    language: FHIRKitPrimitive<FHIRKitString>? = nil,
-    lastReviewDate: FHIRKitPrimitive<FHIRKitDate>? = nil,
-    library: [FHIRKitPrimitive<Canonical>]? = nil,
+    implicitRules: AlexandriaHRMPrimitive<AlexandriaHRMURI>? = nil,
+    intent: AlexandriaHRMPrimitive<RequestIntent>? = nil,
+    jurisdiction: [CodeableConcept]? = nil,
+    kind: AlexandriaHRMPrimitive<RequestResourceType>? = nil,
+    language: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    lastReviewDate: AlexandriaHRMPrimitive<AlexandriaHRMDate>? = nil,
+    library: [AlexandriaHRMPrimitive<Canonical>]? = nil,
     location: Reference? = nil,
     meta: Meta? = nil,
-    name: FHIRKitPrimitive<FHIRKitString>? = nil,
+    name: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     observationRequirement: [Reference]? = nil,
     observationResultRequirement: [Reference]? = nil,
     participant: [ActivityDefinitionParticipant]? = nil,
-    priority: FHIRKitPrimitive<RequestPriority>? = nil,
+    priority: AlexandriaHRMPrimitive<RequestPriority>? = nil,
     productX: ProductX? = nil,
-    profile: FHIRKitPrimitive<Canonical>? = nil,
-    publisher: FHIRKitPrimitive<FHIRKitString>? = nil,
-    purpose: FHIRKitPrimitive<FHIRKitString>? = nil,
+    profile: AlexandriaHRMPrimitive<Canonical>? = nil,
+    publisher: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    purpose: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     quantity: Quantity? = nil,
     relatedArtifact: [RelatedArtifact]? = nil,
     reviewer: [ContactDetail]? = nil,
     specimenRequirement: [Reference]? = nil,
-    status: FHIRKitPrimitive<PublicationStatus>,
+    status: AlexandriaHRMPrimitive<PublicationStatus>,
     subjectX: SubjectX? = nil,
-    subtitle: FHIRKitPrimitive<FHIRKitString>? = nil,
+    subtitle: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     text: Narrative? = nil,
     timingX: TimingX? = nil,
-    title: FHIRKitPrimitive<FHIRKitString>? = nil,
-    topic: [CodableConcept]? = nil,
-    transform: FHIRKitPrimitive<Canonical>? = nil,
-    url: FHIRKitPrimitive<FHIRKitURI>? = nil,
-    usage: FHIRKitPrimitive<FHIRKitString>? = nil,
+    title: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    topic: [CodeableConcept]? = nil,
+    transform: AlexandriaHRMPrimitive<Canonical>? = nil,
+    url: AlexandriaHRMPrimitive<AlexandriaHRMURI>? = nil,
+    usage: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     useContext: [UsageContext]? = nil,
-    version: FHIRKitPrimitive<FHIRKitString>? = nil
+    version: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil
   ) {
     self.init(status: status)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.approvalDate = approvalDate
     self.author = author
     self.bodySite = bodySite
@@ -332,7 +332,7 @@ open class ActivityDefinition: DomainResource {
     case observationResultRequirement
     case participant
     case priority; case _priority
-    case productCodableConcept
+    case productCodeableConcept
     case productReference
     case profile; case _profile
     case publisher; case _publisher
@@ -342,7 +342,7 @@ open class ActivityDefinition: DomainResource {
     case reviewer
     case specimenRequirement
     case status; case _status
-    case subjectCodableConcept
+    case subjectCodeableConcept
     case subjectReference
     case subtitle; case _subtitle
     case timingAge
@@ -366,11 +366,11 @@ open class ActivityDefinition: DomainResource {
     
     // product
     var tempProductX: ProductX?
-    if let productCodableConcept = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .productCodableConcept) {
+    if let productCodeableConcept = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .productCodeableConcept) {
       if tempProductX != nil {
-        throw DecodingError.dataCorruptedError(forKey: .productCodableConcept, in: codingKeyContainer, debugDescription: "More than one value provided for \"product\"")
+        throw DecodingError.dataCorruptedError(forKey: .productCodeableConcept, in: codingKeyContainer, debugDescription: "More than one value provided for \"product\"")
       }
-      tempProductX = .codableConcept(productCodableConcept)
+      tempProductX = .codeableConcept(productCodeableConcept)
     }
     if let productReference = try Reference(from: codingKeyContainer, forKeyIfPresent: .productReference) {
       if tempProductX != nil {
@@ -381,11 +381,11 @@ open class ActivityDefinition: DomainResource {
     
     // subject
     var tempSubjectX: SubjectX?
-    if let subjectCodableConcept = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .subjectCodableConcept) {
+    if let subjectCodeableConcept = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .subjectCodeableConcept) {
       if tempSubjectX != nil {
-        throw DecodingError.dataCorruptedError(forKey: .subjectCodableConcept, in: codingKeyContainer, debugDescription: "More than one value provided for \"subject\"")
+        throw DecodingError.dataCorruptedError(forKey: .subjectCodeableConcept, in: codingKeyContainer, debugDescription: "More than one value provided for \"subject\"")
       }
-      tempSubjectX = .codableConcept(subjectCodableConcept)
+      tempSubjectX = .codeableConcept(subjectCodeableConcept)
     }
     
     if let subjectReference = try Reference(from: codingKeyContainer, forKeyIfPresent: .subjectReference) {
@@ -403,7 +403,7 @@ open class ActivityDefinition: DomainResource {
       tempTimingX = .age(timingAge)
     }
     
-    if let timingDateTime = try FHIRKitPrimitive<FHIRKitDateTime>(from: codingKeyContainer, forKeyIfPresent: .timingDateTime, auxKey: ._timingDateTime) {
+    if let timingDateTime = try AlexandriaHRMPrimitive<AlexandriaHRMDateTime>(from: codingKeyContainer, forKeyIfPresent: .timingDateTime, auxKey: ._timingDateTime) {
       if tempTimingX != nil {
         throw DecodingError.dataCorruptedError(forKey: .timingDateTime, in: codingKeyContainer, debugDescription: "More than one value provided for \"timing\"")
       }
@@ -431,51 +431,51 @@ open class ActivityDefinition: DomainResource {
       tempTimingX = .timing(timingTiming)
     }
     
-    self.approvalDate = try FHIRKitPrimitive<FHIRKitDate>(from: codingKeyContainer, forKeyIfPresent: .approvalDate, auxKey: ._approvalDate)
+    self.approvalDate = try AlexandriaHRMPrimitive<AlexandriaHRMDate>(from: codingKeyContainer, forKeyIfPresent: .approvalDate, auxKey: ._approvalDate)
     self.author = try [ContactDetail](from: codingKeyContainer, forKeyIfPresent: .author)
-    self.bodySite = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .bodySite)
-    self.code = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .code)
+    self.bodySite = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .bodySite)
+    self.code = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .code)
     self.contact = try [ContactDetail](from: codingKeyContainer, forKeyIfPresent: .contact)
-    self.copyright = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .copyright, auxKey: ._copyright)
-    self.date = try FHIRKitPrimitive<FHIRKitDateTime>(from: codingKeyContainer, forKeyIfPresent: .date, auxKey: ._date)
-    self.doNotPerform = try FHIRKitPrimitive<FHIRKitBool>(from: codingKeyContainer, forKeyIfPresent: .doNotPerform, auxKey: ._doNotPerform)
+    self.copyright = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .copyright, auxKey: ._copyright)
+    self.date = try AlexandriaHRMPrimitive<AlexandriaHRMDateTime>(from: codingKeyContainer, forKeyIfPresent: .date, auxKey: ._date)
+    self.doNotPerform = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKeyIfPresent: .doNotPerform, auxKey: ._doNotPerform)
     self.dosage = try [Dosage](from: codingKeyContainer, forKeyIfPresent: .dosage)
     self.dynamicValue = try [ActivityDefinitionDynamicValue](from: codingKeyContainer, forKeyIfPresent: .dynamicValue)
     self.editor = try [ContactDetail](from: codingKeyContainer, forKeyIfPresent: .editor)
     self.effectivePeriod = try Period(from: codingKeyContainer, forKeyIfPresent: .effectivePeriod)
     self.endorser = try [ContactDetail](from: codingKeyContainer, forKeyIfPresent: .endorser)
-    self.experimental = try FHIRKitPrimitive<FHIRKitBool>(from: codingKeyContainer, forKeyIfPresent: .experimental, auxKey: ._experimental)
-    self.fhirDescription = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .fhirDescription, auxKey: ._fhirDescription)
+    self.experimental = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKeyIfPresent: .experimental, auxKey: ._experimental)
+    self.fhirDescription = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .fhirDescription, auxKey: ._fhirDescription)
     self.identifier = try [Identifier](from: codingKeyContainer, forKeyIfPresent: .identifier)
-    self.intent = try FHIRKitPrimitive<RequestIntent>(from: codingKeyContainer, forKeyIfPresent: .intent, auxKey: ._intent)
-    self.jurisdiction = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .jurisdiction)
-    self.kind = try FHIRKitPrimitive<RequestResourceType>(from: codingKeyContainer, forKeyIfPresent: .kind, auxKey: ._kind)
-    self.lastReviewDate = try FHIRKitPrimitive<FHIRKitDate>(from: codingKeyContainer, forKeyIfPresent: .lastReviewDate, auxKey: ._lastReviewDate)
-    self.library = try [FHIRKitPrimitive<Canonical>](from: codingKeyContainer, forKeyIfPresent: .library, auxKey: ._library)
+    self.intent = try AlexandriaHRMPrimitive<RequestIntent>(from: codingKeyContainer, forKeyIfPresent: .intent, auxKey: ._intent)
+    self.jurisdiction = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .jurisdiction)
+    self.kind = try AlexandriaHRMPrimitive<RequestResourceType>(from: codingKeyContainer, forKeyIfPresent: .kind, auxKey: ._kind)
+    self.lastReviewDate = try AlexandriaHRMPrimitive<AlexandriaHRMDate>(from: codingKeyContainer, forKeyIfPresent: .lastReviewDate, auxKey: ._lastReviewDate)
+    self.library = try [AlexandriaHRMPrimitive<Canonical>](from: codingKeyContainer, forKeyIfPresent: .library, auxKey: ._library)
     self.location = try Reference(from: codingKeyContainer, forKeyIfPresent: .location)
-    self.name = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .name, auxKey: ._name)
+    self.name = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .name, auxKey: ._name)
     self.observationRequirement = try [Reference](from: codingKeyContainer, forKeyIfPresent: .observationRequirement)
     self.observationResultRequirement = try [Reference](from: codingKeyContainer, forKeyIfPresent: .observationResultRequirement)
     self.participant = try [ActivityDefinitionParticipant](from: codingKeyContainer, forKeyIfPresent: .participant)
-    self.priority = try FHIRKitPrimitive<RequestPriority>(from: codingKeyContainer, forKeyIfPresent: .priority, auxKey: ._priority)
+    self.priority = try AlexandriaHRMPrimitive<RequestPriority>(from: codingKeyContainer, forKeyIfPresent: .priority, auxKey: ._priority)
     self.productX = tempProductX
-    self.profile = try FHIRKitPrimitive<Canonical>(from: codingKeyContainer, forKeyIfPresent: .profile, auxKey: ._profile)
-    self.publisher = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .publisher, auxKey: ._publisher)
-    self.purpose = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .purpose, auxKey: ._purpose)
+    self.profile = try AlexandriaHRMPrimitive<Canonical>(from: codingKeyContainer, forKeyIfPresent: .profile, auxKey: ._profile)
+    self.publisher = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .publisher, auxKey: ._publisher)
+    self.purpose = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .purpose, auxKey: ._purpose)
     self.quantity = try Quantity(from: codingKeyContainer, forKeyIfPresent: .quantity)
     self.relatedArtifact = try [RelatedArtifact](from: codingKeyContainer, forKeyIfPresent: .relatedArtifact)
     self.reviewer = try [ContactDetail](from: codingKeyContainer, forKeyIfPresent: .reviewer)
     self.specimenRequirement = try [Reference](from: codingKeyContainer, forKeyIfPresent: .specimenRequirement)
-    self.status = try FHIRKitPrimitive<PublicationStatus>(from: codingKeyContainer, forKey: .status, auxKey: ._status)
+    self.status = try AlexandriaHRMPrimitive<PublicationStatus>(from: codingKeyContainer, forKey: .status, auxKey: ._status)
     self.subjectX = tempSubjectX
     self.timingX = tempTimingX
-    self.title = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .title, auxKey: ._title)
-    self.topic = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .topic)
-    self.transform = try FHIRKitPrimitive<Canonical>(from: codingKeyContainer, forKeyIfPresent: .transform, auxKey: ._transform)
-    self.url = try FHIRKitPrimitive<FHIRKitURI>(from: codingKeyContainer, forKeyIfPresent: .url, auxKey: ._url)
-    self.usage = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .usage, auxKey: ._usage)
+    self.title = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .title, auxKey: ._title)
+    self.topic = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .topic)
+    self.transform = try AlexandriaHRMPrimitive<Canonical>(from: codingKeyContainer, forKeyIfPresent: .transform, auxKey: ._transform)
+    self.url = try AlexandriaHRMPrimitive<AlexandriaHRMURI>(from: codingKeyContainer, forKeyIfPresent: .url, auxKey: ._url)
+    self.usage = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .usage, auxKey: ._usage)
     self.useContext = try [UsageContext](from: codingKeyContainer, forKeyIfPresent: .useContext)
-    self.version = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .version, auxKey: ._version)
+    self.version = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .version, auxKey: ._version)
     try super.init(from: decoder)
   }
   
@@ -484,8 +484,8 @@ open class ActivityDefinition: DomainResource {
     
     if let enumProduct = productX {
       switch enumProduct {
-      case .codableConcept(let _value):
-        try _value.encode(on: &codingKeyContainer, forKey: .productCodableConcept)
+      case .codeableConcept(let _value):
+        try _value.encode(on: &codingKeyContainer, forKey: .productCodeableConcept)
       case .reference(let _value):
         try _value.encode(on: &codingKeyContainer, forKey: .productReference)
       }
@@ -493,8 +493,8 @@ open class ActivityDefinition: DomainResource {
     
     if let enumSubject = subjectX {
       switch enumSubject {
-      case .codableConcept(let _value):
-        try _value.encode(on: &codingKeyContainer, forKey: .subjectCodableConcept)
+      case .codeableConcept(let _value):
+        try _value.encode(on: &codingKeyContainer, forKey: .subjectCodeableConcept)
       case .reference(let _value):
         try _value.encode(on: &codingKeyContainer, forKey: .subjectReference)
       }

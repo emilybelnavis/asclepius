@@ -1,6 +1,6 @@
 //
 //  Attachment.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Content in a format defined elsewhere.
@@ -26,28 +26,28 @@ import FHIRKitCore
  */
 open class Attachment: Element {
   /// MIME type of the content, with charset
-  public var contentType: FHIRKitPrimitive<FHIRKitString>?
+  public var contentType: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// Language of the content (BCP-47)
-  public var language: FHIRKitPrimitive<FHIRKitString>?
+  public var language: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// Data inline as base64
-  public var data: FHIRKitPrimitive<FHIRKitBase64Binary>?
+  public var data: AlexandriaHRMPrimitive<AlexandriaHRMBase64Binary>?
   
   /// URI where the data can be found
-  public var url: FHIRKitPrimitive<FHIRKitURI>?
+  public var url: AlexandriaHRMPrimitive<AlexandriaHRMURI>?
   
   /// Content bytesize (if URL provided)
-  public var size: FHIRKitPrimitive<FHIRKitUnsignedInteger>?
+  public var size: AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>?
   
   /// Hash of the data (SHA-1, base64 format)
-  public var hash: FHIRKitPrimitive<FHIRKitBase64Binary>?
+  public var hash: AlexandriaHRMPrimitive<AlexandriaHRMBase64Binary>?
   
   /// Label to display in place of the data
-  public var title: FHIRKitPrimitive<FHIRKitString>?
+  public var title: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// Date the attachment was first created
-  public var creation: FHIRKitPrimitive<FHIRKitDateTime>?
+  public var creation: AlexandriaHRMPrimitive<AlexandriaHRMDateTime>?
   
   override public init() {
     super.init()
@@ -55,19 +55,19 @@ open class Attachment: Element {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    contentType: FHIRKitPrimitive<FHIRKitString>? = nil,
-    language: FHIRKitPrimitive<FHIRKitString>? = nil,
-    data: FHIRKitPrimitive<FHIRKitBase64Binary>? = nil,
-    url: FHIRKitPrimitive<FHIRKitURI>? = nil,
-    size: FHIRKitPrimitive<FHIRKitUnsignedInteger>? = nil,
-    hash: FHIRKitPrimitive<FHIRKitBase64Binary>? = nil,
-    title: FHIRKitPrimitive<FHIRKitString>? = nil,
-    creation: FHIRKitPrimitive<FHIRKitDateTime>? = nil
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    contentType: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    language: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    data: AlexandriaHRMPrimitive<AlexandriaHRMBase64Binary>? = nil,
+    url: AlexandriaHRMPrimitive<AlexandriaHRMURI>? = nil,
+    size: AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>? = nil,
+    hash: AlexandriaHRMPrimitive<AlexandriaHRMBase64Binary>? = nil,
+    title: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    creation: AlexandriaHRMPrimitive<AlexandriaHRMDateTime>? = nil
   ) {
     self.init()
     self.fhirExtension = fhirExtension
-    self.id = id
+    self.fhirId = fhirId
     self.contentType = contentType
     self.language = language
     self.data = data
@@ -93,14 +93,14 @@ open class Attachment: Element {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.contentType = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .contentType, auxKey: ._contentType)
-    self.language = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .language, auxKey: ._language)
-    self.data = try FHIRKitPrimitive<FHIRKitBase64Binary>(from: codingKeyContainer, forKeyIfPresent: .data, auxKey: ._data)
-    self.url = try FHIRKitPrimitive<FHIRKitURI>(from: codingKeyContainer, forKeyIfPresent: .url, auxKey: ._url)
-    self.size = try FHIRKitPrimitive<FHIRKitUnsignedInteger>(from: codingKeyContainer, forKeyIfPresent: .size, auxKey: ._size)
-    self.hash = try FHIRKitPrimitive<FHIRKitBase64Binary>(from: codingKeyContainer, forKeyIfPresent: .hash, auxKey: ._hash)
-    self.title = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .title, auxKey: ._title)
-    self.creation = try FHIRKitPrimitive<FHIRKitDateTime>(from: codingKeyContainer, forKeyIfPresent: .creation, auxKey: ._creation)
+    self.contentType = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .contentType, auxKey: ._contentType)
+    self.language = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .language, auxKey: ._language)
+    self.data = try AlexandriaHRMPrimitive<AlexandriaHRMBase64Binary>(from: codingKeyContainer, forKeyIfPresent: .data, auxKey: ._data)
+    self.url = try AlexandriaHRMPrimitive<AlexandriaHRMURI>(from: codingKeyContainer, forKeyIfPresent: .url, auxKey: ._url)
+    self.size = try AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>(from: codingKeyContainer, forKeyIfPresent: .size, auxKey: ._size)
+    self.hash = try AlexandriaHRMPrimitive<AlexandriaHRMBase64Binary>(from: codingKeyContainer, forKeyIfPresent: .hash, auxKey: ._hash)
+    self.title = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .title, auxKey: ._title)
+    self.creation = try AlexandriaHRMPrimitive<AlexandriaHRMDateTime>(from: codingKeyContainer, forKeyIfPresent: .creation, auxKey: ._creation)
     
     try super.init(from: decoder)
   }

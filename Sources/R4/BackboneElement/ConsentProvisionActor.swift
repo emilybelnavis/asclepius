@@ -1,6 +1,6 @@
 //
 //  ConsentProvisionActor.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Who and/or what is controlled by this rule. Use group to identify a set of actors by some property that
@@ -25,12 +25,12 @@ import FHIRKitCore
  */
 open class ConsentProvisionActor: BackboneElement {
   /// How the actor is involved
-  public var role: CodableConcept
+  public var role: CodeableConcept
   
   /// Resource for the actor (or group, by role)
   public var reference: Reference
   
-  public init(role: CodableConcept, reference: Reference) {
+  public init(role: CodeableConcept, reference: Reference) {
     self.role = role
     self.reference = reference
     super.init()
@@ -39,14 +39,14 @@ open class ConsentProvisionActor: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    role: CodableConcept,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    role: CodeableConcept,
     reference: Reference
   ) {
     self.init(role: role, reference: reference)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
   }
   
   // MARK: - Codable
@@ -58,7 +58,7 @@ open class ConsentProvisionActor: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.role = try CodableConcept(from: codingKeyContainer, forKey: .role)
+    self.role = try CodeableConcept(from: codingKeyContainer, forKey: .role)
     self.reference = try Reference(from: codingKeyContainer, forKey: .reference)
     
     try super.init(from: decoder)

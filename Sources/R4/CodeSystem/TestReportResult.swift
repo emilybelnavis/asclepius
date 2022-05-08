@@ -1,6 +1,6 @@
 //
 //  TestReportResult.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/report-result-codes
  ValueSet: http://hl7.org/fhir/ValueSet/report-result-codes
  */
-public enum TestReportResult: String, FHIRKitPrimitiveType {
+public enum TestReportResult: String, AlexandriaHRMPrimitiveType {
   /// All test operations successfully passed all asserts.
   case pass
   

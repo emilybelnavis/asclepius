@@ -1,6 +1,6 @@
 //
 //  ConditionStage.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,14 +17,14 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Clinical stage or grade of a condition, may include formal severity assessments
  */
 open class ConditionStage: BackboneElement {
   /// Simple summary (disease specific)
-  public var summary: CodableConcept?
+  public var summary: CodeableConcept?
   
   /// Formal record of assessment
   public var assessment: [Reference]?
@@ -36,14 +36,14 @@ open class ConditionStage: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    summary: CodableConcept? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    summary: CodeableConcept? = nil,
     assessment: [Reference]? = nil
   ) {
     self.init()
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.summary = summary
     self.assessment = assessment
   }
@@ -57,7 +57,7 @@ open class ConditionStage: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.summary = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .summary)
+    self.summary = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .summary)
     self.assessment = try [Reference](from: codingKeyContainer, forKeyIfPresent: .assessment)
     
     try super.init(from: decoder)

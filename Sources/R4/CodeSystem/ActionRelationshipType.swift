@@ -1,6 +1,6 @@
 //
 //  ActionRelationshipType.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/action-relationship-type
  ValueSet: http://hl7.org/fhir/ValueSet/action-relationship-type
  */
-public enum ActionRelationshipType: String, FHIRKitPrimitiveType {
+public enum ActionRelationshipType: String, AlexandriaHRMPrimitiveType {
   /// the action must be performed before the start of the related action
   case beforeStart = "before-start"
   

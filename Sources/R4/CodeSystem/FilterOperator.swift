@@ -1,6 +1,6 @@
 //
 //  FilterOperator.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/filter-operator
  ValueSet: http://hl7.org/fhir/ValueSet/filter-operator
  */
-public enum FilterOperator: String, FHIRKitPrimitiveType {
+public enum FilterOperator: String, AlexandriaHRMPrimitiveType {
   /// The specified property of the code equals the provided value.
   case equal = "="
   

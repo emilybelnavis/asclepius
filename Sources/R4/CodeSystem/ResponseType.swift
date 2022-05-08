@@ -1,6 +1,6 @@
 //
 //  ResponseType.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/response-code
  ValueSet: http://hl7.org/fhir/ValueSet/response-code
  */
-public enum ResponseType: String, FHIRKitPrimitiveType {
+public enum ResponseType: String, AlexandriaHRMPrimitiveType {
   /// The message was accepted and processed without error.
   case ok
   

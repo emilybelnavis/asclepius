@@ -1,6 +1,6 @@
 //
 //  ListOrderCodes.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/list-order
  ValueSet: http://hl7.org/fhir/ValueSet/list-order
  */
-public enum ListOrderCodes: String, FHIRKitPrimitiveType {
+public enum ListOrderCodes: String, AlexandriaHRMPrimitiveType {
   /// The list was sorted by a user. The criteria the user used are not specified.
   case user
   

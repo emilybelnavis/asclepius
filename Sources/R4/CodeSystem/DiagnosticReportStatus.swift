@@ -1,6 +1,6 @@
 //
 //  DiagnosticReportStatus.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/diagnostic-report-status
  ValueSet: http://hl7.org/fhir/ValueSet/diagnostic-report-status
  */
-public enum DiagnosticReportStatus: String, FHIRKitPrimitiveType {
+public enum DiagnosticReportStatus: String, AlexandriaHRMPrimitiveType {
   /// The existence of the report is registered, but there is nothing yet available.
   case registered
   

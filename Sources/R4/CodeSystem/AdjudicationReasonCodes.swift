@@ -1,6 +1,6 @@
 //
 //  AdjudicationReasonCodes.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/adjudication-reason
  ValueSet: http://hl7.org/fhir/ValueSet/adjudication-reason
  */
-public enum AdjudicationReasonCodes: String, FHIRKitPrimitiveType {
+public enum AdjudicationReasonCodes: String, AlexandriaHRMPrimitiveType {
   /// not covered
   case ar001
   

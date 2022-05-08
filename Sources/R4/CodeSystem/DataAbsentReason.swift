@@ -1,6 +1,6 @@
 //
 //  DataAbsentReason.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/data-absent-reason
  ValueSet: http://hl7.org/fhir/ValueSet/data-absent-reason
  */
-public enum DataAbsentReason: String, FHIRKitPrimitiveType {
+public enum DataAbsentReason: String, AlexandriaHRMPrimitiveType {
   /// The value is expected to exist but is not known.
   case unknown
   

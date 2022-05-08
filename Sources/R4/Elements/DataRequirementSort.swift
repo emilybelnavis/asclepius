@@ -1,6 +1,6 @@
 //
 //  DataRequirementSort.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Order of the results.
@@ -26,12 +26,12 @@ import FHIRKitCore
  */
 open class DataRequirementSort: Element {
   /// the name of the attribute to perform the sort
-  public var path: FHIRKitPrimitive<FHIRKitString>
+  public var path: AlexandriaHRMPrimitive<AlexandriaHRMString>
   
   /// the direction of the sort (ascending or descending
-  public var direction: FHIRKitPrimitive<SortDirection>
+  public var direction: AlexandriaHRMPrimitive<SortDirection>
   
-  public init(path: FHIRKitPrimitive<FHIRKitString>, direction: FHIRKitPrimitive<SortDirection>) {
+  public init(path: AlexandriaHRMPrimitive<AlexandriaHRMString>, direction: AlexandriaHRMPrimitive<SortDirection>) {
     self.path = path
     self.direction = direction
     super.init()
@@ -39,13 +39,13 @@ open class DataRequirementSort: Element {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    path: FHIRKitPrimitive<FHIRKitString>,
-    direction: FHIRKitPrimitive<SortDirection>
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    path: AlexandriaHRMPrimitive<AlexandriaHRMString>,
+    direction: AlexandriaHRMPrimitive<SortDirection>
   ) {
     self.init(path: path, direction: direction)
     self.fhirExtension = fhirExtension
-    self.id = id
+    self.fhirId = fhirId
   }
   
   // MARK: - Codable
@@ -57,8 +57,8 @@ open class DataRequirementSort: Element {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.path = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKey: .path, auxKey: ._path)
-    self.direction = try FHIRKitPrimitive<SortDirection>(from: codingKeyContainer, forKey: .direction, auxKey: ._direction)
+    self.path = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .path, auxKey: ._path)
+    self.direction = try AlexandriaHRMPrimitive<SortDirection>(from: codingKeyContainer, forKey: .direction, auxKey: ._direction)
     
     try super.init(from: decoder)
   }

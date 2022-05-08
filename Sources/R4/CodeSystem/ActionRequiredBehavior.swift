@@ -1,6 +1,6 @@
 //
 //  ActionRequiredBehavior.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/action-required-behavior
  ValueSet: http://hl7.org/fhir/ValueSet/action-required-behavior
  */
-public enum ActionRequiredBehavior: String, FHIRKitPrimitiveType {
+public enum ActionRequiredBehavior: String, AlexandriaHRMPrimitiveType {
   /// An action with this behaviour must be included in the actions processed by the end-user; the end-user
   /// shall not choose to include this action.
   case must

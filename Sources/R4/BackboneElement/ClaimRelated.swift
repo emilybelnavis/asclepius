@@ -1,6 +1,6 @@
 //
 //  ClaimRelated.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Prior or corollary claims. Other claims which are related to this claim such as prior submissions or claims for
@@ -28,7 +28,7 @@ open class ClaimRelated: BackboneElement {
   public var claim: Reference?
   
   /// How the reference claim is related
-  public var relationship: CodableConcept?
+  public var relationship: CodeableConcept?
   
   /// File or case reference
   public var reference: Identifier?
@@ -40,15 +40,15 @@ open class ClaimRelated: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     claim: Reference? = nil,
-    relationship: CodableConcept? = nil,
+    relationship: CodeableConcept? = nil,
     reference: Identifier? = nil
   ) {
     self.init()
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.claim = claim
     self.relationship = relationship
     self.reference = reference
@@ -65,7 +65,7 @@ open class ClaimRelated: BackboneElement {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     self.claim = try Reference(from: codingKeyContainer, forKeyIfPresent: .claim)
-    self.relationship = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .relationship)
+    self.relationship = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .relationship)
     self.reference = try Identifier(from: codingKeyContainer, forKeyIfPresent: .reference)
     
     try super.init(from: decoder)

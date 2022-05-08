@@ -1,6 +1,6 @@
 //
 //  ElementDefinitionSlicingDiscriminator.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Element values that are used to distinguish the slices. Designates which child elements are used to discriminate
@@ -27,12 +27,12 @@ import FHIRKitCore
  */
 open class ElementDefinitionSlicingDiscriminator: Element {
   /// How the element value is interpreted when discrimination is evaluated
-  public var type: FHIRKitPrimitive<DiscriminatorType>
+  public var type: AlexandriaHRMPrimitive<DiscriminatorType>
   
   /// Path to element value
-  public var path: FHIRKitPrimitive<FHIRKitString>
+  public var path: AlexandriaHRMPrimitive<AlexandriaHRMString>
   
-  public init(type: FHIRKitPrimitive<DiscriminatorType>, path: FHIRKitPrimitive<FHIRKitString>) {
+  public init(type: AlexandriaHRMPrimitive<DiscriminatorType>, path: AlexandriaHRMPrimitive<AlexandriaHRMString>) {
     self.type = type
     self.path = path
     super.init()
@@ -40,13 +40,13 @@ open class ElementDefinitionSlicingDiscriminator: Element {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    type: FHIRKitPrimitive<DiscriminatorType>,
-    path: FHIRKitPrimitive<FHIRKitString>
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    type: AlexandriaHRMPrimitive<DiscriminatorType>,
+    path: AlexandriaHRMPrimitive<AlexandriaHRMString>
   ) {
     self.init(type: type, path: path)
     self.fhirExtension = fhirExtension
-    self.id = id
+    self.fhirId = fhirId
   }
   
   // MARK: - Codable
@@ -58,8 +58,8 @@ open class ElementDefinitionSlicingDiscriminator: Element {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.type = try FHIRKitPrimitive<DiscriminatorType>(from: codingKeyContainer, forKey: .type, auxKey: ._type)
-    self.path = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKey: .path, auxKey: ._path)
+    self.type = try AlexandriaHRMPrimitive<DiscriminatorType>(from: codingKeyContainer, forKey: .type, auxKey: ._type)
+    self.path = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .path, auxKey: ._path)
     
     try super.init(from: decoder)
   }

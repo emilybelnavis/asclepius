@@ -1,6 +1,6 @@
 //
 //  CapabilityStatementImplementation.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Identifies a specific implementatin instance that is described by the capability statement - i.e. a particular
@@ -25,15 +25,15 @@ import FHIRKitCore
  */
 open class CapabilityStatementImplementation: BackboneElement {
   /// Describes this specific instance
-  public var fhirDescription: FHIRKitPrimitive<FHIRKitString>
+  public var fhirDescription: AlexandriaHRMPrimitive<AlexandriaHRMString>
   
   /// Base URL for the installation
-  public var url: FHIRKitPrimitive<FHIRKitURI>?
+  public var url: AlexandriaHRMPrimitive<AlexandriaHRMURI>?
   
   /// Organization that manages the data
   public var custodian: Reference?
   
-  public init(fhirDescription: FHIRKitPrimitive<FHIRKitString>) {
+  public init(fhirDescription: AlexandriaHRMPrimitive<AlexandriaHRMString>) {
     self.fhirDescription = fhirDescription
     super.init()
   }
@@ -41,15 +41,15 @@ open class CapabilityStatementImplementation: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    fhirDescription: FHIRKitPrimitive<FHIRKitString>,
-    url: FHIRKitPrimitive<FHIRKitURI>? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirDescription: AlexandriaHRMPrimitive<AlexandriaHRMString>,
+    url: AlexandriaHRMPrimitive<AlexandriaHRMURI>? = nil,
     custodian: Reference?
   ) {
     self.init(fhirDescription: fhirDescription)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.url = url
     self.custodian = custodian
   }
@@ -64,8 +64,8 @@ open class CapabilityStatementImplementation: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.fhirDescription = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKey: .fhirDescription, auxKey: ._fhirDescription)
-    self.url = try FHIRKitPrimitive<FHIRKitURI>(from: codingKeyContainer, forKeyIfPresent: .url, auxKey: ._url)
+    self.fhirDescription = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .fhirDescription, auxKey: ._fhirDescription)
+    self.url = try AlexandriaHRMPrimitive<AlexandriaHRMURI>(from: codingKeyContainer, forKeyIfPresent: .url, auxKey: ._url)
     self.custodian = try Reference(from: codingKeyContainer, forKeyIfPresent: .custodian)
     
     try super.init(from: decoder)

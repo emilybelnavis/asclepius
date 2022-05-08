@@ -1,6 +1,6 @@
 //
 //  EndpointConnectionType.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -24,7 +24,7 @@
  URL: http://terminology.hl7.org/CodeSystem/endpoint-connection-type
  ValueSet: http://hl7.org/fhir/ValueSet/endpoint-connection-type
  */
-public enum EndpointConnectionType: String, FHIRKitPrimitiveType {
+public enum EndpointConnectionType: String, AlexandriaHRMPrimitiveType {
   /// IHE Cross Community Patient Discovery Profile (XCPD) - http://wiki.ihe.net/index.php/Cross-
   /// Community_Patient_Discovery
   case iheXcpd = "ihe-xcpd"

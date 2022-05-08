@@ -1,6 +1,6 @@
 //
 //  EncounterType.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -24,7 +24,7 @@
  URL: http://terminology.hl7.org/CodeSystem/encounter-type
  ValueSet: http://hl7.org/fhir/ValueSet/encounter-type
  */
-public enum EncounterType: String, FHIRKitPrimitiveType {
+public enum EncounterType: String, AlexandriaHRMPrimitiveType {
   /// ADMS
   case ADMS
   

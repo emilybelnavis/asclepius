@@ -1,6 +1,6 @@
 //
 //  ConsentScopeCodes.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/consentscope
  ValueSet: http://hl7.org/fhir/ValueSet/consent-scope
  */
-public enum ConsentScopeCodes: String, FHIRKitPrimitiveType {
+public enum ConsentScopeCodes: String, AlexandriaHRMPrimitiveType {
   /// Actions to be taken if they are no longer able to make decisions for themselves
   case adr
   

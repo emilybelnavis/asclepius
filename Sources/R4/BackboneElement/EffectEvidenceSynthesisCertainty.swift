@@ -1,6 +1,6 @@
 //
 //  EffectEvidenceSynthesisCertainty.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,14 +17,14 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  How certain is the effect; A description of the certainty of the the effect estimate.
  */
 open class EffectEvidenceSynthesisCertainty: BackboneElement {
   /// Certainty rating
-  public var rating: [CodableConcept]?
+  public var rating: [CodeableConcept]?
   
   /// Used for footnotes/explanatory notes
   public var note: [Annotation]?

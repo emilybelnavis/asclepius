@@ -1,6 +1,6 @@
 //
 //  CompositionAttester.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,20 +17,20 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /// A participant who has attested to the accuracy or the composition/document
 open class CompositionAttester: BackboneElement {
   /// The type of attestation the authenticator offers
-  public var mode: FHIRKitPrimitive<CompositionAttestationMode>
+  public var mode: AlexandriaHRMPrimitive<CompositionAttestationMode>
   
   /// When the composition was attested
-  public var time: FHIRKitPrimitive<FHIRKitDateTime>
+  public var time: AlexandriaHRMPrimitive<AlexandriaHRMDateTime>
   
   /// Who attested the composition
   public var party: Reference?
   
-  public init(mode: FHIRKitPrimitive<CompositionAttestationMode>, time: FHIRKitPrimitive<FHIRKitDateTime>) {
+  public init(mode: AlexandriaHRMPrimitive<CompositionAttestationMode>, time: AlexandriaHRMPrimitive<AlexandriaHRMDateTime>) {
     self.mode = mode
     self.time = time
     super.init()
@@ -39,15 +39,15 @@ open class CompositionAttester: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    mode: FHIRKitPrimitive<CompositionAttestationMode>,
-    time: FHIRKitPrimitive<FHIRKitDateTime>,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    mode: AlexandriaHRMPrimitive<CompositionAttestationMode>,
+    time: AlexandriaHRMPrimitive<AlexandriaHRMDateTime>,
     party: Reference? = nil
   ) {
     self.init(mode: mode, time: time)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.party = party
   }
   
@@ -61,8 +61,8 @@ open class CompositionAttester: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.mode = try FHIRKitPrimitive<CompositionAttestationMode>(from: codingKeyContainer, forKey: .mode, auxKey: ._mode)
-    self.time = try FHIRKitPrimitive<FHIRKitDateTime>(from: codingKeyContainer, forKey: .time, auxKey: ._time)
+    self.mode = try AlexandriaHRMPrimitive<CompositionAttestationMode>(from: codingKeyContainer, forKey: .mode, auxKey: ._mode)
+    self.time = try AlexandriaHRMPrimitive<AlexandriaHRMDateTime>(from: codingKeyContainer, forKey: .time, auxKey: ._time)
     self.party = try Reference(from: codingKeyContainer, forKeyIfPresent: .party)
     
     try super.init(from: decoder)

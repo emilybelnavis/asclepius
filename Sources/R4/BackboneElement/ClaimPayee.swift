@@ -1,6 +1,6 @@
 //
 //  ClaimPayee.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Recipient of the benefits payable. The party to be reimbursed for the cost of the products and services
@@ -25,12 +25,12 @@ import FHIRKitCore
  */
 open class ClaimPayee: BackboneElement {
   // Category of the recipient
-  public var type: CodableConcept
+  public var type: CodeableConcept
   
   /// Recipient reference
   public var party: Reference?
   
-  public init(type: CodableConcept) {
+  public init(type: CodeableConcept) {
     self.type = type
     super.init()
   }
@@ -38,14 +38,14 @@ open class ClaimPayee: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    type: CodableConcept,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    type: CodeableConcept,
     party: Reference? = nil
   ) {
     self.init(type: type)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.party = party
   }
   
@@ -58,7 +58,7 @@ open class ClaimPayee: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.type = try CodableConcept(from: codingKeyContainer, forKey: .type)
+    self.type = try CodeableConcept(from: codingKeyContainer, forKey: .type)
     self.party = try Reference(from: codingKeyContainer, forKeyIfPresent: .party)
     
     try super.init(from: decoder)

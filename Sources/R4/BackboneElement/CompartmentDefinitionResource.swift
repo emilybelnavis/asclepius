@@ -1,6 +1,6 @@
 //
 //  CompartmentDefinitionResource.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,20 +17,20 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /// Information about how a resouce is related to the compartment
 open class CompartmentDefinitionResource: BackboneElement {
   /// The name of a resource supported by the server
-  public var code: FHIRKitPrimitive<ResourceType>
+  public var code: AlexandriaHRMPrimitive<ResourceType>
   
   /// Search parameter name or chained parameters
-  public var param: [FHIRKitPrimitive<FHIRKitString>]?
+  public var param: [AlexandriaHRMPrimitive<AlexandriaHRMString>]?
   
   /// Additional documentation about the resource and compartment
-  public var documentation: FHIRKitPrimitive<FHIRKitString>?
+  public var documentation: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
-  public init(code: FHIRKitPrimitive<ResourceType>) {
+  public init(code: AlexandriaHRMPrimitive<ResourceType>) {
     self.code = code
     super.init()
   }
@@ -38,15 +38,15 @@ open class CompartmentDefinitionResource: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    code: FHIRKitPrimitive<ResourceType>,
-    param: [FHIRKitPrimitive<FHIRKitString>]? = nil,
-    documentation: FHIRKitPrimitive<FHIRKitString>? = nil
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    code: AlexandriaHRMPrimitive<ResourceType>,
+    param: [AlexandriaHRMPrimitive<AlexandriaHRMString>]? = nil,
+    documentation: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil
   ) {
     self.init(code: code)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.param = param
     self.documentation = documentation
   }
@@ -61,9 +61,9 @@ open class CompartmentDefinitionResource: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.code = try FHIRKitPrimitive<ResourceType>(from: codingKeyContainer, forKey: .code, auxKey: ._code)
-    self.param = try [FHIRKitPrimitive<FHIRKitString>](from: codingKeyContainer, forKeyIfPresent: .param, auxKey: ._param)
-    self.documentation = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .documentation, auxKey: ._documentation)
+    self.code = try AlexandriaHRMPrimitive<ResourceType>(from: codingKeyContainer, forKey: .code, auxKey: ._code)
+    self.param = try [AlexandriaHRMPrimitive<AlexandriaHRMString>](from: codingKeyContainer, forKeyIfPresent: .param, auxKey: ._param)
+    self.documentation = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .documentation, auxKey: ._documentation)
     
     try super.init(from: decoder)
   }

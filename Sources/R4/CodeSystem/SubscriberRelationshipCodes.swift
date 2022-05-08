@@ -1,6 +1,6 @@
 //
 //  SubscriberRelationshipCodes.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -24,7 +24,7 @@
  URL: http://terminology.hl7.org/CodeSystem/subscriber-relationship
  ValueSet: http://hl7.org/fhir/ValueSet/subscriber-relationship
  */
-public enum SubscriberRelationshipCodes: String, FHIRKitPrimitiveType {
+public enum SubscriberRelationshipCodes: String, AlexandriaHRMPrimitiveType {
   /// The Beneficiary is a child of the Subscriber
   case child
   

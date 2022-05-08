@@ -1,6 +1,6 @@
 //
 //  GenderIdentity.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -22,7 +22,7 @@
  
  URL: http://hl7.org/fhir/gender-identity
  */
-public enum GenderIdentity: String, FHIRKitPrimitiveType {
+public enum GenderIdentity: String, AlexandriaHRMPrimitiveType {
   /// the patient identifies as transgender male-to-female
   case transgenderFemale = "transgender-female"
   

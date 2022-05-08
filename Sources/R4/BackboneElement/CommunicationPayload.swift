@@ -1,6 +1,6 @@
 //
 //  CommunicationPayload.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Message payload - Text, attachment(s), or resource(s) that were communicated to the recipient
@@ -27,7 +27,7 @@ open class CommunicationPayload: BackboneElement {
   public enum ContentX: Hashable {
     case attachment(Attachment)
     case reference(Reference)
-    case string(FHIRKitPrimitive<FHIRKitString>)
+    case string(AlexandriaHRMPrimitive<AlexandriaHRMString>)
   }
   
   /// message part content
@@ -41,13 +41,13 @@ open class CommunicationPayload: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     content: ContentX
   ) {
     self.init(content: content)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
   }
   
   // MARK: - Codable
@@ -75,7 +75,7 @@ open class CommunicationPayload: BackboneElement {
       tempContent = .reference(contentReference)
     }
     
-    if let contentString = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .contentString, auxKey: ._contentString) {
+    if let contentString = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .contentString, auxKey: ._contentString) {
       if tempContent != nil {
         throw DecodingError.dataCorruptedError(forKey: .contentString, in: codingKeyContainer, debugDescription: "More than one value provided for \"content\"")
       }

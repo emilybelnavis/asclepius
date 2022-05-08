@@ -1,6 +1,6 @@
 //
 //  TestReportParticipantType.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/report-participant-type
  ValueSet: http://hl7.org/fhir/ValueSet/report-participant-type
  */
-public enum TestReportParticipantType: String, FHIRKitPrimitiveType {
+public enum TestReportParticipantType: String, AlexandriaHRMPrimitiveType {
     /// The test execution engine.
   case testEngine = "test-engine"
   

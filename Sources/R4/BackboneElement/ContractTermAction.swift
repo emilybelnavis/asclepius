@@ -1,6 +1,6 @@
 //
 //  ContractTermAction.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Entity being ascribed responsibility - An actor taking a role in an activity for which it can be assigned some degree
@@ -25,34 +25,34 @@ import FHIRKitCore
  */
 open class ContractTermAction: BackboneElement {
   public enum OccurrenceX: Hashable {
-    case dateTime(FHIRKitPrimitive<FHIRKitDateTime>)
+    case dateTime(AlexandriaHRMPrimitive<AlexandriaHRMDateTime>)
     case period(Period)
     case timing(Timing)
   }
   
   /// True if the term prohibits the action
-  public var doNotPerform: FHIRKitPrimitive<FHIRKitBool>?
+  public var doNotPerform: AlexandriaHRMPrimitive<AlexandriaHRMBool>?
   
   /// Type or form of the action
-  public var type: CodableConcept
+  public var type: CodeableConcept
   
   /// Entity of the action
   public var subject: [ContractTermActionSubject]?
   
   /// Purpose for the Contract Term Action
-  public var intent: CodableConcept
+  public var intent: CodeableConcept
   
   /// Pointer to specific item
-  public var linkId: [FHIRKitPrimitive<FHIRKitString>]?
+  public var linkId: [AlexandriaHRMPrimitive<AlexandriaHRMString>]?
   
   /// State of the action
-  public var status: CodableConcept
+  public var status: CodeableConcept
   
   /// Episode associated with action
   public var context: Reference?
   
   /// Pointer to specific item
-  public var contextLinkId: [FHIRKitPrimitive<FHIRKitString>]?
+  public var contextLinkId: [AlexandriaHRMPrimitive<AlexandriaHRMString>]?
   
   /// When action happens
   public var occurrence: OccurrenceX?
@@ -61,39 +61,39 @@ open class ContractTermAction: BackboneElement {
   public var requester: [Reference]?
   
   /// Pointer to specific item
-  public var requesterLinkId: [FHIRKitPrimitive<FHIRKitString>]?
+  public var requesterLinkId: [AlexandriaHRMPrimitive<AlexandriaHRMString>]?
   
   /// Kind of service performer
-  public var performerType: [CodableConcept]?
+  public var performerType: [CodeableConcept]?
   
   /// Competency of the performer
-  public var performerRole: CodableConcept?
+  public var performerRole: CodeableConcept?
   
   /// Actor that will (or won't) execute the action
   public var performer: Reference?
   
   /// Pointer to specific item
-  public var performerLinkId: [FHIRKitPrimitive<FHIRKitString>]?
+  public var performerLinkId: [AlexandriaHRMPrimitive<AlexandriaHRMString>]?
   
   /// Why the action is/isn't needed
-  public var reasonCode: [CodableConcept]?
+  public var reasonCode: [CodeableConcept]?
   
   /// Why the action is/isn't needed
   public var reasonReference: [Reference]?
   
   /// Why action is to be performed
-  public var reason: [FHIRKitPrimitive<FHIRKitString>]?
+  public var reason: [AlexandriaHRMPrimitive<AlexandriaHRMString>]?
   
   /// Pointer to specific item
-  public var reasonLinkId: [FHIRKitPrimitive<FHIRKitString>]?
+  public var reasonLinkId: [AlexandriaHRMPrimitive<AlexandriaHRMString>]?
   
   /// Comments about the action
   public var note: [Annotation]?
   
   /// Action restriction numbers
-  public var securityLabelNumber: [FHIRKitPrimitive<FHIRKitUnsignedInteger>]?
+  public var securityLabelNumber: [AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>]?
   
-  public init(type: CodableConcept, intent: CodableConcept, status: CodableConcept) {
+  public init(type: CodeableConcept, intent: CodeableConcept, status: CodeableConcept) {
     self.type = type
     self.intent = intent
     self.status = status
@@ -103,33 +103,33 @@ open class ContractTermAction: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    doNotPerform: FHIRKitPrimitive<FHIRKitBool>? = nil,
-    type: CodableConcept,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    doNotPerform: AlexandriaHRMPrimitive<AlexandriaHRMBool>? = nil,
+    type: CodeableConcept,
     subject: [ContractTermActionSubject]? = nil,
-    intent: CodableConcept,
-    linkId: [FHIRKitPrimitive<FHIRKitString>]? = nil,
-    status: CodableConcept,
+    intent: CodeableConcept,
+    linkId: [AlexandriaHRMPrimitive<AlexandriaHRMString>]? = nil,
+    status: CodeableConcept,
     context: Reference? = nil,
-    contextLinkId: [FHIRKitPrimitive<FHIRKitString>]? = nil,
+    contextLinkId: [AlexandriaHRMPrimitive<AlexandriaHRMString>]? = nil,
     occurrence: OccurrenceX? = nil,
     requester: [Reference]? = nil,
-    requesterLinkId: [FHIRKitPrimitive<FHIRKitString>]? = nil,
-    performerType: [CodableConcept]? = nil,
-    performerRole: CodableConcept? = nil,
+    requesterLinkId: [AlexandriaHRMPrimitive<AlexandriaHRMString>]? = nil,
+    performerType: [CodeableConcept]? = nil,
+    performerRole: CodeableConcept? = nil,
     performer: Reference? = nil,
-    performerLinkId: [FHIRKitPrimitive<FHIRKitString>]? = nil,
-    reasonCode: [CodableConcept]? = nil,
+    performerLinkId: [AlexandriaHRMPrimitive<AlexandriaHRMString>]? = nil,
+    reasonCode: [CodeableConcept]? = nil,
     reasonReference: [Reference]? = nil,
-    reason: [FHIRKitPrimitive<FHIRKitString>]? = nil,
-    reasonLinkId: [FHIRKitPrimitive<FHIRKitString>]? = nil,
+    reason: [AlexandriaHRMPrimitive<AlexandriaHRMString>]? = nil,
+    reasonLinkId: [AlexandriaHRMPrimitive<AlexandriaHRMString>]? = nil,
     note: [Annotation]? = nil,
-    securityLabelNumber: [FHIRKitPrimitive<FHIRKitUnsignedInteger>]? = nil
+    securityLabelNumber: [AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>]? = nil
   ) {
     self.init(type: type, intent: intent, status: status)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.doNotPerform = doNotPerform
     self.subject = subject
     self.linkId = linkId
@@ -181,7 +181,7 @@ open class ContractTermAction: BackboneElement {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     var tOccurrence: OccurrenceX?
-    if let occurrenceDateTime = try FHIRKitPrimitive<FHIRKitDateTime>(from: codingKeyContainer, forKeyIfPresent: .occurrenceDateTime, auxKey: ._occurrenceDateTime) {
+    if let occurrenceDateTime = try AlexandriaHRMPrimitive<AlexandriaHRMDateTime>(from: codingKeyContainer, forKeyIfPresent: .occurrenceDateTime, auxKey: ._occurrenceDateTime) {
       if tOccurrence != nil {
         throw DecodingError.dataCorruptedError(forKey: .occurrenceDateTime, in: codingKeyContainer, debugDescription: "More than one value provided for \"occurrence\"")
       }
@@ -202,27 +202,27 @@ open class ContractTermAction: BackboneElement {
       tOccurrence = .timing(occurrenceTiming)
     }
     
-    self.doNotPerform = try FHIRKitPrimitive<FHIRKitBool>(from: codingKeyContainer, forKeyIfPresent: .doNotPerform, auxKey: ._doNotPerform)
-    self.type = try CodableConcept(from: codingKeyContainer, forKey: .type)
+    self.doNotPerform = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKeyIfPresent: .doNotPerform, auxKey: ._doNotPerform)
+    self.type = try CodeableConcept(from: codingKeyContainer, forKey: .type)
     self.subject = try [ContractTermActionSubject](from: codingKeyContainer, forKeyIfPresent: .subject)
-    self.intent = try CodableConcept(from: codingKeyContainer, forKey: .intent)
-    self.linkId = try [FHIRKitPrimitive<FHIRKitString>](from: codingKeyContainer, forKeyIfPresent: .linkId, auxKey: ._linkId)
-    self.status = try CodableConcept(from: codingKeyContainer, forKey: .status)
+    self.intent = try CodeableConcept(from: codingKeyContainer, forKey: .intent)
+    self.linkId = try [AlexandriaHRMPrimitive<AlexandriaHRMString>](from: codingKeyContainer, forKeyIfPresent: .linkId, auxKey: ._linkId)
+    self.status = try CodeableConcept(from: codingKeyContainer, forKey: .status)
     self.context = try Reference(from: codingKeyContainer, forKeyIfPresent: .context)
-    self.contextLinkId = try [FHIRKitPrimitive<FHIRKitString>](from: codingKeyContainer, forKeyIfPresent: .contextLinkId, auxKey: ._contextLinkId)
+    self.contextLinkId = try [AlexandriaHRMPrimitive<AlexandriaHRMString>](from: codingKeyContainer, forKeyIfPresent: .contextLinkId, auxKey: ._contextLinkId)
     self.occurrence = tOccurrence
     self.requester = try [Reference](from: codingKeyContainer, forKeyIfPresent: .requester)
-    self.requesterLinkId = try [FHIRKitPrimitive<FHIRKitString>](from: codingKeyContainer, forKeyIfPresent: .requesterLinkId, auxKey: ._requesterLinkId)
-    self.performerType = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .performerType)
-    self.performerRole = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .performerRole)
+    self.requesterLinkId = try [AlexandriaHRMPrimitive<AlexandriaHRMString>](from: codingKeyContainer, forKeyIfPresent: .requesterLinkId, auxKey: ._requesterLinkId)
+    self.performerType = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .performerType)
+    self.performerRole = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .performerRole)
     self.performer = try Reference(from: codingKeyContainer, forKey: .performer)
-    self.performerLinkId = try [FHIRKitPrimitive<FHIRKitString>](from: codingKeyContainer, forKeyIfPresent: .performerLinkId, auxKey: ._performerLinkId)
-    self.reasonCode = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .reasonCode)
+    self.performerLinkId = try [AlexandriaHRMPrimitive<AlexandriaHRMString>](from: codingKeyContainer, forKeyIfPresent: .performerLinkId, auxKey: ._performerLinkId)
+    self.reasonCode = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .reasonCode)
     self.reasonReference = try [Reference](from: codingKeyContainer, forKeyIfPresent: .reasonReference)
-    self.reason = try [FHIRKitPrimitive<FHIRKitString>](from: codingKeyContainer, forKeyIfPresent: .reason, auxKey: ._reason)
-    self.reasonLinkId = try [FHIRKitPrimitive<FHIRKitString>](from: codingKeyContainer, forKeyIfPresent: .reasonLinkId, auxKey: ._reasonLinkId)
+    self.reason = try [AlexandriaHRMPrimitive<AlexandriaHRMString>](from: codingKeyContainer, forKeyIfPresent: .reason, auxKey: ._reason)
+    self.reasonLinkId = try [AlexandriaHRMPrimitive<AlexandriaHRMString>](from: codingKeyContainer, forKeyIfPresent: .reasonLinkId, auxKey: ._reasonLinkId)
     self.note = try [Annotation](from: codingKeyContainer, forKeyIfPresent: .note)
-    self.securityLabelNumber = try [FHIRKitPrimitive<FHIRKitUnsignedInteger>](from: codingKeyContainer, forKeyIfPresent: .securityLabelNumber, auxKey: ._securityLabelNumber)
+    self.securityLabelNumber = try [AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>](from: codingKeyContainer, forKeyIfPresent: .securityLabelNumber, auxKey: ._securityLabelNumber)
     
     try super.init(from: decoder)
   }

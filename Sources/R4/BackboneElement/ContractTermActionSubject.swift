@@ -1,6 +1,6 @@
 //
 //  ContractTermActionSubject.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /// Entity of the action
 open class ContractTermActionSubject: BackboneElement {
@@ -25,7 +25,7 @@ open class ContractTermActionSubject: BackboneElement {
   public var reference: [Reference]
   
   /// Role type of the agent
-  public var role: CodableConcept?
+  public var role: CodeableConcept?
   
   public init(reference: [Reference]) {
     self.reference = reference
@@ -35,14 +35,14 @@ open class ContractTermActionSubject: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     reference: [Reference],
-    role: CodableConcept
+    role: CodeableConcept
   ) {
     self.init(reference: reference)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.role = role
   }
   
@@ -56,7 +56,7 @@ open class ContractTermActionSubject: BackboneElement {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     self.reference = try [Reference](from: codingKeyContainer, forKey: .reference)
-    self.role = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .role)
+    self.role = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .role)
     
     try super.init(from: decoder)
   }

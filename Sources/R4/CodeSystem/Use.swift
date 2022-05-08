@@ -1,6 +1,6 @@
 //
 //  Use.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/claim-use
  ValueSet: http://hl7.org/fhir/ValueSet/claim-use
  */
-public enum Use: String, FHIRKitPrimitiveType {
+public enum Use: String, AlexandriaHRMPrimitiveType {
   /// The treatment is complete and this represents a Claim for the services.
   case claim
   

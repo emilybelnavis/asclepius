@@ -1,6 +1,6 @@
 //
 //  CompositionEvent.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,12 +17,12 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /// The clinical service(s) being documented
 open class CompositionEvent: BackboneElement {
   /// Code(s) that apply to the event being documented
-  public var code: [CodableConcept]?
+  public var code: [CodeableConcept]?
   
   /// The period covered by the documentation
   public var period: Period?
@@ -37,15 +37,15 @@ open class CompositionEvent: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    code: [CodableConcept]? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    code: [CodeableConcept]? = nil,
     period: Period? = nil,
     detail: [Reference]? = nil
   ) {
     self.init()
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.code = code
     self.period = period
     self.detail = detail
@@ -61,7 +61,7 @@ open class CompositionEvent: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.code = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .code)
+    self.code = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .code)
     self.period = try Period(from: codingKeyContainer, forKeyIfPresent: .period)
     self.detail = try [Reference](from: codingKeyContainer, forKey: .detail)
     

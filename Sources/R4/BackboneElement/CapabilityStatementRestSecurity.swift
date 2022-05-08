@@ -1,6 +1,6 @@
 //
 //  CapabilityStatementRestSecurity.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,18 +17,18 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /// Information about security implementation form an interface perspective - what a client needs to know
 open class CapabilityStatementRestSecurity: BackboneElement {
   /// Adds CORS headers (http://enable-cors.org/)
-  public var cors: FHIRKitPrimitive<FHIRKitBool>?
+  public var cors: AlexandriaHRMPrimitive<AlexandriaHRMBool>?
   
   /// OAuth | SMART-on-FHIR | NTLM | Basic | Kerberos | Certificates
-  public var service: [CodableConcept]?
+  public var service: [CodeableConcept]?
   
   /// General description of how security works
-  public var fhirDescription: FHIRKitPrimitive<FHIRKitString>?
+  public var fhirDescription: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   override public init() {
     super.init()
@@ -37,15 +37,15 @@ open class CapabilityStatementRestSecurity: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    cors: FHIRKitPrimitive<FHIRKitBool>? = nil,
-    service: [CodableConcept]? = nil,
-    fhirDescription: FHIRKitPrimitive<FHIRKitString>? = nil
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    cors: AlexandriaHRMPrimitive<AlexandriaHRMBool>? = nil,
+    service: [CodeableConcept]? = nil,
+    fhirDescription: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil
   ) {
     self.init()
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.cors = cors
     self.service = service
     self.fhirDescription = fhirDescription
@@ -61,9 +61,9 @@ open class CapabilityStatementRestSecurity: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.cors = try FHIRKitPrimitive<FHIRKitBool>(from: codingKeyContainer, forKeyIfPresent: .cors, auxKey: ._cors)
-    self.service = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .service)
-    self.fhirDescription = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .fhirDescription, auxKey: ._fhirDescription)
+    self.cors = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKeyIfPresent: .cors, auxKey: ._cors)
+    self.service = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .service)
+    self.fhirDescription = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .fhirDescription, auxKey: ._fhirDescription)
     
     try super.init(from: decoder)
   }

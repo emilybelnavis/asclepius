@@ -1,6 +1,6 @@
 //
 //  ImplantStatus.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/implantStatus
  ValueSet: http://hl7.org/fhir/ValueSet/implantStatus
  */
-public enum ImplantStatus: String, FHIRKitPrimitiveType {
+public enum ImplantStatus: String, AlexandriaHRMPrimitiveType {
   /// The implanted device is working normally.
   case functional
   

@@ -1,6 +1,6 @@
 //
 //  ConsentDataMeaning.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/consent-data-meaning
  ValueSet: http://hl7.org/fhir/ValueSet/consent-data-meaning
  */
-public enum ConsentDataMeaning: String, FHIRKitPrimitiveType {
+public enum ConsentDataMeaning: String, AlexandriaHRMPrimitiveType {
   /// The consent applies directly to the instance of the resource
   case instance
   

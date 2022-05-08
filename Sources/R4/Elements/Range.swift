@@ -1,6 +1,6 @@
 //
 //  Range.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Set of values bounded by low and high.
@@ -37,13 +37,13 @@ open class Range: Element {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     low: Quantity? = nil,
     high: Quantity? = nil
   ) {
     self.init()
     self.fhirExtension = fhirExtension
-    self.id = id
+    self.fhirId = fhirId
     self.low = low
     self.high = high
   }

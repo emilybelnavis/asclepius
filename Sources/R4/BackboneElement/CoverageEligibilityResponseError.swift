@@ -1,6 +1,6 @@
 //
 //  CoverageEligibilityResponseError.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,16 +17,16 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Processing errors; Errors encountered during the processing of the request
  */
 open class CoverageEligibilityResponseError: BackboneElement {
   /// Error code detailing processing issues
-  public var code: CodableConcept
+  public var code: CodeableConcept
   
-  public init(code: CodableConcept) {
+  public init(code: CodeableConcept) {
     self.code = code
     super.init()
   }
@@ -34,13 +34,13 @@ open class CoverageEligibilityResponseError: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    code: CodableConcept
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    code: CodeableConcept
   ) {
     self.init(code: code)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
   }
   
   // MARK: - Codable
@@ -51,7 +51,7 @@ open class CoverageEligibilityResponseError: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.code = try CodableConcept(from: codingKeyContainer, forKey: .code)
+    self.code = try CodeableConcept(from: codingKeyContainer, forKey: .code)
     
     try super.init(from: decoder)
   }

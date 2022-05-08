@@ -1,6 +1,6 @@
 //
 //  ContractTermAssetValuedItem.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,12 +17,12 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /// Contract Valued Item List
 open class ContractTermAssetValuedItem: BackboneElement {
   public enum EntityX: Hashable {
-    case codableConcept(CodableConcept)
+    case codeableConcept(CodeableConcept)
     case reference(Reference)
   }
   
@@ -33,7 +33,7 @@ open class ContractTermAssetValuedItem: BackboneElement {
   public var identifier: Identifier?
   
   /// Contract Valued Item Effective Time
-  public var effectiveTime: FHIRKitPrimitive<FHIRKitDateTime>?
+  public var effectiveTime: AlexandriaHRMPrimitive<AlexandriaHRMDateTime>?
   
   /// Count of Contract Valued Items
   public var quantity: Quantity?
@@ -42,19 +42,19 @@ open class ContractTermAssetValuedItem: BackboneElement {
   public var unitPrice: Money?
   
   /// Contract Valued Item Price Scaling Factor
-  public var factor: FHIRKitPrimitive<FHIRKitDecimal>?
+  public var factor: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>?
   
   /// Contract Valued Item Difficulty Scaling Factor
-  public var points: FHIRKitPrimitive<FHIRKitDecimal>?
+  public var points: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>?
   
   /// Total Contract Valued Item Value
   public var net: Money?
   
   /// Terms of valuation
-  public var payment: FHIRKitPrimitive<FHIRKitString>?
+  public var payment: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// When payment is due
-  public var paymentDate: FHIRKitPrimitive<FHIRKitDateTime>?
+  public var paymentDate: AlexandriaHRMPrimitive<AlexandriaHRMDateTime>?
   
   /// Who is responsible for making payment(s)
   public var responsible: Reference?
@@ -63,10 +63,10 @@ open class ContractTermAssetValuedItem: BackboneElement {
   public var recipient: Reference?
   
   /// Pointer to specific item
-  public var linkId: [FHIRKitPrimitive<FHIRKitString>]?
+  public var linkId: [AlexandriaHRMPrimitive<AlexandriaHRMString>]?
   
   /// Security labels that define affected terms
-  public var securityLabelNumber: [FHIRKitPrimitive<FHIRKitUnsignedInteger>]?
+  public var securityLabelNumber: [AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>]?
   
   override public init() {
     super.init()
@@ -75,25 +75,25 @@ open class ContractTermAssetValuedItem: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     entity: EntityX? = nil,
     identifier: Identifier? = nil,
-    effectiveTime: FHIRKitPrimitive<FHIRKitDateTime>? = nil,
+    effectiveTime: AlexandriaHRMPrimitive<AlexandriaHRMDateTime>? = nil,
     quantity: Quantity? = nil,
     unitPrice: Money? = nil,
-    factor: FHIRKitPrimitive<FHIRKitDecimal>? = nil,
-    points: FHIRKitPrimitive<FHIRKitDecimal>? = nil,
+    factor: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>? = nil,
+    points: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>? = nil,
     net: Money? = nil,
-    payment: FHIRKitPrimitive<FHIRKitString>? = nil,
+    payment: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     responsible: Reference? = nil,
     recipient: Reference? = nil,
-    linkId: [FHIRKitPrimitive<FHIRKitString>]? = nil,
-    securityLabelNumber: [FHIRKitPrimitive<FHIRKitUnsignedInteger>]? = nil
+    linkId: [AlexandriaHRMPrimitive<AlexandriaHRMString>]? = nil,
+    securityLabelNumber: [AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>]? = nil
   ) {
     self.init()
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.entity = entity
     self.identifier = identifier
     self.effectiveTime = effectiveTime
@@ -111,7 +111,7 @@ open class ContractTermAssetValuedItem: BackboneElement {
   
   // MARK: - Codable
   private enum CodingKeys: String, CodingKey {
-    case entityCodableConcept
+    case entityCodeableConcept
     case entityReference
     case identifier
     case effectiveTime; case _effectiveTime
@@ -131,11 +131,11 @@ open class ContractTermAssetValuedItem: BackboneElement {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     var tEntity: EntityX?
-    if let entityCodableConcept = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .entityCodableConcept) {
+    if let entityCodeableConcept = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .entityCodeableConcept) {
       if tEntity != nil {
-        throw DecodingError.dataCorruptedError(forKey: .entityCodableConcept, in: codingKeyContainer, debugDescription: "More than one value provided for \"entity\"")
+        throw DecodingError.dataCorruptedError(forKey: .entityCodeableConcept, in: codingKeyContainer, debugDescription: "More than one value provided for \"entity\"")
       }
-      tEntity = .codableConcept(entityCodableConcept)
+      tEntity = .codeableConcept(entityCodeableConcept)
     }
     
     if let entityReference = try Reference(from: codingKeyContainer, forKeyIfPresent: .entityReference) {
@@ -147,17 +147,17 @@ open class ContractTermAssetValuedItem: BackboneElement {
     
     self.entity = tEntity
     self.identifier = try Identifier(from: codingKeyContainer, forKeyIfPresent: .identifier)
-    self.effectiveTime = try FHIRKitPrimitive<FHIRKitDateTime>(from: codingKeyContainer, forKeyIfPresent: .effectiveTime, auxKey: ._effectiveTime)
+    self.effectiveTime = try AlexandriaHRMPrimitive<AlexandriaHRMDateTime>(from: codingKeyContainer, forKeyIfPresent: .effectiveTime, auxKey: ._effectiveTime)
     self.quantity = try Quantity(from: codingKeyContainer, forKeyIfPresent: .quantity)
     self.unitPrice = try Money(from: codingKeyContainer, forKeyIfPresent: .unitPrice)
-    self.factor = try FHIRKitPrimitive<FHIRKitDecimal>(from: codingKeyContainer, forKeyIfPresent: .factor, auxKey: ._factor)
-    self.points = try FHIRKitPrimitive<FHIRKitDecimal>(from: codingKeyContainer, forKeyIfPresent: .points, auxKey: ._points)
+    self.factor = try AlexandriaHRMPrimitive<AlexandriaHRMDecimal>(from: codingKeyContainer, forKeyIfPresent: .factor, auxKey: ._factor)
+    self.points = try AlexandriaHRMPrimitive<AlexandriaHRMDecimal>(from: codingKeyContainer, forKeyIfPresent: .points, auxKey: ._points)
     self.net = try Money(from: codingKeyContainer, forKeyIfPresent: .net)
-    self.payment = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .payment, auxKey: ._payment)
+    self.payment = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .payment, auxKey: ._payment)
     self.responsible = try Reference(from: codingKeyContainer, forKeyIfPresent: .responsible)
     self.recipient = try Reference(from: codingKeyContainer, forKeyIfPresent: .recipient)
-    self.linkId = try [FHIRKitPrimitive<FHIRKitString>](from: codingKeyContainer, forKeyIfPresent: .linkId, auxKey: ._linkId)
-    self.securityLabelNumber = try [FHIRKitPrimitive<FHIRKitUnsignedInteger>](from: codingKeyContainer, forKeyIfPresent: .securityLabelNumber, auxKey: ._securityLabelNumber)
+    self.linkId = try [AlexandriaHRMPrimitive<AlexandriaHRMString>](from: codingKeyContainer, forKeyIfPresent: .linkId, auxKey: ._linkId)
+    self.securityLabelNumber = try [AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>](from: codingKeyContainer, forKeyIfPresent: .securityLabelNumber, auxKey: ._securityLabelNumber)
     
     try super.init(from: decoder)
   }
@@ -167,8 +167,8 @@ open class ContractTermAssetValuedItem: BackboneElement {
     
     if let entityEnum = entity {
       switch entityEnum {
-      case .codableConcept(let codableConcept):
-        try codableConcept.encode(on: &codingKeyContainer, forKey: .entityCodableConcept)
+      case .codeableConcept(let codeableConcept):
+        try codeableConcept.encode(on: &codingKeyContainer, forKey: .entityCodeableConcept)
       case .reference(let reference):
         try reference.encode(on: &codingKeyContainer, forKey: .entityReference)
       }

@@ -1,6 +1,6 @@
 //
 //  PrimarySourceType.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/primary-source-type
  ValueSet: http://hl7.org/fhir/ValueSet/verificationresult-primary-source-type
  */
-public enum PrimarySourceType: String, FHIRKitPrimitiveType {
+public enum PrimarySourceType: String, AlexandriaHRMPrimitiveType {
   /// licBoard
   case licBoard = "lic-board"
   

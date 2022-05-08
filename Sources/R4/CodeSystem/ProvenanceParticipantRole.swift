@@ -1,6 +1,6 @@
 //
 //  ProvenanceParticipantRole.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/provenance-participant-role
  ValueSet: http://hl7.org/fhir/ValueSet/provenance-agent-role
  */
-public enum ProvenanceParticipantRole: String, FHIRKitPrimitiveType {
+public enum ProvenanceParticipantRole: String, AlexandriaHRMPrimitiveType {
   /// A person entering the data into the originating system
   case enterer
   

@@ -1,6 +1,6 @@
 //
 //  PropertyType.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/concept-property-type
  ValueSet: http://hl7.org/fhir/ValueSet/concept-property-type
  */
-public enum PropertyType: String, FHIRKitPrimitiveType {
+public enum PropertyType: String, AlexandriaHRMPrimitiveType {
   /// The property value is a code that identifies a concept defined in the code system.
   case code
   

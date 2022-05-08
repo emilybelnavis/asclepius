@@ -1,6 +1,6 @@
 //
 //  MedicationStatementCategoryCodes.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/medication-statement-category
  ValueSet: http://hl7.org/fhir/ValueSet/medication-statement-category
  */
-public enum MedicationStatementCategoryCodes: String, FHIRKitPrimitiveType {
+public enum MedicationStatementCategoryCodes: String, AlexandriaHRMPrimitiveType {
   /// Includes orders for medications to be administered or consumed in an inpatient or acute care setting
   case inpatient
   

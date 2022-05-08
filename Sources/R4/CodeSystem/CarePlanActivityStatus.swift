@@ -1,6 +1,6 @@
 //
 //  CarePlanActivityStatus.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/care-plan-activity-status
  ValueSet: http://hl7.org/fhir/ValueSet/care-plan-activity-status
  */
-public enum CarePlanActivityStatus: String, FHIRKitPrimitiveType {
+public enum CarePlanActivityStatus: String, AlexandriaHRMPrimitiveType {
   /// Care plan activity is planned bu no action has yet been taken.
   case notStarted = "not-started"
   

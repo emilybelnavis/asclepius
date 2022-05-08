@@ -1,6 +1,6 @@
 //
 //  ClaimResponseInsurance.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Patient insurance information - Financial instruments for the reimbursement for the healthcare products
@@ -25,21 +25,21 @@ import FHIRKitCore
  */
 open class ClaimResponseInsurance: BackboneElement {
   /// Insurance instance identifier
-  public var sequence: FHIRKitPrimitive<FHIRKitPositiveInteger>
+  public var sequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>
   
   /// Coverage to be used for adjudication
-  public var focal: FHIRKitPrimitive<FHIRKitBool>
+  public var focal: AlexandriaHRMPrimitive<AlexandriaHRMBool>
   
   /// Insurance information
   public var coverage: Reference
   
   /// Additional provider contract number
-  public var businessArrangement: FHIRKitPrimitive<FHIRKitString>?
+  public var businessArrangement: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// Adjudication results
   public var claimResponse: Reference?
   
-  public init(sequence: FHIRKitPrimitive<FHIRKitPositiveInteger>, focal: FHIRKitPrimitive<FHIRKitBool>, coverage: Reference) {
+  public init(sequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>, focal: AlexandriaHRMPrimitive<AlexandriaHRMBool>, coverage: Reference) {
     self.sequence = sequence
     self.focal = focal
     self.coverage = coverage
@@ -49,17 +49,17 @@ open class ClaimResponseInsurance: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    sequence: FHIRKitPrimitive<FHIRKitPositiveInteger>,
-    focal: FHIRKitPrimitive<FHIRKitBool>,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    sequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>,
+    focal: AlexandriaHRMPrimitive<AlexandriaHRMBool>,
     coverage: Reference,
-    businessArrangement: FHIRKitPrimitive<FHIRKitString>? = nil,
+    businessArrangement: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     claimResponse: Reference? = nil
   ) {
     self.init(sequence: sequence, focal: focal, coverage: coverage)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.businessArrangement = businessArrangement
     self.claimResponse = claimResponse
   }
@@ -76,10 +76,10 @@ open class ClaimResponseInsurance: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.sequence = try FHIRKitPrimitive<FHIRKitPositiveInteger>(from: codingKeyContainer, forKey: .sequence, auxKey: ._sequence)
-    self.focal = try FHIRKitPrimitive<FHIRKitBool>(from: codingKeyContainer, forKey: .focal, auxKey: ._focal)
+    self.sequence = try AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>(from: codingKeyContainer, forKey: .sequence, auxKey: ._sequence)
+    self.focal = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKey: .focal, auxKey: ._focal)
     self.coverage = try Reference(from: codingKeyContainer, forKey: .coverage)
-    self.businessArrangement = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKey: .businessArrangement, auxKey: ._businessArrangement)
+    self.businessArrangement = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .businessArrangement, auxKey: ._businessArrangement)
     self.claimResponse = try Reference(from: codingKeyContainer, forKeyIfPresent: .claimResponse)
     
     try super.init(from: decoder)

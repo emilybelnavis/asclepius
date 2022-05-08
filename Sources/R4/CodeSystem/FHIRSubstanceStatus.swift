@@ -1,6 +1,6 @@
 //
 //  FHIRSubstanceStatus.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/substance-status
  ValueSet: http://hl7.org/fhir/ValueSet/substance-status
  */
-public enum FHIRSubstanceStatus: String, FHIRKitPrimitiveType {
+public enum FHIRSubstanceStatus: String, AlexandriaHRMPrimitiveType {
   /// The substance is considered for use or reference.
   case active
   

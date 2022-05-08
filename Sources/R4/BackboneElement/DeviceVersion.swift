@@ -1,6 +1,6 @@
 //
 //  DeviceVersion.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,22 +17,22 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  The actual design of the device or software version running on the device
  */
 open class DeviceVersion: BackboneElement {
   /// The type of the device version
-  public var type: CodableConcept?
+  public var type: CodeableConcept?
   
   /// A single component of the device version
   public var component: Identifier?
   
   /// The version text
-  public var value: FHIRKitPrimitive<FHIRKitString>
+  public var value: AlexandriaHRMPrimitive<AlexandriaHRMString>
   
-  public init(value: FHIRKitPrimitive<FHIRKitString>) {
+  public init(value: AlexandriaHRMPrimitive<AlexandriaHRMString>) {
     self.value = value
     super.init()
   }
@@ -40,15 +40,15 @@ open class DeviceVersion: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    type: CodableConcept? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    type: CodeableConcept? = nil,
     component: Identifier? = nil,
-    value: FHIRKitPrimitive<FHIRKitString>
+    value: AlexandriaHRMPrimitive<AlexandriaHRMString>
   ) {
     self.init(value: value)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.type = type
     self.component = component
   }
@@ -63,9 +63,9 @@ open class DeviceVersion: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.type = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .type)
+    self.type = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .type)
     self.component = try Identifier(from: codingKeyContainer, forKeyIfPresent: .component)
-    self.value = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKey: .value, auxKey: ._value)
+    self.value = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .value, auxKey: ._value)
     
     try super.init(from: decoder)
   }

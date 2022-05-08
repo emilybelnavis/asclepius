@@ -1,6 +1,6 @@
 //
 //  Annotation.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Text note with attribution
@@ -27,33 +27,33 @@ import FHIRKitCore
 open class Annotation: Element {
   public enum AuthorX: Hashable {
     case reference(Reference)
-    case string(FHIRKitPrimitive<FHIRKitString>)
+    case string(AlexandriaHRMPrimitive<AlexandriaHRMString>)
   }
   
   /// Individual responsible for the annotation
   public var author: AuthorX?
   
   /// When the annotation was made
-  public var time: FHIRKitPrimitive<FHIRKitDateTime>?
+  public var time: AlexandriaHRMPrimitive<AlexandriaHRMDateTime>?
   
   /// The annotation - text content (as markdown
-  public var text: FHIRKitPrimitive<FHIRKitString>?
+  public var text: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
-  public init(text: FHIRKitPrimitive<FHIRKitString>) {
+  public init(text: AlexandriaHRMPrimitive<AlexandriaHRMString>) {
     self.text = text
     super.init()
   }
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     author: AuthorX? = nil,
-    time: FHIRKitPrimitive<FHIRKitDateTime>? = nil,
-    text: FHIRKitPrimitive<FHIRKitString>
+    time: AlexandriaHRMPrimitive<AlexandriaHRMDateTime>? = nil,
+    text: AlexandriaHRMPrimitive<AlexandriaHRMString>
   ) {
     self.init(text: text)
     self.fhirExtension = fhirExtension
-    self.id = id
+    self.fhirId = fhirId
     self.author = author
     self.time = time
   }
@@ -77,7 +77,7 @@ open class Annotation: Element {
       tempAuthor = .reference(authorReference)
     }
     
-    if let authorString = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .authorString, auxKey: ._authorString) {
+    if let authorString = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .authorString, auxKey: ._authorString) {
       if tempAuthor != nil {
         throw DecodingError.dataCorruptedError(forKey: .authorString, in: codingKeyContainer, debugDescription: "More than one value provided for \"Author\"")
       }
@@ -85,8 +85,8 @@ open class Annotation: Element {
     }
     
     self.author = tempAuthor
-    self.time = try FHIRKitPrimitive<FHIRKitDateTime>(from: codingKeyContainer, forKeyIfPresent: .time, auxKey: ._time)
-    self.text = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKey: .text, auxKey: ._text)
+    self.time = try AlexandriaHRMPrimitive<AlexandriaHRMDateTime>(from: codingKeyContainer, forKeyIfPresent: .time, auxKey: ._time)
+    self.text = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .text, auxKey: ._text)
     
     try super.init(from: decoder)
   }

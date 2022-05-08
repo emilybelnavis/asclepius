@@ -1,6 +1,6 @@
 //
 //  ListMode.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/list-mode
  ValueSet: http://hl7.org/fhir/ValueSet/list-mode
  */
-public enum ListMode: String, FHIRKitPrimitiveType {
+public enum ListMode: String, AlexandriaHRMPrimitiveType {
   /// This list is the master list, maintained in an ongoing fashion with regular updates as the real world list it is
   /// tracking changes.
   case working

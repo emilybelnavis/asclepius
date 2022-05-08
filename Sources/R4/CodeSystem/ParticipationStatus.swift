@@ -1,6 +1,6 @@
 //
 //  ParticipationStatus.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/participationstatus
  ValueSet: http://hl7.org/fhir/ValueSet/participationstatus
  */
-public enum ParticipationStatus: String, FHIRKitPrimitiveType {
+public enum ParticipationStatus: String, AlexandriaHRMPrimitiveType {
   /// The participant has accepted the appointment.
   case accepted
   

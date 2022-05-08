@@ -1,6 +1,6 @@
 //
 //  ObservationDataType.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,12 +23,12 @@
  URL: http://hl7.org/fhir/permitted-data-type
  ValueSet: http://hl7.org/fhir/ValueSet/permitted-data-type
  */
-public enum ObservationDataType: String, FHIRKitPrimitiveType {
+public enum ObservationDataType: String, AlexandriaHRMPrimitiveType {
   /// A measured amount.
   case quantity = "Quantity"
   
   /// A coded concept from a reference terminology and/or text.
-  case codableConcept = "CodableConcept"
+  case codeableConcept = "CodeableConcept"
   
   /// A sequence of Unicode characters.
   case string

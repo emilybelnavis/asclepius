@@ -1,6 +1,6 @@
 //
 //  CareTeamParticipant.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,14 +17,14 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Identifies all people and organizations who are expected to be involved in the care team
  */
 open class CareTeamParticipant: BackboneElement {
   /// Type of involvement
-  public var role: [CodableConcept]?
+  public var role: [CodeableConcept]?
   
   /// Who is involved
   public var member: Reference?
@@ -42,8 +42,8 @@ open class CareTeamParticipant: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    role: [CodableConcept]? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    role: [CodeableConcept]? = nil,
     member: Reference? = nil,
     onBehalfOf: Reference? = nil,
     period: Period?
@@ -51,7 +51,7 @@ open class CareTeamParticipant: BackboneElement {
     self.init()
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.role = role
     self.member = member
     self.onBehalfOf = onBehalfOf
@@ -69,7 +69,7 @@ open class CareTeamParticipant: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.role = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .role)
+    self.role = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .role)
     self.member = try Reference(from: codingKeyContainer, forKeyIfPresent: .member)
     self.onBehalfOf = try Reference(from: codingKeyContainer, forKeyIfPresent: .onBehalfOf)
     self.period = try Period(from: codingKeyContainer, forKeyIfPresent: .period)

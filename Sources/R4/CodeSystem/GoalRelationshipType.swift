@@ -1,6 +1,6 @@
 //
 //  GoalRelationshipType.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/goal-relationship-type
  ValueSet: http://hl7.org/fhir/ValueSet/goal-relationship-type
  */
-public enum GoalRelationshipType: String, FHIRKitPrimitiveType {
+public enum GoalRelationshipType: String, AlexandriaHRMPrimitiveType {
   /// Indicates that the target goal is one which must be met before striving for the current goal.
   case predecessor
   

@@ -1,6 +1,6 @@
 //
 //  ListStatus.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/list-status
  ValueSet: http://hl7.org/fhir/ValueSet/list-status
  */
-public enum ListStatus: String, FHIRKitPrimitiveType {
+public enum ListStatus: String, AlexandriaHRMPrimitiveType {
   /// The list is considered to be an active part of the patient's record.
   case current
   

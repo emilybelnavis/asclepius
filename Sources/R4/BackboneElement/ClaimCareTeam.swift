@@ -1,6 +1,6 @@
 //
 //  ClaimCareTeam.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,28 +17,28 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Members of the care team - the members of the team that provided the products and services
  */
 open class ClaimCareTeam: BackboneElement {
   /// Order of care team
-  public var sequence: FHIRKitPrimitive<FHIRKitPositiveInteger>
+  public var sequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>
   
   /// Practitioner or organization
   public var provider: Reference
   
   /// Indicator of the lead practitioner
-  public var responsible: FHIRKitPrimitive<FHIRKitBool>?
+  public var responsible: AlexandriaHRMPrimitive<AlexandriaHRMBool>?
   
   /// Function within the team
-  public var role: CodableConcept?
+  public var role: CodeableConcept?
   
   /// Practitioner credential or specialization
-  public var qualification: CodableConcept?
+  public var qualification: CodeableConcept?
   
-  public init(sequence: FHIRKitPrimitive<FHIRKitPositiveInteger>, provider: Reference) {
+  public init(sequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>, provider: Reference) {
     self.sequence = sequence
     self.provider = provider
     super.init()
@@ -47,17 +47,17 @@ open class ClaimCareTeam: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    sequence: FHIRKitPrimitive<FHIRKitPositiveInteger>,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    sequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>,
     provider: Reference,
-    responsible: FHIRKitPrimitive<FHIRKitBool>? = nil,
-    role: CodableConcept? = nil,
-    qualification: CodableConcept? = nil
+    responsible: AlexandriaHRMPrimitive<AlexandriaHRMBool>? = nil,
+    role: CodeableConcept? = nil,
+    qualification: CodeableConcept? = nil
   ) {
     self.init(sequence: sequence, provider: provider)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.responsible = responsible
     self.qualification = qualification
   }
@@ -74,11 +74,11 @@ open class ClaimCareTeam: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.sequence = try FHIRKitPrimitive<FHIRKitPositiveInteger>(from: codingKeyContainer, forKey: .sequence, auxKey: ._sequence)
+    self.sequence = try AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>(from: codingKeyContainer, forKey: .sequence, auxKey: ._sequence)
     self.provider = try Reference(from: codingKeyContainer, forKey: .provider)
-    self.responsible = try FHIRKitPrimitive<FHIRKitBool>(from: codingKeyContainer, forKeyIfPresent: .responsible, auxKey: ._responsible)
-    self.role = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .role)
-    self.qualification = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .qualification)
+    self.responsible = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKeyIfPresent: .responsible, auxKey: ._responsible)
+    self.role = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .role)
+    self.qualification = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .qualification)
     
     try super.init(from: decoder)
   }

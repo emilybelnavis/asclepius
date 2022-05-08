@@ -1,6 +1,6 @@
 //
 //  Dosage.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Indicates how the medication is/was taken or should be taken by the patient.
@@ -25,21 +25,21 @@ import FHIRKitCore
 open class Dosage: BackboneElement {
   /// All possible types for `asNeeded`
   public enum AsNeeded: Hashable {
-    case boolean(FHIRKitPrimitive<FHIRKitBool>)
-    case codableConcept(CodableConcept)
+    case boolean(AlexandriaHRMPrimitive<AlexandriaHRMBool>)
+    case codeableConcept(CodeableConcept)
   }
   
   /// The order of the dosage instructiions
-  public var sequence: FHIRKitPrimitive<FHIRKitInteger>?
+  public var sequence: AlexandriaHRMPrimitive<AlexandriaHRMInteger>?
   
   /// Free text dosage instructions
-  public var text: FHIRKitPrimitive<FHIRKitString>?
+  public var text: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// Supplemental instructions or warnings to the patient
-  public var additionalInstruction: [CodableConcept]?
+  public var additionalInstruction: [CodeableConcept]?
   
   /// Patient or consumer oriented instructions
-  public var patientInstruction: FHIRKitPrimitive<FHIRKitString>?
+  public var patientInstruction: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// When medication should be administered
   public var timing: Timing?
@@ -48,13 +48,13 @@ open class Dosage: BackboneElement {
   public var asNeeded: AsNeeded?
   
   /// Body site to administer to
-  public var site: CodableConcept?
+  public var site: CodeableConcept?
   
   /// How the drug should enter the body
-  public var route: CodableConcept?
+  public var route: CodeableConcept?
   
   /// Technique for adminstering medication
-  public var method: CodableConcept?
+  public var method: CodeableConcept?
   
   /// Amount of medication administered
   public var doseAndRate: [DosageDoseAndRate]?
@@ -75,16 +75,16 @@ open class Dosage: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    sequence: FHIRKitPrimitive<FHIRKitInteger>? = nil,
-    text: FHIRKitPrimitive<FHIRKitString>? = nil,
-    additionalInstruction: [CodableConcept]? = nil,
-    patientInstruction: FHIRKitPrimitive<FHIRKitString>? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    sequence: AlexandriaHRMPrimitive<AlexandriaHRMInteger>? = nil,
+    text: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    additionalInstruction: [CodeableConcept]? = nil,
+    patientInstruction: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     timing: Timing? = nil,
     asNeeded: AsNeeded? = nil,
-    site: CodableConcept? = nil,
-    route: CodableConcept? = nil,
-    method: CodableConcept? = nil,
+    site: CodeableConcept? = nil,
+    route: CodeableConcept? = nil,
+    method: CodeableConcept? = nil,
     doseAndRate: [DosageDoseAndRate]? = nil,
     maxDosePerPeriod: Ratio? = nil,
     maxDosePerAdministration: Quantity? = nil,
@@ -93,7 +93,7 @@ open class Dosage: BackboneElement {
     self.init()
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.sequence = sequence
     self.text = text
     self.additionalInstruction = additionalInstruction
@@ -117,7 +117,7 @@ open class Dosage: BackboneElement {
     case patientInstruction; case _patientInstruction
     case timing
     case asNeededBoolean; case _asNeededBoolean
-    case asNeededCodableConcept
+    case asNeededCodeableConcept
     case site
     case route
     case method
@@ -131,29 +131,29 @@ open class Dosage: BackboneElement {
     let codingKeyContainer = decoder.container(keyedBy: CodingKeys.self)
     
     var tAsNeeded: AsNeeded?
-    if let asNeededBoolean = try FHIRKitPrimitive<FHIRKitBool>(from: codingKeyContainer, forKeyIfPresent: .asNeededBoolean, auxKey: ._asNeededBoolean) {
+    if let asNeededBoolean = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKeyIfPresent: .asNeededBoolean, auxKey: ._asNeededBoolean) {
       if tAsNeeded != nil {
         throw DecodingError.dataCorruptedError(forKey: .asNeededBoolean, in: codingKeyContainer, debugDescription: "More than one value provided for \"asNeeded\"")
       }
       tAsNeeded = .boolean(asNeededBoolean)
     }
     
-    if let asNeededCodableConcept = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .asNeededCodableConcept) {
+    if let asNeededCodeableConcept = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .asNeededCodeableConcept) {
       if tAsNeeded != nil {
-        throw DecodingError.dataCorruptedError(forKey: .asNeededCodableConcept, in: codingKeyContainer, debugDescription: "More than one value provided for \"asNeeded\"")
+        throw DecodingError.dataCorruptedError(forKey: .asNeededCodeableConcept, in: codingKeyContainer, debugDescription: "More than one value provided for \"asNeeded\"")
       }
-      tAsNeeded = .codableConcept(asNeededCodableConcept)
+      tAsNeeded = .codeableConcept(asNeededCodeableConcept)
     }
     
-    self.sequence = try FHIRKitPrimitive<FHIRKitInteger>(from: codingKeyContainer, forKeyIfPresent: .sequence, auxKey: ._sequence)
-    self.text = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .text, auxKey: ._text)
-    self.additionalInstruction = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .additionalInstruction)
-    self.patientInstruction = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .patientInstruction, auxKey: ._patientInstruction)
+    self.sequence = try AlexandriaHRMPrimitive<AlexandriaHRMInteger>(from: codingKeyContainer, forKeyIfPresent: .sequence, auxKey: ._sequence)
+    self.text = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .text, auxKey: ._text)
+    self.additionalInstruction = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .additionalInstruction)
+    self.patientInstruction = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .patientInstruction, auxKey: ._patientInstruction)
     self.timing = try Timing(from: codingKeyContainer, forKeyIfPresent: .timing)
     self.asNeeded = tAsNeeded
-    self.site = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .site)
-    self.route = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .route)
-    self.method = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .method)
+    self.site = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .site)
+    self.route = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .route)
+    self.method = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .method)
     self.doseAndRate = try [DosageDoseAndRate](from: codingKeyContainer, forKeyIfPresent: .doseAndRate)
     self.maxDosePerPeriod = try Ratio(from: codingKeyContainer, forKeyIfPresent: .maxDosePerPeriod)
     self.maxDosePerAdministration = try Quantity(from: codingKeyContainer, forKeyIfPresent: .maxDosePerAdministration)
@@ -169,8 +169,8 @@ open class Dosage: BackboneElement {
       switch enumAsNeeded {
       case .boolean(let boolean):
         try boolean.encode(on: &codingKeyContainer, forKey: .asNeededBoolean)
-      case .codableConcept(let codableConcept):
-        try codableConcept.encode(on: &codingKeyContainer, forKey: .asNeededCodableConcept)
+      case .codeableConcept(let codeableConcept):
+        try codeableConcept.encode(on: &codingKeyContainer, forKey: .asNeededCodeableConcept)
       }
     }
     

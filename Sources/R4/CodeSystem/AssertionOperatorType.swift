@@ -1,6 +1,6 @@
 //
 //  AssertionOperatorType.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/assert-operator-codes
  ValueSet: http://hl7.org/fhir/ValueSet/assert-operator-codes
  */
-public enum AssertionOperatorType: String, FHIRKitPrimitiveType {
+public enum AssertionOperatorType: String, AlexandriaHRMPrimitiveType {
   /// Default value. Equals comparison
   case equals
   
@@ -54,6 +54,6 @@ public enum AssertionOperatorType: String, FHIRKitPrimitiveType {
   /// Compare value string does not contain a known value
   case notContains
   
-  /// Evaluiate the FHIRKitPath expression as a boolean condition.
+  /// Evaluiate the AlexandriaHRMPath expression as a boolean condition.
   case eval
 }

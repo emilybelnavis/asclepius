@@ -1,6 +1,6 @@
 //
 //  BundleEntry.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /// An entry in a bundle resource - will either contain a resource or information about a resource
 /// (transactions and history only)
@@ -26,7 +26,7 @@ open class BundleEntry: BackboneElement {
   public var link: [BundleLink]?
   
   /// URI for resource (Absolute URL server address or URI for UUID/OID)
-  public var fullUrl: FHIRKitPrimitive<FHIRKitURI>?
+  public var fullUrl: AlexandriaHRMPrimitive<AlexandriaHRMURI>?
   
   /// A resource in the bundle
   public var resource: ResourceProxy?
@@ -47,9 +47,9 @@ open class BundleEntry: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     link: [BundleLink]? = nil,
-    fullUrl: FHIRKitPrimitive<FHIRKitURI>? = nil,
+    fullUrl: AlexandriaHRMPrimitive<AlexandriaHRMURI>? = nil,
     resource: ResourceProxy? = nil,
     search: BundleEntrySearch? = nil,
     request: BundleEntryRequest? = nil,
@@ -58,7 +58,7 @@ open class BundleEntry: BackboneElement {
     self.init()
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.link = link
     self.fullUrl = fullUrl
     self.resource = resource
@@ -81,7 +81,7 @@ open class BundleEntry: BackboneElement {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     self.link = try [BundleLink](from: codingKeyContainer, forKeyIfPresent: .link)
-    self.fullUrl = try FHIRKitPrimitive<FHIRKitURI>(from: codingKeyContainer, forKeyIfPresent: .fullUrl, auxKey: ._fullUrl)
+    self.fullUrl = try AlexandriaHRMPrimitive<AlexandriaHRMURI>(from: codingKeyContainer, forKeyIfPresent: .fullUrl, auxKey: ._fullUrl)
     self.resource = try ResourceProxy(from: codingKeyContainer, forKeyIfPresent: .resource)
     self.search = try BundleEntrySearch(from: codingKeyContainer, forKeyIfPresent: .search)
     self.request = try BundleEntryRequest(from: codingKeyContainer, forKeyIfPresent: .request)

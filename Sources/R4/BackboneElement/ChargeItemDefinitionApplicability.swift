@@ -1,6 +1,6 @@
 //
 //  ChargeItemDefinitionApplicability.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,20 +17,20 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Expressions that describe applicability criteria for the billing code
  */
 open class ChargeItemDefinitionApplicability: BackboneElement {
   /// Natural language description of the condition
-  public var fhirDescription: FHIRKitPrimitive<FHIRKitString>?
+  public var fhirDescription: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// Language of the expression
-  public var language: FHIRKitPrimitive<FHIRKitString>?
+  public var language: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// Boolean-valued expression
-  public var expression: FHIRKitPrimitive<FHIRKitString>?
+  public var expression: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   override public init() {
     super.init()
@@ -39,15 +39,15 @@ open class ChargeItemDefinitionApplicability: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    fhirDescription: FHIRKitPrimitive<FHIRKitString>? = nil,
-    language: FHIRKitPrimitive<FHIRKitString>? = nil,
-    expression: FHIRKitPrimitive<FHIRKitString>? = nil
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirDescription: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    language: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    expression: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil
   ) {
     self.init()
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.fhirDescription = fhirDescription
     self.language = language
     self.expression = expression
@@ -63,9 +63,9 @@ open class ChargeItemDefinitionApplicability: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.fhirDescription = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKey: .fhirDescription, auxKey: ._fhirDescription)
-    self.language = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .language, auxKey: ._language)
-    self.expression = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .expression, auxKey: ._expression)
+    self.fhirDescription = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .fhirDescription, auxKey: ._fhirDescription)
+    self.language = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .language, auxKey: ._language)
+    self.expression = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .expression, auxKey: ._expression)
     
     try super.init(from: decoder)
   }

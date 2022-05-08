@@ -1,6 +1,6 @@
 //
 //  GroupType.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/group-type
  ValueSet: http://hl7.org/fhir/ValueSet/group-type
  */
-public enum GroupType: String, FHIRKitPrimitiveType {
+public enum GroupType: String, AlexandriaHRMPrimitiveType {
   /// Group contains "person" Patient resources.
   case person
   

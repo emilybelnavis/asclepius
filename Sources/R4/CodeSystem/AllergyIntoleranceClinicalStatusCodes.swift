@@ -1,6 +1,6 @@
 //
 //  AllergyIntoleranceClinicalStatusCodes.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical
  ValueSet: http://hl7.org/fhir/ValueSet/allergyintolerance-clinical
  */
-public enum AllergyIntoleranceClinicalStatusCodes: String, FHIRKitPrimitiveType {
+public enum AllergyIntoleranceClinicalStatusCodes: String, AlexandriaHRMPrimitiveType {
   /// The subject is currently experiencing, or is at isk of, a reaction to the identified substance.
   case active
   

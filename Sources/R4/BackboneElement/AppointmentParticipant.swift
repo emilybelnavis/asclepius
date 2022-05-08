@@ -1,6 +1,6 @@
 //
 //  AppointmentParticipant.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,12 +17,12 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /// List of participants involved in the appointment
 open class AppointmentParticipant: BackboneElement {
   /// role of the participant in the appointment
-  public var type: [CodableConcept]?
+  public var type: [CodeableConcept]?
   
   /// person, location/healthcare service, or device
   public var `actor`: Reference?
@@ -30,31 +30,31 @@ open class AppointmentParticipant: BackboneElement {
   /// Wheter this participant is required to be present at the meeting. This covers a use-case where two
   /// doctors need to meet to discuss the results for a specific patient, and the patient is not required to be
   /// present
-  public var `required`: FHIRKitPrimitive<ParticipantRequired>?
+  public var `required`: AlexandriaHRMPrimitive<ParticipantRequired>?
   
   /// Participation status of the actor
-  public var status: FHIRKitPrimitive<ParticipationStatus>
+  public var status: AlexandriaHRMPrimitive<ParticipationStatus>
   
   /// Participation period of the actor
   public var period: Period?
   
-  public init(status: FHIRKitPrimitive<ParticipationStatus>) {
+  public init(status: AlexandriaHRMPrimitive<ParticipationStatus>) {
     self.status = status
     super.init()
   }
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    type: [CodableConcept]? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    type: [CodeableConcept]? = nil,
     `actor`: Reference? = nil,
-    `required`: FHIRKitPrimitive<ParticipantRequired>? = nil,
-    status: FHIRKitPrimitive<ParticipationStatus>,
+    `required`: AlexandriaHRMPrimitive<ParticipantRequired>? = nil,
+    status: AlexandriaHRMPrimitive<ParticipationStatus>,
     period: Period? = nil
   ) {
     self.init(status: status)
     self.fhirExtension = fhirExtension
-    self.id = id
+    self.fhirId = fhirId
     self.type = type
     self.`actor` = `actor`
     self.`required` = `required`
@@ -73,10 +73,10 @@ open class AppointmentParticipant: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.type = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .type)
+    self.type = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .type)
     self.`actor` = try Reference(from: codingKeyContainer, forKeyIfPresent: .actor)
-    self.`required` = try FHIRKitPrimitive<ParticipantRequired>(from: codingKeyContainer, forKeyIfPresent: .required, auxKey: ._required)
-    self.status = try FHIRKitPrimitive<ParticipationStatus>(from: codingKeyContainer, forKey: .status, auxKey: ._status)
+    self.`required` = try AlexandriaHRMPrimitive<ParticipantRequired>(from: codingKeyContainer, forKeyIfPresent: .required, auxKey: ._required)
+    self.status = try AlexandriaHRMPrimitive<ParticipationStatus>(from: codingKeyContainer, forKey: .status, auxKey: ._status)
     self.period = try Period(from: codingKeyContainer, forKeyIfPresent: .period)
     
     try super.init(from: decoder)

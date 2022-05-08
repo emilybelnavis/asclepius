@@ -1,6 +1,6 @@
 //
 //  ResourceVersionPolicy.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/versioning-policy
  ValueSet: http://hl7.org/fhir/ValueSet/versioning-policy
  */
-public enum ResourceVersionPolicy: String, FHIRKitPrimitiveType {
+public enum ResourceVersionPolicy: String, AlexandriaHRMPrimitiveType {
   /// VersionId meta-property is not supported (server) or used (client).
   case noVersion = "no-version"
   

@@ -1,6 +1,6 @@
 //
 //  CapabilityStatementRestInteraction.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,18 +17,18 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /// A specification of what resful operations are supported by the system
 open class CapabilityStatementRestInteraction: BackboneElement {
   /// A coded identifier of the operation supported by the system
   /// Restricted to [`transaction`, `batch`, `search-system`, `history-system`]
-  public var code: FHIRKitPrimitive<FHIRRestfulInteractions>
+  public var code: AlexandriaHRMPrimitive<FHIRRestfulInteractions>
   
   /// Anything special about operation behaviour
-  public var documentation: FHIRKitPrimitive<FHIRKitString>?
+  public var documentation: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
-  public init(code: FHIRKitPrimitive<FHIRRestfulInteractions>) {
+  public init(code: AlexandriaHRMPrimitive<FHIRRestfulInteractions>) {
     self.code = code
     super.init()
   }
@@ -36,14 +36,14 @@ open class CapabilityStatementRestInteraction: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    code: FHIRKitPrimitive<FHIRRestfulInteractions>,
-    documentation: FHIRKitPrimitive<FHIRKitString>? = nil
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    code: AlexandriaHRMPrimitive<FHIRRestfulInteractions>,
+    documentation: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil
   ) {
     self.init(code: code)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.documentation = documentation
   }
   
@@ -56,8 +56,8 @@ open class CapabilityStatementRestInteraction: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.code = try FHIRKitPrimitive<FHIRRestfulInteractions>(from: codingKeyContainer, forKey: .code, auxKey: ._code)
-    self.documentation = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .documentation, auxKey: ._documentation)
+    self.code = try AlexandriaHRMPrimitive<FHIRRestfulInteractions>(from: codingKeyContainer, forKey: .code, auxKey: ._code)
+    self.documentation = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .documentation, auxKey: ._documentation)
     
     try super.init(from: decoder)
   }

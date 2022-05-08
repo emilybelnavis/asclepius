@@ -1,6 +1,6 @@
 //
 //  Expression.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  An expression that can be used to generate a value
@@ -28,37 +28,37 @@ import FHIRKitCore
  */
 open class Expression: Element {
   /// Description of the condition
-  public var fhirDescription: FHIRKitPrimitive<FHIRKitString>?
+  public var fhirDescription: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// Shortname assigned to the xpression for re-use
-  public var name: FHIRKitPrimitive<FHIRKitString>?
+  public var name: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// text/cql | text/fhirpath | application/x-fhir-query | etc...
-  public var language: FHIRKitPrimitive<FHIRKitString>
+  public var language: AlexandriaHRMPrimitive<AlexandriaHRMString>
   
   /// expression in specified language
-  public var expression: FHIRKitPrimitive<FHIRKitString>?
+  public var expression: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// where the expression is found
-  public var reference: FHIRKitPrimitive<FHIRKitURI>?
+  public var reference: AlexandriaHRMPrimitive<AlexandriaHRMURI>?
  
-  public init(language: FHIRKitPrimitive<FHIRKitString>) {
+  public init(language: AlexandriaHRMPrimitive<AlexandriaHRMString>) {
     self.language = language
     super.init()
   }
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    fhirDescriotion: FHIRKitPrimitive<FHIRKitString>? = nil,
-    name: FHIRKitPrimitive<FHIRKitString>? = nil,
-    language: FHIRKitPrimitive<FHIRKitString>,
-    expression: FHIRKitPrimitive<FHIRKitString>? = nil,
-    reference: FHIRKitPrimitive<FHIRKitURI>? = nil
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirDescriotion: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    name: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    language: AlexandriaHRMPrimitive<AlexandriaHRMString>,
+    expression: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    reference: AlexandriaHRMPrimitive<AlexandriaHRMURI>? = nil
   ) {
     self.init(language: language)
     self.fhirExtension = fhirExtension
-    self.id = id
+    self.fhirId = fhirId
     self.fhirDescription = fhirDescriotion
     self.name = name
     self.reference = reference
@@ -76,11 +76,11 @@ open class Expression: Element {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.fhirDescription = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .fhirDescription, auxKey: ._fhirDescription)
-    self.name = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .name, auxKey: ._name)
-    self.language = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKey: .language, auxKey: ._language)
-    self.expression = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .expression, auxKey: ._expression)
-    self.reference = try FHIRKitPrimitive<FHIRKitURI>(from: codingKeyContainer, forKeyIfPresent: .reference, auxKey: ._reference)
+    self.fhirDescription = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .fhirDescription, auxKey: ._fhirDescription)
+    self.name = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .name, auxKey: ._name)
+    self.language = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .language, auxKey: ._language)
+    self.expression = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .expression, auxKey: ._expression)
+    self.reference = try AlexandriaHRMPrimitive<AlexandriaHRMURI>(from: codingKeyContainer, forKeyIfPresent: .reference, auxKey: ._reference)
     
     try super.init(from: decoder)
   }

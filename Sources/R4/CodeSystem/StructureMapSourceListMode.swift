@@ -1,6 +1,6 @@
 //
 //  StructureMapSourceListMode.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/map-source-list-mode
  ValueSet: http://hl7.org/fhir/ValueSet/map-source-list-mode
  */
-public enum StructureMapSourceListMode: String, FHIRKitPrimitiveType {
+public enum StructureMapSourceListMode: String, AlexandriaHRMPrimitiveType {
   /// Only process this rule for the first in the list.
   case first
   

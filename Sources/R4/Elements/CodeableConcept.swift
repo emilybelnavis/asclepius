@@ -1,6 +1,6 @@
 //
-//  CodableConcept.swift
-//  FHIRKit
+//  CodeableConcept.swift
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,19 +17,19 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Concept - reference to a terminology or just text
  
  A concept that may be defined by a formal reference to a terminology, ontology, or may be provided by text
  */
-open class CodableConcept: Element {
+open class CodeableConcept: Element {
   /// Code defined by a terminology system
   public var coding: [Coding]?
   
   /// Plain text representation of the concept
-  public var text: FHIRKitPrimitive<FHIRKitString>?
+  public var text: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   override public init() {
     super.init()
@@ -37,13 +37,13 @@ open class CodableConcept: Element {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     coding: [Coding]? = nil,
-    text: FHIRKitPrimitive<FHIRKitString>? = nil
+    text: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil
   ) {
     self.init()
     self.fhirExtension = fhirExtension
-    self.id = id
+    self.fhirId = fhirId
     self.coding = coding
     self.text = text
   }
@@ -58,7 +58,7 @@ open class CodableConcept: Element {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     self.coding = try [Coding](from: codingKeyContainer, forKeyIfPresent: .coding)
-    self.text = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .text, auxKey: ._text)
+    self.text = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .text, auxKey: ._text)
     
     try super.init(from: decoder)
   }
@@ -74,7 +74,7 @@ open class CodableConcept: Element {
   
   // MARK: - Equatable
   public override func isEqual(to _other: Any?) -> Bool {
-    guard let _other = _other as? CodableConcept else {
+    guard let _other = _other as? CodeableConcept else {
       return false
     }
     

@@ -1,6 +1,6 @@
 //
 //  SurfaceCodes.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/FDI-surface
  ValueSet: http://hl7.org/fhir/ValueSet/surface
  */
-public enum SurfaceCodes: String, FHIRKitPrimitiveType {
+public enum SurfaceCodes: String, AlexandriaHRMPrimitiveType {
   /// The surface of a tooth that is closest to the midline (middle) of the face.
   case M // swiftlint:disable:this identifier_name
   

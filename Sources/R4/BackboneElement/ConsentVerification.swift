@@ -1,6 +1,6 @@
 //
 //  ConsentVerification.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,22 +17,22 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Whether a treatment instruction was verified with the patient, their family, or another authorized person
  */
 open class ConsentVerification: BackboneElement {
   /// Has been verified
-  public var verified: FHIRKitPrimitive<FHIRKitBool>
+  public var verified: AlexandriaHRMPrimitive<AlexandriaHRMBool>
   
   /// Person who verified
   public var verifiedWith: Reference?
   
   /// When consent verified
-  public var verificationDate: FHIRKitPrimitive<FHIRKitDateTime>?
+  public var verificationDate: AlexandriaHRMPrimitive<AlexandriaHRMDateTime>?
   
-  public init(verified: FHIRKitPrimitive<FHIRKitBool>) {
+  public init(verified: AlexandriaHRMPrimitive<AlexandriaHRMBool>) {
     self.verified = verified
     super.init()
   }
@@ -40,15 +40,15 @@ open class ConsentVerification: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    verified: FHIRKitPrimitive<FHIRKitBool>,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    verified: AlexandriaHRMPrimitive<AlexandriaHRMBool>,
     verifiedWith: Reference? = nil,
-    verificationDate: FHIRKitPrimitive<FHIRKitDateTime>? = nil
+    verificationDate: AlexandriaHRMPrimitive<AlexandriaHRMDateTime>? = nil
   ) {
     self.init(verified: verified)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.verifiedWith = verifiedWith
     self.verificationDate = verificationDate
   }
@@ -63,9 +63,9 @@ open class ConsentVerification: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.verified = try FHIRKitPrimitive<FHIRKitBool>(from: codingKeyContainer, forKey: .verified, auxKey: ._verified)
+    self.verified = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKey: .verified, auxKey: ._verified)
     self.verifiedWith = try Reference(from: codingKeyContainer, forKeyIfPresent: .verifiedwith)
-    self.verificationDate = try FHIRKitPrimitive<FHIRKitDateTime>(from: codingKeyContainer, forKey: .verificationDate, auxKey: ._verificationDate)
+    self.verificationDate = try AlexandriaHRMPrimitive<AlexandriaHRMDateTime>(from: codingKeyContainer, forKey: .verificationDate, auxKey: ._verificationDate)
     
     try super.init(from: decoder)
   }

@@ -1,6 +1,6 @@
 //
 //  BiologicallyDerivedProductStorageScale.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/product-storage-scale
  ValueSet: http://hl7.org/fhir/ValueSet/product-storage-scale
  */
-public enum BiologicallyDerivedProductStorageScale: String, FHIRKitPrimitiveType {
+public enum BiologicallyDerivedProductStorageScale: String, AlexandriaHRMPrimitiveType {
   /// Celcius or centigrade temperature scale
   case celsius
   

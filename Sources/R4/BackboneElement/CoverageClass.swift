@@ -1,6 +1,6 @@
 //
 //  CoverageClass.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,20 +17,20 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /// Additional Coverage Classification;  A suite of underwriter specific classifiers
 open class CoverageClass: BackboneElement {
   /// Type of class such as "group" or "plan"
-  public var type: CodableConcept
+  public var type: CodeableConcept
   
   /// Value associated with the type
-  public var value: FHIRKitPrimitive<FHIRKitString>
+  public var value: AlexandriaHRMPrimitive<AlexandriaHRMString>
   
   /// Human readable description of the type and value
-  public var name: FHIRKitPrimitive<FHIRKitString>?
+  public var name: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
-  public init(type: CodableConcept, value: FHIRKitPrimitive<FHIRKitString>) {
+  public init(type: CodeableConcept, value: AlexandriaHRMPrimitive<AlexandriaHRMString>) {
     self.type = type
     self.value = value
     super.init()
@@ -39,15 +39,15 @@ open class CoverageClass: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    type: CodableConcept,
-    value: FHIRKitPrimitive<FHIRKitString>,
-    name: FHIRKitPrimitive<FHIRKitString>? = nil
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    type: CodeableConcept,
+    value: AlexandriaHRMPrimitive<AlexandriaHRMString>,
+    name: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil
   ) {
     self.init(type: type, value: value)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.name = name
   }
   
@@ -61,9 +61,9 @@ open class CoverageClass: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.type = try CodableConcept(from: codingKeyContainer, forKey: .type)
-    self.value = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKey: .value, auxKey: ._value)
-    self.name = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKey: .name, auxKey: ._name)
+    self.type = try CodeableConcept(from: codingKeyContainer, forKey: .type)
+    self.value = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .value, auxKey: ._value)
+    self.name = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .name, auxKey: ._name)
     
     try super.init(from: decoder)
   }

@@ -1,6 +1,6 @@
 //
 //  PaymentAdjustmentReasonCodes.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -25,7 +25,7 @@
  */
 
 // swiftlint:disable identifier_name
-public enum PaymentAdjustmentReasonCodes: String, FHIRKitPrimitiveType {
+public enum PaymentAdjustmentReasonCodes: String, AlexandriaHRMPrimitiveType {
   /// Prior Payment Reversal
   case A001 = "a001"
   

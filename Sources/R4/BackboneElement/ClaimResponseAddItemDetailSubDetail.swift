@@ -1,6 +1,6 @@
 //
 //  ClaimResponseAddItemDetailSubDetail.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,17 +17,17 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Insurer added line items; The third-tier service adjudications for payor added services
  */
 open class ClaimResponseAddItemDetailSubDetail: BackboneElement {
   /// Billing, service, product, or drug code
-  public var productOrService: CodableConcept
+  public var productOrService: CodeableConcept
   
   /// Service/product billing modifiers
-  public var modifier: [CodableConcept]?
+  public var modifier: [CodeableConcept]?
   
   /// Count of products or services
   public var quantity: Quantity?
@@ -36,18 +36,18 @@ open class ClaimResponseAddItemDetailSubDetail: BackboneElement {
   public var unitPrice: Money?
   
   /// Price scaling factor
-  public var factor: FHIRKitPrimitive<FHIRKitDecimal>?
+  public var factor: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>?
   
   /// Total item cost
   public var net: Money?
   
   /// Applicable note numbers
-  public var noteNumber: [FHIRKitPrimitive<FHIRKitPositiveInteger>]?
+  public var noteNumber: [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>]?
   
   /// Added items detail adjudication
   public var adjudication: [ClaimResponseItemAdjudication]?
   
-  public init(productOrService: CodableConcept) {
+  public init(productOrService: CodeableConcept) {
     self.productOrService = productOrService
     super.init()
   }
@@ -55,20 +55,20 @@ open class ClaimResponseAddItemDetailSubDetail: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    productOrService: CodableConcept,
-    modifier: [CodableConcept]? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    productOrService: CodeableConcept,
+    modifier: [CodeableConcept]? = nil,
     quantity: Quantity? = nil,
     unitPrice: Money? = nil,
-    factor: FHIRKitPrimitive<FHIRKitDecimal>? = nil,
+    factor: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>? = nil,
     net: Money? = nil,
-    noteNumber: [FHIRKitPrimitive<FHIRKitPositiveInteger>]? = nil,
+    noteNumber: [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>]? = nil,
     adjudication: [ClaimResponseItemAdjudication]? = nil
   ) {
     self.init(productOrService: productOrService)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.modifier = modifier
     self.quantity = quantity
     self.unitPrice = unitPrice
@@ -93,13 +93,13 @@ open class ClaimResponseAddItemDetailSubDetail: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.productOrService = try CodableConcept(from: codingKeyContainer, forKey: .productOrService)
-    self.modifier = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .modifier)
+    self.productOrService = try CodeableConcept(from: codingKeyContainer, forKey: .productOrService)
+    self.modifier = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .modifier)
     self.quantity = try Quantity(from: codingKeyContainer, forKeyIfPresent: .quantity)
     self.unitPrice = try Money(from: codingKeyContainer, forKeyIfPresent: .unitPrice)
-    self.factor = try FHIRKitPrimitive<FHIRKitDecimal>(from: codingKeyContainer, forKeyIfPresent: .factor, auxKey: ._factor)
+    self.factor = try AlexandriaHRMPrimitive<AlexandriaHRMDecimal>(from: codingKeyContainer, forKeyIfPresent: .factor, auxKey: ._factor)
     self.net = try Money(from: codingKeyContainer, forKeyIfPresent: .net)
-    self.noteNumber = try [FHIRKitPrimitive<FHIRKitPositiveInteger>](from: codingKeyContainer, forKeyIfPresent: .noteNumber, auxKey: ._noteNumber)
+    self.noteNumber = try [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>](from: codingKeyContainer, forKeyIfPresent: .noteNumber, auxKey: ._noteNumber)
     self.adjudication = try [ClaimResponseItemAdjudication](from: codingKeyContainer, forKeyIfPresent: .adjudication)
     
     try super.init(from: decoder)

@@ -1,6 +1,6 @@
 //
 //  ResearchElementType.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/research-element-type
  ValueSet: http://hl7.org/fhir/ValueSet/research-element-type
  */
-public enum ResearchElementType: String, FHIRKitPrimitiveType {
+public enum ResearchElementType: String, AlexandriaHRMPrimitiveType {
   /// The element defines the population that forms the basis for research.
   case population
   

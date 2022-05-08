@@ -1,6 +1,6 @@
 //
 //  ElementDefinitionType.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,46 +17,46 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  The data type or resource that the value of this element is permitted to be
  */
 open class ElementDefinitionType: Element {
   /// Data type or Resource (reference to definition)
-  public var code: FHIRKitPrimitive<FHIRKitURI>
+  public var code: AlexandriaHRMPrimitive<AlexandriaHRMURI>
   
   /// Profiles (StructureDefinition or IG, one must apply)
-  public var profile: [FHIRKitPrimitive<Canonical>]?
+  public var profile: [AlexandriaHRMPrimitive<Canonical>]?
   
   /// Profile (StructureDefinition or IG, one must apply)
-  public var targetProfile: [FHIRKitPrimitive<Canonical>]?
+  public var targetProfile: [AlexandriaHRMPrimitive<Canonical>]?
   
   /// If the type is a reference to another resource, how the resource is or can be aggregated. Is it a
   /// contained resource, or a reference, and if the context is a bundle, is it included in the bundle?
-  public var aggregation: [FHIRKitPrimitive<AggregationMode>]?
+  public var aggregation: [AlexandriaHRMPrimitive<AggregationMode>]?
   
   /// Whether this reference needs to be version specific, version independent, or whether either can
   /// be used.
-  public var versioning: FHIRKitPrimitive<ReferenceVersionRules>?
+  public var versioning: AlexandriaHRMPrimitive<ReferenceVersionRules>?
   
-  public init(code: FHIRKitPrimitive<FHIRKitURI>) {
+  public init(code: AlexandriaHRMPrimitive<AlexandriaHRMURI>) {
     self.code = code
     super.init()
   }
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    code: FHIRKitPrimitive<FHIRKitURI>,
-    profile: [FHIRKitPrimitive<Canonical>]? = nil,
-    targetProfile: [FHIRKitPrimitive<Canonical>]? = nil,
-    aggregation: [FHIRKitPrimitive<AggregationMode>]? = nil,
-    versioning: FHIRKitPrimitive<ReferenceVersionRules>? = nil
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    code: AlexandriaHRMPrimitive<AlexandriaHRMURI>,
+    profile: [AlexandriaHRMPrimitive<Canonical>]? = nil,
+    targetProfile: [AlexandriaHRMPrimitive<Canonical>]? = nil,
+    aggregation: [AlexandriaHRMPrimitive<AggregationMode>]? = nil,
+    versioning: AlexandriaHRMPrimitive<ReferenceVersionRules>? = nil
   ) {
     self.init(code: code)
     self.fhirExtension = fhirExtension
-    self.id = id
+    self.fhirId = fhirId
     self.profile = profile
     self.targetProfile = targetProfile
     self.aggregation = aggregation
@@ -75,11 +75,11 @@ open class ElementDefinitionType: Element {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.code = try FHIRKitPrimitive<FHIRKitURI>(from: codingKeyContainer, forKey: .code, auxKey: ._code)
-    self.profile = try [FHIRKitPrimitive<Canonical>](from: codingKeyContainer, forKeyIfPresent: .profile, auxKey: ._profile)
-    self.targetProfile = try [FHIRKitPrimitive<Canonical>](from: codingKeyContainer, forKeyIfPresent: .targetProfile, auxKey: ._targetProfile)
-    self.aggregation = try [FHIRKitPrimitive<AggregationMode>](from: codingKeyContainer, forKeyIfPresent: .aggregation, auxKey: ._aggregation)
-    self.versioning = try FHIRKitPrimitive<ReferenceVersionRules>(from: codingKeyContainer, forKeyIfPresent: .versioning, auxKey: ._versioning)
+    self.code = try AlexandriaHRMPrimitive<AlexandriaHRMURI>(from: codingKeyContainer, forKey: .code, auxKey: ._code)
+    self.profile = try [AlexandriaHRMPrimitive<Canonical>](from: codingKeyContainer, forKeyIfPresent: .profile, auxKey: ._profile)
+    self.targetProfile = try [AlexandriaHRMPrimitive<Canonical>](from: codingKeyContainer, forKeyIfPresent: .targetProfile, auxKey: ._targetProfile)
+    self.aggregation = try [AlexandriaHRMPrimitive<AggregationMode>](from: codingKeyContainer, forKeyIfPresent: .aggregation, auxKey: ._aggregation)
+    self.versioning = try AlexandriaHRMPrimitive<ReferenceVersionRules>(from: codingKeyContainer, forKeyIfPresent: .versioning, auxKey: ._versioning)
     
     try super.init(from: decoder)
   }

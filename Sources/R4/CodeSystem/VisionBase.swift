@@ -1,6 +1,6 @@
 //
 //  VisionBase.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/vision-base-codes
  ValueSet: http://hl7.org/fhir/ValueSet/vision-base-codes
  */
-public enum VisionBase: String, FHIRKitPrimitiveType {
+public enum VisionBase: String, AlexandriaHRMPrimitiveType {
   /// top.
   case up
   

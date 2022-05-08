@@ -1,6 +1,6 @@
 //
 //  ClaimResponseTotal.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,19 +17,19 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Adjudication totals - Categorized monetary totals for the adjudication
  */
 open class ClaimResponseTotal: BackboneElement {
   /// Type of adjudication information
-  public var category: CodableConcept
+  public var category: CodeableConcept
   
   /// Financial total for the category
   public var amount: Money
   
-  public init(category: CodableConcept, amount: Money) {
+  public init(category: CodeableConcept, amount: Money) {
     self.category = category
     self.amount = amount
     super.init()
@@ -38,14 +38,14 @@ open class ClaimResponseTotal: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    category: CodableConcept,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    category: CodeableConcept,
     amount: Money
   ) {
     self.init(category: category, amount: amount)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
   }
   
   // MARK: - Codable
@@ -57,7 +57,7 @@ open class ClaimResponseTotal: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.category = try CodableConcept(from: codingKeyContainer, forKey: .category)
+    self.category = try CodeableConcept(from: codingKeyContainer, forKey: .category)
     self.amount = try Money(from: codingKeyContainer, forKey: .amount)
     
     try super.init(from: decoder)

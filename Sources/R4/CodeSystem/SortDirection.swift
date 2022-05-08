@@ -1,6 +1,6 @@
 //
 //  SortDirection.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/sort-direction
  ValueSet: http://hl7.org/fhir/ValueSet/sort-direction
  */
-public enum SortDirection: String, FHIRKitPrimitiveType {
+public enum SortDirection: String, AlexandriaHRMPrimitiveType {
   /// Sort by the value ascending, so that lower values appear first.
   case ascending
   

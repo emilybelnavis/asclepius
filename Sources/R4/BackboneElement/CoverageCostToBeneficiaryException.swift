@@ -1,6 +1,6 @@
 //
 //  CoverageCostToBeneficiaryException.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Exceptions for patient payments; A suite of codes indicating exceptions or reductions to patient costs and their
@@ -25,12 +25,12 @@ import FHIRKitCore
  */
 open class CoverageCostToBeneficiaryException: BackboneElement {
   /// Exception category
-  public var type: CodableConcept
+  public var type: CodeableConcept
   
   /// The effective period of the exception
   public var period: Period?
   
-  public init(type: CodableConcept) {
+  public init(type: CodeableConcept) {
     self.type = type
     super.init()
   }
@@ -38,14 +38,14 @@ open class CoverageCostToBeneficiaryException: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    type: CodableConcept,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    type: CodeableConcept,
     period: Period? = nil
   ) {
     self.init(type: type)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.period = period
   }
   
@@ -58,7 +58,7 @@ open class CoverageCostToBeneficiaryException: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.type = try CodableConcept(from: codingKeyContainer, forKey: .type)
+    self.type = try CodeableConcept(from: codingKeyContainer, forKey: .type)
     self.period = try Period(from: codingKeyContainer, forKeyIfPresent: .period)
     
     try super.init(from: decoder)

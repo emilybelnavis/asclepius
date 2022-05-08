@@ -1,6 +1,6 @@
 //
 //  CoverageEligibilityRequestItem.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Item to be evaluated for eligibility; Service categories or billable services for which benefit details and/or
@@ -25,16 +25,16 @@ import FHIRKitCore
  */
 open class CoverageEligibilityRequestItem: BackboneElement {
   /// Applicable exception or supporting information
-  public var supportingInfoSequence: [FHIRKitPrimitive<FHIRKitPositiveInteger>]?
+  public var supportingInfoSequence: [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>]?
   
   /// Benefit classification
-  public var category: CodableConcept?
+  public var category: CodeableConcept?
   
   /// Billing, service, product, or drug code
-  public var productOrService: CodableConcept?
+  public var productOrService: CodeableConcept?
   
   /// Product or service billing modifiers
-  public var modifier: [CodableConcept]?
+  public var modifier: [CodeableConcept]?
   
   /// Performing practitioner
   public var provider: Reference?
@@ -61,11 +61,11 @@ open class CoverageEligibilityRequestItem: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    supportingInfoSequence: [FHIRKitPrimitive<FHIRKitPositiveInteger>]? = nil,
-    category: CodableConcept? = nil,
-    productOrService: CodableConcept? = nil,
-    modifier: [CodableConcept]? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    supportingInfoSequence: [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>]? = nil,
+    category: CodeableConcept? = nil,
+    productOrService: CodeableConcept? = nil,
+    modifier: [CodeableConcept]? = nil,
     provider: Reference? = nil,
     quantity: Quantity? = nil,
     facility: Reference? = nil,
@@ -75,7 +75,7 @@ open class CoverageEligibilityRequestItem: BackboneElement {
     self.init()
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.supportingInfoSequence = supportingInfoSequence
     self.category = category
     self.productOrService = productOrService
@@ -103,10 +103,10 @@ open class CoverageEligibilityRequestItem: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.supportingInfoSequence = try [FHIRKitPrimitive<FHIRKitPositiveInteger>](from: codingKeyContainer, forKeyIfPresent: .supportingInfoSequence, auxKey: ._supportingInfoSequence)
-    self.category = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .category)
-    self.productOrService = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .productOrService)
-    self.modifier = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .modifier)
+    self.supportingInfoSequence = try [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>](from: codingKeyContainer, forKeyIfPresent: .supportingInfoSequence, auxKey: ._supportingInfoSequence)
+    self.category = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .category)
+    self.productOrService = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .productOrService)
+    self.modifier = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .modifier)
     self.provider = try Reference(from: codingKeyContainer, forKeyIfPresent: .provider)
     self.quantity = try Quantity(from: codingKeyContainer, forKeyIfPresent: .quantity)
     self.facility = try Reference(from: codingKeyContainer, forKeyIfPresent: .facility)

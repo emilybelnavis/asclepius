@@ -1,6 +1,6 @@
 //
 //  AuditEventID.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -22,7 +22,7 @@
  
  URL: http://terminology.hl7.org/CodeSystem/audit-event-type
  */
-public enum AuditEventID: String, FHIRKitPrimitiveType {
+public enum AuditEventID: String, AlexandriaHRMPrimitiveType {
   /// Audit Event: Execution of a RESTful operation as defined by FHIR
   case rest
 }

@@ -1,6 +1,6 @@
 //
 //  Contributor.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Contributor information
@@ -26,15 +26,15 @@ import FHIRKitCore
  */
 open class Contributor: Element {
   /// The type of contributor
-  public var type: FHIRKitPrimitive<ContributorType>
+  public var type: AlexandriaHRMPrimitive<ContributorType>
   
   /// Name of the contributor
-  public var name: FHIRKitPrimitive<FHIRKitString>
+  public var name: AlexandriaHRMPrimitive<AlexandriaHRMString>
   
   /// Contact details for the contributor
   public var contact: [ContactDetail]?
   
-  public init(type: FHIRKitPrimitive<ContributorType>, name: FHIRKitPrimitive<FHIRKitString>) {
+  public init(type: AlexandriaHRMPrimitive<ContributorType>, name: AlexandriaHRMPrimitive<AlexandriaHRMString>) {
     self.type = type
     self.name = name
     super.init()
@@ -42,14 +42,14 @@ open class Contributor: Element {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    type: FHIRKitPrimitive<ContributorType>,
-    name: FHIRKitPrimitive<FHIRKitString>,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    type: AlexandriaHRMPrimitive<ContributorType>,
+    name: AlexandriaHRMPrimitive<AlexandriaHRMString>,
     contact: [ContactDetail]? = nil
   ) {
     self.init(type: type, name: name)
     self.fhirExtension = fhirExtension
-    self.id = id
+    self.fhirId = fhirId
     self.contact = contact
   }
   
@@ -63,8 +63,8 @@ open class Contributor: Element {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.type = try FHIRKitPrimitive<ContributorType>(from: codingKeyContainer, forKey: .type, auxKey: ._type)
-    self.name = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKey: .name, auxKey: ._name)
+    self.type = try AlexandriaHRMPrimitive<ContributorType>(from: codingKeyContainer, forKey: .type, auxKey: ._type)
+    self.name = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .name, auxKey: ._name)
     self.contact = try [ContactDetail](from: codingKeyContainer, forKeyIfPresent: .contact)
     
     try super.init(from: decoder)

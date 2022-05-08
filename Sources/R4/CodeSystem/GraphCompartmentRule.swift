@@ -1,6 +1,6 @@
 //
 //  GraphCompartmentRule.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/graph-compartment-rule
  ValueSet: http://hl7.org/fhir/ValueSet/graph-compartment-rule
  */
-public enum GraphCompartmentRule: String, FHIRKitPrimitiveType {
+public enum GraphCompartmentRule: String, AlexandriaHRMPrimitiveType {
   /// The compartment must be identical (the same literal reference).
   case identical
   

@@ -1,6 +1,6 @@
 //
 //  ElementDefinitionBase.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Base definition information for tools; Information about the base definition of the element, provided to make it
@@ -28,15 +28,15 @@ import FHIRKitCore
  */
 open class ElementDefinitionBase: Element {
   /// Path that identifies the base element
-  public var path: FHIRKitPrimitive<FHIRKitString>
+  public var path: AlexandriaHRMPrimitive<AlexandriaHRMString>
   
   /// Min cardinality of the base element
-  public var min: FHIRKitPrimitive<FHIRKitUnsignedInteger>
+  public var min: AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>
   
   /// Max cardinality of the base element
-  public var max: FHIRKitPrimitive<FHIRKitString>
+  public var max: AlexandriaHRMPrimitive<AlexandriaHRMString>
   
-  public init(path: FHIRKitPrimitive<FHIRKitString>, min: FHIRKitPrimitive<FHIRKitUnsignedInteger>, max: FHIRKitPrimitive<FHIRKitString>) {
+  public init(path: AlexandriaHRMPrimitive<AlexandriaHRMString>, min: AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>, max: AlexandriaHRMPrimitive<AlexandriaHRMString>) {
     self.path = path
     self.min = min
     self.max = max
@@ -45,14 +45,14 @@ open class ElementDefinitionBase: Element {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    path: FHIRKitPrimitive<FHIRKitString>,
-    min: FHIRKitPrimitive<FHIRKitUnsignedInteger>,
-    max: FHIRKitPrimitive<FHIRKitString>
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    path: AlexandriaHRMPrimitive<AlexandriaHRMString>,
+    min: AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>,
+    max: AlexandriaHRMPrimitive<AlexandriaHRMString>
   ) {
     self.init(path: path, min: min, max: max)
     self.fhirExtension = fhirExtension
-    self.id = id
+    self.fhirId = fhirId
   }
   
   // MARK: - Codable
@@ -65,9 +65,9 @@ open class ElementDefinitionBase: Element {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.path = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKey: .path, auxKey: ._path)
-    self.min = try FHIRKitPrimitive<FHIRKitUnsignedInteger>(from: codingKeyContainer, forKey: .min, auxKey: ._min)
-    self.max = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKey: .max, auxKey: ._max)
+    self.path = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .path, auxKey: ._path)
+    self.min = try AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>(from: codingKeyContainer, forKey: .min, auxKey: ._min)
+    self.max = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .max, auxKey: ._max)
     
     try super.init(from: decoder)
   }

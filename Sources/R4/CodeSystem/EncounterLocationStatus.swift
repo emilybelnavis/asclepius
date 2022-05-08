@@ -1,6 +1,6 @@
 //
 //  EncounterLocationStatus.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/encounter-location-status
  ValueSet: http://hl7.org/fhir/ValueSet/encounter-location-status
  */
-public enum EncounterLocationStatus: String, FHIRKitPrimitiveType {
+public enum EncounterLocationStatus: String, AlexandriaHRMPrimitiveType {
   /// The patient is planned to be moved to this location at some point in the future.
   case planned
   

@@ -1,6 +1,6 @@
 //
 //  BindingStrength.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/binding-strength
  ValueSet: http://hl7.org/fhir/ValueSet/binding-strength
  */
-public enum BindingStrength: String, FHIRKitPrimitiveType {
+public enum BindingStrength: String, AlexandriaHRMPrimitiveType {
   /// To be conformant, the concept in this element SHALL be from the specified value set.
   case required
   

@@ -1,6 +1,6 @@
 //
 //  ContractContentDefinition.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Precursory content developed with a focus and intent of supporting the formation of a `Contract` instance,
@@ -25,24 +25,24 @@ import FHIRKitCore
  */
 open class ContractContentDefinition: BackboneElement {
   /// Content structure and use
-  public var type: CodableConcept
+  public var type: CodeableConcept
   
   /// Detauled content type definition
-  public var subType: CodableConcept?
+  public var subType: CodeableConcept?
   
   /// Publisher entity
   public var publisher: Reference?
   
   /// Publication date
-  public var publicationDate: FHIRKitPrimitive<FHIRKitDateTime>?
+  public var publicationDate: AlexandriaHRMPrimitive<AlexandriaHRMDateTime>?
   
   /// None
-  public var publicationStatus: FHIRKitPrimitive<ContractResourcePublicationStatusCodes>
+  public var publicationStatus: AlexandriaHRMPrimitive<ContractResourcePublicationStatusCodes>
   
   /// Publication ownership
-  public var copyright: FHIRKitPrimitive<FHIRKitString>?
+  public var copyright: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
-  public init(type: CodableConcept, publicationStatus: FHIRKitPrimitive<ContractResourcePublicationStatusCodes>) {
+  public init(type: CodeableConcept, publicationStatus: AlexandriaHRMPrimitive<ContractResourcePublicationStatusCodes>) {
     self.type = type
     self.publicationStatus = publicationStatus
     super.init()
@@ -51,18 +51,18 @@ open class ContractContentDefinition: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    type: CodableConcept,
-    subType: CodableConcept? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    type: CodeableConcept,
+    subType: CodeableConcept? = nil,
     publisher: Reference? = nil,
-    publicationDate: FHIRKitPrimitive<FHIRKitDateTime>? = nil,
-    publicationStatus: FHIRKitPrimitive<ContractResourcePublicationStatusCodes>,
-    copyright: FHIRKitPrimitive<FHIRKitString>? = nil
+    publicationDate: AlexandriaHRMPrimitive<AlexandriaHRMDateTime>? = nil,
+    publicationStatus: AlexandriaHRMPrimitive<ContractResourcePublicationStatusCodes>,
+    copyright: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil
   ) {
     self.init(type: type, publicationStatus: publicationStatus)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.subType = subType
     self.publisher = publisher
     self.publicationDate = publicationDate
@@ -82,12 +82,12 @@ open class ContractContentDefinition: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.type = try CodableConcept(from: codingKeyContainer, forKey: .type)
-    self.subType try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .subType)
+    self.type = try CodeableConcept(from: codingKeyContainer, forKey: .type)
+    self.subType try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .subType)
     self.publisher = try Reference(from: codingKeyContainer, forKeyIfPresent: .publisher)
-    self.publicationDate = try FHIRKitPrimitive<FHIRKitDateTime>(from: codingKeyContainer, forKeyIfPresent: .publicationDate, auxKey: ._publicationDate)
-    self.publicationStatus = try FHIRKitPrimitive<ContractResourcePublicationStatusCodes>(from: codingKeyContainer, forKey: .publicationStatus, auxKey: ._publicationStatus)
-    self.copyright = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .copyright, auxKey: ._copyright)
+    self.publicationDate = try AlexandriaHRMPrimitive<AlexandriaHRMDateTime>(from: codingKeyContainer, forKeyIfPresent: .publicationDate, auxKey: ._publicationDate)
+    self.publicationStatus = try AlexandriaHRMPrimitive<ContractResourcePublicationStatusCodes>(from: codingKeyContainer, forKey: .publicationStatus, auxKey: ._publicationStatus)
+    self.copyright = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .copyright, auxKey: ._copyright)
     
     try super.init(from: decoder)
   }

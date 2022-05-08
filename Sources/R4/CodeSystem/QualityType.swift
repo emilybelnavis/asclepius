@@ -1,6 +1,6 @@
 //
 //  QualityType.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/quality-type
  ValueSet: http://hl7.org/fhir/ValueSet/quality-type
  */
-public enum QualityType: String, FHIRKitPrimitiveType {
+public enum QualityType: String, AlexandriaHRMPrimitiveType {
   /// INDEL Comparison.
   case indel
   

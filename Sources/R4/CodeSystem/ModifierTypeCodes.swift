@@ -1,6 +1,6 @@
 //
 //  ModifierTypeCodes.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/modifiers
  ValueSet: http://hl7.org/fhir/ValueSet/claim-modifiers
  */
-public enum ModifierTypeCodes: String, FHIRKitPrimitiveType {
+public enum ModifierTypeCodes: String, AlexandriaHRMPrimitiveType {
   /// Repair of prior service or installation.
   case A = "a" // swiftlint:disable:this identifier_name
   

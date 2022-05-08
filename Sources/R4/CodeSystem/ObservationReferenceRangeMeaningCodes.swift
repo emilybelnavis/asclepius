@@ -1,6 +1,6 @@
 //
 //  ObservationReferenceRangeMeaningCodes.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -24,7 +24,7 @@
  URL: http://terminology.hl7.org/CodeSystem/referencerange-meaning
  ValueSet: http://hl7.org/fhir/ValueSet/referencerange-meaning
  */
-public enum ObservationReferenceRangeMeaningCodes: String, FHIRKitPrimitiveType {
+public enum ObservationReferenceRangeMeaningCodes: String, AlexandriaHRMPrimitiveType {
   /// General types of reference range.
   case type
   

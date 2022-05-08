@@ -1,6 +1,6 @@
 //
 //  ClaimResponsePayment.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,23 +17,23 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Payment details for the adjudication of the claims
  */
 open class ClaimResponsePayment: BackboneElement {
   /// Partial or complete payment
-  public var type: CodableConcept
+  public var type: CodeableConcept
   
   /// Payment adjustment for non-claim issues
   public var adjustment: Money?
   
   /// Explanation for the adjustment
-  public var adjustmentReason: CodableConcept?
+  public var adjustmentReason: CodeableConcept?
   
   /// Expected date of payment
-  public var date: FHIRKitPrimitive<FHIRKitDate>?
+  public var date: AlexandriaHRMPrimitive<AlexandriaHRMDate>?
   
   /// Payable amount after adjustment
   public var amount: Money
@@ -41,7 +41,7 @@ open class ClaimResponsePayment: BackboneElement {
   /// Business identifier for the payment
   public var identifier: Identifier?
   
-  public init(type: CodableConcept, amount: Money) {
+  public init(type: CodeableConcept, amount: Money) {
     self.type = type
     self.amount = amount
     super.init()
@@ -50,18 +50,18 @@ open class ClaimResponsePayment: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    type: CodableConcept,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    type: CodeableConcept,
     adjustment: Money? = nil,
-    adjustmentReason: CodableConcept? = nil,
-    date: FHIRKitPrimitive<FHIRKitDate>? = nil,
+    adjustmentReason: CodeableConcept? = nil,
+    date: AlexandriaHRMPrimitive<AlexandriaHRMDate>? = nil,
     amount: Money,
     identifier: Identifier?
   ) {
     self.init(type: type, amount: amount)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.adjustment = adjustment
     self.adjustmentReason = adjustmentReason
     self.date = date
@@ -81,10 +81,10 @@ open class ClaimResponsePayment: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.type = try CodableConcept(from: codingKeyContainer, forKey: .type)
+    self.type = try CodeableConcept(from: codingKeyContainer, forKey: .type)
     self.adjustment = try Money(from: codingKeyContainer, forKeyIfPresent: .adjustment)
-    self.adjustmentReason = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .adjustmentReason)
-    self.date = try FHIRKitPrimitive<FHIRKitDate>(from: codingKeyContainer, forKeyIfPresent: .date, auxKey: ._date)
+    self.adjustmentReason = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .adjustmentReason)
+    self.date = try AlexandriaHRMPrimitive<AlexandriaHRMDate>(from: codingKeyContainer, forKeyIfPresent: .date, auxKey: ._date)
     self.amount = try Money(from: codingKeyContainer, forKey: .amount)
     self.identifier = try Identifier(from: codingKeyContainer, forKeyIfPresent: .identifier)
     

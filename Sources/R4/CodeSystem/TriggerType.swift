@@ -1,6 +1,6 @@
 //
 //  TriggerType.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/trigger-type
  ValueSet: http://hl7.org/fhir/ValueSet/trigger-type
  */
-public enum TriggerType: String, FHIRKitPrimitiveType {
+public enum TriggerType: String, AlexandriaHRMPrimitiveType {
   /// The trigger occurs in response to a specific named event, and no other information about the trigger is
   /// specified. Named events are completely pre-coordinated, and the formal semantics of the trigger are not
   /// provided.

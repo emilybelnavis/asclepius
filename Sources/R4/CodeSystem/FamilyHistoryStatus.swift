@@ -1,6 +1,6 @@
 //
 //  FamilyHistoryStatus.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/history-status
  ValueSet: http://hl7.org/fhir/ValueSet/history-status
  */
-public enum FamilyHistoryStatus: String, FHIRKitPrimitiveType {
+public enum FamilyHistoryStatus: String, AlexandriaHRMPrimitiveType {
   /// Some health information is known and captured, but not complete - see notes for details.
   case partial
   

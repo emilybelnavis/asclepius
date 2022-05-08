@@ -1,6 +1,6 @@
 //
 //  MarketingStatus.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  The marketing status describes the date when a medicinal product is actually put on the market or the date
@@ -26,16 +26,16 @@ import FHIRKitCore
 open class MarketingStatus: BackboneElement {
   /// The country in which the marketing authorization has been granted shall be specified. It should be
   /// specified using the ISO-3166-1 alpha-2 code elements (e.g. CA)
-  public var country: CodableConcept
+  public var country: CodeableConcept
   
   /// Where a Medicine's Regulatory Agency has granted a marketing authorization for which specific
   /// provisions within a jurisdiction apply. The jurisdiction can be specified using an appropriate controlled
   /// terminology. The term and controlled term identifier shall be specified.
-  public var jurisdiction: CodableConcept?
+  public var jurisdiction: CodeableConcept?
   
   /// This attribute provides information on the status of the marketed on the medicinal product.
   /// See ISO/TS 20443 for more information and examples
-  public var status: CodableConcept
+  public var status: CodeableConcept
   
   /// The date when the Medicinal Product is placed on the Market by the Marketing Authorization Holder
   /// (or where applicable, the manufacturer/distributor) in a country and/or jurisdiction shall be provided.
@@ -47,9 +47,9 @@ open class MarketingStatus: BackboneElement {
   /// (or where applicable, the manufacturer/distributor) in a country and/or jurisdiction shall be provided.
   /// A complete date consisting of day, month, and year shall be specified using the ISO 8601 date format.
   /// Node: "Placed on the market" refers to the release of the Medicinal produt into the distribution chain.
-  public var restoreDate: FHIRKitPrimitive<FHIRKitDateTime>?
+  public var restoreDate: AlexandriaHRMPrimitive<AlexandriaHRMDateTime>?
   
-  public init(country: CodableConcept, status: CodableConcept, dateRange: Period) {
+  public init(country: CodeableConcept, status: CodeableConcept, dateRange: Period) {
     self.country = country
     self.status = status
     self.dateRange = dateRange
@@ -59,17 +59,17 @@ open class MarketingStatus: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    country: CodableConcept,
-    jurisdiction: CodableConcept?,
-    status: CodableConcept,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    country: CodeableConcept,
+    jurisdiction: CodeableConcept?,
+    status: CodeableConcept,
     dateRange: Period,
-    restoreDate: FHIRKitPrimitive<FHIRKitDateTime>? = nil
+    restoreDate: AlexandriaHRMPrimitive<AlexandriaHRMDateTime>? = nil
   ) {
     self.init(country: country, status: status, dateRange: dateRange)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.jurisdiction = jurisdiction
     self.restoreDate = restoreDate
   }
@@ -86,11 +86,11 @@ open class MarketingStatus: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.country = try CodableConcept(from: codingKeyContainer, forKey: .country)
-    self.jurisdiction = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .jurisdiction)
-    self.status = try CodableConcept(from: codingKeyContainer, forKey: .status)
+    self.country = try CodeableConcept(from: codingKeyContainer, forKey: .country)
+    self.jurisdiction = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .jurisdiction)
+    self.status = try CodeableConcept(from: codingKeyContainer, forKey: .status)
     self.dateRange = try Period(from: codingKeyContainer, forKey: .dateRange)
-    self.restoreDate = try FHIRKitPrimitive<FHIRKitDateTime>(from: codingKeyContainer, forKeyIfPresent: .restoreDate, auxKey: ._restoreDate)
+    self.restoreDate = try AlexandriaHRMPrimitive<AlexandriaHRMDateTime>(from: codingKeyContainer, forKeyIfPresent: .restoreDate, auxKey: ._restoreDate)
     
     try super.init(from: decoder)
   }

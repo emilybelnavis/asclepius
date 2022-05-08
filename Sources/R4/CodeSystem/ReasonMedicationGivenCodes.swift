@@ -1,6 +1,6 @@
 //
 //  ReasonMedicationGivenCodes.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -24,7 +24,7 @@
  URL: http://terminology.hl7.org/CodeSystem/reason-medication-given
  ValueSet: http://hl7.org/fhir/ValueSet/reason-medication-given-codes
  */
-public enum ReasonMedicationGivenCodes: String, FHIRKitPrimitiveType {
+public enum ReasonMedicationGivenCodes: String, AlexandriaHRMPrimitiveType {
   /// No reason known.
   case A = "a" // swiftlint:disable:this identifier_name
   

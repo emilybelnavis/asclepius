@@ -1,6 +1,6 @@
 //
 //  MeasureScoring.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/measure-scoring
  ValueSet: http://hl7.org/fhir/ValueSet/measure-scoring
  */
-public enum MeasureScoring: String, FHIRKitPrimitiveType {
+public enum MeasureScoring: String, AlexandriaHRMPrimitiveType {
   /// The measure score is defined using a proportion.
   case proportion
   

@@ -1,6 +1,6 @@
 //
 //  Signature.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  A signature along with supporting context. The signature may be a digital signature that is cryptographic in
@@ -30,7 +30,7 @@ open class Signature: Element {
   public var type: [Coding]
   
   /// when the signature was created
-  public var when: FHIRKitPrimitive<FHIRKitInstant>
+  public var when: AlexandriaHRMPrimitive<AlexandriaHRMInstant>
   
   /// who signed
   public var who: Reference
@@ -39,15 +39,15 @@ open class Signature: Element {
   public var onBehalfOf: Reference?
   
   /// technical format of the signed resources
-  public var targetFormat: FHIRKitPrimitive<FHIRKitString>?
+  public var targetFormat: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// the technical format of the signature
-  public var sigFormat: FHIRKitPrimitive<FHIRKitString>?
+  public var sigFormat: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// the actual signature content (XML DigSig, JWS, picture, etc...)
-  public var data: FHIRKitPrimitive<FHIRKitBase64Binary>?
+  public var data: AlexandriaHRMPrimitive<AlexandriaHRMBase64Binary>?
   
-  public init(type: [Coding], when: FHIRKitPrimitive<FHIRKitInstant>, who: Reference) {
+  public init(type: [Coding], when: AlexandriaHRMPrimitive<AlexandriaHRMInstant>, who: Reference) {
     self.type = type
     self.when = when
     self.who = who
@@ -56,18 +56,18 @@ open class Signature: Element {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     type: [Coding],
-    when: FHIRKitPrimitive<FHIRKitInstant>,
+    when: AlexandriaHRMPrimitive<AlexandriaHRMInstant>,
     who: Reference,
     onBehalfOf: Reference? = nil,
-    targetFormat: FHIRKitPrimitive<FHIRKitString>? = nil,
-    sigFormat: FHIRKitPrimitive<FHIRKitString>? = nil,
-    data: FHIRKitPrimitive<FHIRKitBase64Binary>? = nil
+    targetFormat: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    sigFormat: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    data: AlexandriaHRMPrimitive<AlexandriaHRMBase64Binary>? = nil
   ) {
     self.init(type: type, when: when, who: who)
     self.fhirExtension = fhirExtension
-    self.id = id
+    self.fhirId = fhirId
     self.onBehalfOf = onBehalfOf
     self.targetFormat = targetFormat
     self.sigFormat = sigFormat
@@ -89,12 +89,12 @@ open class Signature: Element {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     self.type = try [Coding](from: codingKeyContainer, forKey: .type)
-    self.when = try FHIRKitPrimitive<FHIRKitInstant>(from: codingKeyContainer, forKey: .when, auxKey: ._when)
+    self.when = try AlexandriaHRMPrimitive<AlexandriaHRMInstant>(from: codingKeyContainer, forKey: .when, auxKey: ._when)
     self.who = try Reference(from: codingKeyContainer, forKey: .who)
     self.onBehalfOf = try Reference(from: codingKeyContainer, forKeyIfPresent: .onBehalfOf)
-    self.targetFormat = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .targetFormat, auxKey: ._targetFormat)
-    self.sigFormat = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .sigFormat, auxKey: ._sigFormat)
-    self.data = try FHIRKitPrimitive<FHIRKitBase64Binary>(from: codingKeyContainer, forKeyIfPresent: .data, auxKey: ._data)
+    self.targetFormat = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .targetFormat, auxKey: ._targetFormat)
+    self.sigFormat = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .sigFormat, auxKey: ._sigFormat)
+    self.data = try AlexandriaHRMPrimitive<AlexandriaHRMBase64Binary>(from: codingKeyContainer, forKeyIfPresent: .data, auxKey: ._data)
     
     try super.init(from: decoder)
   }

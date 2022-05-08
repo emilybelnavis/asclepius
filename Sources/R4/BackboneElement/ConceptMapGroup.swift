@@ -1,6 +1,6 @@
 //
 //  ConceptMapGroup.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,23 +17,23 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  A group of mappings that all have the same source and target systems
  */
 open class ConceptMapGroup: BackboneElement {
   /// Source system where concept to be mapped are defined
-  public var source: FHIRKitPrimitive<FHIRKitURI>?
+  public var source: AlexandriaHRMPrimitive<AlexandriaHRMURI>?
   
   /// Specific version of the code system
-  public var sourceVersion: FHIRKitPrimitive<FHIRKitString>?
+  public var sourceVersion: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// Target system that the concepts are mapped to
-  public var target: FHIRKitPrimitive<FHIRKitURI>?
+  public var target: AlexandriaHRMPrimitive<AlexandriaHRMURI>?
   
   /// Specific version of the code system
-  public var targetVersion: FHIRKitPrimitive<FHIRKitString>?
+  public var targetVersion: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// Mappings for a concept from the source set
   public var element: [ConceptMapGroupElement]
@@ -49,18 +49,18 @@ open class ConceptMapGroup: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    source: FHIRKitPrimitive<FHIRKitURI>? = nil,
-    sourceVersion: FHIRKitPrimitive<FHIRKitString>? = nil,
-    target: FHIRKitPrimitive<FHIRKitURI>? = nil,
-    targetVersion: FHIRKitPrimitive<FHIRKitString>? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    source: AlexandriaHRMPrimitive<AlexandriaHRMURI>? = nil,
+    sourceVersion: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    target: AlexandriaHRMPrimitive<AlexandriaHRMURI>? = nil,
+    targetVersion: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     element: [ConceptMapGroupElement],
     unmapped: ConceptMapGroupUnmapped? = nil
   ) {
     self.init(element: element)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.source = source
     self.sourceVersion = sourceVersion
     self.target = target
@@ -81,10 +81,10 @@ open class ConceptMapGroup: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.source = try FHIRKitPrimitive<FHIRKitURI>(from: codingKeyContainer, forKeyIfPresent: .source, auxKey: ._source)
-    self.sourceVersion = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .sourceVersion, auxKey: ._sourceVersion)
-    self.target = try FHIRKitPrimitive<FHIRKitURI>(from: codingKeyContainer, forKeyIfPresent: .target, auxKey: ._target)
-    self.targetVersion = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .targetVersion, auxKey: ._targetVersion)
+    self.source = try AlexandriaHRMPrimitive<AlexandriaHRMURI>(from: codingKeyContainer, forKeyIfPresent: .source, auxKey: ._source)
+    self.sourceVersion = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .sourceVersion, auxKey: ._sourceVersion)
+    self.target = try AlexandriaHRMPrimitive<AlexandriaHRMURI>(from: codingKeyContainer, forKeyIfPresent: .target, auxKey: ._target)
+    self.targetVersion = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .targetVersion, auxKey: ._targetVersion)
     self.element = try [ConceptMapGroupElement](from: codingKeyContainer, forKey: .element)
     self.unmapped = try ConceptMapGroupUnmapped(from: codingKeyContainer, forKeyIfPresent: .unmapped)
   

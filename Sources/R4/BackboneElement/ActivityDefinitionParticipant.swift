@@ -1,6 +1,6 @@
 //
 //  ActivityDefinitionParticipant.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Who should participate in the action.
@@ -26,12 +26,12 @@ import FHIRKitCore
  */
 open class ActivityDefinitionParticipant: BackboneElement {
   /// The type of participant
-  public var type: FHIRKitPrimitive<ActionParticipantType>
+  public var type: AlexandriaHRMPrimitive<ActionParticipantType>
   
   /// E.g. nurse, surgeon, parent, etc...
-  public var role: CodableConcept?
+  public var role: CodeableConcept?
   
-  public init(type: FHIRKitPrimitive<ActionParticipantType>) {
+  public init(type: AlexandriaHRMPrimitive<ActionParticipantType>) {
     self.type = type
     super.init()
   }
@@ -39,14 +39,14 @@ open class ActivityDefinitionParticipant: BackboneElement {
   public convenience init(
     fhirDescription: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    type: FHIRKitPrimitive<ActionParticipantType>,
-    role: CodableConcept? = nil
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    type: AlexandriaHRMPrimitive<ActionParticipantType>,
+    role: CodeableConcept? = nil
   ) {
     self.init(type: type)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.role = role
   }
   
@@ -59,8 +59,8 @@ open class ActivityDefinitionParticipant: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.type = try FHIRKitPrimitive<ActionParticipantType>(from: codingKeyContainer, forKey: .type, auxKey: ._type)
-    self.role = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .role)
+    self.type = try AlexandriaHRMPrimitive<ActionParticipantType>(from: codingKeyContainer, forKey: .type, auxKey: ._type)
+    self.role = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .role)
     
     try super.init(from: decoder)
   }

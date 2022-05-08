@@ -1,6 +1,6 @@
 //
 //  CodeSystemConcept.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Concepts that are in the code system. The concept definitions are inherently hierarchical, but the definitions
@@ -25,13 +25,13 @@ import FHIRKitCore
  */
 open class CodeSystemConcept: BackboneElement {
   /// Code that identifies concept
-  public var code: FHIRKitPrimitive<FHIRKitString>
+  public var code: AlexandriaHRMPrimitive<AlexandriaHRMString>
   
   /// Text to display to the user
-  public var display: FHIRKitPrimitive<FHIRKitString>?
+  public var display: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// Formal definition
-  public var definition: FHIRKitPrimitive<FHIRKitString>?
+  public var definition: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// Additional representations for the concept
   public var designation: [CodeSystemConceptDesignation]?
@@ -42,7 +42,7 @@ open class CodeSystemConcept: BackboneElement {
   /// Child Concepts (`is-a`, `contains`, `categorizes`)
   public var concept: [CodeSystemConcept]?
   
-  public init(code: FHIRKitPrimitive<FHIRKitString>) {
+  public init(code: AlexandriaHRMPrimitive<AlexandriaHRMString>) {
     self.code = code
     super.init()
   }
@@ -50,10 +50,10 @@ open class CodeSystemConcept: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    code: FHIRKitPrimitive<FHIRKitString>,
-    display: FHIRKitPrimitive<FHIRKitString>? = nil,
-    definition: FHIRKitPrimitive<FHIRKitString>? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    code: AlexandriaHRMPrimitive<AlexandriaHRMString>,
+    display: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    definition: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     designation: [CodeSystemConceptDesignation]? = nil,
     property: [CodeSystemConceptProperty]? = nil,
     concept: [CodeSystemConcept]? = nil
@@ -61,7 +61,7 @@ open class CodeSystemConcept: BackboneElement {
     self.init(code: code)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.display = display
     self.definition = definition
     self.designation = designation
@@ -82,9 +82,9 @@ open class CodeSystemConcept: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.code = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKey: .code, auxKey: ._code)
-    self.display = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .display, auxKey: ._display)
-    self.definition = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .definition, auxKey: ._definition)
+    self.code = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .code, auxKey: ._code)
+    self.display = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .display, auxKey: ._display)
+    self.definition = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .definition, auxKey: ._definition)
     self.designation = try [CodeSystemConceptDesignation](from: codingKeyContainer, forKeyIfPresent: .designation)
     self.property = try [CodeSystemConceptProperty](from: codingKeyContainer, forKeyIfPresent: .property)
     self.concept = try [CodeSystemConcept](from: codingKeyContainer, forKeyIfPresent: .concept)

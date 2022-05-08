@@ -1,6 +1,6 @@
 //
 //  PublicationStatus.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/publication-status
  ValueSet: http://hl7.org/fhir/ValueSet/publication-status
  */
-public enum PublicationStatus: String, FHIRKitPrimitiveType {
+public enum PublicationStatus: String, AlexandriaHRMPrimitiveType {
   /// This resource is still under development and is not yet considered to be ready for normal use.
   case draft
   

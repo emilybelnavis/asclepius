@@ -1,6 +1,6 @@
 //
 //  ConsentProvisionType.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/consent-provision-type
  ValueSet: http://hl7.org/fhir/ValueSet/consent-provision-type
  */
-public enum ConsentProvisionType: String, FHIRKitPrimitiveType {
+public enum ConsentProvisionType: String, AlexandriaHRMPrimitiveType {
   /// Consent is denied for actions meeting these rules
   case deny
   

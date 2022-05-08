@@ -1,6 +1,6 @@
 //
 //  ElementDefinitionExample.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 open class ElementDefinitionExample: Element {
   public enum ValueX: Hashable {
@@ -25,36 +25,36 @@ open class ElementDefinitionExample: Element {
     case age(Age)
     case annotation(Annotation)
     case attachment(Attachment)
-    case base64Binary(FHIRKitPrimitive<FHIRKitBase64Binary>)
-    case boolean(FHIRKitPrimitive<FHIRKitBool>)
-    case canonical(FHIRKitPrimitive<Canonical>)
-    case code(FHIRKitPrimitive<FHIRKitString>)
-    case codableConcept(CodableConcept)
+    case base64Binary(AlexandriaHRMPrimitive<AlexandriaHRMBase64Binary>)
+    case boolean(AlexandriaHRMPrimitive<AlexandriaHRMBool>)
+    case canonical(AlexandriaHRMPrimitive<Canonical>)
+    case code(AlexandriaHRMPrimitive<AlexandriaHRMString>)
+    case codeableConcept(CodeableConcept)
     case coding(Coding)
     case contactDetail(ContactDetail)
     case contactPoint(ContactPoint)
     case contributor(Contributor)
     case count(Count)
     case dataRequirement(DataRequirement)
-    case date(FHIRKitPrimitive<FHIRKitDate>)
-    case dateTime(FHIRKitPrimitive<FHIRKitDateTime>)
-    case decimal(FHIRKitPrimitive<FHIRKitDecimal>)
+    case date(AlexandriaHRMPrimitive<AlexandriaHRMDate>)
+    case dateTime(AlexandriaHRMPrimitive<AlexandriaHRMDateTime>)
+    case decimal(AlexandriaHRMPrimitive<AlexandriaHRMDecimal>)
     case distance(Distance)
     case dosage(Dosage)
     case duration(Duration)
     case expression(Expression)
     case humanName(HumanName)
-    case id(FHIRKitPrimitive<FHIRKitString>)
+    case id(AlexandriaHRMPrimitive<AlexandriaHRMString>)
     case identifier(Identifier)
-    case instant(FHIRKitPrimitive<FHIRKitInstant>)
-    case integer(FHIRKitPrimitive<FHIRKitInteger>)
-    case markdown(FHIRKitPrimitive<FHIRKitString>)
+    case instant(AlexandriaHRMPrimitive<AlexandriaHRMInstant>)
+    case integer(AlexandriaHRMPrimitive<AlexandriaHRMInteger>)
+    case markdown(AlexandriaHRMPrimitive<AlexandriaHRMString>)
     case meta(Meta)
     case money(Money)
-    case oid(FHIRKitPrimitive<FHIRKitURI>)
+    case oid(AlexandriaHRMPrimitive<AlexandriaHRMURI>)
     case parameterDefinition(ParameterDefinition)
     case period(Period)
-    case positiveInteger(FHIRKitPrimitive<FHIRKitPositiveInteger>)
+    case positiveInteger(AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>)
     case quantity(Quantity)
     case range(Range)
     case ratio(Ratio)
@@ -62,24 +62,24 @@ open class ElementDefinitionExample: Element {
     case relatedArtifact(RelatedArtifact)
     case sampledData(SampledData)
     case signature(Signature)
-    case string(FHIRKitPrimitive<FHIRKitString>)
-    case time(FHIRKitPrimitive<FHIRKitTime>)
+    case string(AlexandriaHRMPrimitive<AlexandriaHRMString>)
+    case time(AlexandriaHRMPrimitive<AlexandriaHRMTime>)
     case timing(Timing)
     case triggerDefinition(TriggerDefinition)
-    case unsignedInteger(FHIRKitPrimitive<FHIRKitUnsignedInteger>)
-    case uri(FHIRKitPrimitive<FHIRKitURI>)
-    case url(FHIRKitPrimitive<FHIRKitURI>)
+    case unsignedInteger(AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>)
+    case uri(AlexandriaHRMPrimitive<AlexandriaHRMURI>)
+    case url(AlexandriaHRMPrimitive<AlexandriaHRMURI>)
     case usageContext(UsageContext)
-    case uuid(FHIRKitPrimitive<FHIRKitURI>)
+    case uuid(AlexandriaHRMPrimitive<AlexandriaHRMURI>)
   }
   
   /// Describes the purpose of this example
-  public var label: FHIRKitPrimitive<FHIRKitString>
+  public var label: AlexandriaHRMPrimitive<AlexandriaHRMString>
   
   /// Value of Example (`value[x]`)
   public var value: ValueX
   
-  public init(label: FHIRKitPrimitive<FHIRKitString>, value: ValueX) {
+  public init(label: AlexandriaHRMPrimitive<AlexandriaHRMString>, value: ValueX) {
     self.label = label
     self.value = value
     super.init()
@@ -87,13 +87,13 @@ open class ElementDefinitionExample: Element {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    label: FHIRKitPrimitive<FHIRKitString>,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    label: AlexandriaHRMPrimitive<AlexandriaHRMString>,
     value: ValueX
   ) {
     self.init(label: label, value: value)
     self.fhirExtension = fhirExtension
-    self.id = id
+    self.fhirId = fhirId
   }
   
   // MARK: - Codable
@@ -108,7 +108,7 @@ open class ElementDefinitionExample: Element {
     case valueBoolean; case _valueBoolean
     case valueCanonical; case _valueCanonical
     case valueCode; case _valueCode
-    case valueCodableConcept
+    case valueCodeableConcept
     case valueCoding
     case valueContactDetail
     case valueContactPoint
@@ -191,7 +191,7 @@ open class ElementDefinitionExample: Element {
     }
     
     // value.base64binary
-    if let valueBase64Binary = try FHIRKitPrimitive<FHIRKitBase64Binary>(from: codingKeyContainer, forKeyIfPresent: .valueBase64binary, auxKey: ._valueBase64binary) {
+    if let valueBase64Binary = try AlexandriaHRMPrimitive<AlexandriaHRMBase64Binary>(from: codingKeyContainer, forKeyIfPresent: .valueBase64binary, auxKey: ._valueBase64binary) {
       if tValue != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueBase64binary, in: codingKeyContainer, debugDescription: "More than one value supplied for \"value\"")
       }
@@ -199,7 +199,7 @@ open class ElementDefinitionExample: Element {
     }
     
     // value.boolean
-    if let valueBoolean = try FHIRKitPrimitive<FHIRKitBool>(from: codingKeyContainer, forKeyIfPresent: .valueBoolean, auxKey: ._valueBoolean) {
+    if let valueBoolean = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKeyIfPresent: .valueBoolean, auxKey: ._valueBoolean) {
       if tValue != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueBoolean, in: codingKeyContainer, debugDescription: "More than one value supplied for \"value\"")
       }
@@ -207,7 +207,7 @@ open class ElementDefinitionExample: Element {
     }
     
     // value.canonical
-    if let valueCanonical = try FHIRKitPrimitive<Canonical>(from: codingKeyContainer, forKeyIfPresent: .valueCanonical, auxKey: ._valueCanonical) {
+    if let valueCanonical = try AlexandriaHRMPrimitive<Canonical>(from: codingKeyContainer, forKeyIfPresent: .valueCanonical, auxKey: ._valueCanonical) {
       if tValue != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueCanonical, in: codingKeyContainer, debugDescription: "More than one value supplied for \"value\"")
       }
@@ -215,19 +215,19 @@ open class ElementDefinitionExample: Element {
     }
     
     // value.code
-    if let valueCode = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .valueCode, auxKey: ._valueCode) {
+    if let valueCode = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .valueCode, auxKey: ._valueCode) {
       if tValue != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueCode, in: codingKeyContainer, debugDescription: "More than one value supplied for \"value\"")
       }
       tValue = .code(valueCode)
     }
     
-    // value.codableConcept
-    if let valueCodableConcept = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .valueCodableConcept) {
+    // value.codeableConcept
+    if let valueCodeableConcept = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .valueCodeableConcept) {
       if tValue != nil {
-        throw DecodingError.dataCorruptedError(forKey: .valueCodableConcept, in: codingKeyContainer, debugDescription: "More than one value supplied for \"value\"")
+        throw DecodingError.dataCorruptedError(forKey: .valueCodeableConcept, in: codingKeyContainer, debugDescription: "More than one value supplied for \"value\"")
       }
-      tValue = .codableConcept(valueCodableConcept)
+      tValue = .codeableConcept(valueCodeableConcept)
     }
     
     // value.coding
@@ -279,7 +279,7 @@ open class ElementDefinitionExample: Element {
     }
     
     // value.date
-    if let valueDate = try FHIRKitPrimitive<FHIRKitDate>(from: codingKeyContainer, forKeyIfPresent: .valueDate, auxKey: ._valueDate) {
+    if let valueDate = try AlexandriaHRMPrimitive<AlexandriaHRMDate>(from: codingKeyContainer, forKeyIfPresent: .valueDate, auxKey: ._valueDate) {
       if tValue != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueDate, in: codingKeyContainer, debugDescription: "More than one value supplied for \"value\"")
       }
@@ -287,7 +287,7 @@ open class ElementDefinitionExample: Element {
     }
     
     // value.dateTime
-    if let valueDateTime = try FHIRKitPrimitive<FHIRKitDateTime>(from: codingKeyContainer, forKeyIfPresent: .valueDateTime, auxKey: ._valueDateTime) {
+    if let valueDateTime = try AlexandriaHRMPrimitive<AlexandriaHRMDateTime>(from: codingKeyContainer, forKeyIfPresent: .valueDateTime, auxKey: ._valueDateTime) {
       if tValue != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueDateTime, in: codingKeyContainer, debugDescription: "More than one value supplied for \"value\"")
       }
@@ -295,7 +295,7 @@ open class ElementDefinitionExample: Element {
     }
     
     // value.decimal
-    if let valueDecimal = try FHIRKitPrimitive<FHIRKitDecimal>(from: codingKeyContainer, forKeyIfPresent: .valueDecimal, auxKey: ._valueDecimal) {
+    if let valueDecimal = try AlexandriaHRMPrimitive<AlexandriaHRMDecimal>(from: codingKeyContainer, forKeyIfPresent: .valueDecimal, auxKey: ._valueDecimal) {
       if tValue != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueDecimal, in: codingKeyContainer, debugDescription: "More than one value supplied for \"value\"")
       }
@@ -343,7 +343,7 @@ open class ElementDefinitionExample: Element {
     }
     
     // value.id
-    if let valueId = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .valueId, auxKey: ._valueId) {
+    if let valueId = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .valueId, auxKey: ._valueId) {
       if tValue != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueId, in: codingKeyContainer, debugDescription: "More than one value supplied for \"value\"")
       }
@@ -359,7 +359,7 @@ open class ElementDefinitionExample: Element {
     }
     
     // value.instant
-    if let valueInstant = try FHIRKitPrimitive<FHIRKitInstant>(from: codingKeyContainer, forKeyIfPresent: .valueInstant, auxKey: ._valueInstant) {
+    if let valueInstant = try AlexandriaHRMPrimitive<AlexandriaHRMInstant>(from: codingKeyContainer, forKeyIfPresent: .valueInstant, auxKey: ._valueInstant) {
       if tValue != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueInstant, in: codingKeyContainer, debugDescription: "More than one value supplied for \"value\"")
       }
@@ -367,7 +367,7 @@ open class ElementDefinitionExample: Element {
     }
     
     // value.integer
-    if let valueInteger = try FHIRKitPrimitive<FHIRKitInteger>(from: codingKeyContainer, forKeyIfPresent: .valueInteger, auxKey: ._valueInteger) {
+    if let valueInteger = try AlexandriaHRMPrimitive<AlexandriaHRMInteger>(from: codingKeyContainer, forKeyIfPresent: .valueInteger, auxKey: ._valueInteger) {
       if tValue != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueInteger, in: codingKeyContainer, debugDescription: "More than one value supplied for \"value\"")
       }
@@ -375,7 +375,7 @@ open class ElementDefinitionExample: Element {
     }
     
     // value.markdown
-    if let valueMarkdown = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .valueMarkdown, auxKey: ._valueMarkdown) {
+    if let valueMarkdown = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .valueMarkdown, auxKey: ._valueMarkdown) {
       if tValue != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueMarkdown, in: codingKeyContainer, debugDescription: "More than one value supplied for \"value\"")
       }
@@ -399,7 +399,7 @@ open class ElementDefinitionExample: Element {
     }
     
     // value.oid
-    if let valueOid = try FHIRKitPrimitive<FHIRKitURI>(from: codingKeyContainer, forKeyIfPresent: .valueOid, auxKey: ._valueOid) {
+    if let valueOid = try AlexandriaHRMPrimitive<AlexandriaHRMURI>(from: codingKeyContainer, forKeyIfPresent: .valueOid, auxKey: ._valueOid) {
       if tValue != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueOid, in: codingKeyContainer, debugDescription: "More than one value supplied for \"value\"")
       }
@@ -423,7 +423,7 @@ open class ElementDefinitionExample: Element {
     }
     // value.positiveInteger
     
-    if let valuePositiveInteger = try FHIRKitPrimitive<FHIRKitPositiveInteger>(from: codingKeyContainer, forKeyIfPresent: .valuePositiveInteger, auxKey: ._valuePositiveInteger) {
+    if let valuePositiveInteger = try AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>(from: codingKeyContainer, forKeyIfPresent: .valuePositiveInteger, auxKey: ._valuePositiveInteger) {
       if tValue != nil {
         throw DecodingError.dataCorruptedError(forKey: .valuePositiveInteger, in: codingKeyContainer, debugDescription: "More than one value supplied for \"value\"")
       }
@@ -488,7 +488,7 @@ open class ElementDefinitionExample: Element {
     }
     
     // value.string
-    if let valueString = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .valueString, auxKey: ._valueString) {
+    if let valueString = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .valueString, auxKey: ._valueString) {
       if tValue != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueString, in: codingKeyContainer, debugDescription: "More than one value supplied for \"value\"")
       }
@@ -496,7 +496,7 @@ open class ElementDefinitionExample: Element {
     }
     
     // value.time
-    if let valueTime = try FHIRKitPrimitive<FHIRKitTime>(from: codingKeyContainer, forKeyIfPresent: .valueTime, auxKey: ._valueTime) {
+    if let valueTime = try AlexandriaHRMPrimitive<AlexandriaHRMTime>(from: codingKeyContainer, forKeyIfPresent: .valueTime, auxKey: ._valueTime) {
       if tValue != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueTime, in: codingKeyContainer, debugDescription: "More than one value supplied for \"value\"")
       }
@@ -520,7 +520,7 @@ open class ElementDefinitionExample: Element {
     }
     
     // value.unsignedInteger
-    if let valueUnsignedInteger = try FHIRKitPrimitive<FHIRKitUnsignedInteger>(from: codingKeyContainer, forKeyIfPresent: .valueUnsignedInteger, auxKey: ._valueUnsignedInteger) {
+    if let valueUnsignedInteger = try AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>(from: codingKeyContainer, forKeyIfPresent: .valueUnsignedInteger, auxKey: ._valueUnsignedInteger) {
       if tValue != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueUnsignedInteger, in: codingKeyContainer, debugDescription: "More than one value supplied for \"value\"")
       }
@@ -528,7 +528,7 @@ open class ElementDefinitionExample: Element {
     }
     
     // value.uri
-    if let valueUri = try FHIRKitPrimitive<FHIRKitURI>(from: codingKeyContainer, forKeyIfPresent: .valueUri, auxKey: ._valueUri) {
+    if let valueUri = try AlexandriaHRMPrimitive<AlexandriaHRMURI>(from: codingKeyContainer, forKeyIfPresent: .valueUri, auxKey: ._valueUri) {
       if tValue != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueUri, in: codingKeyContainer, debugDescription: "More than one value supplied for \"value\"")
       }
@@ -536,7 +536,7 @@ open class ElementDefinitionExample: Element {
     }
     
     // value.url
-    if let valueUrl = try FHIRKitPrimitive<FHIRKitURI>(from: codingKeyContainer, forKeyIfPresent: .valueUrl, auxKey: ._valueUrl) {
+    if let valueUrl = try AlexandriaHRMPrimitive<AlexandriaHRMURI>(from: codingKeyContainer, forKeyIfPresent: .valueUrl, auxKey: ._valueUrl) {
       if tValue != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueUrl, in: codingKeyContainer, debugDescription: "More than one value supplied for \"value\"")
       }
@@ -552,14 +552,14 @@ open class ElementDefinitionExample: Element {
     }
     
     // value.uuid
-    if let valueUuid = try FHIRKitPrimitive<FHIRKitURI>(from: codingKeyContainer, forKeyIfPresent: .valueUuid, auxKey: ._valueUuid) {
+    if let valueUuid = try AlexandriaHRMPrimitive<AlexandriaHRMURI>(from: codingKeyContainer, forKeyIfPresent: .valueUuid, auxKey: ._valueUuid) {
       if tValue != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueUuid, in: codingKeyContainer, debugDescription: "More than one value supplied for \"value\"")
       }
       tValue = .uuid(valueUuid)
     }
     
-    self.label = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKey: .label, auxKey: ._label)
+    self.label = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .label, auxKey: ._label)
     self.value = tValue!
     
     try super.init(from: decoder)
@@ -585,8 +585,8 @@ open class ElementDefinitionExample: Element {
       try _value.encode(on: &codingKeyContainer, forKey: .valueCanonical, auxKey: ._valueCanonical)
     case .code(let _value):
       try _value.encode(on: &codingKeyContainer, forKey: .valueCode, auxKey: ._valueCode)
-    case .codableConcept(let _value):
-      try _value.encode(on: &codingKeyContainer, forKey: .valueCodableConcept)
+    case .codeableConcept(let _value):
+      try _value.encode(on: &codingKeyContainer, forKey: .valueCodeableConcept)
     case .coding(let _value):
       try _value.encode(on: &codingKeyContainer, forKey: .valueCoding)
     case .contactDetail(let _value):

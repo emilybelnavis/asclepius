@@ -1,6 +1,6 @@
 //
 //  DeviceMetricCalibration.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,20 +17,20 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Describes the calibrations that have been performed or that are required to be performed.
  */
 open class DeviceMetricCalibration: BackboneElement {
   /// Describes the type of the calibrationm ethod
-  public var type: FHIRKitPrimitive<DeviceMetricCalibrationType>?
+  public var type: AlexandriaHRMPrimitive<DeviceMetricCalibrationType>?
   
   /// Describes the state of the calibration
-  public var state: FHIRKitPrimitive<DeviceMetricCalibrationState>?
+  public var state: AlexandriaHRMPrimitive<DeviceMetricCalibrationState>?
   
   /// Describes the time last calibration has been performed
-  public var time: FHIRKitPrimitive<FHIRKitInstant>?
+  public var time: AlexandriaHRMPrimitive<AlexandriaHRMInstant>?
   
   public override init() {
     super.init()
@@ -39,15 +39,15 @@ open class DeviceMetricCalibration: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    type: FHIRKitPrimitive<DeviceMetricCalibrationType>? = nil,
-    state: FHIRKitPrimitive<DeviceMetricCalibrationState>? = nil,
-    time: FHIRKitPrimitive<FHIRKitInstant>? = nil
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    type: AlexandriaHRMPrimitive<DeviceMetricCalibrationType>? = nil,
+    state: AlexandriaHRMPrimitive<DeviceMetricCalibrationState>? = nil,
+    time: AlexandriaHRMPrimitive<AlexandriaHRMInstant>? = nil
   ) {
     self.init()
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.type = type
     self.state = state
     self.time = time
@@ -63,9 +63,9 @@ open class DeviceMetricCalibration: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.type = try FHIRKitPrimitive<DeviceMetricCalibrationType>(from: codingKeyContainer, forKeyIfPresent: .type, auxKey: ._type)
-    self.state = try FHIRKitPrimitive<DeviceMetricCalibrationState>(from: codingKeyContainer, forKeyIfPresent: .state, auxKey: ._state)
-    self.time = try FHIRKitPrimitive<FHIRKitInstant>(from: codingKeyContainer, forKeyIfPresent: .time, auxKey: ._time)
+    self.type = try AlexandriaHRMPrimitive<DeviceMetricCalibrationType>(from: codingKeyContainer, forKeyIfPresent: .type, auxKey: ._type)
+    self.state = try AlexandriaHRMPrimitive<DeviceMetricCalibrationState>(from: codingKeyContainer, forKeyIfPresent: .state, auxKey: ._state)
+    self.time = try AlexandriaHRMPrimitive<AlexandriaHRMInstant>(from: codingKeyContainer, forKeyIfPresent: .time, auxKey: ._time)
     
     try super.init(from: decoder)
   }

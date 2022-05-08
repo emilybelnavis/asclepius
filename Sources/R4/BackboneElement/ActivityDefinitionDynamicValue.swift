@@ -1,6 +1,6 @@
 //
 //  ActivityDefinitionDynamicValue.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Dynamic aspects of the definition.
@@ -29,12 +29,12 @@ import FHIRKitCore
  */
 open class ActivityDefinitionDynamicValue: BackboneElement {
   /// The path to the element to be set dynamically
-  public var path: FHIRKitPrimitive<FHIRKitString>
+  public var path: AlexandriaHRMPrimitive<AlexandriaHRMString>
   
   /// An expression that provides the dynamic value for the customization
   public var expression: Expression
   
-  public init(expression: Expression, path: FHIRKitPrimitive<FHIRKitString>) {
+  public init(expression: Expression, path: AlexandriaHRMPrimitive<AlexandriaHRMString>) {
     self.path = path
     self.expression = expression
     super.init()
@@ -43,14 +43,14 @@ open class ActivityDefinitionDynamicValue: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    path: FHIRKitPrimitive<FHIRKitString>,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    path: AlexandriaHRMPrimitive<AlexandriaHRMString>,
     expression: Expression
   ) {
     self.init(expression: expression, path: path)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
   }
   
   // MARK: - Codable
@@ -62,7 +62,7 @@ open class ActivityDefinitionDynamicValue: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.path = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKey: .path, auxKey: ._path)
+    self.path = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .path, auxKey: ._path)
     self.expression = try Expression(from: codingKeyContainer, forKey: .expression)
     
     try super.init(from: decoder)

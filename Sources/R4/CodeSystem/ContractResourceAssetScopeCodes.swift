@@ -1,6 +1,6 @@
 //
 //  ContractResourceAssetScopeCodes.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/contract-asset-scope
  ValueSet: http://hl7.org/fhir/ValueSet/contract-assetscope
  */
-public enum ContractResourceAssetScopeCodes: String, FHIRKitPrimitiveType {
+public enum ContractResourceAssetScopeCodes: String, AlexandriaHRMPrimitiveType {
   /// todo: to be completed
   case thing
 }

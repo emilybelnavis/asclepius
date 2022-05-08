@@ -1,6 +1,6 @@
 //
 //  UsageContext.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Specifies clinical/business/etc. metadat athat can be used to retrieve, index, and/or categorize an artifact.
@@ -26,7 +26,7 @@ import FHIRKitCore
  */
 open class UsageContext: Element {
   public enum ValueX: Hashable {
-    case codableConcept(CodableConcept)
+    case codeableConcept(CodeableConcept)
     case quantity(Quantity)
     case range(Range)
     case reference(Reference)
@@ -46,19 +46,19 @@ open class UsageContext: Element {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     code: Coding,
     valueX: ValueX
   ) {
     self.init(code: code, valueX: valueX)
     self.fhirExtension = fhirExtension
-    self.id = id
+    self.fhirId = fhirId
   }
   
   // MARK: - Codable
   private enum CodingKeys: String, CodingKey {
     case code
-    case valueCodableConcept
+    case valueCodeableConcept
     case valueQuantity
     case valueRange
     case valueReference
@@ -68,11 +68,11 @@ open class UsageContext: Element {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     var tempValueX: ValueX?
-    if let valueCodableConcept = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .valueCodableConcept) {
+    if let valueCodeableConcept = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .valueCodeableConcept) {
       if tempValueX != nil {
-        throw DecodingError.dataCorruptedError(forKey: .valueCodableConcept, in: codingKeyContainer, debugDescription: "More than one value provided for \"value\"")
+        throw DecodingError.dataCorruptedError(forKey: .valueCodeableConcept, in: codingKeyContainer, debugDescription: "More than one value provided for \"value\"")
       }
-      tempValueX = .codableConcept(valueCodableConcept)
+      tempValueX = .codeableConcept(valueCodeableConcept)
     }
     
     if let valueQuantity = try Quantity(from: codingKeyContainer, forKeyIfPresent: .valueQuantity) {
@@ -106,8 +106,8 @@ open class UsageContext: Element {
     var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
     switch valueX {
-    case .codableConcept(let _value):
-      try _value.encode(on: &codingKeyContainer, forKey: .valueCodableConcept)
+    case .codeableConcept(let _value):
+      try _value.encode(on: &codingKeyContainer, forKey: .valueCodeableConcept)
     case .quantity(let _value):
       try _value.encode(on: &codingKeyContainer, forKey: .valueQuantity)
     case .range(let _value):

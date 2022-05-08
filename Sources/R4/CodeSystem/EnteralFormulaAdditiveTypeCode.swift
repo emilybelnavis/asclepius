@@ -1,6 +1,6 @@
 //
 //  EnteralFormulaAdditiveTypeCode.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -24,7 +24,7 @@
  URL: http://terminology.hl7.org/CodeSystem/entformula-additive
  ValueSet: http://hl7.org/fhir/ValueSet/entformula-additive
  */
-public enum EnteralFormulaAdditiveTypeCode: String, FHIRKitPrimitiveType {
+public enum EnteralFormulaAdditiveTypeCode: String, AlexandriaHRMPrimitiveType {
   /// Modular lipid enteral formula component
   case lipid
   

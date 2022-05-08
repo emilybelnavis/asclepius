@@ -1,6 +1,6 @@
 //
 //  EffectEvidenceSynthesisEffectEstimate.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,26 +17,26 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  The estimated effect of the exposure variant
  */
 open class EffectEvidenceSynthesisEffectEstimate: BackboneElement {
   /// Description of effect estimate
-  public var fhirDescription: FHIRKitPrimitive<FHIRKitString>?
+  public var fhirDescription: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// Type of effect estimate
-  public var type: CodableConcept?
+  public var type: CodeableConcept?
   
   /// Variant exposure states
-  public var variantState: CodableConcept?
+  public var variantState: CodeableConcept?
   
   /// Point estimate
-  public var value: FHIRKitPrimitive<FHIRKitDecimal>?
+  public var value: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>?
   
   /// What unit is the outcome described in
-  public var unitOfMeasure: CodableConcept?
+  public var unitOfMeasure: CodeableConcept?
   
   /// How precise the esitmate is 
   public var precisionEsitmate: [EffectEvidenceSynthesisEffectEstimatePrecisionEstimate]?

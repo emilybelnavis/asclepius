@@ -1,24 +1,25 @@
-# FHIRKit
+# AlexandriaHRM
 
-[![Build Status](https://img.shields.io/circleci/build/github/samanthaerachelb/FHIRKit/main?logo=circleci&style=flat-square)](https://app.circleci.com/pipelines/github/samanthaerachelb/FHIRKit)&nbsp;
-[![Code Quality](https://img.shields.io/codacy/grade/e43cbd23b1804b629d07053d2294d7fc?logo=codacy&style=flat-square)](https://app.codacy.com/gh/samanthaerachelb/FHIRKit/dashboard?branch=main)&nbsp;
-[![Maintainability](https://img.shields.io/codeclimate/maintainability-percentage/samanthaerachelb/FHIRKit?logo=codeclimate&style=flat-square)](https://codeclimate.com/github/samanthaerachelb/FHIRKit)
-![License](https://img.shields.io/github/license/samanthaerachelb/FHIRKit?style=flat-square)
+[![Build Status](https://img.shields.io/circleci/build/github/samanthaerachelb/AlexandriaHRM/main?logo=circleci&style=flat-square)](https://app.circleci.com/pipelines/github/samanthaerachelb/AlexandriaHRM)&nbsp;
+[![Code Quality](https://img.shields.io/codacy/grade/e43cbd23b1804b629d07053d2294d7fc?logo=codacy&style=flat-square)](https://app.codacy.com/gh/samanthaerachelb/AlexandriaHRM/dashboard?branch=main)&nbsp;
+[![Maintainability](https://img.shields.io/codeclimate/maintainability-percentage/samanthaerachelb/AlexandriaHRM?logo=codeclimate&style=flat-square)](https://codeclimate.com/github/samanthaerachelb/AlexandriaHRM)
+![License](https://img.shields.io/github/license/samanthaerachelb/AlexandriaHRM?style=flat-square)
 
-FHIRKit is an implementation of the HL7 Fast Healthcare
+AlexandriaHRM is a Health Records Management (HRM) library that implements the HL7 Fast Healthcare
 Interoperability Resources ([HL7 FHIR][hl7_fhir]) standard for healthcare interoperability in Swift.
 
-FHIRKit is currently being written to support the latest *stable* version of the
+AlexandriaHRM is currently being written to support the latest *stable* version of the
 FHIR Specification (v4.0.1: R4 - Mixed [Normative][balloting] and [STU][balloting])
 
 ## Features
 
-- Date/Time parsing, validation, and bi-directional `NSDate` conversion
-- Enforced non-nullability of mandatory parameters
-- Enums for most code systems
-- Enums to support `value[x]` types
-- Date/Time parsing, validation, and bi-directional `NSDate` conversion
-- Swift `Codable` support
+- Native FHIR Support
+  - Date/Time parsing, validation, and bi-directional `NSDate` conversion
+  - Enforced non-nullability of mandatory parameters
+  - Enums for most code systems
+  - Enums to support `value[x]` types
+  - Date/Time parsing, validation, and bi-directional `NSDate` conversion
+  - Swift `Codable` support
 
 ### Planned Features
 
@@ -34,24 +35,24 @@ Date | Sequence | Version | Description
 
 ## Requirements
 
-FHIRKit works with Swift 5.1 and later.
+AlexandriaHRM works with Swift 5.1 and later.
 
 ## Installation
 
-[Swift Package Manager][spm] is the recommended way to add FHIRKit to your
-project. Just add the following to your `Package.swift` file to add FHIRKit
+[Swift Package Manager][spm] is the recommended way to add AlexandriaHRM to your
+project. Just add the following to your `Package.swift` file to add AlexandriaHRM
 as a dependency:
 
 ```swift
 dependencies: [
-  .package(url: "https://github.com/samanthaerachelb/FHIRKit.git"
+  .package(url: "https://github.com/samanthaerachelb/AlexandriaHRM.git"
            upToNextMajor(from: "0.1.0"))
 ]
 ```
 
 ## Usage
 
-Learn how to use FHIRKit in the "How To" section (coming soon™)
+Learn how to use AlexandriaHRM in the "How To" section (coming soon™)
 
 ## License
 This work is licensed under the [Apache 2.0 License][license].
@@ -62,5 +63,5 @@ of this product by HL7
 
 [hl7_fhir]: https://hl7.org/fhir/
 [spm]: https://github.com/apple/swift-package-manager
-[license]: https://github.com/samanthaerachelb/FHIRKit/blob/main/license
+[license]: https://github.com/samanthaerachelb/AlexandriaHRM/blob/main/license
 [balloting]: https://confluence.hl7.org/display/HL7/HL7+Balloting

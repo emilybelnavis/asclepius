@@ -1,6 +1,6 @@
 //
 //  CommunicationNotDoneReason.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/communication-not-done-reason
  ValueSet: http://hl7.org/fhir/ValueSet/communication-not-done-reason
  */
-public enum CommunicationNotDoneReason: String, FHIRKitPrimitiveType {
+public enum CommunicationNotDoneReason: String, AlexandriaHRMPrimitiveType {
   /// The communication was not done due to an unknown reason
   case unknown
   

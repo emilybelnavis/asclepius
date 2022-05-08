@@ -1,6 +1,6 @@
 //
 //  MaxOccurs.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/question-max-occurs
  ValueSet: http://hl7.org/fhir/ValueSet/question-max-occurs
  */
-public enum MaxOccurs: String, FHIRKitPrimitiveType {
+public enum MaxOccurs: String, AlexandriaHRMPrimitiveType {
   /// Element can repeat an unlimited number of times.
   case max = "*"
 }

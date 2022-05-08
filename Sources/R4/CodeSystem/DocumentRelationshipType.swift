@@ -1,6 +1,6 @@
 //
 //  DocumentRelationshipType.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/document-relationship-type
  ValueSet: http://hl7.org/fhir/ValueSet/document-relationship-type
  */
-public enum DocumentRelationshipType: String, FHIRKitPrimitiveType {
+public enum DocumentRelationshipType: String, AlexandriaHRMPrimitiveType {
   /// This document logically replaces or supersedes the target document.
   case replaces
   

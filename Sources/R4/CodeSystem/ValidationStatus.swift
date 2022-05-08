@@ -1,6 +1,6 @@
 //
 //  ValidationStatus.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/validation-status
  ValueSet: http://hl7.org/fhir/ValueSet/verificationresult-validation-status
  */
-public enum ValidationStatus: String, FHIRKitPrimitiveType {
+public enum ValidationStatus: String, AlexandriaHRMPrimitiveType {
   /// successful
   case successful
   

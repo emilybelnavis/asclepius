@@ -1,6 +1,6 @@
 //
 //  TransactionMode.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/transaction-mode
  ValueSet: http://hl7.org/fhir/ValueSet/transaction-mode
  */
-public enum TransactionMode: String, FHIRKitPrimitiveType {
+public enum TransactionMode: String, AlexandriaHRMPrimitiveType {
   /// Neither batch or transaction is supported.
   case notSupported = "not-supported"
   

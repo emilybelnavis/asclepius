@@ -1,6 +1,6 @@
 //
 //  DefinitionTopic.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/definition-topic
  ValueSet: http://hl7.org/fhir/ValueSet/definition-topic
  */
-public enum DefinitionTopic: String, FHIRKitPrimitiveType {
+public enum DefinitionTopic: String, AlexandriaHRMPrimitiveType {
   /// The definition is related to treatment of the patient.
   case treatment
   

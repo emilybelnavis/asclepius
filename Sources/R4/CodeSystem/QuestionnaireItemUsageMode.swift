@@ -1,6 +1,6 @@
 //
 //  QuestionnaireItemUsageMode.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/questionnaire-usage-mode
  ValueSet: http://hl7.org/fhir/ValueSet/questionnaire-usage-mode
  */
-public enum QuestionnaireItemUsageMode: String, FHIRKitPrimitiveType {
+public enum QuestionnaireItemUsageMode: String, AlexandriaHRMPrimitiveType {
   /// Render the item regardless of usage mode.
   case captureDisplay = "capture-display"
   

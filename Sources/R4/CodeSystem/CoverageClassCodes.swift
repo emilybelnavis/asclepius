@@ -1,6 +1,6 @@
 //
 //  CoverageClassCodes.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/coverage-class
  ValueSet: http://hl7.org/fhir/ValueSet/coverage-class
  */
-public enum CoverageClassCodes: String, FHIRKitPrimitiveType {
+public enum CoverageClassCodes: String, AlexandriaHRMPrimitiveType {
   /// An employee group
   case group
   

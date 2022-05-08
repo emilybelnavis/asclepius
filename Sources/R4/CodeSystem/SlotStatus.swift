@@ -1,6 +1,6 @@
 //
 //  SlotStatus.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/slotstatus
  ValueSet: http://hl7.org/fhir/ValueSet/slotstatus
  */
-public enum SlotStatus: String, FHIRKitPrimitiveType {
+public enum SlotStatus: String, AlexandriaHRMPrimitiveType {
   /// Indicates that the time interval is busy because one  or more events have been scheduled for that interval.
   case busy
   

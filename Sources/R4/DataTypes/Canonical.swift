@@ -1,6 +1,6 @@
 //
 //  Canonical.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -18,7 +18,7 @@
 //  limitations under the License.
 
 import Foundation
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  A URI that referes to a resource by its canonical URL (resources with a url property). The canonical type
@@ -31,7 +31,7 @@ import FHIRKitCore
  
  http://hl7.org/fhir/datatypes.html#canonical
  */
-public struct Canonical: FHIRKitPrimitiveType {
+public struct Canonical: AlexandriaHRMPrimitiveType {
   public var url: URL
   public var version: String?
   
@@ -53,7 +53,7 @@ public struct Canonical: FHIRKitPrimitiveType {
 extension Canonical: ExpressibleByStringLiteral {
   public init(stringLiteral value: StringLiteralType) {
     let (url, version) = Self.parseParts(from: value)
-    self.init(url ?? URL(string: "invalid:uri")!, version: version)
+    self.init(url ?? URL(string: "invalfhirId:uri")!, version: version)
   }
 }
 
@@ -118,7 +118,7 @@ extension Canonical: Equatable {
 
 // MARK: -
 extension String {
-  public func asFHIRKitCanonical() -> Canonical? {
+  public func asAlexandriaHRMCanonical() -> Canonical? {
     let (parsedURL, version) = Canonical.parseParts(from: self)
     guard let url = parsedURL else {
       return nil
@@ -126,10 +126,10 @@ extension String {
     return Canonical(url, version: version)
   }
   
-  public func asFHIRKitCanonicalPrimitive() -> FHIRKitPrimitive<Canonical>? {
-    guard let uri = asFHIRKitCanonical() else {
+  public func asAlexandriaHRMCanonicalPrimitive() -> AlexandriaHRMPrimitive<Canonical>? {
+    guard let uri = asAlexandriaHRMCanonical() else {
       return nil
     }
-    return FHIRKitPrimitive(uri)
+    return AlexandriaHRMPrimitive(uri)
   }
 }

@@ -1,6 +1,6 @@
 //
 //  ChargeItemPerformer.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,14 +17,14 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
   Who performed the charged service. Indicates who or what performed or participated in the charged service.
  */
 open class ChargeItemPerformer: BackboneElement {
   /// What type of service was done
-  public var function: CodableConcept?
+  public var function: CodeableConcept?
   
   /// Individual who performed the service
   public var actor: Reference
@@ -37,14 +37,14 @@ open class ChargeItemPerformer: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    function: CodableConcept? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    function: CodeableConcept? = nil,
     actor: Reference
   ) {
     self.init(actor: actor)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
   }
   
   // MARK: - Codable
@@ -56,7 +56,7 @@ open class ChargeItemPerformer: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.function = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .function)
+    self.function = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .function)
     self.actor = try Reference(from: codingKeyContainer, forKey: .actor)
     
     try super.init(from: decoder)

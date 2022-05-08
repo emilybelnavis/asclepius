@@ -1,6 +1,6 @@
 //
 //  ContractTermOfferParty.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /// Offer recipient
 open class ContractTermOfferParty: BackboneElement {
@@ -25,9 +25,9 @@ open class ContractTermOfferParty: BackboneElement {
   public var reference: [Reference]
   
   /// Participant engagement type
-  public var role: CodableConcept
+  public var role: CodeableConcept
   
-  public init(reference: [Reference], role: CodableConcept) {
+  public init(reference: [Reference], role: CodeableConcept) {
     self.reference = reference
     self.role = role
     super.init()
@@ -36,14 +36,14 @@ open class ContractTermOfferParty: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     reference: [Reference],
-    role: CodableConcept
+    role: CodeableConcept
   ) {
     self.init(reference: reference, role: role)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
   }
   
   // MARK: - Codable
@@ -56,7 +56,7 @@ open class ContractTermOfferParty: BackboneElement {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     self.reference = try [Reference](from: codingKeyContainer, forKey: .reference)
-    self.role = try CodableConcept(from: codingKeyContainer, forKey: .role)
+    self.role = try CodeableConcept(from: codingKeyContainer, forKey: .role)
     
     try super.init(from: decoder)
   }

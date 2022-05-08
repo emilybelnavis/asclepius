@@ -1,6 +1,6 @@
 //
 //  IdentifierUsee.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -22,7 +22,7 @@
  URL: http://hl7.org/fhir/identifier-use
  ValueSet: http://hl7.org/fhir/ValueSet/identifier-use
  */
-public enum IdentifierUse: String, FHIRKitPrimitiveType {
+public enum IdentifierUse: String, AlexandriaHRMPrimitiveType {
   /// The identifier recommended for display and use in real-world interactions.
   case usual
   

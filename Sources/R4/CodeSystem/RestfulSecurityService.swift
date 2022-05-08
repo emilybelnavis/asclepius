@@ -1,6 +1,6 @@
 //
 //  RestfulSecurityService.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/restful-security-service
  ValueSet: http://hl7.org/fhir/ValueSet/restful-security-service
  */
-public enum RestfulSecurityService: String, FHIRKitPrimitiveType {
+public enum RestfulSecurityService: String, AlexandriaHRMPrimitiveType {
   /// OAuth (unspecified version see oauth.net).
   case oAuth = "OAuth"
   

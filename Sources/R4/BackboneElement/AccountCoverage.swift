@@ -1,6 +1,6 @@
 //
 //  AccountCoverage.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 /**
  The party(s) that are responsible for covering the payment of this account and what order they should be
  applied to the account
@@ -27,7 +27,7 @@ open class AccountCoverage: BackboneElement {
   public var coverage: Reference
   
   /// The priority of coverage in the context of this account
-  public var priority: FHIRKitPrimitive<FHIRKitPositiveInteger>?
+  public var priority: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>?
   
   public init(coverage: Reference) {
     self.coverage = coverage
@@ -37,14 +37,14 @@ open class AccountCoverage: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     coverage: Reference,
-    priority: FHIRKitPrimitive<FHIRKitPositiveInteger>? = nil
+    priority: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>? = nil
   ) {
     self.init(coverage: coverage)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.priority = priority
   }
   
@@ -58,7 +58,7 @@ open class AccountCoverage: BackboneElement {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     self.coverage = try Reference(from: codingKeyContainer, forKey: .coverage)
-    self.priority = try FHIRKitPrimitive<FHIRKitPositiveInteger>(from: codingKeyContainer, forKeyIfPresent: .priority, auxKey: ._priority)
+    self.priority = try AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>(from: codingKeyContainer, forKeyIfPresent: .priority, auxKey: ._priority)
     
     try super.init(from: decoder)
   }

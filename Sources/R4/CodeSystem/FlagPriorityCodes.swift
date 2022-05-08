@@ -1,6 +1,6 @@
 //
 //  FlagPriorityCodes.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/flag-priority-code
  ValueSet: http://hl7.org/fhir/ValueSet/flag-priority
  */
-public enum FlagPriorityCodes: String, FHIRKitPrimitiveType {
+public enum FlagPriorityCodes: String, AlexandriaHRMPrimitiveType {
   /// No alarm.
   case PN
   

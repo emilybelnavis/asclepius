@@ -1,6 +1,6 @@
 //
 //  FinancialResourceStatusCodes.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/fm-status
  ValueSet: http://hl7.org/fhir/ValueSet/fm-status
  */
-public enum FinancialResourceStatusCodes: String, FHIRKitPrimitiveType {
+public enum FinancialResourceStatusCodes: String, AlexandriaHRMPrimitiveType {
   /// The instance is currently in-force.
   case active
   

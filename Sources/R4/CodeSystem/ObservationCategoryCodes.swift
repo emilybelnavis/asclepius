@@ -1,6 +1,6 @@
 //
 //  ObservationCategoryCodes.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/observation-category
  ValueSet: http://hl7.org/fhir/ValueSet/observation-category
  */
-public enum ObservationCategoryCodes: String, FHIRKitPrimitiveType {
+public enum ObservationCategoryCodes: String, AlexandriaHRMPrimitiveType {
   
   /// Social History Observations define the patient's occupational, personal (e.g., lifestyle), social, familial, and
   /// environmental history and health risk factors that may impact the patient's health.

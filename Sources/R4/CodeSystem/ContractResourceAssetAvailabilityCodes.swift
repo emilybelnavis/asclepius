@@ -1,6 +1,6 @@
 //
 //  ContractResourceAssetAvailabilityCodes.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/contract-action-status
  ValueSet: http://hl7.org/fhir/ValueSet/contract-actionstatus
  */
-public enum ContractResourceAssetAvailabilityCodes: String, FHIRKitPrimitiveType {
+public enum ContractResourceAssetAvailabilityCodes: String, AlexandriaHRMPrimitiveType {
   /// todo: to be completed
   case lease
 }

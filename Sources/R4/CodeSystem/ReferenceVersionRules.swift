@@ -1,6 +1,6 @@
 //
 //  ReferenceVersionRules.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/reference-version-rules
  ValueSet: http://hl7.org/fhir/ValueSet/reference-version-rules
  */
-public enum ReferenceVersionRules: String, FHIRKitPrimitiveType {
+public enum ReferenceVersionRules: String, AlexandriaHRMPrimitiveType {
   /// The reference may be either version independent or version specific.
   case either
   

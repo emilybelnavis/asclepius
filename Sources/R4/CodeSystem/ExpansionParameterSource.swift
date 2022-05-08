@@ -1,6 +1,6 @@
 //
 //  ExpansionParameterSource.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/expansion-parameter-source
  ValueSet: http://hl7.org/fhir/ValueSet/expansion-parameter-source
  */
-public enum ExpansionParameterSource: String, FHIRKitPrimitiveType {
+public enum ExpansionParameterSource: String, AlexandriaHRMPrimitiveType {
   /// The parameter was supplied by the client in the $expand request.
   case input
   

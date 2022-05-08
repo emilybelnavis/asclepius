@@ -1,6 +1,6 @@
 //
 //  ElementDefinitionConstraint.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,34 +17,34 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 /**
  Condition that must evaluate to `true` - Formal constraints such as co-occurence and other constraints
  that can be computationally evaluated within the context of the instance.
  */
 open class ElementDefinitionConstraint: Element {
   /// Target of `condition` reference
-  public var key: FHIRKitPrimitive<FHIRKitString>
+  public var key: AlexandriaHRMPrimitive<AlexandriaHRMString>
   
   /// Why this constraint is necessary or appropriate
-  public var requirements: FHIRKitPrimitive<FHIRKitString>?
+  public var requirements: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// Identifies the impact constraint violation has on the conformance of the instance.
-  public var severity: FHIRKitPrimitive<ConstraintSeverity>
+  public var severity: AlexandriaHRMPrimitive<ConstraintSeverity>
   
   /// Human readable description of the constraint
-  public var human: FHIRKitPrimitive<FHIRKitString>
+  public var human: AlexandriaHRMPrimitive<AlexandriaHRMString>
   
   /// FHIRPath expression of the constraint
-  public var expression: FHIRKitPrimitive<FHIRKitString>?
+  public var expression: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// XPath expression of the constraint
-  public var xpath: FHIRKitPrimitive<FHIRKitString>?
+  public var xpath: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// Reference to the original source of the constraint
-  public var source: FHIRKitPrimitive<Canonical>?
+  public var source: AlexandriaHRMPrimitive<Canonical>?
   
-  public init(key: FHIRKitPrimitive<FHIRKitString>, severity: FHIRKitPrimitive<ConstraintSeverity>, human: FHIRKitPrimitive<FHIRKitString>) {
+  public init(key: AlexandriaHRMPrimitive<AlexandriaHRMString>, severity: AlexandriaHRMPrimitive<ConstraintSeverity>, human: AlexandriaHRMPrimitive<AlexandriaHRMString>) {
     self.key = key
     self.severity = severity
     self.human = human
@@ -53,18 +53,18 @@ open class ElementDefinitionConstraint: Element {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    key: FHIRKitPrimitive<FHIRKitString>,
-    requirements: FHIRKitPrimitive<FHIRKitString>? = nil,
-    severity: FHIRKitPrimitive<ConstraintSeverity>,
-    human: FHIRKitPrimitive<FHIRKitString>,
-    expression: FHIRKitPrimitive<FHIRKitString>? = nil,
-    xpath: FHIRKitPrimitive<FHIRKitString>? = nil,
-    source: FHIRKitPrimitive<Canonical>? = nil
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    key: AlexandriaHRMPrimitive<AlexandriaHRMString>,
+    requirements: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    severity: AlexandriaHRMPrimitive<ConstraintSeverity>,
+    human: AlexandriaHRMPrimitive<AlexandriaHRMString>,
+    expression: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    xpath: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    source: AlexandriaHRMPrimitive<Canonical>? = nil
   ) {
     self.init(key: key, severity: severity, human: human)
     self.fhirExtension = fhirExtension
-    self.id = id
+    self.fhirId = fhirId
     self.requirements = requirements
     self.expression = expression
     self.xpath = xpath
@@ -85,13 +85,13 @@ open class ElementDefinitionConstraint: Element {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.key = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKey: .key, auxKey: ._key)
-    self.requirements = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .requirements, auxKey: ._requirements)
-    self.severity = try FHIRKitPrimitive<ConstraintSeverity>(from: codingKeyContainer, forKey: .severity, auxKey: ._severity)
-    self.human = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKey: .human, auxKey: ._human)
-    self.expression = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .expression, auxKey: ._expression)
-    self.xpath = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .xpath, auxKey: ._xpath)
-    self.source = try FHIRKitPrimitive<Canonical>(from: codingKeyContainer, forKeyIfPresent: .source, auxKey: ._source)
+    self.key = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .key, auxKey: ._key)
+    self.requirements = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .requirements, auxKey: ._requirements)
+    self.severity = try AlexandriaHRMPrimitive<ConstraintSeverity>(from: codingKeyContainer, forKey: .severity, auxKey: ._severity)
+    self.human = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .human, auxKey: ._human)
+    self.expression = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .expression, auxKey: ._expression)
+    self.xpath = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .xpath, auxKey: ._xpath)
+    self.source = try AlexandriaHRMPrimitive<Canonical>(from: codingKeyContainer, forKeyIfPresent: .source, auxKey: ._source)
     
     try super.init(from: decoder)
   }

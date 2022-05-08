@@ -1,6 +1,6 @@
 //
 //  TimingRepeat.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /// A set of rules that describe when the event is scheduled.
 open class TimingRepeat: Element {
@@ -32,46 +32,46 @@ open class TimingRepeat: Element {
   public var boundsX: BoundsX?
   
   /// number of times to repeat
-  public var count: FHIRKitPrimitive<FHIRKitPositiveInteger>?
+  public var count: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>?
   
   /// max number of repeats
-  public var countMax: FHIRKitPrimitive<FHIRKitPositiveInteger>?
+  public var countMax: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>?
   
   /// how long when it happens
-  public var duration: FHIRKitPrimitive<FHIRKitDecimal>?
+  public var duration: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>?
   
   /// how long when it happens (max)
-  public var durationMax: FHIRKitPrimitive<FHIRKitDecimal>?
+  public var durationMax: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>?
   
   /// unit of time
-  public var durationUnit: FHIRKitPrimitive<FHIRKitString>?
+  public var durationUnit: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// how many times per repeat period
-  public var frequency: FHIRKitPrimitive<FHIRKitPositiveInteger>?
+  public var frequency: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>?
   
   /// how many times per repeat period (max)
-  public var frequencyMax: FHIRKitPrimitive<FHIRKitPositiveInteger>?
+  public var frequencyMax: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>?
   
   /// event frequency times per period
-  public var period: FHIRKitPrimitive<FHIRKitDecimal>?
+  public var period: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>?
   
   /// upper limit of period (e.g. 1-2 hours)
-  public var periodMax: FHIRKitPrimitive<FHIRKitDecimal>?
+  public var periodMax: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>?
   
   ///  unit of time
-  public var periodUnit: FHIRKitPrimitive<FHIRKitString>?
+  public var periodUnit: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// if one or more days of week is provided, action only occurs on specified day(s)
-  public var dayOfWeek: [FHIRKitPrimitive<DaysOfWeek>]?
+  public var dayOfWeek: [AlexandriaHRMPrimitive<DaysOfWeek>]?
   
   /// time of day for action
-  public var timeOfDay: [FHIRKitPrimitive<FHIRKitTime>]?
+  public var timeOfDay: [AlexandriaHRMPrimitive<AlexandriaHRMTime>]?
   
   /// code for time period of occurence
-  public var when: [FHIRKitPrimitive<FHIRKitString>]?
+  public var when: [AlexandriaHRMPrimitive<AlexandriaHRMString>]?
   
   /// minutes from event (before/after)
-  public var offset: FHIRKitPrimitive<FHIRKitUnsignedInteger>?
+  public var offset: AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>?
   
   override public init() {
     super.init()
@@ -79,26 +79,26 @@ open class TimingRepeat: Element {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     boundsX: BoundsX? = nil,
-    count: FHIRKitPrimitive<FHIRKitPositiveInteger>? = nil,
-    countMax: FHIRKitPrimitive<FHIRKitPositiveInteger>? = nil,
-    duration: FHIRKitPrimitive<FHIRKitDecimal>? = nil,
-    durationMax: FHIRKitPrimitive<FHIRKitDecimal>? = nil,
-    durationUnit: FHIRKitPrimitive<FHIRKitString>? = nil,
-    frequency: FHIRKitPrimitive<FHIRKitPositiveInteger>? = nil,
-    frequencyMax: FHIRKitPrimitive<FHIRKitPositiveInteger>? = nil,
-    period: FHIRKitPrimitive<FHIRKitDecimal>? = nil,
-    periodMax: FHIRKitPrimitive<FHIRKitDecimal>? = nil,
-    periodUnit: FHIRKitPrimitive<FHIRKitString>? = nil,
-    dayOfWeek: [FHIRKitPrimitive<DaysOfWeek>]? = nil,
-    timeOfDay: [FHIRKitPrimitive<FHIRKitTime>]? = nil,
-    when: [FHIRKitPrimitive<FHIRKitString>]? = nil,
-    offset: FHIRKitPrimitive<FHIRKitUnsignedInteger>? = nil
+    count: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>? = nil,
+    countMax: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>? = nil,
+    duration: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>? = nil,
+    durationMax: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>? = nil,
+    durationUnit: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    frequency: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>? = nil,
+    frequencyMax: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>? = nil,
+    period: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>? = nil,
+    periodMax: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>? = nil,
+    periodUnit: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    dayOfWeek: [AlexandriaHRMPrimitive<DaysOfWeek>]? = nil,
+    timeOfDay: [AlexandriaHRMPrimitive<AlexandriaHRMTime>]? = nil,
+    when: [AlexandriaHRMPrimitive<AlexandriaHRMString>]? = nil,
+    offset: AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>? = nil
   ) {
     self.init()
     self.fhirExtension = fhirExtension
-    self.id = id
+    self.fhirId = fhirId
     self.boundsX = boundsX
     self.count = count
     self.countMax = countMax
@@ -163,20 +163,20 @@ open class TimingRepeat: Element {
     }
     
     self.boundsX = tempBoundsX
-    self.count = try FHIRKitPrimitive<FHIRKitPositiveInteger>(from: codingKeyContainer, forKeyIfPresent: .count, auxKey: ._count)
-    self.countMax = try FHIRKitPrimitive<FHIRKitPositiveInteger>(from: codingKeyContainer, forKeyIfPresent: .countMax, auxKey: ._countMax)
-    self.duration = try FHIRKitPrimitive<FHIRKitDecimal>(from: codingKeyContainer, forKeyIfPresent: .duration, auxKey: ._duration)
-    self.durationMax = try FHIRKitPrimitive<FHIRKitDecimal>(from: codingKeyContainer, forKeyIfPresent: .durationMax, auxKey: ._durationMax)
-    self.durationUnit = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .durationUnit, auxKey: ._durationUnit)
-    self.frequency = try FHIRKitPrimitive<FHIRKitPositiveInteger>(from: codingKeyContainer, forKeyIfPresent: .frequency, auxKey: ._frequency)
-    self.frequencyMax = try FHIRKitPrimitive<FHIRKitPositiveInteger>(from: codingKeyContainer, forKeyIfPresent: .frequencyMax, auxKey: ._frequencyMax)
-    self.period = try FHIRKitPrimitive<FHIRKitDecimal>(from: codingKeyContainer, forKeyIfPresent: .period, auxKey: ._period)
-    self.periodMax = try FHIRKitPrimitive<FHIRKitDecimal>(from: codingKeyContainer, forKeyIfPresent: .periodMax, auxKey: ._periodMax)
-    self.periodUnit = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .periodUnit, auxKey: ._periodUnit)
-    self.dayOfWeek = try [FHIRKitPrimitive<DaysOfWeek>](from: codingKeyContainer, forKeyIfPresent: .dayOfWeek, auxKey: ._dayOfWeek)
-    self.timeOfDay = try [FHIRKitPrimitive<FHIRKitTime>](from: codingKeyContainer, forKeyIfPresent: .timeOfDay, auxKey: ._timeOfDay)
-    self.when = try [FHIRKitPrimitive<FHIRKitString>](from: codingKeyContainer, forKeyIfPresent: .when, auxKey: ._when)
-    self.offset = try FHIRKitPrimitive<FHIRKitUnsignedInteger>(from: codingKeyContainer, forKeyIfPresent: .offset, auxKey: ._offset)
+    self.count = try AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>(from: codingKeyContainer, forKeyIfPresent: .count, auxKey: ._count)
+    self.countMax = try AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>(from: codingKeyContainer, forKeyIfPresent: .countMax, auxKey: ._countMax)
+    self.duration = try AlexandriaHRMPrimitive<AlexandriaHRMDecimal>(from: codingKeyContainer, forKeyIfPresent: .duration, auxKey: ._duration)
+    self.durationMax = try AlexandriaHRMPrimitive<AlexandriaHRMDecimal>(from: codingKeyContainer, forKeyIfPresent: .durationMax, auxKey: ._durationMax)
+    self.durationUnit = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .durationUnit, auxKey: ._durationUnit)
+    self.frequency = try AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>(from: codingKeyContainer, forKeyIfPresent: .frequency, auxKey: ._frequency)
+    self.frequencyMax = try AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>(from: codingKeyContainer, forKeyIfPresent: .frequencyMax, auxKey: ._frequencyMax)
+    self.period = try AlexandriaHRMPrimitive<AlexandriaHRMDecimal>(from: codingKeyContainer, forKeyIfPresent: .period, auxKey: ._period)
+    self.periodMax = try AlexandriaHRMPrimitive<AlexandriaHRMDecimal>(from: codingKeyContainer, forKeyIfPresent: .periodMax, auxKey: ._periodMax)
+    self.periodUnit = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .periodUnit, auxKey: ._periodUnit)
+    self.dayOfWeek = try [AlexandriaHRMPrimitive<DaysOfWeek>](from: codingKeyContainer, forKeyIfPresent: .dayOfWeek, auxKey: ._dayOfWeek)
+    self.timeOfDay = try [AlexandriaHRMPrimitive<AlexandriaHRMTime>](from: codingKeyContainer, forKeyIfPresent: .timeOfDay, auxKey: ._timeOfDay)
+    self.when = try [AlexandriaHRMPrimitive<AlexandriaHRMString>](from: codingKeyContainer, forKeyIfPresent: .when, auxKey: ._when)
+    self.offset = try AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>(from: codingKeyContainer, forKeyIfPresent: .offset, auxKey: ._offset)
     
     try super.init(from: decoder)
   }

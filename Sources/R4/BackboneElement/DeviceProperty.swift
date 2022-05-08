@@ -1,6 +1,6 @@
 //
 //  DeviceProperty.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,18 +17,18 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 /**
  The actual configuration settings of a device as it actually operates (e.g. regulation status, time properties)
  */
 open class DeviceProperty: BackboneElement {
   /// Code that specifies the property `DeviceDefinitionPropertyCode` (Extensible)
-  public var type: CodableConcept
+  public var type: CodeableConcept
   
   /// Property value as a quantity
   public var valueQuantity: [Quantity]?
   
   /// Property value as a code (e.g. NTP4 (synced to NTP))
-  public var valueCode: [CodableConcept]?
+  public var valueCode: [CodeableConcept]?
   
 }

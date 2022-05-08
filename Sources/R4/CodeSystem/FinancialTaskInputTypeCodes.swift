@@ -1,6 +1,6 @@
 //
 //  FinancialTaskInputTypeCodes.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/financialtaskinputtype
  ValueSet: http://hl7.org/fhir/ValueSet/financial-taskinputtype
  */
-public enum FinancialTaskInputTypeCodes: String, FHIRKitPrimitiveType {
+public enum FinancialTaskInputTypeCodes: String, AlexandriaHRMPrimitiveType {
   /// The name of a resource to include in a selection.
   case include
   

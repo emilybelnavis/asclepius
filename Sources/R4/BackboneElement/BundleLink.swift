@@ -1,6 +1,6 @@
 //
 //  BundleLink.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,17 +17,17 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /// A series of links that provide context to this bundle
 open class BundleLink: BackboneElement {
   /// See http://www.iana.org/assignments/link-relations.xhtml#link-relations-1
-  public var relation: FHIRKitPrimitive<FHIRKitString>
+  public var relation: AlexandriaHRMPrimitive<AlexandriaHRMString>
   
   /// Reference details for the link
-  public var url: FHIRKitPrimitive<FHIRKitURI>
+  public var url: AlexandriaHRMPrimitive<AlexandriaHRMURI>
 
-  public init(relation: FHIRKitPrimitive<FHIRKitString>, url: FHIRKitPrimitive<FHIRKitURI>) {
+  public init(relation: AlexandriaHRMPrimitive<AlexandriaHRMString>, url: AlexandriaHRMPrimitive<AlexandriaHRMURI>) {
     self.relation = relation
     self.url = url
     super.init()
@@ -36,14 +36,14 @@ open class BundleLink: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    relation: FHIRKitPrimitive<FHIRKitString>,
-    url: FHIRKitPrimitive<FHIRKitURI>
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    relation: AlexandriaHRMPrimitive<AlexandriaHRMString>,
+    url: AlexandriaHRMPrimitive<AlexandriaHRMURI>
   ) {
     self.init(relation: relation, url: url)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
   }
   
   // MARK: - Codable
@@ -55,8 +55,8 @@ open class BundleLink: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.relation = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKey: .relation, auxKey: ._relation)
-    self.url = try FHIRKitPrimitive<FHIRKitURI>(from: codingKeyContainer, forKey: .url, auxKey: ._url)
+    self.relation = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .relation, auxKey: ._relation)
+    self.url = try AlexandriaHRMPrimitive<AlexandriaHRMURI>(from: codingKeyContainer, forKey: .url, auxKey: ._url)
     
     try super.init(from: decoder)
   }

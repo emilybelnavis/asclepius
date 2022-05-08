@@ -1,6 +1,6 @@
 //
 //  StrandType.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/strand-type
  ValueSet: http://hl7.org/fhir/ValueSet/strand-type
  */
-public enum StrandType: String, FHIRKitPrimitiveType {
+public enum StrandType: String, AlexandriaHRMPrimitiveType {
   /// Watson strand of reference sequence.
   case watson
   

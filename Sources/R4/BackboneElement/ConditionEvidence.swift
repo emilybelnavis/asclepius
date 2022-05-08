@@ -1,6 +1,6 @@
 //
 //  ConditionEvidence.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,14 +17,14 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 
 /// Supporting evidence/manifestations that are the basis of the Condition's verification status, such as
 /// evidence that confirmed or refuted the condition
 open class ConditionEvidence: BackboneElement {
   /// Manifestation/symptom
-  public var code: [CodableConcept]?
+  public var code: [CodeableConcept]?
   
   /// Supporting information found elsewhere
   public var detail: [Reference]?
@@ -36,14 +36,14 @@ open class ConditionEvidence: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    code: [CodableConcept]? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    code: [CodeableConcept]? = nil,
     detail: [Reference]? = nil
   ) {
     self.init()
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.code = code
     self.detail = detail
   }
@@ -57,7 +57,7 @@ open class ConditionEvidence: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.code = try [CodableConcept](from: codingKeyContainer, forKey: .code)
+    self.code = try [CodeableConcept](from: codingKeyContainer, forKey: .code)
     self.detail = try [Reference](from: codingKeyContainer, forKey: .detail)
     
     try super.init(from: decoder)

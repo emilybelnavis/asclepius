@@ -1,6 +1,6 @@
 //
 //  GuidePageGeneration.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/guide-page-generation
  ValueSet: http://hl7.org/fhir/ValueSet/guide-page-generation
  */
-public enum GuidePageGeneration: String, FHIRKitPrimitiveType {
+public enum GuidePageGeneration: String, AlexandriaHRMPrimitiveType {
   /// Page is proper xhtml with no templating.  Will be brought across unchanged for standard post-processing.
   case html
   

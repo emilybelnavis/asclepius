@@ -1,6 +1,6 @@
 //
 //  CarePlanActivityDetail.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  A simple summary of a planned activity suitable for a general care plan system that does know about
@@ -27,13 +27,13 @@ import FHIRKitCore
 */
 open class CarePlanActivityDetail: BackboneElement {
   public enum ProductX: Hashable {
-    case codableConcept(CodableConcept)
+    case codeableConcept(CodeableConcept)
     case reference(Reference)
   }
   
   public enum ScheduledX: Hashable {
     case period(Period)
-    case string(FHIRKitPrimitive<FHIRKitString>)
+    case string(AlexandriaHRMPrimitive<AlexandriaHRMString>)
     case timing(Timing)
   }
   /**
@@ -44,19 +44,19 @@ open class CarePlanActivityDetail: BackboneElement {
    `MedicationRequest`, `NutritionOrder`, `Task`, `ServiceRequest`,
    `VisionPrescription`]
    */
-  public var kind: FHIRKitPrimitive<ResourceType>?
+  public var kind: AlexandriaHRMPrimitive<ResourceType>?
   
   /// Instantiates a FHIR protocol or definition
-  public var instantiatesCanonical: [FHIRKitPrimitive<Canonical>]?
+  public var instantiatesCanonical: [AlexandriaHRMPrimitive<Canonical>]?
   
   /// Instantiates an external protocol or definition
-  public var instantiatesUri: [FHIRKitPrimitive<FHIRKitURI>]?
+  public var instantiatesUri: [AlexandriaHRMPrimitive<AlexandriaHRMURI>]?
   
   /// Detail type of activity
-  public var code: CodableConcept?
+  public var code: CodeableConcept?
   
   /// Why the activity should be done or why the activity was prohibited
-  public var reasonCode: [CodableConcept]?
+  public var reasonCode: [CodeableConcept]?
   
   /// Why the activity is needed
   public var reasonReference: [Reference]?
@@ -65,13 +65,13 @@ open class CarePlanActivityDetail: BackboneElement {
   public var goal: [Reference]?
   
   /// Identifies what progress is being made for the specific activity
-  public var status: FHIRKitPrimitive<CarePlanActivityStatus>
+  public var status: AlexandriaHRMPrimitive<CarePlanActivityStatus>
   
   /// Reason for current status
-  public var statusReason: CodableConcept?
+  public var statusReason: CodeableConcept?
   
   /// Is activity prohibited
-  public var doNotPerform: FHIRKitPrimitive<FHIRKitBool>
+  public var doNotPerform: AlexandriaHRMPrimitive<AlexandriaHRMBool>
   
   /// When activity is scheduled to occur
   public var scheduledX: ScheduledX?
@@ -92,9 +92,9 @@ open class CarePlanActivityDetail: BackboneElement {
   public var quantity: Quantity?
   
   /// Extra information describing the activity that needs to be performed
-  public var fhirDescription: FHIRKitPrimitive<FHIRKitString>?
+  public var fhirDescription: AlexandriaHRMPrimitive<AlexandriaHRMString>?
  
-  public init(status: FHIRKitPrimitive<CarePlanActivityStatus>, doNotPerform: FHIRKitPrimitive<FHIRKitBool>) {
+  public init(status: AlexandriaHRMPrimitive<CarePlanActivityStatus>, doNotPerform: AlexandriaHRMPrimitive<AlexandriaHRMBool>) {
     self.status = status
     self.doNotPerform = doNotPerform
     super.init()
@@ -103,29 +103,29 @@ open class CarePlanActivityDetail: BackboneElement {
   public convenience init(
     `extension`: [Extension]? = nil,
     fhirExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    kind: FHIRKitPrimitive<ResourceType>? = nil,
-    instantiatesCanonical: [FHIRKitPrimitive<Canonical>]? = nil,
-    instantiatesUri: [FHIRKitPrimitive<FHIRKitURI>]? = nil,
-    code: CodableConcept? = nil,
-    reasonCode: [CodableConcept]? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    kind: AlexandriaHRMPrimitive<ResourceType>? = nil,
+    instantiatesCanonical: [AlexandriaHRMPrimitive<Canonical>]? = nil,
+    instantiatesUri: [AlexandriaHRMPrimitive<AlexandriaHRMURI>]? = nil,
+    code: CodeableConcept? = nil,
+    reasonCode: [CodeableConcept]? = nil,
     reasonReference: [Reference]? = nil,
     goal: [Reference]? = nil,
-    status: FHIRKitPrimitive<CarePlanActivityStatus>,
-    statusReason: CodableConcept? = nil,
-    doNotPerform: FHIRKitPrimitive<FHIRKitBool>,
+    status: AlexandriaHRMPrimitive<CarePlanActivityStatus>,
+    statusReason: CodeableConcept? = nil,
+    doNotPerform: AlexandriaHRMPrimitive<AlexandriaHRMBool>,
     scheduledX: ScheduledX? = nil,
     location: Reference? = nil,
     performer: [Reference]? = nil,
     productX: ProductX? = nil,
     dailyAmount: Quantity? = nil,
     quantity: Quantity? = nil,
-    fhirDescription: FHIRKitPrimitive<FHIRKitString>? = nil
+    fhirDescription: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil
   ) {
     self.init(status: status, doNotPerform: doNotPerform)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.kind = kind
     self.instantiatesCanonical = instantiatesCanonical
     self.instantiatesUri = instantiatesUri
@@ -159,7 +159,7 @@ open class CarePlanActivityDetail: BackboneElement {
     case scheduledString; case _scheduledString
     case scheduledTiming
     case location
-    case productCodableConcept
+    case productCodeableConcept
     case productReference
     case performer
     case dailyAmount
@@ -178,7 +178,7 @@ open class CarePlanActivityDetail: BackboneElement {
       tempScheduledX = .period(scheduledPeriod)
     }
     
-    if let scheduledString = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .scheduledString, auxKey: ._scheduledString) {
+    if let scheduledString = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .scheduledString, auxKey: ._scheduledString) {
       if tempScheduledX != nil {
         throw DecodingError.dataCorruptedError(forKey: .scheduledString, in: codingKeyContainer, debugDescription: "More than one value provided for \"scheduled\"")
       }
@@ -193,11 +193,11 @@ open class CarePlanActivityDetail: BackboneElement {
     }
     
     var tempProductX: ProductX?
-    if let productCodableConcept = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .productCodableConcept) {
+    if let productCodeableConcept = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .productCodeableConcept) {
       if tempProductX != nil {
-        throw DecodingError.dataCorruptedError(forKey: .productCodableConcept, in: codingKeyContainer, debugDescription: "More than one value provided for \"product\"")
+        throw DecodingError.dataCorruptedError(forKey: .productCodeableConcept, in: codingKeyContainer, debugDescription: "More than one value provided for \"product\"")
       }
-      tempProductX = .codableConcept(productCodableConcept)
+      tempProductX = .codeableConcept(productCodeableConcept)
     }
     
     if let productReference = try Reference(from: codingKeyContainer, forKeyIfPresent: .productReference) {
@@ -207,23 +207,23 @@ open class CarePlanActivityDetail: BackboneElement {
       tempProductX = .reference(productReference)
     }
     
-    self.kind = try FHIRKitPrimitive<ResourceType>(from: codingKeyContainer, forKeyIfPresent: .kind, auxKey: ._kind)
-    self.instantiatesCanonical = try [FHIRKitPrimitive<Canonical>](from: codingKeyContainer, forKeyIfPresent: .instantiatesCanonical, auxKey: ._instantiatesCanonical)
-    self.instantiatesUri = try [FHIRKitPrimitive<FHIRKitURI>](from: codingKeyContainer, forKeyIfPresent: .instantiatesUri, auxKey: ._instantiatesUri)
-    self.code = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .code)
-    self.reasonCode = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .reasonCode)
+    self.kind = try AlexandriaHRMPrimitive<ResourceType>(from: codingKeyContainer, forKeyIfPresent: .kind, auxKey: ._kind)
+    self.instantiatesCanonical = try [AlexandriaHRMPrimitive<Canonical>](from: codingKeyContainer, forKeyIfPresent: .instantiatesCanonical, auxKey: ._instantiatesCanonical)
+    self.instantiatesUri = try [AlexandriaHRMPrimitive<AlexandriaHRMURI>](from: codingKeyContainer, forKeyIfPresent: .instantiatesUri, auxKey: ._instantiatesUri)
+    self.code = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .code)
+    self.reasonCode = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .reasonCode)
     self.reasonReference = try [Reference](from: codingKeyContainer, forKeyIfPresent: .reasonReference)
     self.goal = try [Reference](from: codingKeyContainer, forKeyIfPresent: .goal)
-    self.status = try FHIRKitPrimitive<CarePlanActivityStatus>(from: codingKeyContainer, forKey: .status, auxKey: ._status)
-    self.statusReason = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .statusReason)
-    self.doNotPerform = try FHIRKitPrimitive<FHIRKitBool>(from: codingKeyContainer, forKey: .doNotPerform, auxKey: ._doNotPerform)
+    self.status = try AlexandriaHRMPrimitive<CarePlanActivityStatus>(from: codingKeyContainer, forKey: .status, auxKey: ._status)
+    self.statusReason = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .statusReason)
+    self.doNotPerform = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKey: .doNotPerform, auxKey: ._doNotPerform)
     self.scheduledX = tempScheduledX
     self.location = try Reference(from: codingKeyContainer, forKeyIfPresent: .location)
     self.performer = try [Reference](from: codingKeyContainer, forKeyIfPresent: .performer)
     self.productX = tempProductX
     self.dailyAmount = try Quantity(from: codingKeyContainer, forKeyIfPresent: .dailyAmount)
     self.quantity = try Quantity(from: codingKeyContainer, forKeyIfPresent: .quantity)
-    self.fhirDescription = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .fhirDescription, auxKey: ._fhirDescription)
+    self.fhirDescription = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .fhirDescription, auxKey: ._fhirDescription)
     
     try super.init(from: decoder)
   }
@@ -244,8 +244,8 @@ open class CarePlanActivityDetail: BackboneElement {
     
     if let enumProductX = productX {
       switch enumProductX {
-      case .codableConcept(let _value):
-        try _value.encode(on: &codingKeyContainer, forKey: .productCodableConcept)
+      case .codeableConcept(let _value):
+        try _value.encode(on: &codingKeyContainer, forKey: .productCodeableConcept)
       case .reference(let _value):
         try _value.encode(on: &codingKeyContainer, forKey: .productReference)
       }

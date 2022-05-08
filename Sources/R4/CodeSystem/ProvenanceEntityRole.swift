@@ -1,6 +1,6 @@
 //
 //  ProvenanceEntityRole.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/provenance-entity-role
  ValueSet: http://hl7.org/fhir/ValueSet/provenance-entity-role
  */
-public enum ProvenanceEntityRole: String, FHIRKitPrimitiveType {
+public enum ProvenanceEntityRole: String, AlexandriaHRMPrimitiveType {
   
   /// A transformation of an entity into another, an update of an entity resulting in a new one, or the construction
   /// of a new entity based on a pre-existing entity.

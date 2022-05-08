@@ -1,6 +1,6 @@
 //
 //  NetworkTypeCodes.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/benefit-network
  ValueSet: http://hl7.org/fhir/ValueSet/benefit-network
  */
-public enum NetworkTypeCodes: String, FHIRKitPrimitiveType {
+public enum NetworkTypeCodes: String, AlexandriaHRMPrimitiveType {
   /// Services rendered by a Network provider
   case `in`
   

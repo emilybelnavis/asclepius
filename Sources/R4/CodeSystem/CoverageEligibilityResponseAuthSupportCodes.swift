@@ -1,6 +1,6 @@
 //
 //  CoverageEligibilityResponseAuthSupportCodes.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/coverageeligibilityresponse-ex-auth-support
  ValueSet: http://hl7.org/fhir/ValueSet/coverageeligibilityresponse-ex-auth-support
  */
-public enum CoverageEligibilityResponseAuthSupportCodes: String, FHIRKitPrimitiveType {
+public enum CoverageEligibilityResponseAuthSupportCodes: String, AlexandriaHRMPrimitiveType {
   /// A request or authorization for laboratory diagnostic tests.
   case laborder
   

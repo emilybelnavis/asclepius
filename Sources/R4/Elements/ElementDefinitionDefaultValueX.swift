@@ -1,6 +1,6 @@
 //
 //  ElementDefinitionDefaultValueX.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,43 +17,43 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 open class ElementDefinitionDefaultValueX: Element {
   public var address: Address?
   public var age: Age?
   public var annotation: Annotation?
   public var attachment: Attachment?
-  public var base64binary: FHIRKitPrimitive<FHIRKitBase64Binary>?
-  public var boolean: FHIRKitPrimitive<FHIRKitBool>?
-  public var canonical: FHIRKitPrimitive<Canonical>?
-  public var code: FHIRKitPrimitive<FHIRKitString>?
-  public var codableConcept: CodableConcept?
+  public var base64binary: AlexandriaHRMPrimitive<AlexandriaHRMBase64Binary>?
+  public var boolean: AlexandriaHRMPrimitive<AlexandriaHRMBool>?
+  public var canonical: AlexandriaHRMPrimitive<Canonical>?
+  public var code: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var codeableConcept: CodeableConcept?
   public var coding: Coding?
   public var contactDetail: ContactDetail?
   public var contactPoint: ContactPoint?
   public var contributor: Contributor?
   public var count: Count?
   public var dataRequirement: DataRequirement?
-  public var date: FHIRKitPrimitive<FHIRKitDate>?
-  public var dateTime: FHIRKitPrimitive<FHIRKitDateTime>?
-  public var decimal: FHIRKitPrimitive<FHIRKitDecimal>?
+  public var date: AlexandriaHRMPrimitive<AlexandriaHRMDate>?
+  public var dateTime: AlexandriaHRMPrimitive<AlexandriaHRMDateTime>?
+  public var decimal: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>?
   public var distance: Distance?
   public var dosage: Dosage?
   public var duration: Duration?
   public var expression: Expression?
   public var humanName: HumanName?
-  public var id: FHIRKitPrimitive<FHIRKitString>?
+  public var fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   public var identifier: Identifier?
-  public var instant: FHIRKitPrimitive<FHIRKitInstant>?
-  public var integer: FHIRKitPrimitive<FHIRKitInteger>?
-  public var markdown: FHIRKitPrimitive<FHIRKitString>?
+  public var instant: AlexandriaHRMPrimitive<AlexandriaHRMInstant>?
+  public var integer: AlexandriaHRMPrimitive<AlexandriaHRMInteger>?
+  public var markdown: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   public var meta: Meta?
   public var money: Money?
-  public var oid: FHIRKitPrimitive<FHIRKitURI>?
+  public var ofhirId: AlexandriaHRMPrimitive<AlexandriaHRMURI>?
   public var parameterDefinition: ParameterDefinition?
   public var period: Period?
-  public var positiveInteger: FHIRKitPrimitive<FHIRKitPositiveInteger>?
+  public var positiveInteger: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>?
   public var quantity: Quantity?
   public var range: Range?
   public var ratio: Ratio?
@@ -61,15 +61,15 @@ open class ElementDefinitionDefaultValueX: Element {
   public var relatedArtifact: RelatedArtifact?
   public var sampledData: SampledData?
   public var signature: Signature?
-  public var string: FHIRKitPrimitive<FHIRKitString>?
-  public var time: FHIRKitPrimitive<FHIRKitTime>?
+  public var string: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var time: AlexandriaHRMPrimitive<AlexandriaHRMTime>?
   public var timing: Timing?
   public var triggerDefinition: TriggerDefinition?
-  public var unsignedInteger: FHIRKitPrimitive<FHIRKitUnsignedInteger>?
-  public var uri: FHIRKitPrimitive<FHIRKitURI>?
-  public var url: FHIRKitPrimitive<FHIRKitURI>?
+  public var unsignedInteger: AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>?
+  public var uri: AlexandriaHRMPrimitive<AlexandriaHRMURI>?
+  public var url: AlexandriaHRMPrimitive<AlexandriaHRMURI>?
   public var usageContext: UsageContext?
-  public var uuid: FHIRKitPrimitive<FHIRKitURI>?
+  public var uuid: AlexandriaHRMPrimitive<AlexandriaHRMURI>?
   
   override public init() {
     super.init()
@@ -77,40 +77,41 @@ open class ElementDefinitionDefaultValueX: Element {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     address: Address? = nil,
     age: Age? = nil,
     annotation: Annotation? = nil,
     attachment: Attachment? = nil,
-    base64binary: FHIRKitPrimitive<FHIRKitBase64Binary>? = nil,
-    boolean: FHIRKitPrimitive<FHIRKitBool>? = nil,
-    canonical: FHIRKitPrimitive<Canonical>? = nil,
-    code: FHIRKitPrimitive<FHIRKitString>? = nil,
-    codableConcept: CodableConcept? = nil,
+    base64binary: AlexandriaHRMPrimitive<AlexandriaHRMBase64Binary>? = nil,
+    boolean: AlexandriaHRMPrimitive<AlexandriaHRMBool>? = nil,
+    canonical: AlexandriaHRMPrimitive<Canonical>? = nil,
+    code: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    codeableConcept: CodeableConcept? = nil,
     coding: Coding? = nil,
     contactDetail: ContactDetail? = nil,
     contactPoint: ContactPoint? = nil,
     contributor: Contributor? = nil,
     count: Count? = nil,
     dataRequirement: DataRequirement? = nil,
-    date: FHIRKitPrimitive<FHIRKitDate>? = nil,
-    dateTime: FHIRKitPrimitive<FHIRKitDateTime>? = nil,
-    decimal: FHIRKitPrimitive<FHIRKitDecimal>? = nil,
+    date: AlexandriaHRMPrimitive<AlexandriaHRMDate>? = nil,
+    dateTime: AlexandriaHRMPrimitive<AlexandriaHRMDateTime>? = nil,
+    decimal: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>? = nil,
     distance: Distance? = nil,
     dosage: Dosage? = nil,
     duration: Duration? = nil,
     expression: Expression? = nil,
     humanName: HumanName? = nil,
+    id: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     identifier: Identifier? = nil,
-    instant: FHIRKitPrimitive<FHIRKitInstant>? = nil,
-    integer: FHIRKitPrimitive<FHIRKitInteger>? = nil,
-    markdown: FHIRKitPrimitive<FHIRKitString>? = nil,
+    instant: AlexandriaHRMPrimitive<AlexandriaHRMInstant>? = nil,
+    integer: AlexandriaHRMPrimitive<AlexandriaHRMInteger>? = nil,
+    markdown: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     meta: Meta? = nil,
     money: Money? = nil,
-    oid: FHIRKitPrimitive<FHIRKitURI>? = nil,
+    ofhirId: AlexandriaHRMPrimitive<AlexandriaHRMURI>? = nil,
     parameterDefinition: ParameterDefinition? = nil,
     period: Period? = nil,
-    positiveInteger: FHIRKitPrimitive<FHIRKitPositiveInteger>? = nil,
+    positiveInteger: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>? = nil,
     quantity: Quantity? = nil,
     range: Range? = nil,
     ratio: Ratio? = nil,
@@ -118,19 +119,19 @@ open class ElementDefinitionDefaultValueX: Element {
     relatedArtifact: RelatedArtifact? = nil,
     sampledData: SampledData? = nil,
     signature: Signature? = nil,
-    string: FHIRKitPrimitive<FHIRKitString>? = nil,
-    time: FHIRKitPrimitive<FHIRKitTime>? = nil,
+    string: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    time: AlexandriaHRMPrimitive<AlexandriaHRMTime>? = nil,
     timing: Timing? = nil,
     triggerDefinition: TriggerDefinition? = nil,
-    unsignedInteger: FHIRKitPrimitive<FHIRKitUnsignedInteger>? = nil,
-    uri: FHIRKitPrimitive<FHIRKitURI>? = nil,
-    url: FHIRKitPrimitive<FHIRKitURI>? = nil,
+    unsignedInteger: AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>? = nil,
+    uri: AlexandriaHRMPrimitive<AlexandriaHRMURI>? = nil,
+    url: AlexandriaHRMPrimitive<AlexandriaHRMURI>? = nil,
     usageContext: UsageContext? = nil,
-    uuid: FHIRKitPrimitive<FHIRKitURI>? = nil
+    uuid: AlexandriaHRMPrimitive<AlexandriaHRMURI>? = nil
   ) {
     self.init()
     self.fhirExtension = fhirExtension
-    self.id = id
+    self.fhirId = fhirId
     self.address = address
     self.age = age
     self.annotation = annotation
@@ -139,7 +140,7 @@ open class ElementDefinitionDefaultValueX: Element {
     self.boolean = boolean
     self.canonical = canonical
     self.code = code
-    self.codableConcept = codableConcept
+    self.codeableConcept = codeableConcept
     self.coding = coding
     self.contactDetail = contactDetail
     self.contactPoint = contactPoint
@@ -170,6 +171,15 @@ open class ElementDefinitionDefaultValueX: Element {
     self.reference = reference
     self.relatedArtifact = relatedArtifact
     self.sampledData = sampledData
-    
+    self.signature = signature
+    self.string = string
+    self.time = time
+    self.timing = timing
+    self.triggerDefinition = triggerDefinition
+    self.unsignedInteger = unsignedInteger
+    self.uri = uri
+    self.url = url
+    self.usageContext = usageContext
+    self.uuid = uuid
   }
 }

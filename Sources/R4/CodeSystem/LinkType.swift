@@ -1,6 +1,6 @@
 //
 //  LinkType.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/link-type
  ValueSet: http://hl7.org/fhir/ValueSet/link-type
  */
-public enum LinkType: String, FHIRKitPrimitiveType {
+public enum LinkType: String, AlexandriaHRMPrimitiveType {
   /// The patient resource containing this link must no longer be used. The link points forward to another patient
   /// resource that must be used in lieu of the patient resource that contains this link.
   case replacedBy = "replaced-by"

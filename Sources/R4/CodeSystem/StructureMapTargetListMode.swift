@@ -1,6 +1,6 @@
 //
 //  StructureMapTargetListMode.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/map-target-list-mode
  ValueSet: http://hl7.org/fhir/ValueSet/map-target-list-mode
  */
-public enum StructureMapTargetListMode: String, FHIRKitPrimitiveType {
+public enum StructureMapTargetListMode: String, AlexandriaHRMPrimitiveType {
   /// when the target list is being assembled, the items for this rule go first. If more than one rule defines a first
   /// item (for a given instance of mapping) then this is an error.
   case first

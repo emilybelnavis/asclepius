@@ -1,6 +1,6 @@
 //
 //  SupplyDeliveryStatus.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/supplydelivery-status
  ValueSet: http://hl7.org/fhir/ValueSet/supplydelivery-status
  */
-public enum SupplyDeliveryStatus: String, FHIRKitPrimitiveType {
+public enum SupplyDeliveryStatus: String, AlexandriaHRMPrimitiveType {
   /// Supply has been requested, but not delivered.
   case inProgress = "in-progress"
   

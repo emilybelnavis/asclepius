@@ -1,6 +1,6 @@
 //
 //  DetectedIssueSeverity.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/detectedissue-severity
  ValueSet: http://hl7.org/fhir/ValueSet/detectedissue-severity
  */
-public enum DetectedIssueSeverity: String, FHIRKitPrimitiveType {
+public enum DetectedIssueSeverity: String, AlexandriaHRMPrimitiveType {
   /// Indicates the issue may be life-threatening or has the potential to cause permanent injury.
   case high
   

@@ -1,6 +1,6 @@
 //
 //  ImmunizationRecommendationStatusCodes.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -25,7 +25,7 @@
  URL: http://terminology.hl7.org/CodeSystem/immunization-recommendation-status
  ValueSet: http://hl7.org/fhir/ValueSet/immunization-recommendation-status
  */
-public enum ImmunizationRecommendationStatusCodes: String, FHIRKitPrimitiveType {
+public enum ImmunizationRecommendationStatusCodes: String, AlexandriaHRMPrimitiveType {
   /// The patient is due for their next vaccination.
   case due
   

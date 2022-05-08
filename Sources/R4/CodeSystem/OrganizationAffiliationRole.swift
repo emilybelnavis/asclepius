@@ -1,6 +1,6 @@
 //
 //  OrganizationAffiliationRole.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -24,7 +24,7 @@
  URL: http://hl7.org/fhir/organization-role
  ValueSet: http://hl7.org/fhir/ValueSet/organization-role
  */
-public enum OrganizationAffiliationRole: String, FHIRKitPrimitiveType {
+public enum OrganizationAffiliationRole: String, AlexandriaHRMPrimitiveType {
   /// provider
   case provider
   

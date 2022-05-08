@@ -1,6 +1,6 @@
 //
 //  AdverseEventActuality.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/adverse-event-actuality
  ValueSet: http://hl7.org/fhir/ValueSet/adverse-event-actuality
  */
-public enum AdverseEventActuality: String, FHIRKitPrimitiveType {
+public enum AdverseEventActuality: String, AlexandriaHRMPrimitiveType {
   /// The adverse event actually happened regardless of whether anyone was affected/harmed
   case actual
   

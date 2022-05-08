@@ -1,6 +1,6 @@
 //
 //  ContractTerm.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,13 +17,13 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /// Contract Term List - One or more `Contract Provisions`, which may be related and conveyed as a
 /// group, and may contain nested groups
 open class ContractTerm: BackboneElement {
   public enum TopicX: Hashable {
-    case codableConcept(CodableConcept)
+    case codeableConcept(CodeableConcept)
     case reference(Reference)
   }
   
@@ -31,7 +31,7 @@ open class ContractTerm: BackboneElement {
   public var identifier: Identifier?
   
   /// Contract Term Issue Date/Time
-  public var issued: FHIRKitPrimitive<FHIRKitDateTime>?
+  public var issued: AlexandriaHRMPrimitive<AlexandriaHRMDateTime>?
   
   /// Contract Term Effective Period
   public var applies: Period?
@@ -40,13 +40,13 @@ open class ContractTerm: BackboneElement {
   public var topic: TopicX?
   
   /// Contract Term Type or Form
-  public var type: CodableConcept?
+  public var type: CodeableConcept?
   
   /// Contract Term Type specific classification
-  public var subType: CodableConcept?
+  public var subType: CodeableConcept?
   
   /// Term statement
-  public var text: FHIRKitPrimitive<FHIRKitString>?
+  public var text: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// Protection for the term
   public var securityLabel: [ContractTermSecurityLabel]?
@@ -71,14 +71,14 @@ open class ContractTerm: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     identifier: Identifier? = nil,
-    issued: FHIRKitPrimitive<FHIRKitDateTime>? = nil,
+    issued: AlexandriaHRMPrimitive<AlexandriaHRMDateTime>? = nil,
     applies: Period? = nil,
     topic: TopicX? = nil,
-    type: CodableConcept? = nil,
-    subType: CodableConcept? = nil,
-    text: FHIRKitPrimitive<FHIRKitString>? = nil,
+    type: CodeableConcept? = nil,
+    subType: CodeableConcept? = nil,
+    text: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     securityLabel: [ContractTermSecurityLabel]? = nil,
     offer: ContractTermOffer,
     asset: [ContractTermAsset]? = nil,
@@ -88,7 +88,7 @@ open class ContractTerm: BackboneElement {
     self.init(offer: offer)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.identifier = identifier
     self.issued = issued
     self.applies = applies
@@ -107,7 +107,7 @@ open class ContractTerm: BackboneElement {
     case identifier
     case issued; case _issued
     case applies
-    case topicCodableConcept
+    case topicCodeableConcept
     case topicReference
     case type
     case subType
@@ -123,11 +123,11 @@ open class ContractTerm: BackboneElement {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     var tTopic: TopicX?
-    if let topicCodableConcept = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .topicCodableConcept) {
+    if let topicCodeableConcept = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .topicCodeableConcept) {
       if tTopic != nil {
-        throw DecodingError.dataCorruptedError(forKey: .topicCodableConcept, in: codingKeyContainer, debugDescription: "More than one value provided for \"topic\"")
+        throw DecodingError.dataCorruptedError(forKey: .topicCodeableConcept, in: codingKeyContainer, debugDescription: "More than one value provided for \"topic\"")
       }
-      tTopic = .codableConcept(topicCodableConcept)
+      tTopic = .codeableConcept(topicCodeableConcept)
     }
     
     if let topicReference = try Reference(from: codingKeyContainer, forKeyIfPresent: .topicReference) {
@@ -138,12 +138,12 @@ open class ContractTerm: BackboneElement {
     }
     
     self.identifier = try Identifier(from: codingKeyContainer, forKey: .identifier)
-    self.issued = try FHIRKitPrimitive<FHIRKitDateTime>(from: codingKeyContainer, forKeyIfPresent: .issued, auxKey: ._issued)
+    self.issued = try AlexandriaHRMPrimitive<AlexandriaHRMDateTime>(from: codingKeyContainer, forKeyIfPresent: .issued, auxKey: ._issued)
     self.applies = try Period(from: codingKeyContainer, forKeyIfPresent: .applies)
     self.topic = tTopic
-    self.type = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .type)
-    self.subType = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .subType)
-    self.text = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .text, auxKey: ._text)
+    self.type = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .type)
+    self.subType = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .subType)
+    self.text = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .text, auxKey: ._text)
     self.securityLabel = try [ContractTermSecurityLabel](from: codingKeyContainer, forKeyIfPresent: .securityLabel)
     self.offer = try ContractTermOffer(from: codingKeyContainer, forKey: .offer)
     self.asset = try [ContractTermAsset](from: codingKeyContainer, forKeyIfPresent: .asset)
@@ -158,8 +158,8 @@ open class ContractTerm: BackboneElement {
     
     if let enumTopic = topic {
       switch enumTopic {
-      case .codableConcept(let codableConcept):
-        try codableConcept.encode(on: &codingKeyContainer, forKey: .topicCodableConcept)
+      case .codeableConcept(let codeableConcept):
+        try codeableConcept.encode(on: &codingKeyContainer, forKey: .topicCodeableConcept)
       case .reference(let reference):
         try reference.encode(on: &codingKeyContainer, forKey: .topicReference)
       }

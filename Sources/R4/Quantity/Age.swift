@@ -1,6 +1,6 @@
 //
 //  Age.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /// A duration of time during which an organism (or a process) has existed
 open class Age: Quantity {
@@ -27,16 +27,16 @@ open class Age: Quantity {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    code: FHIRKitPrimitive<FHIRKitString>? = nil,
-    comparator: FHIRKitPrimitive<QuantityComparator>? = nil,
-    system: FHIRKitPrimitive<FHIRKitURI>? = nil,
-    unit: FHIRKitPrimitive<FHIRKitString>? = nil,
-    value: FHIRKitPrimitive<FHIRKitDecimal>? = nil
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    code: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    comparator: AlexandriaHRMPrimitive<QuantityComparator>? = nil,
+    system: AlexandriaHRMPrimitive<AlexandriaHRMURI>? = nil,
+    unit: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    value: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>? = nil
   ) {
     self.init()
     self.fhirExtension = fhirExtension
-    self.id = id
+    self.fhirId = fhirId
     self.code = code
     self.comparator = comparator
     self.system = system
@@ -49,12 +49,12 @@ open class Age: Quantity {
     try super.init(from: decoder)
   }
   
-  public override func encode(to encoder: Encoder) throws {
+  override public func encode(to encoder: Encoder) throws {
     try super.encode(to: encoder)
   }
   
   // MARK: - Equatable
-  public override func isEqual(to _other: Any?) -> Bool {
+  override public func isEqual(to _other: Any?) -> Bool {
     guard let _other = _other as? Age else {
       return false
     }
@@ -67,7 +67,7 @@ open class Age: Quantity {
   }
   
   // MARK: - Hashable
-  public override func hash(into hasher: inout Hasher) {
+  override public func hash(into hasher: inout Hasher) {
     super.hash(into: &hasher)
   }
 }

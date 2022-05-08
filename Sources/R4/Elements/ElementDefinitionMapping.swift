@@ -1,6 +1,6 @@
 //
 //  ElementDefinitionMapping.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Map element to another set of definitions; Identifies a concept from external specification that roughly
@@ -25,34 +25,34 @@ import FHIRKitCore
  */
 open class ElementDefinitionMapping: Element {
   /// Reference to mapping declaration
-  public var identity: FHIRKitPrimitive<FHIRKitString>
+  public var identity: AlexandriaHRMPrimitive<AlexandriaHRMString>
   
   /// Computable language of mapping
-  public var language: FHIRKitPrimitive<FHIRKitString>?
+  public var language: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// Details of the mapping
-  public var map: FHIRKitPrimitive<FHIRKitString>
+  public var map: AlexandriaHRMPrimitive<AlexandriaHRMString>
   
   /// Comments about the mapping or its use
-  public var comment: FHIRKitPrimitive<FHIRKitString>?
+  public var comment: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
-  public init(identity: FHIRKitPrimitive<FHIRKitString>, map: FHIRKitPrimitive<FHIRKitString>) {
-    self.identity = identity
+  public init(identity: AlexandriaHRMPrimitive<AlexandriaHRMString>, map: AlexandriaHRMPrimitive<AlexandriaHRMString>) {
+    self.fhirIdentity = fhirIdentity
     self.map = map
     super.init()
   }
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    identity: FHIRKitPrimitive<FHIRKitString>,
-    language: FHIRKitPrimitive<FHIRKitString>? = nil,
-    map: FHIRKitPrimitive<FHIRKitString>,
-    comment: FHIRKitPrimitive<FHIRKitString>? = nil
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    identity: AlexandriaHRMPrimitive<AlexandriaHRMString>,
+    language: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    map: AlexandriaHRMPrimitive<AlexandriaHRMString>,
+    comment: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil
   ) {
     self.init(identity: identity, map: map)
     self.fhirExtension = fhirExtension
-    self.id = id
+    self.fhirId = fhirId
     self.language = language
     self.comment = comment
   }
@@ -68,10 +68,10 @@ open class ElementDefinitionMapping: Element {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.identity = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKey: .identity, auxKey: ._identity)
-    self.language = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .language, auxKey: ._language)
-    self.map = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKey: .map, auxKey: ._map)
-    self.comment = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .comment, auxKey: ._comment)
+    self.fhirIdentity = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .identity, auxKey: ._identity)
+    self.language = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .language, auxKey: ._language)
+    self.map = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .map, auxKey: ._map)
+    self.comment = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .comment, auxKey: ._comment)
     
     try super.init(from: decoder)
   }

@@ -1,6 +1,6 @@
 //
 //  DeviceSpecialization.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  The capabilities supported on a device, the standards to which the device conforms for a particular purpose
@@ -25,12 +25,12 @@ import FHIRKitCore
  */
 open class DeviceSpecialization: BackboneElement {
   /// The standard that is used to operate and communicate
-  public var systemType: CodableConcept
+  public var systemType: CodeableConcept
   
   /// The version of the standard that is used to operate and communicate
-  public var version: FHIRKitPrimitive<FHIRKitString>?
+  public var version: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
-  public init(systemType: CodableConcept) {
+  public init(systemType: CodeableConcept) {
     self.systemType = systemType
     super.init()
   }
@@ -38,9 +38,9 @@ open class DeviceSpecialization: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    systemType: CodableConcept,
-    version: FHIRKitPrimitive<FHIRKitString>? = nil
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    systemType: CodeableConcept,
+    version: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil
   ) {
     self.init(systemType: systemType)
     self.fhirExtension = fhirExtension
@@ -57,8 +57,8 @@ open class DeviceSpecialization: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.systemType = try CodableConcept(from: codingKeyContainer, forKey: .systemType)
-    self.version = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .version, auxKey: ._version)
+    self.systemType = try CodeableConcept(from: codingKeyContainer, forKey: .systemType)
+    self.version = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .version, auxKey: ._version)
     
     try super.init(from: decoder)
   }

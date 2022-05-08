@@ -1,6 +1,6 @@
 //
 //  EffectEvidenceSynthesisCertaintyCertaintySubcomponent.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  A description of a component that contributes to the overall certainty
@@ -25,10 +25,10 @@ import FHIRKitCore
 // 
 open class EffectEvidenceSynthesisCertaintyCertaintySubcomponent: BackboneElement { // swiftlint:disable:this type_name
   /// Type of subcomponent of certainty rating
-  public var type: CodableConcept?
+  public var type: CodeableConcept?
   
   /// Subcomponent certainty rating
-  public var rating: [CodableConcept]?
+  public var rating: [CodeableConcept]?
   
   /// Used for footnotes/explanatory notes
   public var note: [Annotation]?

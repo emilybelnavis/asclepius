@@ -1,6 +1,6 @@
 //
 //  ImmunizationOriginCodes.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -25,7 +25,7 @@
  
  URL: http://terminology.hl7.org/CodeSystem/immunization-origin
  */
-public enum ImmunizationOriginCodes: String, FHIRKitPrimitiveType {
+public enum ImmunizationOriginCodes: String, AlexandriaHRMPrimitiveType {
   /// The data for the immunization event originated with another provider.
   case provider
   

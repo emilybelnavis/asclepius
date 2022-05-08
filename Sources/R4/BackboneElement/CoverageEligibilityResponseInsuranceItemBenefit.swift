@@ -1,6 +1,6 @@
 //
 //  CoverageEligibilityResponseInsuranceItemBenefit.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,25 +17,25 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 /**
  Benefits summary; Benefits used to date
  */
 open class CoverageEligibilityResponseInsuranceItemBenefit: BackboneElement {
   public enum AllowedX: Hashable {
     case money(Money)
-    case string(FHIRKitPrimitive<FHIRKitString>)
-    case unsignedInteger(FHIRKitPrimitive<FHIRKitUnsignedInteger>)
+    case string(AlexandriaHRMPrimitive<AlexandriaHRMString>)
+    case unsignedInteger(AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>)
   }
   
   public enum UsedX: Hashable {
     case money(Money)
-    case string(FHIRKitPrimitive<FHIRKitString>)
-    case unsignedInteger(FHIRKitPrimitive<FHIRKitUnsignedInteger>)
+    case string(AlexandriaHRMPrimitive<AlexandriaHRMString>)
+    case unsignedInteger(AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>)
   }
   
   /// Benefit classification
-  public var type: CodableConcept
+  public var type: CodeableConcept
   
   /// Benefits allowed
   public var allowed: AllowedX?
@@ -43,7 +43,7 @@ open class CoverageEligibilityResponseInsuranceItemBenefit: BackboneElement {
   /// Benefits used
   public var used: UsedX?
   
-  public init(type: CodableConcept) {
+  public init(type: CodeableConcept) {
     self.type = type
     super.init()
   }
@@ -51,15 +51,15 @@ open class CoverageEligibilityResponseInsuranceItemBenefit: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    type: CodableConcept,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    type: CodeableConcept,
     allowed: AllowedX?,
     used: UsedX?
   ) {
     self.init(type: type)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.allowed = allowed
     self.used = used
   }
@@ -87,14 +87,14 @@ open class CoverageEligibilityResponseInsuranceItemBenefit: BackboneElement {
       tempAllowed = .money(allowedMoney)
     }
     
-    if let allowedString = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: ._allowedString, auxKey: ._allowedString) {
+    if let allowedString = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: ._allowedString, auxKey: ._allowedString) {
       if tempAllowed != nil {
         throw DecodingError.dataCorruptedError(forKey: .allowedString, in: codingKeyContainer, debugDescription: "More than one value provided for \"allowed\"")
       }
       tempAllowed = .string(allowedString)
     }
     
-    if let allowedUnsignedInteger = try FHIRKitPrimitive<FHIRKitUnsignedInteger>(from: codingKeyContainer, forKeyIfPresent: ._allowedUnsignedInteger, auxKey: ._allowedUnsignedInteger) {
+    if let allowedUnsignedInteger = try AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>(from: codingKeyContainer, forKeyIfPresent: ._allowedUnsignedInteger, auxKey: ._allowedUnsignedInteger) {
       if tempAllowed != nil {
         throw DecodingError.dataCorruptedError(forKey: .allowedUnsignedInteger, in: codingKeyContainer, debugDescription: "More than one value provided for \"allowed\"")
       }
@@ -109,21 +109,21 @@ open class CoverageEligibilityResponseInsuranceItemBenefit: BackboneElement {
       tempUsed = .money(usedMoney)
     }
     
-    if let usedString = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .usedString, auxKey: ._usedString) {
+    if let usedString = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .usedString, auxKey: ._usedString) {
       if tempUsed != nil {
         throw DecodingError.dataCorruptedError(forKey: .usedString, in: codingKeyContainer, debugDescription: "More than one value provided for \"used\"")
       }
       tempUsed = .string(usedString)
     }
     
-    if let usedUnsignedInteger = try FHIRKitPrimitive<FHIRKitUnsignedInteger>(from: codingKeyContainer, forKeyIfPresent: .usedUnsignedInteger, auxKey: ._usedUnsignedInteger) {
+    if let usedUnsignedInteger = try AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>(from: codingKeyContainer, forKeyIfPresent: .usedUnsignedInteger, auxKey: ._usedUnsignedInteger) {
       if tempUsed != nil {
         throw DecodingError.dataCorruptedError(forKey: .usedUnsignedInteger, in: codingKeyContainer, debugDescription: "More than one value provided for \"used\"")
       }
       tempUsed = .unsignedInteger(usedUnsignedInteger)
     }
     
-    self.type = try CodableConcept(from: codingKeyContainer, forKey: .type)
+    self.type = try CodeableConcept(from: codingKeyContainer, forKey: .type)
     self.allowed = tempAllowed
     self.used = tempUsed
     

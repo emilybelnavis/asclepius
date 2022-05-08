@@ -1,6 +1,6 @@
 //
 //  ClaimItem.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  A claim line containing either a simple item (a product or service) or a "group" of details which can be simple
@@ -26,44 +26,44 @@ import FHIRKitCore
 open class ClaimItem: BackboneElement {
   public enum LocationX: Hashable {
     case address(Address)
-    case codableConcept(CodableConcept)
+    case codeableConcept(CodeableConcept)
     case reference(Reference)
   }
   
   public enum ServicedX: Hashable {
-    case date(FHIRKitPrimitive<FHIRKitDate>)
+    case date(AlexandriaHRMPrimitive<AlexandriaHRMDate>)
     case period(Period)
   }
   
   /// Item instance identifier
-  public var sequence: FHIRKitPrimitive<FHIRKitPositiveInteger>
+  public var sequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>
   
   /// Applicable `careTeam` members
-  public var careTeamSequence: [FHIRKitPrimitive<FHIRKitPositiveInteger>]?
+  public var careTeamSequence: [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>]?
   
   /// Applicable diagnoses
-  public var diagnosisSequence: [FHIRKitPrimitive<FHIRKitPositiveInteger>]?
+  public var diagnosisSequence: [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>]?
   
   /// Applicable procedures
-  public var procedureSequence: [FHIRKitPrimitive<FHIRKitPositiveInteger>]?
+  public var procedureSequence: [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>]?
   
   /// Applicable exception and supporting information
-  public var informationSequence: [FHIRKitPrimitive<FHIRKitPositiveInteger>]?
+  public var informationSequence: [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>]?
   
   /// Revenue or cost center code
-  public var revenue: CodableConcept?
+  public var revenue: CodeableConcept?
   
   /// Benefit classification
-  public var category: CodableConcept?
+  public var category: CodeableConcept?
   
   /// Billing, service, product, or drug code
-  public var productOrService: CodableConcept
+  public var productOrService: CodeableConcept
   
   /// Product or service billing modifier
-  public var modifier: [CodableConcept]?
+  public var modifier: [CodeableConcept]?
   
   /// Program that the product or service is provided under
-  public var programCode: [CodableConcept]?
+  public var programCode: [CodeableConcept]?
   
   /// Date(s) of service or product delivery
   public var servicedX: ServicedX?
@@ -78,7 +78,7 @@ open class ClaimItem: BackboneElement {
   public var unitPrice: Money?
   
   /// Price scaling factor
-  public var factor: FHIRKitPrimitive<FHIRKitDecimal>?
+  public var factor: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>?
   
   /// Total item cost
   public var net: Money?
@@ -87,10 +87,10 @@ open class ClaimItem: BackboneElement {
   public var udi: [Reference]?
   
   /// Anatomical location
-  public var bodySite: CodableConcept?
+  public var bodySite: CodeableConcept?
   
   /// Anatomical sub-location
-  public var subSite: [CodableConcept]?
+  public var subSite: [CodeableConcept]?
   
   /// Encounters related to this billed item
   public var encounter: [Reference]?
@@ -98,7 +98,7 @@ open class ClaimItem: BackboneElement {
   /// Product or service provided
   public var detail: [ClaimItemDetail]?
   
-  public init(sequence: FHIRKitPrimitive<FHIRKitPositiveInteger>, productOrService: CodableConcept) {
+  public init(sequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>, productOrService: CodeableConcept) {
     self.sequence = sequence
     self.productOrService = productOrService
     super.init()
@@ -107,33 +107,33 @@ open class ClaimItem: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    sequence: FHIRKitPrimitive<FHIRKitPositiveInteger>,
-    careTeamSequence: [FHIRKitPrimitive<FHIRKitPositiveInteger>]? = nil,
-    diagnosisSequence: [FHIRKitPrimitive<FHIRKitPositiveInteger>]? = nil,
-    procedureSequence: [FHIRKitPrimitive<FHIRKitPositiveInteger>]? = nil,
-    informationSequence: [FHIRKitPrimitive<FHIRKitPositiveInteger>]? = nil,
-    revenue: CodableConcept? = nil,
-    category: CodableConcept? = nil,
-    productOrService: CodableConcept,
-    modifier: [CodableConcept]? = nil,
-    programCode: [CodableConcept]? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    sequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>,
+    careTeamSequence: [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>]? = nil,
+    diagnosisSequence: [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>]? = nil,
+    procedureSequence: [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>]? = nil,
+    informationSequence: [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>]? = nil,
+    revenue: CodeableConcept? = nil,
+    category: CodeableConcept? = nil,
+    productOrService: CodeableConcept,
+    modifier: [CodeableConcept]? = nil,
+    programCode: [CodeableConcept]? = nil,
     servicedX: ServicedX? = nil,
     locationX: LocationX? = nil,
     quantity: Quantity? = nil,
     unitPrice: Money? = nil,
-    factor: FHIRKitPrimitive<FHIRKitDecimal>? = nil,
+    factor: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>? = nil,
     net: Money? = nil,
     udi: [Reference]? = nil,
-    bodySite: CodableConcept? = nil,
-    subSite: [CodableConcept]? = nil,
+    bodySite: CodeableConcept? = nil,
+    subSite: [CodeableConcept]? = nil,
     encounter: [Reference]? = nil,
     detail: [ClaimItemDetail]? = nil
   ) {
     self.init(sequence: sequence, productOrService: productOrService)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.careTeamSequence = careTeamSequence
     self.diagnosisSequence = diagnosisSequence
     self.procedureSequence = procedureSequence
@@ -170,7 +170,7 @@ open class ClaimItem: BackboneElement {
     case servicedDate; case _servicedDate
     case servicedPeriod
     case locationAddress
-    case locationCodableConcept
+    case locationCodeableConcept
     case locationReference
     case quantity
     case unitPrice
@@ -187,7 +187,7 @@ open class ClaimItem: BackboneElement {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     var tempServicedX: ServicedX?
-    if let servicedDate = try FHIRKitPrimitive<FHIRKitDate>(from: codingKeyContainer, forKeyIfPresent: .servicedDate, auxKey: ._servicedDate) {
+    if let servicedDate = try AlexandriaHRMPrimitive<AlexandriaHRMDate>(from: codingKeyContainer, forKeyIfPresent: .servicedDate, auxKey: ._servicedDate) {
       if tempServicedX != nil {
         throw DecodingError.dataCorruptedError(forKey: .servicedDate, in: codingKeyContainer, debugDescription: "More than one value supplied for \"serviced\"")
       }
@@ -209,11 +209,11 @@ open class ClaimItem: BackboneElement {
       tempLocationX = .address(locationAddress)
     }
     
-    if let locationCodableConcept = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .locationCodableConcept) {
+    if let locationCodeableConcept = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .locationCodeableConcept) {
       if tempLocationX != nil {
-        throw DecodingError.dataCorruptedError(forKey: .locationCodableConcept, in: codingKeyContainer, debugDescription: "More than one value supplied for \"location\"")
+        throw DecodingError.dataCorruptedError(forKey: .locationCodeableConcept, in: codingKeyContainer, debugDescription: "More than one value supplied for \"location\"")
       }
-      tempLocationX = .codableConcept(locationCodableConcept)
+      tempLocationX = .codeableConcept(locationCodeableConcept)
     }
     
     if let locationReference = try Reference(from: codingKeyContainer, forKeyIfPresent: .locationReference) {
@@ -223,25 +223,25 @@ open class ClaimItem: BackboneElement {
       tempLocationX = .reference(locationReference)
     }
     
-    self.sequence = try FHIRKitPrimitive<FHIRKitPositiveInteger>(from: codingKeyContainer, forKey: .sequence, auxKey: ._sequence)
-    self.careTeamSequence = try [FHIRKitPrimitive<FHIRKitPositiveInteger>](from: codingKeyContainer, forKeyIfPresent: .careTeamSequence, auxKey: ._careTeamSequence)
-    self.diagnosisSequence = try [FHIRKitPrimitive<FHIRKitPositiveInteger>](from: codingKeyContainer, forKeyIfPresent: .diagnosisSequence, auxKey: ._diagnosisSequence)
-    self.procedureSequence = try [FHIRKitPrimitive<FHIRKitPositiveInteger>](from: codingKeyContainer, forKeyIfPresent: .procedureSequence, auxKey: ._procedureSequence)
-    self.informationSequence = try [FHIRKitPrimitive<FHIRKitPositiveInteger>](from: codingKeyContainer, forKeyIfPresent: .informationSequence, auxKey: ._informationSequence)
-    self.revenue = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .revenue)
-    self.category = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .category)
-    self.productOrService = try CodableConcept(from: codingKeyContainer, forKey: .productOrService)
-    self.modifier = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .modifier)
-    self.programCode = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .programCode)
+    self.sequence = try AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>(from: codingKeyContainer, forKey: .sequence, auxKey: ._sequence)
+    self.careTeamSequence = try [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>](from: codingKeyContainer, forKeyIfPresent: .careTeamSequence, auxKey: ._careTeamSequence)
+    self.diagnosisSequence = try [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>](from: codingKeyContainer, forKeyIfPresent: .diagnosisSequence, auxKey: ._diagnosisSequence)
+    self.procedureSequence = try [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>](from: codingKeyContainer, forKeyIfPresent: .procedureSequence, auxKey: ._procedureSequence)
+    self.informationSequence = try [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>](from: codingKeyContainer, forKeyIfPresent: .informationSequence, auxKey: ._informationSequence)
+    self.revenue = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .revenue)
+    self.category = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .category)
+    self.productOrService = try CodeableConcept(from: codingKeyContainer, forKey: .productOrService)
+    self.modifier = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .modifier)
+    self.programCode = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .programCode)
     self.servicedX = tempServicedX
     self.locationX = tempLocationX
     self.quantity = try Quantity(from: codingKeyContainer, forKeyIfPresent: .quantity)
     self.unitPrice = try Money(from: codingKeyContainer, forKeyIfPresent: .unitPrice)
-    self.factor = try FHIRKitPrimitive<FHIRKitDecimal>(from: codingKeyContainer, forKeyIfPresent: .factor, auxKey: ._factor)
+    self.factor = try AlexandriaHRMPrimitive<AlexandriaHRMDecimal>(from: codingKeyContainer, forKeyIfPresent: .factor, auxKey: ._factor)
     self.net = try Money(from: codingKeyContainer, forKeyIfPresent: .net)
     self.udi = try [Reference](from: codingKeyContainer, forKeyIfPresent: .udi)
-    self.bodySite = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .bodySite)
-    self.subSite = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .subSite)
+    self.bodySite = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .bodySite)
+    self.subSite = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .subSite)
     self.encounter = try [Reference](from: codingKeyContainer, forKeyIfPresent: .encounter)
     self.detail = try [ClaimItemDetail](from: codingKeyContainer, forKeyIfPresent: .detail)
     
@@ -264,8 +264,8 @@ open class ClaimItem: BackboneElement {
       switch enumLocationX {
       case .address(let _value):
         try _value.encode(on: &codingKeyContainer, forKey: .locationAddress)
-      case .codableConcept(let _value):
-        try _value.encode(on: &codingKeyContainer, forKey: .locationCodableConcept)
+      case .codeableConcept(let _value):
+        try _value.encode(on: &codingKeyContainer, forKey: .locationCodeableConcept)
       case .reference(let _value):
         try _value.encode(on: &codingKeyContainer, forKey: .locationReference)
       }

@@ -1,6 +1,6 @@
 //
 //  AdditionalMaterialCodes.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/additionalmaterials
  ValueSet: http://hl7.org/fhir/ValueSet/additionalmaterials
  */
-public enum AdditionalMaterialCodes: String, FHIRKitPrimitiveType {
+public enum AdditionalMaterialCodes: String, AlexandriaHRMPrimitiveType {
   case xray
   case image
   case email

@@ -1,6 +1,6 @@
 //
 //  CodeSystemContentMode.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -24,7 +24,7 @@
  URL: http://hl7.org/fhir/codesystem-content-mode
  ValueSet: http://hl7.org/fhir/ValueSet/codesystem-content-mode
  */
-public enum CodeSystemContentMode: String, FHIRKitPrimitiveType {
+public enum CodeSystemContentMode: String, AlexandriaHRMPrimitiveType {
   /// None of the concepts defined by the code system are included in the code system resource
   case notPresent = "not-present"
   

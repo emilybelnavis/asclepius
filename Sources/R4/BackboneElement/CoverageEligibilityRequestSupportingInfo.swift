@@ -1,6 +1,6 @@
 //
 //  CoverageEligibilityRequestSupportingInfo.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Supporting information; Additional information codes regarding exceptions, special considerations, the condition,
@@ -25,15 +25,15 @@ import FHIRKitCore
  */
 open class CoverageEligibilityRequestSupportingInfo: BackboneElement {
   /// Information instance identifier
-  public var sequence: FHIRKitPrimitive<FHIRKitPositiveInteger>
+  public var sequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>
   
   /// Data to be provided
   public var information: Reference
   
   /// Applies to all items
-  public var appliesToAll: FHIRKitPrimitive<FHIRKitBool>?
+  public var appliesToAll: AlexandriaHRMPrimitive<AlexandriaHRMBool>?
   
-  public init(sequence: FHIRKitPrimitive<FHIRKitPositiveInteger>, information: Reference) {
+  public init(sequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>, information: Reference) {
     self.sequence = sequence
     self.information = information
     super.init()
@@ -42,15 +42,15 @@ open class CoverageEligibilityRequestSupportingInfo: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    sequence: FHIRKitPrimitive<FHIRKitPositiveInteger>,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    sequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>,
     information: Reference,
-    appliesToAll: FHIRKitPrimitive<FHIRKitBool>? = nil
+    appliesToAll: AlexandriaHRMPrimitive<AlexandriaHRMBool>? = nil
   ) {
     self.init(sequence: sequence, information: information)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.appliesToAll = appliesToAll
   }
   
@@ -64,9 +64,9 @@ open class CoverageEligibilityRequestSupportingInfo: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.sequence = try FHIRKitPrimitive<FHIRKitPositiveInteger>(from: codingKeyContainer, forKey: .sequence, auxKey: ._sequence)
+    self.sequence = try AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>(from: codingKeyContainer, forKey: .sequence, auxKey: ._sequence)
     self.information = try Reference(from: codingKeyContainer, forKey: .information)
-    self.appliesToAll = try FHIRKitPrimitive<FHIRKitBool>(from: codingKeyContainer, forKeyIfPresent: .appliesToAll, auxKey: ._appliesToAll)
+    self.appliesToAll = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKeyIfPresent: .appliesToAll, auxKey: ._appliesToAll)
     
     try super.init(from: decoder)
   }

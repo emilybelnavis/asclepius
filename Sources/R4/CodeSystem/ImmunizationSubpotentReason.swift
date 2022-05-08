@@ -1,6 +1,6 @@
 //
 //  ImmunizationSubpotentReason.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -25,7 +25,7 @@
  URL: http://terminology.hl7.org/CodeSystem/immunization-subpotent-reason
  ValueSet: http://hl7.org/fhir/ValueSet/immunization-subpotent-reason
  */
-public enum ImmunizationSubpotentReason: String, FHIRKitPrimitiveType {
+public enum ImmunizationSubpotentReason: String, AlexandriaHRMPrimitiveType {
   /// The full volume of the dose was not administered to the patient.
   case partial
   

@@ -1,6 +1,6 @@
 //
 //  EventCapabilityMode.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/event-capability-mode
  ValueSet: http://hl7.org/fhir/ValueSet/event-capability-mode
  */
-public enum EventCapabilityMode: String, FHIRKitPrimitiveType {
+public enum EventCapabilityMode: String, AlexandriaHRMPrimitiveType {
   /// The application sends requests and receives responses.
   case sender
   

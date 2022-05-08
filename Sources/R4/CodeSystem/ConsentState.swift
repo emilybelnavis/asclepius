@@ -1,6 +1,6 @@
 //
 //  ConsentState.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/consent-state-codes
  ValueSet: http://hl7.org/fhir/ValueSet/consent-state-codes
  */
-public enum ConsentState: String, FHIRKitPrimitiveType {
+public enum ConsentState: String, AlexandriaHRMPrimitiveType {
   /// The consent is in development or awaiting use but is not yet intended to be acted upon
   case draft
   

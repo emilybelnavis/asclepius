@@ -1,6 +1,6 @@
 //
 //  CoverageEligibilityRequestItemDiagnosis.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,14 +17,14 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Applicable diagnosis; Patient diagnosis for which care is sought
  */
 open class CoverageEligibilityRequestItemDiagnosis: BackboneElement {
   public enum DiagnosisX: Hashable {
-    case codableConcept(CodableConcept)
+    case codeableConcept(CodeableConcept)
     case reference(Reference)
   }
   
@@ -37,7 +37,7 @@ open class CoverageEligibilityRequestItemDiagnosis: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
     diagnosis: DiagnosisX? = nil
   ) {
     self.init()
@@ -45,7 +45,7 @@ open class CoverageEligibilityRequestItemDiagnosis: BackboneElement {
   
   // MARK: - Codable
   private enum CodingKeys: String, CodingKey {
-    case diagnosisCodableConcept
+    case diagnosisCodeableConcept
     case diagnosisReference
   }
   
@@ -53,11 +53,11 @@ open class CoverageEligibilityRequestItemDiagnosis: BackboneElement {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     var tempDiagnosis: DiagnosisX?
-    if let diagnosisCodableConcept = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .diagnosisCodableConcept) {
+    if let diagnosisCodeableConcept = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .diagnosisCodeableConcept) {
       if tempDiagnosis != nil {
-        throw DecodingError.dataCorruptedError(forKey: .diagnosisCodableConcept, in: codingKeyContainer, debugDescription: "More than one value provided for \"diagnosis\"")
+        throw DecodingError.dataCorruptedError(forKey: .diagnosisCodeableConcept, in: codingKeyContainer, debugDescription: "More than one value provided for \"diagnosis\"")
       }
-      tempDiagnosis = .codableConcept(diagnosisCodableConcept)
+      tempDiagnosis = .codeableConcept(diagnosisCodeableConcept)
     }
     
     if let diagnosisReference = try Reference(from: codingKeyContainer, forKeyIfPresent: .diagnosisReference) {
@@ -77,8 +77,8 @@ open class CoverageEligibilityRequestItemDiagnosis: BackboneElement {
     
     if let enumDiagnosis = diagnosis {
       switch enumDiagnosis {
-      case .codableConcept(let _value):
-        try _value.encode(on: &codingKeyContainer, forKey: .diagnosisCodableConcept)
+      case .codeableConcept(let _value):
+        try _value.encode(on: &codingKeyContainer, forKey: .diagnosisCodeableConcept)
       case .reference(let _value):
         try _value.encode(on: &codingKeyContainer, forKey: .diagnosisReference)
       }

@@ -1,6 +1,6 @@
 //
 //  CoverageEligibilityRequestInsurance.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,20 +17,20 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Patient insurance information; Financial instruments for reimbursement for the healthcare products and services
  */
 open class CoverageEligiblityRequestInsurance: BackboneElement {
   /// Applicable coverage
-  public var focal: FHIRKitPrimitive<FHIRKitBool>?
+  public var focal: AlexandriaHRMPrimitive<AlexandriaHRMBool>?
   
   /// Insurance information
   public var coverage: Reference
   
   /// Additional provider contract number
-  public var businessArrangement: FHIRKitPrimitive<FHIRKitString>?
+  public var businessArrangement: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   public init(coverage: Reference) {
     self.coverage = coverage
@@ -40,15 +40,15 @@ open class CoverageEligiblityRequestInsurance: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    focal: FHIRKitPrimitive<FHIRKitBool>? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    focal: AlexandriaHRMPrimitive<AlexandriaHRMBool>? = nil,
     coverage: Reference,
-    buisnessArrangement: FHIRKitPrimitive<FHIRKitString>? = nil
+    buisnessArrangement: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil
   ) {
     self.init(coverage: coverage)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.focal = focal
     self.businessArrangement = businessArrangement
   }
@@ -63,9 +63,9 @@ open class CoverageEligiblityRequestInsurance: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.focal = try FHIRKitPrimitive<FHIRKitBool>(from: codingKeyContainer, forKeyIfPresent: .focal, auxKey: ._focal)
+    self.focal = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKeyIfPresent: .focal, auxKey: ._focal)
     self.coverage = try Reference(from: codingKeyContainer, forKey: .coverage)
-    self.businessArrangement = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .businessArangement, auxKey: ._businessArrangement)
+    self.businessArrangement = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .businessArangement, auxKey: ._businessArrangement)
     
     try super.init(from: decoder)
   }

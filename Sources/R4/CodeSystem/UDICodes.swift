@@ -1,6 +1,6 @@
 //
 //  UDICodes.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/ex-udi
  ValueSet: http://hl7.org/fhir/ValueSet/udi
  */
-public enum UDICodes: String, FHIRKitPrimitiveType {
+public enum UDICodes: String, AlexandriaHRMPrimitiveType {
   /// GUDID (FDA) US Repository
   case gudid
 }

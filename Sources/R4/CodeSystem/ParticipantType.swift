@@ -1,6 +1,6 @@
 //
 //  ParticipantType.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -22,7 +22,7 @@
  
  URL: http://terminology.hl7.org/CodeSystem/participant-type
  */
-public enum ParticipantType: String, FHIRKitPrimitiveType {
+public enum ParticipantType: String, AlexandriaHRMPrimitiveType {
   
     /// A translator who is facilitating communication with the patient during the encounter.
   case translator

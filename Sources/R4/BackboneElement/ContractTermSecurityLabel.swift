@@ -1,6 +1,6 @@
 //
 //  ContractTermSecurityLabel.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Protection for the term - Security labels that protect the handling of information about the term and its elements,
@@ -25,7 +25,7 @@ import FHIRKitCore
  */
 open class ContractTermSecurityLabel: BackboneElement {
   /// Link to Security Labels
-  public var number: [FHIRKitPrimitive<FHIRKitUnsignedInteger>]?
+  public var number: [AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>]?
   
   /// Confidentiality protection
   public var classification: Coding
@@ -44,8 +44,8 @@ open class ContractTermSecurityLabel: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    number: [FHIRKitPrimitive<FHIRKitUnsignedInteger>]? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    number: [AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>]? = nil,
     classification: Coding,
     category: [Coding]? = nil,
     control: [Coding]? = nil
@@ -53,7 +53,7 @@ open class ContractTermSecurityLabel: BackboneElement {
     self.init(classification: classification)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.number = number
     self.category = category
     self.control = control
@@ -70,7 +70,7 @@ open class ContractTermSecurityLabel: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.number = try FHIRKitPrimitive<FHIRKitUnsignedInteger>(from: codingKeyContainer, forKeyIfPresent: .number, auxKey: ._number)
+    self.number = try AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>(from: codingKeyContainer, forKeyIfPresent: .number, auxKey: ._number)
     self.classification = try Coding(from: codingKeyContainer, forKey: .classification)
     self.category = try [Coding](from: codingKeyContainer, forKeyIfPresent: .category)
     self.control = try [Coding](from: codingKeyContainer, forKeyIfPresent: .control)

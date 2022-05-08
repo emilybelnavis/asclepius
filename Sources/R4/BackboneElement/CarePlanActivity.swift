@@ -1,6 +1,6 @@
 //
 //  CarePlanActivity.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Identifies a planned action to occur as part of the care plan. For example, a medication to be used, lab tests
@@ -27,7 +27,7 @@ import FHIRKitCore
  */
 open class CarePlanActivity: BackboneElement {
   /// Results of the activity
-  public var outcomeCodableConcept: [CodableConcept]?
+  public var outcomeCodeableConcept: [CodeableConcept]?
   
   /// Appointment, Encounter, Procedure, etc...
   public var outcomeReference: [Reference]?
@@ -48,8 +48,8 @@ open class CarePlanActivity: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    outcomeCodableConcept: [CodableConcept]? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    outcomeCodeableConcept: [CodeableConcept]? = nil,
     outcomeReference: [Reference]? = nil,
     progress: [Annotation]? = nil,
     reference: Reference? = nil,
@@ -58,8 +58,8 @@ open class CarePlanActivity: BackboneElement {
     self.init()
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
-    self.outcomeCodableConcept = outcomeCodableConcept
+    self.fhirId = fhirId
+    self.outcomeCodeableConcept = outcomeCodeableConcept
     self.outcomeReference = outcomeReference
     self.progress = progress
     self.reference = reference
@@ -68,7 +68,7 @@ open class CarePlanActivity: BackboneElement {
   
   // MARK: - Codable
   private enum CodingKeys: String, CodingKey {
-    case outcomeCodableConcept
+    case outcomeCodeableConcept
     case outcomeReference
     case progress
     case reference
@@ -78,7 +78,7 @@ open class CarePlanActivity: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.outcomeCodableConcept = try [CodableConcept](from: codingKeyContainer, forKeyIfPresent: .outcomeReference)
+    self.outcomeCodeableConcept = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .outcomeReference)
     self.outcomeReference = try [Reference](from: codingKeyContainer, forKeyIfPresent: .outcomeReference)
     self.progress = try [Annotation](from: codingKeyContainer, forKeyIfPresent: .progress)
     self.reference = try Reference(from: codingKeyContainer, forKeyIfPresent: .reference)
@@ -90,7 +90,7 @@ open class CarePlanActivity: BackboneElement {
   public override func encode(to encoder: Encoder) throws {
     var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
-    try outcomeCodableConcept?.encode(on: &codingKeyContainer, forKey: .outcomeCodableConcept)
+    try outcomeCodeableConcept?.encode(on: &codingKeyContainer, forKey: .outcomeCodeableConcept)
     try outcomeReference?.encode(on: &codingKeyContainer, forKey: .outcomeReference)
     try progress?.encode(on: &codingKeyContainer, forKey: .progress)
     try reference?.encode(on: &codingKeyContainer, forKey: .reference)
@@ -109,7 +109,7 @@ open class CarePlanActivity: BackboneElement {
       return false
     }
     
-    return outcomeCodableConcept == _other.outcomeCodableConcept
+    return outcomeCodeableConcept == _other.outcomeCodeableConcept
     && outcomeReference == _other.outcomeReference
     && progress == _other.progress
     && reference == _other.reference
@@ -119,7 +119,7 @@ open class CarePlanActivity: BackboneElement {
   // MARK: - Hashable
   public override func hash(into hasher: inout Hasher) {
     super.hash(into: &hasher)
-    hasher.combine(outcomeCodableConcept)
+    hasher.combine(outcomeCodeableConcept)
     hasher.combine(outcomeReference)
     hasher.combine(reference)
     hasher.combine(detail)

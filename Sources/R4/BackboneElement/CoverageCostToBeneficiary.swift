@@ -1,6 +1,6 @@
 //
 //  CoverageCostToBeneficiary.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Patient payments for services/products; A suite of codes indicating the cost category and associated amount
@@ -30,7 +30,7 @@ open class CoverageCostToBeneficiary: BackboneElement {
   }
   
   /// Cost category
-  public var type: CodableConcept?
+  public var type: CodeableConcept?
   
   /// The amount or percentage due from the beneficiary
   public var value: ValueX
@@ -46,15 +46,15 @@ open class CoverageCostToBeneficiary: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    type: CodableConcept? = nil,
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    type: CodeableConcept? = nil,
     value: ValueX,
     exception: [CoverageCostToBeneficiaryException]? = nil
   ) {
     self.init(value: value)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.type = type
     self.exception = exception
   }
@@ -85,7 +85,7 @@ open class CoverageCostToBeneficiary: BackboneElement {
       tempValue = .quantity(valueQuantity)
     }
     
-    self.type = try CodableConcept(from: codingKeyContainer, forKeyIfPresent: .type)
+    self.type = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .type)
     self.value = tempValue!
     self.exception = try [CoverageCostToBeneficiaryException](from: codingKeyContainer, forKeyIfPresent: .exception)
     

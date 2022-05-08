@@ -1,6 +1,6 @@
 //
 //  BundleEntrySearch.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,16 +17,16 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /// Information about the search process that lead to the creation of this entry
 open class BundleEntrySearch: BackboneElement {
   /// Why yhis entry is in the result set - whether it is include as a mathc or because of an `_include`
   /// requrirement, or to convey information or warning infomation about the search process.
-  public var mode: FHIRKitPrimitive<SearchEntryMode>?
+  public var mode: AlexandriaHRMPrimitive<SearchEntryMode>?
   
   /// Search ranking (between 0 and 1
-  public var score: FHIRKitPrimitive<FHIRKitDecimal>?
+  public var score: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>?
   
   override public init() {
     super.init()
@@ -35,14 +35,14 @@ open class BundleEntrySearch: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    mode: FHIRKitPrimitive<SearchEntryMode>? = nil,
-    score: FHIRKitPrimitive<FHIRKitDecimal>? = nil
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    mode: AlexandriaHRMPrimitive<SearchEntryMode>? = nil,
+    score: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>? = nil
   ) {
     self.init()
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.mode = mode
     self.score = score
   }
@@ -56,8 +56,8 @@ open class BundleEntrySearch: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.mode = try FHIRKitPrimitive<SearchEntryMode>(from: codingKeyContainer, forKeyIfPresent: .mode, auxKey: ._mode)
-    self.score = try FHIRKitPrimitive<FHIRKitDecimal>(from: codingKeyContainer, forKeyIfPresent: .score, auxKey: ._score)
+    self.mode = try AlexandriaHRMPrimitive<SearchEntryMode>(from: codingKeyContainer, forKeyIfPresent: .mode, auxKey: ._mode)
+    self.score = try AlexandriaHRMPrimitive<AlexandriaHRMDecimal>(from: codingKeyContainer, forKeyIfPresent: .score, auxKey: ._score)
     
     try super.init(from: decoder)
   }

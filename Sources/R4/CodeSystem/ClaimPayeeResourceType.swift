@@ -1,6 +1,6 @@
 //
 //  ClaimPayeeResourceType.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/ex-payee-resource-type
  ValueSet: http://hl7.org/fhir/ValueSet/ex-payee-resource-type
  */
-public enum ClaimPayeeResourceType: String, FHIRKitPrimitiveType {
+public enum ClaimPayeeResourceType: String, AlexandriaHRMPrimitiveType {
   /// Organization resource
   case organization
   

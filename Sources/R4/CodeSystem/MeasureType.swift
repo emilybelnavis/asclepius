@@ -1,6 +1,6 @@
 //
 //  MeasureType.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/measure-type
  ValueSet: http://hl7.org/fhir/ValueSet/measure-type
  */
-public enum MeasureType: String, FHIRKitPrimitiveType {
+public enum MeasureType: String, AlexandriaHRMPrimitiveType {
   /// A measure which focuses on a process which leads to a certain outcome, meaning that a scientific basis exists
   /// for believing that the process, when executed well, will increase the probability of achieving a desired
   /// outcome.

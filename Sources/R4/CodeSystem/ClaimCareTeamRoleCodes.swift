@@ -1,6 +1,6 @@
 //
 //  ClaimCareTeamRoleCodes.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/claimcareteamrole
  ValueSet: http://hl7.org/fhir/ValueSet/claim-careteamrole
  */
-public enum ClaimCareTeamRoleCodes: String, FHIRKitPrimitiveType {
+public enum ClaimCareTeamRoleCodes: String, AlexandriaHRMPrimitiveType {
   /// The primary care provider
   case primary
   

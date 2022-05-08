@@ -1,6 +1,6 @@
 //
 //  Element.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  The base definition for all elements contained inside a resource. All elements, whether defined as a `Data Type`
@@ -25,9 +25,9 @@ import FHIRKitCore
  
  Three kinds of decend
  */
-open class Element: FHIRKitType {
+open class Element: AlexandriaHRMType {
   /// Unique id for inter-element referencing
-  public var id: FHIRKitPrimitive<FHIRKitString>?
+  public var fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
   /// Addistional content defined by implementations
   public var fhirExtension: [Extension]?
@@ -36,30 +36,30 @@ open class Element: FHIRKitType {
     
   }
   
-  public convenience init(fhirExtension: [Extension]? = nil, id: FHIRKitPrimitive<FHIRKitString>? = nil) {
+  public convenience init(fhirExtension: [Extension]? = nil, fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil) {
     self.init()
     self.fhirExtension = fhirExtension
-    self.id = id
+    self.fhirId = fhirId
   }
   
   // MARK: - Codable
   private enum CodingKeys: String, CodingKey {
     case fhirExtension = "extension"
-    case id; case _id
+    case fhirId = "fhirId"; case _fhirId = "_fhirId"
   }
   
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     self.fhirExtension = try [Extension](from: codingKeyContainer, forKeyIfPresent: .fhirExtension)
-    self.id = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .id, auxKey: ._id)
+    self.fhirId = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .fhirId, auxKey: ._fhirId)
   }
   
   public func encode(to encoder: Encoder) throws {
     var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
     
     try fhirExtension?.encode(on: &codingKeyContainer, forKey: .fhirExtension)
-    try id?.encode(on: &codingKeyContainer, forKey: .id, auxKey: ._id)
+    try fhirId?.encode(on: &codingKeyContainer, forKey: .fhirId, auxKey: ._fhirId)
   }
   
   // MARK: - Equatable
@@ -77,13 +77,13 @@ open class Element: FHIRKitType {
     }
     
     return fhirExtension == _other.fhirExtension
-    && id == _other.id
+    && fhirId == _other.fhirId
   }
   
   // MARK: - Hashable
   public func hash(into hasher: inout Hasher) {
     hasher.combine(fhirExtension)
-    hasher.combine(id)
+    hasher.combine(fhirId)
   }
 }
 

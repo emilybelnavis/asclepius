@@ -1,6 +1,6 @@
 //
 //  CapabilityStatementRestResourceOperation.swift
-//  FHIRKit
+//  AlexandriaHRM
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import FHIRKitCore
+import AlexandriaHRMCore
 
 /**
  Definition of an operation or a named query together with its parameters and their meaning and type.
@@ -25,15 +25,15 @@ import FHIRKitCore
  */
 open class CapabilityStatementRestResourceOperation: BackboneElement {
   /// Name that invokes the operation/query
-  public var name: FHIRKitPrimitive<FHIRKitString>
+  public var name: AlexandriaHRMPrimitive<AlexandriaHRMString>
   
   /// The defined operation/query
-  public var definition: FHIRKitPrimitive<Canonical>
+  public var definition: AlexandriaHRMPrimitive<Canonical>
   
   /// Specific details about operation behaviour
-  public var documentation: FHIRKitPrimitive<FHIRKitString>?
+  public var documentation: AlexandriaHRMPrimitive<AlexandriaHRMString>?
   
-  public init(name: FHIRKitPrimitive<FHIRKitString>, definition: FHIRKitPrimitive<Canonical>) {
+  public init(name: AlexandriaHRMPrimitive<AlexandriaHRMString>, definition: AlexandriaHRMPrimitive<Canonical>) {
     self.name = name
     self.definition = definition
     super.init()
@@ -42,15 +42,15 @@ open class CapabilityStatementRestResourceOperation: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    id: FHIRKitPrimitive<FHIRKitString>? = nil,
-    name: FHIRKitPrimitive<FHIRKitString>,
-    definition: FHIRKitPrimitive<Canonical>,
-    documentation: FHIRKitPrimitive<FHIRKitString>? = nil
+    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    name: AlexandriaHRMPrimitive<AlexandriaHRMString>,
+    definition: AlexandriaHRMPrimitive<Canonical>,
+    documentation: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil
   ) {
     self.init(name: name, definition: definition)
     self.fhirExtension = fhirExtension
     self.modifierExtension = modifierExtension
-    self.id = id
+    self.fhirId = fhirId
     self.documentation = documentation
   }
   
@@ -64,9 +64,9 @@ open class CapabilityStatementRestResourceOperation: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.name = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKey: .name, auxKey: ._name)
-    self.definition = try FHIRKitPrimitive<Canonical>(from: codingKeyContainer, forKey: .definition, auxKey: .definition)
-    self.documentation = try FHIRKitPrimitive<FHIRKitString>(from: codingKeyContainer, forKeyIfPresent: .documentation, auxKey: ._documentation)
+    self.name = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .name, auxKey: ._name)
+    self.definition = try AlexandriaHRMPrimitive<Canonical>(from: codingKeyContainer, forKey: .definition, auxKey: .definition)
+    self.documentation = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .documentation, auxKey: ._documentation)
     
     try super.init(from: decoder)
   }
