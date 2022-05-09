@@ -89,4 +89,40 @@ open class DomainResource: Resource {
     
     try super.init(from: decoder)
   }
+  
+  override public func encode(to encoder: Encoder) throws {
+    var codingKeyContainer = encoder.container(keyedBy: CodingKeys.self)
+    
+    try text?.encode(on: &codingKeyContainer, forKey: .text)
+    try contained?.encode(on: &codingKeyContainer, forKey: .contained)
+    try fhirExtension?.encode(on: &codingKeyContainer, forKey: .fhirExtension)
+    try modifierExtension?.encode(on: &codingKeyContainer, forKey: .modifierExtension)
+    
+    try super.encode(to: encoder)
+  }
+  
+  // MARK: - Equatable
+  override public func isEqual(to _other: Any?) -> Bool {
+    guard let _other = _other as? DomainResource else {
+      return false
+    }
+    
+    guard super.isEqual(to: _other) else {
+      return false
+    }
+    
+    return text == _other.text
+    && contained == _other.contained
+    && fhirExtension == _other.fhirExtension
+    && modifierExtension  == _other.modifierExtension
+  }
+  
+   // MARK: - Hashable
+  override public func hash(into hasher: inout Hasher) {
+    super.hash(into: &hasher)
+    hasher.combine(text)
+    hasher.combine(contained)
+    hasher.combine(fhirExtension)
+    hasher.combine(modifierExtension)
+  }
 }
