@@ -31,6 +31,7 @@ open class ElementDefinitionMinMaxValueX: Element {
   public var time: AsclepiusPrimitive<AsclepiusTime>?
   public var unsignedInteger: AsclepiusPrimitive<AsclepiusUnsignedInteger>?
   
+  // MARK: - Class Functions
   override public init() {
     super.init()
   }

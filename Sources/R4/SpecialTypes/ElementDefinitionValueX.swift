@@ -71,6 +71,7 @@ open class ElementDefinitionValueX: Element {
   public var usageContext: UsageContext?
   public var uuid: AsclepiusPrimitive<AsclepiusURI>?
   
+  // MARK: - Class Functions
   override public init() {
     super.init()
   }

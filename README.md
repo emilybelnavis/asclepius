@@ -2,7 +2,6 @@
 
 [![Build Status](https://img.shields.io/circleci/build/github/samanthaerachelb/asclepius/main?logo=circleci&style=flat-square)](https://app.circleci.com/pipelines/github/samanthaerachelb/asclepius)&nbsp;
 [![Code Quality](https://img.shields.io/codacy/grade/e43cbd23b1804b629d07053d2294d7fc?logo=codacy&style=flat-square)](https://app.codacy.com/gh/samanthaerachelb/asclepius/dashboard?branch=main)&nbsp;
-[![Maintainability](https://img.shields.io/codeclimate/maintainability-percentage/samanthaerachelb/asclepius?logo=codeclimate&style=flat-square)](https://codeclimate.com/github/samanthaerachelb/asclepius)
 ![License](https://img.shields.io/github/license/samanthaerachelb/asclepius?style=flat-square)
 
 Asclepius is a library that implements the HL7 Fast Healthcare Interoperability
