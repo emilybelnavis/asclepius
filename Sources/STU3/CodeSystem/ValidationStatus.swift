@@ -1,6 +1,6 @@
 //
 //  ValidationStatus.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/validation-status
  ValueSet: http://hl7.org/fhir/ValueSet/verificationresult-validation-status
  */
-public enum ValidationStatus: String, AlexandriaHRMPrimitiveType {
+public enum ValidationStatus: String, AsclepiusPrimitiveType {
   /// successful
   case successful
   

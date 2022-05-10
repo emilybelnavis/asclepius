@@ -1,6 +1,6 @@
 //
 //  ImmunizationOriginCodes.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -25,7 +25,7 @@
  
  URL: http://terminology.hl7.org/CodeSystem/immunization-origin
  */
-public enum ImmunizationOriginCodes: String, AlexandriaHRMPrimitiveType {
+public enum ImmunizationOriginCodes: String, AsclepiusPrimitiveType {
   /// The data for the immunization event originated with another provider.
   case provider
   

@@ -1,6 +1,6 @@
 //
 //  Narrative.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 /**
  A human-readable summary of the resouce conveying the essential clinical and business information for the
  resource.
@@ -25,12 +25,12 @@ import AlexandriaHRMCore
 open class Narrative: Element {
   /// The status of the narrative - whether it's entirely generated, or wheter a human authored it and it may
   /// contain additional data.
-  public var status: AlexandriaHRMPrimitive<NarrativeStatus>
+  public var status: AsclepiusPrimitive<NarrativeStatus>
   
   /// Limited XHTML content
-  public var div: AlexandriaHRMPrimitive<AlexandriaHRMString>
+  public var div: AsclepiusPrimitive<AsclepiusString>
   
-  public init(status: AlexandriaHRMPrimitive<NarrativeStatus>, div: AlexandriaHRMPrimitive<AlexandriaHRMString>) {
+  public init(status: AsclepiusPrimitive<NarrativeStatus>, div: AsclepiusPrimitive<AsclepiusString>) {
     self.status = status
     self.div = div
     super.init()
@@ -38,9 +38,9 @@ open class Narrative: Element {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    status: AlexandriaHRMPrimitive<NarrativeStatus>,
-    div: AlexandriaHRMPrimitive<AlexandriaHRMString>
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    status: AsclepiusPrimitive<NarrativeStatus>,
+    div: AsclepiusPrimitive<AsclepiusString>
   ) {
     self.init(status: status, div: div)
     self.fhirExtension = fhirExtension
@@ -56,8 +56,8 @@ open class Narrative: Element {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.status = try AlexandriaHRMPrimitive<NarrativeStatus>(from: codingKeyContainer, forKey: .status, auxKey: ._status)
-    self.div = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .div, auxKey: ._div)
+    self.status = try AsclepiusPrimitive<NarrativeStatus>(from: codingKeyContainer, forKey: .status, auxKey: ._status)
+    self.div = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKey: .div, auxKey: ._div)
     
     try super.init(from: decoder)
   }

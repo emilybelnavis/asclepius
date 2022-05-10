@@ -1,6 +1,6 @@
 //
 //  CertaintySubcomponentType.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/certainty-subcomponent-type
  ValueSet: http://hl7.org/fhir/ValueSet/certainty-subcomponent-type
  */
-public enum CertaintySubcomponentType: String, AlexandriaHRMPrimitiveType {
+public enum CertaintySubcomponentType: String, AsclepiusPrimitiveType {
   /// Methodological concerns reducing internal validity
   case riskOfBias = "RiskOfBias"
   

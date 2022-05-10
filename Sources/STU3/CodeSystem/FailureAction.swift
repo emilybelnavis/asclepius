@@ -1,6 +1,6 @@
 //
 //  FailureAction.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/failure-action
  ValueSet: http://hl7.org/fhir/ValueSet/verificationresult-failure-action
  */
-public enum FailureAction: String, AlexandriaHRMPrimitiveType {
+public enum FailureAction: String, AsclepiusPrimitiveType {
   /// fatal
   case fatal
   

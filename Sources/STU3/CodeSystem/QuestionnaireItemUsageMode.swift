@@ -1,6 +1,6 @@
 //
 //  QuestionnaireItemUsageMode.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/questionnaire-usage-mode
  ValueSet: http://hl7.org/fhir/ValueSet/questionnaire-usage-mode
  */
-public enum QuestionnaireItemUsageMode: String, AlexandriaHRMPrimitiveType {
+public enum QuestionnaireItemUsageMode: String, AsclepiusPrimitiveType {
   /// Render the item regardless of usage mode.
   case captureDisplay = "capture-display"
   

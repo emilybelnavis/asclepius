@@ -1,6 +1,6 @@
 //
 //  ImmunizationFundingSource.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -25,7 +25,7 @@
  URL: http://terminology.hl7.org/CodeSystem/immunization-funding-source
  ValueSet: http://hl7.org/fhir/ValueSet/immunization-funding-source
  */
-public enum ImmunizationFundingSource: String, AlexandriaHRMPrimitiveType {
+public enum ImmunizationFundingSource: String, AsclepiusPrimitiveType {
   /// The vaccine was purchased with private funds.
   case `private`
   

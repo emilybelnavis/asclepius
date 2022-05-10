@@ -1,6 +1,6 @@
 //
 //  ActionRelationshipType.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/action-relationship-type
  ValueSet: http://hl7.org/fhir/ValueSet/action-relationship-type
  */
-public enum ActionRelationshipType: String, AlexandriaHRMPrimitiveType {
+public enum ActionRelationshipType: String, AsclepiusPrimitiveType {
   /// the action must be performed before the start of the related action
   case beforeStart = "before-start"
   

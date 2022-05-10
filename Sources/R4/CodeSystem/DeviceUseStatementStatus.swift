@@ -1,6 +1,6 @@
 //
 //  DeviceUseStatementStatus.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/device-statement-status
  ValueSet: http://hl7.org/fhir/ValueSet/device-statement-status
  */
-public enum DeviceUseStatementStatus: String, AlexandriaHRMPrimitiveType {
+public enum DeviceUseStatementStatus: String, AsclepiusPrimitiveType {
   /// The device is still being used.
   case active
   

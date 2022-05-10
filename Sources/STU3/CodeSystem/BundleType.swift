@@ -1,6 +1,6 @@
 //
 //  BundleType.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/bundle-type
  ValueSet: http://hl7.org/fhir/ValueSet/bundle-type
  */
-public enum BundleType: String, AlexandriaHRMPrimitiveType {
+public enum BundleType: String, AsclepiusPrimitiveType {
   /// The bundle is a document. The first resouce is a Composition
   case document
   

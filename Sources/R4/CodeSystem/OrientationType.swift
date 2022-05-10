@@ -1,6 +1,6 @@
 //
 //  OrientationType.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/orientation-type
  ValueSet: http://hl7.org/fhir/ValueSet/orientation-type
  */
-public enum OrientationType: String, AlexandriaHRMPrimitiveType {
+public enum OrientationType: String, AsclepiusPrimitiveType {
   /// Sense orientation of reference sequence.
   case sense
   

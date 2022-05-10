@@ -1,6 +1,6 @@
 //
-//  AlexandriaHRMDateTime.swift
-//  AlexandriaHRM
+//  AsclepiusDateTime.swift
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -18,7 +18,7 @@
 //  limitations under the License.
 
 import Foundation
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  A date, date-time, or partial date (e.g, just year or year + month) as used in human communication. The format is
@@ -29,10 +29,10 @@ import AlexandriaHRMCore
  not allowed**. Leap Seconds are allowed
  
  */
-public struct AlexandriaHRMDateTime: AlexandriaHRMPrimitiveType {
+public struct AsclepiusDateTime: AsclepiusPrimitiveType {
   private var timeZoneIsUnaltered = true
-  public var date: AlexandriaHRMDate
-  public var time: AlexandriaHRMTime?
+  public var date: AsclepiusDate
+  public var time: AsclepiusTime?
   
   public var timeZone: TimeZone? {
     didSet {
@@ -42,17 +42,17 @@ public struct AlexandriaHRMDateTime: AlexandriaHRMPrimitiveType {
   
   public let originalTimeZoneString: String?
   
-  public init(date: AlexandriaHRMDate, time: AlexandriaHRMTime? = nil, timezone: TimeZone? = nil) {
+  public init(date: AsclepiusDate, time: AsclepiusTime? = nil, timezone: TimeZone? = nil) {
     self.init(date: date, time: time, timezone: timezone, originalTimeZoneString: nil)
   }
   
   public init(_ originalString: String) throws {
     let scanner = Scanner(string: originalString)
-    let (date, time, timezone, timeZoneString) = try AlexandriaHRMDateTime.parse(from: scanner)
+    let (date, time, timezone, timeZoneString) = try AsclepiusDateTime.parse(from: scanner)
     self.init(date: date, time: time, timezone: timezone, originalTimeZoneString: timeZoneString)
   }
   
-  private init(date: AlexandriaHRMDate, time: AlexandriaHRMTime? = nil, timezone: TimeZone? = nil, originalTimeZoneString: String? = nil) {
+  private init(date: AsclepiusDate, time: AsclepiusTime? = nil, timezone: TimeZone? = nil, originalTimeZoneString: String? = nil) {
     self.date = date
     self.time = time
     self.timeZone = timezone
@@ -60,20 +60,20 @@ public struct AlexandriaHRMDateTime: AlexandriaHRMPrimitiveType {
   }
   
   /// Date parsing
-  public static func parse(from scanner: Scanner, expectAtEnd: Bool = true) throws -> (date: AlexandriaHRMDate, time: AlexandriaHRMTime?, timezone: TimeZone?, timeZoneString: String?) {
+  public static func parse(from scanner: Scanner, expectAtEnd: Bool = true) throws -> (date: AsclepiusDate, time: AsclepiusTime?, timezone: TimeZone?, timeZoneString: String?) {
     let originalCharactersToBeSkipped = scanner.charactersToBeSkipped
     defer { scanner.charactersToBeSkipped = originalCharactersToBeSkipped }
     scanner.charactersToBeSkipped = nil
     
     // date
-    let date = try AlexandriaHRMDate.parse(from: scanner, expectAtEnd: false)
-    var time: AlexandriaHRMTime?
+    let date = try AsclepiusDate.parse(from: scanner, expectAtEnd: false)
+    var time: AsclepiusTime?
     var timeZone: TimeZone?
     var timeZoneString: String?
     
     // time
     if scanner.scanString("T", into: nil) {
-      time = try AlexandriaHRMTime.parse(from: scanner, expectAtEnd: false)
+      time = try AsclepiusTime.parse(from: scanner, expectAtEnd: false)
       
       // timezone
       let (secondsFromGMT, tzString) = try TimeZone.hs_parseComponents(from: scanner, expectAtEnd: true)
@@ -83,21 +83,21 @@ public struct AlexandriaHRMDateTime: AlexandriaHRMPrimitiveType {
     
     let scanLocation = scanner.scanLocation
     if expectAtEnd && !scanner.isAtEnd {
-      throw AlexandriaHRMDateParserError.additionalCharacters(AlexandriaHRMDateParserErrorPosition(string: scanner.string, location: scanLocation))
+      throw AsclepiusDateParserError.additionalCharacters(AsclepiusDateParserErrorPosition(string: scanner.string, location: scanLocation))
     }
     
     return (date, time, timeZone, timeZoneString)
   }
 }
 
-extension AlexandriaHRMDateTime: ExpressibleByStringLiteral {
+extension AsclepiusDateTime: ExpressibleByStringLiteral {
   public init(stringLiteral value: StringLiteralType) {
     try! self.init(value) // swiftlint:disable:this force_try
   }
 }
 
 // MARK: - Codable
-extension AlexandriaHRMDateTime: Codable {
+extension AsclepiusDateTime: Codable {
   public init(from decoder: Decoder) throws {
     let container = try decoder.singleValueContainer()
     let string = try container.decode(String.self)
@@ -111,7 +111,7 @@ extension AlexandriaHRMDateTime: Codable {
 }
 
 // MARK: - CustomStringConvertible
-extension AlexandriaHRMDateTime: CustomStringConvertible {
+extension AsclepiusDateTime: CustomStringConvertible {
   public var description: String {
     if let time = time, let timeZone = timeZone {
       if timeZoneIsUnaltered, let originalTimeZoneString = originalTimeZoneString {
@@ -124,8 +124,8 @@ extension AlexandriaHRMDateTime: CustomStringConvertible {
 }
 
 // MARK: - Equatable
-extension AlexandriaHRMDateTime: Equatable {
-  public static func == (leftSide: AlexandriaHRMDateTime, rightSide: AlexandriaHRMDateTime) -> Bool {
+extension AsclepiusDateTime: Equatable {
+  public static func == (leftSide: AsclepiusDateTime, rightSide: AsclepiusDateTime) -> Bool {
     if leftSide.date != rightSide.date {
       return false
     }
@@ -140,9 +140,9 @@ extension AlexandriaHRMDateTime: Equatable {
 }
 
 // MARK: - Comparable
-extension AlexandriaHRMDateTime: Comparable {
+extension AsclepiusDateTime: Comparable {
     /// This comparison will be done by taking time zones into account.
-  public static func < (leftSide: AlexandriaHRMDateTime, rightSide: AlexandriaHRMDateTime) -> Bool {
+  public static func < (leftSide: AsclepiusDateTime, rightSide: AsclepiusDateTime) -> Bool {
     do {
       return try leftSide.compare(rightSide) == .orderedAscending
     } catch {
@@ -153,9 +153,9 @@ extension AlexandriaHRMDateTime: Comparable {
 }
 
 // MARK: - Extends NSDate
-extension AlexandriaHRMDateTime: ExpressibleAsNSDate, ConstructibleFromNSDate {
+extension AsclepiusDateTime: ExpressibleAsNSDate, ConstructibleFromNSDate {
   public func asNSDate() throws -> Date {
-    let dateComponents = AlexandriaHRMDateComponents(
+    let dateComponents = AsclepiusDateComponents(
       year: date.year,
       month: date.month,
       day: date.day,
@@ -169,8 +169,8 @@ extension AlexandriaHRMDateTime: ExpressibleAsNSDate, ConstructibleFromNSDate {
   
   public init(date: Date, timeZone: TimeZone = TimeZone.current) throws {
     self.timeZone = timeZone
-    self.date = try AlexandriaHRMDate(date: date, timeZone: timeZone)
-    self.time = try AlexandriaHRMTime(date: date, timeZone: timeZone)
+    self.date = try AsclepiusDate(date: date, timeZone: timeZone)
+    self.time = try AsclepiusTime(date: date, timeZone: timeZone)
     
     self.originalTimeZoneString = nil
   }

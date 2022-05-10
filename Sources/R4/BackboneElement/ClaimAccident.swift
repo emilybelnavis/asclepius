@@ -1,6 +1,6 @@
 //
 //  ClaimAccident.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  Details of the accident which resulted in injures that required the products and services listed in the claim
@@ -29,7 +29,7 @@ open class ClaimAccident: BackboneElement {
   }
   
   /// When the accident occured
-  public var date: AlexandriaHRMPrimitive<AlexandriaHRMDate>
+  public var date: AsclepiusPrimitive<AsclepiusDate>
   
   /// The nature of the accident
   public var type: CodeableConcept?
@@ -37,7 +37,7 @@ open class ClaimAccident: BackboneElement {
   /// Where the accident occured
   public var locationX: LocationX?
   
-  public init(date: AlexandriaHRMPrimitive<AlexandriaHRMDate>) {
+  public init(date: AsclepiusPrimitive<AsclepiusDate>) {
     self.date = date
     super.init()
   }
@@ -45,8 +45,8 @@ open class ClaimAccident: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    date: AlexandriaHRMPrimitive<AlexandriaHRMDate>,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    date: AsclepiusPrimitive<AsclepiusDate>,
     type: CodeableConcept? = nil,
     locationX: LocationX? = nil
   ) {
@@ -84,7 +84,7 @@ open class ClaimAccident: BackboneElement {
       tempLocationX = .reference(locationReference)
     }
     
-    self.date = try AlexandriaHRMPrimitive<AlexandriaHRMDate>(from: codingKeyContainer, forKey: .date, auxKey: ._date)
+    self.date = try AsclepiusPrimitive<AsclepiusDate>(from: codingKeyContainer, forKey: .date, auxKey: ._date)
     self.type = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .type)
     self.locationX = tempLocationX
     

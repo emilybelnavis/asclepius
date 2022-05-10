@@ -1,6 +1,6 @@
 //
 //  ContractResourceAssetAvailabilityCodes.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/contract-action-status
  ValueSet: http://hl7.org/fhir/ValueSet/contract-actionstatus
  */
-public enum ContractResourceAssetAvailabilityCodes: String, AlexandriaHRMPrimitiveType {
+public enum ContractResourceAssetAvailabilityCodes: String, AsclepiusPrimitiveType {
   /// todo: to be completed
   case lease
 }

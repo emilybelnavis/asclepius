@@ -1,6 +1,6 @@
 //
 //  UsageContext.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  Specifies clinical/business/etc. metadat athat can be used to retrieve, index, and/or categorize an artifact.
@@ -46,7 +46,7 @@ open class UsageContext: Element {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
     code: Coding,
     valueX: ValueX
   ) {

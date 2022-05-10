@@ -1,6 +1,6 @@
 //
 //  ChargeItemPerformer.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
   Who performed the charged service. Indicates who or what performed or participated in the charged service.
@@ -37,7 +37,7 @@ open class ChargeItemPerformer: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
     function: CodeableConcept? = nil,
     actor: Reference
   ) {

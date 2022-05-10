@@ -1,6 +1,6 @@
 //
 //  ClinicalImpressionInvestigation.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  One or more sets of investigations (signs, symptoms, etc...). The actual grouping of investigations varies greatly
@@ -40,7 +40,7 @@ open class ClinicalImpressionInvestigation: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
     code: CodeableConcept,
     item: [Reference]?
   ) {

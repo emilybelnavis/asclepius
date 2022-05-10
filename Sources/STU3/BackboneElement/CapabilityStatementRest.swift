@@ -1,6 +1,6 @@
 //
 //  CapabilityStatementRest.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,16 +17,16 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /// A definition of the restful capabilities of the soultion, if any
 open class CapabilityStatementRest: BackboneElement {
   /// Identifies whether this portion of the statement is describing the ability to initiate or receive resful
   /// operations
-  public var mode: AlexandriaHRMPrimitive<RestfulCapabilityMode>
+  public var mode: AsclepiusPrimitive<RestfulCapabilityMode>
   
   /// General description of implementation
-  public var documentation: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var documentation: AsclepiusPrimitive<AsclepiusString>?
   
   /// Information about security of implementation
   public var security: CapabilityStatementRestSecurity?
@@ -44,9 +44,9 @@ open class CapabilityStatementRest: BackboneElement {
   public var operation: [CapabilityStatementRestResourceOperation]?
   
   /// Compartments served/used by system
-  public var compartment: [AlexandriaHRMPrimitive<Canonical>]?
+  public var compartment: [AsclepiusPrimitive<Canonical>]?
   
-  public init(mode: AlexandriaHRMPrimitive<RestfulCapabilityMode>) {
+  public init(mode: AsclepiusPrimitive<RestfulCapabilityMode>) {
     self.mode = mode
     super.init()
   }
@@ -54,15 +54,15 @@ open class CapabilityStatementRest: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    mode: AlexandriaHRMPrimitive<RestfulCapabilityMode>,
-    documentation: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    mode: AsclepiusPrimitive<RestfulCapabilityMode>,
+    documentation: AsclepiusPrimitive<AsclepiusString>? = nil,
     security: CapabilityStatementRestSecurity? = nil,
     resource: [CapabilityStatementRestResource]? = nil,
     interaction: [CapabilityStatementRestInteraction]? = nil,
     searchParam: [CapabilityStatementRestResourceSearchParam]? = nil,
     operation: [CapabilityStatementRestResourceOperation]? = nil,
-    compartment: [AlexandriaHRMPrimitive<Canonical>]? = nil
+    compartment: [AsclepiusPrimitive<Canonical>]? = nil
   ) {
     self.init(mode: mode)
     self.fhirExtension = fhirExtension
@@ -92,14 +92,14 @@ open class CapabilityStatementRest: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.mode = try AlexandriaHRMPrimitive<RestfulCapabilityMode>(from: codingKeyContainer, forKey: .mode, auxKey: ._mode)
-    self.documentation = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .documentation, auxKey: ._documentation)
+    self.mode = try AsclepiusPrimitive<RestfulCapabilityMode>(from: codingKeyContainer, forKey: .mode, auxKey: ._mode)
+    self.documentation = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .documentation, auxKey: ._documentation)
     self.security = try CapabilityStatementRestSecurity(from: codingKeyContainer, forKeyIfPresent: .security)
     self.resource = try [CapabilityStatementRestResource](from: codingKeyContainer, forKeyIfPresent: .resource)
     self.interaction = try [CapabilityStatementRestInteraction](from: codingKeyContainer, forKeyIfPresent: .interaction)
     self.searchParam = try [CapabilityStatementRestResourceSearchParam](from: codingKeyContainer, forKeyIfPresent: .searchParam)
     self.operation = try [CapabilityStatementRestResourceOperation](from: codingKeyContainer, forKeyIfPresent: .operation)
-    self.compartment = try [AlexandriaHRMPrimitive<Canonical>](from: codingKeyContainer, forKeyIfPresent: .compartment, auxKey: ._compartment)
+    self.compartment = try [AsclepiusPrimitive<Canonical>](from: codingKeyContainer, forKeyIfPresent: .compartment, auxKey: ._compartment)
     
     try super.init(from: decoder)
   }

@@ -1,6 +1,6 @@
 //
 //  EvidenceVariantState.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/evidence-variant-state
  ValueSet: http://hl7.org/fhir/ValueSet/evidence-variant-state
  */
-public enum EvidenceVariantState: String, AlexandriaHRMPrimitiveType {
+public enum EvidenceVariantState: String, AsclepiusPrimitiveType {
   /// low risk estimate.
   case lowRisk = "low-risk"
   

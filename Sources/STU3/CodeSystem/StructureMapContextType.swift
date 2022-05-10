@@ -1,6 +1,6 @@
 //
 //  StructureMapContextType.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/map-context-type
  ValueSet: http://hl7.org/fhir/ValueSet/map-context-type
  */
-public enum StructureMapContextType: String, AlexandriaHRMPrimitiveType {
+public enum StructureMapContextType: String, AsclepiusPrimitiveType {
   /// The context specifies a type.
   case type
   

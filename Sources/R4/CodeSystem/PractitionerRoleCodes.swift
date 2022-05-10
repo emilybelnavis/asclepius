@@ -1,6 +1,6 @@
 //
 //  PractitionerRoleCodes.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -22,7 +22,7 @@
  
  URL: http://terminology.hl7.org/CodeSystem/practitioner-role
  */
-public enum PractitionerRoleCodes: String, AlexandriaHRMPrimitiveType {
+public enum PractitionerRoleCodes: String, AsclepiusPrimitiveType {
   /// A qualified/registered medical practitioner
   case doctor
   

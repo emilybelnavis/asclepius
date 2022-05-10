@@ -1,6 +1,6 @@
 //
 //  ContractTermTypeCodes.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/contracttermtypecodes
  ValueSet: http://hl7.org/fhir/ValueSet/contract-term-type
  */
-public enum ContractTermTypeCodes: String, AlexandriaHRMPrimitiveType {
+public enum ContractTermTypeCodes: String, AsclepiusPrimitiveType {
   /// Based on specialized statutes that deal with particular subjects.
   case statutory
   

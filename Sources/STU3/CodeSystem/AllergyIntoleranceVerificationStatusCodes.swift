@@ -1,6 +1,6 @@
 //
 //  AllergyIntoleranceVerificationStatusCodes.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/allergyintolerance-verification
  ValueSet: http://hl7.org/fhir/ValueSet/allergyintolerance-verification
  */
-public enum AllergyIntoleranceVerificationStatusCodes: String, AlexandriaHRMPrimitiveType {
+public enum AllergyIntoleranceVerificationStatusCodes: String, AsclepiusPrimitiveType {
   /// A low-level of certainty about the propensity for a reaction to the identified substance
   case unconfirmed
   

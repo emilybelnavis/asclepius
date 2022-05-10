@@ -1,6 +1,6 @@
 //
 //  ElementDefinitionSlicing.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  This is element is sliced, slices to follow; Indicates that the element is sliced into a set of alternative definitions
@@ -31,27 +31,27 @@ open class ElementDefinitionSlicing: Element {
   public var discriminator: [ElementDefinitionSlicingDiscriminator]?
   
   /// Text description of how slicing works (or not)
-  public var fhirDescription: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var fhirDescription: AsclepiusPrimitive<AsclepiusString>?
   
   /// If elements must be in the same order as slices
-  public var ordered: AlexandriaHRMPrimitive<AlexandriaHRMBool>?
+  public var ordered: AsclepiusPrimitive<AsclepiusBool>?
   
   /// Whether additional slices are allowed or not. When the slices are ordered, profile authors can also
   /// specifiy that additional slices are only allowed at the end.
-  public var rules: AlexandriaHRMPrimitive<SlicingRules>
+  public var rules: AsclepiusPrimitive<SlicingRules>
   
-  public init(rules: AlexandriaHRMPrimitive<SlicingRules>) {
+  public init(rules: AsclepiusPrimitive<SlicingRules>) {
     self.rules = rules
     super.init()
   }
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
     discriminator: [ElementDefinitionSlicingDiscriminator]? = nil,
-    fhirDescription: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    ordered: AlexandriaHRMPrimitive<AlexandriaHRMBool>? = nil,
-    rules: AlexandriaHRMPrimitive<SlicingRules>
+    fhirDescription: AsclepiusPrimitive<AsclepiusString>? = nil,
+    ordered: AsclepiusPrimitive<AsclepiusBool>? = nil,
+    rules: AsclepiusPrimitive<SlicingRules>
   ) {
     self.init(rules: rules)
     self.fhirExtension = fhirExtension
@@ -74,9 +74,9 @@ open class ElementDefinitionSlicing: Element {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     self.discriminator = try [ElementDefinitionSlicingDiscriminator](from: codingKeyContainer, forKeyIfPresent: .discriminator)
-    self.fhirDescription = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .fhirDescription, auxKey: ._fhirDescription)
-    self.ordered = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKeyIfPresent: .ordered, auxKey: ._ordered)
-    self.rules = try AlexandriaHRMPrimitive<SlicingRules>(from: codingKeyContainer, forKey: .rules, auxKey: ._rules)
+    self.fhirDescription = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .fhirDescription, auxKey: ._fhirDescription)
+    self.ordered = try AsclepiusPrimitive<AsclepiusBool>(from: codingKeyContainer, forKeyIfPresent: .ordered, auxKey: ._ordered)
+    self.rules = try AsclepiusPrimitive<SlicingRules>(from: codingKeyContainer, forKey: .rules, auxKey: ._rules)
     
     try super.init(from: decoder)
   }

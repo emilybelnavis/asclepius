@@ -1,6 +1,6 @@
 //
 //  RiskProbability.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/risk-probability
  ValueSet: http://hl7.org/fhir/ValueSet/risk-probability
  */
-public enum RiskProbability: String, AlexandriaHRMPrimitiveType {
+public enum RiskProbability: String, AsclepiusPrimitiveType {
   /// The specified outcome is exceptionally unlikely.
   case negligible
   

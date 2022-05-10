@@ -1,6 +1,6 @@
 //
 //  BasicResourceTypes.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -26,7 +26,7 @@
  URL: http://terminology.hl7.org/CodeSystem/basic-resource-type
  ValueSet: http://hl7.org/fhir/ValueSet/basic-resource-type
  */
-public enum BasicResourceTypes: String, AlexandriaHRMPrimitiveType {
+public enum BasicResourceTypes: String, AsclepiusPrimitiveType {
   /// An assertion of permission for an activity or set of activites to occur, possibly subject to particular
   /// limitations; e.g. surgical consent, information disclosure consent, etc...
   case consent

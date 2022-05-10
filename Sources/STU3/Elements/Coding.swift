@@ -1,6 +1,6 @@
 //
 //  Coding.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,26 +17,26 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  A representatoin of a defined concept using a sympbol from a defined "code system"
  */
 open class Coding: Element {
   /// Identity of the terminology system
-  public var system: AlexandriaHRMPrimitive<AlexandriaHRMURI>?
+  public var system: AsclepiusPrimitive<AsclepiusURI>?
   
   /// Version of the system (if relevant)
-  public var version: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var version: AsclepiusPrimitive<AsclepiusString>?
   
   /// Symbol in syntax defined by the system
-  public var code: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var code: AsclepiusPrimitive<AsclepiusString>?
   
   /// Representation defined by the system
-  public var display: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var display: AsclepiusPrimitive<AsclepiusString>?
   
   /// Was this coding chosen directly by the user?
-  public var userSelected: AlexandriaHRMPrimitive<AlexandriaHRMBool>?
+  public var userSelected: AsclepiusPrimitive<AsclepiusBool>?
   
   override public init() {
     super.init()
@@ -44,12 +44,12 @@ open class Coding: Element {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    system: AlexandriaHRMPrimitive<AlexandriaHRMURI>? = nil,
-    version: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    code: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    display: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    userSelected: AlexandriaHRMPrimitive<AlexandriaHRMBool>? = nil
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    system: AsclepiusPrimitive<AsclepiusURI>? = nil,
+    version: AsclepiusPrimitive<AsclepiusString>? = nil,
+    code: AsclepiusPrimitive<AsclepiusString>? = nil,
+    display: AsclepiusPrimitive<AsclepiusString>? = nil,
+    userSelected: AsclepiusPrimitive<AsclepiusBool>? = nil
   ) {
     self.init()
     self.fhirExtension = fhirExtension
@@ -73,11 +73,11 @@ open class Coding: Element {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.system = try AlexandriaHRMPrimitive<AlexandriaHRMURI>(from: codingKeyContainer, forKeyIfPresent: .system, auxKey: ._system)
-    self.version = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .version, auxKey: ._version)
-    self.code = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .code, auxKey: ._code)
-    self.display = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .display, auxKey: ._display)
-    self.userSelected = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKeyIfPresent: .userSelected, auxKey: ._userSelected)
+    self.system = try AsclepiusPrimitive<AsclepiusURI>(from: codingKeyContainer, forKeyIfPresent: .system, auxKey: ._system)
+    self.version = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .version, auxKey: ._version)
+    self.code = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .code, auxKey: ._code)
+    self.display = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .display, auxKey: ._display)
+    self.userSelected = try AsclepiusPrimitive<AsclepiusBool>(from: codingKeyContainer, forKeyIfPresent: .userSelected, auxKey: ._userSelected)
     
     try super.init(from: decoder)
   }

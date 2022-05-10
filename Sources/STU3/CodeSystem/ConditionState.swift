@@ -1,6 +1,6 @@
 //
 //  ConditionState.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/condition-state
  ValueSet: http://hl7.org/fhir/ValueSet/condition-state
  */
-public enum ConditionState: String, AlexandriaHRMPrimitiveType {
+public enum ConditionState: String, AsclepiusPrimitiveType {
   /// The condition is active
   case active
   

@@ -1,6 +1,6 @@
 //
 //  MessageSignificanceCategory.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/message-significance-category
  ValueSet: http://hl7.org/fhir/ValueSet/message-significance-category
  */
-public enum MessageSignificanceCategory: String, AlexandriaHRMPrimitiveType {
+public enum MessageSignificanceCategory: String, AsclepiusPrimitiveType {
   /// The message represents/requests a change that should not be processed more than once; e.g., making a booking for
   /// an appointment.
   case consequence

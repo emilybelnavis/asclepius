@@ -1,6 +1,6 @@
 //
 //  RestfulCapabilityMode.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/restful-capability-mode
  ValueSet: http://hl7.org/fhir/ValueSet/restful-capability-mode
  */
-public enum RestfulCapabilityMode: String, AlexandriaHRMPrimitiveType {
+public enum RestfulCapabilityMode: String, AsclepiusPrimitiveType {
   /// The application acts as a client for this resource.
   case client
   

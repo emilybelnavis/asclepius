@@ -1,6 +1,6 @@
 //
 //  CompartmentDefinitionResource.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,20 +17,20 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /// Information about how a resouce is related to the compartment
 open class CompartmentDefinitionResource: BackboneElement {
   /// The name of a resource supported by the server
-  public var code: AlexandriaHRMPrimitive<ResourceType>
+  public var code: AsclepiusPrimitive<ResourceType>
   
   /// Search parameter name or chained parameters
-  public var param: [AlexandriaHRMPrimitive<AlexandriaHRMString>]?
+  public var param: [AsclepiusPrimitive<AsclepiusString>]?
   
   /// Additional documentation about the resource and compartment
-  public var documentation: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var documentation: AsclepiusPrimitive<AsclepiusString>?
   
-  public init(code: AlexandriaHRMPrimitive<ResourceType>) {
+  public init(code: AsclepiusPrimitive<ResourceType>) {
     self.code = code
     super.init()
   }
@@ -38,10 +38,10 @@ open class CompartmentDefinitionResource: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    code: AlexandriaHRMPrimitive<ResourceType>,
-    param: [AlexandriaHRMPrimitive<AlexandriaHRMString>]? = nil,
-    documentation: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    code: AsclepiusPrimitive<ResourceType>,
+    param: [AsclepiusPrimitive<AsclepiusString>]? = nil,
+    documentation: AsclepiusPrimitive<AsclepiusString>? = nil
   ) {
     self.init(code: code)
     self.fhirExtension = fhirExtension
@@ -61,9 +61,9 @@ open class CompartmentDefinitionResource: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.code = try AlexandriaHRMPrimitive<ResourceType>(from: codingKeyContainer, forKey: .code, auxKey: ._code)
-    self.param = try [AlexandriaHRMPrimitive<AlexandriaHRMString>](from: codingKeyContainer, forKeyIfPresent: .param, auxKey: ._param)
-    self.documentation = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .documentation, auxKey: ._documentation)
+    self.code = try AsclepiusPrimitive<ResourceType>(from: codingKeyContainer, forKey: .code, auxKey: ._code)
+    self.param = try [AsclepiusPrimitive<AsclepiusString>](from: codingKeyContainer, forKeyIfPresent: .param, auxKey: ._param)
+    self.documentation = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .documentation, auxKey: ._documentation)
     
     try super.init(from: decoder)
   }

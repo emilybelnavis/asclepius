@@ -1,6 +1,6 @@
 //
 //  HL7Workgroup.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/hl7-work-group
  ValueSet: http://hl7.org/fhir/ValueSet/hl7-work-group
  */
-public enum HL7Workgroup: String, AlexandriaHRMPrimitiveType {
+public enum HL7Workgroup: String, AsclepiusPrimitiveType {
   /// Community Based Collaborative Care (http://www.hl7.org/Special/committees/cbcc/index.cfm).
   case cbcc
   

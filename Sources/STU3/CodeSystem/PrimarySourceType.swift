@@ -1,6 +1,6 @@
 //
 //  PrimarySourceType.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/primary-source-type
  ValueSet: http://hl7.org/fhir/ValueSet/verificationresult-primary-source-type
  */
-public enum PrimarySourceType: String, AlexandriaHRMPrimitiveType {
+public enum PrimarySourceType: String, AsclepiusPrimitiveType {
   /// licBoard
   case licBoard = "lic-board"
   

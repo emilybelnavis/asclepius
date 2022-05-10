@@ -1,6 +1,6 @@
 //
 //  MedicationDispensePerformerFunctionCodes.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/medicationdispense-performer-function
  ValueSet: http://hl7.org/fhir/ValueSet/medicationdispense-performer-function
  */
-public enum MedicationDispensePerformerFunctionCodes: String, AlexandriaHRMPrimitiveType {
+public enum MedicationDispensePerformerFunctionCodes: String, AsclepiusPrimitiveType {
   /// Recorded the details of the request
   case dataenterer
   

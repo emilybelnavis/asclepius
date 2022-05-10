@@ -1,6 +1,6 @@
 //
 //  ContainerCap.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/container-cap
  ValueSet: http://hl7.org/fhir/ValueSet/container-cap
  */
-public enum ContainerCap: String, AlexandriaHRMPrimitiveType {
+public enum ContainerCap: String, AsclepiusPrimitiveType {
   /// Red cap
   case red
   

@@ -1,6 +1,6 @@
 //
 //  ContactPointSystem.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/contact-point-system
  ValueSet: http://hl7.org/fhir/ValueSet/contact-point-system
  */
-public enum ContactPointSystem: String, AlexandriaHRMPrimitiveType {
+public enum ContactPointSystem: String, AsclepiusPrimitiveType {
   /// The value is a telephone number used for voice calls. Use of full international numbers starting with a
   /// `+` is recommended to enable automatic dialing support, but not required
   case phone

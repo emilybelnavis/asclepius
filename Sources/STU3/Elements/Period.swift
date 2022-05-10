@@ -1,6 +1,6 @@
 //
 //  Period.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,13 +17,13 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 /**
  Time range defined by a start and end date, and optionally time
  */
 open class Period: Element {
-  public var start: AlexandriaHRMPrimitive<AlexandriaHRMDateTime>?
-  public var end: AlexandriaHRMPrimitive<AlexandriaHRMDateTime>?
+  public var start: AsclepiusPrimitive<AsclepiusDateTime>?
+  public var end: AsclepiusPrimitive<AsclepiusDateTime>?
   
   override public init() {
     super.init()
@@ -31,9 +31,9 @@ open class Period: Element {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    start: AlexandriaHRMPrimitive<AlexandriaHRMDateTime>? = nil,
-    end: AlexandriaHRMPrimitive<AlexandriaHRMDateTime>? = nil
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    start: AsclepiusPrimitive<AsclepiusDateTime>? = nil,
+    end: AsclepiusPrimitive<AsclepiusDateTime>? = nil
   ) {
     self.init()
     self.fhirExtension = fhirExtension
@@ -50,8 +50,8 @@ open class Period: Element {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.start = try AlexandriaHRMPrimitive<AlexandriaHRMDateTime>(from: codingKeyContainer, forKeyIfPresent: .start, auxKey: ._start)
-    self.end = try AlexandriaHRMPrimitive<AlexandriaHRMDateTime>(from: codingKeyContainer, forKeyIfPresent: .end, auxKey: ._end)
+    self.start = try AsclepiusPrimitive<AsclepiusDateTime>(from: codingKeyContainer, forKeyIfPresent: .start, auxKey: ._start)
+    self.end = try AsclepiusPrimitive<AsclepiusDateTime>(from: codingKeyContainer, forKeyIfPresent: .end, auxKey: ._end)
     
     try super.init(from: decoder)
   }

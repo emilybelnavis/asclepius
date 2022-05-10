@@ -1,6 +1,6 @@
 //
 //  ParameterDefinition.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  The parameters to the module. This collection specifies both the input and output parameters. Input
@@ -26,27 +26,27 @@ import AlexandriaHRMCore
  */
 open class ParameterDefinition: Element {
   /// Name used to access the parameter value
-  public var name: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var name: AsclepiusPrimitive<AsclepiusString>?
   
   /// Whether the parameter is input or output for the module
-  public var use: AlexandriaHRMPrimitive<OperationParameterUse>
+  public var use: AsclepiusPrimitive<OperationParameterUse>
   
   /// Minimum cardinality
-  public var min: AlexandriaHRMPrimitive<AlexandriaHRMInteger>?
+  public var min: AsclepiusPrimitive<AsclepiusInteger>?
   
   /// Maximum cardinality
-  public var max: AlexandriaHRMPrimitive<AlexandriaHRMInteger>?
+  public var max: AsclepiusPrimitive<AsclepiusInteger>?
   
   /// A brief description of the parameter
-  public var documentation: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var documentation: AsclepiusPrimitive<AsclepiusString>?
   
   /// What type of value
-  public var type: AlexandriaHRMPrimitive<AlexandriaHRMString>
+  public var type: AsclepiusPrimitive<AsclepiusString>
   
   /// What profile the value is expected to be
-  public var profile: AlexandriaHRMPrimitive<Canonical>?
+  public var profile: AsclepiusPrimitive<Canonical>?
   
-  public init(use: AlexandriaHRMPrimitive<OperationParameterUse>, type: AlexandriaHRMPrimitive<AlexandriaHRMString>) {
+  public init(use: AsclepiusPrimitive<OperationParameterUse>, type: AsclepiusPrimitive<AsclepiusString>) {
     self.use = use
     self.type = type
     super.init()
@@ -54,14 +54,14 @@ open class ParameterDefinition: Element {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    name: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    use: AlexandriaHRMPrimitive<OperationParameterUse>,
-    min: AlexandriaHRMPrimitive<AlexandriaHRMInteger>? = nil,
-    max: AlexandriaHRMPrimitive<AlexandriaHRMInteger>? = nil,
-    documentation: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    type: AlexandriaHRMPrimitive<AlexandriaHRMString>,
-    profile: AlexandriaHRMPrimitive<Canonical>? = nil
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    name: AsclepiusPrimitive<AsclepiusString>? = nil,
+    use: AsclepiusPrimitive<OperationParameterUse>,
+    min: AsclepiusPrimitive<AsclepiusInteger>? = nil,
+    max: AsclepiusPrimitive<AsclepiusInteger>? = nil,
+    documentation: AsclepiusPrimitive<AsclepiusString>? = nil,
+    type: AsclepiusPrimitive<AsclepiusString>,
+    profile: AsclepiusPrimitive<Canonical>? = nil
   ) {
     self.init(use: use, type: type)
     self.fhirExtension = fhirExtension
@@ -87,13 +87,13 @@ open class ParameterDefinition: Element {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.name = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .name, auxKey: ._name)
-    self.use = try AlexandriaHRMPrimitive<OperationParameterUse>(from: codingKeyContainer, forKey: .use, auxKey: ._use)
-    self.min = try AlexandriaHRMPrimitive<AlexandriaHRMInteger>(from: codingKeyContainer, forKeyIfPresent: .min, auxKey: ._min)
-    self.max = try AlexandriaHRMPrimitive<AlexandriaHRMInteger>(from: codingKeyContainer, forKeyIfPresent: .max, auxKey: ._max)
-    self.documentation = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .documentation, auxKey: ._documentation)
-    self.type = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .type, auxKey: ._type)
-    self.profile = try AlexandriaHRMPrimitive<Canonical>(from: codingKeyContainer, forKey: .profile, auxKey: ._profile)
+    self.name = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .name, auxKey: ._name)
+    self.use = try AsclepiusPrimitive<OperationParameterUse>(from: codingKeyContainer, forKey: .use, auxKey: ._use)
+    self.min = try AsclepiusPrimitive<AsclepiusInteger>(from: codingKeyContainer, forKeyIfPresent: .min, auxKey: ._min)
+    self.max = try AsclepiusPrimitive<AsclepiusInteger>(from: codingKeyContainer, forKeyIfPresent: .max, auxKey: ._max)
+    self.documentation = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .documentation, auxKey: ._documentation)
+    self.type = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKey: .type, auxKey: ._type)
+    self.profile = try AsclepiusPrimitive<Canonical>(from: codingKeyContainer, forKey: .profile, auxKey: ._profile)
     
     try super.init(from: decoder)
   }

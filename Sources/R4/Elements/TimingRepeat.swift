@@ -1,6 +1,6 @@
 //
 //  TimingRepeat.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /// A set of rules that describe when the event is scheduled.
 open class TimingRepeat: Element {
@@ -32,46 +32,46 @@ open class TimingRepeat: Element {
   public var boundsX: BoundsX?
   
   /// number of times to repeat
-  public var count: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>?
+  public var count: AsclepiusPrimitive<AsclepiusPositiveInteger>?
   
   /// max number of repeats
-  public var countMax: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>?
+  public var countMax: AsclepiusPrimitive<AsclepiusPositiveInteger>?
   
   /// how long when it happens
-  public var duration: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>?
+  public var duration: AsclepiusPrimitive<AsclepiusDecimal>?
   
   /// how long when it happens (max)
-  public var durationMax: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>?
+  public var durationMax: AsclepiusPrimitive<AsclepiusDecimal>?
   
   /// unit of time
-  public var durationUnit: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var durationUnit: AsclepiusPrimitive<AsclepiusString>?
   
   /// how many times per repeat period
-  public var frequency: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>?
+  public var frequency: AsclepiusPrimitive<AsclepiusPositiveInteger>?
   
   /// how many times per repeat period (max)
-  public var frequencyMax: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>?
+  public var frequencyMax: AsclepiusPrimitive<AsclepiusPositiveInteger>?
   
   /// event frequency times per period
-  public var period: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>?
+  public var period: AsclepiusPrimitive<AsclepiusDecimal>?
   
   /// upper limit of period (e.g. 1-2 hours)
-  public var periodMax: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>?
+  public var periodMax: AsclepiusPrimitive<AsclepiusDecimal>?
   
   ///  unit of time
-  public var periodUnit: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var periodUnit: AsclepiusPrimitive<AsclepiusString>?
   
   /// if one or more days of week is provided, action only occurs on specified day(s)
-  public var dayOfWeek: [AlexandriaHRMPrimitive<DaysOfWeek>]?
+  public var dayOfWeek: [AsclepiusPrimitive<DaysOfWeek>]?
   
   /// time of day for action
-  public var timeOfDay: [AlexandriaHRMPrimitive<AlexandriaHRMTime>]?
+  public var timeOfDay: [AsclepiusPrimitive<AsclepiusTime>]?
   
   /// code for time period of occurence
-  public var when: [AlexandriaHRMPrimitive<AlexandriaHRMString>]?
+  public var when: [AsclepiusPrimitive<AsclepiusString>]?
   
   /// minutes from event (before/after)
-  public var offset: AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>?
+  public var offset: AsclepiusPrimitive<AsclepiusUnsignedInteger>?
   
   override public init() {
     super.init()
@@ -79,22 +79,22 @@ open class TimingRepeat: Element {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
     boundsX: BoundsX? = nil,
-    count: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>? = nil,
-    countMax: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>? = nil,
-    duration: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>? = nil,
-    durationMax: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>? = nil,
-    durationUnit: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    frequency: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>? = nil,
-    frequencyMax: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>? = nil,
-    period: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>? = nil,
-    periodMax: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>? = nil,
-    periodUnit: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    dayOfWeek: [AlexandriaHRMPrimitive<DaysOfWeek>]? = nil,
-    timeOfDay: [AlexandriaHRMPrimitive<AlexandriaHRMTime>]? = nil,
-    when: [AlexandriaHRMPrimitive<AlexandriaHRMString>]? = nil,
-    offset: AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>? = nil
+    count: AsclepiusPrimitive<AsclepiusPositiveInteger>? = nil,
+    countMax: AsclepiusPrimitive<AsclepiusPositiveInteger>? = nil,
+    duration: AsclepiusPrimitive<AsclepiusDecimal>? = nil,
+    durationMax: AsclepiusPrimitive<AsclepiusDecimal>? = nil,
+    durationUnit: AsclepiusPrimitive<AsclepiusString>? = nil,
+    frequency: AsclepiusPrimitive<AsclepiusPositiveInteger>? = nil,
+    frequencyMax: AsclepiusPrimitive<AsclepiusPositiveInteger>? = nil,
+    period: AsclepiusPrimitive<AsclepiusDecimal>? = nil,
+    periodMax: AsclepiusPrimitive<AsclepiusDecimal>? = nil,
+    periodUnit: AsclepiusPrimitive<AsclepiusString>? = nil,
+    dayOfWeek: [AsclepiusPrimitive<DaysOfWeek>]? = nil,
+    timeOfDay: [AsclepiusPrimitive<AsclepiusTime>]? = nil,
+    when: [AsclepiusPrimitive<AsclepiusString>]? = nil,
+    offset: AsclepiusPrimitive<AsclepiusUnsignedInteger>? = nil
   ) {
     self.init()
     self.fhirExtension = fhirExtension
@@ -163,20 +163,20 @@ open class TimingRepeat: Element {
     }
     
     self.boundsX = tempBoundsX
-    self.count = try AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>(from: codingKeyContainer, forKeyIfPresent: .count, auxKey: ._count)
-    self.countMax = try AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>(from: codingKeyContainer, forKeyIfPresent: .countMax, auxKey: ._countMax)
-    self.duration = try AlexandriaHRMPrimitive<AlexandriaHRMDecimal>(from: codingKeyContainer, forKeyIfPresent: .duration, auxKey: ._duration)
-    self.durationMax = try AlexandriaHRMPrimitive<AlexandriaHRMDecimal>(from: codingKeyContainer, forKeyIfPresent: .durationMax, auxKey: ._durationMax)
-    self.durationUnit = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .durationUnit, auxKey: ._durationUnit)
-    self.frequency = try AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>(from: codingKeyContainer, forKeyIfPresent: .frequency, auxKey: ._frequency)
-    self.frequencyMax = try AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>(from: codingKeyContainer, forKeyIfPresent: .frequencyMax, auxKey: ._frequencyMax)
-    self.period = try AlexandriaHRMPrimitive<AlexandriaHRMDecimal>(from: codingKeyContainer, forKeyIfPresent: .period, auxKey: ._period)
-    self.periodMax = try AlexandriaHRMPrimitive<AlexandriaHRMDecimal>(from: codingKeyContainer, forKeyIfPresent: .periodMax, auxKey: ._periodMax)
-    self.periodUnit = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .periodUnit, auxKey: ._periodUnit)
-    self.dayOfWeek = try [AlexandriaHRMPrimitive<DaysOfWeek>](from: codingKeyContainer, forKeyIfPresent: .dayOfWeek, auxKey: ._dayOfWeek)
-    self.timeOfDay = try [AlexandriaHRMPrimitive<AlexandriaHRMTime>](from: codingKeyContainer, forKeyIfPresent: .timeOfDay, auxKey: ._timeOfDay)
-    self.when = try [AlexandriaHRMPrimitive<AlexandriaHRMString>](from: codingKeyContainer, forKeyIfPresent: .when, auxKey: ._when)
-    self.offset = try AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>(from: codingKeyContainer, forKeyIfPresent: .offset, auxKey: ._offset)
+    self.count = try AsclepiusPrimitive<AsclepiusPositiveInteger>(from: codingKeyContainer, forKeyIfPresent: .count, auxKey: ._count)
+    self.countMax = try AsclepiusPrimitive<AsclepiusPositiveInteger>(from: codingKeyContainer, forKeyIfPresent: .countMax, auxKey: ._countMax)
+    self.duration = try AsclepiusPrimitive<AsclepiusDecimal>(from: codingKeyContainer, forKeyIfPresent: .duration, auxKey: ._duration)
+    self.durationMax = try AsclepiusPrimitive<AsclepiusDecimal>(from: codingKeyContainer, forKeyIfPresent: .durationMax, auxKey: ._durationMax)
+    self.durationUnit = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .durationUnit, auxKey: ._durationUnit)
+    self.frequency = try AsclepiusPrimitive<AsclepiusPositiveInteger>(from: codingKeyContainer, forKeyIfPresent: .frequency, auxKey: ._frequency)
+    self.frequencyMax = try AsclepiusPrimitive<AsclepiusPositiveInteger>(from: codingKeyContainer, forKeyIfPresent: .frequencyMax, auxKey: ._frequencyMax)
+    self.period = try AsclepiusPrimitive<AsclepiusDecimal>(from: codingKeyContainer, forKeyIfPresent: .period, auxKey: ._period)
+    self.periodMax = try AsclepiusPrimitive<AsclepiusDecimal>(from: codingKeyContainer, forKeyIfPresent: .periodMax, auxKey: ._periodMax)
+    self.periodUnit = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .periodUnit, auxKey: ._periodUnit)
+    self.dayOfWeek = try [AsclepiusPrimitive<DaysOfWeek>](from: codingKeyContainer, forKeyIfPresent: .dayOfWeek, auxKey: ._dayOfWeek)
+    self.timeOfDay = try [AsclepiusPrimitive<AsclepiusTime>](from: codingKeyContainer, forKeyIfPresent: .timeOfDay, auxKey: ._timeOfDay)
+    self.when = try [AsclepiusPrimitive<AsclepiusString>](from: codingKeyContainer, forKeyIfPresent: .when, auxKey: ._when)
+    self.offset = try AsclepiusPrimitive<AsclepiusUnsignedInteger>(from: codingKeyContainer, forKeyIfPresent: .offset, auxKey: ._offset)
     
     try super.init(from: decoder)
   }

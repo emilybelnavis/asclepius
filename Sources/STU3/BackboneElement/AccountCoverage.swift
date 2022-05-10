@@ -1,6 +1,6 @@
 //
 //  AccountCoverage.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 /**
  The party(s) that are responsible for covering the payment of this account and what order they should be
  applied to the account
@@ -27,7 +27,7 @@ open class AccountCoverage: BackboneElement {
   public var coverage: Reference
   
   /// The priority of coverage in the context of this account
-  public var priority: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>?
+  public var priority: AsclepiusPrimitive<AsclepiusPositiveInteger>?
   
   public init(coverage: Reference) {
     self.coverage = coverage
@@ -37,9 +37,9 @@ open class AccountCoverage: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
     coverage: Reference,
-    priority: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>? = nil
+    priority: AsclepiusPrimitive<AsclepiusPositiveInteger>? = nil
   ) {
     self.init(coverage: coverage)
     self.fhirExtension = fhirExtension
@@ -58,7 +58,7 @@ open class AccountCoverage: BackboneElement {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     self.coverage = try Reference(from: codingKeyContainer, forKey: .coverage)
-    self.priority = try AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>(from: codingKeyContainer, forKeyIfPresent: .priority, auxKey: ._priority)
+    self.priority = try AsclepiusPrimitive<AsclepiusPositiveInteger>(from: codingKeyContainer, forKeyIfPresent: .priority, auxKey: ._priority)
     
     try super.init(from: decoder)
   }

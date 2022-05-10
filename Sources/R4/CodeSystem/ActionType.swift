@@ -1,6 +1,6 @@
 //
 //  ActionType.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/action-type
  ValueSet: http://hl7.org/fhir/ValueSet/action-type
  */
-public enum ActionType: String, AlexandriaHRMPrimitiveType {
+public enum ActionType: String, AsclepiusPrimitiveType {
   /// Create a new resource
   case create
   

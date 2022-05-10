@@ -1,6 +1,6 @@
 //
 //  MedicationRequestCourseOfTherapyCodes.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/medicationrequest-course-of-therapy
  ValueSet: http://hl7.org/fhir/ValueSet/medicationrequest-course-of-therapy
  */
-public enum MedicationRequestCourseOfTherapyCodes: String, AlexandriaHRMPrimitiveType {
+public enum MedicationRequestCourseOfTherapyCodes: String, AsclepiusPrimitiveType {
   /// A medication which is expected to be continued beyond the present order and which the patient should be assumed
   /// to be taking unless explicitly stopped.
   case continuous

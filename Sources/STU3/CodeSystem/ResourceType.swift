@@ -1,6 +1,6 @@
 //
 //  ResourceType.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -22,7 +22,7 @@
  
  URL: http://hl7.org/fhir/resource-types
  */
-public enum ResourceType: String, AlexandriaHRMPrimitiveType {
+public enum ResourceType: String, AsclepiusPrimitiveType {
   /// A financial tool for tracking value accrued for a particular purpose.  In the healthcare field, used to track
   /// charges for a patient, cost centers, etc.
   case account = "Account"

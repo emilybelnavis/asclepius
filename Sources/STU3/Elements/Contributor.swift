@@ -1,6 +1,6 @@
 //
 //  Contributor.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  Contributor information
@@ -26,15 +26,15 @@ import AlexandriaHRMCore
  */
 open class Contributor: Element {
   /// The type of contributor
-  public var type: AlexandriaHRMPrimitive<ContributorType>
+  public var type: AsclepiusPrimitive<ContributorType>
   
   /// Name of the contributor
-  public var name: AlexandriaHRMPrimitive<AlexandriaHRMString>
+  public var name: AsclepiusPrimitive<AsclepiusString>
   
   /// Contact details for the contributor
   public var contact: [ContactDetail]?
   
-  public init(type: AlexandriaHRMPrimitive<ContributorType>, name: AlexandriaHRMPrimitive<AlexandriaHRMString>) {
+  public init(type: AsclepiusPrimitive<ContributorType>, name: AsclepiusPrimitive<AsclepiusString>) {
     self.type = type
     self.name = name
     super.init()
@@ -42,9 +42,9 @@ open class Contributor: Element {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    type: AlexandriaHRMPrimitive<ContributorType>,
-    name: AlexandriaHRMPrimitive<AlexandriaHRMString>,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    type: AsclepiusPrimitive<ContributorType>,
+    name: AsclepiusPrimitive<AsclepiusString>,
     contact: [ContactDetail]? = nil
   ) {
     self.init(type: type, name: name)
@@ -63,8 +63,8 @@ open class Contributor: Element {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.type = try AlexandriaHRMPrimitive<ContributorType>(from: codingKeyContainer, forKey: .type, auxKey: ._type)
-    self.name = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .name, auxKey: ._name)
+    self.type = try AsclepiusPrimitive<ContributorType>(from: codingKeyContainer, forKey: .type, auxKey: ._type)
+    self.name = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKey: .name, auxKey: ._name)
     self.contact = try [ContactDetail](from: codingKeyContainer, forKeyIfPresent: .contact)
     
     try super.init(from: decoder)

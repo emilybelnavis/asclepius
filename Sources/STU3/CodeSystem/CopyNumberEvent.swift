@@ -1,6 +1,6 @@
 //
 //  CopyNumberEvent.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/copy-number-event
  ValueSet: http://hl7.org/fhir/ValueSet/copy-number-event
  */
-public enum CopyNumberEvent: String, AlexandriaHRMPrimitiveType {
+public enum CopyNumberEvent: String, AsclepiusPrimitiveType {
   /// amplification.
   case amp
   

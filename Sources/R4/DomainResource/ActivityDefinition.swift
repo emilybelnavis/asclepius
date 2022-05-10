@@ -1,6 +1,6 @@
 //
 //  ActivityDefinition.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  The definition of a specific activity to be taken, independent of any particular patient or context.
@@ -42,7 +42,7 @@ open class ActivityDefinition: DomainResource {
   
   public enum TimingX: Hashable {
     case age(Age)
-    case dateTime(AlexandriaHRMPrimitive<AlexandriaHRMDateTime>)
+    case dateTime(AsclepiusPrimitive<AsclepiusDateTime>)
     case duration(Duration)
     case period(Period)
     case range(Range)
@@ -50,43 +50,43 @@ open class ActivityDefinition: DomainResource {
   }
   
   /// Canonical identifier for this activity definition, represented as a URI (globally unique)
-  public var url: AlexandriaHRMPrimitive<AlexandriaHRMURI>?
+  public var url: AsclepiusPrimitive<AsclepiusURI>?
   
   /// Additional idenfier for the activity definition
   public var identifier: [Identifier]?
   
   /// Business version of the activity definition
-  public var version: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var version: AsclepiusPrimitive<AsclepiusString>?
   
   /// computer-friendly name for this activity definition
-  public var name: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var name: AsclepiusPrimitive<AsclepiusString>?
   
   /// human-friendly name for this activity definition
-  public var title: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var title: AsclepiusPrimitive<AsclepiusString>?
   
   /// subtitle of the activity definition
-  public var subtitle: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var subtitle: AsclepiusPrimitive<AsclepiusString>?
   
   /// status of the activity definition
-  public var status: AlexandriaHRMPrimitive<PublicationStatus>
+  public var status: AsclepiusPrimitive<PublicationStatus>
   
   /// definition is for experimental purposes
-  public var experimental: AlexandriaHRMPrimitive<AlexandriaHRMBool>?
+  public var experimental: AsclepiusPrimitive<AsclepiusBool>?
   
   /// type of individual the activity definition is intended for
   public var subjectX: SubjectX?
   
   /// date last changed
-  public var date: AlexandriaHRMPrimitive<AlexandriaHRMDateTime>?
+  public var date: AsclepiusPrimitive<AsclepiusDateTime>?
   
   /// name of the publisher (org/individual)
-  public var publisher: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var publisher: AsclepiusPrimitive<AsclepiusString>?
   
   /// contact details for the publisher
   public var contact: [ContactDetail]?
   
   /// natural language description of the activity definitoin
-  public var fhirDescription: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var fhirDescription: AsclepiusPrimitive<AsclepiusString>?
   
   /// the context that the content is intended to support
   public var useContext: [UsageContext]?
@@ -95,19 +95,19 @@ open class ActivityDefinition: DomainResource {
   public var jurisdiction: [CodeableConcept]?
   
   /// why this activity definition is defined
-  public var purpose: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var purpose: AsclepiusPrimitive<AsclepiusString>?
   
   /// clinical usage for thie activity definition
-  public var usage: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var usage: AsclepiusPrimitive<AsclepiusString>?
   
   /// use and/or publishin restrictions
-  public var copyright: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var copyright: AsclepiusPrimitive<AsclepiusString>?
   
   /// when the activity definition was approved by the publisher
-  public var approvalDate: AlexandriaHRMPrimitive<AlexandriaHRMDate>?
+  public var approvalDate: AsclepiusPrimitive<AsclepiusDate>?
   
   /// when the activity definition was last reviewed by the publisher
-  public var lastReviewDate: AlexandriaHRMPrimitive<AlexandriaHRMDate>?
+  public var lastReviewDate: AsclepiusPrimitive<AsclepiusDate>?
   
   /// when the activity definition is expected to be used
   public var effectivePeriod: Period?
@@ -131,26 +131,26 @@ open class ActivityDefinition: DomainResource {
   public var relatedArtifact: [RelatedArtifact]?
   
   /// logic used by the activity definition
-  public var library: [AlexandriaHRMPrimitive<Canonical>]?
+  public var library: [AsclepiusPrimitive<Canonical>]?
   
   /// a description of the kind of resource the definition is representing
-  public var kind: AlexandriaHRMPrimitive<RequestResourceType>?
+  public var kind: AsclepiusPrimitive<RequestResourceType>?
   
   /// what profile the resource needs to conform to
-  public var profile: AlexandriaHRMPrimitive<Canonical>?
+  public var profile: AsclepiusPrimitive<Canonical>?
   
   /// detail type of activity
   public var code: CodeableConcept?
   
   /// indicates the level of authorirty/intentionality assocated with the activity and where the request
   /// should fit into the workflow chain
-  public var intent: AlexandriaHRMPrimitive<RequestIntent>?
+  public var intent: AsclepiusPrimitive<RequestIntent>?
   
   /// indicates how quickly the activty should be addressed with respect to other requests
-  public var priority: AlexandriaHRMPrimitive<RequestPriority>?
+  public var priority: AsclepiusPrimitive<RequestPriority>?
   
   /// should the activity be performed
-  public var doNotPerform: AlexandriaHRMPrimitive<AlexandriaHRMBool>?
+  public var doNotPerform: AsclepiusPrimitive<AsclepiusBool>?
   
   /// when the activity is to be performed
   public var timingX: TimingX?
@@ -183,12 +183,12 @@ open class ActivityDefinition: DomainResource {
   public var observationResultRequirement: [Reference]?
   
   /// transform to apply template
-  public var transform: AlexandriaHRMPrimitive<Canonical>?
+  public var transform: AsclepiusPrimitive<Canonical>?
   
   /// dynamic aspects of the activity definition
   public var dynamicValue: [ActivityDefinitionDynamicValue]?
   
-  public init(status: AlexandriaHRMPrimitive<PublicationStatus>) {
+  public init(status: AsclepiusPrimitive<PublicationStatus>) {
     self.status = status
     super.init()
   }
@@ -196,58 +196,58 @@ open class ActivityDefinition: DomainResource {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    approvalDate: AlexandriaHRMPrimitive<AlexandriaHRMDate>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    approvalDate: AsclepiusPrimitive<AsclepiusDate>? = nil,
     author: [ContactDetail]? = nil,
     bodySite: [CodeableConcept]? = nil,
     code: CodeableConcept? = nil,
     contact: [ContactDetail]? = nil,
     contained: [ResourceProxy]? = nil,
-    copyright: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    date: AlexandriaHRMPrimitive<AlexandriaHRMDateTime>? = nil,
-    doNotPerform: AlexandriaHRMPrimitive<AlexandriaHRMBool>? = nil,
+    copyright: AsclepiusPrimitive<AsclepiusString>? = nil,
+    date: AsclepiusPrimitive<AsclepiusDateTime>? = nil,
+    doNotPerform: AsclepiusPrimitive<AsclepiusBool>? = nil,
     dosage: [Dosage]? = nil,
     dynamicValue: [ActivityDefinitionDynamicValue]? = nil,
     editor: [ContactDetail]? = nil,
     effectivePeriod: Period? = nil,
     endorser: [ContactDetail]? = nil,
-    experimental: AlexandriaHRMPrimitive<AlexandriaHRMBool>? = nil,
-    fhirDescription: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    experimental: AsclepiusPrimitive<AsclepiusBool>? = nil,
+    fhirDescription: AsclepiusPrimitive<AsclepiusString>? = nil,
     identifier: [Identifier]? = nil,
-    implicitRules: AlexandriaHRMPrimitive<AlexandriaHRMURI>? = nil,
-    intent: AlexandriaHRMPrimitive<RequestIntent>? = nil,
+    implicitRules: AsclepiusPrimitive<AsclepiusURI>? = nil,
+    intent: AsclepiusPrimitive<RequestIntent>? = nil,
     jurisdiction: [CodeableConcept]? = nil,
-    kind: AlexandriaHRMPrimitive<RequestResourceType>? = nil,
-    language: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    lastReviewDate: AlexandriaHRMPrimitive<AlexandriaHRMDate>? = nil,
-    library: [AlexandriaHRMPrimitive<Canonical>]? = nil,
+    kind: AsclepiusPrimitive<RequestResourceType>? = nil,
+    language: AsclepiusPrimitive<AsclepiusString>? = nil,
+    lastReviewDate: AsclepiusPrimitive<AsclepiusDate>? = nil,
+    library: [AsclepiusPrimitive<Canonical>]? = nil,
     location: Reference? = nil,
     meta: Meta? = nil,
-    name: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    name: AsclepiusPrimitive<AsclepiusString>? = nil,
     observationRequirement: [Reference]? = nil,
     observationResultRequirement: [Reference]? = nil,
     participant: [ActivityDefinitionParticipant]? = nil,
-    priority: AlexandriaHRMPrimitive<RequestPriority>? = nil,
+    priority: AsclepiusPrimitive<RequestPriority>? = nil,
     productX: ProductX? = nil,
-    profile: AlexandriaHRMPrimitive<Canonical>? = nil,
-    publisher: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    purpose: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    profile: AsclepiusPrimitive<Canonical>? = nil,
+    publisher: AsclepiusPrimitive<AsclepiusString>? = nil,
+    purpose: AsclepiusPrimitive<AsclepiusString>? = nil,
     quantity: Quantity? = nil,
     relatedArtifact: [RelatedArtifact]? = nil,
     reviewer: [ContactDetail]? = nil,
     specimenRequirement: [Reference]? = nil,
-    status: AlexandriaHRMPrimitive<PublicationStatus>,
+    status: AsclepiusPrimitive<PublicationStatus>,
     subjectX: SubjectX? = nil,
-    subtitle: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    subtitle: AsclepiusPrimitive<AsclepiusString>? = nil,
     text: Narrative? = nil,
     timingX: TimingX? = nil,
-    title: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    title: AsclepiusPrimitive<AsclepiusString>? = nil,
     topic: [CodeableConcept]? = nil,
-    transform: AlexandriaHRMPrimitive<Canonical>? = nil,
-    url: AlexandriaHRMPrimitive<AlexandriaHRMURI>? = nil,
-    usage: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    transform: AsclepiusPrimitive<Canonical>? = nil,
+    url: AsclepiusPrimitive<AsclepiusURI>? = nil,
+    usage: AsclepiusPrimitive<AsclepiusString>? = nil,
     useContext: [UsageContext]? = nil,
-    version: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil
+    version: AsclepiusPrimitive<AsclepiusString>? = nil
   ) {
     self.init(status: status)
     self.fhirExtension = fhirExtension
@@ -403,7 +403,7 @@ open class ActivityDefinition: DomainResource {
       tempTimingX = .age(timingAge)
     }
     
-    if let timingDateTime = try AlexandriaHRMPrimitive<AlexandriaHRMDateTime>(from: codingKeyContainer, forKeyIfPresent: .timingDateTime, auxKey: ._timingDateTime) {
+    if let timingDateTime = try AsclepiusPrimitive<AsclepiusDateTime>(from: codingKeyContainer, forKeyIfPresent: .timingDateTime, auxKey: ._timingDateTime) {
       if tempTimingX != nil {
         throw DecodingError.dataCorruptedError(forKey: .timingDateTime, in: codingKeyContainer, debugDescription: "More than one value provided for \"timing\"")
       }
@@ -431,51 +431,51 @@ open class ActivityDefinition: DomainResource {
       tempTimingX = .timing(timingTiming)
     }
     
-    self.approvalDate = try AlexandriaHRMPrimitive<AlexandriaHRMDate>(from: codingKeyContainer, forKeyIfPresent: .approvalDate, auxKey: ._approvalDate)
+    self.approvalDate = try AsclepiusPrimitive<AsclepiusDate>(from: codingKeyContainer, forKeyIfPresent: .approvalDate, auxKey: ._approvalDate)
     self.author = try [ContactDetail](from: codingKeyContainer, forKeyIfPresent: .author)
     self.bodySite = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .bodySite)
     self.code = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .code)
     self.contact = try [ContactDetail](from: codingKeyContainer, forKeyIfPresent: .contact)
-    self.copyright = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .copyright, auxKey: ._copyright)
-    self.date = try AlexandriaHRMPrimitive<AlexandriaHRMDateTime>(from: codingKeyContainer, forKeyIfPresent: .date, auxKey: ._date)
-    self.doNotPerform = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKeyIfPresent: .doNotPerform, auxKey: ._doNotPerform)
+    self.copyright = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .copyright, auxKey: ._copyright)
+    self.date = try AsclepiusPrimitive<AsclepiusDateTime>(from: codingKeyContainer, forKeyIfPresent: .date, auxKey: ._date)
+    self.doNotPerform = try AsclepiusPrimitive<AsclepiusBool>(from: codingKeyContainer, forKeyIfPresent: .doNotPerform, auxKey: ._doNotPerform)
     self.dosage = try [Dosage](from: codingKeyContainer, forKeyIfPresent: .dosage)
     self.dynamicValue = try [ActivityDefinitionDynamicValue](from: codingKeyContainer, forKeyIfPresent: .dynamicValue)
     self.editor = try [ContactDetail](from: codingKeyContainer, forKeyIfPresent: .editor)
     self.effectivePeriod = try Period(from: codingKeyContainer, forKeyIfPresent: .effectivePeriod)
     self.endorser = try [ContactDetail](from: codingKeyContainer, forKeyIfPresent: .endorser)
-    self.experimental = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKeyIfPresent: .experimental, auxKey: ._experimental)
-    self.fhirDescription = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .fhirDescription, auxKey: ._fhirDescription)
+    self.experimental = try AsclepiusPrimitive<AsclepiusBool>(from: codingKeyContainer, forKeyIfPresent: .experimental, auxKey: ._experimental)
+    self.fhirDescription = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .fhirDescription, auxKey: ._fhirDescription)
     self.identifier = try [Identifier](from: codingKeyContainer, forKeyIfPresent: .identifier)
-    self.intent = try AlexandriaHRMPrimitive<RequestIntent>(from: codingKeyContainer, forKeyIfPresent: .intent, auxKey: ._intent)
+    self.intent = try AsclepiusPrimitive<RequestIntent>(from: codingKeyContainer, forKeyIfPresent: .intent, auxKey: ._intent)
     self.jurisdiction = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .jurisdiction)
-    self.kind = try AlexandriaHRMPrimitive<RequestResourceType>(from: codingKeyContainer, forKeyIfPresent: .kind, auxKey: ._kind)
-    self.lastReviewDate = try AlexandriaHRMPrimitive<AlexandriaHRMDate>(from: codingKeyContainer, forKeyIfPresent: .lastReviewDate, auxKey: ._lastReviewDate)
-    self.library = try [AlexandriaHRMPrimitive<Canonical>](from: codingKeyContainer, forKeyIfPresent: .library, auxKey: ._library)
+    self.kind = try AsclepiusPrimitive<RequestResourceType>(from: codingKeyContainer, forKeyIfPresent: .kind, auxKey: ._kind)
+    self.lastReviewDate = try AsclepiusPrimitive<AsclepiusDate>(from: codingKeyContainer, forKeyIfPresent: .lastReviewDate, auxKey: ._lastReviewDate)
+    self.library = try [AsclepiusPrimitive<Canonical>](from: codingKeyContainer, forKeyIfPresent: .library, auxKey: ._library)
     self.location = try Reference(from: codingKeyContainer, forKeyIfPresent: .location)
-    self.name = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .name, auxKey: ._name)
+    self.name = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .name, auxKey: ._name)
     self.observationRequirement = try [Reference](from: codingKeyContainer, forKeyIfPresent: .observationRequirement)
     self.observationResultRequirement = try [Reference](from: codingKeyContainer, forKeyIfPresent: .observationResultRequirement)
     self.participant = try [ActivityDefinitionParticipant](from: codingKeyContainer, forKeyIfPresent: .participant)
-    self.priority = try AlexandriaHRMPrimitive<RequestPriority>(from: codingKeyContainer, forKeyIfPresent: .priority, auxKey: ._priority)
+    self.priority = try AsclepiusPrimitive<RequestPriority>(from: codingKeyContainer, forKeyIfPresent: .priority, auxKey: ._priority)
     self.productX = tempProductX
-    self.profile = try AlexandriaHRMPrimitive<Canonical>(from: codingKeyContainer, forKeyIfPresent: .profile, auxKey: ._profile)
-    self.publisher = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .publisher, auxKey: ._publisher)
-    self.purpose = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .purpose, auxKey: ._purpose)
+    self.profile = try AsclepiusPrimitive<Canonical>(from: codingKeyContainer, forKeyIfPresent: .profile, auxKey: ._profile)
+    self.publisher = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .publisher, auxKey: ._publisher)
+    self.purpose = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .purpose, auxKey: ._purpose)
     self.quantity = try Quantity(from: codingKeyContainer, forKeyIfPresent: .quantity)
     self.relatedArtifact = try [RelatedArtifact](from: codingKeyContainer, forKeyIfPresent: .relatedArtifact)
     self.reviewer = try [ContactDetail](from: codingKeyContainer, forKeyIfPresent: .reviewer)
     self.specimenRequirement = try [Reference](from: codingKeyContainer, forKeyIfPresent: .specimenRequirement)
-    self.status = try AlexandriaHRMPrimitive<PublicationStatus>(from: codingKeyContainer, forKey: .status, auxKey: ._status)
+    self.status = try AsclepiusPrimitive<PublicationStatus>(from: codingKeyContainer, forKey: .status, auxKey: ._status)
     self.subjectX = tempSubjectX
     self.timingX = tempTimingX
-    self.title = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .title, auxKey: ._title)
+    self.title = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .title, auxKey: ._title)
     self.topic = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .topic)
-    self.transform = try AlexandriaHRMPrimitive<Canonical>(from: codingKeyContainer, forKeyIfPresent: .transform, auxKey: ._transform)
-    self.url = try AlexandriaHRMPrimitive<AlexandriaHRMURI>(from: codingKeyContainer, forKeyIfPresent: .url, auxKey: ._url)
-    self.usage = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .usage, auxKey: ._usage)
+    self.transform = try AsclepiusPrimitive<Canonical>(from: codingKeyContainer, forKeyIfPresent: .transform, auxKey: ._transform)
+    self.url = try AsclepiusPrimitive<AsclepiusURI>(from: codingKeyContainer, forKeyIfPresent: .url, auxKey: ._url)
+    self.usage = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .usage, auxKey: ._usage)
     self.useContext = try [UsageContext](from: codingKeyContainer, forKeyIfPresent: .useContext)
-    self.version = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .version, auxKey: ._version)
+    self.version = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .version, auxKey: ._version)
     try super.init(from: decoder)
   }
   

@@ -1,6 +1,6 @@
 //
 //  DischargeDisposition.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/discharge-disposition
  ValueSet: http://hl7.org/fhir/ValueSet/encounter-discharge-disposition
  */
-public enum DischargeDisposition: String, AlexandriaHRMPrimitiveType {
+public enum DischargeDisposition: String, AsclepiusPrimitiveType {
   /// The patient was dicharged and has indicated that they are going to return home afterwards.
   case home
   

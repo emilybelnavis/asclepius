@@ -1,6 +1,6 @@
 //
 //  DeviceDefinitionParameterGroup.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/parameter-group
  ValueSet: http://hl7.org/fhir/ValueSet/parameter-group
  */
-public enum DeviceDefinitionParameterGroup: String, AlexandriaHRMPrimitiveType {
+public enum DeviceDefinitionParameterGroup: String, AsclepiusPrimitiveType {
   /// Haemodynamic Parameter Group - MDC_PGRP_HEMO.
   case haemodynamic
   

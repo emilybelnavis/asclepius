@@ -1,6 +1,6 @@
 //
 //  ContactEntityType.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -24,7 +24,7 @@
  URL: http://terminology.hl7.org/CodeSystem/contactentity-type
  ValueSet: http://hl7.org/fhir/ValueSet/contactentity-type
  */
-public enum ContactEntityType: String, AlexandriaHRMPrimitiveType {
+public enum ContactEntityType: String, AsclepiusPrimitiveType {
   /// Contact details for information regarding to billing/general finance inquiries
   case BILL
   

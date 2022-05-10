@@ -1,6 +1,6 @@
 //
 //  ResearchElementType.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/research-element-type
  ValueSet: http://hl7.org/fhir/ValueSet/research-element-type
  */
-public enum ResearchElementType: String, AlexandriaHRMPrimitiveType {
+public enum ResearchElementType: String, AsclepiusPrimitiveType {
   /// The element defines the population that forms the basis for research.
   case population
   

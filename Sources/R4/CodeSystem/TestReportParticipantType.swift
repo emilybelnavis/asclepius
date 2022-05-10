@@ -1,6 +1,6 @@
 //
 //  TestReportParticipantType.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/report-participant-type
  ValueSet: http://hl7.org/fhir/ValueSet/report-participant-type
  */
-public enum TestReportParticipantType: String, AlexandriaHRMPrimitiveType {
+public enum TestReportParticipantType: String, AsclepiusPrimitiveType {
     /// The test execution engine.
   case testEngine = "test-engine"
   

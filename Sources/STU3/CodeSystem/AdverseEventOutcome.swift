@@ -1,6 +1,6 @@
 //
 //  AdverseEventOutcome.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/adverse-event-outcome
  ValueSet: http://hl7.org/fhir/ValueSet/adverse-event-outcome
  */
-public enum AdverseEventOutcome: String, AlexandriaHRMPrimitiveType {
+public enum AdverseEventOutcome: String, AsclepiusPrimitiveType {
   /// resolved
   case resolved
   

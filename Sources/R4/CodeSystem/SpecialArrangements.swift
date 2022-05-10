@@ -1,6 +1,6 @@
 //
 //  SpecialArrangements.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -24,7 +24,7 @@
  URL: http://terminology.hl7.org/CodeSystem/encounter-special-arrangements
  ValueSet: http://hl7.org/fhir/ValueSet/encounter-special-arrangements
  */
-public enum SpecialArrangements: String, AlexandriaHRMPrimitiveType {
+public enum SpecialArrangements: String, AsclepiusPrimitiveType {
   /// The patient requires a wheelchair to be made available for the encounter.
   case wheel
   

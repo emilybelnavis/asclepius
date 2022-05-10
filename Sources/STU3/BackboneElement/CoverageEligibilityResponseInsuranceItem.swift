@@ -1,6 +1,6 @@
 //
 //  CoverageEligibilityResponseInsuranceItem.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  Benefits and authorization details; Benefits and optionally current balances, and authorization details by
@@ -37,13 +37,13 @@ open class CoverageEligibilityResponseInsuranceItem: BackboneElement {
   public var provider: Reference?
   
   /// Excluded from the plan
-  public var excluded: AlexandriaHRMPrimitive<AlexandriaHRMBool>?
+  public var excluded: AsclepiusPrimitive<AsclepiusBool>?
   
   /// Short name for the benefit
-  public var name: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var name: AsclepiusPrimitive<AsclepiusString>?
   
   /// Description of the benefit or services covered
-  public var fhirDescription: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var fhirDescription: AsclepiusPrimitive<AsclepiusString>?
   
   /// In or out of network
   public var network: CodeableConcept?
@@ -58,13 +58,13 @@ open class CoverageEligibilityResponseInsuranceItem: BackboneElement {
   public var benefit: [CoverageEligibilityResponseInsuranceItemBenefit]?
   
   /// Authorization required flag
-  public var authorizationRequired: AlexandriaHRMPrimitive<AlexandriaHRMBool>?
+  public var authorizationRequired: AsclepiusPrimitive<AsclepiusBool>?
   
   /// Type of required supporting materials
   public var authorizationSupporting: [CodeableConcept]?
   
   /// Pre-authorization requirements endpoint
-  public var authorizationUrl: AlexandriaHRMPrimitive<AlexandriaHRMURI>?
+  public var authorizationUrl: AsclepiusPrimitive<AsclepiusURI>?
   
   override public init() {
     super.init()
@@ -73,21 +73,21 @@ open class CoverageEligibilityResponseInsuranceItem: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
     category: CodeableConcept? = nil,
     productOrService: CodeableConcept? = nil,
     modifier: [CodeableConcept]? = nil,
     provider: Reference? = nil,
-    excluded: AlexandriaHRMPrimitive<AlexandriaHRMBool>? = nil,
-    name: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    fhirDescription: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    excluded: AsclepiusPrimitive<AsclepiusBool>? = nil,
+    name: AsclepiusPrimitive<AsclepiusString>? = nil,
+    fhirDescription: AsclepiusPrimitive<AsclepiusString>? = nil,
     network: CodeableConcept? = nil,
     unit: CodeableConcept? = nil,
     term: CodeableConcept? = nil,
     benefit: [CoverageEligibilityResponseInsuranceItemBenefit]? = nil,
-    authorizationRequired: AlexandriaHRMPrimitive<AlexandriaHRMBool>? = nil,
+    authorizationRequired: AsclepiusPrimitive<AsclepiusBool>? = nil,
     authorizationSupporting: [CodeableConcept]? = nil,
-    authorizationUrl: AlexandriaHRMPrimitive<AlexandriaHRMURI>? = nil
+    authorizationUrl: AsclepiusPrimitive<AsclepiusURI>? = nil
   ) {
     self.init()
     self.fhirExtension = fhirExtension
@@ -134,16 +134,16 @@ open class CoverageEligibilityResponseInsuranceItem: BackboneElement {
     self.productOrService = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .productOrService)
     self.modifier = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .modifier)
     self.provider = try Reference(from: codingKeyContainer, forKeyIfPresent: .provider)
-    self.excluded = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKeyIfPresent: .excluded, auxKey: ._excluded)
-    self.name = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .name, auxKey: ._name)
-    self.fhirDescription = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .fhirDescription, auxKey: ._fhirDescription)
+    self.excluded = try AsclepiusPrimitive<AsclepiusBool>(from: codingKeyContainer, forKeyIfPresent: .excluded, auxKey: ._excluded)
+    self.name = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .name, auxKey: ._name)
+    self.fhirDescription = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .fhirDescription, auxKey: ._fhirDescription)
     self.network = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .network)
     self.unit = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .unit)
     self.term = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .term)
     self.benefit = try [CoverageEligibilityResponseInsuranceItemBenefit](from: codingKeyContainer, forKeyIfPresent: .benefit)
-    self.authorizationRequired = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKeyIfPresent: .authorizationRequired, auxKey: ._authorizationRequired)
+    self.authorizationRequired = try AsclepiusPrimitive<AsclepiusBool>(from: codingKeyContainer, forKeyIfPresent: .authorizationRequired, auxKey: ._authorizationRequired)
     self.authorizationSupporting = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .authorizationSupporting)
-    self.authorizationUrl = try AlexandriaHRMPrimitive<AlexandriaHRMURI>(from: codingKeyContainer, forKeyIfPresent: .authorizationUrl, auxKey: ._authorizationUrl)
+    self.authorizationUrl = try AsclepiusPrimitive<AsclepiusURI>(from: codingKeyContainer, forKeyIfPresent: .authorizationUrl, auxKey: ._authorizationUrl)
     
     try super.init(from: decoder)
   }

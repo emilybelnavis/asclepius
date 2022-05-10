@@ -1,6 +1,6 @@
 //
 //  CatalogEntryRelatedEntry.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  An item that this catalog entry is related to. Used for example to point to a substance or a device used to
@@ -26,12 +26,12 @@ import AlexandriaHRMCore
 open class CatalogEntryRelatedEntry: BackboneElement {
   /// The type of relation to the related item: e.g. `child`, `parent`, `packageContent`,
   /// `containerPackage`, `usedIn`, `uses`, `requires`, etc...
-  public var relationType: AlexandriaHRMPrimitive<CatalogEntryRelationType>
+  public var relationType: AsclepiusPrimitive<CatalogEntryRelationType>
   
   /// The reference to the related item
   public var item: Reference
   
-  public init(relationType: AlexandriaHRMPrimitive<CatalogEntryRelationType>, item: Reference) {
+  public init(relationType: AsclepiusPrimitive<CatalogEntryRelationType>, item: Reference) {
     self.relationType = relationType
     self.item = item
     super.init()
@@ -40,8 +40,8 @@ open class CatalogEntryRelatedEntry: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    relationType: AlexandriaHRMPrimitive<CatalogEntryRelationType>,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    relationType: AsclepiusPrimitive<CatalogEntryRelationType>,
     item: Reference
   ) {
     self.init(relationType: relationType, item: item)
@@ -59,7 +59,7 @@ open class CatalogEntryRelatedEntry: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.relationType = try AlexandriaHRMPrimitive<CatalogEntryRelationType>(from: codingKeyContainer, forKey: .relationType, auxKey: ._relationType)
+    self.relationType = try AsclepiusPrimitive<CatalogEntryRelationType>(from: codingKeyContainer, forKey: .relationType, auxKey: ._relationType)
     self.item = try Reference(from: codingKeyContainer, forKey: .item)
     
     try super.init(from: decoder)

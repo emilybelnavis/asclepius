@@ -1,6 +1,6 @@
 //
 //  ActionSelectionBehavior.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/action-selection-behavior
  ValueSet: http://hl7.org/fhir/ValueSet/action-selection-behavior
  */
-public enum ActionSelectionBehavior: String, AlexandriaHRMPrimitiveType {
+public enum ActionSelectionBehavior: String, AsclepiusPrimitiveType {
   /// Any number of the actions in the group may be chosen, from zero to all
   case any
   

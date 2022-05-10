@@ -1,6 +1,6 @@
 //
 //  SupplyItemType.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/supply-item-type
  ValueSet: http://hl7.org/fhir/ValueSet/supplydelivery-type
  */
-public enum SupplyItemType: String, AlexandriaHRMPrimitiveType {
+public enum SupplyItemType: String, AsclepiusPrimitiveType {
   /// Supply is a kind of medication.
   case medication
   

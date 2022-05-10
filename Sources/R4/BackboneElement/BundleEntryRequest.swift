@@ -1,6 +1,6 @@
 //
 //  BundleEntryRequest.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  Additional information about how this entry should be processed when as a part of a transaction or batch.
@@ -26,24 +26,24 @@ import AlexandriaHRMCore
 open class BundleEntryRequest: BackboneElement {
   /// In a transactoin or batch, this is the HTTP action to be executed for this entry. In a history bundle, this
   /// indicates the HTTP action that occured.
-  public var method: AlexandriaHRMPrimitive<HTTPVerb>
+  public var method: AsclepiusPrimitive<HTTPVerb>
   
   /// URL for HTTP equivalent of this entry
-  public var url: AlexandriaHRMPrimitive<AlexandriaHRMURI>
+  public var url: AsclepiusPrimitive<AsclepiusURI>
   
   /// For cache managment
-  public var ifNoneMatch: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var ifNoneMatch: AsclepiusPrimitive<AsclepiusString>?
   
   /// For cache management
-  public var ifModifiedSince: AlexandriaHRMPrimitive<AlexandriaHRMInstant>?
+  public var ifModifiedSince: AsclepiusPrimitive<AsclepiusInstant>?
   
   /// For cache management
-  public var ifMatch: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var ifMatch: AsclepiusPrimitive<AsclepiusString>?
   
   /// For cache management
-  public var ifNoneExist: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var ifNoneExist: AsclepiusPrimitive<AsclepiusString>?
   
-  public init(method: AlexandriaHRMPrimitive<HTTPVerb>, url: AlexandriaHRMPrimitive<AlexandriaHRMURI>) {
+  public init(method: AsclepiusPrimitive<HTTPVerb>, url: AsclepiusPrimitive<AsclepiusURI>) {
     self.method = method
     self.url = url
     super.init()
@@ -52,13 +52,13 @@ open class BundleEntryRequest: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    method: AlexandriaHRMPrimitive<HTTPVerb>,
-    url: AlexandriaHRMPrimitive<AlexandriaHRMURI>,
-    ifNoneMatch: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    ifModifiedSince: AlexandriaHRMPrimitive<AlexandriaHRMInstant>? = nil,
-    ifMatch: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    ifNoneExist: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    method: AsclepiusPrimitive<HTTPVerb>,
+    url: AsclepiusPrimitive<AsclepiusURI>,
+    ifNoneMatch: AsclepiusPrimitive<AsclepiusString>? = nil,
+    ifModifiedSince: AsclepiusPrimitive<AsclepiusInstant>? = nil,
+    ifMatch: AsclepiusPrimitive<AsclepiusString>? = nil,
+    ifNoneExist: AsclepiusPrimitive<AsclepiusString>? = nil
   ) {
     self.init(method: method, url: url)
     self.fhirExtension = fhirExtension
@@ -84,12 +84,12 @@ open class BundleEntryRequest: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.method = try AlexandriaHRMPrimitive<HTTPVerb>(from: codingKeyContainer, forKey: .method, auxKey: ._method)
-    self.url = try AlexandriaHRMPrimitive<AlexandriaHRMURI>(from: codingKeyContainer, forKey: .url, auxKey: ._url)
-    self.ifNoneMatch = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .ifNoneMatch, auxKey: ._ifNoneMatch)
-    self.ifModifiedSince = try AlexandriaHRMPrimitive<AlexandriaHRMInstant>(from: codingKeyContainer, forKeyIfPresent: .ifModifiedSince, auxKey: ._ifModifiedSince)
-    self.ifMatch = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .ifMatch, auxKey: ._ifMatch)
-    self.ifNoneExist = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .ifNoneExist, auxKey: ._ifNoneExist)
+    self.method = try AsclepiusPrimitive<HTTPVerb>(from: codingKeyContainer, forKey: .method, auxKey: ._method)
+    self.url = try AsclepiusPrimitive<AsclepiusURI>(from: codingKeyContainer, forKey: .url, auxKey: ._url)
+    self.ifNoneMatch = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .ifNoneMatch, auxKey: ._ifNoneMatch)
+    self.ifModifiedSince = try AsclepiusPrimitive<AsclepiusInstant>(from: codingKeyContainer, forKeyIfPresent: .ifModifiedSince, auxKey: ._ifModifiedSince)
+    self.ifMatch = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .ifMatch, auxKey: ._ifMatch)
+    self.ifNoneExist = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .ifNoneExist, auxKey: ._ifNoneExist)
     
     try super.init(from: decoder)
   }

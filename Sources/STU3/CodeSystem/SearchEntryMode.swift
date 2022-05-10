@@ -1,6 +1,6 @@
 //
 //  SearchEntryMode.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -24,7 +24,7 @@
  URL: http://hl7.org/fhir/search-entry-mode
  ValueSet: http://hl7.org/fhir/ValueSet/search-entry-mode
  */
-public enum SearchEntryMode: String, AlexandriaHRMPrimitiveType {
+public enum SearchEntryMode: String, AsclepiusPrimitiveType {
   /// This resource matched the search specification.
   case match
   

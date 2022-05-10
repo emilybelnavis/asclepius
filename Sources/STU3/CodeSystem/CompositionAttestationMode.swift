@@ -1,6 +1,6 @@
 //
 //  CompositionAttestationMode.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/composition-attestation-mode
  ValueSet: http://hl7.org/fhir/ValueSet/composition-attestation-mode
  */
-public enum CompositionAttestationMode: String, AlexandriaHRMPrimitiveType {
+public enum CompositionAttestationMode: String, AsclepiusPrimitiveType {
   /// The person authenticated the content in their personal capacity
   case personal
   

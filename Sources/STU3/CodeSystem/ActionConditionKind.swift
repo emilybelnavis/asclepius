@@ -1,6 +1,6 @@
 //
 //  ActionConditionKind.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/action-condition-kind
  ValueSet: http://hl7.org/fhir/ValueSet/action-condition-kind
  */
-public enum ActionConditionKind: String, AlexandriaHRMPrimitiveType {
+public enum ActionConditionKind: String, AsclepiusPrimitiveType {
   /// The condition describes whether or not a given action is applicable
   case applicability
   

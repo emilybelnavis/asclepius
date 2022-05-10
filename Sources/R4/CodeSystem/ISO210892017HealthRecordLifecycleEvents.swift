@@ -1,6 +1,6 @@
 //
 //  ISO210892017HealthRecordLifecycleEvents.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -25,7 +25,7 @@
  
  URL: http://terminology.hl7.org/CodeSystem/iso-21089-lifecycle
  */
-public enum ISO210892017HealthRecordLifecycleEvents: String, AlexandriaHRMPrimitiveType {
+public enum ISO210892017HealthRecordLifecycleEvents: String, AsclepiusPrimitiveType {
   /// Occurs when an agent causes the system to obtain and open a record entry for inspection or review.
   case access
   

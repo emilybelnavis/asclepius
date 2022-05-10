@@ -1,6 +1,6 @@
 //
 //  ExplanationOfBenefitStatus.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/explanationofbenefit-status
  ValueSet: http://hl7.org/fhir/ValueSet/explanationofbenefit-status
  */
-public enum ExplanationOfBenefitStatus: String, AlexandriaHRMPrimitiveType {
+public enum ExplanationOfBenefitStatus: String, AsclepiusPrimitiveType {
   /// The resource instance is currently in-force.
   case active
   

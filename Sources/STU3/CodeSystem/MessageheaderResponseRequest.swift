@@ -1,6 +1,6 @@
 //
 //  MessageheaderResponseRequest.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -24,7 +24,7 @@
  URL: http://hl7.org/fhir/messageheader-response-request
  ValueSet: http://hl7.org/fhir/ValueSet/messageheader-response-request
  */
-public enum MessageheaderResponseRequest: String, AlexandriaHRMPrimitiveType {
+public enum MessageheaderResponseRequest: String, AsclepiusPrimitiveType {
   /// initiator expects a response for this message.
   case always
   

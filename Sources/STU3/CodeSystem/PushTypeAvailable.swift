@@ -1,6 +1,6 @@
 //
 //  PushTypeAvailable.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/push-type-available
  ValueSet: http://hl7.org/fhir/ValueSet/verificationresult-push-type-available
  */
-public enum PushTypeAvailable: String, AlexandriaHRMPrimitiveType {
+public enum PushTypeAvailable: String, AsclepiusPrimitiveType {
   /// specific
   case specific
   

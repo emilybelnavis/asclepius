@@ -1,6 +1,6 @@
 //
 //  FeedingDeviceCodes.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -22,7 +22,7 @@
  
  URL: http://hl7.org/fhir/feeding-device
  */
-public enum FeedingDeviceCodes: String, AlexandriaHRMPrimitiveType {
+public enum FeedingDeviceCodes: String, AsclepiusPrimitiveType {
   /// Standard nipple definition:
   case standardNipple = "standard-nipple"
   

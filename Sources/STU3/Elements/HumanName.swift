@@ -1,6 +1,6 @@
 //
 //  HumanName.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,27 +17,27 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /// A human name with the ability to identify parts and usage
 open class HumanName: Element {
   /// identifies the purpose for this name
-  public var use: AlexandriaHRMPrimitive<NameUse>?
+  public var use: AsclepiusPrimitive<NameUse>?
   
   /// text representation of the full name
-  public var text: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var text: AsclepiusPrimitive<AsclepiusString>?
   
   /// family name (often called 'surname' or 'last name'
-  public var family: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var family: AsclepiusPrimitive<AsclepiusString>?
   
   /// given names (not always first), includes middle names
-  public var given: [AlexandriaHRMPrimitive<AlexandriaHRMString>]?
+  public var given: [AsclepiusPrimitive<AsclepiusString>]?
   
   /// parts that come before the name
-  public var prefix: [AlexandriaHRMPrimitive<AlexandriaHRMString>]?
+  public var prefix: [AsclepiusPrimitive<AsclepiusString>]?
   
   /// parts that come after the name
-  public var suffix: [AlexandriaHRMPrimitive<AlexandriaHRMString>]?
+  public var suffix: [AsclepiusPrimitive<AsclepiusString>]?
   
   /// time period when name was/is in use
   public var period: Period?
@@ -48,13 +48,13 @@ open class HumanName: Element {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    use: AlexandriaHRMPrimitive<NameUse>? = nil,
-    text: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    family: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    given: [AlexandriaHRMPrimitive<AlexandriaHRMString>]? = nil,
-    prefix: [AlexandriaHRMPrimitive<AlexandriaHRMString>]? = nil,
-    suffix: [AlexandriaHRMPrimitive<AlexandriaHRMString>]? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    use: AsclepiusPrimitive<NameUse>? = nil,
+    text: AsclepiusPrimitive<AsclepiusString>? = nil,
+    family: AsclepiusPrimitive<AsclepiusString>? = nil,
+    given: [AsclepiusPrimitive<AsclepiusString>]? = nil,
+    prefix: [AsclepiusPrimitive<AsclepiusString>]? = nil,
+    suffix: [AsclepiusPrimitive<AsclepiusString>]? = nil,
     period: Period? = nil
   ) {
     self.init()
@@ -83,12 +83,12 @@ open class HumanName: Element {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.use = try AlexandriaHRMPrimitive<NameUse>(from: codingKeyContainer, forKeyIfPresent: .use, auxKey: ._use)
-    self.text = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .text, auxKey: ._text)
-    self.family = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .family, auxKey: ._family)
-    self.given = try [AlexandriaHRMPrimitive<AlexandriaHRMString>](from: codingKeyContainer, forKeyIfPresent: .given, auxKey: ._given)
-    self.prefix = try [AlexandriaHRMPrimitive<AlexandriaHRMString>](from: codingKeyContainer, forKeyIfPresent: .prefix, auxKey: ._prefix)
-    self.suffix = try [AlexandriaHRMPrimitive<AlexandriaHRMString>](from: codingKeyContainer, forKeyIfPresent: .suffix, auxKey: ._suffix)
+    self.use = try AsclepiusPrimitive<NameUse>(from: codingKeyContainer, forKeyIfPresent: .use, auxKey: ._use)
+    self.text = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .text, auxKey: ._text)
+    self.family = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .family, auxKey: ._family)
+    self.given = try [AsclepiusPrimitive<AsclepiusString>](from: codingKeyContainer, forKeyIfPresent: .given, auxKey: ._given)
+    self.prefix = try [AsclepiusPrimitive<AsclepiusString>](from: codingKeyContainer, forKeyIfPresent: .prefix, auxKey: ._prefix)
+    self.suffix = try [AsclepiusPrimitive<AsclepiusString>](from: codingKeyContainer, forKeyIfPresent: .suffix, auxKey: ._suffix)
     self.period = try Period(from: codingKeyContainer, forKeyIfPresent: .period)
     
     try super.init(from: decoder)

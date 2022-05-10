@@ -1,6 +1,6 @@
 //
 //  MedicationRequestIntent.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/CodeSystem/medicationrequest-intent
  ValueSet: http://hl7.org/fhir/ValueSet/medicationrequest-intent
  */
-public enum MedicationRequestIntent: String, AlexandriaHRMPrimitiveType {
+public enum MedicationRequestIntent: String, AsclepiusPrimitiveType {
   /// The request is a suggestion made by someone/something that doesn't have an intention to ensure it occurs and
   /// without providing an authorization to act
   case proposal

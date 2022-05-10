@@ -1,6 +1,6 @@
 //
 //  AccountStatus.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/account-status
  ValueSet: http://hl7.org/fhir/ValueSet/account-status
  */
-public enum AccountStatus: String, AlexandriaHRMPrimitiveType {
+public enum AccountStatus: String, AsclepiusPrimitiveType {
   /// This account is active and may be used
   case active
   

@@ -1,6 +1,6 @@
 //
 //  ElementDefinition.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  Definition of an element in a resource or extension; Captures constraints on each element within the resource,
@@ -25,19 +25,19 @@ import AlexandriaHRMCore
  */
 open class ElementDefinition: BackboneElement {
   /// Path of the element in the hierarchy of elements
-  public var path: AlexandriaHRMPrimitive<AlexandriaHRMString>
+  public var path: AsclepiusPrimitive<AsclepiusString>
   
   /// Codes that define how this element is represented in instances when the deviation varies from the normal case
-  public var representation: [AlexandriaHRMPrimitive<PropertyRepresentation>]?
+  public var representation: [AsclepiusPrimitive<PropertyRepresentation>]?
   
   /// Name for this particular element (in a set of slices)
-  public var sliceName: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var sliceName: AsclepiusPrimitive<AsclepiusString>?
   
   /// If this slice definition constrains an inherited slice definition (or not)
-  public var sliceIsConstraining: AlexandriaHRMPrimitive<AlexandriaHRMBool>?
+  public var sliceIsConstraining: AsclepiusPrimitive<AsclepiusBool>?
   
   /// Name for element prompt or to display with
-  public var label: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var label: AsclepiusPrimitive<AsclepiusString>?
   
   /// Corresponding codes in terminologies
   public var code: [Coding]?
@@ -46,31 +46,31 @@ open class ElementDefinition: BackboneElement {
   public var slicing: ElementDefinitionSlicing?
   
   /// Concise definition for space-constrained presentation
-  public var short: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var short: AsclepiusPrimitive<AsclepiusString>?
   
   /// Full formal definitoin as narrative text
-  public var definition: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var definition: AsclepiusPrimitive<AsclepiusString>?
   
   /// Comments about the use of this element
-  public var comment: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var comment: AsclepiusPrimitive<AsclepiusString>?
   
   /// Why this resource has been created
-  public var requirements: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var requirements: AsclepiusPrimitive<AsclepiusString>?
   
   /// Other names
-  public var alias: [AlexandriaHRMPrimitive<AlexandriaHRMString>]?
+  public var alias: [AsclepiusPrimitive<AsclepiusString>]?
   
   /// Minimum cardinality
-  public var min: AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>?
+  public var min: AsclepiusPrimitive<AsclepiusUnsignedInteger>?
   
   /// Maximum cardinality (a number or *)
-  public var max: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var max: AsclepiusPrimitive<AsclepiusString>?
   
   /// Base definitoin information for tools
   public var base: ElementDefinitionBase?
   
   /// Reference to definition of content for the element
-  public var contentReference: AlexandriaHRMPrimitive<AlexandriaHRMURI>?
+  public var contentReference: AsclepiusPrimitive<AsclepiusURI>?
   
   /// Data type and Profile for this element
   public var type: [ElementDefinitionType]?
@@ -79,10 +79,10 @@ open class ElementDefinition: BackboneElement {
   public var defaultValue: ElementDefinitionValueX?
   
   /// Implicit meaning when this element is meaning
-  public var meaningWhenMissing: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var meaningWhenMissing: AsclepiusPrimitive<AsclepiusString>?
   
   /// What the order of the elements means
-  public var orderMeaning: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var orderMeaning: AsclepiusPrimitive<AsclepiusString>?
   
   /// Value must be exactly this (`value[x]`)
   public var fixed: ElementDefinitionValueX?
@@ -100,25 +100,25 @@ open class ElementDefinition: BackboneElement {
   public var maxValue: ElementDefinitionMinMaxValueX?
   
   /// Maximum length for strings
-  public var maxLength: AlexandriaHRMPrimitive<AlexandriaHRMInteger>?
+  public var maxLength: AsclepiusPrimitive<AsclepiusInteger>?
   
   /// Reference to invariant about presence
-  public var condition: [AlexandriaHRMPrimitive<AlexandriaHRMString>]?
+  public var condition: [AsclepiusPrimitive<AsclepiusString>]?
   
   /// Condition that must evaluate to `true`
   public var constraint: [ElementDefinitionConstraint]?
   
   /// If the element must be supported
-  public var mustSupport: AlexandriaHRMPrimitive<AlexandriaHRMBool>?
+  public var mustSupport: AsclepiusPrimitive<AsclepiusBool>?
   
   /// If this modifies the meaning of other elements
-  public var isModifier: AlexandriaHRMPrimitive<AlexandriaHRMBool>?
+  public var isModifier: AsclepiusPrimitive<AsclepiusBool>?
   
   /// Reason that this modifier is marked as a modifier
-  public var isModifierReason: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var isModifierReason: AsclepiusPrimitive<AsclepiusString>?
   
   /// Include when `_summary = true`?
-  public var isSummary: AlexandriaHRMPrimitive<AlexandriaHRMBool>?
+  public var isSummary: AsclepiusPrimitive<AsclepiusBool>?
   
   /// ValueSet details if this is coded
   public var binding: ElementDefinitionBinding?
@@ -126,46 +126,46 @@ open class ElementDefinition: BackboneElement {
   /// Map element to another set of definitions
   public var mapping: [ElementDefinitionMapping]?
   
-  public init(path: AlexandriaHRMPrimitive<AlexandriaHRMString>) {
+  public init(path: AsclepiusPrimitive<AsclepiusString>) {
     self.path = path
     super.init()
   }
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    path: AlexandriaHRMPrimitive<AlexandriaHRMString>,
-    representation: [AlexandriaHRMPrimitive<PropertyRepresentation>]? = nil,
-    sliceName: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    sliceIsConstraining: AlexandriaHRMPrimitive<AlexandriaHRMBool>? = nil,
-    label: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    path: AsclepiusPrimitive<AsclepiusString>,
+    representation: [AsclepiusPrimitive<PropertyRepresentation>]? = nil,
+    sliceName: AsclepiusPrimitive<AsclepiusString>? = nil,
+    sliceIsConstraining: AsclepiusPrimitive<AsclepiusBool>? = nil,
+    label: AsclepiusPrimitive<AsclepiusString>? = nil,
     code: [Coding]? = nil,
     slicing: ElementDefinitionSlicing? = nil,
-    short: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    definition: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    comment: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    requirements: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    alias: [AlexandriaHRMPrimitive<AlexandriaHRMString>]? = nil,
-    min: AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>? = nil,
-    max: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    short: AsclepiusPrimitive<AsclepiusString>? = nil,
+    definition: AsclepiusPrimitive<AsclepiusString>? = nil,
+    comment: AsclepiusPrimitive<AsclepiusString>? = nil,
+    requirements: AsclepiusPrimitive<AsclepiusString>? = nil,
+    alias: [AsclepiusPrimitive<AsclepiusString>]? = nil,
+    min: AsclepiusPrimitive<AsclepiusUnsignedInteger>? = nil,
+    max: AsclepiusPrimitive<AsclepiusString>? = nil,
     base: ElementDefinitionBase? = nil,
-    contentReference: AlexandriaHRMPrimitive<AlexandriaHRMURI>? = nil,
+    contentReference: AsclepiusPrimitive<AsclepiusURI>? = nil,
     type: [ElementDefinitionType]? = nil,
     defaultValue: ElementDefinitionValueX? = nil,
-    meaningWhenMissing: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    orderMeaning: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    meaningWhenMissing: AsclepiusPrimitive<AsclepiusString>? = nil,
+    orderMeaning: AsclepiusPrimitive<AsclepiusString>? = nil,
     fixed: ElementDefinitionValueX? = nil,
     pattern: ElementDefinitionValueX? = nil,
     example: [ElementDefinitionExample]? = nil,
     minValue: ElementDefinitionMinMaxValueX? = nil,
     maxValue: ElementDefinitionMinMaxValueX? = nil,
-    maxLength: AlexandriaHRMPrimitive<AlexandriaHRMInteger>? = nil,
-    condition: [AlexandriaHRMPrimitive<AlexandriaHRMString>]? = nil,
+    maxLength: AsclepiusPrimitive<AsclepiusInteger>? = nil,
+    condition: [AsclepiusPrimitive<AsclepiusString>]? = nil,
     constraint: [ElementDefinitionConstraint]? = nil,
-    mustSupport: AlexandriaHRMPrimitive<AlexandriaHRMBool>? = nil,
-    isModifier: AlexandriaHRMPrimitive<AlexandriaHRMBool>? = nil,
-    isModifierReason: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    isSummary: AlexandriaHRMPrimitive<AlexandriaHRMBool>? = nil,
+    mustSupport: AsclepiusPrimitive<AsclepiusBool>? = nil,
+    isModifier: AsclepiusPrimitive<AsclepiusBool>? = nil,
+    isModifierReason: AsclepiusPrimitive<AsclepiusString>? = nil,
+    isSummary: AsclepiusPrimitive<AsclepiusBool>? = nil,
     binding: ElementDefinitionBinding? = nil,
     mapping: [ElementDefinitionMapping]? = nil
   ) {
@@ -248,38 +248,38 @@ open class ElementDefinition: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.path = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .path, auxKey: ._path)
-    self.representation = try [AlexandriaHRMPrimitive<PropertyRepresentation>](from: codingKeyContainer, forKeyIfPresent: .representation, auxKey: ._representation)
-    self.sliceName = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .sliceName, auxKey: ._sliceName)
-    self.sliceIsConstraining = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKeyIfPresent: .sliceIsConstraining, auxKey: ._sliceIsConstraining)
-    self.label = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .label, auxKey: ._label)
+    self.path = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKey: .path, auxKey: ._path)
+    self.representation = try [AsclepiusPrimitive<PropertyRepresentation>](from: codingKeyContainer, forKeyIfPresent: .representation, auxKey: ._representation)
+    self.sliceName = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .sliceName, auxKey: ._sliceName)
+    self.sliceIsConstraining = try AsclepiusPrimitive<AsclepiusBool>(from: codingKeyContainer, forKeyIfPresent: .sliceIsConstraining, auxKey: ._sliceIsConstraining)
+    self.label = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .label, auxKey: ._label)
     self.code = try [Coding](from: codingKeyContainer, forKeyIfPresent: .code)
     self.slicing = try ElementDefinitionSlicing(from: codingKeyContainer, forKeyIfPresent: .slicing)
-    self.short = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .short, auxKey: ._short)
-    self.definition = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .definition, auxKey: ._definition)
-    self.comment = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .comment, auxKey: ._comment)
-    self.requirements = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .requirements, auxKey: ._requirements)
-    self.alias = try [AlexandriaHRMPrimitive<AlexandriaHRMString>](from: codingKeyContainer, forKeyIfPresent: .alias, auxKey: ._alias)
-    self.min = try AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>(from: codingKeyContainer, forKeyIfPresent: .min, auxKey: ._min)
-    self.max = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .max, auxKey: ._max)
+    self.short = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .short, auxKey: ._short)
+    self.definition = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .definition, auxKey: ._definition)
+    self.comment = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .comment, auxKey: ._comment)
+    self.requirements = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .requirements, auxKey: ._requirements)
+    self.alias = try [AsclepiusPrimitive<AsclepiusString>](from: codingKeyContainer, forKeyIfPresent: .alias, auxKey: ._alias)
+    self.min = try AsclepiusPrimitive<AsclepiusUnsignedInteger>(from: codingKeyContainer, forKeyIfPresent: .min, auxKey: ._min)
+    self.max = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .max, auxKey: ._max)
     self.base = try ElementDefinitionBase(from: codingKeyContainer, forKeyIfPresent: .base)
-    self.contentReference = try AlexandriaHRMPrimitive<AlexandriaHRMURI>(from: codingKeyContainer, forKeyIfPresent: .contentReference, auxKey: ._contentReference)
+    self.contentReference = try AsclepiusPrimitive<AsclepiusURI>(from: codingKeyContainer, forKeyIfPresent: .contentReference, auxKey: ._contentReference)
     self.type = try [ElementDefinitionType](from: codingKeyContainer, forKeyIfPresent: .type)
     self.defaultValue = try ElementDefinitionValueX(from: codingKeyContainer, forKeyIfPresent: .defaultValue)
-    self.meaningWhenMissing = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .meaningWhenMissing, auxKey: ._meaningWhenMissing)
-    self.orderMeaning = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .orderMeaning, auxKey: ._orderMeaning)
+    self.meaningWhenMissing = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .meaningWhenMissing, auxKey: ._meaningWhenMissing)
+    self.orderMeaning = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .orderMeaning, auxKey: ._orderMeaning)
     self.fixed = try ElementDefinitionValueX(from: codingKeyContainer, forKeyIfPresent: .fixed)
     self.pattern = try ElementDefinitionValueX(from: codingKeyContainer, forKeyIfPresent: .pattern)
     self.example = try [ElementDefinitionExample](from: codingKeyContainer, forKeyIfPresent: .example)
     self.minValue = try ElementDefinitionMinMaxValueX(from: codingKeyContainer, forKeyIfPresent: .minValue)
     self.maxValue = try ElementDefinitionMinMaxValueX(from: codingKeyContainer, forKeyIfPresent: .maxValue)
-    self.maxLength = try AlexandriaHRMPrimitive<AlexandriaHRMInteger>(from: codingKeyContainer, forKeyIfPresent: .maxLength, auxKey: ._maxLength)
-    self.condition = try [AlexandriaHRMPrimitive<AlexandriaHRMString>](from: codingKeyContainer, forKeyIfPresent: .condition, auxKey: ._condition)
+    self.maxLength = try AsclepiusPrimitive<AsclepiusInteger>(from: codingKeyContainer, forKeyIfPresent: .maxLength, auxKey: ._maxLength)
+    self.condition = try [AsclepiusPrimitive<AsclepiusString>](from: codingKeyContainer, forKeyIfPresent: .condition, auxKey: ._condition)
     self.constraint = try [ElementDefinitionConstraint](from: codingKeyContainer, forKeyIfPresent: .constraint)
-    self.mustSupport = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKeyIfPresent: .mustSupport, auxKey: ._mustSupport)
-    self.isModifier = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKeyIfPresent: .isModifier, auxKey: ._isModifier)
-    self.isModifierReason = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .isModifierReason, auxKey: ._isModifierReason)
-    self.isSummary = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKeyIfPresent: .isSummary, auxKey: ._isSummary)
+    self.mustSupport = try AsclepiusPrimitive<AsclepiusBool>(from: codingKeyContainer, forKeyIfPresent: .mustSupport, auxKey: ._mustSupport)
+    self.isModifier = try AsclepiusPrimitive<AsclepiusBool>(from: codingKeyContainer, forKeyIfPresent: .isModifier, auxKey: ._isModifier)
+    self.isModifierReason = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .isModifierReason, auxKey: ._isModifierReason)
+    self.isSummary = try AsclepiusPrimitive<AsclepiusBool>(from: codingKeyContainer, forKeyIfPresent: .isSummary, auxKey: ._isSummary)
     self.binding = try ElementDefinitionBinding(from: codingKeyContainer, forKeyIfPresent: .binding)
     self.mapping = try [ElementDefinitionMapping](from: codingKeyContainer, forKeyIfPresent: .mapping)
     

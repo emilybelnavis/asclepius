@@ -1,6 +1,6 @@
 //
 //  ConditionEvidence.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /// Supporting evidence/manifestations that are the basis of the Condition's verification status, such as
 /// evidence that confirmed or refuted the condition
@@ -35,7 +35,7 @@ open class ConditionEvidence: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
     code: [CodeableConcept]? = nil,
     detail: [Reference]? = nil
   ) {

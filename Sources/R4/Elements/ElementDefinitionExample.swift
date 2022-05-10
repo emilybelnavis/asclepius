@@ -1,6 +1,6 @@
 //
 //  ElementDefinitionExample.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 open class ElementDefinitionExample: Element {
   public enum ValueX: Hashable {
@@ -25,10 +25,10 @@ open class ElementDefinitionExample: Element {
     case age(Age)
     case annotation(Annotation)
     case attachment(Attachment)
-    case base64Binary(AlexandriaHRMPrimitive<AlexandriaHRMBase64Binary>)
-    case boolean(AlexandriaHRMPrimitive<AlexandriaHRMBool>)
-    case canonical(AlexandriaHRMPrimitive<Canonical>)
-    case code(AlexandriaHRMPrimitive<AlexandriaHRMString>)
+    case base64Binary(AsclepiusPrimitive<AsclepiusBase64Binary>)
+    case boolean(AsclepiusPrimitive<AsclepiusBool>)
+    case canonical(AsclepiusPrimitive<Canonical>)
+    case code(AsclepiusPrimitive<AsclepiusString>)
     case codeableConcept(CodeableConcept)
     case coding(Coding)
     case contactDetail(ContactDetail)
@@ -36,25 +36,25 @@ open class ElementDefinitionExample: Element {
     case contributor(Contributor)
     case count(Count)
     case dataRequirement(DataRequirement)
-    case date(AlexandriaHRMPrimitive<AlexandriaHRMDate>)
-    case dateTime(AlexandriaHRMPrimitive<AlexandriaHRMDateTime>)
-    case decimal(AlexandriaHRMPrimitive<AlexandriaHRMDecimal>)
+    case date(AsclepiusPrimitive<AsclepiusDate>)
+    case dateTime(AsclepiusPrimitive<AsclepiusDateTime>)
+    case decimal(AsclepiusPrimitive<AsclepiusDecimal>)
     case distance(Distance)
     case dosage(Dosage)
     case duration(Duration)
     case expression(Expression)
     case humanName(HumanName)
-    case id(AlexandriaHRMPrimitive<AlexandriaHRMString>)
+    case id(AsclepiusPrimitive<AsclepiusString>)
     case identifier(Identifier)
-    case instant(AlexandriaHRMPrimitive<AlexandriaHRMInstant>)
-    case integer(AlexandriaHRMPrimitive<AlexandriaHRMInteger>)
-    case markdown(AlexandriaHRMPrimitive<AlexandriaHRMString>)
+    case instant(AsclepiusPrimitive<AsclepiusInstant>)
+    case integer(AsclepiusPrimitive<AsclepiusInteger>)
+    case markdown(AsclepiusPrimitive<AsclepiusString>)
     case meta(Meta)
     case money(Money)
-    case oid(AlexandriaHRMPrimitive<AlexandriaHRMURI>)
+    case oid(AsclepiusPrimitive<AsclepiusURI>)
     case parameterDefinition(ParameterDefinition)
     case period(Period)
-    case positiveInteger(AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>)
+    case positiveInteger(AsclepiusPrimitive<AsclepiusPositiveInteger>)
     case quantity(Quantity)
     case range(Range)
     case ratio(Ratio)
@@ -62,24 +62,24 @@ open class ElementDefinitionExample: Element {
     case relatedArtifact(RelatedArtifact)
     case sampledData(SampledData)
     case signature(Signature)
-    case string(AlexandriaHRMPrimitive<AlexandriaHRMString>)
-    case time(AlexandriaHRMPrimitive<AlexandriaHRMTime>)
+    case string(AsclepiusPrimitive<AsclepiusString>)
+    case time(AsclepiusPrimitive<AsclepiusTime>)
     case timing(Timing)
     case triggerDefinition(TriggerDefinition)
-    case unsignedInteger(AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>)
-    case uri(AlexandriaHRMPrimitive<AlexandriaHRMURI>)
-    case url(AlexandriaHRMPrimitive<AlexandriaHRMURI>)
+    case unsignedInteger(AsclepiusPrimitive<AsclepiusUnsignedInteger>)
+    case uri(AsclepiusPrimitive<AsclepiusURI>)
+    case url(AsclepiusPrimitive<AsclepiusURI>)
     case usageContext(UsageContext)
-    case uuid(AlexandriaHRMPrimitive<AlexandriaHRMURI>)
+    case uuid(AsclepiusPrimitive<AsclepiusURI>)
   }
   
   /// Describes the purpose of this example
-  public var label: AlexandriaHRMPrimitive<AlexandriaHRMString>
+  public var label: AsclepiusPrimitive<AsclepiusString>
   
   /// Value of Example (`value[x]`)
   public var value: ValueX
   
-  public init(label: AlexandriaHRMPrimitive<AlexandriaHRMString>, value: ValueX) {
+  public init(label: AsclepiusPrimitive<AsclepiusString>, value: ValueX) {
     self.label = label
     self.value = value
     super.init()
@@ -87,8 +87,8 @@ open class ElementDefinitionExample: Element {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    label: AlexandriaHRMPrimitive<AlexandriaHRMString>,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    label: AsclepiusPrimitive<AsclepiusString>,
     value: ValueX
   ) {
     self.init(label: label, value: value)
@@ -191,7 +191,7 @@ open class ElementDefinitionExample: Element {
     }
     
     // value.base64binary
-    if let valueBase64Binary = try AlexandriaHRMPrimitive<AlexandriaHRMBase64Binary>(from: codingKeyContainer, forKeyIfPresent: .valueBase64binary, auxKey: ._valueBase64binary) {
+    if let valueBase64Binary = try AsclepiusPrimitive<AsclepiusBase64Binary>(from: codingKeyContainer, forKeyIfPresent: .valueBase64binary, auxKey: ._valueBase64binary) {
       if tValue != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueBase64binary, in: codingKeyContainer, debugDescription: "More than one value supplied for \"value\"")
       }
@@ -199,7 +199,7 @@ open class ElementDefinitionExample: Element {
     }
     
     // value.boolean
-    if let valueBoolean = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKeyIfPresent: .valueBoolean, auxKey: ._valueBoolean) {
+    if let valueBoolean = try AsclepiusPrimitive<AsclepiusBool>(from: codingKeyContainer, forKeyIfPresent: .valueBoolean, auxKey: ._valueBoolean) {
       if tValue != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueBoolean, in: codingKeyContainer, debugDescription: "More than one value supplied for \"value\"")
       }
@@ -207,7 +207,7 @@ open class ElementDefinitionExample: Element {
     }
     
     // value.canonical
-    if let valueCanonical = try AlexandriaHRMPrimitive<Canonical>(from: codingKeyContainer, forKeyIfPresent: .valueCanonical, auxKey: ._valueCanonical) {
+    if let valueCanonical = try AsclepiusPrimitive<Canonical>(from: codingKeyContainer, forKeyIfPresent: .valueCanonical, auxKey: ._valueCanonical) {
       if tValue != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueCanonical, in: codingKeyContainer, debugDescription: "More than one value supplied for \"value\"")
       }
@@ -215,7 +215,7 @@ open class ElementDefinitionExample: Element {
     }
     
     // value.code
-    if let valueCode = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .valueCode, auxKey: ._valueCode) {
+    if let valueCode = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .valueCode, auxKey: ._valueCode) {
       if tValue != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueCode, in: codingKeyContainer, debugDescription: "More than one value supplied for \"value\"")
       }
@@ -279,7 +279,7 @@ open class ElementDefinitionExample: Element {
     }
     
     // value.date
-    if let valueDate = try AlexandriaHRMPrimitive<AlexandriaHRMDate>(from: codingKeyContainer, forKeyIfPresent: .valueDate, auxKey: ._valueDate) {
+    if let valueDate = try AsclepiusPrimitive<AsclepiusDate>(from: codingKeyContainer, forKeyIfPresent: .valueDate, auxKey: ._valueDate) {
       if tValue != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueDate, in: codingKeyContainer, debugDescription: "More than one value supplied for \"value\"")
       }
@@ -287,7 +287,7 @@ open class ElementDefinitionExample: Element {
     }
     
     // value.dateTime
-    if let valueDateTime = try AlexandriaHRMPrimitive<AlexandriaHRMDateTime>(from: codingKeyContainer, forKeyIfPresent: .valueDateTime, auxKey: ._valueDateTime) {
+    if let valueDateTime = try AsclepiusPrimitive<AsclepiusDateTime>(from: codingKeyContainer, forKeyIfPresent: .valueDateTime, auxKey: ._valueDateTime) {
       if tValue != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueDateTime, in: codingKeyContainer, debugDescription: "More than one value supplied for \"value\"")
       }
@@ -295,7 +295,7 @@ open class ElementDefinitionExample: Element {
     }
     
     // value.decimal
-    if let valueDecimal = try AlexandriaHRMPrimitive<AlexandriaHRMDecimal>(from: codingKeyContainer, forKeyIfPresent: .valueDecimal, auxKey: ._valueDecimal) {
+    if let valueDecimal = try AsclepiusPrimitive<AsclepiusDecimal>(from: codingKeyContainer, forKeyIfPresent: .valueDecimal, auxKey: ._valueDecimal) {
       if tValue != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueDecimal, in: codingKeyContainer, debugDescription: "More than one value supplied for \"value\"")
       }
@@ -343,7 +343,7 @@ open class ElementDefinitionExample: Element {
     }
     
     // value.id
-    if let valueId = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .valueId, auxKey: ._valueId) {
+    if let valueId = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .valueId, auxKey: ._valueId) {
       if tValue != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueId, in: codingKeyContainer, debugDescription: "More than one value supplied for \"value\"")
       }
@@ -359,7 +359,7 @@ open class ElementDefinitionExample: Element {
     }
     
     // value.instant
-    if let valueInstant = try AlexandriaHRMPrimitive<AlexandriaHRMInstant>(from: codingKeyContainer, forKeyIfPresent: .valueInstant, auxKey: ._valueInstant) {
+    if let valueInstant = try AsclepiusPrimitive<AsclepiusInstant>(from: codingKeyContainer, forKeyIfPresent: .valueInstant, auxKey: ._valueInstant) {
       if tValue != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueInstant, in: codingKeyContainer, debugDescription: "More than one value supplied for \"value\"")
       }
@@ -367,7 +367,7 @@ open class ElementDefinitionExample: Element {
     }
     
     // value.integer
-    if let valueInteger = try AlexandriaHRMPrimitive<AlexandriaHRMInteger>(from: codingKeyContainer, forKeyIfPresent: .valueInteger, auxKey: ._valueInteger) {
+    if let valueInteger = try AsclepiusPrimitive<AsclepiusInteger>(from: codingKeyContainer, forKeyIfPresent: .valueInteger, auxKey: ._valueInteger) {
       if tValue != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueInteger, in: codingKeyContainer, debugDescription: "More than one value supplied for \"value\"")
       }
@@ -375,7 +375,7 @@ open class ElementDefinitionExample: Element {
     }
     
     // value.markdown
-    if let valueMarkdown = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .valueMarkdown, auxKey: ._valueMarkdown) {
+    if let valueMarkdown = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .valueMarkdown, auxKey: ._valueMarkdown) {
       if tValue != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueMarkdown, in: codingKeyContainer, debugDescription: "More than one value supplied for \"value\"")
       }
@@ -399,7 +399,7 @@ open class ElementDefinitionExample: Element {
     }
     
     // value.oid
-    if let valueOid = try AlexandriaHRMPrimitive<AlexandriaHRMURI>(from: codingKeyContainer, forKeyIfPresent: .valueOid, auxKey: ._valueOid) {
+    if let valueOid = try AsclepiusPrimitive<AsclepiusURI>(from: codingKeyContainer, forKeyIfPresent: .valueOid, auxKey: ._valueOid) {
       if tValue != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueOid, in: codingKeyContainer, debugDescription: "More than one value supplied for \"value\"")
       }
@@ -423,7 +423,7 @@ open class ElementDefinitionExample: Element {
     }
     // value.positiveInteger
     
-    if let valuePositiveInteger = try AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>(from: codingKeyContainer, forKeyIfPresent: .valuePositiveInteger, auxKey: ._valuePositiveInteger) {
+    if let valuePositiveInteger = try AsclepiusPrimitive<AsclepiusPositiveInteger>(from: codingKeyContainer, forKeyIfPresent: .valuePositiveInteger, auxKey: ._valuePositiveInteger) {
       if tValue != nil {
         throw DecodingError.dataCorruptedError(forKey: .valuePositiveInteger, in: codingKeyContainer, debugDescription: "More than one value supplied for \"value\"")
       }
@@ -488,7 +488,7 @@ open class ElementDefinitionExample: Element {
     }
     
     // value.string
-    if let valueString = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .valueString, auxKey: ._valueString) {
+    if let valueString = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .valueString, auxKey: ._valueString) {
       if tValue != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueString, in: codingKeyContainer, debugDescription: "More than one value supplied for \"value\"")
       }
@@ -496,7 +496,7 @@ open class ElementDefinitionExample: Element {
     }
     
     // value.time
-    if let valueTime = try AlexandriaHRMPrimitive<AlexandriaHRMTime>(from: codingKeyContainer, forKeyIfPresent: .valueTime, auxKey: ._valueTime) {
+    if let valueTime = try AsclepiusPrimitive<AsclepiusTime>(from: codingKeyContainer, forKeyIfPresent: .valueTime, auxKey: ._valueTime) {
       if tValue != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueTime, in: codingKeyContainer, debugDescription: "More than one value supplied for \"value\"")
       }
@@ -520,7 +520,7 @@ open class ElementDefinitionExample: Element {
     }
     
     // value.unsignedInteger
-    if let valueUnsignedInteger = try AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>(from: codingKeyContainer, forKeyIfPresent: .valueUnsignedInteger, auxKey: ._valueUnsignedInteger) {
+    if let valueUnsignedInteger = try AsclepiusPrimitive<AsclepiusUnsignedInteger>(from: codingKeyContainer, forKeyIfPresent: .valueUnsignedInteger, auxKey: ._valueUnsignedInteger) {
       if tValue != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueUnsignedInteger, in: codingKeyContainer, debugDescription: "More than one value supplied for \"value\"")
       }
@@ -528,7 +528,7 @@ open class ElementDefinitionExample: Element {
     }
     
     // value.uri
-    if let valueUri = try AlexandriaHRMPrimitive<AlexandriaHRMURI>(from: codingKeyContainer, forKeyIfPresent: .valueUri, auxKey: ._valueUri) {
+    if let valueUri = try AsclepiusPrimitive<AsclepiusURI>(from: codingKeyContainer, forKeyIfPresent: .valueUri, auxKey: ._valueUri) {
       if tValue != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueUri, in: codingKeyContainer, debugDescription: "More than one value supplied for \"value\"")
       }
@@ -536,7 +536,7 @@ open class ElementDefinitionExample: Element {
     }
     
     // value.url
-    if let valueUrl = try AlexandriaHRMPrimitive<AlexandriaHRMURI>(from: codingKeyContainer, forKeyIfPresent: .valueUrl, auxKey: ._valueUrl) {
+    if let valueUrl = try AsclepiusPrimitive<AsclepiusURI>(from: codingKeyContainer, forKeyIfPresent: .valueUrl, auxKey: ._valueUrl) {
       if tValue != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueUrl, in: codingKeyContainer, debugDescription: "More than one value supplied for \"value\"")
       }
@@ -552,14 +552,14 @@ open class ElementDefinitionExample: Element {
     }
     
     // value.uuid
-    if let valueUuid = try AlexandriaHRMPrimitive<AlexandriaHRMURI>(from: codingKeyContainer, forKeyIfPresent: .valueUuid, auxKey: ._valueUuid) {
+    if let valueUuid = try AsclepiusPrimitive<AsclepiusURI>(from: codingKeyContainer, forKeyIfPresent: .valueUuid, auxKey: ._valueUuid) {
       if tValue != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueUuid, in: codingKeyContainer, debugDescription: "More than one value supplied for \"value\"")
       }
       tValue = .uuid(valueUuid)
     }
     
-    self.label = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .label, auxKey: ._label)
+    self.label = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKey: .label, auxKey: ._label)
     self.value = tValue!
     
     try super.init(from: decoder)

@@ -1,6 +1,6 @@
 //
 //  GraphCompartmentUse.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/graph-compartment-use
  ValueSet: http://hl7.org/fhir/ValueSet/graph-compartment-use
  */
-public enum GraphCompartmentUse: String, AlexandriaHRMPrimitiveType {
+public enum GraphCompartmentUse: String, AsclepiusPrimitiveType {
   /// This compartment rule is a condition for whether the rule applies.
   case condition
   

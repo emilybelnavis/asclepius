@@ -1,6 +1,6 @@
 //
 //  CoverageSelfPayCodes.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/coverage-selfpay
  ValueSet: http://hl7.org/fhir/ValueSet/coverage-selfpay
  */
-public enum CoverageSelfPayCodes: String, AlexandriaHRMPrimitiveType {
+public enum CoverageSelfPayCodes: String, AsclepiusPrimitiveType {
   /// An individual or organization is paying directly for goods and services.
   case pay
 }

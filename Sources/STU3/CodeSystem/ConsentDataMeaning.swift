@@ -1,6 +1,6 @@
 //
 //  ConsentDataMeaning.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/consent-data-meaning
  ValueSet: http://hl7.org/fhir/ValueSet/consent-data-meaning
  */
-public enum ConsentDataMeaning: String, AlexandriaHRMPrimitiveType {
+public enum ConsentDataMeaning: String, AsclepiusPrimitiveType {
   /// The consent applies directly to the instance of the resource
   case instance
   

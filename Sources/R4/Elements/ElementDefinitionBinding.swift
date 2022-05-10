@@ -1,6 +1,6 @@
 //
 //  ElementDefinitionBinding.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  ValueSet details if this is coded; Binds to a value set if this element is coded (`code`, `Coding`, `CodeableConcept`,
@@ -26,25 +26,25 @@ import AlexandriaHRMCore
 open class ElementDefinitionBinding: Element {
   /// Indicates the degree of conformance expectations associated with this binding (the degree to which the
   /// provided value set must be adhered to in the instances.)
-  public var strength: AlexandriaHRMPrimitive<BindingStrength>
+  public var strength: AsclepiusPrimitive<BindingStrength>
   
   /// Human explanation of the value set
-  public var fhirDescription: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var fhirDescription: AsclepiusPrimitive<AsclepiusString>?
   
   /// Source of the value set
-  public var valueSet: AlexandriaHRMPrimitive<Canonical>?
+  public var valueSet: AsclepiusPrimitive<Canonical>?
   
-  public init(strength: AlexandriaHRMPrimitive<BindingStrength>) {
+  public init(strength: AsclepiusPrimitive<BindingStrength>) {
     self.strength = strength
     super.init()
   }
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    strength: AlexandriaHRMPrimitive<BindingStrength>,
-    fhirDescription: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    valueSet: AlexandriaHRMPrimitive<Canonical>? = nil
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    strength: AsclepiusPrimitive<BindingStrength>,
+    fhirDescription: AsclepiusPrimitive<AsclepiusString>? = nil,
+    valueSet: AsclepiusPrimitive<Canonical>? = nil
   ) {
     self.init(strength: strength)
     self.fhirExtension = fhirExtension
@@ -63,9 +63,9 @@ open class ElementDefinitionBinding: Element {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.strength = try AlexandriaHRMPrimitive<BindingStrength>(from: codingKeyContainer, forKey: .strength, auxKey: ._strength)
-    self.fhirDescription = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .fhirDescription, auxKey: ._fhirDescription)
-    self.valueSet = try AlexandriaHRMPrimitive<Canonical>(from: codingKeyContainer, forKeyIfPresent: .valueSet, auxKey: ._valueSet)
+    self.strength = try AsclepiusPrimitive<BindingStrength>(from: codingKeyContainer, forKey: .strength, auxKey: ._strength)
+    self.fhirDescription = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .fhirDescription, auxKey: ._fhirDescription)
+    self.valueSet = try AsclepiusPrimitive<Canonical>(from: codingKeyContainer, forKeyIfPresent: .valueSet, auxKey: ._valueSet)
     
     try super.init(from: decoder)
   }

@@ -1,6 +1,6 @@
 //
 //  ActionCardinalityBehaviour.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/action-cardinality-behavior
  ValueSet: http://hl7.org/fhir/ValueSet/action-cardinality-behavior
  */
-public enum ActionCardinalityBehaviour: String, AlexandriaHRMPrimitiveType {
+public enum ActionCardinalityBehaviour: String, AsclepiusPrimitiveType {
   /// The action may only be selected one time
   case single
   

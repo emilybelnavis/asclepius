@@ -1,6 +1,6 @@
 //
 //  ContractTermOfferAnswer.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,23 +17,23 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /// Response to offer text
 open class ContractTermOfferAnswer: BackboneElement {
   public enum ValueX: Hashable {
     case attachment(Attachment)
-    case boolean(AlexandriaHRMPrimitive<AlexandriaHRMBool>)
+    case boolean(AsclepiusPrimitive<AsclepiusBool>)
     case coding(Coding)
-    case date(AlexandriaHRMPrimitive<AlexandriaHRMDate>)
-    case dateTime(AlexandriaHRMPrimitive<AlexandriaHRMDateTime>)
-    case decimal(AlexandriaHRMPrimitive<AlexandriaHRMDecimal>)
-    case integer(AlexandriaHRMPrimitive<AlexandriaHRMInteger>)
+    case date(AsclepiusPrimitive<AsclepiusDate>)
+    case dateTime(AsclepiusPrimitive<AsclepiusDateTime>)
+    case decimal(AsclepiusPrimitive<AsclepiusDecimal>)
+    case integer(AsclepiusPrimitive<AsclepiusInteger>)
     case quantity(Quantity)
     case reference(Reference)
-    case string(AlexandriaHRMPrimitive<AlexandriaHRMString>)
-    case time(AlexandriaHRMPrimitive<AlexandriaHRMTime>)
-    case uri(AlexandriaHRMPrimitive<AlexandriaHRMURI>)
+    case string(AsclepiusPrimitive<AsclepiusString>)
+    case time(AsclepiusPrimitive<AsclepiusTime>)
+    case uri(AsclepiusPrimitive<AsclepiusURI>)
   }
   
   /// The actual answer response
@@ -47,7 +47,7 @@ open class ContractTermOfferAnswer: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
     value: ValueX
   ) {
     self.init(value: value)
@@ -85,7 +85,7 @@ open class ContractTermOfferAnswer: BackboneElement {
       tValue = .attachment(valueAttachment)
     }
     
-    if let valueBoolean = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKeyIfPresent: .valueBoolean, auxKey: ._valueBoolean) {
+    if let valueBoolean = try AsclepiusPrimitive<AsclepiusBool>(from: codingKeyContainer, forKeyIfPresent: .valueBoolean, auxKey: ._valueBoolean) {
       if tValue != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueBoolean, in: codingKeyContainer, debugDescription: "More than one value provided for \"value\"")
       }
@@ -99,28 +99,28 @@ open class ContractTermOfferAnswer: BackboneElement {
       tValue = .coding(valueCoding)
     }
     
-    if let valueDate = try AlexandriaHRMPrimitive<AlexandriaHRMDate>(from: codingKeyContainer, forKeyIfPresent: .valueDate, auxKey: ._valueDate) {
+    if let valueDate = try AsclepiusPrimitive<AsclepiusDate>(from: codingKeyContainer, forKeyIfPresent: .valueDate, auxKey: ._valueDate) {
       if tValue != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueDate, in: codingKeyContainer, debugDescription: "More than one value provided for \"value\"")
       }
       tValue = .date(valueDate)
     }
     
-    if let valueDateTime = try AlexandriaHRMPrimitive<AlexandriaHRMDateTime>(from: codingKeyContainer, forKeyIfPresent: .valueDateTime, auxKey: ._valueDateTime) {
+    if let valueDateTime = try AsclepiusPrimitive<AsclepiusDateTime>(from: codingKeyContainer, forKeyIfPresent: .valueDateTime, auxKey: ._valueDateTime) {
       if tValue != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueDateTime, in: codingKeyContainer, debugDescription: "More than one value provided for \"value\"")
       }
       tValue = .dateTime(valueDateTime)
     }
     
-    if let valueDecimal = try AlexandriaHRMPrimitive<AlexandriaHRMDecimal>(from: codingKeyContainer, forKeyIfPresent: .valueDecimal, auxKey: ._valueDecimal) {
+    if let valueDecimal = try AsclepiusPrimitive<AsclepiusDecimal>(from: codingKeyContainer, forKeyIfPresent: .valueDecimal, auxKey: ._valueDecimal) {
       if tValue != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueDecimal, in: codingKeyContainer, debugDescription: "More than one value provided for \"value\"")
       }
       tValue = .decimal(valueDecimal)
     }
     
-    if let valueInteger = try AlexandriaHRMPrimitive<AlexandriaHRMInteger>(from: codingKeyContainer, forKeyIfPresent: .valueInteger, auxKey: ._valueInteger) {
+    if let valueInteger = try AsclepiusPrimitive<AsclepiusInteger>(from: codingKeyContainer, forKeyIfPresent: .valueInteger, auxKey: ._valueInteger) {
       if tValue != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueInteger, in: codingKeyContainer, debugDescription: "More than one value provided for \"value\"")
       }
@@ -141,21 +141,21 @@ open class ContractTermOfferAnswer: BackboneElement {
       tValue = .reference(valueReference)
     }
     
-    if let valueString = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .valueString, auxKey: ._valueString) {
+    if let valueString = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .valueString, auxKey: ._valueString) {
       if tValue != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueString, in: codingKeyContainer, debugDescription: "More than one value provided for \"value\"")
       }
       tValue = .string(valueString)
     }
     
-    if let valueTime = try AlexandriaHRMPrimitive<AlexandriaHRMTime>(from: codingKeyContainer, forKeyIfPresent: .valueTime, auxKey: ._valueTime) {
+    if let valueTime = try AsclepiusPrimitive<AsclepiusTime>(from: codingKeyContainer, forKeyIfPresent: .valueTime, auxKey: ._valueTime) {
       if tValue != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueTime, in: codingKeyContainer, debugDescription: "More than one value provided for \"value\"")
       }
       tValue = .time(valueTime)
     }
     
-    if let valueUri = try AlexandriaHRMPrimitive<AlexandriaHRMURI>(from: codingKeyContainer, forKeyIfPresent: .valueUri, auxKey: ._valueUri) {
+    if let valueUri = try AsclepiusPrimitive<AsclepiusURI>(from: codingKeyContainer, forKeyIfPresent: .valueUri, auxKey: ._valueUri) {
       if tValue != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueUri, in: codingKeyContainer, debugDescription: "More than one value provided for \"value\"")
       }

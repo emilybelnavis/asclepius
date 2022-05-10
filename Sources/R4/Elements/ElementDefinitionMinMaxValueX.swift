@@ -1,6 +1,6 @@
 //
 //  ElementDefinitionMinMaxValueX.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,19 +17,19 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /// ElementDefinition property values that can have a min and/or max value
 open class ElementDefinitionMinMaxValueX: Element {
-  public var date: AlexandriaHRMPrimitive<AlexandriaHRMDate>?
-  public var dateTime: AlexandriaHRMPrimitive<AlexandriaHRMDateTime>?
-  public var decimal: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>?
-  public var instant: AlexandriaHRMPrimitive<AlexandriaHRMInstant>?
-  public var integer: AlexandriaHRMPrimitive<AlexandriaHRMInteger>?
-  public var positiveInteger: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>?
+  public var date: AsclepiusPrimitive<AsclepiusDate>?
+  public var dateTime: AsclepiusPrimitive<AsclepiusDateTime>?
+  public var decimal: AsclepiusPrimitive<AsclepiusDecimal>?
+  public var instant: AsclepiusPrimitive<AsclepiusInstant>?
+  public var integer: AsclepiusPrimitive<AsclepiusInteger>?
+  public var positiveInteger: AsclepiusPrimitive<AsclepiusPositiveInteger>?
   public var quantity: Quantity?
-  public var time: AlexandriaHRMPrimitive<AlexandriaHRMTime>?
-  public var unsignedInteger: AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>?
+  public var time: AsclepiusPrimitive<AsclepiusTime>?
+  public var unsignedInteger: AsclepiusPrimitive<AsclepiusUnsignedInteger>?
   
   override public init() {
     super.init()
@@ -37,16 +37,16 @@ open class ElementDefinitionMinMaxValueX: Element {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    date: AlexandriaHRMPrimitive<AlexandriaHRMDate>? = nil,
-    dateTime: AlexandriaHRMPrimitive<AlexandriaHRMDateTime>? = nil,
-    decimal: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>? = nil,
-    instant: AlexandriaHRMPrimitive<AlexandriaHRMInstant>? = nil,
-    integer: AlexandriaHRMPrimitive<AlexandriaHRMInteger>? = nil,
-    positiveInteger: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    date: AsclepiusPrimitive<AsclepiusDate>? = nil,
+    dateTime: AsclepiusPrimitive<AsclepiusDateTime>? = nil,
+    decimal: AsclepiusPrimitive<AsclepiusDecimal>? = nil,
+    instant: AsclepiusPrimitive<AsclepiusInstant>? = nil,
+    integer: AsclepiusPrimitive<AsclepiusInteger>? = nil,
+    positiveInteger: AsclepiusPrimitive<AsclepiusPositiveInteger>? = nil,
     quantity: Quantity? = nil,
-    time: AlexandriaHRMPrimitive<AlexandriaHRMTime>? = nil,
-    unsignedInteger: AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>? = nil
+    time: AsclepiusPrimitive<AsclepiusTime>? = nil,
+    unsignedInteger: AsclepiusPrimitive<AsclepiusUnsignedInteger>? = nil
   ) {
     self.init()
     self.fhirExtension = fhirExtension
@@ -78,15 +78,15 @@ open class ElementDefinitionMinMaxValueX: Element {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.date = try AlexandriaHRMPrimitive<AlexandriaHRMDate>(from: codingKeyContainer, forKeyIfPresent: .date, auxKey: ._date)
-    self.dateTime = try AlexandriaHRMPrimitive<AlexandriaHRMDateTime>(from: codingKeyContainer, forKeyIfPresent: .dateTime, auxKey: ._dateTime)
-    self.decimal = try AlexandriaHRMPrimitive<AlexandriaHRMDecimal>(from: codingKeyContainer, forKeyIfPresent: .decimal, auxKey: ._decimal)
-    self.instant = try AlexandriaHRMPrimitive<AlexandriaHRMInstant>(from: codingKeyContainer, forKeyIfPresent: .instant, auxKey: ._instant)
-    self.integer = try AlexandriaHRMPrimitive<AlexandriaHRMInteger>(from: codingKeyContainer, forKeyIfPresent: .integer, auxKey: ._integer)
-    self.positiveInteger = try AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>(from: codingKeyContainer, forKeyIfPresent: .positiveInteger, auxKey: ._positiveInteger)
+    self.date = try AsclepiusPrimitive<AsclepiusDate>(from: codingKeyContainer, forKeyIfPresent: .date, auxKey: ._date)
+    self.dateTime = try AsclepiusPrimitive<AsclepiusDateTime>(from: codingKeyContainer, forKeyIfPresent: .dateTime, auxKey: ._dateTime)
+    self.decimal = try AsclepiusPrimitive<AsclepiusDecimal>(from: codingKeyContainer, forKeyIfPresent: .decimal, auxKey: ._decimal)
+    self.instant = try AsclepiusPrimitive<AsclepiusInstant>(from: codingKeyContainer, forKeyIfPresent: .instant, auxKey: ._instant)
+    self.integer = try AsclepiusPrimitive<AsclepiusInteger>(from: codingKeyContainer, forKeyIfPresent: .integer, auxKey: ._integer)
+    self.positiveInteger = try AsclepiusPrimitive<AsclepiusPositiveInteger>(from: codingKeyContainer, forKeyIfPresent: .positiveInteger, auxKey: ._positiveInteger)
     self.quantity = try Quantity(from: codingKeyContainer, forKeyIfPresent: .quantity)
-    self.time = try AlexandriaHRMPrimitive<AlexandriaHRMTime>(from: codingKeyContainer, forKeyIfPresent: .time, auxKey: ._time)
-    self.unsignedInteger = try AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>(from: codingKeyContainer, forKeyIfPresent: .unsignedInteger, auxKey: ._unsignedInteger)
+    self.time = try AsclepiusPrimitive<AsclepiusTime>(from: codingKeyContainer, forKeyIfPresent: .time, auxKey: ._time)
+    self.unsignedInteger = try AsclepiusPrimitive<AsclepiusUnsignedInteger>(from: codingKeyContainer, forKeyIfPresent: .unsignedInteger, auxKey: ._unsignedInteger)
     
     try super.init(from: decoder)
   }

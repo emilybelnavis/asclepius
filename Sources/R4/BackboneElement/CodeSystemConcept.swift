@@ -1,6 +1,6 @@
 //
 //  CodeSystemConcept.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  Concepts that are in the code system. The concept definitions are inherently hierarchical, but the definitions
@@ -25,13 +25,13 @@ import AlexandriaHRMCore
  */
 open class CodeSystemConcept: BackboneElement {
   /// Code that identifies concept
-  public var code: AlexandriaHRMPrimitive<AlexandriaHRMString>
+  public var code: AsclepiusPrimitive<AsclepiusString>
   
   /// Text to display to the user
-  public var display: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var display: AsclepiusPrimitive<AsclepiusString>?
   
   /// Formal definition
-  public var definition: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var definition: AsclepiusPrimitive<AsclepiusString>?
   
   /// Additional representations for the concept
   public var designation: [CodeSystemConceptDesignation]?
@@ -42,7 +42,7 @@ open class CodeSystemConcept: BackboneElement {
   /// Child Concepts (`is-a`, `contains`, `categorizes`)
   public var concept: [CodeSystemConcept]?
   
-  public init(code: AlexandriaHRMPrimitive<AlexandriaHRMString>) {
+  public init(code: AsclepiusPrimitive<AsclepiusString>) {
     self.code = code
     super.init()
   }
@@ -50,10 +50,10 @@ open class CodeSystemConcept: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    code: AlexandriaHRMPrimitive<AlexandriaHRMString>,
-    display: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    definition: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    code: AsclepiusPrimitive<AsclepiusString>,
+    display: AsclepiusPrimitive<AsclepiusString>? = nil,
+    definition: AsclepiusPrimitive<AsclepiusString>? = nil,
     designation: [CodeSystemConceptDesignation]? = nil,
     property: [CodeSystemConceptProperty]? = nil,
     concept: [CodeSystemConcept]? = nil
@@ -82,9 +82,9 @@ open class CodeSystemConcept: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.code = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .code, auxKey: ._code)
-    self.display = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .display, auxKey: ._display)
-    self.definition = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .definition, auxKey: ._definition)
+    self.code = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKey: .code, auxKey: ._code)
+    self.display = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .display, auxKey: ._display)
+    self.definition = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .definition, auxKey: ._definition)
     self.designation = try [CodeSystemConceptDesignation](from: codingKeyContainer, forKeyIfPresent: .designation)
     self.property = try [CodeSystemConceptProperty](from: codingKeyContainer, forKeyIfPresent: .property)
     self.concept = try [CodeSystemConcept](from: codingKeyContainer, forKeyIfPresent: .concept)

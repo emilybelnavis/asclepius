@@ -1,6 +1,6 @@
 //
 //  ContractResourcePartyRoleCodes.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/contract-party-role
  ValueSet: http://hl7.org/fhir/ValueSet/contract-party-role
  */
-public enum ContractResourcePartyRoleCodes: String, AlexandriaHRMPrimitiveType {
+public enum ContractResourcePartyRoleCodes: String, AsclepiusPrimitiveType {
   /// To be completed
   case flunky
 }

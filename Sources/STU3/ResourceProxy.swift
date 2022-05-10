@@ -1,6 +1,6 @@
 //
 //  ResourceProxy.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,10 +17,10 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 // swiftlint:disable file_length
-public enum ResourceProxy: AlexandriaHRMType {
+public enum ResourceProxy: AsclepiusType {
   case account(Account)
   case activityDefinition(ActivityDefinition)
 //  case adverseEvent(AdverseEvent)

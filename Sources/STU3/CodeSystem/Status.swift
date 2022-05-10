@@ -1,6 +1,6 @@
 //
 //  Status.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/CodeSystem/status
  ValueSet: http://hl7.org/fhir/ValueSet/verificationresult-status
  */
-public enum Status: String, AlexandriaHRMPrimitiveType {
+public enum Status: String, AsclepiusPrimitiveType {
   /// ***TODO***
   case attested
 

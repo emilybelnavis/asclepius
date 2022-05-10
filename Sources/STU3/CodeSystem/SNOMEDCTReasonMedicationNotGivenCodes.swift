@@ -1,6 +1,6 @@
 //
 //  SNOMEDCTReasonMedicationNotGivenCodes.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  
  URL: http://hl7.org/fhir/reason-medication-not-given
  */
-public enum SNOMEDCTReasonMedicationNotGivenCodes: String, AlexandriaHRMPrimitiveType {
+public enum SNOMEDCTReasonMedicationNotGivenCodes: String, AsclepiusPrimitiveType {
   /// No reason known.
   case A = "a" // swiftlint:disable:this identifier_name
   

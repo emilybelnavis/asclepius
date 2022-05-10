@@ -1,6 +1,6 @@
 //
 //  DeviceMetricColor.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/metric-color
  ValueSet: http://hl7.org/fhir/ValueSet/metric-color
  */
-public enum DeviceMetricColor: String, AlexandriaHRMPrimitiveType {
+public enum DeviceMetricColor: String, AsclepiusPrimitiveType {
     /// Colour for representation - black.
   case black
   

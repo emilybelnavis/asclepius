@@ -1,6 +1,6 @@
 //
 //  AdverseEventCausalityMethod.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/adverse-event-causality-method
  ValueSet: http://hl7.org/fhir/ValueSet/adverse-event-causality-method
  */
-public enum AdverseEventCausalityMethod: String, AlexandriaHRMPrimitiveType {
+public enum AdverseEventCausalityMethod: String, AsclepiusPrimitiveType {
   /// probability scale
   case probabilityScale = "ProbabilityScale"
   

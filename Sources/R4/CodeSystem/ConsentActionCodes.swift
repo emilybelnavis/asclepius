@@ -1,6 +1,6 @@
 //
 //  ConsentActionCodes.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/consentaction
  ValueSet: http://hl7.org/fhir/ValueSet/consent-action
  */
-public enum ConsentActionCodes: String, AlexandriaHRMPrimitiveType {
+public enum ConsentActionCodes: String, AsclepiusPrimitiveType {
   /// Gather retrieved information for storage
   case collect
   

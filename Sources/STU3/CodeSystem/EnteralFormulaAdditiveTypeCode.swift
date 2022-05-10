@@ -1,6 +1,6 @@
 //
 //  EnteralFormulaAdditiveTypeCode.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -24,7 +24,7 @@
  URL: http://terminology.hl7.org/CodeSystem/entformula-additive
  ValueSet: http://hl7.org/fhir/ValueSet/entformula-additive
  */
-public enum EnteralFormulaAdditiveTypeCode: String, AlexandriaHRMPrimitiveType {
+public enum EnteralFormulaAdditiveTypeCode: String, AsclepiusPrimitiveType {
   /// Modular lipid enteral formula component
   case lipid
   

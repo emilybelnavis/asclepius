@@ -1,6 +1,6 @@
 //
 //  MeasureDataUsage.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/measure-data-usage
  ValueSet: http://hl7.org/fhir/ValueSet/measure-data-usage
  */
-public enum MeasureDataUsage: String, AlexandriaHRMPrimitiveType {
+public enum MeasureDataUsage: String, AsclepiusPrimitiveType {
   /// The data is intended to be provided as additional information alongside the measure results.
   case supplementalData = "supplemental-data"
   

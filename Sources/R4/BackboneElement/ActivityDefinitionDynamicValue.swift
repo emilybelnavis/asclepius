@@ -1,6 +1,6 @@
 //
 //  ActivityDefinitionDynamicValue.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  Dynamic aspects of the definition.
@@ -29,12 +29,12 @@ import AlexandriaHRMCore
  */
 open class ActivityDefinitionDynamicValue: BackboneElement {
   /// The path to the element to be set dynamically
-  public var path: AlexandriaHRMPrimitive<AlexandriaHRMString>
+  public var path: AsclepiusPrimitive<AsclepiusString>
   
   /// An expression that provides the dynamic value for the customization
   public var expression: Expression
   
-  public init(expression: Expression, path: AlexandriaHRMPrimitive<AlexandriaHRMString>) {
+  public init(expression: Expression, path: AsclepiusPrimitive<AsclepiusString>) {
     self.path = path
     self.expression = expression
     super.init()
@@ -43,8 +43,8 @@ open class ActivityDefinitionDynamicValue: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    path: AlexandriaHRMPrimitive<AlexandriaHRMString>,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    path: AsclepiusPrimitive<AsclepiusString>,
     expression: Expression
   ) {
     self.init(expression: expression, path: path)
@@ -62,7 +62,7 @@ open class ActivityDefinitionDynamicValue: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.path = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .path, auxKey: ._path)
+    self.path = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKey: .path, auxKey: ._path)
     self.expression = try Expression(from: codingKeyContainer, forKey: .expression)
     
     try super.init(from: decoder)

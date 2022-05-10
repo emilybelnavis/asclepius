@@ -1,6 +1,6 @@
 //
 //  ProvenanceParticipantType.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/provenance-participant-type
  ValueSet: http://hl7.org/fhir/ValueSet/provenance-agent-type
  */
-public enum ProvenanceParticipantType: String, AlexandriaHRMPrimitiveType {
+public enum ProvenanceParticipantType: String, AsclepiusPrimitiveType {
   /// A person entering the data into the originating system
   case enterer
   

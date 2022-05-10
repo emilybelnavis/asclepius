@@ -1,6 +1,6 @@
 //
 //  ContractResourceAssetContextCodes.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/contract-asset-context
  ValueSet: http://hl7.org/fhir/ValueSet/contract-assetcontext
  */
-public enum ContractResourceAssetContextCodes: String, AlexandriaHRMPrimitiveType {
+public enum ContractResourceAssetContextCodes: String, AsclepiusPrimitiveType {
   /// todo: to be completed
   case custodian
 }

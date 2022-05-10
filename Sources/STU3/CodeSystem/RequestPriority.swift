@@ -1,6 +1,6 @@
 //
 //  RequestPriority.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/request-priority
  ValueSet: http://hl7.org/fhir/ValueSet/request-priority
  */
-public enum RequestPriority: String, AlexandriaHRMPrimitiveType {
+public enum RequestPriority: String, AsclepiusPrimitiveType {
   /// The request has normal priority.
   case routine
   

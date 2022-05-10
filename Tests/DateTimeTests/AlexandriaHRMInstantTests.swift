@@ -1,6 +1,6 @@
 //
-//  AlexandriaHRMInstantTests.swift
-//  AlexandriaHRM
+//  AsclepiusInstantTests.swift
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,21 +17,21 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 import R4
 import XCTest
 
-class AlexandriaHRMInstantTests: XCTestCase {
+class AsclepiusInstantTests: XCTestCase {
   func testInstantDateParsing() {
-    let datePairs: [String: AlexandriaHRMInstant] = [
-      "2022-04-20T04:20:00Z": AlexandriaHRMInstant(date: AlexandriaHRMInstantDate(year: 2022, month: 4, day: 20), time: AlexandriaHRMTime(hour: 4, minute: 20, second: 0.0), timezone: TimeZone(secondsFromGMT: 0)!),
-      "2022-04-20T04:20:00-00:00": AlexandriaHRMInstant(date: AlexandriaHRMInstantDate(year: 2022, month: 4, day: 20), time: AlexandriaHRMTime(hour: 4, minute: 20, second: 0.0), timezone: TimeZone(secondsFromGMT: 0)!),
-      "2022-04-20T04:20:06.9-05:00": AlexandriaHRMInstant(date: AlexandriaHRMInstantDate(year: 2022, month: 4, day: 20), time: AlexandriaHRMTime(hour: 4, minute: 20, second: 6.9), timezone: TimeZone(secondsFromGMT: -5 * 3600)!),
-      "2022-04-20T16:20:06.9+12:00": AlexandriaHRMInstant(date: AlexandriaHRMInstantDate(year: 2022, month: 4, day: 20), time: AlexandriaHRMTime(hour: 16, minute: 20, second: 6.9), timezone: TimeZone(secondsFromGMT: +12 * 3600)!)
+    let datePairs: [String: AsclepiusInstant] = [
+      "2022-04-20T04:20:00Z": AsclepiusInstant(date: AsclepiusInstantDate(year: 2022, month: 4, day: 20), time: AsclepiusTime(hour: 4, minute: 20, second: 0.0), timezone: TimeZone(secondsFromGMT: 0)!),
+      "2022-04-20T04:20:00-00:00": AsclepiusInstant(date: AsclepiusInstantDate(year: 2022, month: 4, day: 20), time: AsclepiusTime(hour: 4, minute: 20, second: 0.0), timezone: TimeZone(secondsFromGMT: 0)!),
+      "2022-04-20T04:20:06.9-05:00": AsclepiusInstant(date: AsclepiusInstantDate(year: 2022, month: 4, day: 20), time: AsclepiusTime(hour: 4, minute: 20, second: 6.9), timezone: TimeZone(secondsFromGMT: -5 * 3600)!),
+      "2022-04-20T16:20:06.9+12:00": AsclepiusInstant(date: AsclepiusInstantDate(year: 2022, month: 4, day: 20), time: AsclepiusTime(hour: 16, minute: 20, second: 6.9), timezone: TimeZone(secondsFromGMT: +12 * 3600)!)
     ]
     
     for (instantDateString, expected) in datePairs {
-      let instantDate = try? AlexandriaHRMInstant(instantDateString)
+      let instantDate = try? AsclepiusInstant(instantDateString)
       XCTAssertNotNil(instantDate)
       XCTAssertEqual(instantDate, expected)
       XCTAssertEqual(instantDate?.description, instantDateString)
@@ -53,11 +53,11 @@ class AlexandriaHRMInstantTests: XCTestCase {
     
     for (dateString, errorLocation) in badInstantDateStringSet {
       do {
-        let instantDate = try AlexandriaHRMInstant(dateString)
+        let instantDate = try AsclepiusInstant(dateString)
         XCTFail("Should fail to parse InstantDateString: \"\(dateString)\" but succeeded anyway. Parsed: \(instantDate)")
       } catch {
-        guard let parserError = error as? AlexandriaHRMDateParserError else {
-          XCTFail("Should have thrown AlexandriaHRMDateParserError but threw \(error) instead")
+        guard let parserError = error as? AsclepiusDateParserError else {
+          XCTFail("Should have thrown AsclepiusDateParserError but threw \(error) instead")
           continue
         }
         
@@ -68,8 +68,8 @@ class AlexandriaHRMInstantTests: XCTestCase {
   
   func testInstantDateRendering() {
     let instantDateString = "2022-04-20T04:20:00Z"
-    var parsedInstantDateString = try! AlexandriaHRMInstant(instantDateString)
-    let expectedInstantDateString = AlexandriaHRMInstant(date: AlexandriaHRMInstantDate(year: 2022, month: 4, day: 20), time: AlexandriaHRMTime(hour: 4, minute: 20, second: 0.0), timezone: TimeZone(secondsFromGMT: 0)!)
+    var parsedInstantDateString = try! AsclepiusInstant(instantDateString)
+    let expectedInstantDateString = AsclepiusInstant(date: AsclepiusInstantDate(year: 2022, month: 4, day: 20), time: AsclepiusTime(hour: 4, minute: 20, second: 0.0), timezone: TimeZone(secondsFromGMT: 0)!)
     XCTAssertEqual(parsedInstantDateString, expectedInstantDateString)
     XCTAssertEqual(parsedInstantDateString.description, instantDateString)
     
@@ -83,12 +83,12 @@ class AlexandriaHRMInstantTests: XCTestCase {
     let dateString1 = "2022-04-20T04:20:00Z"
     let dateString2 = "2022-04-20T04:20:06.009Z"
     let dateString3 = "2022-04-20T02:20:00-02:00"
-    let instant1 = try! AlexandriaHRMInstant(dateString1)
-    let instant2 = try! AlexandriaHRMInstant(dateString2)
-    let instant3 = try! AlexandriaHRMInstant(dateString3)
-    let dateTime1 = try! AlexandriaHRMDateTime(dateString1)
-    let dateTime2 = try! AlexandriaHRMDateTime(dateString2)
-    let dateTime3 = try! AlexandriaHRMDateTime(dateString3)
+    let instant1 = try! AsclepiusInstant(dateString1)
+    let instant2 = try! AsclepiusInstant(dateString2)
+    let instant3 = try! AsclepiusInstant(dateString3)
+    let dateTime1 = try! AsclepiusDateTime(dateString1)
+    let dateTime2 = try! AsclepiusDateTime(dateString2)
+    let dateTime3 = try! AsclepiusDateTime(dateString3)
     
     XCTAssertTrue(instant1 == instant1)
     XCTAssertNotEqual(instant1, instant2)
@@ -103,8 +103,8 @@ class AlexandriaHRMInstantTests: XCTestCase {
   
   // comparison test helper function
   private func assertLeftToRight(_ left: String, _ right: String, compares: ComparisonResult, file: StaticString = #file, line: UInt = #line) throws {
-    let leftInstant = try AlexandriaHRMInstant(left)
-    let rightInstant = try AlexandriaHRMInstant(right)
+    let leftInstant = try AsclepiusInstant(left)
+    let rightInstant = try AsclepiusInstant(right)
     
     XCTAssertEqual(try leftInstant.compare(rightInstant), compares, file: file, line: line)
   }

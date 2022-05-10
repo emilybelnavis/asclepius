@@ -1,6 +1,6 @@
 //
 //  ContractTypeCodes.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/contract-type
  ValueSet: http://hl7.org/fhir/ValueSet/contract-type
  */
-public enum ContractTypeCodes: String, AlexandriaHRMPrimitiveType {
+public enum ContractTypeCodes: String, AsclepiusPrimitiveType {
   /// Privacy policy.
   case privacy
   

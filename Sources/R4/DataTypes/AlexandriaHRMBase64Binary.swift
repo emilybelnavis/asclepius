@@ -1,6 +1,6 @@
 //
-//  AlexandriaHRMBase64Binary.swift
-//  AlexandriaHRM
+//  AsclepiusBase64Binary.swift
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -18,14 +18,14 @@
 //  limitations under the License.
 
 import Foundation
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  A stream of bytes, base64 encoded (RFC 4648)
  
  http://hl7.org/fhir/datatypes.html#base64Binary
  */
-public struct AlexandriaHRMBase64Binary: AlexandriaHRMPrimitiveType {
+public struct AsclepiusBase64Binary: AsclepiusPrimitiveType {
   public var dataString: String
   
   public init(_ dataString: String) {
@@ -45,14 +45,14 @@ public struct AlexandriaHRMBase64Binary: AlexandriaHRMPrimitiveType {
   }
 }
 
-extension AlexandriaHRMBase64Binary: ExpressibleByStringLiteral {
+extension AsclepiusBase64Binary: ExpressibleByStringLiteral {
   public init(stringLiteral value: StringLiteralType) {
     self.init(value)
   }
 }
 
 // MARK: - Codable
-extension AlexandriaHRMBase64Binary: Codable {
+extension AsclepiusBase64Binary: Codable {
   public init(from decoder: Decoder) throws {
     let codingContainer = try decoder.singleValueContainer()
     self.dataString = try codingContainer.decode(String.self)
@@ -65,8 +65,8 @@ extension AlexandriaHRMBase64Binary: Codable {
 }
 
 // MARK: - Equatable
-extension AlexandriaHRMBase64Binary: Equatable {
-  public static func == (left: AlexandriaHRMBase64Binary, right: AlexandriaHRMBase64Binary) -> Bool {
+extension AsclepiusBase64Binary: Equatable {
+  public static func == (left: AsclepiusBase64Binary, right: AsclepiusBase64Binary) -> Bool {
     return left.dataString == right.dataString
   }
 }

@@ -1,6 +1,6 @@
 //
 //  QuestionnaireItemType.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/item-type
  ValueSet: http://hl7.org/fhir/ValueSet/item-type
  */
-public enum QuestionnaireItemType: String, AlexandriaHRMPrimitiveType {
+public enum QuestionnaireItemType: String, AsclepiusPrimitiveType {
   /// An item with no direct answer but should have at least one child item.
   case group
   

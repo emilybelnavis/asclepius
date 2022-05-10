@@ -1,6 +1,6 @@
 //
 //  CoverageCostToBeneficiary.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  Patient payments for services/products; A suite of codes indicating the cost category and associated amount
@@ -46,7 +46,7 @@ open class CoverageCostToBeneficiary: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
     type: CodeableConcept? = nil,
     value: ValueX,
     exception: [CoverageCostToBeneficiaryException]? = nil

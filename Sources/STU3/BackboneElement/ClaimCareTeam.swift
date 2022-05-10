@@ -1,6 +1,6 @@
 //
 //  ClaimCareTeam.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,20 +17,20 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  Members of the care team - the members of the team that provided the products and services
  */
 open class ClaimCareTeam: BackboneElement {
   /// Order of care team
-  public var sequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>
+  public var sequence: AsclepiusPrimitive<AsclepiusPositiveInteger>
   
   /// Practitioner or organization
   public var provider: Reference
   
   /// Indicator of the lead practitioner
-  public var responsible: AlexandriaHRMPrimitive<AlexandriaHRMBool>?
+  public var responsible: AsclepiusPrimitive<AsclepiusBool>?
   
   /// Function within the team
   public var role: CodeableConcept?
@@ -38,7 +38,7 @@ open class ClaimCareTeam: BackboneElement {
   /// Practitioner credential or specialization
   public var qualification: CodeableConcept?
   
-  public init(sequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>, provider: Reference) {
+  public init(sequence: AsclepiusPrimitive<AsclepiusPositiveInteger>, provider: Reference) {
     self.sequence = sequence
     self.provider = provider
     super.init()
@@ -47,10 +47,10 @@ open class ClaimCareTeam: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    sequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    sequence: AsclepiusPrimitive<AsclepiusPositiveInteger>,
     provider: Reference,
-    responsible: AlexandriaHRMPrimitive<AlexandriaHRMBool>? = nil,
+    responsible: AsclepiusPrimitive<AsclepiusBool>? = nil,
     role: CodeableConcept? = nil,
     qualification: CodeableConcept? = nil
   ) {
@@ -74,9 +74,9 @@ open class ClaimCareTeam: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.sequence = try AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>(from: codingKeyContainer, forKey: .sequence, auxKey: ._sequence)
+    self.sequence = try AsclepiusPrimitive<AsclepiusPositiveInteger>(from: codingKeyContainer, forKey: .sequence, auxKey: ._sequence)
     self.provider = try Reference(from: codingKeyContainer, forKey: .provider)
-    self.responsible = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKeyIfPresent: .responsible, auxKey: ._responsible)
+    self.responsible = try AsclepiusPrimitive<AsclepiusBool>(from: codingKeyContainer, forKeyIfPresent: .responsible, auxKey: ._responsible)
     self.role = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .role)
     self.qualification = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .qualification)
     

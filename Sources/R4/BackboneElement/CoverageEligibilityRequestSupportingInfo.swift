@@ -1,6 +1,6 @@
 //
 //  CoverageEligibilityRequestSupportingInfo.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  Supporting information; Additional information codes regarding exceptions, special considerations, the condition,
@@ -25,15 +25,15 @@ import AlexandriaHRMCore
  */
 open class CoverageEligibilityRequestSupportingInfo: BackboneElement {
   /// Information instance identifier
-  public var sequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>
+  public var sequence: AsclepiusPrimitive<AsclepiusPositiveInteger>
   
   /// Data to be provided
   public var information: Reference
   
   /// Applies to all items
-  public var appliesToAll: AlexandriaHRMPrimitive<AlexandriaHRMBool>?
+  public var appliesToAll: AsclepiusPrimitive<AsclepiusBool>?
   
-  public init(sequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>, information: Reference) {
+  public init(sequence: AsclepiusPrimitive<AsclepiusPositiveInteger>, information: Reference) {
     self.sequence = sequence
     self.information = information
     super.init()
@@ -42,10 +42,10 @@ open class CoverageEligibilityRequestSupportingInfo: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    sequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    sequence: AsclepiusPrimitive<AsclepiusPositiveInteger>,
     information: Reference,
-    appliesToAll: AlexandriaHRMPrimitive<AlexandriaHRMBool>? = nil
+    appliesToAll: AsclepiusPrimitive<AsclepiusBool>? = nil
   ) {
     self.init(sequence: sequence, information: information)
     self.fhirExtension = fhirExtension
@@ -64,9 +64,9 @@ open class CoverageEligibilityRequestSupportingInfo: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.sequence = try AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>(from: codingKeyContainer, forKey: .sequence, auxKey: ._sequence)
+    self.sequence = try AsclepiusPrimitive<AsclepiusPositiveInteger>(from: codingKeyContainer, forKey: .sequence, auxKey: ._sequence)
     self.information = try Reference(from: codingKeyContainer, forKey: .information)
-    self.appliesToAll = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKeyIfPresent: .appliesToAll, auxKey: ._appliesToAll)
+    self.appliesToAll = try AsclepiusPrimitive<AsclepiusBool>(from: codingKeyContainer, forKeyIfPresent: .appliesToAll, auxKey: ._appliesToAll)
     
     try super.init(from: decoder)
   }

@@ -1,6 +1,6 @@
 //
 //  ClaimDiagnosis.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  Pertinent diagnosis information - Information about diagnoses that are relevant to the claim item(s).
@@ -29,7 +29,7 @@ open class ClaimDiagnosis: BackboneElement {
   }
   
   /// Diagnosis instance identifier
-  public var sequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>
+  public var sequence: AsclepiusPrimitive<AsclepiusPositiveInteger>
   
   /// Nature of illness or problem
   public var diagnosisX: DiagnosisX
@@ -43,7 +43,7 @@ open class ClaimDiagnosis: BackboneElement {
   /// Package billing code
   public var packageCode: CodeableConcept?
   
-  public init(sequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>, diagnosisX: DiagnosisX) {
+  public init(sequence: AsclepiusPrimitive<AsclepiusPositiveInteger>, diagnosisX: DiagnosisX) {
     self.sequence = sequence
     self.diagnosisX = diagnosisX
     super.init()
@@ -52,8 +52,8 @@ open class ClaimDiagnosis: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    sequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    sequence: AsclepiusPrimitive<AsclepiusPositiveInteger>,
     diagnosisX: DiagnosisX,
     type: [CodeableConcept]? = nil,
     onAdmission: CodeableConcept? = nil,
@@ -96,7 +96,7 @@ open class ClaimDiagnosis: BackboneElement {
       tempDiagnosisX = .reference(diagnosisReference)
     }
     
-    self.sequence = try AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>(from: codingKeyContainer, forKey: .sequence, auxKey: ._sequence)
+    self.sequence = try AsclepiusPrimitive<AsclepiusPositiveInteger>(from: codingKeyContainer, forKey: .sequence, auxKey: ._sequence)
     self.diagnosisX = tempDiagnosisX!
     self.type = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .type)
     self.onAdmission = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .onAdmission)

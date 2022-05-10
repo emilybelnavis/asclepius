@@ -1,6 +1,6 @@
 //
 //  Money.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,15 +17,15 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /// An amount of economic utility in some recognized currency
 open class Money: Element {
   /// numerical value (with implicit precision)
-  public var value: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>?
+  public var value: AsclepiusPrimitive<AsclepiusDecimal>?
   
   /// ISO 4217 currency code
-  public var currency: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var currency: AsclepiusPrimitive<AsclepiusString>?
   
   override public init() {
     super.init()
@@ -33,9 +33,9 @@ open class Money: Element {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    value: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>? = nil,
-    currency: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    value: AsclepiusPrimitive<AsclepiusDecimal>? = nil,
+    currency: AsclepiusPrimitive<AsclepiusString>? = nil
   ) {
     self.init()
     self.fhirExtension = fhirExtension
@@ -53,8 +53,8 @@ open class Money: Element {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.value = try AlexandriaHRMPrimitive<AlexandriaHRMDecimal>(from: codingKeyContainer, forKeyIfPresent: .value, auxKey: ._value)
-    self.currency = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .currency, auxKey: ._currency)
+    self.value = try AsclepiusPrimitive<AsclepiusDecimal>(from: codingKeyContainer, forKeyIfPresent: .value, auxKey: ._value)
+    self.currency = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .currency, auxKey: ._currency)
     
     try super.init(from: decoder)
   }

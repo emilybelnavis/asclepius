@@ -1,6 +1,6 @@
 //
 //  GroupMeasure.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/group-measure
  ValueSet: http://hl7.org/fhir/ValueSet/group-measure
  */
-public enum GroupMeasure: String, AlexandriaHRMPrimitiveType {
+public enum GroupMeasure: String, AsclepiusPrimitiveType {
   /// Aggregated using Mean of participant values.
   case mean
   

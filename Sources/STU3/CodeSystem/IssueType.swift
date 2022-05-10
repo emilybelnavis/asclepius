@@ -1,6 +1,6 @@
 //
 //  IssueType.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/issue-type
  ValueSet: http://hl7.org/fhir/ValueSet/issue-type
  */
-public enum IssueType: String, AlexandriaHRMPrimitiveType {
+public enum IssueType: String, AsclepiusPrimitiveType {
   /// Content invalid against the specification or a profile.
   case invalid
   

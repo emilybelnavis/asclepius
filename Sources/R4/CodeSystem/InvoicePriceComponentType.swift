@@ -1,6 +1,6 @@
 //
 //  InvoicePriceComponentType.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/invoice-priceComponentType
  ValueSet: http://hl7.org/fhir/ValueSet/invoice-priceComponentType
  */
-public enum InvoicePriceComponentType: String, AlexandriaHRMPrimitiveType {
+public enum InvoicePriceComponentType: String, AsclepiusPrimitiveType {
   /// the amount is the base price used for calculating the total price before applying surcharges, discount or taxes.
   case base
   

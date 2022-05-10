@@ -1,6 +1,6 @@
 //
 //  SynthesisType.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -22,7 +22,7 @@
  URL: http://terminology.hl7.org/CodeSystem/synthesis-type
  ValueSet: http://hl7.org/fhir/ValueSet/synthesis-type
  */
-public enum SynthesisType: String, AlexandriaHRMPrimitiveType {
+public enum SynthesisType: String, AsclepiusPrimitiveType {
   /// A meta-analysis of the summary data of estimates from individual studies or data sets.
   case stdMA = "std-MA"
   

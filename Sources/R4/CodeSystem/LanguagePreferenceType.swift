@@ -1,6 +1,6 @@
 //
 //  LanguagePreferenceType.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -22,7 +22,7 @@
  
  URL: http://hl7.org/fhir/language-preference-type
  */
-public enum LanguagePreferenceType: String, AlexandriaHRMPrimitiveType {
+public enum LanguagePreferenceType: String, AsclepiusPrimitiveType {
   /// The patient prefers to verbally communicate with the associated language.
   case verbal
   

@@ -1,6 +1,6 @@
 //
 //  CapabilityStatementMessagingEndpoint.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /// An endpoint (network accessible address) to which messages and/or replies are to be sent
 open class CapabilityStatementMessagingEndpoint: BackboneElement {
@@ -25,9 +25,9 @@ open class CapabilityStatementMessagingEndpoint: BackboneElement {
   public var networkProtocol: Coding
   
   /// Network address or identifier of the endpoint
-  public var address: AlexandriaHRMPrimitive<AlexandriaHRMURI>
+  public var address: AsclepiusPrimitive<AsclepiusURI>
   
-  public init(networkProtocol: Coding, address: AlexandriaHRMPrimitive<AlexandriaHRMURI>) {
+  public init(networkProtocol: Coding, address: AsclepiusPrimitive<AsclepiusURI>) {
     self.networkProtocol = networkProtocol
     self.address = address
     super.init()
@@ -36,9 +36,9 @@ open class CapabilityStatementMessagingEndpoint: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
     networkProtocol: Coding,
-    address: AlexandriaHRMPrimitive<AlexandriaHRMURI>
+    address: AsclepiusPrimitive<AsclepiusURI>
   ) {
     self.init(networkProtocol: networkProtocol, address: address)
     self.fhirExtension = fhirExtension
@@ -56,7 +56,7 @@ open class CapabilityStatementMessagingEndpoint: BackboneElement {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     self.networkProtocol = try Coding(from: codingKeyContainer, forKey: .networkProtocol)
-    self.address = try AlexandriaHRMPrimitive<AlexandriaHRMURI>(from: codingKeyContainer, forKey: .address, auxKey: ._address)
+    self.address = try AsclepiusPrimitive<AsclepiusURI>(from: codingKeyContainer, forKey: .address, auxKey: ._address)
     
     try super.init(from: decoder)
   }

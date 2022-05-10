@@ -1,6 +1,6 @@
 //
 //  QualityOfEvidenceRating.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/evidence-quality
  ValueSet: http://hl7.org/fhir/ValueSet/evidence-quality
  */
-public enum QualityOfEvidenceRating: String, AlexandriaHRMPrimitiveType {
+public enum QualityOfEvidenceRating: String, AsclepiusPrimitiveType {
   /// High quality evidence.
   case high
   

@@ -1,6 +1,6 @@
 //
-//  AlexandriaHRMUnsignedInteger.swift
-//  AlexandriaHRM
+//  AsclepiusUnsignedInteger.swift
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -18,7 +18,7 @@
 //  limitations under the License.
 
 import Foundation
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  Any non-negative integer in the range  0 to 2,147,483,647 (31 bits because the positive int is a constraint on
@@ -26,7 +26,7 @@ import AlexandriaHRMCore
  
  http://hl7.org/fhir/datatypes.html#unsignedInt
  */
-public struct AlexandriaHRMUnsignedInteger: AlexandriaHRMPrimitiveType, AlexandriaHRMIntegerRepresentable {
+public struct AsclepiusUnsignedInteger: AsclepiusPrimitiveType, AsclepiusIntegerRepresentable {
   public typealias IntegerLiteralType = Int32
   
   public var integer: Self.IntegerLiteralType {
@@ -47,13 +47,13 @@ public struct AlexandriaHRMUnsignedInteger: AlexandriaHRMPrimitiveType, Alexandr
 }
 
 // MARK: Codable
-extension AlexandriaHRMUnsignedInteger: Codable {
+extension AsclepiusUnsignedInteger: Codable {
   public init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.singleValueContainer()
     let integer = try codingKeyContainer.decode(Self.IntegerLiteralType.self)
     
     if integer < 0 {
-      throw AlexandriaHRMUnsignedIntegerError.valueIsLessThanZero
+      throw AsclepiusUnsignedIntegerError.valueIsLessThanZero
     }
     self.integer = integer
   }
@@ -65,13 +65,13 @@ extension AlexandriaHRMUnsignedInteger: Codable {
 }
 
 // MARK: - Error Types
-public enum AlexandriaHRMUnsignedIntegerError: Error {
+public enum AsclepiusUnsignedIntegerError: Error {
   case valueIsLessThanZero
 }
 
 // MARK: - Extends Int
 extension Int {
-  public func asAlexandriaHRMUnsignedIntegerPrimitive() -> AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger> {
-    return AlexandriaHRMPrimitive(AlexandriaHRMUnsignedInteger(AlexandriaHRMUnsignedInteger.IntegerLiteralType(self)))
+  public func asAsclepiusUnsignedIntegerPrimitive() -> AsclepiusPrimitive<AsclepiusUnsignedInteger> {
+    return AsclepiusPrimitive(AsclepiusUnsignedInteger(AsclepiusUnsignedInteger.IntegerLiteralType(self)))
   }
 }

@@ -1,6 +1,6 @@
 //
 //  CapabilityStatementRestSecurity.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,18 +17,18 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /// Information about security implementation form an interface perspective - what a client needs to know
 open class CapabilityStatementRestSecurity: BackboneElement {
   /// Adds CORS headers (http://enable-cors.org/)
-  public var cors: AlexandriaHRMPrimitive<AlexandriaHRMBool>?
+  public var cors: AsclepiusPrimitive<AsclepiusBool>?
   
   /// OAuth | SMART-on-FHIR | NTLM | Basic | Kerberos | Certificates
   public var service: [CodeableConcept]?
   
   /// General description of how security works
-  public var fhirDescription: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var fhirDescription: AsclepiusPrimitive<AsclepiusString>?
   
   override public init() {
     super.init()
@@ -37,10 +37,10 @@ open class CapabilityStatementRestSecurity: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    cors: AlexandriaHRMPrimitive<AlexandriaHRMBool>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    cors: AsclepiusPrimitive<AsclepiusBool>? = nil,
     service: [CodeableConcept]? = nil,
-    fhirDescription: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil
+    fhirDescription: AsclepiusPrimitive<AsclepiusString>? = nil
   ) {
     self.init()
     self.fhirExtension = fhirExtension
@@ -61,9 +61,9 @@ open class CapabilityStatementRestSecurity: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.cors = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKeyIfPresent: .cors, auxKey: ._cors)
+    self.cors = try AsclepiusPrimitive<AsclepiusBool>(from: codingKeyContainer, forKeyIfPresent: .cors, auxKey: ._cors)
     self.service = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .service)
-    self.fhirDescription = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .fhirDescription, auxKey: ._fhirDescription)
+    self.fhirDescription = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .fhirDescription, auxKey: ._fhirDescription)
     
     try super.init(from: decoder)
   }

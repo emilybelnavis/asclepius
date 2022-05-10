@@ -1,6 +1,6 @@
 //
 //  SubscriptionTag.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/subscription-tag
  ValueSet: http://hl7.org/fhir/ValueSet/subscription-tag
  */
-public enum SubscriptionTag: String, AlexandriaHRMPrimitiveType {
+public enum SubscriptionTag: String, AsclepiusPrimitiveType {
   /// The message has been queued for processing on a destination systems.
   case queued
   

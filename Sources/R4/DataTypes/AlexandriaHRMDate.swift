@@ -1,6 +1,6 @@
 //
-//  AlexandriaHRMDate.swift
-//  AlexandriaHRM
+//  AsclepiusDate.swift
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -18,7 +18,7 @@
 //  limitations under the License.
 
 import Foundation
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  A date, or partial date (e.g. just year or year/month) as used in human communication. The format is YYYY,
@@ -26,7 +26,7 @@ import AlexandriaHRMCore
  Dates SHALL be valid dates.
  */
 
-public struct AlexandriaHRMDate: AlexandriaHRMPrimitiveType {
+public struct AsclepiusDate: AsclepiusPrimitiveType {
   public var year: Int
   public var month: UInt8? {
     didSet {
@@ -56,7 +56,7 @@ public struct AlexandriaHRMDate: AlexandriaHRMPrimitiveType {
   
   public init(_ originalString: String) throws {
     let scanner = Scanner(string: originalString)
-    let (year, month, day) = try AlexandriaHRMDate.parseComponents(from: scanner)
+    let (year, month, day) = try AsclepiusDate.parseComponents(from: scanner)
     self.init(year: year, month: month, day: day)
   }
   
@@ -74,7 +74,7 @@ public struct AlexandriaHRMDate: AlexandriaHRMPrimitiveType {
     
     var scanLocation = scanner.scanLocation
     guard let scanned = scanner.hs_scanCharacters(from: numbers), scanned.count == 4, let year = Int(scanned), year > 0 else {
-      throw AlexandriaHRMDateParserError.invalidYear(AlexandriaHRMDateParserErrorPosition(string: scanner.string, location: scanLocation))
+      throw AsclepiusDateParserError.invalidYear(AsclepiusDateParserErrorPosition(string: scanner.string, location: scanLocation))
     }
     
     var month: UInt8?
@@ -83,14 +83,14 @@ public struct AlexandriaHRMDate: AlexandriaHRMPrimitiveType {
     if scanner.scanString("-", into: nil) {
       scanLocation = scanner.scanLocation
       guard let scanned = scanner.hs_scanCharacters(from: numbers), scanned.count == 2, let scanMonth = UInt8(scanned), (1...12).contains(scanMonth) else {
-        throw AlexandriaHRMDateParserError.invalidMonth(AlexandriaHRMDateParserErrorPosition(string: scanner.string, location: scanLocation))
+        throw AsclepiusDateParserError.invalidMonth(AsclepiusDateParserErrorPosition(string: scanner.string, location: scanLocation))
       }
       month = scanMonth
       
       if scanner.scanString("-", into: nil) {
         scanLocation = scanner.scanLocation
         guard let scanned = scanner.hs_scanCharacters(from: numbers), scanned.count == 2, let scanDay = UInt8(scanned), (1...31).contains(scanDay) else {
-          throw AlexandriaHRMDateParserError.invalidDay(AlexandriaHRMDateParserErrorPosition(string: scanner.string, location: scanLocation))
+          throw AsclepiusDateParserError.invalidDay(AsclepiusDateParserErrorPosition(string: scanner.string, location: scanLocation))
         }
          day = scanDay
       }
@@ -98,28 +98,28 @@ public struct AlexandriaHRMDate: AlexandriaHRMPrimitiveType {
     
     scanLocation = scanner.scanLocation
     if expectAtEnd && !scanner.isAtEnd {
-      throw AlexandriaHRMDateParserError.additionalCharacters(AlexandriaHRMDateParserErrorPosition(string: scanner.string, location: scanLocation))
+      throw AsclepiusDateParserError.additionalCharacters(AsclepiusDateParserErrorPosition(string: scanner.string, location: scanLocation))
     }
     
     return (year, month, day)
   }
   
-  public static func parse(from scanner: Scanner, expectAtEnd: Bool = true) throws -> AlexandriaHRMDate {
-    let (year, month, day) = try AlexandriaHRMDate.parseComponents(from: scanner, expectAtEnd: expectAtEnd)
+  public static func parse(from scanner: Scanner, expectAtEnd: Bool = true) throws -> AsclepiusDate {
+    let (year, month, day) = try AsclepiusDate.parseComponents(from: scanner, expectAtEnd: expectAtEnd)
     return self.init(year: year, month: month, day: day)
   }
 }
 
 // MARK: - ExpressibleByStringLiteral
 
-extension AlexandriaHRMDate: ExpressibleByStringLiteral {
+extension AsclepiusDate: ExpressibleByStringLiteral {
   public init(stringLiteral value: StringLiteralType) {
     try! self.init(value) // swiftlint:disable:this force_try
   }
 }
 
 // MARK: - Codable
-extension AlexandriaHRMDate: Codable {
+extension AsclepiusDate: Codable {
   public init(from decoder: Decoder) throws {
     let container = try decoder.singleValueContainer()
     let string = try container.decode(String.self)
@@ -133,7 +133,7 @@ extension AlexandriaHRMDate: Codable {
 }
 
 // MARK: - CustomStringConvertible
-extension AlexandriaHRMDate: CustomStringConvertible {
+extension AsclepiusDate: CustomStringConvertible {
   public var description: String {
     if let month = month {
       if let day = day {
@@ -146,8 +146,8 @@ extension AlexandriaHRMDate: CustomStringConvertible {
 }
 
 // MARK: - Equatable
-extension AlexandriaHRMDate: Equatable {
-  public static func == (leftSide: AlexandriaHRMDate, rightSide: AlexandriaHRMDate) -> Bool {
+extension AsclepiusDate: Equatable {
+  public static func == (leftSide: AsclepiusDate, rightSide: AsclepiusDate) -> Bool {
     if leftSide.year != rightSide.year {
       return false
     }
@@ -165,8 +165,8 @@ extension AlexandriaHRMDate: Equatable {
 }
 
 // MARK: - Comparable
-extension AlexandriaHRMDate: Comparable {
-  public static func < (leftSide: AlexandriaHRMDate, rightSide: AlexandriaHRMDate) -> Bool {
+extension AsclepiusDate: Comparable {
+  public static func < (leftSide: AsclepiusDate, rightSide: AsclepiusDate) -> Bool {
     if leftSide.year < rightSide.year {
       return true
     } else if leftSide.year == rightSide.year {
@@ -182,13 +182,13 @@ extension AlexandriaHRMDate: Comparable {
 }
 
 // MARK: - Extends NSDate
-extension AlexandriaHRMDate: ExpressibleAsNSDate, ConstructibleFromNSDate {
+extension AsclepiusDate: ExpressibleAsNSDate, ConstructibleFromNSDate {
   public func asNSDate() throws -> Date {
-    let dateComponents = AlexandriaHRMDateComponents(year: year, month: month, day: day)
+    let dateComponents = AsclepiusDateComponents(year: year, month: month, day: day)
     return try dateComponents.asNSDate()
   }
   
   public init(date: Date, timeZone timezone: TimeZone = TimeZone.current) throws {
-    (self.year, self.month, self.day) = try AlexandriaHRMDateComponents.dateComponents(from: date, with: timezone)
+    (self.year, self.month, self.day) = try AsclepiusDateComponents.dateComponents(from: date, with: timezone)
   }
 }

@@ -1,6 +1,6 @@
 //
 //  AuditEventAgentNetwork.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,15 +17,15 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /// Logical network location for application activity, if the activity has a network location that is
 open class AuditEventAgentNetwork: BackboneElement {
   /// Identifier for the network access point of the user device
-  public var address: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var address: AsclepiusPrimitive<AsclepiusString>?
   
   /// The type of network access point
-  public var type: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var type: AsclepiusPrimitive<AsclepiusString>?
   
   override public init() {
     super.init()
@@ -34,9 +34,9 @@ open class AuditEventAgentNetwork: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    address: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    type: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    address: AsclepiusPrimitive<AsclepiusString>? = nil,
+    type: AsclepiusPrimitive<AsclepiusString>? = nil
   ) {
     self.init()
     self.fhirExtension = fhirExtension
@@ -55,8 +55,8 @@ open class AuditEventAgentNetwork: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.address = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .address, auxKey: ._address)
-    self.type = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .type, auxKey: ._type)
+    self.address = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .address, auxKey: ._address)
+    self.type = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .type, auxKey: ._type)
     
     try super.init(from: decoder)
   }

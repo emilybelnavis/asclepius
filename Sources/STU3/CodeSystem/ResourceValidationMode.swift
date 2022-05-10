@@ -1,6 +1,6 @@
 //
 //  ResourceValidationMode.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/resource-validation-mode
  ValueSet: http://hl7.org/fhir/ValueSet/resource-validation-mode
  */
-public enum ResourceValidationMode: String, AlexandriaHRMPrimitiveType {
+public enum ResourceValidationMode: String, AsclepiusPrimitiveType {
   /// The server checks the content, and then checks that the content would be acceptable as a create (e.g. that the
   /// content would not violate any uniqueness constraints).
   case create

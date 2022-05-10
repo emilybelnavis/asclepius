@@ -1,6 +1,6 @@
 //
 //  BenefitTypeCodes.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/benefit-type
  ValueSet: http://hl7.org/fhir/ValueSet/benefit-type
  */
-public enum BenefitTypeCodes: String, AlexandriaHRMPrimitiveType {
+public enum BenefitTypeCodes: String, AsclepiusPrimitiveType {
   /// Maximum benefit allowable
   case benefit
   

@@ -1,6 +1,6 @@
 //
 //  ConsentCategoryCodes.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -27,7 +27,7 @@
  
  URL: http://terminology.hl7.org/CodeSystem/consentcategorycodes
  */
-public enum ConsentCategoryCodes: String, AlexandriaHRMPrimitiveType {
+public enum ConsentCategoryCodes: String, AsclepiusPrimitiveType {
   /// Any instuctions, writetn or given verbally by a patient to a health care provider in anticipation of
   /// potential need for medical treatment. [2005 Honor My Wishes]
   case acd

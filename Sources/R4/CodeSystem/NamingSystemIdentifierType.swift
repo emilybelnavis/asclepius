@@ -1,6 +1,6 @@
 //
 //  NamingSystemIdentifierType.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/namingsystem-identifier-type
  ValueSet: http://hl7.org/fhir/ValueSet/namingsystem-identifier-type
  */
-public enum NamingSystemIdentifierType: String, AlexandriaHRMPrimitiveType {
+public enum NamingSystemIdentifierType: String, AsclepiusPrimitiveType {
   /// An ISO object identifier; e.g. 1.2.3.4.5.
   case oid
   

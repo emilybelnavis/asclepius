@@ -1,6 +1,6 @@
 //
 //  ElementDefinitionBase.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  Base definition information for tools; Information about the base definition of the element, provided to make it
@@ -28,15 +28,15 @@ import AlexandriaHRMCore
  */
 open class ElementDefinitionBase: Element {
   /// Path that identifies the base element
-  public var path: AlexandriaHRMPrimitive<AlexandriaHRMString>
+  public var path: AsclepiusPrimitive<AsclepiusString>
   
   /// Min cardinality of the base element
-  public var min: AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>
+  public var min: AsclepiusPrimitive<AsclepiusUnsignedInteger>
   
   /// Max cardinality of the base element
-  public var max: AlexandriaHRMPrimitive<AlexandriaHRMString>
+  public var max: AsclepiusPrimitive<AsclepiusString>
   
-  public init(path: AlexandriaHRMPrimitive<AlexandriaHRMString>, min: AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>, max: AlexandriaHRMPrimitive<AlexandriaHRMString>) {
+  public init(path: AsclepiusPrimitive<AsclepiusString>, min: AsclepiusPrimitive<AsclepiusUnsignedInteger>, max: AsclepiusPrimitive<AsclepiusString>) {
     self.path = path
     self.min = min
     self.max = max
@@ -45,10 +45,10 @@ open class ElementDefinitionBase: Element {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    path: AlexandriaHRMPrimitive<AlexandriaHRMString>,
-    min: AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>,
-    max: AlexandriaHRMPrimitive<AlexandriaHRMString>
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    path: AsclepiusPrimitive<AsclepiusString>,
+    min: AsclepiusPrimitive<AsclepiusUnsignedInteger>,
+    max: AsclepiusPrimitive<AsclepiusString>
   ) {
     self.init(path: path, min: min, max: max)
     self.fhirExtension = fhirExtension
@@ -65,9 +65,9 @@ open class ElementDefinitionBase: Element {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.path = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .path, auxKey: ._path)
-    self.min = try AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>(from: codingKeyContainer, forKey: .min, auxKey: ._min)
-    self.max = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .max, auxKey: ._max)
+    self.path = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKey: .path, auxKey: ._path)
+    self.min = try AsclepiusPrimitive<AsclepiusUnsignedInteger>(from: codingKeyContainer, forKey: .min, auxKey: ._min)
+    self.max = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKey: .max, auxKey: ._max)
     
     try super.init(from: decoder)
   }

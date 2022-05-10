@@ -1,6 +1,6 @@
 //
 //  ContractResourceDefinitionTypeCodes.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/contract-definition-type
  ValueSet: http://hl7.org/fhir/ValueSet/contract-definition-type
  */
-public enum ContractResourceDefinitionTypeCodes: String, AlexandriaHRMPrimitiveType {
+public enum ContractResourceDefinitionTypeCodes: String, AsclepiusPrimitiveType {
   /// To be completed
   case temp
 }

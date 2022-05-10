@@ -1,6 +1,6 @@
 //
 //  CapabilityStatementKind.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/capability-statement-kind
  ValueSet: http://hl7.org/fhir/ValueSet/capability-statement-kind
  */
-public enum CapabilityStatementKind: String, AlexandriaHRMPrimitiveType {
+public enum CapabilityStatementKind: String, AsclepiusPrimitiveType {
   /// The CapabilityStatement instance represents the present capabilities of a specific system instance.
   /// This is the kind returned by /metadata for a FHIR server end-point
   case instance

@@ -1,6 +1,6 @@
 //
 //  ActionPrecheckBehaviour.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/action-precheck-behavior
  ValueSet: http://hl7.org/fhir/ValueSet/action-precheck-behavior
  */
-public enum ActionPrecheckBehavior: String, AlexandriaHRMPrimitiveType {
+public enum ActionPrecheckBehavior: String, AsclepiusPrimitiveType {
   /**
    An action with this behaviour is one of the most frequent action that is, or should be, included by an
    end-user, for the particular context in which the action occurs. The system displaying the action to the

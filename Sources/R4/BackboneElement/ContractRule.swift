@@ -1,6 +1,6 @@
 //
 //  ContractRule.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /// Computable Contract Language - List of Computable Policy Rule Language Representations of this `Contract`
 open class ContractRule: BackboneElement {
@@ -36,7 +36,7 @@ open class ContractRule: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
     content: ContentX
   ) {
     self.init(content: content)

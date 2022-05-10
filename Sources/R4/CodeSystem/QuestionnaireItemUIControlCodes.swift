@@ -1,6 +1,6 @@
 //
 //  QuestionnaireItemUIControlCodes.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/questionnaire-item-control
  ValueSet: http://hl7.org/fhir/ValueSet/questionnaire-item-control
  */
-public enum QuestionnaireItemUIControlCodes: String, AlexandriaHRMPrimitiveType {
+public enum QuestionnaireItemUIControlCodes: String, AsclepiusPrimitiveType {
   /// UI controls relevant to organizing groups of questions
   case group
   

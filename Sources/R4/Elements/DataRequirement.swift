@@ -1,6 +1,6 @@
 //
 //  DataRequirement.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  Describes a required data item for evaluation in terms of the type of date, along with optional code or
@@ -31,16 +31,16 @@ open class DataRequirement: Element {
   }
   
   /// type of the required data
-  public var type: AlexandriaHRMPrimitive<AlexandriaHRMString>
+  public var type: AsclepiusPrimitive<AsclepiusString>
   
   /// the profile of the required data
-  public var profile: [AlexandriaHRMPrimitive<Canonical>]?
+  public var profile: [AsclepiusPrimitive<Canonical>]?
   
   /// One of `Subject`; e.g. Patient, practitioner, related person, etc...
   public var subject: SubjectX?
   
   /// indicates specific structure elemtnets that are referenced by the knowledge module
-  public var mustSupport: [AlexandriaHRMPrimitive<AlexandriaHRMString>]?
+  public var mustSupport: [AsclepiusPrimitive<AsclepiusString>]?
   
   /// what codes are expected
   public var codeFilter: [DataRequirementCodeFilter]?
@@ -49,26 +49,26 @@ open class DataRequirement: Element {
   public var dateFilter: [DataRequirementDateFilter]?
   
   /// number of results
-  public var limit: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>?
+  public var limit: AsclepiusPrimitive<AsclepiusPositiveInteger>?
   
   /// order of the results
   public var sort: [DataRequirementSort]?
   
-  public init(type: AlexandriaHRMPrimitive<AlexandriaHRMString>) {
+  public init(type: AsclepiusPrimitive<AsclepiusString>) {
     self.type = type
     super.init()
   }
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    type: AlexandriaHRMPrimitive<AlexandriaHRMString>,
-    profile: [AlexandriaHRMPrimitive<Canonical>]? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    type: AsclepiusPrimitive<AsclepiusString>,
+    profile: [AsclepiusPrimitive<Canonical>]? = nil,
     subject: SubjectX? = nil,
-    mustSupport: [AlexandriaHRMPrimitive<AlexandriaHRMString>]? = nil,
+    mustSupport: [AsclepiusPrimitive<AsclepiusString>]? = nil,
     codeFilter: [DataRequirementCodeFilter]? = nil,
     dateFilter: [DataRequirementDateFilter]? = nil,
-    limit: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>? = nil,
+    limit: AsclepiusPrimitive<AsclepiusPositiveInteger>? = nil,
     sort: [DataRequirementSort]? = nil
   ) {
     self.init(type: type)
@@ -114,13 +114,13 @@ open class DataRequirement: Element {
       tempSubject = .reference(subjectReference)
     }
     
-    self.type = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .type, auxKey: ._type)
-    self.profile = try [AlexandriaHRMPrimitive<Canonical>](from: codingKeyContainer, forKeyIfPresent: .profile, auxKey: ._profile)
+    self.type = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKey: .type, auxKey: ._type)
+    self.profile = try [AsclepiusPrimitive<Canonical>](from: codingKeyContainer, forKeyIfPresent: .profile, auxKey: ._profile)
     self.subject = tempSubject
-    self.mustSupport = try [AlexandriaHRMPrimitive<AlexandriaHRMString>](from: codingKeyContainer, forKeyIfPresent: .mustSupport, auxKey: ._mustSupport)
+    self.mustSupport = try [AsclepiusPrimitive<AsclepiusString>](from: codingKeyContainer, forKeyIfPresent: .mustSupport, auxKey: ._mustSupport)
     self.codeFilter = try [DataRequirementCodeFilter](from: codingKeyContainer, forKeyIfPresent: .codeFilter)
     self.dateFilter = try [DataRequirementDateFilter](from: codingKeyContainer, forKeyIfPresent: .dateFilter)
-    self.limit = try AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>(from: codingKeyContainer, forKeyIfPresent: .limit, auxKey: ._limit)
+    self.limit = try AsclepiusPrimitive<AsclepiusPositiveInteger>(from: codingKeyContainer, forKeyIfPresent: .limit, auxKey: ._limit)
     self.sort = try [DataRequirementSort](from: codingKeyContainer, forKeyIfPresent: .sort)
     try super.init(from: decoder)
   }

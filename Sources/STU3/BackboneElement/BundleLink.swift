@@ -1,6 +1,6 @@
 //
 //  BundleLink.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,17 +17,17 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /// A series of links that provide context to this bundle
 open class BundleLink: BackboneElement {
   /// See http://www.iana.org/assignments/link-relations.xhtml#link-relations-1
-  public var relation: AlexandriaHRMPrimitive<AlexandriaHRMString>
+  public var relation: AsclepiusPrimitive<AsclepiusString>
   
   /// Reference details for the link
-  public var url: AlexandriaHRMPrimitive<AlexandriaHRMURI>
+  public var url: AsclepiusPrimitive<AsclepiusURI>
 
-  public init(relation: AlexandriaHRMPrimitive<AlexandriaHRMString>, url: AlexandriaHRMPrimitive<AlexandriaHRMURI>) {
+  public init(relation: AsclepiusPrimitive<AsclepiusString>, url: AsclepiusPrimitive<AsclepiusURI>) {
     self.relation = relation
     self.url = url
     super.init()
@@ -36,9 +36,9 @@ open class BundleLink: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    relation: AlexandriaHRMPrimitive<AlexandriaHRMString>,
-    url: AlexandriaHRMPrimitive<AlexandriaHRMURI>
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    relation: AsclepiusPrimitive<AsclepiusString>,
+    url: AsclepiusPrimitive<AsclepiusURI>
   ) {
     self.init(relation: relation, url: url)
     self.fhirExtension = fhirExtension
@@ -55,8 +55,8 @@ open class BundleLink: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.relation = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .relation, auxKey: ._relation)
-    self.url = try AlexandriaHRMPrimitive<AlexandriaHRMURI>(from: codingKeyContainer, forKey: .url, auxKey: ._url)
+    self.relation = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKey: .relation, auxKey: ._relation)
+    self.url = try AsclepiusPrimitive<AsclepiusURI>(from: codingKeyContainer, forKey: .url, auxKey: ._url)
     
     try super.init(from: decoder)
   }

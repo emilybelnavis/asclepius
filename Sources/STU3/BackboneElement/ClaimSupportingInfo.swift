@@ -1,6 +1,6 @@
 //
 //  ClaimSupportingInfo.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  Supporting information for a Claim. Additional information codes regarding exceptions, special considerations,
@@ -25,20 +25,20 @@ import AlexandriaHRMCore
  */
 open class ClaimSupportingInfo: BackboneElement {
   public enum TimingX: Hashable {
-    case date(AlexandriaHRMPrimitive<AlexandriaHRMDate>)
+    case date(AsclepiusPrimitive<AsclepiusDate>)
     case period(Period)
   }
   
   public enum ValueX: Hashable {
     case attachment(Attachment)
-    case boolean(AlexandriaHRMPrimitive<AlexandriaHRMBool>)
+    case boolean(AsclepiusPrimitive<AsclepiusBool>)
     case quantity(Quantity)
     case reference(Reference)
-    case string(AlexandriaHRMPrimitive<AlexandriaHRMString>)
+    case string(AsclepiusPrimitive<AsclepiusString>)
   }
   
   /// Information instance identifier
-  public var sequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>
+  public var sequence: AsclepiusPrimitive<AsclepiusPositiveInteger>
   
   /// Classification of the supplied information
   public var category: CodeableConcept
@@ -55,7 +55,7 @@ open class ClaimSupportingInfo: BackboneElement {
   /// Explaination for the information
   public var reason: CodeableConcept?
   
-  public init(sequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>, category: CodeableConcept, valueX: ValueX) {
+  public init(sequence: AsclepiusPrimitive<AsclepiusPositiveInteger>, category: CodeableConcept, valueX: ValueX) {
     self.sequence = sequence
     self.category = category
     self.valueX = valueX
@@ -65,8 +65,8 @@ open class ClaimSupportingInfo: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    sequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    sequence: AsclepiusPrimitive<AsclepiusPositiveInteger>,
     category: CodeableConcept,
     code: CodeableConcept? = nil,
     timingX: TimingX,
@@ -102,7 +102,7 @@ open class ClaimSupportingInfo: BackboneElement {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     var tempTimingX: TimingX?
-    if let timingDate = try AlexandriaHRMPrimitive<AlexandriaHRMDate>(from: codingKeyContainer, forKeyIfPresent: .timingDate, auxKey: ._timingDate) {
+    if let timingDate = try AsclepiusPrimitive<AsclepiusDate>(from: codingKeyContainer, forKeyIfPresent: .timingDate, auxKey: ._timingDate) {
       if tempTimingX != nil {
         throw DecodingError.dataCorruptedError(forKey: .timingDate, in: codingKeyContainer, debugDescription: "More than one value provided for \"timing\"")
       }
@@ -124,7 +124,7 @@ open class ClaimSupportingInfo: BackboneElement {
       tempValueX = .attachment(valueAttachment)
     }
     
-    if let valueBoolean = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKeyIfPresent: .valueBoolean, auxKey: ._valueBoolean) {
+    if let valueBoolean = try AsclepiusPrimitive<AsclepiusBool>(from: codingKeyContainer, forKeyIfPresent: .valueBoolean, auxKey: ._valueBoolean) {
       if tempValueX != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueBoolean, in: codingKeyContainer, debugDescription: "More than one value provided for \"value\"")
       }
@@ -145,14 +145,14 @@ open class ClaimSupportingInfo: BackboneElement {
       tempValueX = .reference(valueReference)
     }
     
-    if let valueString = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .valueString, auxKey: ._valueString) {
+    if let valueString = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .valueString, auxKey: ._valueString) {
       if tempValueX != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueString, in: codingKeyContainer, debugDescription: "More than one value provided for \"value\"")
       }
       tempValueX = .string(valueString)
     }
     
-    self.sequence = try AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>(from: codingKeyContainer, forKey: .sequence, auxKey: ._sequence)
+    self.sequence = try AsclepiusPrimitive<AsclepiusPositiveInteger>(from: codingKeyContainer, forKey: .sequence, auxKey: ._sequence)
     self.category = try CodeableConcept(from: codingKeyContainer, forKey: .category)
     self.code = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .code)
     self.timingX = tempTimingX

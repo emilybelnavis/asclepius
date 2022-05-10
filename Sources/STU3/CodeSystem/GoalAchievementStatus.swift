@@ -1,6 +1,6 @@
 //
 //  GoalAchievementStatus.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/goal-achievement
  ValueSet: http://hl7.org/fhir/ValueSet/goal-achievement
  */
-public enum GoalAchievementStatus: String, AlexandriaHRMPrimitiveType {
+public enum GoalAchievementStatus: String, AsclepiusPrimitiveType {
   /// The goal is being sought but has not yet been reached. (Also applies if the goal was reached in the past but
   /// there has been regression and the goal is again being sought).
   case inProgress = "in-progress"

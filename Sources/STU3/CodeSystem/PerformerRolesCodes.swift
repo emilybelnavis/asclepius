@@ -1,6 +1,6 @@
 //
 //  PerformerRolesCodes.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/consentperformer
  ValueSet: http://hl7.org/fhir/ValueSet/consent-performer
  */
-public enum PerformerRoleCodes: String, AlexandriaHRMPrimitiveType {
+public enum PerformerRoleCodes: String, AsclepiusPrimitiveType {
   /// An entity or an entity's delegatee who is the grantee in an agreement such as a consent for services, advanced
   /// directive, or a privacy consent directive in accordance with jurisdictional, organizational, or patient policy.
   case consenter

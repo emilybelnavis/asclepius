@@ -1,6 +1,6 @@
 //
 //  ResearchSecurityCategory.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/resource-security-category
  ValueSet: http://hl7.org/fhir/ValueSet/resource-security-category
  */
-public enum ResourceSecurityCategory: String, AlexandriaHRMPrimitiveType {
+public enum ResourceSecurityCategory: String, AsclepiusPrimitiveType {
   /// These resources tend to not contain any individual data, or business sensitive data. Most often these Resources
   /// will be available for anonymous access, meaning there is no access control based on the user or system
   /// requesting. However these Resources do tend to contain important information that must be authenticated back to

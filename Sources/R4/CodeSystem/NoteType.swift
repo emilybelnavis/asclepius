@@ -1,6 +1,6 @@
 //
 //  NoteType.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/note-type
  ValueSet: http://hl7.org/fhir/ValueSet/note-type
  */
-public enum NoteType: String, AlexandriaHRMPrimitiveType {
+public enum NoteType: String, AsclepiusPrimitiveType {
   /// Display the note.
   case display
   

@@ -1,6 +1,6 @@
 //
 //  UsageContextType.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/usage-context-type
  ValueSet: http://hl7.org/fhir/ValueSet/usage-context-type
  */
-public enum UsageContextType: String, AlexandriaHRMPrimitiveType {
+public enum UsageContextType: String, AsclepiusPrimitiveType {
   /// The gender of the patient. For this context type, appropriate values can be found in the
   /// http://hl7.org/fhir/ValueSet/administrative-gender value set.
   case gender

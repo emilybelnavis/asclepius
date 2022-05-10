@@ -1,6 +1,6 @@
 //
 //  DeviceDefinitionMaterial.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  A substance used to create the material(s) of which the device is made
@@ -27,10 +27,10 @@ open class DeviceDefinitionMaterial: BackboneElement {
   public var substance: CodeableConcept
   
   /// Indicates an alternative material of the device
-  public var alternate: AlexandriaHRMPrimitive<AlexandriaHRMBool>?
+  public var alternate: AsclepiusPrimitive<AsclepiusBool>?
   
   /// Whether the substance is a known or suspected allergen
-  public var allergenicIndicator: AlexandriaHRMPrimitive<AlexandriaHRMBool>?
+  public var allergenicIndicator: AsclepiusPrimitive<AsclepiusBool>?
   
   public init(substance: CodeableConcept) {
     self.substance = substance
@@ -40,10 +40,10 @@ open class DeviceDefinitionMaterial: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
     substance: CodeableConcept,
-    alternate: AlexandriaHRMPrimitive<AlexandriaHRMBool>? = nil,
-    allergenicIndicator: AlexandriaHRMPrimitive<AlexandriaHRMBool>? = nil
+    alternate: AsclepiusPrimitive<AsclepiusBool>? = nil,
+    allergenicIndicator: AsclepiusPrimitive<AsclepiusBool>? = nil
   ) {
     self.init(substance: substance)
     self.fhirExtension = fhirExtension
@@ -64,8 +64,8 @@ open class DeviceDefinitionMaterial: BackboneElement {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     self.substance = try CodeableConcept(from: codingKeyContainer, forKey: .substance)
-    self.alternate = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKeyIfPresent: .alternate, auxKey: ._alternate)
-    self.allergenicIndicator = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKeyIfPresent: .allergenicIndicator, auxKey: ._allergenicIndicator)
+    self.alternate = try AsclepiusPrimitive<AsclepiusBool>(from: codingKeyContainer, forKeyIfPresent: .alternate, auxKey: ._alternate)
+    self.allergenicIndicator = try AsclepiusPrimitive<AsclepiusBool>(from: codingKeyContainer, forKeyIfPresent: .allergenicIndicator, auxKey: ._allergenicIndicator)
     
     try super.init(from: decoder)
   }

@@ -1,6 +1,6 @@
 //
 //  EventStatus.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/event-status
  ValueSet: http://hl7.org/fhir/ValueSet/event-status
  */
-public enum EventStatus: String, AlexandriaHRMPrimitiveType {
+public enum EventStatus: String, AsclepiusPrimitiveType {
   /// The core event has not started yet, but some staging activities have begun (e.g. surgical suite preparation).
   /// Preparation stages may be tracked for billing purposes.
   case preparation

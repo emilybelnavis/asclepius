@@ -1,6 +1,6 @@
 //
 //  DocumentReferenceRelatesTo.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,19 +17,19 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  Relationships that this document has with other document references that already exist
  */
 open class DocumentReferenceRelatesTo: BackboneElement {
   /// The type of relationship that this document has with another document
-  public var code: AlexandriaHRMPrimitive<DocumentRelationshipType>
+  public var code: AsclepiusPrimitive<DocumentRelationshipType>
   
   /// Target of the relationship
   public var target: Reference
   
-  public init(code: AlexandriaHRMPrimitive<DocumentRelationshipType>, target: Reference) {
+  public init(code: AsclepiusPrimitive<DocumentRelationshipType>, target: Reference) {
     self.code = code
     self.target = target
     super.init()
@@ -38,8 +38,8 @@ open class DocumentReferenceRelatesTo: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    code: AlexandriaHRMPrimitive<DocumentRelationshipType>,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    code: AsclepiusPrimitive<DocumentRelationshipType>,
     target: Reference
   ) {
     self.init(code: code, target: target)
@@ -57,7 +57,7 @@ open class DocumentReferenceRelatesTo: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.code = try AlexandriaHRMPrimitive<DocumentRelationshipType>(from: codingKeyContainer, forKey: .code, auxKey: ._code)
+    self.code = try AsclepiusPrimitive<DocumentRelationshipType>(from: codingKeyContainer, forKey: .code, auxKey: ._code)
     self.target = try Reference(from: codingKeyContainer, forKey: .target)
     
     try super.init(from: decoder)

@@ -1,6 +1,6 @@
 //
 //  CanPushUpdates.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/can-push-updates
  ValueSet: http://hl7.org/fhir/ValueSet/verificationresult-can-push-updates
  */
-public enum CanPushUpdates: String, AlexandriaHRMPrimitiveType {
+public enum CanPushUpdates: String, AsclepiusPrimitiveType {
   /// Yes
   case yes
   

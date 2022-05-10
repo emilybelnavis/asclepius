@@ -1,6 +1,6 @@
 //
 //  MedicationKnowledgeStatusCodes.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/medicationknowledge-status
  ValueSet: http://hl7.org/fhir/ValueSet/medicationknowledge-status
  */
-public enum MedicationKnowledgeStatusCodes: String, AlexandriaHRMPrimitiveType {
+public enum MedicationKnowledgeStatusCodes: String, AsclepiusPrimitiveType {
   /// The medication is available for use.
   case active
   

@@ -1,6 +1,6 @@
 //
 //  GroupMember.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /// Identifies the resource instances that are members of the group
 open class GroupMember: BackboneElement {
@@ -28,7 +28,7 @@ open class GroupMember: BackboneElement {
   public var period: Period?
   
   /// if member is no longer in group
-  public var inactive: AlexandriaHRMPrimitive<AlexandriaHRMBool>?
+  public var inactive: AsclepiusPrimitive<AsclepiusBool>?
   
   public init(entity: Reference) {
     self.entity = entity
@@ -37,10 +37,10 @@ open class GroupMember: BackboneElement {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
     entity: Reference,
     period: Period? = nil,
-    inactive: AlexandriaHRMPrimitive<AlexandriaHRMBool>? = nil
+    inactive: AsclepiusPrimitive<AsclepiusBool>? = nil
   ) {
     self.init(entity: entity)
     self.fhirExtension = fhirExtension
@@ -61,7 +61,7 @@ open class GroupMember: BackboneElement {
     
     self.entity = try Reference(from: codingKeyContainer, forKey: .entity)
     self.period = try Period(from: codingKeyContainer, forKeyIfPresent: .period)
-    self.inactive = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKeyIfPresent: .inactive, auxKey: ._inactive)
+    self.inactive = try AsclepiusPrimitive<AsclepiusBool>(from: codingKeyContainer, forKeyIfPresent: .inactive, auxKey: ._inactive)
     
     try super.init(from: decoder)
   }

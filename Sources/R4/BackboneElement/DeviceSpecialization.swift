@@ -1,6 +1,6 @@
 //
 //  DeviceSpecialization.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  The capabilities supported on a device, the standards to which the device conforms for a particular purpose
@@ -28,7 +28,7 @@ open class DeviceSpecialization: BackboneElement {
   public var systemType: CodeableConcept
   
   /// The version of the standard that is used to operate and communicate
-  public var version: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var version: AsclepiusPrimitive<AsclepiusString>?
   
   public init(systemType: CodeableConcept) {
     self.systemType = systemType
@@ -38,9 +38,9 @@ open class DeviceSpecialization: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
     systemType: CodeableConcept,
-    version: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil
+    version: AsclepiusPrimitive<AsclepiusString>? = nil
   ) {
     self.init(systemType: systemType)
     self.fhirExtension = fhirExtension
@@ -58,7 +58,7 @@ open class DeviceSpecialization: BackboneElement {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     self.systemType = try CodeableConcept(from: codingKeyContainer, forKey: .systemType)
-    self.version = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .version, auxKey: ._version)
+    self.version = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .version, auxKey: ._version)
     
     try super.init(from: decoder)
   }

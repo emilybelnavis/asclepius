@@ -1,6 +1,6 @@
 //
 //  TemplateStatusCodeLifecycle.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: urn:oid:2.16.840.1.113883.3.1937.98.5.8
  ValueSet: urn:oid:2.16.840.1.113883.3.1937.98.11.8
  */
-public enum TemplateStatusCodeLifecycle: String, AlexandriaHRMPrimitiveType {
+public enum TemplateStatusCodeLifecycle: String, AsclepiusPrimitiveType {
   /// Design is under development (nascent).
   case draft
   

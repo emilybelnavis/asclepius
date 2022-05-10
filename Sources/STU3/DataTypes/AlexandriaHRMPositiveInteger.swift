@@ -1,6 +1,6 @@
 //
-//  AlexandriaHRMPositiveInteger.swift
-//  AlexandriaHRM
+//  AsclepiusPositiveInteger.swift
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -18,10 +18,10 @@
 //  limitations under the License.
 
 import Foundation
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /// Any positive integer in the range 1..2,147,483,647
-public struct AlexandriaHRMPositiveInteger: AlexandriaHRMPrimitiveType, AlexandriaHRMIntegerRepresentable {
+public struct AsclepiusPositiveInteger: AsclepiusPrimitiveType, AsclepiusIntegerRepresentable {
   public typealias IntegerLiteralType = Int32
   
   public var integer: Self.IntegerLiteralType {
@@ -42,12 +42,12 @@ public struct AlexandriaHRMPositiveInteger: AlexandriaHRMPrimitiveType, Alexandr
 }
 
 // MARK: - Codable
-extension AlexandriaHRMPositiveInteger: Codable {
+extension AsclepiusPositiveInteger: Codable {
   public init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.singleValueContainer()
     let integer = try codingKeyContainer.decode(Self.IntegerLiteralType.self)
     if integer < 1 {
-      throw AlexandriaHRMPositiveIntegerError.valueIsLessThanOne
+      throw AsclepiusPositiveIntegerError.valueIsLessThanOne
     }
     self.integer = integer
   }
@@ -60,14 +60,14 @@ extension AlexandriaHRMPositiveInteger: Codable {
 
 // MARK: - Error Types
 
-public enum AlexandriaHRMPositiveIntegerError: Error {
+public enum AsclepiusPositiveIntegerError: Error {
   case valueIsLessThanOne
 }
 
 // MARK: - Extend Int
 
 extension Int {
-  public func asAlexandriaHRMPositiveIntegerPrimitive() -> AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger> {
-    return AlexandriaHRMPrimitive(AlexandriaHRMPositiveInteger(AlexandriaHRMPositiveInteger.IntegerLiteralType(self)))
+  public func asAsclepiusPositiveIntegerPrimitive() -> AsclepiusPrimitive<AsclepiusPositiveInteger> {
+    return AsclepiusPrimitive(AsclepiusPositiveInteger(AsclepiusPositiveInteger.IntegerLiteralType(self)))
   }
 }

@@ -1,6 +1,6 @@
 //
 //  EndpointStatus.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/endpoint-status
  ValueSet: http://hl7.org/fhir/ValueSet/endpoint-status
  */
-public enum EndpointStatus: String, AlexandriaHRMPrimitiveType {
+public enum EndpointStatus: String, AsclepiusPrimitiveType {
   /// This endpoint is expected to be active and can be used.
   case active
   

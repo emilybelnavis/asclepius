@@ -1,6 +1,6 @@
 //
 //  ContractContentDefinition.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  Precursory content developed with a focus and intent of supporting the formation of a `Contract` instance,
@@ -34,15 +34,15 @@ open class ContractContentDefinition: BackboneElement {
   public var publisher: Reference?
   
   /// Publication date
-  public var publicationDate: AlexandriaHRMPrimitive<AlexandriaHRMDateTime>?
+  public var publicationDate: AsclepiusPrimitive<AsclepiusDateTime>?
   
   /// None
-  public var publicationStatus: AlexandriaHRMPrimitive<ContractResourcePublicationStatusCodes>
+  public var publicationStatus: AsclepiusPrimitive<ContractResourcePublicationStatusCodes>
   
   /// Publication ownership
-  public var copyright: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var copyright: AsclepiusPrimitive<AsclepiusString>?
   
-  public init(type: CodeableConcept, publicationStatus: AlexandriaHRMPrimitive<ContractResourcePublicationStatusCodes>) {
+  public init(type: CodeableConcept, publicationStatus: AsclepiusPrimitive<ContractResourcePublicationStatusCodes>) {
     self.type = type
     self.publicationStatus = publicationStatus
     super.init()
@@ -51,13 +51,13 @@ open class ContractContentDefinition: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
     type: CodeableConcept,
     subType: CodeableConcept? = nil,
     publisher: Reference? = nil,
-    publicationDate: AlexandriaHRMPrimitive<AlexandriaHRMDateTime>? = nil,
-    publicationStatus: AlexandriaHRMPrimitive<ContractResourcePublicationStatusCodes>,
-    copyright: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil
+    publicationDate: AsclepiusPrimitive<AsclepiusDateTime>? = nil,
+    publicationStatus: AsclepiusPrimitive<ContractResourcePublicationStatusCodes>,
+    copyright: AsclepiusPrimitive<AsclepiusString>? = nil
   ) {
     self.init(type: type, publicationStatus: publicationStatus)
     self.fhirExtension = fhirExtension
@@ -85,9 +85,9 @@ open class ContractContentDefinition: BackboneElement {
     self.type = try CodeableConcept(from: codingKeyContainer, forKey: .type)
     self.subType = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .subType)
     self.publisher = try Reference(from: codingKeyContainer, forKeyIfPresent: .publisher)
-    self.publicationDate = try AlexandriaHRMPrimitive<AlexandriaHRMDateTime>(from: codingKeyContainer, forKeyIfPresent: .publicationDate, auxKey: ._publicationDate)
-    self.publicationStatus = try AlexandriaHRMPrimitive<ContractResourcePublicationStatusCodes>(from: codingKeyContainer, forKey: .publicationStatus, auxKey: ._publicationStatus)
-    self.copyright = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .copyright, auxKey: ._copyright)
+    self.publicationDate = try AsclepiusPrimitive<AsclepiusDateTime>(from: codingKeyContainer, forKeyIfPresent: .publicationDate, auxKey: ._publicationDate)
+    self.publicationStatus = try AsclepiusPrimitive<ContractResourcePublicationStatusCodes>(from: codingKeyContainer, forKey: .publicationStatus, auxKey: ._publicationStatus)
+    self.copyright = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .copyright, auxKey: ._copyright)
     
     try super.init(from: decoder)
   }

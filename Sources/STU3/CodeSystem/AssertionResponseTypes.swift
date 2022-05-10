@@ -1,6 +1,6 @@
 //
 //  AssertionResponseTypes.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/assert-response-code-types
  ValueSet: http://hl7.org/fhir/ValueSet/assert-response-code-types
  */
-public enum AssertionResponseTypes: String, AlexandriaHRMPrimitiveType {
+public enum AssertionResponseTypes: String, AsclepiusPrimitiveType {
   /// Response Code - 200
   case okay
   

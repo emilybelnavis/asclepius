@@ -1,6 +1,6 @@
 //
 //  ClaimResponseAddItem.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,14 +17,14 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  Insurer added line items; The first-tier service adjudication for payor added product or service lines
  */
 open class ClaimResponseAddItem: BackboneElement {
   public enum ServicedX: Hashable {
-    case date(AlexandriaHRMPrimitive<AlexandriaHRMDate>)
+    case date(AsclepiusPrimitive<AsclepiusDate>)
     case period(Period)
   }
   public enum LocationX: Hashable {
@@ -34,13 +34,13 @@ open class ClaimResponseAddItem: BackboneElement {
   }
 
   /// Item sequence number
-  public var itemSequence: [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>]?
+  public var itemSequence: [AsclepiusPrimitive<AsclepiusPositiveInteger>]?
   
   /// Detail sequence number
-  public var detailSequence: [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>]?
+  public var detailSequence: [AsclepiusPrimitive<AsclepiusPositiveInteger>]?
   
   /// Subdetail sequence number
-  public var subdetailSequence: [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>]?
+  public var subdetailSequence: [AsclepiusPrimitive<AsclepiusPositiveInteger>]?
   
   /// Authorized provider
   public var provider: [Reference]?
@@ -67,7 +67,7 @@ open class ClaimResponseAddItem: BackboneElement {
   public var unitPrice: Money?
   
   /// Price scaling factor
-  public var factor: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>?
+  public var factor: AsclepiusPrimitive<AsclepiusDecimal>?
   
   /// Total item cost
   public var net: Money?
@@ -79,7 +79,7 @@ open class ClaimResponseAddItem: BackboneElement {
   public var subSite: [CodeableConcept]?
   
   /// Applicable note numbers
-  public var noteNumber: [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>]?
+  public var noteNumber: [AsclepiusPrimitive<AsclepiusPositiveInteger>]?
   
   /// Added Items adjudication
   public var adjudication: [ClaimResponseItemAdjudication]
@@ -96,10 +96,10 @@ open class ClaimResponseAddItem: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    itemSequence: [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>]? = nil,
-    detailSequence: [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>]? = nil,
-    subdetailSequence: [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>]? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    itemSequence: [AsclepiusPrimitive<AsclepiusPositiveInteger>]? = nil,
+    detailSequence: [AsclepiusPrimitive<AsclepiusPositiveInteger>]? = nil,
+    subdetailSequence: [AsclepiusPrimitive<AsclepiusPositiveInteger>]? = nil,
     provider: [Reference]? = nil,
     productOrService: CodeableConcept,
     modifier: [CodeableConcept]? = nil,
@@ -108,11 +108,11 @@ open class ClaimResponseAddItem: BackboneElement {
     locationX: LocationX? = nil,
     quantity: Quantity? = nil,
     unitPrice: Money? = nil,
-    factor: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>? = nil,
+    factor: AsclepiusPrimitive<AsclepiusDecimal>? = nil,
     net: Money? = nil,
     bodySite: CodeableConcept? = nil,
     subSite: [CodeableConcept]? = nil,
-    noteNumber: [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>]? = nil,
+    noteNumber: [AsclepiusPrimitive<AsclepiusPositiveInteger>]? = nil,
     adjudication: [ClaimResponseItemAdjudication],
     detail: [ClaimResponseAddItemDetail]? = nil
   ) {
@@ -166,7 +166,7 @@ open class ClaimResponseAddItem: BackboneElement {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     var tempServicedX: ServicedX?
-    if let servicedDate = try AlexandriaHRMPrimitive<AlexandriaHRMDate>(from: codingKeyContainer, forKeyIfPresent: .servicedDate) {
+    if let servicedDate = try AsclepiusPrimitive<AsclepiusDate>(from: codingKeyContainer, forKeyIfPresent: .servicedDate) {
       if tempServicedX != nil {
         throw DecodingError.dataCorruptedError(forKey: .servicedDate, in: codingKeyContainer, debugDescription: "More than one value provided for \"serviced\"")
       }
@@ -202,9 +202,9 @@ open class ClaimResponseAddItem: BackboneElement {
       tempLocationX = .reference(locationReference)
     }
     
-    self.itemSequence = try [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>](from: codingKeyContainer, forKeyIfPresent: .itemSequence, auxKey: ._itemSequence)
-    self.detailSequence = try [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>](from: codingKeyContainer, forKeyIfPresent: .detailSequence, auxKey: ._detailSequence)
-    self.subdetailSequence = try [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>](from: codingKeyContainer, forKeyIfPresent: .subdetailSequence, auxKey: ._subdetailSequence)
+    self.itemSequence = try [AsclepiusPrimitive<AsclepiusPositiveInteger>](from: codingKeyContainer, forKeyIfPresent: .itemSequence, auxKey: ._itemSequence)
+    self.detailSequence = try [AsclepiusPrimitive<AsclepiusPositiveInteger>](from: codingKeyContainer, forKeyIfPresent: .detailSequence, auxKey: ._detailSequence)
+    self.subdetailSequence = try [AsclepiusPrimitive<AsclepiusPositiveInteger>](from: codingKeyContainer, forKeyIfPresent: .subdetailSequence, auxKey: ._subdetailSequence)
     self.provider = try [Reference](from: codingKeyContainer, forKeyIfPresent: .provider)
     self.productOrService = try CodeableConcept(from: codingKeyContainer, forKey: .productOrService)
     self.modifier = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .modifier)
@@ -213,11 +213,11 @@ open class ClaimResponseAddItem: BackboneElement {
     self.locationX = tempLocationX
     self.quantity = try Quantity(from: codingKeyContainer, forKeyIfPresent: .quantity)
     self.unitPrice = try Money(from: codingKeyContainer, forKeyIfPresent: .unitPrice)
-    self.factor = try AlexandriaHRMPrimitive<AlexandriaHRMDecimal>(from: codingKeyContainer, forKeyIfPresent: .factor, auxKey: ._factor)
+    self.factor = try AsclepiusPrimitive<AsclepiusDecimal>(from: codingKeyContainer, forKeyIfPresent: .factor, auxKey: ._factor)
     self.net = try Money(from: codingKeyContainer, forKeyIfPresent: .net)
     self.bodySite = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .bodySite)
     self.subSite = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .subSite)
-    self.noteNumber = try [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>](from: codingKeyContainer, forKey: .noteNumber, auxKey: ._noteNumber)
+    self.noteNumber = try [AsclepiusPrimitive<AsclepiusPositiveInteger>](from: codingKeyContainer, forKey: .noteNumber, auxKey: ._noteNumber)
     self.adjudication = try [ClaimResponseItemAdjudication](from: codingKeyContainer, forKey: .adjudication)
     self.detail = try [ClaimResponseAddItemDetail](from: codingKeyContainer, forKeyIfPresent: .detail)
     

@@ -1,6 +1,6 @@
 //
 //  Annotation.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  Text note with attribution
@@ -27,29 +27,29 @@ import AlexandriaHRMCore
 open class Annotation: Element {
   public enum AuthorX: Hashable {
     case reference(Reference)
-    case string(AlexandriaHRMPrimitive<AlexandriaHRMString>)
+    case string(AsclepiusPrimitive<AsclepiusString>)
   }
   
   /// Individual responsible for the annotation
   public var author: AuthorX?
   
   /// When the annotation was made
-  public var time: AlexandriaHRMPrimitive<AlexandriaHRMDateTime>?
+  public var time: AsclepiusPrimitive<AsclepiusDateTime>?
   
   /// The annotation - text content (as markdown
-  public var text: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var text: AsclepiusPrimitive<AsclepiusString>?
   
-  public init(text: AlexandriaHRMPrimitive<AlexandriaHRMString>) {
+  public init(text: AsclepiusPrimitive<AsclepiusString>) {
     self.text = text
     super.init()
   }
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
     author: AuthorX? = nil,
-    time: AlexandriaHRMPrimitive<AlexandriaHRMDateTime>? = nil,
-    text: AlexandriaHRMPrimitive<AlexandriaHRMString>
+    time: AsclepiusPrimitive<AsclepiusDateTime>? = nil,
+    text: AsclepiusPrimitive<AsclepiusString>
   ) {
     self.init(text: text)
     self.fhirExtension = fhirExtension
@@ -77,7 +77,7 @@ open class Annotation: Element {
       tempAuthor = .reference(authorReference)
     }
     
-    if let authorString = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .authorString, auxKey: ._authorString) {
+    if let authorString = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .authorString, auxKey: ._authorString) {
       if tempAuthor != nil {
         throw DecodingError.dataCorruptedError(forKey: .authorString, in: codingKeyContainer, debugDescription: "More than one value provided for \"Author\"")
       }
@@ -85,8 +85,8 @@ open class Annotation: Element {
     }
     
     self.author = tempAuthor
-    self.time = try AlexandriaHRMPrimitive<AlexandriaHRMDateTime>(from: codingKeyContainer, forKeyIfPresent: .time, auxKey: ._time)
-    self.text = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .text, auxKey: ._text)
+    self.time = try AsclepiusPrimitive<AsclepiusDateTime>(from: codingKeyContainer, forKeyIfPresent: .time, auxKey: ._time)
+    self.text = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKey: .text, auxKey: ._text)
     
     try super.init(from: decoder)
   }

@@ -1,6 +1,6 @@
 //
 //  MeasureReportType.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/measure-report-type
  ValueSet: http://hl7.org/fhir/ValueSet/measure-report-type
  */
-public enum MeasureReportType: String, AlexandriaHRMPrimitiveType {
+public enum MeasureReportType: String, AsclepiusPrimitiveType {
   /// An individual report that provides information on the performance for a given measure with respect to a single
   /// subject.
   case individual

@@ -1,6 +1,6 @@
 //
 //  AllergyIntoleranceReaction.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /// Details about each adverse reaction event linked to an exposure to the identified substance
 open class AllergyIntoleranceReaction: BackboneElement {
@@ -28,14 +28,14 @@ open class AllergyIntoleranceReaction: BackboneElement {
   public var manifestation: [CodeableConcept]
   
   /// Description of the event as a whole
-  public var fhirDescription: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var fhirDescription: AsclepiusPrimitive<AsclepiusString>?
   
   /// Date(and if available, time) when manifestations occured
-  public var onset: AlexandriaHRMPrimitive<AlexandriaHRMDateTime>?
+  public var onset: AsclepiusPrimitive<AsclepiusDateTime>?
   
   /// Clinical assessment of the severity of the reaction event as a whole. Potentially considering multiple
   /// different manifestations
-  public var severity: AlexandriaHRMPrimitive<AllergyIntoleranceSeverity>?
+  public var severity: AsclepiusPrimitive<AllergyIntoleranceSeverity>?
 
   /// How the subject was exposed to the substance
   public var exposureRoute: CodeableConcept?
@@ -50,12 +50,12 @@ open class AllergyIntoleranceReaction: BackboneElement {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
     substance: CodeableConcept? = nil,
     manifestation: [CodeableConcept],
-    fhirDescription: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    onset: AlexandriaHRMPrimitive<AlexandriaHRMDateTime>? = nil,
-    severity: AlexandriaHRMPrimitive<AllergyIntoleranceSeverity>? = nil,
+    fhirDescription: AsclepiusPrimitive<AsclepiusString>? = nil,
+    onset: AsclepiusPrimitive<AsclepiusDateTime>? = nil,
+    severity: AsclepiusPrimitive<AllergyIntoleranceSeverity>? = nil,
     exposureRoute: CodeableConcept? = nil,
     note: [Annotation]? = nil
   ) {
@@ -86,9 +86,9 @@ open class AllergyIntoleranceReaction: BackboneElement {
     
     self.substance = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .substance)
     self.manifestation = try [CodeableConcept](from: codingKeyContainer, forKey: .manifestation)
-    self.fhirDescription = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .fhirDescription, auxKey: ._fhirDescription)
-    self.onset = try AlexandriaHRMPrimitive<AlexandriaHRMDateTime>(from: codingKeyContainer, forKeyIfPresent: .onset, auxKey: ._onset)
-    self.severity = try AlexandriaHRMPrimitive<AllergyIntoleranceSeverity>(from: codingKeyContainer, forKeyIfPresent: .severity, auxKey: ._severity)
+    self.fhirDescription = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .fhirDescription, auxKey: ._fhirDescription)
+    self.onset = try AsclepiusPrimitive<AsclepiusDateTime>(from: codingKeyContainer, forKeyIfPresent: .onset, auxKey: ._onset)
+    self.severity = try AsclepiusPrimitive<AllergyIntoleranceSeverity>(from: codingKeyContainer, forKeyIfPresent: .severity, auxKey: ._severity)
     self.exposureRoute = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .exposureRoute)
     self.note = try [Annotation](from: codingKeyContainer, forKeyIfPresent: .note)
     

@@ -1,6 +1,6 @@
 //
 //  StructureMapGroupTypeMode.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/map-group-type-mode
  ValueSet: http://hl7.org/fhir/ValueSet/map-group-type-mode
  */
-public enum StructureMapGroupTypeMode: String, AlexandriaHRMPrimitiveType {
+public enum StructureMapGroupTypeMode: String, AsclepiusPrimitiveType {
   /// This group is not a default group for the types.
   case none
   

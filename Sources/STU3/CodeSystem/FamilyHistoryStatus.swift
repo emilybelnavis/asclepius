@@ -1,6 +1,6 @@
 //
 //  FamilyHistoryStatus.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/history-status
  ValueSet: http://hl7.org/fhir/ValueSet/history-status
  */
-public enum FamilyHistoryStatus: String, AlexandriaHRMPrimitiveType {
+public enum FamilyHistoryStatus: String, AsclepiusPrimitiveType {
   /// Some health information is known and captured, but not complete - see notes for details.
   case partial
   

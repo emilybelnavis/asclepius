@@ -1,6 +1,6 @@
 //
 //  ConsentPolicyRuleCodes.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/consentpolicycodes
  ValueSet: http://hl7.org/fhir/ValueSet/consent-policy
  */
-public enum ConsentPolicyRuleCodes: String, AlexandriaHRMPrimitiveType {
+public enum ConsentPolicyRuleCodes: String, AsclepiusPrimitiveType {
   
   /**
    45 CFR part 46 §46.116 General requirements for informed consent; and §46.117 Documentation of informed consent.

@@ -1,6 +1,6 @@
 //
 //  CoverageEligibilityRequestInsurance.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,20 +17,20 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  Patient insurance information; Financial instruments for reimbursement for the healthcare products and services
  */
 open class CoverageEligiblityRequestInsurance: BackboneElement {
   /// Applicable coverage
-  public var focal: AlexandriaHRMPrimitive<AlexandriaHRMBool>?
+  public var focal: AsclepiusPrimitive<AsclepiusBool>?
   
   /// Insurance information
   public var coverage: Reference
   
   /// Additional provider contract number
-  public var businessArrangement: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var businessArrangement: AsclepiusPrimitive<AsclepiusString>?
   
   public init(coverage: Reference) {
     self.coverage = coverage
@@ -40,10 +40,10 @@ open class CoverageEligiblityRequestInsurance: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    focal: AlexandriaHRMPrimitive<AlexandriaHRMBool>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    focal: AsclepiusPrimitive<AsclepiusBool>? = nil,
     coverage: Reference,
-    buisnessArrangement: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil
+    buisnessArrangement: AsclepiusPrimitive<AsclepiusString>? = nil
   ) {
     self.init(coverage: coverage)
     self.fhirExtension = fhirExtension
@@ -63,9 +63,9 @@ open class CoverageEligiblityRequestInsurance: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.focal = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKeyIfPresent: .focal, auxKey: ._focal)
+    self.focal = try AsclepiusPrimitive<AsclepiusBool>(from: codingKeyContainer, forKeyIfPresent: .focal, auxKey: ._focal)
     self.coverage = try Reference(from: codingKeyContainer, forKey: .coverage)
-    self.businessArrangement = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .businessArangement, auxKey: ._businessArrangement)
+    self.businessArrangement = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .businessArangement, auxKey: ._businessArrangement)
     
     try super.init(from: decoder)
   }

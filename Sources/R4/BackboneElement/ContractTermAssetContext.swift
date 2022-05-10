@@ -1,6 +1,6 @@
 //
 //  ContractTermAssetContext.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /// Circumstance of the asset
 open class ContractTermAssetContext: BackboneElement {
@@ -28,7 +28,7 @@ open class ContractTermAssetContext: BackboneElement {
   public var code: [CodeableConcept]?
   
   /// Context description
-  public var text: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var text: AsclepiusPrimitive<AsclepiusString>?
   
   override public init() {
     super.init(
@@ -38,10 +38,10 @@ open class ContractTermAssetContext: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
     reference: Reference? = nil,
     code: [CodeableConcept]? = nil,
-    text: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil
+    text: AsclepiusPrimitive<AsclepiusString>? = nil
   ) {
     self.init()
     self.fhirExtension = fhirExtension
@@ -64,7 +64,7 @@ open class ContractTermAssetContext: BackboneElement {
     
     self.reference = try Reference(from: codingKeyContainer, forKeyIfPresent: .reference)
     self.code = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .code)
-    self.text = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .text, auxKey: ._text)
+    self.text = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .text, auxKey: ._text)
     
     try super.init(from: decoder)
   }

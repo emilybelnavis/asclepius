@@ -1,6 +1,6 @@
 //
 //  IdentityAssuranceLevel.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/identity-assuranceLevel
  ValueSet: http://hl7.org/fhir/ValueSet/identity-assuranceLevel
  */
-public enum IdentityAssuranceLevel: String, AlexandriaHRMPrimitiveType {
+public enum IdentityAssuranceLevel: String, AsclepiusPrimitiveType {
   /// Little or no confidence in the asserted identity's accuracy.
   case level1
   

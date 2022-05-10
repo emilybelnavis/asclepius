@@ -1,6 +1,6 @@
 //
 //  HumanNameAssemblyOrder.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -22,7 +22,7 @@
  
  URL: http://terminology.hl7.org/CodeSystem/name-assembly-order
  */
-public enum HumanNameAssemblyOrder: String, AlexandriaHRMPrimitiveType {
+public enum HumanNameAssemblyOrder: String, AsclepiusPrimitiveType {
   /// NL1
   case NL1
   

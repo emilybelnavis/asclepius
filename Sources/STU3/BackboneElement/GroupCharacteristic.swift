@@ -1,6 +1,6 @@
 //
 //  GroupCharacteristic.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,11 +17,11 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 /// Identifies traits whos presence or absence are shared by members of the group
 open class GroupCharacteristic: BackboneElement {
   public enum ValueX: Hashable {
-    case boolean(AlexandriaHRMPrimitive<AlexandriaHRMBool>)
+    case boolean(AsclepiusPrimitive<AsclepiusBool>)
     case codeableConcept(CodeableConcept)
     case quantity(Quantity)
     case range(Range)
@@ -35,12 +35,12 @@ open class GroupCharacteristic: BackboneElement {
   public var valueX: ValueX
   
   /// group includes or excludes
-  public var exclude: AlexandriaHRMPrimitive<AlexandriaHRMBool>
+  public var exclude: AsclepiusPrimitive<AsclepiusBool>
   
   /// period over which characteristic is tested
   public var period: Period?
 
-  public init(code: CodeableConcept, valueX: ValueX, exclude: AlexandriaHRMPrimitive<AlexandriaHRMBool>) {
+  public init(code: CodeableConcept, valueX: ValueX, exclude: AsclepiusPrimitive<AsclepiusBool>) {
     self.code = code
     self.valueX = valueX
     self.exclude = exclude
@@ -49,10 +49,10 @@ open class GroupCharacteristic: BackboneElement {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
     code: CodeableConcept,
     valueX: ValueX,
-    exclude: AlexandriaHRMPrimitive<AlexandriaHRMBool>,
+    exclude: AsclepiusPrimitive<AsclepiusBool>,
     period: Period? = nil
   ) {
     self.init(code: code, valueX: valueX, exclude: exclude)
@@ -90,7 +90,7 @@ open class GroupCharacteristic: BackboneElement {
     
     // decode values for expanded prop. `value`
     var tempValueX: ValueX? = nil // swiftlint:disable:this redundant_optional_initialization
-    if let valueBool = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKeyIfPresent: .valueBool, auxKey: ._valueBool) {
+    if let valueBool = try AsclepiusPrimitive<AsclepiusBool>(from: codingKeyContainer, forKeyIfPresent: .valueBool, auxKey: ._valueBool) {
       if tempValueX != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueBool, in: codingKeyContainer, debugDescription: "More than one value provided for \"value\"")
       }
@@ -127,7 +127,7 @@ open class GroupCharacteristic: BackboneElement {
     
     self.code = try CodeableConcept(from: codingKeyContainer, forKey: .code)
     self.valueX = tempValueX!
-    self.exclude = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKey: .exclude, auxKey: ._exclude)
+    self.exclude = try AsclepiusPrimitive<AsclepiusBool>(from: codingKeyContainer, forKey: .exclude, auxKey: ._exclude)
     self.period = try Period(from: codingKeyContainer, forKeyIfPresent: .period)
     
     try super.init(from: decoder)

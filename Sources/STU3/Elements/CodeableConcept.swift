@@ -1,6 +1,6 @@
 //
 //  CodeableConcept.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  Concept - reference to a terminology or just text
@@ -29,7 +29,7 @@ open class CodeableConcept: Element {
   public var coding: [Coding]?
   
   /// Plain text representation of the concept
-  public var text: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var text: AsclepiusPrimitive<AsclepiusString>?
   
   override public init() {
     super.init()
@@ -37,9 +37,9 @@ open class CodeableConcept: Element {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
     coding: [Coding]? = nil,
-    text: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil
+    text: AsclepiusPrimitive<AsclepiusString>? = nil
   ) {
     self.init()
     self.fhirExtension = fhirExtension
@@ -58,7 +58,7 @@ open class CodeableConcept: Element {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     self.coding = try [Coding](from: codingKeyContainer, forKeyIfPresent: .coding)
-    self.text = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .text, auxKey: ._text)
+    self.text = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .text, auxKey: ._text)
     
     try super.init(from: decoder)
   }

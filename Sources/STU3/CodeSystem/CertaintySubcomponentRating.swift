@@ -1,6 +1,6 @@
 //
 //  CertaintySubcomponentRating.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/certainty-subcomponent-rating
  ValueSet: http://hl7.org/fhir/ValueSet/certainty-subcomponent-rating
  */
-public enum CertaintySubcomponentRating: String, AlexandriaHRMPrimitiveType {
+public enum CertaintySubcomponentRating: String, AsclepiusPrimitiveType {
   /// No change to quality rating
   case noChange = "no-change"
   

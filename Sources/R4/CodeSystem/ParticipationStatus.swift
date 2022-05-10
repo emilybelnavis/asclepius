@@ -1,6 +1,6 @@
 //
 //  ParticipationStatus.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/participationstatus
  ValueSet: http://hl7.org/fhir/ValueSet/participationstatus
  */
-public enum ParticipationStatus: String, AlexandriaHRMPrimitiveType {
+public enum ParticipationStatus: String, AsclepiusPrimitiveType {
   /// The participant has accepted the appointment.
   case accepted
   

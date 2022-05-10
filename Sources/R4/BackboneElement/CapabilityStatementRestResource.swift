@@ -1,6 +1,6 @@
 //
 //  CapabilityStatementRestResource.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,21 +17,21 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /// A specification of the restful capabilities of the solution for a specific resource type
 open class CapabilityStatementRestResource: BackboneElement {
   /// A type of resource exposed via the restful interface
-  public var type: AlexandriaHRMPrimitive<ResourceType>
+  public var type: AsclepiusPrimitive<ResourceType>
   
   /// Base system profile for all uses of resource
-  public var profile: AlexandriaHRMPrimitive<Canonical>?
+  public var profile: AsclepiusPrimitive<Canonical>?
   
   /// Profiles for use case suported
-  public var supportedProfile: [AlexandriaHRMPrimitive<Canonical>]?
+  public var supportedProfile: [AsclepiusPrimitive<Canonical>]?
   
   /// Additional information about the use of the resouce type
-  public var documentation: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var documentation: AsclepiusPrimitive<AsclepiusString>?
   
   /// What operations are supported?
   public var interaction: [CapabilityStatementRestResourceInteraction]?
@@ -42,34 +42,34 @@ open class CapabilityStatementRestResource: BackboneElement {
    populate the versionId meta-property on resources. If the value is `versioned-update` then the server
    supports all the versioning features, including using e-tags for version integrity in the API
    */
-  public var versioning: AlexandriaHRMPrimitive<ResourceVersionPolicy>?
+  public var versioning: AsclepiusPrimitive<ResourceVersionPolicy>?
   
   /// Wheter vRead can return past versions
-  public var readHistory: AlexandriaHRMPrimitive<AlexandriaHRMBool>?
+  public var readHistory: AsclepiusPrimitive<AsclepiusBool>?
   
   /// If update can commit to a new identity
-  public var updateCreate: AlexandriaHRMPrimitive<AlexandriaHRMBool>?
+  public var updateCreate: AsclepiusPrimitive<AsclepiusBool>?
   
   /// If allow/uses conditional create
-  public var conditionalCreate: AlexandriaHRMPrimitive<AlexandriaHRMBool>?
+  public var conditionalCreate: AsclepiusPrimitive<AsclepiusBool>?
   
   /// A code that indicates how the server supports conditional read
-  public var conditionalRead: AlexandriaHRMPrimitive<ConditionalReadStatus>?
+  public var conditionalRead: AsclepiusPrimitive<ConditionalReadStatus>?
 
   /// If allows/uses conditional update
-  public var conditionalUpdate: AlexandriaHRMPrimitive<AlexandriaHRMBool>?
+  public var conditionalUpdate: AsclepiusPrimitive<AsclepiusBool>?
   
   /// A code that indicates how the server supports conditional delete
-  public var conditionalDelete: AlexandriaHRMPrimitive<ConditionalDeleteStatus>?
+  public var conditionalDelete: AsclepiusPrimitive<ConditionalDeleteStatus>?
   
   /// A set of flags that defins how references are supported
-  public var referencePolicy: [AlexandriaHRMPrimitive<ReferenceHandlingPolicy>]?
+  public var referencePolicy: [AsclepiusPrimitive<ReferenceHandlingPolicy>]?
   
   /// `_include` values supported by the server
-  public var searchInclude: [AlexandriaHRMPrimitive<AlexandriaHRMString>]?
+  public var searchInclude: [AsclepiusPrimitive<AsclepiusString>]?
   
   /// `_revinclude` values suported by the server
-  public var searchRevInclude: [AlexandriaHRMPrimitive<AlexandriaHRMString>]?
+  public var searchRevInclude: [AsclepiusPrimitive<AsclepiusString>]?
   
   /// search parameters supported by the implementation
   public var searchParam: [CapabilityStatementRestResourceSearchParam]?
@@ -77,7 +77,7 @@ open class CapabilityStatementRestResource: BackboneElement {
   /// definition of a resource operation
   public var operation: [CapabilityStatementRestResourceOperation]?
   
-  public init(type: AlexandriaHRMPrimitive<ResourceType>) {
+  public init(type: AsclepiusPrimitive<ResourceType>) {
     self.type = type
     super.init()
   }
@@ -85,22 +85,22 @@ open class CapabilityStatementRestResource: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    type: AlexandriaHRMPrimitive<ResourceType>,
-    profile: AlexandriaHRMPrimitive<Canonical>? = nil,
-    supportedProfile: [AlexandriaHRMPrimitive<Canonical>]? = nil,
-    documentation: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    type: AsclepiusPrimitive<ResourceType>,
+    profile: AsclepiusPrimitive<Canonical>? = nil,
+    supportedProfile: [AsclepiusPrimitive<Canonical>]? = nil,
+    documentation: AsclepiusPrimitive<AsclepiusString>? = nil,
     interaction: [CapabilityStatementRestResourceInteraction]? = nil,
-    versioning: AlexandriaHRMPrimitive<ResourceVersionPolicy>? = nil,
-    readHistory: AlexandriaHRMPrimitive<AlexandriaHRMBool>? = nil,
-    updateCreate: AlexandriaHRMPrimitive<AlexandriaHRMBool>? = nil,
-    conditionalCreate: AlexandriaHRMPrimitive<AlexandriaHRMBool>? = nil,
-    conditionalRead: AlexandriaHRMPrimitive<ConditionalReadStatus>? = nil,
-    conditionalUpdate: AlexandriaHRMPrimitive<AlexandriaHRMBool>? = nil,
-    conditionalDelete: AlexandriaHRMPrimitive<ConditionalDeleteStatus>? = nil,
-    referencePolicy: [AlexandriaHRMPrimitive<ReferenceHandlingPolicy>]? = nil,
-    searchInclude: [AlexandriaHRMPrimitive<AlexandriaHRMString>]? = nil,
-    searchRevInclude: [AlexandriaHRMPrimitive<AlexandriaHRMString>]? = nil,
+    versioning: AsclepiusPrimitive<ResourceVersionPolicy>? = nil,
+    readHistory: AsclepiusPrimitive<AsclepiusBool>? = nil,
+    updateCreate: AsclepiusPrimitive<AsclepiusBool>? = nil,
+    conditionalCreate: AsclepiusPrimitive<AsclepiusBool>? = nil,
+    conditionalRead: AsclepiusPrimitive<ConditionalReadStatus>? = nil,
+    conditionalUpdate: AsclepiusPrimitive<AsclepiusBool>? = nil,
+    conditionalDelete: AsclepiusPrimitive<ConditionalDeleteStatus>? = nil,
+    referencePolicy: [AsclepiusPrimitive<ReferenceHandlingPolicy>]? = nil,
+    searchInclude: [AsclepiusPrimitive<AsclepiusString>]? = nil,
+    searchRevInclude: [AsclepiusPrimitive<AsclepiusString>]? = nil,
     searchParam: [CapabilityStatementRestResourceSearchParam]? = nil,
     operation: [CapabilityStatementRestResourceOperation]? = nil
   ) {
@@ -150,20 +150,20 @@ open class CapabilityStatementRestResource: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.type = try AlexandriaHRMPrimitive<ResourceType>(from: codingKeyContainer, forKey: .type, auxKey: ._type)
-    self.profile = try AlexandriaHRMPrimitive<Canonical>(from: codingKeyContainer, forKeyIfPresent: .profile, auxKey: ._profile)
-    self.supportedProfile = try [AlexandriaHRMPrimitive<Canonical>](from: codingKeyContainer, forKeyIfPresent: .supportedProfile, auxKey: ._supportedProfile)
-    self.documentation = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .documentation, auxKey: ._documentation)
+    self.type = try AsclepiusPrimitive<ResourceType>(from: codingKeyContainer, forKey: .type, auxKey: ._type)
+    self.profile = try AsclepiusPrimitive<Canonical>(from: codingKeyContainer, forKeyIfPresent: .profile, auxKey: ._profile)
+    self.supportedProfile = try [AsclepiusPrimitive<Canonical>](from: codingKeyContainer, forKeyIfPresent: .supportedProfile, auxKey: ._supportedProfile)
+    self.documentation = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .documentation, auxKey: ._documentation)
     self.interaction = try [CapabilityStatementRestResourceInteraction](from: codingKeyContainer, forKeyIfPresent: .interaction)
-    self.versioning = try AlexandriaHRMPrimitive<ResourceVersionPolicy>(from: codingKeyContainer, forKeyIfPresent: .versioning, auxKey: ._versioning)
-    self.readHistory = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKeyIfPresent: .readHistory, auxKey: ._readHistory)
-    self.conditionalCreate = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKeyIfPresent: .conditionalCreate, auxKey: ._conditionalCreate)
-    self.conditionalRead = try AlexandriaHRMPrimitive<ConditionalReadStatus>(from: codingKeyContainer, forKeyIfPresent: .conditionalRead, auxKey: ._conditionalRead)
-    self.conditionalUpdate = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKeyIfPresent: .conditionalUpdate, auxKey: ._conditionalUpdate)
-    self.conditionalDelete = try AlexandriaHRMPrimitive<ConditionalDeleteStatus>(from: codingKeyContainer, forKeyIfPresent: .conditionalDelete, auxKey: ._conditionalDelete)
-    self.referencePolicy = try [AlexandriaHRMPrimitive<ReferenceHandlingPolicy>](from: codingKeyContainer, forKeyIfPresent: .referencePolicy, auxKey: ._referencePolicy)
-    self.searchInclude = try [AlexandriaHRMPrimitive<AlexandriaHRMString>](from: codingKeyContainer, forKeyIfPresent: .searchInclude, auxKey: ._searchInclude)
-    self.searchRevInclude = try [AlexandriaHRMPrimitive<AlexandriaHRMString>](from: codingKeyContainer, forKeyIfPresent: .searchRevInclude, auxKey: ._searchRevInclude)
+    self.versioning = try AsclepiusPrimitive<ResourceVersionPolicy>(from: codingKeyContainer, forKeyIfPresent: .versioning, auxKey: ._versioning)
+    self.readHistory = try AsclepiusPrimitive<AsclepiusBool>(from: codingKeyContainer, forKeyIfPresent: .readHistory, auxKey: ._readHistory)
+    self.conditionalCreate = try AsclepiusPrimitive<AsclepiusBool>(from: codingKeyContainer, forKeyIfPresent: .conditionalCreate, auxKey: ._conditionalCreate)
+    self.conditionalRead = try AsclepiusPrimitive<ConditionalReadStatus>(from: codingKeyContainer, forKeyIfPresent: .conditionalRead, auxKey: ._conditionalRead)
+    self.conditionalUpdate = try AsclepiusPrimitive<AsclepiusBool>(from: codingKeyContainer, forKeyIfPresent: .conditionalUpdate, auxKey: ._conditionalUpdate)
+    self.conditionalDelete = try AsclepiusPrimitive<ConditionalDeleteStatus>(from: codingKeyContainer, forKeyIfPresent: .conditionalDelete, auxKey: ._conditionalDelete)
+    self.referencePolicy = try [AsclepiusPrimitive<ReferenceHandlingPolicy>](from: codingKeyContainer, forKeyIfPresent: .referencePolicy, auxKey: ._referencePolicy)
+    self.searchInclude = try [AsclepiusPrimitive<AsclepiusString>](from: codingKeyContainer, forKeyIfPresent: .searchInclude, auxKey: ._searchInclude)
+    self.searchRevInclude = try [AsclepiusPrimitive<AsclepiusString>](from: codingKeyContainer, forKeyIfPresent: .searchRevInclude, auxKey: ._searchRevInclude)
     self.searchParam = try [CapabilityStatementRestResourceSearchParam](from: codingKeyContainer, forKeyIfPresent: .searchParam)
     self.operation = try [CapabilityStatementRestResourceOperation](from: codingKeyContainer, forKeyIfPresent: .operation)
     try super.init(from: decoder)

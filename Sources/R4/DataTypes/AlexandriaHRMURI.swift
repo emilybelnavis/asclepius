@@ -1,6 +1,6 @@
 //
-//  AlexandriaHRMURI.swift
-//  AlexandriaHRM
+//  AsclepiusURI.swift
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -18,14 +18,14 @@
 //  limitations under the License.
 
 import Foundation
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  A Uniform Resource Locator (RFC 1738). Note URLs are accessed directly using the speficied protocol.
  Common URL protocols are `http{s}:`, `ftp:`,  `mailto:`, and `mllp:`, though many others
  are defined.
  */
-public struct AlexandriaHRMURI: AlexandriaHRMPrimitiveType {
+public struct AsclepiusURI: AsclepiusPrimitiveType {
   public var url: URL
   
   public init(_ url: URL) {
@@ -34,7 +34,7 @@ public struct AlexandriaHRMURI: AlexandriaHRMPrimitiveType {
 }
 
 // MARK: - ExpressibleByStringLiteral
-extension AlexandriaHRMURI: ExpressibleByStringLiteral {
+extension AsclepiusURI: ExpressibleByStringLiteral {
   public init(stringLiteral value: StringLiteralType) {
     let url = URL(string: value) ?? URL(string: "invalfhirId:uri")!
     self.init(url)
@@ -42,7 +42,7 @@ extension AlexandriaHRMURI: ExpressibleByStringLiteral {
 }
 
 // MARK: - Codable
-extension AlexandriaHRMURI: Codable {
+extension AsclepiusURI: Codable {
   public init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.singleValueContainer()
     self.url = try codingKeyContainer.decode(URL.self)
@@ -55,46 +55,46 @@ extension AlexandriaHRMURI: Codable {
 }
 
 // MARK: - CustomStringConvertible
-extension AlexandriaHRMURI: CustomStringConvertible {
+extension AsclepiusURI: CustomStringConvertible {
   public var description: String {
     return url.absoluteString
   }
 }
 
 // MARK: - Equatable
-extension AlexandriaHRMURI: Equatable {
-  public static func == (leftSide: AlexandriaHRMURI, rightSide: AlexandriaHRMURI) -> Bool {
+extension AsclepiusURI: Equatable {
+  public static func == (leftSide: AsclepiusURI, rightSide: AsclepiusURI) -> Bool {
     return leftSide.url == rightSide.url
   }
   
-  public static func == (leftSide: URL, rightSide: AlexandriaHRMURI) -> Bool {
+  public static func == (leftSide: URL, rightSide: AsclepiusURI) -> Bool {
     return leftSide == rightSide.url
   }
   
-  public static func == (leftSide: AlexandriaHRMURI, rightSide: URL) -> Bool {
+  public static func == (leftSide: AsclepiusURI, rightSide: URL) -> Bool {
     return leftSide.url == rightSide
   }
 }
 
 // MARK: - Extends String
 extension String {
-  public func asAlexandriaHRMURI() -> AlexandriaHRMURI? {
+  public func asAsclepiusURI() -> AsclepiusURI? {
     guard let url = URL(string: self) else {
       return nil
     }
-    return AlexandriaHRMURI(url)
+    return AsclepiusURI(url)
   }
   
-  public func asAlexandriaHRMURIPrimitive() -> AlexandriaHRMPrimitive<AlexandriaHRMURI>? {
-    guard let uri = asAlexandriaHRMURI() else {
+  public func asAsclepiusURIPrimitive() -> AsclepiusPrimitive<AsclepiusURI>? {
+    guard let uri = asAsclepiusURI() else {
       return nil
     }
-    return AlexandriaHRMPrimitive(uri)
+    return AsclepiusPrimitive(uri)
   }
 }
 
 extension URL {
-  public func asAlexandriaHRMURIPrimitive() -> AlexandriaHRMPrimitive<AlexandriaHRMURI> {
-    return AlexandriaHRMPrimitive(AlexandriaHRMURI(self))
+  public func asAsclepiusURIPrimitive() -> AsclepiusPrimitive<AsclepiusURI> {
+    return AsclepiusPrimitive(AsclepiusURI(self))
   }
 }

@@ -1,6 +1,6 @@
 //
-//  AlexandriaHRMInstantDate.swift
-//  AlexandriaHRM
+//  AsclepiusInstantDate.swift
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -18,14 +18,14 @@
 //  limitations under the License.
 
 import Foundation
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
- A stricter version of `AlexandriaHRMDate` which requires month and day to be present, for use in an `Instant`
+ A stricter version of `AsclepiusDate` which requires month and day to be present, for use in an `Instant`
  
  http://hl7.org/fhir/datatypes.html#date
  */
-public struct AlexandriaHRMInstantDate: AlexandriaHRMPrimitiveType {
+public struct AsclepiusInstantDate: AsclepiusPrimitiveType {
   public var year: Int
   public var month: UInt8 {
     didSet {
@@ -51,7 +51,7 @@ public struct AlexandriaHRMInstantDate: AlexandriaHRMPrimitiveType {
   
   public init(_ originalString: String) throws {
     let scanner = Scanner(string: originalString)
-    let (year, month, day) = try AlexandriaHRMInstantDate.parseComponents(from: scanner)
+    let (year, month, day) = try AsclepiusInstantDate.parseComponents(from: scanner)
     self.init(year: year, month: month, day: day)
   }
   
@@ -66,52 +66,52 @@ public struct AlexandriaHRMInstantDate: AlexandriaHRMPrimitiveType {
     // year
     var scanLocation = scanner.scanLocation
     guard let scanned = scanner.hs_scanCharacters(from: numbers), scanned.count == 4, let year = Int(scanned), year > 0 else {
-      throw AlexandriaHRMDateParserError.invalidYear(AlexandriaHRMDateParserErrorPosition(string: scanner.string, location: scanLocation))
+      throw AsclepiusDateParserError.invalidYear(AsclepiusDateParserErrorPosition(string: scanner.string, location: scanLocation))
     }
     
     // month
     guard scanner.scanString("-", into: nil) else {
-      throw AlexandriaHRMDateParserError.invalidSeparator(AlexandriaHRMDateParserErrorPosition(string: scanner.string, location: scanLocation))
+      throw AsclepiusDateParserError.invalidSeparator(AsclepiusDateParserErrorPosition(string: scanner.string, location: scanLocation))
     }
     
     scanLocation = scanner.scanLocation
     guard let scannedMonth = scanner.hs_scanCharacters(from: numbers), scannedMonth.count == 2, let month = UInt8(scannedMonth), (1...12).contains(month) else {
-      throw AlexandriaHRMDateParserError.invalidMonth(AlexandriaHRMDateParserErrorPosition(string: scanner.string, location: scanLocation))
+      throw AsclepiusDateParserError.invalidMonth(AsclepiusDateParserErrorPosition(string: scanner.string, location: scanLocation))
     }
     
     // day
     guard scanner.scanString("-", into: nil) else {
-      throw AlexandriaHRMDateParserError.invalidSeparator(AlexandriaHRMDateParserErrorPosition(string: scanner.string, location: scanLocation))
+      throw AsclepiusDateParserError.invalidSeparator(AsclepiusDateParserErrorPosition(string: scanner.string, location: scanLocation))
     }
     scanLocation = scanner.scanLocation
     guard let scannedDay = scanner.hs_scanCharacters(from: numbers), scannedDay.count == 2, let day = UInt8(scannedDay), (1...31).contains(day) else {
-      throw AlexandriaHRMDateParserError.invalidDay(AlexandriaHRMDateParserErrorPosition(string: scanner.string, location: scanLocation))
+      throw AsclepiusDateParserError.invalidDay(AsclepiusDateParserErrorPosition(string: scanner.string, location: scanLocation))
     }
     
     // finish
     scanLocation = scanner.scanLocation
     if expectAtEnd && !scanner.isAtEnd {
-      throw AlexandriaHRMDateParserError.additionalCharacters(AlexandriaHRMDateParserErrorPosition(string: scanner.string, location: scanLocation))
+      throw AsclepiusDateParserError.additionalCharacters(AsclepiusDateParserErrorPosition(string: scanner.string, location: scanLocation))
     }
     
     return (year, month, day)
   }
   
-  public static func parse(from scanner: Scanner, expectAtEnd: Bool = true) throws -> AlexandriaHRMInstantDate {
-    let (year, month, day) = try AlexandriaHRMInstantDate.parseComponents(from: scanner, expectAtEnd: expectAtEnd)
+  public static func parse(from scanner: Scanner, expectAtEnd: Bool = true) throws -> AsclepiusInstantDate {
+    let (year, month, day) = try AsclepiusInstantDate.parseComponents(from: scanner, expectAtEnd: expectAtEnd)
     return self.init(year: year, month: month, day: day)
   }
 }
 
 // MARK: - ExpressibleByStringLiteral
-extension AlexandriaHRMInstantDate: ExpressibleByStringLiteral {
+extension AsclepiusInstantDate: ExpressibleByStringLiteral {
   public init(stringLiteral value: StringLiteralType) {
     try! self.init(value) // swiftlint:disable:this force_try
   }
 }
 
 // MARK: - Codable
-extension AlexandriaHRMInstantDate: Codable {
+extension AsclepiusInstantDate: Codable {
   public init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.singleValueContainer()
     let string = try codingKeyContainer.decode(String.self)
@@ -126,15 +126,15 @@ extension AlexandriaHRMInstantDate: Codable {
 }
 
 // MARK: - CustomStringConvertible
-extension AlexandriaHRMInstantDate: CustomStringConvertible {
+extension AsclepiusInstantDate: CustomStringConvertible {
   public var description: String {
     return String(format: "%04d-%02d-%02d", year, month, day)
   }
 }
 
 // MARK: - Equatable
-extension AlexandriaHRMInstantDate: Equatable {
-  public static func == (leftSide: AlexandriaHRMInstantDate, rightSide: AlexandriaHRMInstantDate) -> Bool {
+extension AsclepiusInstantDate: Equatable {
+  public static func == (leftSide: AsclepiusInstantDate, rightSide: AsclepiusInstantDate) -> Bool {
     if leftSide.year != rightSide.year {
       return false
     }
@@ -150,7 +150,7 @@ extension AlexandriaHRMInstantDate: Equatable {
     return true
   }
   
-  public static func == (leftSide: AlexandriaHRMInstantDate, rightSide: AlexandriaHRMDate) -> Bool {
+  public static func == (leftSide: AsclepiusInstantDate, rightSide: AsclepiusDate) -> Bool {
     if leftSide.year != rightSide.year {
       return false
     }
@@ -166,7 +166,7 @@ extension AlexandriaHRMInstantDate: Equatable {
     return true
   }
   
-  public static func == (leftSide: AlexandriaHRMDate, rightSide: AlexandriaHRMInstantDate) -> Bool {
+  public static func == (leftSide: AsclepiusDate, rightSide: AsclepiusInstantDate) -> Bool {
     if leftSide.year != rightSide.year {
       return false
     }
@@ -184,8 +184,8 @@ extension AlexandriaHRMInstantDate: Equatable {
 }
 
 // MARK: - Comparable
-extension AlexandriaHRMInstantDate: Comparable {
-  public static func < (leftSide: AlexandriaHRMInstantDate, rightSide: AlexandriaHRMInstantDate) -> Bool {
+extension AsclepiusInstantDate: Comparable {
+  public static func < (leftSide: AsclepiusInstantDate, rightSide: AsclepiusInstantDate) -> Bool {
     if leftSide.year < rightSide.year {
       return true
     } else if leftSide.year == rightSide.year {
@@ -198,7 +198,7 @@ extension AlexandriaHRMInstantDate: Comparable {
     return false
   }
   
-  public static func < (leftSide: AlexandriaHRMInstantDate, rightSide: AlexandriaHRMDate) -> Bool {
+  public static func < (leftSide: AsclepiusInstantDate, rightSide: AsclepiusDate) -> Bool {
     if leftSide.year < rightSide.year {
       return true
     } else if leftSide.year == rightSide.year {
@@ -211,7 +211,7 @@ extension AlexandriaHRMInstantDate: Comparable {
     return false
   }
   
-  public static func < (leftSide: AlexandriaHRMDate, rightSide: AlexandriaHRMInstantDate) -> Bool {
+  public static func < (leftSide: AsclepiusDate, rightSide: AsclepiusInstantDate) -> Bool {
     if leftSide.year < rightSide.year {
       return true
     } else if leftSide.year == rightSide.year {
@@ -226,8 +226,8 @@ extension AlexandriaHRMInstantDate: Comparable {
 }
 
 // MARK: - Extends self
-extension AlexandriaHRMInstantDate {
-  public var fhirKitDate: AlexandriaHRMDate {
-    return AlexandriaHRMDate(year: year, month: month, day: day)
+extension AsclepiusInstantDate {
+  public var fhirKitDate: AsclepiusDate {
+    return AsclepiusDate(year: year, month: month, day: day)
   }
 }

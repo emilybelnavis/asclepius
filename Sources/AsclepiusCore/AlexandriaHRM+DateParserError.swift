@@ -1,7 +1,7 @@
 //
-//  AlexandriaHRM+DateParserError.swift
-//  AlexandriaHRM
-//  Module: AlexandriaHRMCore
+//  Asclepius+DateParserError.swift
+//  Asclepius
+//  Module: AsclepiusCore
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
 //
@@ -19,7 +19,7 @@
 
 import Foundation
 
-public struct AlexandriaHRMDateParserErrorPosition: CustomStringConvertible {
+public struct AsclepiusDateParserErrorPosition: CustomStringConvertible {
   public let string: String
   public let location: Int
   
@@ -33,10 +33,10 @@ public struct AlexandriaHRMDateParserErrorPosition: CustomStringConvertible {
   }
 }
 
-// MARK: - AlexandriaHRMDateParserErrorPosition
+// MARK: - AsclepiusDateParserErrorPosition
 
-extension AlexandriaHRMDateParserErrorPosition: Equatable {
-  public static func == (leftSide: AlexandriaHRMDateParserErrorPosition, rightSide: AlexandriaHRMDateParserErrorPosition) -> Bool {
+extension AsclepiusDateParserErrorPosition: Equatable {
+  public static func == (leftSide: AsclepiusDateParserErrorPosition, rightSide: AsclepiusDateParserErrorPosition) -> Bool {
     if leftSide.string != rightSide.string {
       return false
     }
@@ -47,20 +47,20 @@ extension AlexandriaHRMDateParserErrorPosition: Equatable {
   }
 }
 
-// MARK: - AlexandriaHRMDateParserError
+// MARK: - AsclepiusDateParserError
 
-public enum AlexandriaHRMDateParserError: LocalizedError {
-  case invalidSeparator(AlexandriaHRMDateParserErrorPosition)
-  case invalidYear(AlexandriaHRMDateParserErrorPosition)
-  case invalidMonth(AlexandriaHRMDateParserErrorPosition)
-  case invalidDay(AlexandriaHRMDateParserErrorPosition)
-  case invalidHour(AlexandriaHRMDateParserErrorPosition)
-  case invalidMinute(AlexandriaHRMDateParserErrorPosition)
-  case invalidSecond(AlexandriaHRMDateParserErrorPosition)
-  case invalidTimeZonePrefix(AlexandriaHRMDateParserErrorPosition)
-  case invalidTimeZoneHour(AlexandriaHRMDateParserErrorPosition)
-  case invalidTimeZoneMinute(AlexandriaHRMDateParserErrorPosition)
-  case additionalCharacters(AlexandriaHRMDateParserErrorPosition)
+public enum AsclepiusDateParserError: LocalizedError {
+  case invalidSeparator(AsclepiusDateParserErrorPosition)
+  case invalidYear(AsclepiusDateParserErrorPosition)
+  case invalidMonth(AsclepiusDateParserErrorPosition)
+  case invalidDay(AsclepiusDateParserErrorPosition)
+  case invalidHour(AsclepiusDateParserErrorPosition)
+  case invalidMinute(AsclepiusDateParserErrorPosition)
+  case invalidSecond(AsclepiusDateParserErrorPosition)
+  case invalidTimeZonePrefix(AsclepiusDateParserErrorPosition)
+  case invalidTimeZoneHour(AsclepiusDateParserErrorPosition)
+  case invalidTimeZoneMinute(AsclepiusDateParserErrorPosition)
+  case additionalCharacters(AsclepiusDateParserErrorPosition)
   
   public var errorDescription: String? {
     switch self {
@@ -89,7 +89,7 @@ public enum AlexandriaHRMDateParserError: LocalizedError {
     }
   }
     
-  public var errorPosition: AlexandriaHRMDateParserErrorPosition {
+  public var errorPosition: AsclepiusDateParserErrorPosition {
     switch self {
     case .invalidSeparator(let position):
         return position

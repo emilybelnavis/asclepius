@@ -1,6 +1,6 @@
 //
-//  AlexandriaHRMTime.swift
-//  AlexandriaHRM
+//  AsclepiusTime.swift
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -18,7 +18,7 @@
 //  limitations under the License.
 
 import Foundation
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  A time during the day, in the format hh:mm:ss. There is no date specified. Seconds must be provided due to schema type
@@ -29,7 +29,7 @@ import AlexandriaHRMCore
  
  http://hl7.org/fhir/datatypes.html#time
  */
-public struct AlexandriaHRMTime: AlexandriaHRMPrimitiveType {
+public struct AsclepiusTime: AsclepiusPrimitiveType {
   private var secondsAreUnaltered = true
   
   public var hour: UInt8 {
@@ -69,7 +69,7 @@ public struct AlexandriaHRMTime: AlexandriaHRMPrimitiveType {
   
   public init(_ originalString: String) throws {
     let scanner = Scanner(string: originalString)
-    let (hour, minute, second, originalSecondsString) = try AlexandriaHRMTime.parseComponents(from: scanner)
+    let (hour, minute, second, originalSecondsString) = try AsclepiusTime.parseComponents(from: scanner)
     self.init(hour: hour, minute: minute, second: second, originalSecondsString: originalSecondsString)
   }
   
@@ -95,47 +95,47 @@ public struct AlexandriaHRMTime: AlexandriaHRMPrimitiveType {
     // hours
     var scanLocation = scanner.scanLocation
     guard let hourString = scanner.hs_scanCharacters(from: numbers) else {
-      throw AlexandriaHRMDateParserError.invalidHour(AlexandriaHRMDateParserErrorPosition(string: scanner.string, location: scanLocation))
+      throw AsclepiusDateParserError.invalidHour(AsclepiusDateParserErrorPosition(string: scanner.string, location: scanLocation))
     }
     guard hourString.count == 2 else {
-      throw AlexandriaHRMDateParserError.invalidSeparator(AlexandriaHRMDateParserErrorPosition(string: scanner.string, location: scanLocation + hourString.count))
+      throw AsclepiusDateParserError.invalidSeparator(AsclepiusDateParserErrorPosition(string: scanner.string, location: scanLocation + hourString.count))
     }
     guard let hour = UInt8(hourString), hour <= 23 else {
-      throw AlexandriaHRMDateParserError.invalidHour(AlexandriaHRMDateParserErrorPosition(string: scanner.string, location: scanLocation))
+      throw AsclepiusDateParserError.invalidHour(AsclepiusDateParserErrorPosition(string: scanner.string, location: scanLocation))
     }
     
     scanLocation = scanner.scanLocation
     guard scanner.scanString(":", into: nil) else {
-      throw AlexandriaHRMDateParserError.invalidSeparator(AlexandriaHRMDateParserErrorPosition(string: scanner.string, location: scanLocation))
+      throw AsclepiusDateParserError.invalidSeparator(AsclepiusDateParserErrorPosition(string: scanner.string, location: scanLocation))
     }
     
       // Minutes
     scanLocation = scanner.scanLocation
     guard let minuteString = scanner.hs_scanCharacters(from: numbers) else {
-      throw AlexandriaHRMDateParserError.invalidMinute(AlexandriaHRMDateParserErrorPosition(string: scanner.string, location: scanLocation))
+      throw AsclepiusDateParserError.invalidMinute(AsclepiusDateParserErrorPosition(string: scanner.string, location: scanLocation))
     }
     guard minuteString.count == 2 else {
-      throw AlexandriaHRMDateParserError.invalidSeparator(AlexandriaHRMDateParserErrorPosition(string: scanner.string, location: scanLocation + minuteString.count))
+      throw AsclepiusDateParserError.invalidSeparator(AsclepiusDateParserErrorPosition(string: scanner.string, location: scanLocation + minuteString.count))
     }
     guard let minute = UInt8(minuteString), minute <= 59 else {
-      throw AlexandriaHRMDateParserError.invalidMinute(AlexandriaHRMDateParserErrorPosition(string: scanner.string, location: scanLocation))
+      throw AsclepiusDateParserError.invalidMinute(AsclepiusDateParserErrorPosition(string: scanner.string, location: scanLocation))
     }
     
     scanLocation = scanner.scanLocation
     guard scanner.scanString(":", into: nil) else {
-      throw AlexandriaHRMDateParserError.invalidSeparator(AlexandriaHRMDateParserErrorPosition(string: scanner.string, location: scanLocation))
+      throw AsclepiusDateParserError.invalidSeparator(AsclepiusDateParserErrorPosition(string: scanner.string, location: scanLocation))
     }
     
       // Seconds
     scanLocation = scanner.scanLocation
     guard let fullSecondString = scanner.hs_scanCharacters(from: numbers) else {
-      throw AlexandriaHRMDateParserError.invalidSecond(AlexandriaHRMDateParserErrorPosition(string: scanner.string, location: scanLocation))
+      throw AsclepiusDateParserError.invalidSecond(AsclepiusDateParserErrorPosition(string: scanner.string, location: scanLocation))
     }
     guard fullSecondString.count == 2 else {
-      throw AlexandriaHRMDateParserError.invalidSeparator(AlexandriaHRMDateParserErrorPosition(string: scanner.string, location: scanLocation + fullSecondString.count))
+      throw AsclepiusDateParserError.invalidSeparator(AsclepiusDateParserErrorPosition(string: scanner.string, location: scanLocation + fullSecondString.count))
     }
     guard let scanSecondAlone = Int(fullSecondString), scanSecondAlone <= 60 else {
-      throw AlexandriaHRMDateParserError.invalidSecond(AlexandriaHRMDateParserErrorPosition(string: scanner.string, location: scanLocation))
+      throw AsclepiusDateParserError.invalidSecond(AsclepiusDateParserErrorPosition(string: scanner.string, location: scanLocation))
     }
     
     let secondString: String
@@ -143,40 +143,40 @@ public struct AlexandriaHRMTime: AlexandriaHRMPrimitiveType {
     if scanner.scanString(".", into: nil) {
       scanLocation = scanner.scanLocation
       guard let subSecondString = scanner.hs_scanCharacters(from: numbers) else {
-        throw AlexandriaHRMDateParserError.invalidSecond(AlexandriaHRMDateParserErrorPosition(string: scanner.string, location: scanLocation))
+        throw AsclepiusDateParserError.invalidSecond(AsclepiusDateParserErrorPosition(string: scanner.string, location: scanLocation))
       }
       secondString = "\(fullSecondString).\(subSecondString)"
     } else {
       secondString = fullSecondString
     }
     guard let second = Decimal(string: secondString), second <= 60.0 else {
-      throw AlexandriaHRMDateParserError.invalidSecond(AlexandriaHRMDateParserErrorPosition(string: scanner.string, location: scanLocation))
+      throw AsclepiusDateParserError.invalidSecond(AsclepiusDateParserErrorPosition(string: scanner.string, location: scanLocation))
     }
     
     // End
     scanLocation = scanner.scanLocation
     if expectAtEnd && !scanner.isAtEnd {    // it's OK if we don't `expectAtEnd` but the scanner actually is
-      throw AlexandriaHRMDateParserError.additionalCharacters(AlexandriaHRMDateParserErrorPosition(string: scanner.string, location: scanLocation))
+      throw AsclepiusDateParserError.additionalCharacters(AsclepiusDateParserErrorPosition(string: scanner.string, location: scanLocation))
     }
     
     return (hour, minute, second, secondString)
   }
   
-  public static func parse(from scanner: Scanner, expectAtEnd: Bool = true) throws -> AlexandriaHRMTime {
-    let (hour, minute, second, originalSecondsString) = try AlexandriaHRMTime.parseComponents(from: scanner, expectAtEnd: expectAtEnd)
+  public static func parse(from scanner: Scanner, expectAtEnd: Bool = true) throws -> AsclepiusTime {
+    let (hour, minute, second, originalSecondsString) = try AsclepiusTime.parseComponents(from: scanner, expectAtEnd: expectAtEnd)
     return self.init(hour: hour, minute: minute, second: second, originalSecondsString: originalSecondsString)
   }
 }
 
 // MARK: - ExpressibleByStringLiteral
-extension AlexandriaHRMTime: ExpressibleByStringLiteral {
+extension AsclepiusTime: ExpressibleByStringLiteral {
   public init(stringLiteral value: StringLiteralType) {
     try! self.init(value) // swiftlint:disable:this force_try
   }
 }
 
 // MARK: - Codable
-extension AlexandriaHRMTime: Codable {
+extension AsclepiusTime: Codable {
   public init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.singleValueContainer()
     let string = try codingKeyContainer.decode(String.self)
@@ -190,7 +190,7 @@ extension AlexandriaHRMTime: Codable {
 }
 
 // MARK: - CustomStringConvertable
-extension AlexandriaHRMTime: CustomStringConvertible {
+extension AsclepiusTime: CustomStringConvertible {
   public static let secondsFormatter: NumberFormatter = {
     let formatter = NumberFormatter()
     formatter.allowsFloats = true
@@ -208,13 +208,13 @@ extension AlexandriaHRMTime: CustomStringConvertible {
     if secondsAreUnaltered, let originalSecondsString = originalSecondsString {
       return String(format: "%02d:%02d:\(originalSecondsString)", hour, minute)
     }
-    return String(format: "%02d:%02d:\(AlexandriaHRMTime.secondsFormatter.string(for: second) ?? "00")", hour, minute)
+    return String(format: "%02d:%02d:\(AsclepiusTime.secondsFormatter.string(for: second) ?? "00")", hour, minute)
   }
 }
 
 // MARK: - Equatable
-extension AlexandriaHRMTime: Equatable {
-  public static func == (leftSide: AlexandriaHRMTime, rightSide: AlexandriaHRMTime) -> Bool {
+extension AsclepiusTime: Equatable {
+  public static func == (leftSide: AsclepiusTime, rightSide: AsclepiusTime) -> Bool {
     if leftSide.hour != rightSide.hour {
       return false
     }
@@ -232,8 +232,8 @@ extension AlexandriaHRMTime: Equatable {
 }
 
 // MARK: - Comparable
-extension AlexandriaHRMTime: Comparable {
-  public static func < (leftSide: AlexandriaHRMTime, rightSide: AlexandriaHRMTime) -> Bool {
+extension AsclepiusTime: Comparable {
+  public static func < (leftSide: AsclepiusTime, rightSide: AsclepiusTime) -> Bool {
     if leftSide.hour < rightSide.hour {
       return true
     } else if leftSide.hour == rightSide.hour {
@@ -248,9 +248,9 @@ extension AlexandriaHRMTime: Comparable {
 }
 
 // MARK: - Extends NSDate
-extension AlexandriaHRMTime: ConstructibleFromNSDate {
+extension AsclepiusTime: ConstructibleFromNSDate {
   public init(date: Date, timeZone: TimeZone = TimeZone.current) throws {
     self.originalSecondsString = nil
-    (self.hour, self.minute, self.second) = try AlexandriaHRMDateComponents.timeComponents(from: date, with: timeZone)
+    (self.hour, self.minute, self.second) = try AsclepiusDateComponents.timeComponents(from: date, with: timeZone)
   }
 }

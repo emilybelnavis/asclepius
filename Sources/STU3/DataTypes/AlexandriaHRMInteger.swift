@@ -1,6 +1,6 @@
 //
-//  AlexandriaHRMInteger.swift
-//  AlexandriaHRM
+//  AsclepiusInteger.swift
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -18,10 +18,10 @@
 //  limitations under the License.
 
 import Foundation
-import AlexandriaHRMCore
+import AsclepiusCore
 
-/// A signed integer in the range -2,147,483,648..2,147,483,647 (32-bit; for larger values, use `AlexandriaHRMDecimal`)
-public struct AlexandriaHRMInteger: AlexandriaHRMPrimitiveType, AlexandriaHRMIntegerRepresentable {
+/// A signed integer in the range -2,147,483,648..2,147,483,647 (32-bit; for larger values, use `AsclepiusDecimal`)
+public struct AsclepiusInteger: AsclepiusPrimitiveType, AsclepiusIntegerRepresentable {
   public typealias IntegerLiteralType = Int32
   public var integer: Self.IntegerLiteralType
   
@@ -35,7 +35,7 @@ public struct AlexandriaHRMInteger: AlexandriaHRMPrimitiveType, AlexandriaHRMInt
 }
 
 // MARK: - Codable
-extension AlexandriaHRMInteger: Codable {
+extension AsclepiusInteger: Codable {
   public init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.singleValueContainer()
     self.integer = try codingKeyContainer.decode(Self.IntegerLiteralType.self)
@@ -50,7 +50,7 @@ extension AlexandriaHRMInteger: Codable {
 // MARK: - Extends Int
 
 extension Int {
-  public func asAlexandriaHRMIntegerPrimitive() -> AlexandriaHRMPrimitive<AlexandriaHRMInteger> {
-    return AlexandriaHRMPrimitive(AlexandriaHRMInteger(AlexandriaHRMInteger.IntegerLiteralType(self)))
+  public func asAsclepiusIntegerPrimitive() -> AsclepiusPrimitive<AsclepiusInteger> {
+    return AsclepiusPrimitive(AsclepiusInteger(AsclepiusInteger.IntegerLiteralType(self)))
   }
 }

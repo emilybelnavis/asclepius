@@ -1,6 +1,6 @@
 //
 //  ActivityDefinitionParticipant.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  Who should participate in the action.
@@ -26,12 +26,12 @@ import AlexandriaHRMCore
  */
 open class ActivityDefinitionParticipant: BackboneElement {
   /// The type of participant
-  public var type: AlexandriaHRMPrimitive<ActionParticipantType>
+  public var type: AsclepiusPrimitive<ActionParticipantType>
   
   /// E.g. nurse, surgeon, parent, etc...
   public var role: CodeableConcept?
   
-  public init(type: AlexandriaHRMPrimitive<ActionParticipantType>) {
+  public init(type: AsclepiusPrimitive<ActionParticipantType>) {
     self.type = type
     super.init()
   }
@@ -39,8 +39,8 @@ open class ActivityDefinitionParticipant: BackboneElement {
   public convenience init(
     fhirDescription: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    type: AlexandriaHRMPrimitive<ActionParticipantType>,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    type: AsclepiusPrimitive<ActionParticipantType>,
     role: CodeableConcept? = nil
   ) {
     self.init(type: type)
@@ -59,7 +59,7 @@ open class ActivityDefinitionParticipant: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.type = try AlexandriaHRMPrimitive<ActionParticipantType>(from: codingKeyContainer, forKey: .type, auxKey: ._type)
+    self.type = try AsclepiusPrimitive<ActionParticipantType>(from: codingKeyContainer, forKey: .type, auxKey: ._type)
     self.role = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .role)
     
     try super.init(from: decoder)

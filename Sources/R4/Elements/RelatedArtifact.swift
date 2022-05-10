@@ -1,6 +1,6 @@
 //
 //  RelatedArtifact.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,46 +17,46 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /// Related artifacts such as additional documentation, justification, or bibliograpic references
 open class RelatedArtifact: Element {
   /// the type of relationship to the related artifact
-  public var type: AlexandriaHRMPrimitive<RelatedArtifactType>
+  public var type: AsclepiusPrimitive<RelatedArtifactType>
   
   /// short label
-  public var label: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var label: AsclepiusPrimitive<AsclepiusString>?
   
   /// a brief description of the related artifact
-  public var display: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var display: AsclepiusPrimitive<AsclepiusString>?
   
   /// bibliographic citation for the artifact
-  public var citation: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var citation: AsclepiusPrimitive<AsclepiusString>?
   
   /// where the artifact can be accessed
-  public var url: AlexandriaHRMPrimitive<AlexandriaHRMURI>?
+  public var url: AsclepiusPrimitive<AsclepiusURI>?
   
   /// what document is being referenced
   public var document: Attachment?
   
   /// what resource is being referenced
-  public var resource: AlexandriaHRMPrimitive<Canonical>?
+  public var resource: AsclepiusPrimitive<Canonical>?
   
-  public init(type: AlexandriaHRMPrimitive<RelatedArtifactType>) {
+  public init(type: AsclepiusPrimitive<RelatedArtifactType>) {
     self.type = type
     super.init()
   }
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    type: AlexandriaHRMPrimitive<RelatedArtifactType>,
-    label: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    display: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    citation: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    url: AlexandriaHRMPrimitive<AlexandriaHRMURI>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    type: AsclepiusPrimitive<RelatedArtifactType>,
+    label: AsclepiusPrimitive<AsclepiusString>? = nil,
+    display: AsclepiusPrimitive<AsclepiusString>? = nil,
+    citation: AsclepiusPrimitive<AsclepiusString>? = nil,
+    url: AsclepiusPrimitive<AsclepiusURI>? = nil,
     document: Attachment? = nil,
-    resource: AlexandriaHRMPrimitive<Canonical>? = nil
+    resource: AsclepiusPrimitive<Canonical>? = nil
   ) {
     self.init(type: type)
     self.fhirExtension = fhirExtension
@@ -83,13 +83,13 @@ open class RelatedArtifact: Element {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.type = try AlexandriaHRMPrimitive<RelatedArtifactType>(from: codingKeyContainer, forKey: .type, auxKey: ._type)
-    self.label = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .label, auxKey: ._label)
-    self.display = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .display, auxKey: ._display)
-    self.citation = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .citation, auxKey: ._citation)
-    self.url = try AlexandriaHRMPrimitive<AlexandriaHRMURI>(from: codingKeyContainer, forKeyIfPresent: .url, auxKey: ._url)
+    self.type = try AsclepiusPrimitive<RelatedArtifactType>(from: codingKeyContainer, forKey: .type, auxKey: ._type)
+    self.label = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .label, auxKey: ._label)
+    self.display = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .display, auxKey: ._display)
+    self.citation = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .citation, auxKey: ._citation)
+    self.url = try AsclepiusPrimitive<AsclepiusURI>(from: codingKeyContainer, forKeyIfPresent: .url, auxKey: ._url)
     self.document = try Attachment(from: codingKeyContainer, forKeyIfPresent: .document)
-    self.resource = try AlexandriaHRMPrimitive<Canonical>(from: codingKeyContainer, forKeyIfPresent: .resource, auxKey: ._resource)
+    self.resource = try AsclepiusPrimitive<Canonical>(from: codingKeyContainer, forKeyIfPresent: .resource, auxKey: ._resource)
     
     try super.init(from: decoder)
   }

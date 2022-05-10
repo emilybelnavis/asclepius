@@ -1,6 +1,6 @@
 //
 //  ImmunizationProgramEligbility.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -25,7 +25,7 @@
  URL: http://terminology.hl7.org/CodeSystem/immunization-program-eligibility
  ValueSet: http://hl7.org/fhir/ValueSet/immunization-program-eligibility
  */
-public enum ImmunizationProgramEligibility: String, AlexandriaHRMPrimitiveType {
+public enum ImmunizationProgramEligibility: String, AsclepiusPrimitiveType {
   /// The patient is not eligible for the funding program.
   case ineligible
   

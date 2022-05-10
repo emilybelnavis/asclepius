@@ -1,6 +1,6 @@
 //
 //  ResearchStudyStatus.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/research-study-status
  ValueSet: http://hl7.org/fhir/ValueSet/research-study-status
  */
-public enum ResearchStudyStatus: String, AlexandriaHRMPrimitiveType {
+public enum ResearchStudyStatus: String, AsclepiusPrimitiveType {
   /// Study is opened for accrual.
   case active
   

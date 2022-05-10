@@ -1,6 +1,6 @@
 //
 //  DeviceDefintionUdiDeviceIdentifier.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  Unique Device Identifier (UDI) Barcode string; Unique Device Idenfifier (UDI) assigned to device label or package.
@@ -27,15 +27,15 @@ import AlexandriaHRMCore
 open class DeviceDefinitionUdiDeviceIdentfier: BackboneElement {
   /// The identifier that is to be associated with every `Device` that references this `DeviceDefinition`
   /// for the issuer and jurisdiction provided in the `DeviceDefintion.udiDeviceIdentifier`
-  public var deviceIdentifier: AlexandriaHRMPrimitive<AlexandriaHRMString>
+  public var deviceIdentifier: AsclepiusPrimitive<AsclepiusString>
   
   /// The organization that assigns the identifier algorithm
-  public var issuer: AlexandriaHRMPrimitive<AlexandriaHRMURI>
+  public var issuer: AsclepiusPrimitive<AsclepiusURI>
   
   /// The jurisdiction to which the `deviceIdentifier` applies
-  public var jurisdiction: AlexandriaHRMPrimitive<AlexandriaHRMURI>
+  public var jurisdiction: AsclepiusPrimitive<AsclepiusURI>
   
-  public init(deviceIdentifier: AlexandriaHRMPrimitive<AlexandriaHRMString>, issuer: AlexandriaHRMPrimitive<AlexandriaHRMURI>, jurisdiction: AlexandriaHRMPrimitive<AlexandriaHRMURI>) {
+  public init(deviceIdentifier: AsclepiusPrimitive<AsclepiusString>, issuer: AsclepiusPrimitive<AsclepiusURI>, jurisdiction: AsclepiusPrimitive<AsclepiusURI>) {
     self.deviceIdentifier = deviceIdentifier
     self.issuer = issuer
     self.jurisdiction = jurisdiction
@@ -45,10 +45,10 @@ open class DeviceDefinitionUdiDeviceIdentfier: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    deviceIdentifier: AlexandriaHRMPrimitive<AlexandriaHRMString>,
-    issuer: AlexandriaHRMPrimitive<AlexandriaHRMURI>,
-    jurisdiction: AlexandriaHRMPrimitive<AlexandriaHRMURI>
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    deviceIdentifier: AsclepiusPrimitive<AsclepiusString>,
+    issuer: AsclepiusPrimitive<AsclepiusURI>,
+    jurisdiction: AsclepiusPrimitive<AsclepiusURI>
   ) {
     self.init(deviceIdentifier: deviceIdentifier, issuer: issuer, jurisdiction: jurisdiction)
     self.fhirExtension = fhirExtension
@@ -66,9 +66,9 @@ open class DeviceDefinitionUdiDeviceIdentfier: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.deviceIdentifier = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .deviceIdentifier, auxKey: ._deviceIdentifier)
-    self.issuer = try AlexandriaHRMPrimitive<AlexandriaHRMURI>(from: codingKeyContainer, forKey: .issuer, auxKey: ._issuer)
-    self.jurisdiction = try AlexandriaHRMPrimitive<AlexandriaHRMURI>(from: codingKeyContainer, forKey: .jurisdiction, auxKey: ._issuer)
+    self.deviceIdentifier = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKey: .deviceIdentifier, auxKey: ._deviceIdentifier)
+    self.issuer = try AsclepiusPrimitive<AsclepiusURI>(from: codingKeyContainer, forKey: .issuer, auxKey: ._issuer)
+    self.jurisdiction = try AsclepiusPrimitive<AsclepiusURI>(from: codingKeyContainer, forKey: .jurisdiction, auxKey: ._issuer)
     
     try super.init(from: decoder)
   }

@@ -1,6 +1,6 @@
 //
 //  OrganizationType.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/organization-type
  ValueSet: http://hl7.org/fhir/ValueSet/organization-type
  */
-public enum OrganizationType: String, AlexandriaHRMPrimitiveType {
+public enum OrganizationType: String, AsclepiusPrimitiveType {
   /// An organization that provides healthcare services.
   case prov
   

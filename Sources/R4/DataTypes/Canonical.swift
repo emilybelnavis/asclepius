@@ -1,6 +1,6 @@
 //
 //  Canonical.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -18,7 +18,7 @@
 //  limitations under the License.
 
 import Foundation
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  A URI that referes to a resource by its canonical URL (resources with a url property). The canonical type
@@ -31,7 +31,7 @@ import AlexandriaHRMCore
  
  http://hl7.org/fhir/datatypes.html#canonical
  */
-public struct Canonical: AlexandriaHRMPrimitiveType {
+public struct Canonical: AsclepiusPrimitiveType {
   public var url: URL
   public var version: String?
   
@@ -118,7 +118,7 @@ extension Canonical: Equatable {
 
 // MARK: -
 extension String {
-  public func asAlexandriaHRMCanonical() -> Canonical? {
+  public func asAsclepiusCanonical() -> Canonical? {
     let (parsedURL, version) = Canonical.parseParts(from: self)
     guard let url = parsedURL else {
       return nil
@@ -126,10 +126,10 @@ extension String {
     return Canonical(url, version: version)
   }
   
-  public func asAlexandriaHRMCanonicalPrimitive() -> AlexandriaHRMPrimitive<Canonical>? {
-    guard let uri = asAlexandriaHRMCanonical() else {
+  public func asAsclepiusCanonicalPrimitive() -> AsclepiusPrimitive<Canonical>? {
+    guard let uri = asAsclepiusCanonical() else {
       return nil
     }
-    return AlexandriaHRMPrimitive(uri)
+    return AsclepiusPrimitive(uri)
   }
 }

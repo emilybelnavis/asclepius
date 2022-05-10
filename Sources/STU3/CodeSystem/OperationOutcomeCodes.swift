@@ -1,6 +1,6 @@
 //
 //  OperationOutcomeCodes.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -22,7 +22,7 @@
  
  URL: http://terminology.hl7.org/CodeSystem/operation-outcome
  */
-public enum OperationOutcomeCodes: String, AlexandriaHRMPrimitiveType {
+public enum OperationOutcomeCodes: String, AsclepiusPrimitiveType {
   /// DELETE_MULTIPLE_MATCHES
   case DELETE_MULTIPLE_MATCHES
   

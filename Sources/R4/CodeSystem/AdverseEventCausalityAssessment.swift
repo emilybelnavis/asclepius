@@ -1,6 +1,6 @@
 //
 //  AdverseEventCausalityAssessment.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/adverse-event-causality-assess
  ValueSet: http://hl7.org/fhir/ValueSet/adverse-event-causality-assess
  */
-public enum AdverseEventCausalityAssessment: String, AlexandriaHRMPrimitiveType {
+public enum AdverseEventCausalityAssessment: String, AsclepiusPrimitiveType {
 
   /// i) Event or laboratory test abnormality, with plausible time relationship to drug intake; ii) Cannot be
   /// explained by disease or other drugs; iii) Response to withdrawal plausible (pharmacologically, pathologically);

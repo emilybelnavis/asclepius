@@ -1,6 +1,6 @@
 //
 //  GuidanceResponseStatus.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/guidance-response-status
  ValueSet: http://hl7.org/fhir/ValueSet/guidance-response-status
  */
-public enum GuidanceResponseStatus: String, AlexandriaHRMPrimitiveType {
+public enum GuidanceResponseStatus: String, AsclepiusPrimitiveType {
   /// The request was processed successfully.
   case success
   

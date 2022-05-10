@@ -1,6 +1,6 @@
 //
 //  NarrativeStatus.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/narrative-status
  ValueSet: http://hl7.org/fhir/ValueSet/narrative-status
  */
-public enum NarrativeStatus: String, AlexandriaHRMPrimitiveType {
+public enum NarrativeStatus: String, AsclepiusPrimitiveType {
   /// The contents of the narrative are entirely generated from the core elements in the content.
   case generated
   

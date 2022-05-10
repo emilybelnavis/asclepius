@@ -1,6 +1,6 @@
 //
-//  AlexandriaHRMDateTests.swift
-//  AlexandriaHRM
+//  AsclepiusDateTests.swift
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,16 +17,16 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 import R4
 import XCTest
 
-class AlexandriaHRMDateTests: XCTestCase {
+class AsclepiusDateTests: XCTestCase {
   
   func testRendering() {
     let string = "2019-10-08"
-    var fhirdate = try! AlexandriaHRMDate(string)
-    let expected = AlexandriaHRMDate(year: 2019, month: 10, day: 08)
+    var fhirdate = try! AsclepiusDate(string)
+    let expected = AsclepiusDate(year: 2019, month: 10, day: 08)
     XCTAssertEqual(fhirdate, expected)
     XCTAssertEqual(fhirdate.description, string)
     
@@ -36,14 +36,14 @@ class AlexandriaHRMDateTests: XCTestCase {
   
   func testParsing() {
     let successes = [
-      ("2019", AlexandriaHRMDate(year: 2019)),
-      ("3019-12", AlexandriaHRMDate(year: 3019, month: 12)),
-      ("0019-12-29", AlexandriaHRMDate(year: 19, month: 12, day: 29))
+      ("2019", AsclepiusDate(year: 2019)),
+      ("3019-12", AsclepiusDate(year: 3019, month: 12)),
+      ("0019-12-29", AsclepiusDate(year: 19, month: 12, day: 29))
     ]
     
     for (string, expectedDate) in successes {
       do {
-        let fhirdate = try AlexandriaHRMDate(string)
+        let fhirdate = try AsclepiusDate(string)
         XCTAssertEqual(fhirdate, expectedDate)
         XCTAssertEqual(string, fhirdate.description)
       } catch {
@@ -62,13 +62,13 @@ class AlexandriaHRMDateTests: XCTestCase {
     ]
     for (string, location) in yearThrowers {
       do {
-        let fhirdate = try AlexandriaHRMDate(string)
+        let fhirdate = try AsclepiusDate(string)
         XCTFail("Should fail to parse \"\(string)\" but succeeded, parsed \(fhirdate)")
-      } catch AlexandriaHRMDateParserError.invalidYear(let position) {
-        let expectedPosition = AlexandriaHRMDateParserErrorPosition(string: string, location: location)
+      } catch AsclepiusDateParserError.invalidYear(let position) {
+        let expectedPosition = AsclepiusDateParserErrorPosition(string: string, location: location)
         XCTAssertEqual(position, expectedPosition)
       } catch {
-        XCTFail("Should throw AlexandriaHRMDateParserError.invalidYear but threw \(error)")
+        XCTFail("Should throw AsclepiusDateParserError.invalidYear but threw \(error)")
       }
     }
     
@@ -82,13 +82,13 @@ class AlexandriaHRMDateTests: XCTestCase {
     ]
     for (string, location) in monthThrowers {
       do {
-        let fhirdate = try AlexandriaHRMDate(string)
+        let fhirdate = try AsclepiusDate(string)
         XCTFail("Should fail to parse \"\(string)\" but succeeded, parsed \(fhirdate)")
-      } catch AlexandriaHRMDateParserError.invalidMonth(let position) {
-        let expectedPosition = AlexandriaHRMDateParserErrorPosition(string: string, location: location)
+      } catch AsclepiusDateParserError.invalidMonth(let position) {
+        let expectedPosition = AsclepiusDateParserErrorPosition(string: string, location: location)
         XCTAssertEqual(position, expectedPosition)
       } catch {
-        XCTFail("Should throw AlexandriaHRMDateParserError.invalidMonth but threw \(error)")
+        XCTFail("Should throw AsclepiusDateParserError.invalidMonth but threw \(error)")
       }
     }
     
@@ -101,13 +101,13 @@ class AlexandriaHRMDateTests: XCTestCase {
     ]
     for (string, location) in dayThrowers {
       do {
-        let fhirdate = try AlexandriaHRMDate(string)
+        let fhirdate = try AsclepiusDate(string)
         XCTFail("Should fail to parse \"\(string)\" but succeeded, parsed \(fhirdate)")
-      } catch AlexandriaHRMDateParserError.invalidDay(let position) {
-        let expectedPosition = AlexandriaHRMDateParserErrorPosition(string: string, location: location)
+      } catch AsclepiusDateParserError.invalidDay(let position) {
+        let expectedPosition = AsclepiusDateParserErrorPosition(string: string, location: location)
         XCTAssertEqual(position, expectedPosition)
       } catch {
-        XCTFail("Should throw AlexandriaHRMDateParserError.invalidDay but threw \(error)")
+        XCTFail("Should throw AsclepiusDateParserError.invalidDay but threw \(error)")
       }
     }
     
@@ -124,13 +124,13 @@ class AlexandriaHRMDateTests: XCTestCase {
     ]
     for (string, location) in extraThrowers {
       do {
-        let fhirdate = try AlexandriaHRMDate(string)
+        let fhirdate = try AsclepiusDate(string)
         XCTFail("Should fail to parse \"\(string)\" but succeeded, parsed \(fhirdate)")
-      } catch AlexandriaHRMDateParserError.additionalCharacters(let position) {
-        let expectedPosition = AlexandriaHRMDateParserErrorPosition(string: string, location: location)
+      } catch AsclepiusDateParserError.additionalCharacters(let position) {
+        let expectedPosition = AsclepiusDateParserErrorPosition(string: string, location: location)
         XCTAssertEqual(position, expectedPosition)
       } catch {
-        XCTFail("Should throw AlexandriaHRMDateParserError.additionalCharacters but threw \(error)")
+        XCTFail("Should throw AsclepiusDateParserError.additionalCharacters but threw \(error)")
       }
     }
   }
@@ -158,8 +158,8 @@ class AlexandriaHRMDateTests: XCTestCase {
     // MARK: - Tools
   
   private func assertLeftToRight(_ left: String, _ right: String, compares: ComparisonResult, file: StaticString = #file, line: UInt = #line) throws {
-    let leftDate = try AlexandriaHRMDate(left)
-    let rightDate = try AlexandriaHRMDate(right)
+    let leftDate = try AsclepiusDate(left)
+    let rightDate = try AsclepiusDate(right)
     if compares == .orderedDescending {
       XCTAssertTrue(leftDate > rightDate, file: file, line: line)
     } else if compares == .orderedSame {

@@ -1,6 +1,6 @@
 //
 //  AbstractType.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -24,7 +24,7 @@
  
  URL: https://hl7.org/fhir/abstract-types
  */
-public enum AbstractType: String, AlexandriaHRMPrimitiveType {
+public enum AbstractType: String, AsclepiusPrimitiveType {
   /// A placeholder that means any kind of data type
   case type = "Type"
   

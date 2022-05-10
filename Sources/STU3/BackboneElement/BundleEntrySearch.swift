@@ -1,6 +1,6 @@
 //
 //  BundleEntrySearch.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,16 +17,16 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /// Information about the search process that lead to the creation of this entry
 open class BundleEntrySearch: BackboneElement {
   /// Why yhis entry is in the result set - whether it is include as a mathc or because of an `_include`
   /// requrirement, or to convey information or warning infomation about the search process.
-  public var mode: AlexandriaHRMPrimitive<SearchEntryMode>?
+  public var mode: AsclepiusPrimitive<SearchEntryMode>?
   
   /// Search ranking (between 0 and 1
-  public var score: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>?
+  public var score: AsclepiusPrimitive<AsclepiusDecimal>?
   
   override public init() {
     super.init()
@@ -35,9 +35,9 @@ open class BundleEntrySearch: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    mode: AlexandriaHRMPrimitive<SearchEntryMode>? = nil,
-    score: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>? = nil
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    mode: AsclepiusPrimitive<SearchEntryMode>? = nil,
+    score: AsclepiusPrimitive<AsclepiusDecimal>? = nil
   ) {
     self.init()
     self.fhirExtension = fhirExtension
@@ -56,8 +56,8 @@ open class BundleEntrySearch: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.mode = try AlexandriaHRMPrimitive<SearchEntryMode>(from: codingKeyContainer, forKeyIfPresent: .mode, auxKey: ._mode)
-    self.score = try AlexandriaHRMPrimitive<AlexandriaHRMDecimal>(from: codingKeyContainer, forKeyIfPresent: .score, auxKey: ._score)
+    self.mode = try AsclepiusPrimitive<SearchEntryMode>(from: codingKeyContainer, forKeyIfPresent: .mode, auxKey: ._mode)
+    self.score = try AsclepiusPrimitive<AsclepiusDecimal>(from: codingKeyContainer, forKeyIfPresent: .score, auxKey: ._score)
     
     try super.init(from: decoder)
   }

@@ -1,6 +1,6 @@
 //
-//  AlexandriaHRMDecimal.swift
-//  AlexandriaHRM
+//  AsclepiusDecimal.swift
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -18,7 +18,7 @@
 //  limitations under the License.
 
 import Foundation
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  Rational numbers that have a decimal representation. See below about the precision of the number:
@@ -38,7 +38,7 @@ import AlexandriaHRMCore
  
  http://hl7.org/fhir/datatypes.html#decimal
  */
-public struct AlexandriaHRMDecimal: AlexandriaHRMPrimitiveType, ExpressibleByFloatLiteral {
+public struct AsclepiusDecimal: AsclepiusPrimitiveType, ExpressibleByFloatLiteral {
   public typealias FloatLiteralType = Double
   public var decimal: Decimal
   
@@ -53,7 +53,7 @@ public struct AlexandriaHRMDecimal: AlexandriaHRMPrimitiveType, ExpressibleByFlo
 }
 
 // MARK: - Codable
-extension AlexandriaHRMDecimal: Codable {
+extension AsclepiusDecimal: Codable {
   public init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.singleValueContainer()
     self.decimal = try codingKeyContainer.decode(Decimal.self)
@@ -66,15 +66,15 @@ extension AlexandriaHRMDecimal: Codable {
 }
 
 // MARK: - Equatable
-extension AlexandriaHRMDecimal: Equatable {
-  public static func == (leftSide: AlexandriaHRMDecimal, rightSide: AlexandriaHRMDecimal) -> Bool {
+extension AsclepiusDecimal: Equatable {
+  public static func == (leftSide: AsclepiusDecimal, rightSide: AsclepiusDecimal) -> Bool {
     return leftSide.decimal == rightSide.decimal
   }
 }
 
 // MARK: - Extends Double
 extension Double {
-  public func asAlexandriaHRMDecimalPrimitive() -> AlexandriaHRMPrimitive<AlexandriaHRMDecimal> {
-    return AlexandriaHRMPrimitive(AlexandriaHRMDecimal(floatLiteral: AlexandriaHRMDecimal.FloatLiteralType(self)))
+  public func asAsclepiusDecimalPrimitive() -> AsclepiusPrimitive<AsclepiusDecimal> {
+    return AsclepiusPrimitive(AsclepiusDecimal(floatLiteral: AsclepiusDecimal.FloatLiteralType(self)))
   }
 }

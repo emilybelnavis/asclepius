@@ -1,6 +1,6 @@
 //
 //  AuditEventAgent.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /// An actor taking an active role in the event or activity that is logged
 open class AuditEventAgent: BackboneElement {
@@ -31,19 +31,19 @@ open class AuditEventAgent: BackboneElement {
   public var who: Reference?
   
   /// Alternative User Identity
-  public var altId: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var altId: AsclepiusPrimitive<AsclepiusString>?
   
   /// Human friendly name for the agent
-  public var name: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var name: AsclepiusPrimitive<AsclepiusString>?
   
   /// Whether user is requestor
-  public var requestor: AlexandriaHRMPrimitive<AlexandriaHRMBool>
+  public var requestor: AsclepiusPrimitive<AsclepiusBool>
   
   /// Where
   public var location: Reference?
   
   /// Policy that authorized event
-  public var policy: [AlexandriaHRMPrimitive<AlexandriaHRMURI>]?
+  public var policy: [AsclepiusPrimitive<AsclepiusURI>]?
   
   /// Type of media
   public var media: Coding?
@@ -54,7 +54,7 @@ open class AuditEventAgent: BackboneElement {
   /// Reason given for this user
   public var purposeOfUse: [CodeableConcept]?
   
-  public init(requestor: AlexandriaHRMPrimitive<AlexandriaHRMBool>) {
+  public init(requestor: AsclepiusPrimitive<AsclepiusBool>) {
     self.requestor = requestor
     super.init()
   }
@@ -62,15 +62,15 @@ open class AuditEventAgent: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
     type: CodeableConcept? = nil,
     role: [CodeableConcept]? = nil,
     who: Reference? = nil,
-    altId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    name: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    requestor: AlexandriaHRMPrimitive<AlexandriaHRMBool>,
+    altId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    name: AsclepiusPrimitive<AsclepiusString>? = nil,
+    requestor: AsclepiusPrimitive<AsclepiusBool>,
     location: Reference? = nil,
-    policy: [AlexandriaHRMPrimitive<AlexandriaHRMURI>]? = nil,
+    policy: [AsclepiusPrimitive<AsclepiusURI>]? = nil,
     media: Coding? = nil,
     network: AuditEventAgentNetwork? = nil,
     purposeOfUse: [CodeableConcept]? = nil
@@ -111,11 +111,11 @@ open class AuditEventAgent: BackboneElement {
     
     self.type = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .type)
     self.role = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .role)
-    self.altId = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .altId, auxKey: ._altId)
-    self.name = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .name, auxKey: ._name)
-    self.requestor = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKey: .requestor, auxKey: ._requestor)
+    self.altId = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .altId, auxKey: ._altId)
+    self.name = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .name, auxKey: ._name)
+    self.requestor = try AsclepiusPrimitive<AsclepiusBool>(from: codingKeyContainer, forKey: .requestor, auxKey: ._requestor)
     self.location = try Reference(from: codingKeyContainer, forKeyIfPresent: .location)
-    self.policy = try [AlexandriaHRMPrimitive<AlexandriaHRMURI>](from: codingKeyContainer, forKeyIfPresent: .policy, auxKey: ._policy)
+    self.policy = try [AsclepiusPrimitive<AsclepiusURI>](from: codingKeyContainer, forKeyIfPresent: .policy, auxKey: ._policy)
     self.media = try Coding(from: codingKeyContainer, forKeyIfPresent: .media)
     self.network = try AuditEventAgentNetwork(from: codingKeyContainer, forKeyIfPresent: .network)
     self.purposeOfUse = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .purposeOfUse)

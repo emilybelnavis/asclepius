@@ -1,6 +1,6 @@
 //
 //  DeviceMetricCalibrationType.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/metric-calibration-type
  ValueSet: http://hl7.org/fhir/ValueSet/metric-calibration-type
  */
-public enum DeviceMetricCalibrationType: String, AlexandriaHRMPrimitiveType {
+public enum DeviceMetricCalibrationType: String, AsclepiusPrimitiveType {
   /// Metric calibration method has not been identified.
   case unspecified
   

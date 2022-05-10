@@ -1,6 +1,6 @@
 //
 //  Account.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  Tracks balances and charges for a patient or cost centre
@@ -31,18 +31,18 @@ open class Account: DomainResource {
   }
   
   public var identifier: [Identifier]?
-  public var status: AlexandriaHRMPrimitive<AccountStatus>
+  public var status: AsclepiusPrimitive<AccountStatus>
   public var type: CodeableConcept?
-  public var name: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var name: AsclepiusPrimitive<AsclepiusString>?
   public var subject: [Reference]?
   public var servicePeriod: Period?
   public var coverage: [AccountCoverage]?
   public var owner: Reference?
-  public var fhirDescription: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var fhirDescription: AsclepiusPrimitive<AsclepiusString>?
   public var guarantor: [AccountGuarantor]?
   public var partOf: Reference?
   
-  public init(status: AlexandriaHRMPrimitive<AccountStatus>) {
+  public init(status: AsclepiusPrimitive<AccountStatus>) {
     self.status = status
     super.init()
   }
@@ -50,20 +50,20 @@ open class Account: DomainResource {
   public convenience init(
     `extension`: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
     identifier: [Identifier]? = nil,
-    status: AlexandriaHRMPrimitive<AccountStatus>,
+    status: AsclepiusPrimitive<AccountStatus>,
     type: CodeableConcept? = nil,
-    name: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    name: AsclepiusPrimitive<AsclepiusString>? = nil,
     subject: [Reference]? = nil,
     servicePeriod: Period? = nil,
     coverage: [AccountCoverage]? = nil,
     owner: Reference? = nil,
-    fhirDescription: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirDescription: AsclepiusPrimitive<AsclepiusString>? = nil,
     guarantor: [AccountGuarantor]? = nil,
     partOf: Reference? = nil,
     contained: [ResourceProxy]? = nil,
-    implicitRules: AlexandriaHRMPrimitive<AlexandriaHRMURI>? = nil,
+    implicitRules: AsclepiusPrimitive<AsclepiusURI>? = nil,
     meta: Meta? = nil,
     text: Narrative? = nil
   ) {
@@ -106,14 +106,14 @@ open class Account: DomainResource {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     self.identifier = try [Identifier](from: codingKeyContainer, forKeyIfPresent: .identifier)
-    self.status = try AlexandriaHRMPrimitive<AccountStatus>(from: codingKeyContainer, forKey: .status, auxKey: ._status)
+    self.status = try AsclepiusPrimitive<AccountStatus>(from: codingKeyContainer, forKey: .status, auxKey: ._status)
     self.type = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .type)
-    self.name = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .name, auxKey: ._name)
+    self.name = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .name, auxKey: ._name)
     self.subject = try [Reference](from: codingKeyContainer, forKeyIfPresent: .subject)
     self.servicePeriod = try Period(from: codingKeyContainer, forKeyIfPresent: .servicePeriod)
     self.coverage = try [AccountCoverage](from: codingKeyContainer, forKey: .coverage)
     self.owner = try Reference(from: codingKeyContainer, forKeyIfPresent: .owner)
-    self.fhirDescription = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .fhirDescription, auxKey: ._fhirDescription)
+    self.fhirDescription = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .fhirDescription, auxKey: ._fhirDescription)
     self.guarantor = try [AccountGuarantor](from: codingKeyContainer, forKeyIfPresent: .guarantor)
     self.partOf = try Reference(from: codingKeyContainer, forKeyIfPresent: .partOf)
     

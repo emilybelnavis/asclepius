@@ -1,6 +1,6 @@
 //
 //  AppointmentParticipant.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /// List of participants involved in the appointment
 open class AppointmentParticipant: BackboneElement {
@@ -30,26 +30,26 @@ open class AppointmentParticipant: BackboneElement {
   /// Wheter this participant is required to be present at the meeting. This covers a use-case where two
   /// doctors need to meet to discuss the results for a specific patient, and the patient is not required to be
   /// present
-  public var `required`: AlexandriaHRMPrimitive<ParticipantRequired>?
+  public var `required`: AsclepiusPrimitive<ParticipantRequired>?
   
   /// Participation status of the actor
-  public var status: AlexandriaHRMPrimitive<ParticipationStatus>
+  public var status: AsclepiusPrimitive<ParticipationStatus>
   
   /// Participation period of the actor
   public var period: Period?
   
-  public init(status: AlexandriaHRMPrimitive<ParticipationStatus>) {
+  public init(status: AsclepiusPrimitive<ParticipationStatus>) {
     self.status = status
     super.init()
   }
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
     type: [CodeableConcept]? = nil,
     `actor`: Reference? = nil,
-    `required`: AlexandriaHRMPrimitive<ParticipantRequired>? = nil,
-    status: AlexandriaHRMPrimitive<ParticipationStatus>,
+    `required`: AsclepiusPrimitive<ParticipantRequired>? = nil,
+    status: AsclepiusPrimitive<ParticipationStatus>,
     period: Period? = nil
   ) {
     self.init(status: status)
@@ -75,8 +75,8 @@ open class AppointmentParticipant: BackboneElement {
     
     self.type = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .type)
     self.`actor` = try Reference(from: codingKeyContainer, forKeyIfPresent: .actor)
-    self.`required` = try AlexandriaHRMPrimitive<ParticipantRequired>(from: codingKeyContainer, forKeyIfPresent: .required, auxKey: ._required)
-    self.status = try AlexandriaHRMPrimitive<ParticipationStatus>(from: codingKeyContainer, forKey: .status, auxKey: ._status)
+    self.`required` = try AsclepiusPrimitive<ParticipantRequired>(from: codingKeyContainer, forKeyIfPresent: .required, auxKey: ._required)
+    self.status = try AsclepiusPrimitive<ParticipationStatus>(from: codingKeyContainer, forKey: .status, auxKey: ._status)
     self.period = try Period(from: codingKeyContainer, forKeyIfPresent: .period)
     
     try super.init(from: decoder)

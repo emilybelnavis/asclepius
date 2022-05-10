@@ -1,6 +1,6 @@
 //
 //  DiscriminatorType.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/discriminator-type
  ValueSet: http://hl7.org/fhir/ValueSet/discriminator-type
  */
-public enum DiscriminatorType: String, AlexandriaHRMPrimitiveType {
+public enum DiscriminatorType: String, AsclepiusPrimitiveType {
   /// The slices have different values in the nominated element.
   case value
   

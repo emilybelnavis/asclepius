@@ -1,6 +1,6 @@
 //
 //  ResearchStudyObjectiveType.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/research-study-objective-type
  ValueSet: http://hl7.org/fhir/ValueSet/research-study-objective-type
  */
-public enum ResearchStudyObjectiveType: String, AlexandriaHRMPrimitiveType {
+public enum ResearchStudyObjectiveType: String, AsclepiusPrimitiveType {
   
     /// The main question to be answered, and the one that drives any statistical planning for the study—e.g.,
     /// calculation of the sample size to provide the appropriate power for statistical testing.

@@ -1,6 +1,6 @@
 //
 //  LocationStatus.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/location-status
  ValueSet: http://hl7.org/fhir/ValueSet/location-status
  */
-public enum LocationStatus: String, AlexandriaHRMPrimitiveType {
+public enum LocationStatus: String, AsclepiusPrimitiveType {
   /// The location is operational.
   case active
   

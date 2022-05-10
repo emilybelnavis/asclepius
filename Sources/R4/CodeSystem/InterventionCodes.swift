@@ -1,6 +1,6 @@
 //
 //  InterventionCodes.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/intervention
  ValueSet: http://hl7.org/fhir/ValueSet/intervention
  */
-public enum InterventionCodes: String, AlexandriaHRMPrimitiveType {
+public enum InterventionCodes: String, AsclepiusPrimitiveType {
     /// Unknown
   case unknown
   

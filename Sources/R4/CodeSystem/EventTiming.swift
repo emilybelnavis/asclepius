@@ -1,6 +1,6 @@
 //
 //  File.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -22,7 +22,7 @@
  
  URL: http://hl7.org/fhir/event-timing
  */
-public enum EventTiming: String, AlexandriaHRMPrimitiveType {
+public enum EventTiming: String, AsclepiusPrimitiveType {
   /// Event occurs during the morning. The exact time is unspecified and established by institution convention or
   /// patient interpretation.
   case MORN

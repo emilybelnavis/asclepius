@@ -1,6 +1,6 @@
 //
 //  CopayCoverageTypeCodes.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/coverage-copay-type
  ValueSet: http://hl7.org/fhir/ValueSet/coverage-copay-type
  */
-public enum CoverageCopayTypeCodes: String, AlexandriaHRMPrimitiveType {
+public enum CoverageCopayTypeCodes: String, AsclepiusPrimitiveType {
   /// An office visit for a general practitioner of a discipline.
   case gpvisit
   

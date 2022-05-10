@@ -1,6 +1,6 @@
 //
 //  BenefitCostApplicability.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/applicability
  ValueSet: http://hl7.org/fhir/ValueSet/insuranceplan-applicability
  */
-public enum BenefitCostApplicability: String, AlexandriaHRMPrimitiveType {
+public enum BenefitCostApplicability: String, AsclepiusPrimitiveType {
   /// Provider is contracted with the health insurance company to provide services to plan members for
   /// specific pre-negotiated rates
   case inNetwork = "in-network"

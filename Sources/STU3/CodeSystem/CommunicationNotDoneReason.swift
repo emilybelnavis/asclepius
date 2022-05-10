@@ -1,6 +1,6 @@
 //
 //  CommunicationNotDoneReason.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/communication-not-done-reason
  ValueSet: http://hl7.org/fhir/ValueSet/communication-not-done-reason
  */
-public enum CommunicationNotDoneReason: String, AlexandriaHRMPrimitiveType {
+public enum CommunicationNotDoneReason: String, AsclepiusPrimitiveType {
   /// The communication was not done due to an unknown reason
   case unknown
   

@@ -1,6 +1,6 @@
 //
 //  NamingSystemType.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/namingsystem-type
  ValueSet: http://hl7.org/fhir/ValueSet/namingsystem-type
  */
-public enum NamingSystemType: String, AlexandriaHRMPrimitiveType {
+public enum NamingSystemType: String, AsclepiusPrimitiveType {
   /// The naming system is used to define concepts and symbols to represent those concepts; e.g. UCUM, LOINC, NDC
   /// code, local lab codes, etc.
   case codesystem

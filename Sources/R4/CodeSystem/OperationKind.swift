@@ -1,6 +1,6 @@
 //
 //  OperationKind.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/operation-kind
  ValueSet: http://hl7.org/fhir/ValueSet/operation-kind
  */
-public enum OperationKind: String, AlexandriaHRMPrimitiveType {
+public enum OperationKind: String, AsclepiusPrimitiveType {
   /// This operation is invoked as an operation.
   case operation
   

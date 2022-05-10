@@ -1,6 +1,6 @@
 //
 //  Resource.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  Base Resource
@@ -25,30 +25,30 @@ import AlexandriaHRMCore
  This is the base resource type for everything
  https://www.hl7.org/fhir/resource.html
  */
-open class Resource: AlexandriaHRMAbstractResource {
+open class Resource: AsclepiusAbstractResource {
   override open class var resourceType: ResourceType { return .resource }
   
   /// Logical id of this artifact
-  public var fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var fhirId: AsclepiusPrimitive<AsclepiusString>?
   
   /// Metadata about the resource
   public var meta: Meta?
   
   /// A set of rules under which this content was created
-  public var implicitRules: AlexandriaHRMPrimitive<AlexandriaHRMURI>?
+  public var implicitRules: AsclepiusPrimitive<AsclepiusURI>?
   
   /// Language of the resource content
-  public var language: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var language: AsclepiusPrimitive<AsclepiusString>?
   
   override public init() {
     super.init()
   }
   
   public convenience init(
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
     meta: Meta? = nil,
-    implicitRules: AlexandriaHRMPrimitive<AlexandriaHRMURI>? = nil,
-    language: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil
+    implicitRules: AsclepiusPrimitive<AsclepiusURI>? = nil,
+    language: AsclepiusPrimitive<AsclepiusString>? = nil
   ) {
     self.init()
     self.fhirId = fhirId
@@ -68,10 +68,10 @@ open class Resource: AlexandriaHRMAbstractResource {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.fhirId = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .fhirId, auxKey: ._fhirId)
+    self.fhirId = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .fhirId, auxKey: ._fhirId)
     self.meta = try Meta(from: codingKeyContainer, forKeyIfPresent: .meta)
-    self.implicitRules = try AlexandriaHRMPrimitive<AlexandriaHRMURI>(from: codingKeyContainer, forKeyIfPresent: .implicitRules, auxKey: ._implicitRules)
-    self.language = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .language, auxKey: ._language)
+    self.implicitRules = try AsclepiusPrimitive<AsclepiusURI>(from: codingKeyContainer, forKeyIfPresent: .implicitRules, auxKey: ._implicitRules)
+    self.language = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .language, auxKey: ._language)
     
     try super.init(from: decoder)
   }

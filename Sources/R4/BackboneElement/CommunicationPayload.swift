@@ -1,6 +1,6 @@
 //
 //  CommunicationPayload.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  Message payload - Text, attachment(s), or resource(s) that were communicated to the recipient
@@ -27,7 +27,7 @@ open class CommunicationPayload: BackboneElement {
   public enum ContentX: Hashable {
     case attachment(Attachment)
     case reference(Reference)
-    case string(AlexandriaHRMPrimitive<AlexandriaHRMString>)
+    case string(AsclepiusPrimitive<AsclepiusString>)
   }
   
   /// message part content
@@ -41,7 +41,7 @@ open class CommunicationPayload: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
     content: ContentX
   ) {
     self.init(content: content)
@@ -75,7 +75,7 @@ open class CommunicationPayload: BackboneElement {
       tempContent = .reference(contentReference)
     }
     
-    if let contentString = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .contentString, auxKey: ._contentString) {
+    if let contentString = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .contentString, auxKey: ._contentString) {
       if tempContent != nil {
         throw DecodingError.dataCorruptedError(forKey: .contentString, in: codingKeyContainer, debugDescription: "More than one value provided for \"content\"")
       }

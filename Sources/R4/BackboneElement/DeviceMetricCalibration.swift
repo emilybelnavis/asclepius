@@ -1,6 +1,6 @@
 //
 //  DeviceMetricCalibration.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,20 +17,20 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  Describes the calibrations that have been performed or that are required to be performed.
  */
 open class DeviceMetricCalibration: BackboneElement {
   /// Describes the type of the calibrationm ethod
-  public var type: AlexandriaHRMPrimitive<DeviceMetricCalibrationType>?
+  public var type: AsclepiusPrimitive<DeviceMetricCalibrationType>?
   
   /// Describes the state of the calibration
-  public var state: AlexandriaHRMPrimitive<DeviceMetricCalibrationState>?
+  public var state: AsclepiusPrimitive<DeviceMetricCalibrationState>?
   
   /// Describes the time last calibration has been performed
-  public var time: AlexandriaHRMPrimitive<AlexandriaHRMInstant>?
+  public var time: AsclepiusPrimitive<AsclepiusInstant>?
   
   override public init() {
     super.init()
@@ -39,10 +39,10 @@ open class DeviceMetricCalibration: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    type: AlexandriaHRMPrimitive<DeviceMetricCalibrationType>? = nil,
-    state: AlexandriaHRMPrimitive<DeviceMetricCalibrationState>? = nil,
-    time: AlexandriaHRMPrimitive<AlexandriaHRMInstant>? = nil
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    type: AsclepiusPrimitive<DeviceMetricCalibrationType>? = nil,
+    state: AsclepiusPrimitive<DeviceMetricCalibrationState>? = nil,
+    time: AsclepiusPrimitive<AsclepiusInstant>? = nil
   ) {
     self.init()
     self.fhirExtension = fhirExtension
@@ -63,9 +63,9 @@ open class DeviceMetricCalibration: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.type = try AlexandriaHRMPrimitive<DeviceMetricCalibrationType>(from: codingKeyContainer, forKeyIfPresent: .type, auxKey: ._type)
-    self.state = try AlexandriaHRMPrimitive<DeviceMetricCalibrationState>(from: codingKeyContainer, forKeyIfPresent: .state, auxKey: ._state)
-    self.time = try AlexandriaHRMPrimitive<AlexandriaHRMInstant>(from: codingKeyContainer, forKeyIfPresent: .time, auxKey: ._time)
+    self.type = try AsclepiusPrimitive<DeviceMetricCalibrationType>(from: codingKeyContainer, forKeyIfPresent: .type, auxKey: ._type)
+    self.state = try AsclepiusPrimitive<DeviceMetricCalibrationState>(from: codingKeyContainer, forKeyIfPresent: .state, auxKey: ._state)
+    self.time = try AsclepiusPrimitive<AsclepiusInstant>(from: codingKeyContainer, forKeyIfPresent: .time, auxKey: ._time)
     
     try super.init(from: decoder)
   }

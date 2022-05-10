@@ -1,6 +1,6 @@
 //
 //  AdverseEventSuspectEntityCausality.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /// Information on the possible cause of the adverse event
 open class AdverseEventSuspectEntityCausality: BackboneElement {
@@ -25,7 +25,7 @@ open class AdverseEventSuspectEntityCausality: BackboneElement {
   public var assessment: CodeableConcept?
   
   /// AdverseEvent.suspectEntity.causalityProductRelatedness
-  public var productRelatedness: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var productRelatedness: AsclepiusPrimitive<AsclepiusString>?
   
   /// AdverseEvent.suspectEntity.causalityAuthor
   public var author: Reference?
@@ -39,9 +39,9 @@ open class AdverseEventSuspectEntityCausality: BackboneElement {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
     assessment: CodeableConcept? = nil,
-    productRelatedness: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    productRelatedness: AsclepiusPrimitive<AsclepiusString>? = nil,
     author: Reference? = nil,
     method: CodeableConcept? = nil
   ) {
@@ -66,7 +66,7 @@ open class AdverseEventSuspectEntityCausality: BackboneElement {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     self.assessment = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .assessment)
-    self.productRelatedness = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .productRelatedness, auxKey: ._productRelatedness)
+    self.productRelatedness = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .productRelatedness, auxKey: ._productRelatedness)
     self.author = try Reference(from: codingKeyContainer, forKeyIfPresent: .author)
     self.method = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .method)
     

@@ -1,6 +1,6 @@
 //
 //  AppointmentStatus.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/appointmentstatus
  ValueSet: http://hl7.org/fhir/ValueSet/appointmentstatus
  */
-public enum AppointmentStatus: String, AlexandriaHRMPrimitiveType {
+public enum AppointmentStatus: String, AsclepiusPrimitiveType {
   /// None of the participant(s) have finalized their acceptance of the appointment request, and the start/end
   /// time might not be set yet.
   case proposed

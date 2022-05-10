@@ -1,6 +1,6 @@
 //
 //  ClaimResponseItemAdjudication.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  Adjudication Details; If this item is a group then values here are a summary of the adjudication of the detail
@@ -34,7 +34,7 @@ open class ClaimResponseItemAdjudication: BackboneElement {
   public var amount: Money?
   
   /// Non-monetary value
-  public var value: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>?
+  public var value: AsclepiusPrimitive<AsclepiusDecimal>?
   
   public init(category: CodeableConcept) {
     self.category = category
@@ -44,11 +44,11 @@ open class ClaimResponseItemAdjudication: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
     category: CodeableConcept,
     reason: CodeableConcept? = nil,
     amount: Money? = nil,
-    value: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>? = nil
+    value: AsclepiusPrimitive<AsclepiusDecimal>? = nil
   ) {
     self.init(category: category)
     self.fhirExtension = fhirExtension
@@ -74,7 +74,7 @@ open class ClaimResponseItemAdjudication: BackboneElement {
     self.category = try CodeableConcept(from: codingKeyContainer, forKey: .category)
     self.reason = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .reason)
     self.amount = try Money(from: codingKeyContainer, forKeyIfPresent: .amount)
-    self.value = try AlexandriaHRMPrimitive<AlexandriaHRMDecimal>(from: codingKeyContainer, forKeyIfPresent: .value, auxKey: ._value)
+    self.value = try AsclepiusPrimitive<AsclepiusDecimal>(from: codingKeyContainer, forKeyIfPresent: .value, auxKey: ._value)
     
     try super.init(from: decoder)
   }

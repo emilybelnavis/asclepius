@@ -1,6 +1,6 @@
 //
 //  ContractResourceDefinitionSubtypeCodes.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/contract-definition-subtype
  ValueSet: http://hl7.org/fhir/ValueSet/contract-definition-subtype
  */
-public enum ContractResourceDefinitionSubtypeCodes: String, AlexandriaHRMPrimitiveType {
+public enum ContractResourceDefinitionSubtypeCodes: String, AsclepiusPrimitiveType {
   /// To be completed
   case temp
 }

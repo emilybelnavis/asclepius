@@ -1,6 +1,6 @@
 //
 //  OperationParameterUse.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/operation-parameter-use
  ValueSet: http://hl7.org/fhir/ValueSet/operation-parameter-use
  */
-public enum OperationParameterUse: String, AlexandriaHRMPrimitiveType {
+public enum OperationParameterUse: String, AsclepiusPrimitiveType {
   /// This is an input parameter.
   case `in`
   

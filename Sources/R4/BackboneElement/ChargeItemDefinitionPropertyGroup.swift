@@ -1,6 +1,6 @@
 //
 //  ChargeItemDefinitionPropertyGroup.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  Group of properties which are applicable under the same conditions. If no applicability rules are established
@@ -37,7 +37,7 @@ open class ChargeItemDefinitionPropertyGroup: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
     applicability: [ChargeItemDefinitionApplicability]? = nil,
     priceComponent: [ChargeItemDefinitionPropertyGroupPriceComponent]? = nil
   ) {

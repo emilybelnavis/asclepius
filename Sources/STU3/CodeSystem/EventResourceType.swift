@@ -1,6 +1,6 @@
 //
 //  EventResourceType.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/event-resource-types
  ValueSet: http://hl7.org/fhir/ValueSet/event-resource-types
  */
-public enum EventResourceType: String, AlexandriaHRMPrimitiveType {
+public enum EventResourceType: String, AsclepiusPrimitiveType {
   /// Item containing charge code(s) associated with the provision of healthcare provider products.
   case chargeItem = "ChargeItem"
   

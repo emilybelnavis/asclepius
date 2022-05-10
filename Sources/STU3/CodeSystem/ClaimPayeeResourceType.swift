@@ -1,6 +1,6 @@
 //
 //  ClaimPayeeResourceType.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/ex-payee-resource-type
  ValueSet: http://hl7.org/fhir/ValueSet/ex-payee-resource-type
  */
-public enum ClaimPayeeResourceType: String, AlexandriaHRMPrimitiveType {
+public enum ClaimPayeeResourceType: String, AsclepiusPrimitiveType {
   /// Organization resource
   case organization
   

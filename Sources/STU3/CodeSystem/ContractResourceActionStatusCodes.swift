@@ -1,6 +1,6 @@
 //
 //  ContractResourceActionStatusCodes.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/contract-action-status
  ValueSet: http://hl7.org/fhir/ValueSet/contract-actionstatus
  */
-public enum ContractResourceActionStatusCodes: String, AlexandriaHRMPrimitiveType {
+public enum ContractResourceActionStatusCodes: String, AsclepiusPrimitiveType {
   /// todo: needs to be implemented
   case complete
 }

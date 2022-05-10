@@ -1,6 +1,6 @@
 //
 //  TaskStatus.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/task-status
  ValueSet: http://hl7.org/fhir/ValueSet/task-status
  */
-public enum TaskStatus: String, AlexandriaHRMPrimitiveType {
+public enum TaskStatus: String, AsclepiusPrimitiveType {
   /// The task is not yet ready to be acted upon.
   case draft
   

@@ -1,6 +1,6 @@
 //
 //  DocumentReferenceStatus.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/document-reference-status
  ValueSet: http://hl7.org/fhir/ValueSet/document-reference-status
  */
-public enum DocumentReferenceStatus: String, AlexandriaHRMPrimitiveType {
+public enum DocumentReferenceStatus: String, AsclepiusPrimitiveType {
   /// This is the current reference for this document.
   case current
   

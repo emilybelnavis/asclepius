@@ -1,6 +1,6 @@
 //
 //  Indicator.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://cds-hooks.hl7.org/CodeSystem/indicator
  ValueSet: http://hl7.org/fhir/ValueSet/cdshooks-indicator
  */
-public enum Indicator: String, AlexandriaHRMPrimitiveType {
+public enum Indicator: String, AsclepiusPrimitiveType {
   /// info
   case info
   
