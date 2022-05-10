@@ -1,6 +1,6 @@
 //
 //  MedicationStatementStatusCodes.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/CodeSystem/medication-statement-status
  ValueSet: http://hl7.org/fhir/ValueSet/medication-statement-status
  */
-public enum MedicationStatementStatusCodes: String, AlexandriaHRMPrimitiveType {
+public enum MedicationStatementStatusCodes: String, AsclepiusPrimitiveType {
   /// The medication is still being taken.
   case active
 

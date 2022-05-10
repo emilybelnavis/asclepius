@@ -1,6 +1,6 @@
 //
 //  MedicationRequestCategoryCodes.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/medicationrequest-category
  ValueSet: http://hl7.org/fhir/ValueSet/medicationrequest-category
  */
-public enum MedicationRequestCategoryCodes: String, AlexandriaHRMPrimitiveType {
+public enum MedicationRequestCategoryCodes: String, AsclepiusPrimitiveType {
   
   /// Includes requests for medications to be administered or consumed in an inpatient or acute care setting
   case inpatient

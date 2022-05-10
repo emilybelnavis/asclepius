@@ -1,6 +1,6 @@
 //
 //  MedicationKnowledgePackageTypeCodes.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/medicationknowledge-package-type
  ValueSet: http://hl7.org/fhir/ValueSet/medicationknowledge-package-type
  */
-public enum MedicationKnowledgePackageTypeCodes: String, AlexandriaHRMPrimitiveType {
+public enum MedicationKnowledgePackageTypeCodes: String, AsclepiusPrimitiveType {
   /// amp
   case amp
   

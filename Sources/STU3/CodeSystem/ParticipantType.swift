@@ -1,6 +1,6 @@
 //
 //  ParticipantType.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -22,7 +22,7 @@
  
  URL: http://terminology.hl7.org/CodeSystem/participant-type
  */
-public enum ParticipantType: String, AlexandriaHRMPrimitiveType {
+public enum ParticipantType: String, AsclepiusPrimitiveType {
   
     /// A translator who is facilitating communication with the patient during the encounter.
   case translator

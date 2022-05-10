@@ -1,6 +1,6 @@
 //
 //  DataRequirementCodeFilter.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  What codes are expected.
@@ -28,13 +28,13 @@ import AlexandriaHRMCore
  */
 open class DataRequirementCodeFilter: Element {
   /// A code-valued attribute to filter on
-  public var path: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var path: AsclepiusPrimitive<AsclepiusString>?
   
   /// A coded parameter to search on
-  public var searchParam: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var searchParam: AsclepiusPrimitive<AsclepiusString>?
   
   /// Valueset for the filter
-  public var valueSet: AlexandriaHRMPrimitive<Canonical>?
+  public var valueSet: AsclepiusPrimitive<Canonical>?
   
   /// What code is expected
   public var code: [Coding]?
@@ -45,10 +45,10 @@ open class DataRequirementCodeFilter: Element {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    path: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    searchParam: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    valueSet: AlexandriaHRMPrimitive<Canonical>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    path: AsclepiusPrimitive<AsclepiusString>? = nil,
+    searchParam: AsclepiusPrimitive<AsclepiusString>? = nil,
+    valueSet: AsclepiusPrimitive<Canonical>? = nil,
     code: [Coding]? = nil
   ) {
     self.init()
@@ -71,9 +71,9 @@ open class DataRequirementCodeFilter: Element {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.path = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .path, auxKey: ._path)
-    self.searchParam = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .searchParam, auxKey: ._searchParam)
-    self.valueSet = try AlexandriaHRMPrimitive<Canonical>(from: codingKeyContainer, forKeyIfPresent: .valueSet, auxKey: .valueSet)
+    self.path = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .path, auxKey: ._path)
+    self.searchParam = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .searchParam, auxKey: ._searchParam)
+    self.valueSet = try AsclepiusPrimitive<Canonical>(from: codingKeyContainer, forKeyIfPresent: .valueSet, auxKey: .valueSet)
     self.code = try [Coding](from: codingKeyContainer, forKeyIfPresent: .code)
     
     try super.init(from: decoder)

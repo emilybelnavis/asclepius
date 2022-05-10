@@ -1,6 +1,6 @@
 //
 //  DataRequirementDateFilter.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  What dates/date ranges are expected.
@@ -28,16 +28,16 @@ import AlexandriaHRMCore
 open class DataRequirementDateFilter: Element {
   /// all possible types for `Value`
   public enum ValueX: Hashable {
-    case dateTime(AlexandriaHRMPrimitive<AlexandriaHRMDateTime>)
+    case dateTime(AsclepiusPrimitive<AsclepiusDateTime>)
     case duration(Duration)
     case period(Period)
   }
   
   /// a date-valued attribute to filter on
-  public var path: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var path: AsclepiusPrimitive<AsclepiusString>?
   
   /// a date valued parameter to search on
-  public var searchParam: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var searchParam: AsclepiusPrimitive<AsclepiusString>?
   
   /// the value of the filter as a period, datetime, or duration value
   public var value: ValueX?
@@ -48,9 +48,9 @@ open class DataRequirementDateFilter: Element {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    path: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    searchParam: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    path: AsclepiusPrimitive<AsclepiusString>? = nil,
+    searchParam: AsclepiusPrimitive<AsclepiusString>? = nil,
     value: ValueX? = nil
   ) {
     self.init()
@@ -74,7 +74,7 @@ open class DataRequirementDateFilter: Element {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     var tempValue: ValueX?
-    if let valueDateTime = try AlexandriaHRMPrimitive<AlexandriaHRMDateTime>(from: codingKeyContainer, forKeyIfPresent: .valueDateTime, auxKey: ._valueDateTime) {
+    if let valueDateTime = try AsclepiusPrimitive<AsclepiusDateTime>(from: codingKeyContainer, forKeyIfPresent: .valueDateTime, auxKey: ._valueDateTime) {
       if tempValue != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueDateTime, in: codingKeyContainer, debugDescription: "More than one value provided for \"value\"")
       }
@@ -95,8 +95,8 @@ open class DataRequirementDateFilter: Element {
       tempValue = .duration(valueDuration)
     }
     
-    self.path = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .path, auxKey: ._path)
-    self.searchParam = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .searchParam, auxKey: ._searchParam)
+    self.path = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .path, auxKey: ._path)
+    self.searchParam = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .searchParam, auxKey: ._searchParam)
     self.value = tempValue
     
     try super.init(from: decoder)

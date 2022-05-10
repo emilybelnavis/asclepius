@@ -1,6 +1,6 @@
 //
 //  ConditionVerificationStatus.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/condition-ver-status
  ValueSet: http://hl7.org/fhir/ValueSet/condition-ver-status
  */
-public enum ConditionVerificationStatus: String, AlexandriaHRMPrimitiveType {
+public enum ConditionVerificationStatus: String, AsclepiusPrimitiveType {
   /// There is not sufficient diagnostic and/or clinical evidence to treat this as a confirmed condition
   case unconfirmed
   

@@ -1,6 +1,6 @@
 //
 //  DocumentReferenceContext.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  The clinical context in which the document was prepared
@@ -51,7 +51,7 @@ open class DocumentReferenceContext: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
     encounter: [Reference]? = nil,
     event: [CodeableConcept]? = nil,
     period: Period? = nil,

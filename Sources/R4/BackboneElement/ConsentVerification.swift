@@ -1,6 +1,6 @@
 //
 //  ConsentVerification.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,22 +17,22 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  Whether a treatment instruction was verified with the patient, their family, or another authorized person
  */
 open class ConsentVerification: BackboneElement {
   /// Has been verified
-  public var verified: AlexandriaHRMPrimitive<AlexandriaHRMBool>
+  public var verified: AsclepiusPrimitive<AsclepiusBool>
   
   /// Person who verified
   public var verifiedWith: Reference?
   
   /// When consent verified
-  public var verificationDate: AlexandriaHRMPrimitive<AlexandriaHRMDateTime>?
+  public var verificationDate: AsclepiusPrimitive<AsclepiusDateTime>?
   
-  public init(verified: AlexandriaHRMPrimitive<AlexandriaHRMBool>) {
+  public init(verified: AsclepiusPrimitive<AsclepiusBool>) {
     self.verified = verified
     super.init()
   }
@@ -40,10 +40,10 @@ open class ConsentVerification: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    verified: AlexandriaHRMPrimitive<AlexandriaHRMBool>,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    verified: AsclepiusPrimitive<AsclepiusBool>,
     verifiedWith: Reference? = nil,
-    verificationDate: AlexandriaHRMPrimitive<AlexandriaHRMDateTime>? = nil
+    verificationDate: AsclepiusPrimitive<AsclepiusDateTime>? = nil
   ) {
     self.init(verified: verified)
     self.fhirExtension = fhirExtension
@@ -63,9 +63,9 @@ open class ConsentVerification: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.verified = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKey: .verified, auxKey: ._verified)
+    self.verified = try AsclepiusPrimitive<AsclepiusBool>(from: codingKeyContainer, forKey: .verified, auxKey: ._verified)
     self.verifiedWith = try Reference(from: codingKeyContainer, forKeyIfPresent: .verifiedWith)
-    self.verificationDate = try AlexandriaHRMPrimitive<AlexandriaHRMDateTime>(from: codingKeyContainer, forKey: .verificationDate, auxKey: ._verificationDate)
+    self.verificationDate = try AsclepiusPrimitive<AsclepiusDateTime>(from: codingKeyContainer, forKey: .verificationDate, auxKey: ._verificationDate)
     
     try super.init(from: decoder)
   }

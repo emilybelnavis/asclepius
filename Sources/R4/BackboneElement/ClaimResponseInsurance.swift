@@ -1,6 +1,6 @@
 //
 //  ClaimResponseInsurance.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  Patient insurance information - Financial instruments for the reimbursement for the healthcare products
@@ -25,21 +25,21 @@ import AlexandriaHRMCore
  */
 open class ClaimResponseInsurance: BackboneElement {
   /// Insurance instance identifier
-  public var sequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>
+  public var sequence: AsclepiusPrimitive<AsclepiusPositiveInteger>
   
   /// Coverage to be used for adjudication
-  public var focal: AlexandriaHRMPrimitive<AlexandriaHRMBool>
+  public var focal: AsclepiusPrimitive<AsclepiusBool>
   
   /// Insurance information
   public var coverage: Reference
   
   /// Additional provider contract number
-  public var businessArrangement: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var businessArrangement: AsclepiusPrimitive<AsclepiusString>?
   
   /// Adjudication results
   public var claimResponse: Reference?
   
-  public init(sequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>, focal: AlexandriaHRMPrimitive<AlexandriaHRMBool>, coverage: Reference) {
+  public init(sequence: AsclepiusPrimitive<AsclepiusPositiveInteger>, focal: AsclepiusPrimitive<AsclepiusBool>, coverage: Reference) {
     self.sequence = sequence
     self.focal = focal
     self.coverage = coverage
@@ -49,11 +49,11 @@ open class ClaimResponseInsurance: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    sequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>,
-    focal: AlexandriaHRMPrimitive<AlexandriaHRMBool>,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    sequence: AsclepiusPrimitive<AsclepiusPositiveInteger>,
+    focal: AsclepiusPrimitive<AsclepiusBool>,
     coverage: Reference,
-    businessArrangement: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    businessArrangement: AsclepiusPrimitive<AsclepiusString>? = nil,
     claimResponse: Reference? = nil
   ) {
     self.init(sequence: sequence, focal: focal, coverage: coverage)
@@ -76,10 +76,10 @@ open class ClaimResponseInsurance: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.sequence = try AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>(from: codingKeyContainer, forKey: .sequence, auxKey: ._sequence)
-    self.focal = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKey: .focal, auxKey: ._focal)
+    self.sequence = try AsclepiusPrimitive<AsclepiusPositiveInteger>(from: codingKeyContainer, forKey: .sequence, auxKey: ._sequence)
+    self.focal = try AsclepiusPrimitive<AsclepiusBool>(from: codingKeyContainer, forKey: .focal, auxKey: ._focal)
     self.coverage = try Reference(from: codingKeyContainer, forKey: .coverage)
-    self.businessArrangement = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .businessArrangement, auxKey: ._businessArrangement)
+    self.businessArrangement = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKey: .businessArrangement, auxKey: ._businessArrangement)
     self.claimResponse = try Reference(from: codingKeyContainer, forKeyIfPresent: .claimResponse)
     
     try super.init(from: decoder)

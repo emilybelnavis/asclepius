@@ -1,6 +1,6 @@
 //
 //  LocationMode.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/location-mode
  ValueSet: http://hl7.org/fhir/ValueSet/location-mode
  */
-public enum LocationMode: String, AlexandriaHRMPrimitiveType {
+public enum LocationMode: String, AsclepiusPrimitiveType {
   /// The Location resource represents a specific instance of a location (e.g. Operating Theatre 1A).
   case instance
   

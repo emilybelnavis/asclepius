@@ -1,6 +1,6 @@
 //
 //  ConditionalDeleteStatus.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/conditional-delete-status
  ValueSet: http://hl7.org/fhir/ValueSet/conditional-delete-status
  */
-public enum ConditionalDeleteStatus: String, AlexandriaHRMPrimitiveType {
+public enum ConditionalDeleteStatus: String, AsclepiusPrimitiveType {
   /// No support for conditional deletes
   case notSupported = "not-supported"
   

@@ -1,6 +1,6 @@
 //
 //  CapabilityStatementSoftware.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  Software that is covered by this capability statement. It is used when the capability statement describes the
@@ -25,15 +25,15 @@ import AlexandriaHRMCore
  */
 open class CapabilityStatementSoftware: BackboneElement {
   /// A name the software is known by
-  public var name: AlexandriaHRMPrimitive<AlexandriaHRMString>
+  public var name: AsclepiusPrimitive<AsclepiusString>
   
   /// Version covered by this statement
-  public var version: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var version: AsclepiusPrimitive<AsclepiusString>?
   
   /// Date this version was released
-  public var releaseDate: AlexandriaHRMPrimitive<AlexandriaHRMDateTime>?
+  public var releaseDate: AsclepiusPrimitive<AsclepiusDateTime>?
   
-  public init(name: AlexandriaHRMPrimitive<AlexandriaHRMString>) {
+  public init(name: AsclepiusPrimitive<AsclepiusString>) {
     self.name = name
     super.init()
   }
@@ -41,9 +41,9 @@ open class CapabilityStatementSoftware: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    name: AlexandriaHRMPrimitive<AlexandriaHRMString>,
-    version: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    releaseDate: AlexandriaHRMPrimitive<AlexandriaHRMDateTime>? = nil
+    name: AsclepiusPrimitive<AsclepiusString>,
+    version: AsclepiusPrimitive<AsclepiusString>? = nil,
+    releaseDate: AsclepiusPrimitive<AsclepiusDateTime>? = nil
   ) {
     self.init(name: name)
     self.fhirExtension = fhirExtension
@@ -63,9 +63,9 @@ open class CapabilityStatementSoftware: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.name = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .name, auxKey: ._name)
-    self.version = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .version, auxKey: ._version)
-    self.releaseDate = try AlexandriaHRMPrimitive<AlexandriaHRMDateTime>(from: codingKeyContainer, forKeyIfPresent: .releaseDate, auxKey: ._releaseDate)
+    self.name = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKey: .name, auxKey: ._name)
+    self.version = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .version, auxKey: ._version)
+    self.releaseDate = try AsclepiusPrimitive<AsclepiusDateTime>(from: codingKeyContainer, forKeyIfPresent: .releaseDate, auxKey: ._releaseDate)
     
     try super.init(from: decoder)
   }

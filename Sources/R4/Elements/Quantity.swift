@@ -1,6 +1,6 @@
 //
 //  Quantity.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  A measured or measurable amount
@@ -27,21 +27,21 @@ import AlexandriaHRMCore
  */
 open class Quantity: Element {
   /// Numerical value (with implicit precision)
-  public var value: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>?
+  public var value: AsclepiusPrimitive<AsclepiusDecimal>?
   
   /// How the value should be understood and represented - whether the actual value is greater/less than
   /// the stated value due to measurement issues; e.g. if the comparator is `<` , the the real value is `<`
   /// stated value
-  public var comparator: AlexandriaHRMPrimitive<QuantityComparator>?
+  public var comparator: AsclepiusPrimitive<QuantityComparator>?
   
   /// Unit representation
-  public var unit: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var unit: AsclepiusPrimitive<AsclepiusString>?
   
   /// System that defines coded unit form
-  public var system: AlexandriaHRMPrimitive<AlexandriaHRMURI>?
+  public var system: AsclepiusPrimitive<AsclepiusURI>?
   
   /// Coded form of the unit
-  public var code: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var code: AsclepiusPrimitive<AsclepiusString>?
   
   override public init() {
     super.init()
@@ -49,12 +49,12 @@ open class Quantity: Element {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    value: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>? = nil,
-    comparator: AlexandriaHRMPrimitive<QuantityComparator>? = nil,
-    unit: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    system: AlexandriaHRMPrimitive<AlexandriaHRMURI>? = nil,
-    code: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    value: AsclepiusPrimitive<AsclepiusDecimal>? = nil,
+    comparator: AsclepiusPrimitive<QuantityComparator>? = nil,
+    unit: AsclepiusPrimitive<AsclepiusString>? = nil,
+    system: AsclepiusPrimitive<AsclepiusURI>? = nil,
+    code: AsclepiusPrimitive<AsclepiusString>? = nil
   ) {
     self.init()
     self.fhirExtension = fhirExtension
@@ -78,11 +78,11 @@ open class Quantity: Element {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.value = try AlexandriaHRMPrimitive<AlexandriaHRMDecimal>(from: codingKeyContainer, forKeyIfPresent: .value, auxKey: ._value)
-    self.comparator = try AlexandriaHRMPrimitive<QuantityComparator>(from: codingKeyContainer, forKeyIfPresent: .comparator, auxKey: ._comparator)
-    self.unit = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .unit, auxKey: ._unit)
-    self.system = try AlexandriaHRMPrimitive<AlexandriaHRMURI>(from: codingKeyContainer, forKeyIfPresent: .system, auxKey: ._system)
-    self.code = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .code, auxKey: ._code)
+    self.value = try AsclepiusPrimitive<AsclepiusDecimal>(from: codingKeyContainer, forKeyIfPresent: .value, auxKey: ._value)
+    self.comparator = try AsclepiusPrimitive<QuantityComparator>(from: codingKeyContainer, forKeyIfPresent: .comparator, auxKey: ._comparator)
+    self.unit = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .unit, auxKey: ._unit)
+    self.system = try AsclepiusPrimitive<AsclepiusURI>(from: codingKeyContainer, forKeyIfPresent: .system, auxKey: ._system)
+    self.code = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .code, auxKey: ._code)
     
     try super.init(from: decoder)
   }

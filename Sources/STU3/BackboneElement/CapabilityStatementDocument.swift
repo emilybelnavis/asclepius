@@ -1,6 +1,6 @@
 //
 //  CapabilityStatementDocument.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,20 +17,20 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /// A document definition
 open class CapabilityStatementDocument: BackboneElement {
   /// Mode of this document declaration - whether application is a producer or consumer
-  public var mode: AlexandriaHRMPrimitive<DocumentMode>
+  public var mode: AsclepiusPrimitive<DocumentMode>
   
   /// Description of document support
-  public var documentation: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var documentation: AsclepiusPrimitive<AsclepiusString>?
   
   /// Constraint on the resources used in the document
-  public var profile: AlexandriaHRMPrimitive<Canonical>
+  public var profile: AsclepiusPrimitive<Canonical>
   
-  public init(mode: AlexandriaHRMPrimitive<DocumentMode>, profile: AlexandriaHRMPrimitive<Canonical>) {
+  public init(mode: AsclepiusPrimitive<DocumentMode>, profile: AsclepiusPrimitive<Canonical>) {
     self.mode = mode
     self.profile = profile
     super.init()
@@ -39,10 +39,10 @@ open class CapabilityStatementDocument: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    mode: AlexandriaHRMPrimitive<DocumentMode>,
-    documentation: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    profile: AlexandriaHRMPrimitive<Canonical>
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    mode: AsclepiusPrimitive<DocumentMode>,
+    documentation: AsclepiusPrimitive<AsclepiusString>? = nil,
+    profile: AsclepiusPrimitive<Canonical>
   ) {
     self.init(mode: mode, profile: profile)
     self.fhirExtension = fhirExtension
@@ -61,9 +61,9 @@ open class CapabilityStatementDocument: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.mode = try AlexandriaHRMPrimitive<DocumentMode>(from: codingKeyContainer, forKey: .mode, auxKey: ._mode)
-    self.documentation = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .documentation, auxKey: ._documentation)
-    self.profile = try AlexandriaHRMPrimitive<Canonical>(from: codingKeyContainer, forKey: .profile, auxKey: ._profile)
+    self.mode = try AsclepiusPrimitive<DocumentMode>(from: codingKeyContainer, forKey: .mode, auxKey: ._mode)
+    self.documentation = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .documentation, auxKey: ._documentation)
+    self.profile = try AsclepiusPrimitive<Canonical>(from: codingKeyContainer, forKey: .profile, auxKey: ._profile)
     
     try super.init(from: decoder)
   }

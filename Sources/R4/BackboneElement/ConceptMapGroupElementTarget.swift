@@ -1,6 +1,6 @@
 //
 //  ConceptMapGroupElementTarget.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,22 +17,22 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /// A concept from the target value set that this concept maps to
 open class ConceptMapGroupElementTarget: BackboneElement {
   /// Code that identifies the target element
-  public var code: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var code: AsclepiusPrimitive<AsclepiusString>?
   
   /// Display for the code
-  public var display: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var display: AsclepiusPrimitive<AsclepiusString>?
   
   /// The equivalence between the source and target concepts (counting for the dependencies and products).
   /// The equivalence is read from target to source (e.g. the target is "wider" than the "source".)
-  public var equivalence: AlexandriaHRMPrimitive<ConceptMapEquivalence>
+  public var equivalence: AsclepiusPrimitive<ConceptMapEquivalence>
   
   /// Description of status/issues in mapping
-  public var comment: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var comment: AsclepiusPrimitive<AsclepiusString>?
   
   /// Other elements required for this mapping (from context)
   public var dependsOn: [ConceptMapGroupElementTargetDependsOn]?
@@ -40,7 +40,7 @@ open class ConceptMapGroupElementTarget: BackboneElement {
   /// Other concepts that this mapping produces
   public var product: [ConceptMapGroupElementTargetDependsOn]?
   
-  public init(equivalence: AlexandriaHRMPrimitive<ConceptMapEquivalence>) {
+  public init(equivalence: AsclepiusPrimitive<ConceptMapEquivalence>) {
     self.equivalence = equivalence
     super.init()
   }
@@ -48,11 +48,11 @@ open class ConceptMapGroupElementTarget: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    code: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    display: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    equivalence: AlexandriaHRMPrimitive<ConceptMapEquivalence>,
-    comment: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    code: AsclepiusPrimitive<AsclepiusString>? = nil,
+    display: AsclepiusPrimitive<AsclepiusString>? = nil,
+    equivalence: AsclepiusPrimitive<ConceptMapEquivalence>,
+    comment: AsclepiusPrimitive<AsclepiusString>? = nil,
     dependsOn: [ConceptMapGroupElementTargetDependsOn]? = nil,
     product: [ConceptMapGroupElementTargetDependsOn]? = nil
   ) {
@@ -80,10 +80,10 @@ open class ConceptMapGroupElementTarget: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.code = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .code, auxKey: ._code)
-    self.display = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .display, auxKey: ._display)
-    self.equivalence = try AlexandriaHRMPrimitive<ConceptMapEquivalence>(from: codingKeyContainer, forKey: .equivalence, auxKey: ._equjvalence)
-    self.comment = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .comment, auxKey: ._comment)
+    self.code = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .code, auxKey: ._code)
+    self.display = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .display, auxKey: ._display)
+    self.equivalence = try AsclepiusPrimitive<ConceptMapEquivalence>(from: codingKeyContainer, forKey: .equivalence, auxKey: ._equjvalence)
+    self.comment = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .comment, auxKey: ._comment)
     self.dependsOn = try [ConceptMapGroupElementTargetDependsOn](from: codingKeyContainer, forKeyIfPresent: .dependsOn)
     self.product = try [ConceptMapGroupElementTargetDependsOn](from: codingKeyContainer, forKeyIfPresent: .product)
     

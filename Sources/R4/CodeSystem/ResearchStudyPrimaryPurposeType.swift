@@ -1,6 +1,6 @@
 //
 //  ResearchStudyPrimaryPurposeType.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/research-study-prim-purp-type
  ValueSet: http://hl7.org/fhir/ValueSet/research-study-prim-purp-type
  */
-public enum ResearchStudyPrimaryPurposeType: String, AlexandriaHRMPrimitiveType {
+public enum ResearchStudyPrimaryPurposeType: String, AsclepiusPrimitiveType {
   /// One or more interventions are being evaluated for treating a disease, syndrome, or condition.
   case treatment
   

@@ -1,6 +1,6 @@
 //
 //  EpisodeOfCareStatus.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/episode-of-care-status
  ValueSet: http://hl7.org/fhir/ValueSet/episode-of-care-status
  */
-public enum EpisodeOfCareStatus: String, AlexandriaHRMPrimitiveType {
+public enum EpisodeOfCareStatus: String, AsclepiusPrimitiveType {
   /// This episode of care is planned to start at the date specified in the period.start. During this status, an
   /// organization may perform assessments to determine if the patient is eligible to receive services, or be
   /// organizing to make resources available to provide care services.

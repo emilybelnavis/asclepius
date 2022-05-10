@@ -1,6 +1,6 @@
 //
 //  HTTPVerb.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/http-verb
  ValueSet: http://hl7.org/fhir/ValueSet/http-verb
  */
-public enum HTTPVerb: String, AlexandriaHRMPrimitiveType {
+public enum HTTPVerb: String, AsclepiusPrimitiveType {
   /// HTTP GET Command.
   case GET
   

@@ -1,6 +1,6 @@
 //
 //  ContractDataMeaning.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/contract-data-meaning
  ValueSet: http://hl7.org/fhir/ValueSet/contract-data-meaning
  */
-public enum ContractDataMeaning: String, AlexandriaHRMPrimitiveType {
+public enum ContractDataMeaning: String, AsclepiusPrimitiveType {
   /// The consent applies directly to the instance of the resouce.
   case instance
   

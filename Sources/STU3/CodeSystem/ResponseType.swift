@@ -1,6 +1,6 @@
 //
 //  ResponseType.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/response-code
  ValueSet: http://hl7.org/fhir/ValueSet/response-code
  */
-public enum ResponseType: String, AlexandriaHRMPrimitiveType {
+public enum ResponseType: String, AsclepiusPrimitiveType {
   /// The message was accepted and processed without error.
   case ok
   

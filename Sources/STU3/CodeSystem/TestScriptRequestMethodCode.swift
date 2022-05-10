@@ -1,6 +1,6 @@
 //
 //  TestScriptRequestMethodCode.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/http-operations
  ValueSet: http://hl7.org/fhir/ValueSet/http-operations
  */
-public enum TestScriptRequestMethodCode: String, AlexandriaHRMPrimitiveType {
+public enum TestScriptRequestMethodCode: String, AsclepiusPrimitiveType {
   /// HTTP DELETE operation.
   case delete
   

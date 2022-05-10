@@ -1,6 +1,6 @@
 //
 //  ProcedureProgressStatusCodes.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -24,7 +24,7 @@
  URL: http://hl7.org/fhir/procedure-progress-status-code
  ValueSet: http://hl7.org/fhir/ValueSet/procedure-progress-status-codes
  */
-public enum ProcedureProgressStatusCodes: String, AlexandriaHRMPrimitiveType {
+public enum ProcedureProgressStatusCodes: String, AsclepiusPrimitiveType {
   /// A patient is in the Operating Room.
   case inOperatingRoom = "in-operating-room"
   

@@ -1,6 +1,6 @@
 //
 //  BiologicallyDerivedProductStatus.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/product-status
  ValueSet: http://hl7.org/fhir/ValueSet/product-status
  */
-public enum BiologicallyDerivedProductStatus: String, AlexandriaHRMPrimitiveType {
+public enum BiologicallyDerivedProductStatus: String, AsclepiusPrimitiveType {
   /// Product is currently available for use
   case available
   

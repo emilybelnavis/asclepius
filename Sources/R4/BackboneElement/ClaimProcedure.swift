@@ -1,6 +1,6 @@
 //
 //  ClaimProcedure.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  Clinical procedures performed. Procedures performed on the patient relevant to the billing items with the claim
@@ -29,13 +29,13 @@ open class ClaimProcedure: BackboneElement {
   }
   
   /// Procedure instance identifier
-  public var sequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>
+  public var sequence: AsclepiusPrimitive<AsclepiusPositiveInteger>
   
   /// Category of procedure
   public var type: [CodeableConcept]?
   
   /// When the procedure was perfomed
-  public var date: AlexandriaHRMPrimitive<AlexandriaHRMDateTime>
+  public var date: AsclepiusPrimitive<AsclepiusDateTime>
   
   /// Specific clinical procedure
   public var procedureX: ProcedureX
@@ -43,7 +43,7 @@ open class ClaimProcedure: BackboneElement {
   /// Unique device initializer
   public var udi: [Reference]?
   
-  public init(sequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>, date: AlexandriaHRMPrimitive<AlexandriaHRMDateTime>, procedureX: ProcedureX) {
+  public init(sequence: AsclepiusPrimitive<AsclepiusPositiveInteger>, date: AsclepiusPrimitive<AsclepiusDateTime>, procedureX: ProcedureX) {
     self.sequence = sequence
     self.date = date
     self.procedureX = procedureX
@@ -53,10 +53,10 @@ open class ClaimProcedure: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    sequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    sequence: AsclepiusPrimitive<AsclepiusPositiveInteger>,
     type: [CodeableConcept]? = nil,
-    date: AlexandriaHRMPrimitive<AlexandriaHRMDateTime>,
+    date: AsclepiusPrimitive<AsclepiusDateTime>,
     procedureX: ProcedureX,
     udi: [Reference]? = nil
   ) {
@@ -96,9 +96,9 @@ open class ClaimProcedure: BackboneElement {
       tempProcedureX = .reference(procedureReference)
     }
     
-    self.sequence = try AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>(from: codingKeyContainer, forKey: .sequence, auxKey: ._sequence)
+    self.sequence = try AsclepiusPrimitive<AsclepiusPositiveInteger>(from: codingKeyContainer, forKey: .sequence, auxKey: ._sequence)
     self.type = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .type)
-    self.date = try AlexandriaHRMPrimitive<AlexandriaHRMDateTime>(from: codingKeyContainer, forKey: .date, auxKey: ._date)
+    self.date = try AsclepiusPrimitive<AsclepiusDateTime>(from: codingKeyContainer, forKey: .date, auxKey: ._date)
     self.procedureX = tempProcedureX!
     self.udi = try [Reference](from: codingKeyContainer, forKeyIfPresent: .udi)
     

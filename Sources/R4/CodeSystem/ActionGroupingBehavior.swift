@@ -1,6 +1,6 @@
 //
 //  ActionGroupingBehavior.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/action-grouping-behavior
  ValueSet: http://hl7.org/fhir/ValueSet/action-grouping-behavior
  */
-public enum ActionGroupingBehavior: String, AlexandriaHRMPrimitiveType {
+public enum ActionGroupingBehavior: String, AsclepiusPrimitiveType {
   /// Any group marked with this behaviour should be displayed as a visual group to the end-user.
   case visualGroup = "visual-group"
   

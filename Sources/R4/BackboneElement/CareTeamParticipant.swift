@@ -1,6 +1,6 @@
 //
 //  CareTeamParticipant.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  Identifies all people and organizations who are expected to be involved in the care team
@@ -42,7 +42,7 @@ open class CareTeamParticipant: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
     role: [CodeableConcept]? = nil,
     member: Reference? = nil,
     onBehalfOf: Reference? = nil,

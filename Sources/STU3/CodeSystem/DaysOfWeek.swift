@@ -1,6 +1,6 @@
 //
 //  DaysOfWeek.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/days-of-week
  ValueSet: http://hl7.org/fhir/ValueSet/days-of-week
  */
-public enum DaysOfWeek: String, AlexandriaHRMPrimitiveType {
+public enum DaysOfWeek: String, AsclepiusPrimitiveType {
   /// Monday.
   case mon
   

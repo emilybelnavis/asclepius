@@ -1,6 +1,6 @@
 //
 //  MeasureReportStatus.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/measure-report-status
  ValueSet: http://hl7.org/fhir/ValueSet/measure-report-status
  */
-public enum MeasureReportStatus: String, AlexandriaHRMPrimitiveType {
+public enum MeasureReportStatus: String, AsclepiusPrimitiveType {
   /// The report is complete and ready for use.
   case complete
   

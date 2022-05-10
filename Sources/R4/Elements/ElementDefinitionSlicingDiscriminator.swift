@@ -1,6 +1,6 @@
 //
 //  ElementDefinitionSlicingDiscriminator.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  Element values that are used to distinguish the slices. Designates which child elements are used to discriminate
@@ -27,12 +27,12 @@ import AlexandriaHRMCore
  */
 open class ElementDefinitionSlicingDiscriminator: Element {
   /// How the element value is interpreted when discrimination is evaluated
-  public var type: AlexandriaHRMPrimitive<DiscriminatorType>
+  public var type: AsclepiusPrimitive<DiscriminatorType>
   
   /// Path to element value
-  public var path: AlexandriaHRMPrimitive<AlexandriaHRMString>
+  public var path: AsclepiusPrimitive<AsclepiusString>
   
-  public init(type: AlexandriaHRMPrimitive<DiscriminatorType>, path: AlexandriaHRMPrimitive<AlexandriaHRMString>) {
+  public init(type: AsclepiusPrimitive<DiscriminatorType>, path: AsclepiusPrimitive<AsclepiusString>) {
     self.type = type
     self.path = path
     super.init()
@@ -40,9 +40,9 @@ open class ElementDefinitionSlicingDiscriminator: Element {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    type: AlexandriaHRMPrimitive<DiscriminatorType>,
-    path: AlexandriaHRMPrimitive<AlexandriaHRMString>
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    type: AsclepiusPrimitive<DiscriminatorType>,
+    path: AsclepiusPrimitive<AsclepiusString>
   ) {
     self.init(type: type, path: path)
     self.fhirExtension = fhirExtension
@@ -58,8 +58,8 @@ open class ElementDefinitionSlicingDiscriminator: Element {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.type = try AlexandriaHRMPrimitive<DiscriminatorType>(from: codingKeyContainer, forKey: .type, auxKey: ._type)
-    self.path = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .path, auxKey: ._path)
+    self.type = try AsclepiusPrimitive<DiscriminatorType>(from: codingKeyContainer, forKey: .type, auxKey: ._type)
+    self.path = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKey: .path, auxKey: ._path)
     
     try super.init(from: decoder)
   }

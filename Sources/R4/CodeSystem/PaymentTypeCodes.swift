@@ -1,6 +1,6 @@
 //
 //  PaymentTypeCodes.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/payment-type
  ValueSet: http://hl7.org/fhir/ValueSet/payment-type
  */
-public enum PaymentTypeCodes: String, AlexandriaHRMPrimitiveType {
+public enum PaymentTypeCodes: String, AsclepiusPrimitiveType {
   /// The amount is partial or complete settlement of the amounts due.
   case payment
   

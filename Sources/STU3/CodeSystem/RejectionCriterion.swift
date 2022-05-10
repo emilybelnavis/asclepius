@@ -1,6 +1,6 @@
 //
 //  RejectionCriterion.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/rejection-criteria
  ValueSet: http://hl7.org/fhir/ValueSet/rejection-criteria
  */
-public enum RejectionCriterion: String, AlexandriaHRMPrimitiveType {
+public enum RejectionCriterion: String, AsclepiusPrimitiveType {
   /// blood specimen hemolized.
   case hemolized
   

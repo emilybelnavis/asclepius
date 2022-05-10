@@ -1,6 +1,6 @@
 //
 //  SampledData.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  A series of measurements taken by a device with upper and lower limits. There may be more than one
@@ -28,24 +28,24 @@ open class SampledData: Element {
   public var origin: Quantity
   
   /// number of milliseconds between samples (resolution)
-  public var period: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>
+  public var period: AsclepiusPrimitive<AsclepiusDecimal>
   
   /// multiply data by this value before adding to origin
-  public var factor: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>?
+  public var factor: AsclepiusPrimitive<AsclepiusDecimal>?
   
   /// lower detection bound
-  public var lowerLimit: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>?
+  public var lowerLimit: AsclepiusPrimitive<AsclepiusDecimal>?
   
   /// upper detection bound
-  public var upperLimit: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>?
+  public var upperLimit: AsclepiusPrimitive<AsclepiusDecimal>?
   
   /// number of sample points at each time point
-  public var dimensions: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>
+  public var dimensions: AsclepiusPrimitive<AsclepiusPositiveInteger>
   
   /// decimal values with spaces, or "E" | "U" | "L"
-  public var data: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var data: AsclepiusPrimitive<AsclepiusString>?
   
-  public init(origin: Quantity, period: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>, dimensions: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>) {
+  public init(origin: Quantity, period: AsclepiusPrimitive<AsclepiusDecimal>, dimensions: AsclepiusPrimitive<AsclepiusPositiveInteger>) {
     self.origin = origin
     self.period = period
     self.dimensions = dimensions
@@ -54,14 +54,14 @@ open class SampledData: Element {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
     origin: Quantity,
-    period: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>,
-    factor: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>? = nil,
-    lowerLimit: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>? = nil,
-    upperLimit: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>? = nil,
-    dimensions: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>,
-    data: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil
+    period: AsclepiusPrimitive<AsclepiusDecimal>,
+    factor: AsclepiusPrimitive<AsclepiusDecimal>? = nil,
+    lowerLimit: AsclepiusPrimitive<AsclepiusDecimal>? = nil,
+    upperLimit: AsclepiusPrimitive<AsclepiusDecimal>? = nil,
+    dimensions: AsclepiusPrimitive<AsclepiusPositiveInteger>,
+    data: AsclepiusPrimitive<AsclepiusString>? = nil
   ) {
     self.init(origin: origin, period: period, dimensions: dimensions)
     self.fhirExtension = fhirExtension
@@ -87,12 +87,12 @@ open class SampledData: Element {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     self.origin = try Quantity(from: codingKeyContainer, forKey: .origin)
-    self.period = try AlexandriaHRMPrimitive<AlexandriaHRMDecimal>(from: codingKeyContainer, forKey: .period, auxKey: ._period)
-    self.factor = try AlexandriaHRMPrimitive<AlexandriaHRMDecimal>(from: codingKeyContainer, forKeyIfPresent: .factor, auxKey: ._factor)
-    self.lowerLimit = try AlexandriaHRMPrimitive<AlexandriaHRMDecimal>(from: codingKeyContainer, forKeyIfPresent: .lowerLimit, auxKey: ._lowerLimit)
-    self.upperLimit = try AlexandriaHRMPrimitive<AlexandriaHRMDecimal>(from: codingKeyContainer, forKeyIfPresent: .upperLimit, auxKey: ._upperLimit)
-    self.dimensions = try AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>(from: codingKeyContainer, forKey: .dimensions, auxKey: ._dimensions)
-    self.data = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .data, auxKey: ._data)
+    self.period = try AsclepiusPrimitive<AsclepiusDecimal>(from: codingKeyContainer, forKey: .period, auxKey: ._period)
+    self.factor = try AsclepiusPrimitive<AsclepiusDecimal>(from: codingKeyContainer, forKeyIfPresent: .factor, auxKey: ._factor)
+    self.lowerLimit = try AsclepiusPrimitive<AsclepiusDecimal>(from: codingKeyContainer, forKeyIfPresent: .lowerLimit, auxKey: ._lowerLimit)
+    self.upperLimit = try AsclepiusPrimitive<AsclepiusDecimal>(from: codingKeyContainer, forKeyIfPresent: .upperLimit, auxKey: ._upperLimit)
+    self.dimensions = try AsclepiusPrimitive<AsclepiusPositiveInteger>(from: codingKeyContainer, forKey: .dimensions, auxKey: ._dimensions)
+    self.data = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .data, auxKey: ._data)
     
     try super.init(from: decoder)
   }

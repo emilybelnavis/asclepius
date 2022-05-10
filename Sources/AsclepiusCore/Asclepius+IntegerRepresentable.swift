@@ -1,7 +1,7 @@
 //
-//  AlexandriaHRM+IntegerRepresentable.swift
-//  AlexandriaHRM
-//  Module: AlexandriaHRMCore
+//  Asclepius+IntegerRepresentable.swift
+//  Asclepius
+//  Module: AsclepiusCore
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
 //
@@ -19,12 +19,12 @@
 
 import Foundation
 
-public protocol AlexandriaHRMIntegerRepresentable: ExpressibleByIntegerLiteral, Equatable, Decodable {
+public protocol AsclepiusIntegerRepresentable: ExpressibleByIntegerLiteral, Equatable, Decodable {
     
     var integer: Self.IntegerLiteralType { get set }
 }
 
-extension AlexandriaHRMIntegerRepresentable where IntegerLiteralType: Equatable {
+extension AsclepiusIntegerRepresentable where IntegerLiteralType: Equatable {
     
     public static func == (leftSide: Self, rightSide: Self) -> Bool {
         return leftSide.integer == rightSide.integer

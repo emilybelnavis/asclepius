@@ -1,6 +1,6 @@
 //
 //  TaskIntent.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -22,7 +22,7 @@
  
  URL: http://hl7.org/fhir/task-intent
  */
-public enum TaskIntent: String, AlexandriaHRMPrimitiveType {
+public enum TaskIntent: String, AsclepiusPrimitiveType {
   /// The intent is not known.  When dealing with Task, it's not always known (or relevant) how the task was initiated
   /// - i.e. whether it was proposed, planned, ordered or just done spontaneously.
   case unknown

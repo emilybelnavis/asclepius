@@ -1,6 +1,6 @@
 //
 //  ContributorType.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/contributor-type
  ValueSet: http://hl7.org/fhir/ValueSet/contributor-type
  */
-public enum ContributorType: String, AlexandriaHRMPrimitiveType {
+public enum ContributorType: String, AsclepiusPrimitiveType {
   /// An author of the content of the module.
   case author
   

@@ -1,6 +1,6 @@
 //
 //  CoverageClass.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /// Additional Coverage Classification;  A suite of underwriter specific classifiers
 open class CoverageClass: BackboneElement {
@@ -25,12 +25,12 @@ open class CoverageClass: BackboneElement {
   public var type: CodeableConcept
   
   /// Value associated with the type
-  public var value: AlexandriaHRMPrimitive<AlexandriaHRMString>
+  public var value: AsclepiusPrimitive<AsclepiusString>
   
   /// Human readable description of the type and value
-  public var name: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var name: AsclepiusPrimitive<AsclepiusString>?
   
-  public init(type: CodeableConcept, value: AlexandriaHRMPrimitive<AlexandriaHRMString>) {
+  public init(type: CodeableConcept, value: AsclepiusPrimitive<AsclepiusString>) {
     self.type = type
     self.value = value
     super.init()
@@ -39,10 +39,10 @@ open class CoverageClass: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
     type: CodeableConcept,
-    value: AlexandriaHRMPrimitive<AlexandriaHRMString>,
-    name: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil
+    value: AsclepiusPrimitive<AsclepiusString>,
+    name: AsclepiusPrimitive<AsclepiusString>? = nil
   ) {
     self.init(type: type, value: value)
     self.fhirExtension = fhirExtension
@@ -62,8 +62,8 @@ open class CoverageClass: BackboneElement {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     self.type = try CodeableConcept(from: codingKeyContainer, forKey: .type)
-    self.value = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .value, auxKey: ._value)
-    self.name = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .name, auxKey: ._name)
+    self.value = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKey: .value, auxKey: ._value)
+    self.name = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKey: .name, auxKey: ._name)
     
     try super.init(from: decoder)
   }

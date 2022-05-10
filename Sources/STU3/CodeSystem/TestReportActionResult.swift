@@ -1,6 +1,6 @@
 //
 //  TestReportActionResult.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/report-action-result-codes
  ValueSet: http://hl7.org/fhir/ValueSet/report-action-result-codes
  */
-public enum TestReportActionResult: String, AlexandriaHRMPrimitiveType {
+public enum TestReportActionResult: String, AsclepiusPrimitiveType {
   /// The action was successful.
   case pass
   

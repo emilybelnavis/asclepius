@@ -1,6 +1,6 @@
 //
 //  ContractResourceAssetSubtypeCodes.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/contract-asset-subtype
  ValueSet: http://hl7.org/fhir/ValueSet/contract-assetsubtype
  */
-public enum ContractResourceAssetSubtypeCodes: String, AlexandriaHRMPrimitiveType {
+public enum ContractResourceAssetSubtypeCodes: String, AsclepiusPrimitiveType {
   /// todo: to be completed
   case participation
 }

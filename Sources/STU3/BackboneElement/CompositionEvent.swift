@@ -1,6 +1,6 @@
 //
 //  CompositionEvent.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /// The clinical service(s) being documented
 open class CompositionEvent: BackboneElement {
@@ -37,7 +37,7 @@ open class CompositionEvent: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
     code: [CodeableConcept]? = nil,
     period: Period? = nil,
     detail: [Reference]? = nil

@@ -1,6 +1,6 @@
 //
 //  AssertionOperatorType.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/assert-operator-codes
  ValueSet: http://hl7.org/fhir/ValueSet/assert-operator-codes
  */
-public enum AssertionOperatorType: String, AlexandriaHRMPrimitiveType {
+public enum AssertionOperatorType: String, AsclepiusPrimitiveType {
   /// Default value. Equals comparison
   case equals
   
@@ -54,6 +54,6 @@ public enum AssertionOperatorType: String, AlexandriaHRMPrimitiveType {
   /// Compare value string does not contain a known value
   case notContains
   
-  /// Evaluiate the AlexandriaHRMPath expression as a boolean condition.
+  /// Evaluiate the AsclepiusPath expression as a boolean condition.
   case eval
 }

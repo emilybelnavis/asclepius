@@ -1,6 +1,6 @@
 //
 //  BiologicallyDerivedProductCategory.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/product-category
  ValueSet: http://hl7.org/fhir/ValueSet/product-category
  */
-public enum BiologicallyDerivedProductCategory: String, AlexandriaHRMPrimitiveType {
+public enum BiologicallyDerivedProductCategory: String, AsclepiusPrimitiveType {
   /// A collection of tissues joined in a structural unit to serve a common function
   case organ
   

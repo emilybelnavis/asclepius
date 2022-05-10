@@ -1,6 +1,6 @@
 //
 //  DeviceVersion.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  The actual design of the device or software version running on the device
@@ -30,9 +30,9 @@ open class DeviceVersion: BackboneElement {
   public var component: Identifier?
   
   /// The version text
-  public var value: AlexandriaHRMPrimitive<AlexandriaHRMString>
+  public var value: AsclepiusPrimitive<AsclepiusString>
   
-  public init(value: AlexandriaHRMPrimitive<AlexandriaHRMString>) {
+  public init(value: AsclepiusPrimitive<AsclepiusString>) {
     self.value = value
     super.init()
   }
@@ -40,10 +40,10 @@ open class DeviceVersion: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
     type: CodeableConcept? = nil,
     component: Identifier? = nil,
-    value: AlexandriaHRMPrimitive<AlexandriaHRMString>
+    value: AsclepiusPrimitive<AsclepiusString>
   ) {
     self.init(value: value)
     self.fhirExtension = fhirExtension
@@ -65,7 +65,7 @@ open class DeviceVersion: BackboneElement {
     
     self.type = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .type)
     self.component = try Identifier(from: codingKeyContainer, forKeyIfPresent: .component)
-    self.value = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .value, auxKey: ._value)
+    self.value = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKey: .value, auxKey: ._value)
     
     try super.init(from: decoder)
   }

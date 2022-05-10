@@ -1,6 +1,6 @@
 //
-//  AlexandriaHRMBool.swift
-//  AlexandriaHRM
+//  AsclepiusBool.swift
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -18,7 +18,7 @@
 //  limitations under the License.
 
 import Foundation
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  A boolean value: true | false
@@ -26,7 +26,7 @@ import AlexandriaHRMCore
  https://hl7.org/fhir/datatypes.html#boolean
  */
 
-public struct AlexandriaHRMBool: AlexandriaHRMPrimitiveType {
+public struct AsclepiusBool: AsclepiusPrimitiveType {
   public typealias BooleanLiteralType = Bool
   public var bool: Self.BooleanLiteralType
   
@@ -36,21 +36,21 @@ public struct AlexandriaHRMBool: AlexandriaHRMPrimitiveType {
 }
 
 // MARK: - ExpressibleByBooleanLiteral
-extension AlexandriaHRMBool: ExpressibleByBooleanLiteral {
+extension AsclepiusBool: ExpressibleByBooleanLiteral {
   public init(booleanLiteral value: Self.BooleanLiteralType) {
     self.bool = value
   }
 }
 
-extension AlexandriaHRMPrimitive: ExpressibleByBooleanLiteral where PrimitiveType == AlexandriaHRMBool {
+extension AsclepiusPrimitive: ExpressibleByBooleanLiteral where PrimitiveType == AsclepiusBool {
   public typealias BooleanLiteralType = Bool
   public init(booleanLiteral value: Self.BooleanLiteralType) {
-    self.init(AlexandriaHRMBool(value))
+    self.init(AsclepiusBool(value))
   }
 }
 
 // MARK: - Codable
-extension AlexandriaHRMBool: Codable {
+extension AsclepiusBool: Codable {
   public init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.singleValueContainer()
     self.bool = try codingKeyContainer.decode(Self.BooleanLiteralType.self)
@@ -63,16 +63,16 @@ extension AlexandriaHRMBool: Codable {
 }
 
 // MARK: - Equatable
-extension AlexandriaHRMBool: Equatable {
-  public static func == (leftSide: AlexandriaHRMBool, rightSide: AlexandriaHRMBool) -> Bool {
+extension AsclepiusBool: Equatable {
+  public static func == (leftSide: AsclepiusBool, rightSide: AsclepiusBool) -> Bool {
     return leftSide.bool == rightSide.bool
   }
   
-  public static func == (leftSide: Bool, rightSide: AlexandriaHRMBool) -> Bool {
+  public static func == (leftSide: Bool, rightSide: AsclepiusBool) -> Bool {
     return leftSide == rightSide.bool
   }
   
-  public static func == (leftSide: AlexandriaHRMBool, rightSide: Bool) -> Bool {
+  public static func == (leftSide: AsclepiusBool, rightSide: Bool) -> Bool {
     return leftSide.bool == rightSide
   }
 }
@@ -80,7 +80,7 @@ extension AlexandriaHRMBool: Equatable {
 // MARK: - Extends Bool
 
 extension Bool {
-  public func asPrimitive() -> AlexandriaHRMPrimitive<AlexandriaHRMBool> {
-    return AlexandriaHRMPrimitive(AlexandriaHRMBool(self))
+  public func asPrimitive() -> AsclepiusPrimitive<AsclepiusBool> {
+    return AsclepiusPrimitive(AsclepiusBool(self))
   }
 }

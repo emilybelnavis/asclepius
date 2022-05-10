@@ -1,6 +1,6 @@
 //
 //  SubscriptionChannelType.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/subscription-channel-type
  ValueSet: http://hl7.org/fhir/ValueSet/subscription-channel-type
  */
-public enum SubscriptionChannelType: String, AlexandriaHRMPrimitiveType {
+public enum SubscriptionChannelType: String, AsclepiusPrimitiveType {
   /// The channel is executed by making a post to the URI. If a payload is included, the URL is interpreted as the
   /// service base, and an update (PUT) is made.
   case restHook = "rest-hook"

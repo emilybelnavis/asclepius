@@ -1,6 +1,6 @@
 //
 //  LinkageType.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/linkage-type
  ValueSet: http://hl7.org/fhir/ValueSet/linkage-type
  */
-public enum LinkageType: String, AlexandriaHRMPrimitiveType {
+public enum LinkageType: String, AsclepiusPrimitiveType {
   /// The resource represents the "source of truth" (from the perspective of this Linkage resource) for the underlying
   /// event/condition/etc.
   case source

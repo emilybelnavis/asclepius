@@ -1,6 +1,6 @@
 //
 //  CodeSystemConceptProperty.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,28 +17,28 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /// A property value for this concept
 open class CodeSystemConceptProperty: BackboneElement {
   /// all possible types for `value[x]`
   public enum ValueX: Hashable {
-    case boolean(AlexandriaHRMPrimitive<AlexandriaHRMBool>)
-    case code(AlexandriaHRMPrimitive<AlexandriaHRMString>)
+    case boolean(AsclepiusPrimitive<AsclepiusBool>)
+    case code(AsclepiusPrimitive<AsclepiusString>)
     case coding(Coding)
-    case dateTime(AlexandriaHRMPrimitive<AlexandriaHRMDateTime>)
-    case decimal(AlexandriaHRMPrimitive<AlexandriaHRMDecimal>)
-    case integer(AlexandriaHRMPrimitive<AlexandriaHRMInteger>)
-    case string(AlexandriaHRMPrimitive<AlexandriaHRMString>)
+    case dateTime(AsclepiusPrimitive<AsclepiusDateTime>)
+    case decimal(AsclepiusPrimitive<AsclepiusDecimal>)
+    case integer(AsclepiusPrimitive<AsclepiusInteger>)
+    case string(AsclepiusPrimitive<AsclepiusString>)
   }
   
   /// Reference to CodeSystem.property.code
-  public var code: AlexandriaHRMPrimitive<AlexandriaHRMString>
+  public var code: AsclepiusPrimitive<AsclepiusString>
   
   /// Value of the property for this concept
   public var value: ValueX
   
-  public init(code: AlexandriaHRMPrimitive<AlexandriaHRMString>, value: ValueX) {
+  public init(code: AsclepiusPrimitive<AsclepiusString>, value: ValueX) {
     self.code = code
     self.value = value
     super.init()
@@ -47,8 +47,8 @@ open class CodeSystemConceptProperty: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    code: AlexandriaHRMPrimitive<AlexandriaHRMString>,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    code: AsclepiusPrimitive<AsclepiusString>,
     value: ValueX
   ) {
     self.init(code: code, value: value)
@@ -77,14 +77,14 @@ open class CodeSystemConceptProperty: BackboneElement {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     var tempValue: ValueX?
-    if let valueBoolean = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKeyIfPresent: .valueBoolean, auxKey: ._valueBoolean) {
+    if let valueBoolean = try AsclepiusPrimitive<AsclepiusBool>(from: codingKeyContainer, forKeyIfPresent: .valueBoolean, auxKey: ._valueBoolean) {
       if tempValue != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueBoolean, in: codingKeyContainer, debugDescription: "More than one value provided for \"value\"")
       }
       tempValue = .boolean(valueBoolean)
     }
     
-    if let valueCode = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .valueCode, auxKey: ._valueCode) {
+    if let valueCode = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .valueCode, auxKey: ._valueCode) {
       if tempValue != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueCode, in: codingKeyContainer, debugDescription: "More than one value provided for \"value\"")
       }
@@ -98,35 +98,35 @@ open class CodeSystemConceptProperty: BackboneElement {
       tempValue = .coding(valueCoding)
     }
     
-    if let valueDateTime = try AlexandriaHRMPrimitive<AlexandriaHRMDateTime>(from: codingKeyContainer, forKeyIfPresent: .valueDateTime, auxKey: ._valueDateTime) {
+    if let valueDateTime = try AsclepiusPrimitive<AsclepiusDateTime>(from: codingKeyContainer, forKeyIfPresent: .valueDateTime, auxKey: ._valueDateTime) {
       if tempValue != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueDateTime, in: codingKeyContainer, debugDescription: "More than one value provided for \"value\"")
       }
       tempValue = .dateTime(valueDateTime)
     }
     
-    if let valueDecimal = try AlexandriaHRMPrimitive<AlexandriaHRMDecimal>(from: codingKeyContainer, forKeyIfPresent: .valueDecimal, auxKey: ._valueDecimal) {
+    if let valueDecimal = try AsclepiusPrimitive<AsclepiusDecimal>(from: codingKeyContainer, forKeyIfPresent: .valueDecimal, auxKey: ._valueDecimal) {
       if tempValue != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueDecimal, in: codingKeyContainer, debugDescription: "More than one value provided for \"value\"")
       }
       tempValue = .decimal(valueDecimal)
     }
     
-    if let valueInteger = try AlexandriaHRMPrimitive<AlexandriaHRMInteger>(from: codingKeyContainer, forKeyIfPresent: .valueInteger, auxKey: ._valueInteger) {
+    if let valueInteger = try AsclepiusPrimitive<AsclepiusInteger>(from: codingKeyContainer, forKeyIfPresent: .valueInteger, auxKey: ._valueInteger) {
       if tempValue != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueInteger, in: codingKeyContainer, debugDescription: "More than one value provided for \"value\"")
       }
       tempValue = .integer(valueInteger)
     }
     
-    if let valueString = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .valueString, auxKey: ._valueString) {
+    if let valueString = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .valueString, auxKey: ._valueString) {
       if tempValue != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueString, in: codingKeyContainer, debugDescription: "More than one value provided for \"value\"")
       }
       tempValue = .string(valueString)
     }
     
-    self.code = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .code, auxKey: ._code)
+    self.code = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKey: .code, auxKey: ._code)
     self.value = tempValue!
     
     try super.init(from: decoder)

@@ -1,6 +1,6 @@
 //
 //  TypeDerivationRule.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/type-derivation-rule
  ValueSet: http://hl7.org/fhir/ValueSet/type-derivation-rule
  */
-public enum TypeDerivationRule: String, AlexandriaHRMPrimitiveType {
+public enum TypeDerivationRule: String, AsclepiusPrimitiveType {
   /// This definition defines a new type that adds additional elements to the base type.
   case specialization
   

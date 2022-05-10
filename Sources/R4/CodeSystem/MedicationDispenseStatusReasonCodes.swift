@@ -1,6 +1,6 @@
 //
 //  MedicationDispenseStatusReasonCodes.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/fhir/CodeSystem/medicationdispense-status-reason
  ValueSet: http://hl7.org/fhir/ValueSet/medicationdispense-status-reason
  */
-public enum MedicationDispenseStatusReasonCodes: String, AlexandriaHRMPrimitiveType {
+public enum MedicationDispenseStatusReasonCodes: String, AsclepiusPrimitiveType {
   /// The order has been stopped by the prescriber but this fact has not necessarily captured electronically. Example:
   /// A verbal stop, a fax, etc.
   case frr01

@@ -1,7 +1,7 @@
 //
-//  AlexandriaHRM+Scanner.swift
-//  AlexandriaHRM
-//  Module: AlexandriaHRMCore
+//  Asclepius+Scanner.swift
+//  Asclepius
+//  Module: AsclepiusCore
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
 //

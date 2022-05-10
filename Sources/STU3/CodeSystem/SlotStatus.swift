@@ -1,6 +1,6 @@
 //
 //  SlotStatus.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/slotstatus
  ValueSet: http://hl7.org/fhir/ValueSet/slotstatus
  */
-public enum SlotStatus: String, AlexandriaHRMPrimitiveType {
+public enum SlotStatus: String, AsclepiusPrimitiveType {
   /// Indicates that the time interval is busy because one  or more events have been scheduled for that interval.
   case busy
   

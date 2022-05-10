@@ -1,6 +1,6 @@
 //
 //  StrengthOfRecommendationRating.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/recommendation-strength
  ValueSet: http://hl7.org/fhir/ValueSet/recommendation-strength
  */
-public enum StrengthOfRecommendationRating: String, AlexandriaHRMPrimitiveType {
+public enum StrengthOfRecommendationRating: String, AsclepiusPrimitiveType {
   /// Strong recommendation.
   case strong
   

@@ -1,6 +1,6 @@
 //
 //  ResearchStudyPhase.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -24,7 +24,7 @@
  URL: http://terminology.hl7.org/CodeSystem/research-study-phase
  ValueSet: http://hl7.org/fhir/ValueSet/research-study-phase
  */
-public enum ResearchStudyPhase: String, AlexandriaHRMPrimitiveType {
+public enum ResearchStudyPhase: String, AsclepiusPrimitiveType {
   /// Trials without phases (for example, studies of devices or behavioral interventions).
   case NA = "n-a"
   

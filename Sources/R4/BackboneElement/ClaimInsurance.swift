@@ -1,6 +1,6 @@
 //
 //  ClaimInsurance.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  Patient insurance informatoin. Financial instruments for reimbursement for the healthcare products and
@@ -25,10 +25,10 @@ import AlexandriaHRMCore
  */
 open class ClaimInsurance: BackboneElement {
   /// Insurance instance identifier
-  public var sequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>
+  public var sequence: AsclepiusPrimitive<AsclepiusPositiveInteger>
   
   /// Coverage to be used for adjudication
-  public var focal: AlexandriaHRMPrimitive<AlexandriaHRMBool>
+  public var focal: AsclepiusPrimitive<AsclepiusBool>
   
   /// Pre-assigned claim number
   public var identifier: Identifier?
@@ -37,15 +37,15 @@ open class ClaimInsurance: BackboneElement {
   public var coverage: Reference
   
   /// Additional provider contract number
-  public var businessArrangement: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var businessArrangement: AsclepiusPrimitive<AsclepiusString>?
   
   /// Prior authorization reference number
-  public var preAuthRef: [AlexandriaHRMPrimitive<AlexandriaHRMString>]?
+  public var preAuthRef: [AsclepiusPrimitive<AsclepiusString>]?
   
   /// Adjudication results
   public var claimResponse: Reference?
   
-  public init(sequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>, focal: AlexandriaHRMPrimitive<AlexandriaHRMBool>, coverage: Reference) {
+  public init(sequence: AsclepiusPrimitive<AsclepiusPositiveInteger>, focal: AsclepiusPrimitive<AsclepiusBool>, coverage: Reference) {
     self.sequence = sequence
     self.focal = focal
     self.coverage = coverage
@@ -55,12 +55,12 @@ open class ClaimInsurance: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    sequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>,
-    focal: AlexandriaHRMPrimitive<AlexandriaHRMBool>,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    sequence: AsclepiusPrimitive<AsclepiusPositiveInteger>,
+    focal: AsclepiusPrimitive<AsclepiusBool>,
     coverage: Reference,
-    businessArrangement: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    preAuthRef: [AlexandriaHRMPrimitive<AlexandriaHRMString>]? = nil,
+    businessArrangement: AsclepiusPrimitive<AsclepiusString>? = nil,
+    preAuthRef: [AsclepiusPrimitive<AsclepiusString>]? = nil,
     claimResponse: Reference? = nil
   ) {
     self.init(sequence: sequence, focal: focal, coverage: coverage)
@@ -85,11 +85,11 @@ open class ClaimInsurance: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.sequence = try AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>(from: codingKeyContainer, forKey: .sequence, auxKey: ._sequence)
-    self.focal = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKey: .focal, auxKey: ._focal)
+    self.sequence = try AsclepiusPrimitive<AsclepiusPositiveInteger>(from: codingKeyContainer, forKey: .sequence, auxKey: ._sequence)
+    self.focal = try AsclepiusPrimitive<AsclepiusBool>(from: codingKeyContainer, forKey: .focal, auxKey: ._focal)
     self.coverage = try Reference(from: codingKeyContainer, forKey: .coverage)
-    self.businessArrangement = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .businessArrangement, auxKey: ._businessArrangement)
-    self.preAuthRef = try [AlexandriaHRMPrimitive<AlexandriaHRMString>](from: codingKeyContainer, forKeyIfPresent: .preAuthRef, auxKey: ._preAuthRef)
+    self.businessArrangement = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .businessArrangement, auxKey: ._businessArrangement)
+    self.preAuthRef = try [AsclepiusPrimitive<AsclepiusString>](from: codingKeyContainer, forKeyIfPresent: .preAuthRef, auxKey: ._preAuthRef)
     self.claimResponse = try Reference(from: codingKeyContainer, forKeyIfPresent: .claimResponse)
     
     try super.init(from: decoder)

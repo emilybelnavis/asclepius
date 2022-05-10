@@ -28,7 +28,7 @@ jobs:
           xcrun llvm-cov export \
           -format=lcov \
           -instr-profile=.build/x86_64-apple-macosx/debug/codecov/default.profdata \
-          .build/x86_64-apple-macosx/debug/AlexandriaHRMPackageTests.xctest/Contents/MacOS/AlexandriaHRMPackageTests \
+          .build/x86_64-apple-macosx/debug/AsclepiusPackageTests.xctest/Contents/MacOS/AsclepiusPackageTests \
           > /Users/distiller/project/lcov.info
       - store_test_results:
           path: /Users/distiller/project/lcov.info
@@ -43,7 +43,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Build and Test AlexandriaHRMCore + R4 Sequence
+          name: Build and Test AsclepiusCore + R4 Sequence
           command: swift test --test-product R4 --enable-code-coverage --xunit-output ./results.xml --parallel
       - run:
           name: Prepare coverage results
@@ -51,30 +51,7 @@ jobs:
             xcrun llvm-cov export \
             -format=lcov \
             -instr-profile=.build/x86_64-apple-macosx/debug/codecov/default.profdata \
-            .build/x86_64-apple-macosx/debug/AlexandriaHRMPackageTests.xctests/Contents/MacOS/AlexandriaHRMPackageTests \
-            > /Users/distiller/project/lcov.info
-      - store_test_results:
-          path: /Users/distiller/project/lcov.info
-      - store_test_results:
-          path: /Users/distiller/project/results.xml
-      - coverage-reporter/send_report:
-          coverage-reports: "/Users/distiller/project/lcov.info"
-          project-token: $CODACY_PROJECT_TOKEN
-  build-r5:
-    macos:
-      xcode: 13.3.0
-    steps:
-      - checkout
-      - run:
-          name: Build and Test AlexandriaHRMCore + R5 Sequence
-          command: swift test --test-product R5 --enable-code-coverage --xunit-output ./results.xml --parallel
-      - run:
-          name: Prepare coverage results
-          command: |
-            xcrun llvm-cov export \
-            -format=lcov \
-            -instr-profile=.build/x86_64-apple-macosx/debug/codecov/default.profdata \
-            .build/x86_64-apple-macosx/debug/AlexandriaHRMPackageTests.xctests/Contents/MacOS/AlexandriaHRMPackageTests \
+            .build/x86_64-apple-macosx/debug/AsclepiusPackageTests.xctests/Contents/MacOS/AsclepiusPackageTests \
             > /Users/distiller/project/lcov.info
       - store_test_results:
           path: /Users/distiller/project/lcov.info
@@ -89,7 +66,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Build and Test AlexandriaHRMCore + STU3 Sequence
+          name: Build and Test AsclepiusCore + STU3 Sequence
           command: swift test --test-product STU3 --enable-code-coverage --xunit-output ./results.xml --parallel
       - run:
           name: Prepare coverage results
@@ -97,30 +74,7 @@ jobs:
             xcrun llvm-cov export \
             -format=lcov \
             -instr-profile=.build/x86_64-apple-macosx/debug/codecov/default.profdata \
-            .build/x86_64-apple-macosx/debug/AlexandriaHRMPackageTests.xctests/Contents/MacOS/AlexandriaHRMPackageTests \
-            > /Users/distiller/project/lcov.info
-      - store_test_results:
-          path: /Users/distiller/project/lcov.info
-      - store_test_results:
-          path: /Users/distiller/project/results.xml
-      - coverage-reporter/send_report:
-          coverage-reports: "/Users/distiller/project/lcov.info"
-          project-token: $CODACY_PROJECT_TOKEN
-  build-dstu2:
-    macos:
-      xcode: 13.3.0
-    steps:
-      - checkout
-      - run:
-          name: Build and Test AlexandriaHRMCore + DSTU2 Sequence
-          command: swift test --test-product DSTU2 --enable-code-coverage --xunit-output ./results.xml --parallel
-      - run:
-          name: Prepare coverage results
-          command: |
-            xcrun llvm-cov export \
-            -format=lcov \
-            -instr-profile=.build/x86_64-apple-macosx/debug/codecov/default.profdata \
-            .build/x86_64-apple-macosx/debug/AlexandriaHRMPackageTests.xctests/Contents/MacOS/AlexandriaHRMPackageTests \
+            .build/x86_64-apple-macosx/debug/AsclepiusPackageTests.xctests/Contents/MacOS/AsclepiusPackageTests \
             > /Users/distiller/project/lcov.info
       - store_test_results:
           path: /Users/distiller/project/lcov.info
@@ -142,14 +96,6 @@ workflows:
     jobs:
       - lint
       - build-r4
-  lint-and-build-r5:
-    jobs:
-      - lint
-      - build-r5
-  lint-and-build-dstu2:
-    jobs:
-      - lint
-      - build-dstu2
   lint-and-build-stu3:
     jobs:
       - lint

@@ -1,6 +1,6 @@
 //
 //  SequenceType.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/sequence-type
  ValueSet: http://hl7.org/fhir/ValueSet/sequence-type
  */
-public enum SequenceType: String, AlexandriaHRMPrimitiveType {
+public enum SequenceType: String, AsclepiusPrimitiveType {
   /// Amino acid sequence.
   case aa
   

@@ -1,6 +1,6 @@
 //
 //  ResearchSubjectStatus.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/research-subject-status
  ValueSet: http://hl7.org/fhir/ValueSet/research-subject-status
  */
-public enum ResearchSubjectStatus: String, AlexandriaHRMPrimitiveType {
+public enum ResearchSubjectStatus: String, AsclepiusPrimitiveType {
   /// An identified person that can be considered for inclusion in a study.
   case candidate
   

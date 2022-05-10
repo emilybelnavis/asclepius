@@ -1,6 +1,6 @@
 //
 //  CarePlanActivity.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  Identifies a planned action to occur as part of the care plan. For example, a medication to be used, lab tests
@@ -48,7 +48,7 @@ open class CarePlanActivity: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
     outcomeCodeableConcept: [CodeableConcept]? = nil,
     outcomeReference: [Reference]? = nil,
     progress: [Annotation]? = nil,

@@ -1,6 +1,6 @@
 //
 //  Address.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  An address expressed using postal conventions (as opposed to GPS or other location definition formats). This
@@ -30,32 +30,32 @@ import AlexandriaHRMCore
  */
 open class Address: Element {
   /// Purpose of this address ( home | work | temp | old | billing )
-  public var use: AlexandriaHRMPrimitive<AddressUse>?
+  public var use: AsclepiusPrimitive<AddressUse>?
   /// Type of address ( postal | physical | both)
-  public var type: AlexandriaHRMPrimitive<AddressType>?
+  public var type: AsclepiusPrimitive<AddressType>?
   
   /// Text representatoin of the address
-  public var text: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var text: AsclepiusPrimitive<AsclepiusString>?
   
   /// Street name, number, direction & P.O Box etc.
   /// This repeating element order: The order in which the lines should appear in an address
   /// label
-  public var line: [AlexandriaHRMPrimitive<AlexandriaHRMString>]?
+  public var line: [AsclepiusPrimitive<AsclepiusString>]?
   
   /// Name of city, town, etc...
-  public var city: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var city: AsclepiusPrimitive<AsclepiusString>?
   
   /// Name of district/county
-  public var district: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var district: AsclepiusPrimitive<AsclepiusString>?
   
   /// Sub-unit of country (abbreviations can be used here)
-  public var state: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var state: AsclepiusPrimitive<AsclepiusString>?
   
   /// Postal code for address
-  public var postalCode: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var postalCode: AsclepiusPrimitive<AsclepiusString>?
   
   /// Country code using either ISO:3166 2 or 3 letter country code
-  public var country: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var country: AsclepiusPrimitive<AsclepiusString>?
   
   /// Time period when address was/is in use
   public var period: Period?
@@ -66,15 +66,15 @@ open class Address: Element {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    use: AlexandriaHRMPrimitive<AddressUse>? = nil,
-    type: AlexandriaHRMPrimitive<AddressType>? = nil,
-    line: [AlexandriaHRMPrimitive<AlexandriaHRMString>]? = nil,
-    city: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    district: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    state: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    postalCode: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    country: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    use: AsclepiusPrimitive<AddressUse>? = nil,
+    type: AsclepiusPrimitive<AddressType>? = nil,
+    line: [AsclepiusPrimitive<AsclepiusString>]? = nil,
+    city: AsclepiusPrimitive<AsclepiusString>? = nil,
+    district: AsclepiusPrimitive<AsclepiusString>? = nil,
+    state: AsclepiusPrimitive<AsclepiusString>? = nil,
+    postalCode: AsclepiusPrimitive<AsclepiusString>? = nil,
+    country: AsclepiusPrimitive<AsclepiusString>? = nil,
     period: Period? = nil
   ) {
     self.init()
@@ -110,15 +110,15 @@ open class Address: Element {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.use = try AlexandriaHRMPrimitive<AddressUse>(from: codingKeyContainer, forKeyIfPresent: .use, auxKey: ._use)
-    self.type = try AlexandriaHRMPrimitive<AddressType>(from: codingKeyContainer, forKeyIfPresent: .type, auxKey: ._type)
-    self.text = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .text, auxKey: ._text)
-    self.line = try [AlexandriaHRMPrimitive<AlexandriaHRMString>](from: codingKeyContainer, forKeyIfPresent: .line, auxKey: ._line)
-    self.city = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .city, auxKey: ._city)
-    self.district = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .district, auxKey: ._district)
-    self.state = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .state, auxKey: ._state)
-    self.postalCode = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .postalCode, auxKey: ._postalCode)
-    self.country = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .country, auxKey: ._country)
+    self.use = try AsclepiusPrimitive<AddressUse>(from: codingKeyContainer, forKeyIfPresent: .use, auxKey: ._use)
+    self.type = try AsclepiusPrimitive<AddressType>(from: codingKeyContainer, forKeyIfPresent: .type, auxKey: ._type)
+    self.text = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .text, auxKey: ._text)
+    self.line = try [AsclepiusPrimitive<AsclepiusString>](from: codingKeyContainer, forKeyIfPresent: .line, auxKey: ._line)
+    self.city = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .city, auxKey: ._city)
+    self.district = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .district, auxKey: ._district)
+    self.state = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .state, auxKey: ._state)
+    self.postalCode = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .postalCode, auxKey: ._postalCode)
+    self.country = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .country, auxKey: ._country)
     self.period = try Period(from: codingKeyContainer, forKeyIfPresent: .period)
     
     try super.init(from: decoder)

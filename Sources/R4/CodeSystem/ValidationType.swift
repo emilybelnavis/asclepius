@@ -1,6 +1,6 @@
 //
 //  ValidationType.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/validation-type
  ValueSet: http://hl7.org/fhir/ValueSet/verificationresult-validation-type
  */
-public enum ValidationType: String, AlexandriaHRMPrimitiveType {
+public enum ValidationType: String, AsclepiusPrimitiveType {
   /// nothing
   case nothing
   

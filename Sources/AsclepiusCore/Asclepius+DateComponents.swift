@@ -1,7 +1,7 @@
 //
-//  AlexandriaHRM+DateComponents.swift
-//  AlexandriaHRM
-//  Module: AlexandriaHRMCore
+//  Asclepius+DateComponents.swift
+//  Asclepius
+//  Module: AsclepiusCore
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
 //
@@ -19,7 +19,7 @@
 
 import Foundation
 
-public struct AlexandriaHRMDateComponents: ExpressibleAsNSDate {
+public struct AsclepiusDateComponents: ExpressibleAsNSDate {
     
     public static var calendar = Calendar(identifier: .gregorian)
     

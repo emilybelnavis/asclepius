@@ -1,6 +1,6 @@
 //
 //  ContractTermAsset.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /// Contract Term Asset List
 open class ContractTermAsset: BackboneElement {
@@ -40,7 +40,7 @@ open class ContractTermAsset: BackboneElement {
   public var context: [ContractTermAssetContext]?
   
   /// Quality description of the asset
-  public var condition: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var condition: AsclepiusPrimitive<AsclepiusString>?
   
   /// Asset availability types
   public var periodType: [CodeableConcept]?
@@ -52,16 +52,16 @@ open class ContractTermAsset: BackboneElement {
   public var usePeriod: [Period]?
   
   /// Asset clause or question text
-  public var text: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var text: AsclepiusPrimitive<AsclepiusString>?
   
   /// Pointer to asset text
-  public var linkId: [AlexandriaHRMPrimitive<AlexandriaHRMString>]?
+  public var linkId: [AsclepiusPrimitive<AsclepiusString>]?
   
   /// Response to assets
   public var answer: [ContractTermOfferAnswer]?
   
   /// Asset restriction numbers
-  public var securityLabelNumber: [AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>]?
+  public var securityLabelNumber: [AsclepiusPrimitive<AsclepiusUnsignedInteger>]?
   
   /// Contract Valued Item List
   public var valuedItem: [ContractTermAssetValuedItem]?
@@ -73,21 +73,21 @@ open class ContractTermAsset: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
     scope: CodeableConcept? = nil,
     type: [CodeableConcept]? = nil,
     typeReference: [Reference]? = nil,
     subType: [CodeableConcept]? = nil,
     relationship: Coding? = nil,
     context: [ContractTermAssetContext]? = nil,
-    condition: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    condition: AsclepiusPrimitive<AsclepiusString>? = nil,
     periodType: [CodeableConcept]? = nil,
     period: [Period]? = nil,
     usePeriod: [Period]? = nil,
-    text: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    linkId: [AlexandriaHRMPrimitive<AlexandriaHRMString>]? = nil,
+    text: AsclepiusPrimitive<AsclepiusString>? = nil,
+    linkId: [AsclepiusPrimitive<AsclepiusString>]? = nil,
     answer: [ContractTermOfferAnswer]? = nil,
-    securityLabelNumber: [AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>]? = nil,
+    securityLabelNumber: [AsclepiusPrimitive<AsclepiusUnsignedInteger>]? = nil,
     valuedItem: [ContractTermAssetValuedItem]? = nil
   ) {
     self.init()
@@ -139,14 +139,14 @@ open class ContractTermAsset: BackboneElement {
     self.subType = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .subType)
     self.relationship = try Coding(from: codingKeyContainer, forKeyIfPresent: .relationship)
     self.context = try [ContractTermAssetContext](from: codingKeyContainer, forKeyIfPresent: .context)
-    self.condition = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .condition, auxKey: ._condition)
+    self.condition = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .condition, auxKey: ._condition)
     self.periodType = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .periodType)
     self.period = try [Period](from: codingKeyContainer, forKeyIfPresent: .period)
     self.usePeriod = try [Period](from: codingKeyContainer, forKeyIfPresent: .usePeriod)
-    self.text = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .text, auxKey: ._text)
-    self.linkId = try [AlexandriaHRMPrimitive<AlexandriaHRMString>](from: codingKeyContainer, forKeyIfPresent: .linkId, auxKey: ._linkId)
+    self.text = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .text, auxKey: ._text)
+    self.linkId = try [AsclepiusPrimitive<AsclepiusString>](from: codingKeyContainer, forKeyIfPresent: .linkId, auxKey: ._linkId)
     self.answer = try [ContractTermOfferAnswer](from: codingKeyContainer, forKeyIfPresent: .answer)
-    self.securityLabelNumber = try [AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>](from: codingKeyContainer, forKeyIfPresent: .securityLabelNumber, auxKey: ._securityLabelNumber)
+    self.securityLabelNumber = try [AsclepiusPrimitive<AsclepiusUnsignedInteger>](from: codingKeyContainer, forKeyIfPresent: .securityLabelNumber, auxKey: ._securityLabelNumber)
     self.valuedItem = try [ContractTermAssetValuedItem](from: codingKeyContainer, forKeyIfPresent: .valuedItem)
     
     try super.init(from: decoder)

@@ -1,6 +1,6 @@
 //
 //  Attachment.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  Content in a format defined elsewhere.
@@ -26,28 +26,28 @@ import AlexandriaHRMCore
  */
 open class Attachment: Element {
   /// MIME type of the content, with charset
-  public var contentType: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var contentType: AsclepiusPrimitive<AsclepiusString>?
   
   /// Language of the content (BCP-47)
-  public var language: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var language: AsclepiusPrimitive<AsclepiusString>?
   
   /// Data inline as base64
-  public var data: AlexandriaHRMPrimitive<AlexandriaHRMBase64Binary>?
+  public var data: AsclepiusPrimitive<AsclepiusBase64Binary>?
   
   /// URI where the data can be found
-  public var url: AlexandriaHRMPrimitive<AlexandriaHRMURI>?
+  public var url: AsclepiusPrimitive<AsclepiusURI>?
   
   /// Content bytesize (if URL provided)
-  public var size: AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>?
+  public var size: AsclepiusPrimitive<AsclepiusUnsignedInteger>?
   
   /// Hash of the data (SHA-1, base64 format)
-  public var hash: AlexandriaHRMPrimitive<AlexandriaHRMBase64Binary>?
+  public var hash: AsclepiusPrimitive<AsclepiusBase64Binary>?
   
   /// Label to display in place of the data
-  public var title: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var title: AsclepiusPrimitive<AsclepiusString>?
   
   /// Date the attachment was first created
-  public var creation: AlexandriaHRMPrimitive<AlexandriaHRMDateTime>?
+  public var creation: AsclepiusPrimitive<AsclepiusDateTime>?
   
   override public init() {
     super.init()
@@ -55,15 +55,15 @@ open class Attachment: Element {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    contentType: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    language: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    data: AlexandriaHRMPrimitive<AlexandriaHRMBase64Binary>? = nil,
-    url: AlexandriaHRMPrimitive<AlexandriaHRMURI>? = nil,
-    size: AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>? = nil,
-    hash: AlexandriaHRMPrimitive<AlexandriaHRMBase64Binary>? = nil,
-    title: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    creation: AlexandriaHRMPrimitive<AlexandriaHRMDateTime>? = nil
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    contentType: AsclepiusPrimitive<AsclepiusString>? = nil,
+    language: AsclepiusPrimitive<AsclepiusString>? = nil,
+    data: AsclepiusPrimitive<AsclepiusBase64Binary>? = nil,
+    url: AsclepiusPrimitive<AsclepiusURI>? = nil,
+    size: AsclepiusPrimitive<AsclepiusUnsignedInteger>? = nil,
+    hash: AsclepiusPrimitive<AsclepiusBase64Binary>? = nil,
+    title: AsclepiusPrimitive<AsclepiusString>? = nil,
+    creation: AsclepiusPrimitive<AsclepiusDateTime>? = nil
   ) {
     self.init()
     self.fhirExtension = fhirExtension
@@ -93,14 +93,14 @@ open class Attachment: Element {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.contentType = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .contentType, auxKey: ._contentType)
-    self.language = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .language, auxKey: ._language)
-    self.data = try AlexandriaHRMPrimitive<AlexandriaHRMBase64Binary>(from: codingKeyContainer, forKeyIfPresent: .data, auxKey: ._data)
-    self.url = try AlexandriaHRMPrimitive<AlexandriaHRMURI>(from: codingKeyContainer, forKeyIfPresent: .url, auxKey: ._url)
-    self.size = try AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>(from: codingKeyContainer, forKeyIfPresent: .size, auxKey: ._size)
-    self.hash = try AlexandriaHRMPrimitive<AlexandriaHRMBase64Binary>(from: codingKeyContainer, forKeyIfPresent: .hash, auxKey: ._hash)
-    self.title = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .title, auxKey: ._title)
-    self.creation = try AlexandriaHRMPrimitive<AlexandriaHRMDateTime>(from: codingKeyContainer, forKeyIfPresent: .creation, auxKey: ._creation)
+    self.contentType = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .contentType, auxKey: ._contentType)
+    self.language = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .language, auxKey: ._language)
+    self.data = try AsclepiusPrimitive<AsclepiusBase64Binary>(from: codingKeyContainer, forKeyIfPresent: .data, auxKey: ._data)
+    self.url = try AsclepiusPrimitive<AsclepiusURI>(from: codingKeyContainer, forKeyIfPresent: .url, auxKey: ._url)
+    self.size = try AsclepiusPrimitive<AsclepiusUnsignedInteger>(from: codingKeyContainer, forKeyIfPresent: .size, auxKey: ._size)
+    self.hash = try AsclepiusPrimitive<AsclepiusBase64Binary>(from: codingKeyContainer, forKeyIfPresent: .hash, auxKey: ._hash)
+    self.title = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .title, auxKey: ._title)
+    self.creation = try AsclepiusPrimitive<AsclepiusDateTime>(from: codingKeyContainer, forKeyIfPresent: .creation, auxKey: ._creation)
     
     try super.init(from: decoder)
   }

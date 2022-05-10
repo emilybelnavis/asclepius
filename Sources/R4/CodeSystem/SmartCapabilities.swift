@@ -1,6 +1,6 @@
 //
 //  SmartCapabilities.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/smart-capabilities
  ValueSet: http://hl7.org/fhir/ValueSet/smart-capabilities
  */
-public enum SmartCapabilities: String, AlexandriaHRMPrimitiveType {
+public enum SmartCapabilities: String, AsclepiusPrimitiveType {
   /// support for SMART’s EHR Launch mode.
   case launchEhr = "launch-ehr"
   

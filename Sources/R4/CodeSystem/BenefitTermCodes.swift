@@ -1,6 +1,6 @@
 //
 //  BenefitTermCodes.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/benefit-term
  ValueSet: http://hl7.org/fhir/ValueSet/benefit-term
  */
-public enum BenefitTermCodes: String, AlexandriaHRMPrimitiveType {
+public enum BenefitTermCodes: String, AsclepiusPrimitiveType {
   /// Annual, renewing on the anniversary
   case annual
   

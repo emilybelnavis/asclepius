@@ -1,6 +1,6 @@
 //
 //  RequestStatus.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/request-status
  ValueSet: http://hl7.org/fhir/ValueSet/request-status
  */
-public enum RequestStatus: String, AlexandriaHRMPrimitiveType {
+public enum RequestStatus: String, AsclepiusPrimitiveType {
   /// The request has been created but is not yet complete or ready for action.
   case draft
   

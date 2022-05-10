@@ -1,6 +1,6 @@
 //
 //  AllergyIntoleranceType.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/allergy-intolerance-type
  ValueSet: http://hl7.org/fhir/ValueSet/allergy-intolerance-type
  */
-public enum AllergyIntoleranceType: String, AlexandriaHRMPrimitiveType {
+public enum AllergyIntoleranceType: String, AsclepiusPrimitiveType {
   /// A propensity for hypersensitive reaction(s) to a substance. These reactions are typically type I
   /// hypersensitvity, plus other "allergy-like" reactions, including pseudoallergy
   case allergy

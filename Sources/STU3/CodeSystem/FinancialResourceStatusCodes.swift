@@ -1,6 +1,6 @@
 //
 //  FinancialResourceStatusCodes.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/fm-status
  ValueSet: http://hl7.org/fhir/ValueSet/fm-status
  */
-public enum FinancialResourceStatusCodes: String, AlexandriaHRMPrimitiveType {
+public enum FinancialResourceStatusCodes: String, AsclepiusPrimitiveType {
   /// The instance is currently in-force.
   case active
   

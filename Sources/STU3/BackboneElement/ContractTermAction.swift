@@ -1,6 +1,6 @@
 //
 //  ContractTermAction.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  Entity being ascribed responsibility - An actor taking a role in an activity for which it can be assigned some degree
@@ -25,13 +25,13 @@ import AlexandriaHRMCore
  */
 open class ContractTermAction: BackboneElement {
   public enum OccurrenceX: Hashable {
-    case dateTime(AlexandriaHRMPrimitive<AlexandriaHRMDateTime>)
+    case dateTime(AsclepiusPrimitive<AsclepiusDateTime>)
     case period(Period)
     case timing(Timing)
   }
   
   /// True if the term prohibits the action
-  public var doNotPerform: AlexandriaHRMPrimitive<AlexandriaHRMBool>?
+  public var doNotPerform: AsclepiusPrimitive<AsclepiusBool>?
   
   /// Type or form of the action
   public var type: CodeableConcept
@@ -43,7 +43,7 @@ open class ContractTermAction: BackboneElement {
   public var intent: CodeableConcept
   
   /// Pointer to specific item
-  public var linkId: [AlexandriaHRMPrimitive<AlexandriaHRMString>]?
+  public var linkId: [AsclepiusPrimitive<AsclepiusString>]?
   
   /// State of the action
   public var status: CodeableConcept
@@ -52,7 +52,7 @@ open class ContractTermAction: BackboneElement {
   public var context: Reference?
   
   /// Pointer to specific item
-  public var contextLinkId: [AlexandriaHRMPrimitive<AlexandriaHRMString>]?
+  public var contextLinkId: [AsclepiusPrimitive<AsclepiusString>]?
   
   /// When action happens
   public var occurrence: OccurrenceX?
@@ -61,7 +61,7 @@ open class ContractTermAction: BackboneElement {
   public var requester: [Reference]?
   
   /// Pointer to specific item
-  public var requesterLinkId: [AlexandriaHRMPrimitive<AlexandriaHRMString>]?
+  public var requesterLinkId: [AsclepiusPrimitive<AsclepiusString>]?
   
   /// Kind of service performer
   public var performerType: [CodeableConcept]?
@@ -73,7 +73,7 @@ open class ContractTermAction: BackboneElement {
   public var performer: Reference?
   
   /// Pointer to specific item
-  public var performerLinkId: [AlexandriaHRMPrimitive<AlexandriaHRMString>]?
+  public var performerLinkId: [AsclepiusPrimitive<AsclepiusString>]?
   
   /// Why the action is/isn't needed
   public var reasonCode: [CodeableConcept]?
@@ -82,16 +82,16 @@ open class ContractTermAction: BackboneElement {
   public var reasonReference: [Reference]?
   
   /// Why action is to be performed
-  public var reason: [AlexandriaHRMPrimitive<AlexandriaHRMString>]?
+  public var reason: [AsclepiusPrimitive<AsclepiusString>]?
   
   /// Pointer to specific item
-  public var reasonLinkId: [AlexandriaHRMPrimitive<AlexandriaHRMString>]?
+  public var reasonLinkId: [AsclepiusPrimitive<AsclepiusString>]?
   
   /// Comments about the action
   public var note: [Annotation]?
   
   /// Action restriction numbers
-  public var securityLabelNumber: [AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>]?
+  public var securityLabelNumber: [AsclepiusPrimitive<AsclepiusUnsignedInteger>]?
   
   public init(type: CodeableConcept, intent: CodeableConcept, status: CodeableConcept) {
     self.type = type
@@ -103,28 +103,28 @@ open class ContractTermAction: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    doNotPerform: AlexandriaHRMPrimitive<AlexandriaHRMBool>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    doNotPerform: AsclepiusPrimitive<AsclepiusBool>? = nil,
     type: CodeableConcept,
     subject: [ContractTermActionSubject]? = nil,
     intent: CodeableConcept,
-    linkId: [AlexandriaHRMPrimitive<AlexandriaHRMString>]? = nil,
+    linkId: [AsclepiusPrimitive<AsclepiusString>]? = nil,
     status: CodeableConcept,
     context: Reference? = nil,
-    contextLinkId: [AlexandriaHRMPrimitive<AlexandriaHRMString>]? = nil,
+    contextLinkId: [AsclepiusPrimitive<AsclepiusString>]? = nil,
     occurrence: OccurrenceX? = nil,
     requester: [Reference]? = nil,
-    requesterLinkId: [AlexandriaHRMPrimitive<AlexandriaHRMString>]? = nil,
+    requesterLinkId: [AsclepiusPrimitive<AsclepiusString>]? = nil,
     performerType: [CodeableConcept]? = nil,
     performerRole: CodeableConcept? = nil,
     performer: Reference? = nil,
-    performerLinkId: [AlexandriaHRMPrimitive<AlexandriaHRMString>]? = nil,
+    performerLinkId: [AsclepiusPrimitive<AsclepiusString>]? = nil,
     reasonCode: [CodeableConcept]? = nil,
     reasonReference: [Reference]? = nil,
-    reason: [AlexandriaHRMPrimitive<AlexandriaHRMString>]? = nil,
-    reasonLinkId: [AlexandriaHRMPrimitive<AlexandriaHRMString>]? = nil,
+    reason: [AsclepiusPrimitive<AsclepiusString>]? = nil,
+    reasonLinkId: [AsclepiusPrimitive<AsclepiusString>]? = nil,
     note: [Annotation]? = nil,
-    securityLabelNumber: [AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>]? = nil
+    securityLabelNumber: [AsclepiusPrimitive<AsclepiusUnsignedInteger>]? = nil
   ) {
     self.init(type: type, intent: intent, status: status)
     self.fhirExtension = fhirExtension
@@ -181,7 +181,7 @@ open class ContractTermAction: BackboneElement {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     var tOccurrence: OccurrenceX?
-    if let occurrenceDateTime = try AlexandriaHRMPrimitive<AlexandriaHRMDateTime>(from: codingKeyContainer, forKeyIfPresent: .occurrenceDateTime, auxKey: ._occurrenceDateTime) {
+    if let occurrenceDateTime = try AsclepiusPrimitive<AsclepiusDateTime>(from: codingKeyContainer, forKeyIfPresent: .occurrenceDateTime, auxKey: ._occurrenceDateTime) {
       if tOccurrence != nil {
         throw DecodingError.dataCorruptedError(forKey: .occurrenceDateTime, in: codingKeyContainer, debugDescription: "More than one value provided for \"occurrence\"")
       }
@@ -202,27 +202,27 @@ open class ContractTermAction: BackboneElement {
       tOccurrence = .timing(occurrenceTiming)
     }
     
-    self.doNotPerform = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKeyIfPresent: .doNotPerform, auxKey: ._doNotPerform)
+    self.doNotPerform = try AsclepiusPrimitive<AsclepiusBool>(from: codingKeyContainer, forKeyIfPresent: .doNotPerform, auxKey: ._doNotPerform)
     self.type = try CodeableConcept(from: codingKeyContainer, forKey: .type)
     self.subject = try [ContractTermActionSubject](from: codingKeyContainer, forKeyIfPresent: .subject)
     self.intent = try CodeableConcept(from: codingKeyContainer, forKey: .intent)
-    self.linkId = try [AlexandriaHRMPrimitive<AlexandriaHRMString>](from: codingKeyContainer, forKeyIfPresent: .linkId, auxKey: ._linkId)
+    self.linkId = try [AsclepiusPrimitive<AsclepiusString>](from: codingKeyContainer, forKeyIfPresent: .linkId, auxKey: ._linkId)
     self.status = try CodeableConcept(from: codingKeyContainer, forKey: .status)
     self.context = try Reference(from: codingKeyContainer, forKeyIfPresent: .context)
-    self.contextLinkId = try [AlexandriaHRMPrimitive<AlexandriaHRMString>](from: codingKeyContainer, forKeyIfPresent: .contextLinkId, auxKey: ._contextLinkId)
+    self.contextLinkId = try [AsclepiusPrimitive<AsclepiusString>](from: codingKeyContainer, forKeyIfPresent: .contextLinkId, auxKey: ._contextLinkId)
     self.occurrence = tOccurrence
     self.requester = try [Reference](from: codingKeyContainer, forKeyIfPresent: .requester)
-    self.requesterLinkId = try [AlexandriaHRMPrimitive<AlexandriaHRMString>](from: codingKeyContainer, forKeyIfPresent: .requesterLinkId, auxKey: ._requesterLinkId)
+    self.requesterLinkId = try [AsclepiusPrimitive<AsclepiusString>](from: codingKeyContainer, forKeyIfPresent: .requesterLinkId, auxKey: ._requesterLinkId)
     self.performerType = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .performerType)
     self.performerRole = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .performerRole)
     self.performer = try Reference(from: codingKeyContainer, forKey: .performer)
-    self.performerLinkId = try [AlexandriaHRMPrimitive<AlexandriaHRMString>](from: codingKeyContainer, forKeyIfPresent: .performerLinkId, auxKey: ._performerLinkId)
+    self.performerLinkId = try [AsclepiusPrimitive<AsclepiusString>](from: codingKeyContainer, forKeyIfPresent: .performerLinkId, auxKey: ._performerLinkId)
     self.reasonCode = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .reasonCode)
     self.reasonReference = try [Reference](from: codingKeyContainer, forKeyIfPresent: .reasonReference)
-    self.reason = try [AlexandriaHRMPrimitive<AlexandriaHRMString>](from: codingKeyContainer, forKeyIfPresent: .reason, auxKey: ._reason)
-    self.reasonLinkId = try [AlexandriaHRMPrimitive<AlexandriaHRMString>](from: codingKeyContainer, forKeyIfPresent: .reasonLinkId, auxKey: ._reasonLinkId)
+    self.reason = try [AsclepiusPrimitive<AsclepiusString>](from: codingKeyContainer, forKeyIfPresent: .reason, auxKey: ._reason)
+    self.reasonLinkId = try [AsclepiusPrimitive<AsclepiusString>](from: codingKeyContainer, forKeyIfPresent: .reasonLinkId, auxKey: ._reasonLinkId)
     self.note = try [Annotation](from: codingKeyContainer, forKeyIfPresent: .note)
-    self.securityLabelNumber = try [AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>](from: codingKeyContainer, forKeyIfPresent: .securityLabelNumber, auxKey: ._securityLabelNumber)
+    self.securityLabelNumber = try [AsclepiusPrimitive<AsclepiusUnsignedInteger>](from: codingKeyContainer, forKeyIfPresent: .securityLabelNumber, auxKey: ._securityLabelNumber)
     
     try super.init(from: decoder)
   }

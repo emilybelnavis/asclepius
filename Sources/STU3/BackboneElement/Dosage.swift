@@ -1,6 +1,6 @@
 //
 //  Dosage.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  Indicates how the medication is/was taken or should be taken by the patient.
@@ -25,21 +25,21 @@ import AlexandriaHRMCore
 open class Dosage: BackboneElement {
   /// All possible types for `asNeeded`
   public enum AsNeeded: Hashable {
-    case boolean(AlexandriaHRMPrimitive<AlexandriaHRMBool>)
+    case boolean(AsclepiusPrimitive<AsclepiusBool>)
     case codeableConcept(CodeableConcept)
   }
   
   /// The order of the dosage instructiions
-  public var sequence: AlexandriaHRMPrimitive<AlexandriaHRMInteger>?
+  public var sequence: AsclepiusPrimitive<AsclepiusInteger>?
   
   /// Free text dosage instructions
-  public var text: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var text: AsclepiusPrimitive<AsclepiusString>?
   
   /// Supplemental instructions or warnings to the patient
   public var additionalInstruction: [CodeableConcept]?
   
   /// Patient or consumer oriented instructions
-  public var patientInstruction: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var patientInstruction: AsclepiusPrimitive<AsclepiusString>?
   
   /// When medication should be administered
   public var timing: Timing?
@@ -75,11 +75,11 @@ open class Dosage: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    sequence: AlexandriaHRMPrimitive<AlexandriaHRMInteger>? = nil,
-    text: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    sequence: AsclepiusPrimitive<AsclepiusInteger>? = nil,
+    text: AsclepiusPrimitive<AsclepiusString>? = nil,
     additionalInstruction: [CodeableConcept]? = nil,
-    patientInstruction: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    patientInstruction: AsclepiusPrimitive<AsclepiusString>? = nil,
     timing: Timing? = nil,
     asNeeded: AsNeeded? = nil,
     site: CodeableConcept? = nil,
@@ -131,7 +131,7 @@ open class Dosage: BackboneElement {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     var tAsNeeded: AsNeeded?
-    if let asNeededBoolean = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKeyIfPresent: .asNeededBoolean, auxKey: ._asNeededBoolean) {
+    if let asNeededBoolean = try AsclepiusPrimitive<AsclepiusBool>(from: codingKeyContainer, forKeyIfPresent: .asNeededBoolean, auxKey: ._asNeededBoolean) {
       if tAsNeeded != nil {
         throw DecodingError.dataCorruptedError(forKey: .asNeededBoolean, in: codingKeyContainer, debugDescription: "More than one value provided for \"asNeeded\"")
       }
@@ -145,10 +145,10 @@ open class Dosage: BackboneElement {
       tAsNeeded = .codeableConcept(asNeededCodeableConcept)
     }
     
-    self.sequence = try AlexandriaHRMPrimitive<AlexandriaHRMInteger>(from: codingKeyContainer, forKeyIfPresent: .sequence, auxKey: ._sequence)
-    self.text = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .text, auxKey: ._text)
+    self.sequence = try AsclepiusPrimitive<AsclepiusInteger>(from: codingKeyContainer, forKeyIfPresent: .sequence, auxKey: ._sequence)
+    self.text = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .text, auxKey: ._text)
     self.additionalInstruction = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .additionalInstruction)
-    self.patientInstruction = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .patientInstruction, auxKey: ._patientInstruction)
+    self.patientInstruction = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .patientInstruction, auxKey: ._patientInstruction)
     self.timing = try Timing(from: codingKeyContainer, forKeyIfPresent: .timing)
     self.asNeeded = tAsNeeded
     self.site = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .site)

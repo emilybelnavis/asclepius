@@ -1,6 +1,6 @@
 //
 //  CoverageEligibilityRequestItem.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  Item to be evaluated for eligibility; Service categories or billable services for which benefit details and/or
@@ -25,7 +25,7 @@ import AlexandriaHRMCore
  */
 open class CoverageEligibilityRequestItem: BackboneElement {
   /// Applicable exception or supporting information
-  public var supportingInfoSequence: [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>]?
+  public var supportingInfoSequence: [AsclepiusPrimitive<AsclepiusPositiveInteger>]?
   
   /// Benefit classification
   public var category: CodeableConcept?
@@ -61,8 +61,8 @@ open class CoverageEligibilityRequestItem: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    supportingInfoSequence: [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>]? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    supportingInfoSequence: [AsclepiusPrimitive<AsclepiusPositiveInteger>]? = nil,
     category: CodeableConcept? = nil,
     productOrService: CodeableConcept? = nil,
     modifier: [CodeableConcept]? = nil,
@@ -103,7 +103,7 @@ open class CoverageEligibilityRequestItem: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.supportingInfoSequence = try [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>](from: codingKeyContainer, forKeyIfPresent: .supportingInfoSequence, auxKey: ._supportingInfoSequence)
+    self.supportingInfoSequence = try [AsclepiusPrimitive<AsclepiusPositiveInteger>](from: codingKeyContainer, forKeyIfPresent: .supportingInfoSequence, auxKey: ._supportingInfoSequence)
     self.category = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .category)
     self.productOrService = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .productOrService)
     self.modifier = try [CodeableConcept](from: codingKeyContainer, forKeyIfPresent: .modifier)

@@ -1,6 +1,6 @@
 //
 //  CodeSystemProperty.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  Additional information supplied about each concept. A property defines an additional slot through which
@@ -25,19 +25,19 @@ import AlexandriaHRMCore
  */
 open class CodeSystemProperty: BackboneElement {
   /// Identifies the property on the concepts and when referred to in operations
-  public var code: AlexandriaHRMPrimitive<AlexandriaHRMString>
+  public var code: AsclepiusPrimitive<AsclepiusString>
   
   /// Formal identifier for the property
-  public var uri: AlexandriaHRMPrimitive<AlexandriaHRMURI>?
+  public var uri: AsclepiusPrimitive<AsclepiusURI>?
   
   /// Why the property is defined, and/or what it conveys
-  public var fhirDescription: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var fhirDescription: AsclepiusPrimitive<AsclepiusString>?
   
   /// The type of property value. Properties of the type "code" defined by the code system
   /// (e.g. a reference to another defined concept)
-  public var type: AlexandriaHRMPrimitive<PropertyType>
+  public var type: AsclepiusPrimitive<PropertyType>
   
-  public init(code: AlexandriaHRMPrimitive<AlexandriaHRMString>, type: AlexandriaHRMPrimitive<PropertyType>) {
+  public init(code: AsclepiusPrimitive<AsclepiusString>, type: AsclepiusPrimitive<PropertyType>) {
     self.code = code
     self.type = type
     super.init()
@@ -46,11 +46,11 @@ open class CodeSystemProperty: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    code: AlexandriaHRMPrimitive<AlexandriaHRMString>,
-    uri: AlexandriaHRMPrimitive<AlexandriaHRMURI>? = nil,
-    fhirDescription: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    type: AlexandriaHRMPrimitive<PropertyType>
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    code: AsclepiusPrimitive<AsclepiusString>,
+    uri: AsclepiusPrimitive<AsclepiusURI>? = nil,
+    fhirDescription: AsclepiusPrimitive<AsclepiusString>? = nil,
+    type: AsclepiusPrimitive<PropertyType>
   ) {
     self.init(code: code, type: type)
     self.fhirExtension = fhirExtension
@@ -71,10 +71,10 @@ open class CodeSystemProperty: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.code = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .code, auxKey: ._code)
-    self.uri = try AlexandriaHRMPrimitive<AlexandriaHRMURI>(from: codingKeyContainer, forKeyIfPresent: .uri, auxKey: ._uri)
-    self.fhirDescription = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .fhirDescription, auxKey: ._fhirDescription)
-    self.type = try AlexandriaHRMPrimitive<PropertyType>(from: codingKeyContainer, forKey: .type, auxKey: ._type)
+    self.code = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKey: .code, auxKey: ._code)
+    self.uri = try AsclepiusPrimitive<AsclepiusURI>(from: codingKeyContainer, forKeyIfPresent: .uri, auxKey: ._uri)
+    self.fhirDescription = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .fhirDescription, auxKey: ._fhirDescription)
+    self.type = try AsclepiusPrimitive<PropertyType>(from: codingKeyContainer, forKey: .type, auxKey: ._type)
     
     try super.init(from: decoder)
   }

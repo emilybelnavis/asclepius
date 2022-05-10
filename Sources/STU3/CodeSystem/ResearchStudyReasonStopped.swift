@@ -1,6 +1,6 @@
 //
 //  ResearchStudyReasonStopped.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/research-study-reason-stopped
  ValueSet: http://hl7.org/fhir/ValueSet/research-study-reason-stopped
  */
-public enum ResearchStudyReasonStopped: String, AlexandriaHRMPrimitiveType {
+public enum ResearchStudyReasonStopped: String, AsclepiusPrimitiveType {
   /// The study prematurely ended because the accrual goal was met.
   case accrualGoalMet = "accrual-goal-met"
   

@@ -1,6 +1,6 @@
 //
 //  ReferenceVersionRules.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/reference-version-rules
  ValueSet: http://hl7.org/fhir/ValueSet/reference-version-rules
  */
-public enum ReferenceVersionRules: String, AlexandriaHRMPrimitiveType {
+public enum ReferenceVersionRules: String, AsclepiusPrimitiveType {
   /// The reference may be either version independent or version specific.
   case either
   

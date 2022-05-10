@@ -1,6 +1,6 @@
 //
 //  ContactDetail.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,11 +17,11 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 open class ContactDetail: Element {
   /// name of an individual to contact
-  public var name: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var name: AsclepiusPrimitive<AsclepiusString>?
   
   /// contact details for individual or organization
   public var telecom: [ContactPoint]?
@@ -32,8 +32,8 @@ open class ContactDetail: Element {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    name: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    name: AsclepiusPrimitive<AsclepiusString>? = nil,
     telecom: [ContactPoint]? = nil
   ) {
     self.init()
@@ -52,7 +52,7 @@ open class ContactDetail: Element {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.name = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .name, auxKey: ._name)
+    self.name = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .name, auxKey: ._name)
     self.telecom = try [ContactPoint](from: codingKeyContainer, forKeyIfPresent: .telecom)
     
     try super.init(from: decoder)

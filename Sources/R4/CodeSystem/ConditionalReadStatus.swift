@@ -1,6 +1,6 @@
 //
 //  ConditionalReadStatus.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/conditional-read-status
  ValueSet: http://hl7.org/fhir/ValueSet/conditional-read-status
  */
-public enum ConditionalReadStatus: String, AlexandriaHRMPrimitiveType {
+public enum ConditionalReadStatus: String, AsclepiusPrimitiveType {
   /// No support for conditional reads
   case notSupported = "not-supported"
   

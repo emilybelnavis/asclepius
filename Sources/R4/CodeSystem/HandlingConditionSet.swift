@@ -1,6 +1,6 @@
 //
 //  HandlingConditionSet.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/handling-condition
  ValueSet: http://hl7.org/fhir/ValueSet/handling-condition
  */
-public enum HandlingConditionSet: String, AlexandriaHRMPrimitiveType {
+public enum HandlingConditionSet: String, AsclepiusPrimitiveType {
   /// room temperature.
   case room
   

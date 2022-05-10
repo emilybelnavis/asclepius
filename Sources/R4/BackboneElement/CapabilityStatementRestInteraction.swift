@@ -1,6 +1,6 @@
 //
 //  CapabilityStatementRestInteraction.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,18 +17,18 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /// A specification of what resful operations are supported by the system
 open class CapabilityStatementRestInteraction: BackboneElement {
   /// A coded identifier of the operation supported by the system
   /// Restricted to [`transaction`, `batch`, `search-system`, `history-system`]
-  public var code: AlexandriaHRMPrimitive<FHIRRestfulInteractions>
+  public var code: AsclepiusPrimitive<FHIRRestfulInteractions>
   
   /// Anything special about operation behaviour
-  public var documentation: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var documentation: AsclepiusPrimitive<AsclepiusString>?
   
-  public init(code: AlexandriaHRMPrimitive<FHIRRestfulInteractions>) {
+  public init(code: AsclepiusPrimitive<FHIRRestfulInteractions>) {
     self.code = code
     super.init()
   }
@@ -36,9 +36,9 @@ open class CapabilityStatementRestInteraction: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    code: AlexandriaHRMPrimitive<FHIRRestfulInteractions>,
-    documentation: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    code: AsclepiusPrimitive<FHIRRestfulInteractions>,
+    documentation: AsclepiusPrimitive<AsclepiusString>? = nil
   ) {
     self.init(code: code)
     self.fhirExtension = fhirExtension
@@ -56,8 +56,8 @@ open class CapabilityStatementRestInteraction: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.code = try AlexandriaHRMPrimitive<FHIRRestfulInteractions>(from: codingKeyContainer, forKey: .code, auxKey: ._code)
-    self.documentation = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .documentation, auxKey: ._documentation)
+    self.code = try AsclepiusPrimitive<FHIRRestfulInteractions>(from: codingKeyContainer, forKey: .code, auxKey: ._code)
+    self.documentation = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .documentation, auxKey: ._documentation)
     
     try super.init(from: decoder)
   }

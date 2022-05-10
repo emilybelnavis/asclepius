@@ -1,6 +1,6 @@
 //
 //  StudyType.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/study-type
  ValueSet: http://hl7.org/fhir/ValueSet/study-type
  */
-public enum StudyType: String, AlexandriaHRMPrimitiveType {
+public enum StudyType: String, AsclepiusPrimitiveType {
   /// randomized controlled trial.
   case RCT
   

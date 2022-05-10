@@ -1,6 +1,6 @@
 //
 //  AdministrativeGender.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/administrative-gender
  ValueSet: http://hl7.org/fhir/ValueSet/administrative-gender
  */
-public enum AdministrativeGender: String, AlexandriaHRMPrimitiveType {
+public enum AdministrativeGender: String, AsclepiusPrimitiveType {
   case male
   case female
   case other

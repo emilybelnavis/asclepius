@@ -1,6 +1,6 @@
 //
 //  CapabilityStatementImplementation.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  Identifies a specific implementatin instance that is described by the capability statement - i.e. a particular
@@ -25,15 +25,15 @@ import AlexandriaHRMCore
  */
 open class CapabilityStatementImplementation: BackboneElement {
   /// Describes this specific instance
-  public var fhirDescription: AlexandriaHRMPrimitive<AlexandriaHRMString>
+  public var fhirDescription: AsclepiusPrimitive<AsclepiusString>
   
   /// Base URL for the installation
-  public var url: AlexandriaHRMPrimitive<AlexandriaHRMURI>?
+  public var url: AsclepiusPrimitive<AsclepiusURI>?
   
   /// Organization that manages the data
   public var custodian: Reference?
   
-  public init(fhirDescription: AlexandriaHRMPrimitive<AlexandriaHRMString>) {
+  public init(fhirDescription: AsclepiusPrimitive<AsclepiusString>) {
     self.fhirDescription = fhirDescription
     super.init()
   }
@@ -41,9 +41,9 @@ open class CapabilityStatementImplementation: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    fhirDescription: AlexandriaHRMPrimitive<AlexandriaHRMString>,
-    url: AlexandriaHRMPrimitive<AlexandriaHRMURI>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    fhirDescription: AsclepiusPrimitive<AsclepiusString>,
+    url: AsclepiusPrimitive<AsclepiusURI>? = nil,
     custodian: Reference?
   ) {
     self.init(fhirDescription: fhirDescription)
@@ -64,8 +64,8 @@ open class CapabilityStatementImplementation: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.fhirDescription = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .fhirDescription, auxKey: ._fhirDescription)
-    self.url = try AlexandriaHRMPrimitive<AlexandriaHRMURI>(from: codingKeyContainer, forKeyIfPresent: .url, auxKey: ._url)
+    self.fhirDescription = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKey: .fhirDescription, auxKey: ._fhirDescription)
+    self.url = try AsclepiusPrimitive<AsclepiusURI>(from: codingKeyContainer, forKeyIfPresent: .url, auxKey: ._url)
     self.custodian = try Reference(from: codingKeyContainer, forKeyIfPresent: .custodian)
     
     try super.init(from: decoder)

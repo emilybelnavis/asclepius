@@ -1,6 +1,6 @@
 //
 //  CapabilityStatementMessaging.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /// A description of the messaging capabilities of the solution
 open class CapabilityStatementMessaging: BackboneElement {
@@ -25,10 +25,10 @@ open class CapabilityStatementMessaging: BackboneElement {
   public var endpoint: [CapabilityStatementMessagingEndpoint]?
   
   /// Reliable message cache length (in minutes)
-  public var reliableCache: AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>?
+  public var reliableCache: AsclepiusPrimitive<AsclepiusUnsignedInteger>?
   
   /// Messaging interface behaviour details
-  public var documentation: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var documentation: AsclepiusPrimitive<AsclepiusString>?
   
   /// Messages supported by this system
   public var supportedMessage: [CapabilityStatementMessagingSupportMessage]?
@@ -40,10 +40,10 @@ open class CapabilityStatementMessaging: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
     endpoint: [CapabilityStatementMessagingEndpoint]? = nil,
-    reliableCache: AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>? = nil,
-    documentation: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    reliableCache: AsclepiusPrimitive<AsclepiusUnsignedInteger>? = nil,
+    documentation: AsclepiusPrimitive<AsclepiusString>? = nil,
     supportedMessage: [CapabilityStatementMessagingSupportMessage]? = nil
   ) {
     self.init()
@@ -68,8 +68,8 @@ open class CapabilityStatementMessaging: BackboneElement {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     self.endpoint = try [CapabilityStatementMessagingEndpoint](from: codingKeyContainer, forKeyIfPresent: .endpoint)
-    self.reliableCache = try AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>(from: codingKeyContainer, forKeyIfPresent: .reliableCache, auxKey: ._reliableCache)
-    self.documentation = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .documentation, auxKey: ._documentation)
+    self.reliableCache = try AsclepiusPrimitive<AsclepiusUnsignedInteger>(from: codingKeyContainer, forKeyIfPresent: .reliableCache, auxKey: ._reliableCache)
+    self.documentation = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .documentation, auxKey: ._documentation)
     self.supportedMessage = try [CapabilityStatementMessagingSupportMessage](from: codingKeyContainer, forKeyIfPresent: .supportedMessage)
     
     try super.init(from: decoder)

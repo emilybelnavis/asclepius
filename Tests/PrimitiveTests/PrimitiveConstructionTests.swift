@@ -1,6 +1,6 @@
 //
 //  PrimitiveConstructionTests.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -18,18 +18,18 @@
 //  limitations under the License.
 
 import Foundation
-import AlexandriaHRMCore
+import AsclepiusCore
 import R4
 import XCTest
 
 class PrimitiveConstructionTests: XCTestCase {
   func testBooleanConstruction() {
-    let boolTrue1 = AlexandriaHRMBool(true)
-    let boolTrue2: AlexandriaHRMBool = true
-    let boolFalse1 = AlexandriaHRMPrimitive<AlexandriaHRMBool>(AlexandriaHRMBool(false))
-    let boolFalse2 = AlexandriaHRMPrimitive(AlexandriaHRMBool(false))
-    let boolFalse3 = AlexandriaHRMPrimitive<AlexandriaHRMBool>(false)
-    let boolFalse4: AlexandriaHRMPrimitive<AlexandriaHRMBool> = false
+    let boolTrue1 = AsclepiusBool(true)
+    let boolTrue2: AsclepiusBool = true
+    let boolFalse1 = AsclepiusPrimitive<AsclepiusBool>(AsclepiusBool(false))
+    let boolFalse2 = AsclepiusPrimitive(AsclepiusBool(false))
+    let boolFalse3 = AsclepiusPrimitive<AsclepiusBool>(false)
+    let boolFalse4: AsclepiusPrimitive<AsclepiusBool> = false
     let boolFalse5 = false.asPrimitive()
     
     XCTAssertEqual(boolTrue1, boolTrue1)
@@ -46,14 +46,14 @@ class PrimitiveConstructionTests: XCTestCase {
   }
   
   func testStringContruction() {
-    let string1 = AlexandriaHRMString("Hello World!")
-    let string2: AlexandriaHRMString = "Hello World!"
+    let string1 = AsclepiusString("Hello World!")
+    let string2: AsclepiusString = "Hello World!"
     
-    let stringPrimitive1 = AlexandriaHRMPrimitive<AlexandriaHRMString>(AlexandriaHRMString("Goodbye World!"))
-    let stringPrimitive2 = AlexandriaHRMPrimitive<AlexandriaHRMString>("Goodbye World!")
-    let stringPrimitive3 = AlexandriaHRMPrimitive(AlexandriaHRMString("Goodbye World!"))
-    let stringPrimitive4: AlexandriaHRMPrimitive<AlexandriaHRMString> = "Goodbye World!"
-    let stringPrimitive5 = "Goodbye World!".asAlexandriaHRMStringPrimitive()
+    let stringPrimitive1 = AsclepiusPrimitive<AsclepiusString>(AsclepiusString("Goodbye World!"))
+    let stringPrimitive2 = AsclepiusPrimitive<AsclepiusString>("Goodbye World!")
+    let stringPrimitive3 = AsclepiusPrimitive(AsclepiusString("Goodbye World!"))
+    let stringPrimitive4: AsclepiusPrimitive<AsclepiusString> = "Goodbye World!"
+    let stringPrimitive5 = "Goodbye World!".asAsclepiusStringPrimitive()
     
     XCTAssertEqual(string1, string1)
     XCTAssertEqual(string1, string2)
@@ -70,15 +70,15 @@ class PrimitiveConstructionTests: XCTestCase {
   }
   
   func testURIConstruction() {
-    let uri1 = AlexandriaHRMURI("scheme:path/foo/bar")
-    let uri2: AlexandriaHRMURI = "scheme:path/foo/bar"
+    let uri1 = AsclepiusURI("scheme:path/foo/bar")
+    let uri2: AsclepiusURI = "scheme:path/foo/bar"
     
-    let uriPrimitive1 = AlexandriaHRMPrimitive<AlexandriaHRMURI>(AlexandriaHRMURI("https://bitmatic.ca"))
-    let uriPrimitive2 = AlexandriaHRMPrimitive<AlexandriaHRMURI>("https://bitmatic.ca")
-    let uriPrimitive3 = AlexandriaHRMPrimitive(AlexandriaHRMURI("https://bitmatic.ca"))
-    let uriPrimitive4: AlexandriaHRMPrimitive<AlexandriaHRMURI> = "https://bitmatic.ca"
-    let uriPrimitive5 = URL(string: "https://bitmatic.ca")!.asAlexandriaHRMURIPrimitive()
-    let uriPrimitive6 = "https://bitmatic.ca".asAlexandriaHRMURIPrimitive()
+    let uriPrimitive1 = AsclepiusPrimitive<AsclepiusURI>(AsclepiusURI("https://bitmatic.ca"))
+    let uriPrimitive2 = AsclepiusPrimitive<AsclepiusURI>("https://bitmatic.ca")
+    let uriPrimitive3 = AsclepiusPrimitive(AsclepiusURI("https://bitmatic.ca"))
+    let uriPrimitive4: AsclepiusPrimitive<AsclepiusURI> = "https://bitmatic.ca"
+    let uriPrimitive5 = URL(string: "https://bitmatic.ca")!.asAsclepiusURIPrimitive()
+    let uriPrimitive6 = "https://bitmatic.ca".asAsclepiusURIPrimitive()
     
     XCTAssertEqual(uri1, uri1)
     XCTAssertEqual(uri1, uri2)
@@ -99,11 +99,11 @@ class PrimitiveConstructionTests: XCTestCase {
     let canonical1 = Canonical("scheme:path/foo/bar|ABC")
     let canonical2: Canonical = "scheme:path/foo/bar|ABC"
     
-    let canonicalPrimitive1 = AlexandriaHRMPrimitive<Canonical>(Canonical("https://bitmatic.ca|test"))
-    let canonicalPrimitive2 = AlexandriaHRMPrimitive<Canonical>("https://bitmatic.ca|test")
-    let canonicalPrimitive3 = AlexandriaHRMPrimitive(Canonical("https://bitmatic.ca|test"))
-    let canonicalPrimitive4: AlexandriaHRMPrimitive<Canonical> = "https://bitmatic.ca|test"
-    let canonicalPrimitive5 = "https://bitmatic.ca|test".asAlexandriaHRMCanonicalPrimitive()
+    let canonicalPrimitive1 = AsclepiusPrimitive<Canonical>(Canonical("https://bitmatic.ca|test"))
+    let canonicalPrimitive2 = AsclepiusPrimitive<Canonical>("https://bitmatic.ca|test")
+    let canonicalPrimitive3 = AsclepiusPrimitive(Canonical("https://bitmatic.ca|test"))
+    let canonicalPrimitive4: AsclepiusPrimitive<Canonical> = "https://bitmatic.ca|test"
+    let canonicalPrimitive5 = "https://bitmatic.ca|test".asAsclepiusCanonicalPrimitive()
     
     XCTAssertEqual(canonical1, canonical1)
     XCTAssertEqual(canonical1, canonical2)
@@ -120,14 +120,14 @@ class PrimitiveConstructionTests: XCTestCase {
   }
   
   func testIntegerConstruction() {
-    let integer1 = AlexandriaHRMInteger(420)
-    let integer2: AlexandriaHRMInteger = 420
+    let integer1 = AsclepiusInteger(420)
+    let integer2: AsclepiusInteger = 420
     
-    let integerPrimitive1 = AlexandriaHRMPrimitive<AlexandriaHRMInteger>(AlexandriaHRMInteger(69))
-    let integerPrimitive2 = AlexandriaHRMPrimitive<AlexandriaHRMInteger>(69 as AlexandriaHRMInteger)
-    let integerPrimitive3 = AlexandriaHRMPrimitive(AlexandriaHRMInteger(69))
-    let integerPrimitive4: AlexandriaHRMPrimitive<AlexandriaHRMInteger> = 69
-    let integerPrimitive5 = 69.asAlexandriaHRMIntegerPrimitive()
+    let integerPrimitive1 = AsclepiusPrimitive<AsclepiusInteger>(AsclepiusInteger(69))
+    let integerPrimitive2 = AsclepiusPrimitive<AsclepiusInteger>(69 as AsclepiusInteger)
+    let integerPrimitive3 = AsclepiusPrimitive(AsclepiusInteger(69))
+    let integerPrimitive4: AsclepiusPrimitive<AsclepiusInteger> = 69
+    let integerPrimitive5 = 69.asAsclepiusIntegerPrimitive()
     
     XCTAssertEqual(integer1, integer1)
     XCTAssertEqual(integer1, integer2)
@@ -142,14 +142,14 @@ class PrimitiveConstructionTests: XCTestCase {
   }
   
   func testUnsignedIntegerConstruction() {
-    let unsignedInteger1 = AlexandriaHRMUnsignedInteger(420)
-    let unsignedInteger2: AlexandriaHRMUnsignedInteger = 420
+    let unsignedInteger1 = AsclepiusUnsignedInteger(420)
+    let unsignedInteger2: AsclepiusUnsignedInteger = 420
     
-    let unsignedIntegerPrimitive1 = AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>(AlexandriaHRMUnsignedInteger(69))
-    let unsignedIntegerPrimitive2 = AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>(69 as AlexandriaHRMUnsignedInteger)
-    let unsignedIntegerPrimitive3 = AlexandriaHRMPrimitive(AlexandriaHRMUnsignedInteger(69))
-    let unsignedIntegerPrimitive4: AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger> = 69
-    let unsignedIntegerPrimitive5 = 69.asAlexandriaHRMUnsignedIntegerPrimitive()
+    let unsignedIntegerPrimitive1 = AsclepiusPrimitive<AsclepiusUnsignedInteger>(AsclepiusUnsignedInteger(69))
+    let unsignedIntegerPrimitive2 = AsclepiusPrimitive<AsclepiusUnsignedInteger>(69 as AsclepiusUnsignedInteger)
+    let unsignedIntegerPrimitive3 = AsclepiusPrimitive(AsclepiusUnsignedInteger(69))
+    let unsignedIntegerPrimitive4: AsclepiusPrimitive<AsclepiusUnsignedInteger> = 69
+    let unsignedIntegerPrimitive5 = 69.asAsclepiusUnsignedIntegerPrimitive()
     
     XCTAssertEqual(unsignedInteger1, unsignedInteger1)
     XCTAssertEqual(unsignedInteger1, unsignedInteger2)
@@ -164,14 +164,14 @@ class PrimitiveConstructionTests: XCTestCase {
   }
   
   func testPositiveIntegerConstruction() {
-    let positiveInteger1 = AlexandriaHRMPositiveInteger(420)
-    let positiveInteger2: AlexandriaHRMPositiveInteger = 420
+    let positiveInteger1 = AsclepiusPositiveInteger(420)
+    let positiveInteger2: AsclepiusPositiveInteger = 420
     
-    let positiveIntegerPrimitive1 = AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>(AlexandriaHRMPositiveInteger(69))
-    let positiveIntegerPrimitive2 = AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>(69 as AlexandriaHRMPositiveInteger)
-    let positiveIntegerPrimitive3 = AlexandriaHRMPrimitive(AlexandriaHRMPositiveInteger(69))
-    let positiveIntegerPrimitive4: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger> = 69
-    let positiveIntegerPrimitive5 = 69.asAlexandriaHRMPositiveIntegerPrimitive()
+    let positiveIntegerPrimitive1 = AsclepiusPrimitive<AsclepiusPositiveInteger>(AsclepiusPositiveInteger(69))
+    let positiveIntegerPrimitive2 = AsclepiusPrimitive<AsclepiusPositiveInteger>(69 as AsclepiusPositiveInteger)
+    let positiveIntegerPrimitive3 = AsclepiusPrimitive(AsclepiusPositiveInteger(69))
+    let positiveIntegerPrimitive4: AsclepiusPrimitive<AsclepiusPositiveInteger> = 69
+    let positiveIntegerPrimitive5 = 69.asAsclepiusPositiveIntegerPrimitive()
     
     XCTAssertEqual(positiveInteger1, positiveInteger1)
     XCTAssertEqual(positiveInteger1, positiveInteger2)
@@ -186,14 +186,14 @@ class PrimitiveConstructionTests: XCTestCase {
   }
   
   func testDecimalConstruction() {
-    let decimal1 = AlexandriaHRMDecimal(3.14)
-    let decimal2: AlexandriaHRMDecimal = 3.14
+    let decimal1 = AsclepiusDecimal(3.14)
+    let decimal2: AsclepiusDecimal = 3.14
 
-    let decimalPrimitive1 = AlexandriaHRMPrimitive<AlexandriaHRMDecimal>(AlexandriaHRMDecimal(6.9))
-    let decimalPrimitive2 = AlexandriaHRMPrimitive<AlexandriaHRMDecimal>(6.9)
-    let decimalPrimitive3 = AlexandriaHRMPrimitive(AlexandriaHRMDecimal(6.9))
-    let decimalPrimitive4: AlexandriaHRMPrimitive<AlexandriaHRMDecimal> = 6.9
-    let decimalPrimitive5 = 6.9.asAlexandriaHRMDecimalPrimitive()
+    let decimalPrimitive1 = AsclepiusPrimitive<AsclepiusDecimal>(AsclepiusDecimal(6.9))
+    let decimalPrimitive2 = AsclepiusPrimitive<AsclepiusDecimal>(6.9)
+    let decimalPrimitive3 = AsclepiusPrimitive(AsclepiusDecimal(6.9))
+    let decimalPrimitive4: AsclepiusPrimitive<AsclepiusDecimal> = 6.9
+    let decimalPrimitive5 = 6.9.asAsclepiusDecimalPrimitive()
     
     XCTAssertEqual(decimal1, decimal1)
     XCTAssertEqual(decimal1, decimal2)
@@ -217,10 +217,10 @@ class PrimitiveConstructionTests: XCTestCase {
     let enum1 = GroupType.person
     let enum2: GroupType = .person
     
-    let enumPrimitive1 = AlexandriaHRMPrimitive<GroupType>(GroupType.device)
-    let enumPrimitive2 = AlexandriaHRMPrimitive<GroupType>(.device)
-    let enumPrimitive3 = AlexandriaHRMPrimitive(GroupType.device)
-    let enumPrimitive4: AlexandriaHRMPrimitive<GroupType> = GroupType.device.asPrimitive()
+    let enumPrimitive1 = AsclepiusPrimitive<GroupType>(GroupType.device)
+    let enumPrimitive2 = AsclepiusPrimitive<GroupType>(.device)
+    let enumPrimitive3 = AsclepiusPrimitive(GroupType.device)
+    let enumPrimitive4: AsclepiusPrimitive<GroupType> = GroupType.device.asPrimitive()
     let enumPrimitive5 = GroupType.device.asPrimitive()
     
     XCTAssertEqual(enum1, enum1)
@@ -250,19 +250,19 @@ class PrimitiveConstructionTests: XCTestCase {
   
   func testDecodeEncodePrimitiveTypes() {
     struct TestStruct: Codable {
-      var bool: AlexandriaHRMBool
+      var bool: AsclepiusBool
       var canonical: Canonical
-      var date: AlexandriaHRMDate
-      var dateTime: AlexandriaHRMDateTime
-      var decimal: AlexandriaHRMDecimal
-      var instant: AlexandriaHRMInstant
-      var instantDate: AlexandriaHRMInstantDate
-      var integer: AlexandriaHRMInteger
-      var positiveInteger: AlexandriaHRMPositiveInteger
-      var string: AlexandriaHRMString
-      var time: AlexandriaHRMTime
-      var unsignedInteger: AlexandriaHRMUnsignedInteger
-      var uri: AlexandriaHRMURI
+      var date: AsclepiusDate
+      var dateTime: AsclepiusDateTime
+      var decimal: AsclepiusDecimal
+      var instant: AsclepiusInstant
+      var instantDate: AsclepiusInstantDate
+      var integer: AsclepiusInteger
+      var positiveInteger: AsclepiusPositiveInteger
+      var string: AsclepiusString
+      var time: AsclepiusTime
+      var unsignedInteger: AsclepiusUnsignedInteger
+      var uri: AsclepiusURI
     }
     
     let json = """
@@ -370,14 +370,14 @@ class PrimitiveConstructionTests: XCTestCase {
     // FHIR Integers are capped at 32-bits (exception is 64bit integers available
     // starting R5
     
-    let int = AlexandriaHRMInteger(2_147_483_647)
-    XCTAssertEqual(int.integer, AlexandriaHRMInteger.IntegerLiteralType.max)
+    let int = AsclepiusInteger(2_147_483_647)
+    XCTAssertEqual(int.integer, AsclepiusInteger.IntegerLiteralType.max)
     
-    let positiveInteger = AlexandriaHRMPositiveInteger(2_147_483_647)
-    XCTAssertEqual(positiveInteger.integer, AlexandriaHRMPositiveInteger.IntegerLiteralType.max)
+    let positiveInteger = AsclepiusPositiveInteger(2_147_483_647)
+    XCTAssertEqual(positiveInteger.integer, AsclepiusPositiveInteger.IntegerLiteralType.max)
     
-    let unsignedInteger = AlexandriaHRMUnsignedInteger(2_147_483_647)
-    XCTAssertEqual(unsignedInteger.integer, AlexandriaHRMUnsignedInteger.IntegerLiteralType.max)
+    let unsignedInteger = AsclepiusUnsignedInteger(2_147_483_647)
+    XCTAssertEqual(unsignedInteger.integer, AsclepiusUnsignedInteger.IntegerLiteralType.max)
     
     let valueQuantity = "{\"actual\": true, \"type\": \"person\", \"quantity\": 4294967296}"
     let data = valueQuantity.data(using: .utf8)!

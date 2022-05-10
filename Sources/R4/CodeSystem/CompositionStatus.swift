@@ -1,6 +1,6 @@
 //
 //  CompositionStatus.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/composition-status
  ValueSet: http://hl7.org/fhir/ValueSet/composition-status
  */
-public enum CompositionStatus: String, AlexandriaHRMPrimitiveType {
+public enum CompositionStatus: String, AsclepiusPrimitiveType {
   /// This is a preliminary composition or document (also known as initial or interim. The content
   /// may be incomplete or unverified
   case preliminary

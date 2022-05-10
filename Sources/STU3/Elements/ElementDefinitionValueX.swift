@@ -1,6 +1,6 @@
 //
 //  ElementDefinitionValueX.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,17 +17,17 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 open class ElementDefinitionValueX: Element {
   public var address: Address?
   public var age: Age?
   public var annotation: Annotation?
   public var attachment: Attachment?
-  public var base64binary: AlexandriaHRMPrimitive<AlexandriaHRMBase64Binary>?
-  public var boolean: AlexandriaHRMPrimitive<AlexandriaHRMBool>?
-  public var canonical: AlexandriaHRMPrimitive<Canonical>?
-  public var code: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var base64binary: AsclepiusPrimitive<AsclepiusBase64Binary>?
+  public var boolean: AsclepiusPrimitive<AsclepiusBool>?
+  public var canonical: AsclepiusPrimitive<Canonical>?
+  public var code: AsclepiusPrimitive<AsclepiusString>?
   public var codeableConcept: CodeableConcept?
   public var coding: Coding?
   public var contactDetail: ContactDetail?
@@ -35,25 +35,25 @@ open class ElementDefinitionValueX: Element {
   public var contributor: Contributor?
   public var count: Count?
   public var dataRequirement: DataRequirement?
-  public var date: AlexandriaHRMPrimitive<AlexandriaHRMDate>?
-  public var dateTime: AlexandriaHRMPrimitive<AlexandriaHRMDateTime>?
-  public var decimal: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>?
+  public var date: AsclepiusPrimitive<AsclepiusDate>?
+  public var dateTime: AsclepiusPrimitive<AsclepiusDateTime>?
+  public var decimal: AsclepiusPrimitive<AsclepiusDecimal>?
   public var distance: Distance?
   public var dosage: Dosage?
   public var duration: Duration?
   public var expression: Expression?
   public var humanName: HumanName?
-  public var id: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var id: AsclepiusPrimitive<AsclepiusString>?
   public var identifier: Identifier?
-  public var instant: AlexandriaHRMPrimitive<AlexandriaHRMInstant>?
-  public var integer: AlexandriaHRMPrimitive<AlexandriaHRMInteger>?
-  public var markdown: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var instant: AsclepiusPrimitive<AsclepiusInstant>?
+  public var integer: AsclepiusPrimitive<AsclepiusInteger>?
+  public var markdown: AsclepiusPrimitive<AsclepiusString>?
   public var meta: Meta?
   public var money: Money?
-  public var oid: AlexandriaHRMPrimitive<AlexandriaHRMURI>?
+  public var oid: AsclepiusPrimitive<AsclepiusURI>?
   public var parameterDefinition: ParameterDefinition?
   public var period: Period?
-  public var positiveInteger: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>?
+  public var positiveInteger: AsclepiusPrimitive<AsclepiusPositiveInteger>?
   public var quantity: Quantity?
   public var range: Range?
   public var ratio: Ratio?
@@ -61,15 +61,15 @@ open class ElementDefinitionValueX: Element {
   public var relatedArtifact: RelatedArtifact?
   public var sampledData: SampledData?
   public var signature: Signature?
-  public var string: AlexandriaHRMPrimitive<AlexandriaHRMString>?
-  public var time: AlexandriaHRMPrimitive<AlexandriaHRMTime>?
+  public var string: AsclepiusPrimitive<AsclepiusString>?
+  public var time: AsclepiusPrimitive<AsclepiusTime>?
   public var timing: Timing?
   public var triggerDefinition: TriggerDefinition?
-  public var unsignedInteger: AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>?
-  public var uri: AlexandriaHRMPrimitive<AlexandriaHRMURI>?
-  public var url: AlexandriaHRMPrimitive<AlexandriaHRMURI>?
+  public var unsignedInteger: AsclepiusPrimitive<AsclepiusUnsignedInteger>?
+  public var uri: AsclepiusPrimitive<AsclepiusURI>?
+  public var url: AsclepiusPrimitive<AsclepiusURI>?
   public var usageContext: UsageContext?
-  public var uuid: AlexandriaHRMPrimitive<AlexandriaHRMURI>?
+  public var uuid: AsclepiusPrimitive<AsclepiusURI>?
   
   override public init() {
     super.init()
@@ -77,15 +77,15 @@ open class ElementDefinitionValueX: Element {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
     address: Address? = nil,
     age: Age? = nil,
     annotation: Annotation? = nil,
     attachment: Attachment? = nil,
-    base64binary: AlexandriaHRMPrimitive<AlexandriaHRMBase64Binary>? = nil,
-    boolean: AlexandriaHRMPrimitive<AlexandriaHRMBool>? = nil,
-    canonical: AlexandriaHRMPrimitive<Canonical>? = nil,
-    code: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    base64binary: AsclepiusPrimitive<AsclepiusBase64Binary>? = nil,
+    boolean: AsclepiusPrimitive<AsclepiusBool>? = nil,
+    canonical: AsclepiusPrimitive<Canonical>? = nil,
+    code: AsclepiusPrimitive<AsclepiusString>? = nil,
     codeableConcept: CodeableConcept? = nil,
     coding: Coding? = nil,
     contactDetail: ContactDetail? = nil,
@@ -93,25 +93,25 @@ open class ElementDefinitionValueX: Element {
     contributor: Contributor? = nil,
     count: Count? = nil,
     dataRequirement: DataRequirement? = nil,
-    date: AlexandriaHRMPrimitive<AlexandriaHRMDate>? = nil,
-    dateTime: AlexandriaHRMPrimitive<AlexandriaHRMDateTime>? = nil,
-    decimal: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>? = nil,
+    date: AsclepiusPrimitive<AsclepiusDate>? = nil,
+    dateTime: AsclepiusPrimitive<AsclepiusDateTime>? = nil,
+    decimal: AsclepiusPrimitive<AsclepiusDecimal>? = nil,
     distance: Distance? = nil,
     dosage: Dosage? = nil,
     duration: Duration? = nil,
     expression: Expression? = nil,
     humanName: HumanName? = nil,
-    id: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    id: AsclepiusPrimitive<AsclepiusString>? = nil,
     identifier: Identifier? = nil,
-    instant: AlexandriaHRMPrimitive<AlexandriaHRMInstant>? = nil,
-    integer: AlexandriaHRMPrimitive<AlexandriaHRMInteger>? = nil,
-    markdown: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    instant: AsclepiusPrimitive<AsclepiusInstant>? = nil,
+    integer: AsclepiusPrimitive<AsclepiusInteger>? = nil,
+    markdown: AsclepiusPrimitive<AsclepiusString>? = nil,
     meta: Meta? = nil,
     money: Money? = nil,
-    oid: AlexandriaHRMPrimitive<AlexandriaHRMURI>? = nil,
+    oid: AsclepiusPrimitive<AsclepiusURI>? = nil,
     parameterDefinition: ParameterDefinition? = nil,
     period: Period? = nil,
-    positiveInteger: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>? = nil,
+    positiveInteger: AsclepiusPrimitive<AsclepiusPositiveInteger>? = nil,
     quantity: Quantity? = nil,
     range: Range? = nil,
     ratio: Ratio? = nil,
@@ -119,15 +119,15 @@ open class ElementDefinitionValueX: Element {
     relatedArtifact: RelatedArtifact? = nil,
     sampledData: SampledData? = nil,
     signature: Signature? = nil,
-    string: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    time: AlexandriaHRMPrimitive<AlexandriaHRMTime>? = nil,
+    string: AsclepiusPrimitive<AsclepiusString>? = nil,
+    time: AsclepiusPrimitive<AsclepiusTime>? = nil,
     timing: Timing? = nil,
     triggerDefinition: TriggerDefinition? = nil,
-    unsignedInteger: AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>? = nil,
-    uri: AlexandriaHRMPrimitive<AlexandriaHRMURI>? = nil,
-    url: AlexandriaHRMPrimitive<AlexandriaHRMURI>? = nil,
+    unsignedInteger: AsclepiusPrimitive<AsclepiusUnsignedInteger>? = nil,
+    uri: AsclepiusPrimitive<AsclepiusURI>? = nil,
+    url: AsclepiusPrimitive<AsclepiusURI>? = nil,
     usageContext: UsageContext? = nil,
-    uuid: AlexandriaHRMPrimitive<AlexandriaHRMURI>? = nil
+    uuid: AsclepiusPrimitive<AsclepiusURI>? = nil
   ) {
     self.init()
     self.fhirExtension = fhirExtension
@@ -245,10 +245,10 @@ open class ElementDefinitionValueX: Element {
     self.age = try Age(from: codingKeyContainer, forKeyIfPresent: .age)
     self.annotation = try Annotation(from: codingKeyContainer, forKeyIfPresent: .annotation)
     self.attachment = try Attachment(from: codingKeyContainer, forKeyIfPresent: .attachment)
-    self.base64binary = try AlexandriaHRMPrimitive<AlexandriaHRMBase64Binary>(from: codingKeyContainer, forKeyIfPresent: .base64Binary, auxKey: ._base64Binary)
-    self.boolean = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKeyIfPresent: .boolean, auxKey: ._boolean)
-    self.canonical = try AlexandriaHRMPrimitive<Canonical>(from: codingKeyContainer, forKeyIfPresent: .canonical, auxKey: ._canonical)
-    self.code = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .code, auxKey: ._code)
+    self.base64binary = try AsclepiusPrimitive<AsclepiusBase64Binary>(from: codingKeyContainer, forKeyIfPresent: .base64Binary, auxKey: ._base64Binary)
+    self.boolean = try AsclepiusPrimitive<AsclepiusBool>(from: codingKeyContainer, forKeyIfPresent: .boolean, auxKey: ._boolean)
+    self.canonical = try AsclepiusPrimitive<Canonical>(from: codingKeyContainer, forKeyIfPresent: .canonical, auxKey: ._canonical)
+    self.code = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .code, auxKey: ._code)
     self.codeableConcept = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .codeableConcept)
     self.coding = try Coding(from: codingKeyContainer, forKeyIfPresent: .coding)
     self.contactDetail = try ContactDetail(from: codingKeyContainer, forKeyIfPresent: .contactDetail)
@@ -256,25 +256,25 @@ open class ElementDefinitionValueX: Element {
     self.contributor = try Contributor(from: codingKeyContainer, forKeyIfPresent: .contributor)
     self.count = try Count(from: codingKeyContainer, forKeyIfPresent: .count)
     self.dataRequirement = try DataRequirement(from: codingKeyContainer, forKeyIfPresent: .dataRequirement)
-    self.date = try AlexandriaHRMPrimitive<AlexandriaHRMDate>(from: codingKeyContainer, forKeyIfPresent: .date, auxKey: ._date)
-    self.dateTime = try AlexandriaHRMPrimitive<AlexandriaHRMDateTime>(from: codingKeyContainer, forKeyIfPresent: .dateTime, auxKey: ._dateTime)
-    self.decimal = try AlexandriaHRMPrimitive<AlexandriaHRMDecimal>(from: codingKeyContainer, forKeyIfPresent: .decimal, auxKey: ._decimal)
+    self.date = try AsclepiusPrimitive<AsclepiusDate>(from: codingKeyContainer, forKeyIfPresent: .date, auxKey: ._date)
+    self.dateTime = try AsclepiusPrimitive<AsclepiusDateTime>(from: codingKeyContainer, forKeyIfPresent: .dateTime, auxKey: ._dateTime)
+    self.decimal = try AsclepiusPrimitive<AsclepiusDecimal>(from: codingKeyContainer, forKeyIfPresent: .decimal, auxKey: ._decimal)
     self.distance = try Distance(from: codingKeyContainer, forKeyIfPresent: .distance)
     self.dosage = try Dosage(from: codingKeyContainer, forKeyIfPresent: .dosage)
     self.duration = try Duration(from: codingKeyContainer, forKeyIfPresent: .duration)
     self.expression = try Expression(from: codingKeyContainer, forKeyIfPresent: .expression)
     self.humanName = try HumanName(from: codingKeyContainer, forKeyIfPresent: .humanName)
-    self.id = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .id, auxKey: ._id)
+    self.id = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .id, auxKey: ._id)
     self.identifier = try Identifier(from: codingKeyContainer, forKeyIfPresent: .identifier)
-    self.instant = try AlexandriaHRMPrimitive<AlexandriaHRMInstant>(from: codingKeyContainer, forKeyIfPresent: .instant, auxKey: ._instant)
-    self.integer = try AlexandriaHRMPrimitive<AlexandriaHRMInteger>(from: codingKeyContainer, forKeyIfPresent: .integer, auxKey: ._integer)
-    self.markdown = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .markdown, auxKey: ._markdown)
+    self.instant = try AsclepiusPrimitive<AsclepiusInstant>(from: codingKeyContainer, forKeyIfPresent: .instant, auxKey: ._instant)
+    self.integer = try AsclepiusPrimitive<AsclepiusInteger>(from: codingKeyContainer, forKeyIfPresent: .integer, auxKey: ._integer)
+    self.markdown = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .markdown, auxKey: ._markdown)
     self.meta = try Meta(from: codingKeyContainer, forKeyIfPresent: .meta)
     self.money = try Money(from: codingKeyContainer, forKeyIfPresent: .money)
-    self.oid = try AlexandriaHRMPrimitive<AlexandriaHRMURI>(from: codingKeyContainer, forKeyIfPresent: .oid, auxKey: ._oid)
+    self.oid = try AsclepiusPrimitive<AsclepiusURI>(from: codingKeyContainer, forKeyIfPresent: .oid, auxKey: ._oid)
     self.parameterDefinition = try ParameterDefinition(from: codingKeyContainer, forKeyIfPresent: .parameterDefinition)
     self.period = try Period(from: codingKeyContainer, forKeyIfPresent: .period)
-    self.positiveInteger = try AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>(from: codingKeyContainer, forKeyIfPresent: .positiveInteger, auxKey: ._positiveInteger)
+    self.positiveInteger = try AsclepiusPrimitive<AsclepiusPositiveInteger>(from: codingKeyContainer, forKeyIfPresent: .positiveInteger, auxKey: ._positiveInteger)
     self.quantity = try Quantity(from: codingKeyContainer, forKeyIfPresent: .quantity)
     self.range = try Range(from: codingKeyContainer, forKeyIfPresent: .range)
     self.ratio = try Ratio(from: codingKeyContainer, forKeyIfPresent: .ratio)
@@ -282,13 +282,13 @@ open class ElementDefinitionValueX: Element {
     self.relatedArtifact = try RelatedArtifact(from: codingKeyContainer, forKeyIfPresent: .relatedArtifact)
     self.sampledData = try SampledData(from: codingKeyContainer, forKeyIfPresent: .sampledData)
     self.signature = try Signature(from: codingKeyContainer, forKeyIfPresent: .signature)
-    self.time = try AlexandriaHRMPrimitive<AlexandriaHRMTime>(from: codingKeyContainer, forKeyIfPresent: .time, auxKey: ._time)
+    self.time = try AsclepiusPrimitive<AsclepiusTime>(from: codingKeyContainer, forKeyIfPresent: .time, auxKey: ._time)
     self.timing = try Timing(from: codingKeyContainer, forKeyIfPresent: .timing)
     self.triggerDefinition = try TriggerDefinition(from: codingKeyContainer, forKeyIfPresent: .triggerDefinition)
-    self.uri = try AlexandriaHRMPrimitive<AlexandriaHRMURI>(from: codingKeyContainer, forKeyIfPresent: .uri, auxKey: ._uri)
-    self.url = try AlexandriaHRMPrimitive<AlexandriaHRMURI>(from: codingKeyContainer, forKeyIfPresent: .url, auxKey: ._url)
+    self.uri = try AsclepiusPrimitive<AsclepiusURI>(from: codingKeyContainer, forKeyIfPresent: .uri, auxKey: ._uri)
+    self.url = try AsclepiusPrimitive<AsclepiusURI>(from: codingKeyContainer, forKeyIfPresent: .url, auxKey: ._url)
     self.usageContext = try UsageContext(from: codingKeyContainer, forKeyIfPresent: .usageContext)
-    self.uuid = try AlexandriaHRMPrimitive<AlexandriaHRMURI>(from: codingKeyContainer, forKeyIfPresent: .uuid, auxKey: ._uuid)
+    self.uuid = try AsclepiusPrimitive<AsclepiusURI>(from: codingKeyContainer, forKeyIfPresent: .uuid, auxKey: ._uuid)
     
     try super.init(from: decoder)
   }

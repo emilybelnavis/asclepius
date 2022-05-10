@@ -1,6 +1,6 @@
 //
 //  EvidenceVariable.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/variable-type
  ValueSet: http://hl7.org/fhir/ValueSet/variable-type
  */
-public enum EvidenceVariableType: String, AlexandriaHRMPrimitiveType {
+public enum EvidenceVariableType: String, AsclepiusPrimitiveType {
   /// The variable is dichotomous, such as present or absent.
   case dichotomous
   

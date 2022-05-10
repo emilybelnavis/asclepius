@@ -1,6 +1,6 @@
 //
 //  ConsentPolicy.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,16 +17,16 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /// Policies covered by this consent - The references to the policies that are included in this consent scope.
 /// Policies may be organizational, but are often defined jurisdicionally or by law
 open class ConsentPolicy: BackboneElement {
   /// Enforcement source for policy
-  public var authority: AlexandriaHRMPrimitive<AlexandriaHRMURI>?
+  public var authority: AsclepiusPrimitive<AsclepiusURI>?
   
   /// Specific policy covered by this consent
-  public var uri: AlexandriaHRMPrimitive<AlexandriaHRMURI>?
+  public var uri: AsclepiusPrimitive<AsclepiusURI>?
   
   override public init() {
     super.init()
@@ -35,9 +35,9 @@ open class ConsentPolicy: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    authority: AlexandriaHRMPrimitive<AlexandriaHRMURI>? = nil,
-    uri: AlexandriaHRMPrimitive<AlexandriaHRMURI>? = nil
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    authority: AsclepiusPrimitive<AsclepiusURI>? = nil,
+    uri: AsclepiusPrimitive<AsclepiusURI>? = nil
   ) {
     self.init()
     self.fhirExtension = fhirExtension
@@ -56,8 +56,8 @@ open class ConsentPolicy: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.authority = try AlexandriaHRMPrimitive<AlexandriaHRMURI>(from: codingKeyContainer, forKeyIfPresent: .authority, auxKey: ._authority)
-    self.uri = try AlexandriaHRMPrimitive<AlexandriaHRMURI>(from: codingKeyContainer, forKeyIfPresent: .uri, auxKey: ._uri)
+    self.authority = try AsclepiusPrimitive<AsclepiusURI>(from: codingKeyContainer, forKeyIfPresent: .authority, auxKey: ._authority)
+    self.uri = try AsclepiusPrimitive<AsclepiusURI>(from: codingKeyContainer, forKeyIfPresent: .uri, auxKey: ._uri)
     
     try super.init(from: decoder)
   }

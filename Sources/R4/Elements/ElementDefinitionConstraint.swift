@@ -1,6 +1,6 @@
 //
 //  ElementDefinitionConstraint.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,34 +17,34 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 /**
  Condition that must evaluate to `true` - Formal constraints such as co-occurence and other constraints
  that can be computationally evaluated within the context of the instance.
  */
 open class ElementDefinitionConstraint: Element {
   /// Target of `condition` reference
-  public var key: AlexandriaHRMPrimitive<AlexandriaHRMString>
+  public var key: AsclepiusPrimitive<AsclepiusString>
   
   /// Why this constraint is necessary or appropriate
-  public var requirements: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var requirements: AsclepiusPrimitive<AsclepiusString>?
   
   /// Identifies the impact constraint violation has on the conformance of the instance.
-  public var severity: AlexandriaHRMPrimitive<ConstraintSeverity>
+  public var severity: AsclepiusPrimitive<ConstraintSeverity>
   
   /// Human readable description of the constraint
-  public var human: AlexandriaHRMPrimitive<AlexandriaHRMString>
+  public var human: AsclepiusPrimitive<AsclepiusString>
   
   /// FHIRPath expression of the constraint
-  public var expression: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var expression: AsclepiusPrimitive<AsclepiusString>?
   
   /// XPath expression of the constraint
-  public var xpath: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var xpath: AsclepiusPrimitive<AsclepiusString>?
   
   /// Reference to the original source of the constraint
-  public var source: AlexandriaHRMPrimitive<Canonical>?
+  public var source: AsclepiusPrimitive<Canonical>?
   
-  public init(key: AlexandriaHRMPrimitive<AlexandriaHRMString>, severity: AlexandriaHRMPrimitive<ConstraintSeverity>, human: AlexandriaHRMPrimitive<AlexandriaHRMString>) {
+  public init(key: AsclepiusPrimitive<AsclepiusString>, severity: AsclepiusPrimitive<ConstraintSeverity>, human: AsclepiusPrimitive<AsclepiusString>) {
     self.key = key
     self.severity = severity
     self.human = human
@@ -53,14 +53,14 @@ open class ElementDefinitionConstraint: Element {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    key: AlexandriaHRMPrimitive<AlexandriaHRMString>,
-    requirements: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    severity: AlexandriaHRMPrimitive<ConstraintSeverity>,
-    human: AlexandriaHRMPrimitive<AlexandriaHRMString>,
-    expression: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    xpath: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    source: AlexandriaHRMPrimitive<Canonical>? = nil
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    key: AsclepiusPrimitive<AsclepiusString>,
+    requirements: AsclepiusPrimitive<AsclepiusString>? = nil,
+    severity: AsclepiusPrimitive<ConstraintSeverity>,
+    human: AsclepiusPrimitive<AsclepiusString>,
+    expression: AsclepiusPrimitive<AsclepiusString>? = nil,
+    xpath: AsclepiusPrimitive<AsclepiusString>? = nil,
+    source: AsclepiusPrimitive<Canonical>? = nil
   ) {
     self.init(key: key, severity: severity, human: human)
     self.fhirExtension = fhirExtension
@@ -85,13 +85,13 @@ open class ElementDefinitionConstraint: Element {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.key = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .key, auxKey: ._key)
-    self.requirements = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .requirements, auxKey: ._requirements)
-    self.severity = try AlexandriaHRMPrimitive<ConstraintSeverity>(from: codingKeyContainer, forKey: .severity, auxKey: ._severity)
-    self.human = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .human, auxKey: ._human)
-    self.expression = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .expression, auxKey: ._expression)
-    self.xpath = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .xpath, auxKey: ._xpath)
-    self.source = try AlexandriaHRMPrimitive<Canonical>(from: codingKeyContainer, forKeyIfPresent: .source, auxKey: ._source)
+    self.key = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKey: .key, auxKey: ._key)
+    self.requirements = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .requirements, auxKey: ._requirements)
+    self.severity = try AsclepiusPrimitive<ConstraintSeverity>(from: codingKeyContainer, forKey: .severity, auxKey: ._severity)
+    self.human = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKey: .human, auxKey: ._human)
+    self.expression = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .expression, auxKey: ._expression)
+    self.xpath = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .xpath, auxKey: ._xpath)
+    self.source = try AsclepiusPrimitive<Canonical>(from: codingKeyContainer, forKeyIfPresent: .source, auxKey: ._source)
     
     try super.init(from: decoder)
   }

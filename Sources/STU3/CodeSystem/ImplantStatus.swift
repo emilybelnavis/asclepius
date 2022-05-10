@@ -1,6 +1,6 @@
 //
 //  ImplantStatus.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/implantStatus
  ValueSet: http://hl7.org/fhir/ValueSet/implantStatus
  */
-public enum ImplantStatus: String, AlexandriaHRMPrimitiveType {
+public enum ImplantStatus: String, AsclepiusPrimitiveType {
   /// The implanted device is working normally.
   case functional
   

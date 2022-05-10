@@ -1,6 +1,6 @@
 //
 //  DocumentRelationshipType.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/document-relationship-type
  ValueSet: http://hl7.org/fhir/ValueSet/document-relationship-type
  */
-public enum DocumentRelationshipType: String, AlexandriaHRMPrimitiveType {
+public enum DocumentRelationshipType: String, AsclepiusPrimitiveType {
   /// This document logically replaces or supersedes the target document.
   case replaces
   

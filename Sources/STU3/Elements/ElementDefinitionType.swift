@@ -1,6 +1,6 @@
 //
 //  ElementDefinitionType.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,42 +17,42 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  The data type or resource that the value of this element is permitted to be
  */
 open class ElementDefinitionType: Element {
   /// Data type or Resource (reference to definition)
-  public var code: AlexandriaHRMPrimitive<AlexandriaHRMURI>
+  public var code: AsclepiusPrimitive<AsclepiusURI>
   
   /// Profiles (StructureDefinition or IG, one must apply)
-  public var profile: [AlexandriaHRMPrimitive<Canonical>]?
+  public var profile: [AsclepiusPrimitive<Canonical>]?
   
   /// Profile (StructureDefinition or IG, one must apply)
-  public var targetProfile: [AlexandriaHRMPrimitive<Canonical>]?
+  public var targetProfile: [AsclepiusPrimitive<Canonical>]?
   
   /// If the type is a reference to another resource, how the resource is or can be aggregated. Is it a
   /// contained resource, or a reference, and if the context is a bundle, is it included in the bundle?
-  public var aggregation: [AlexandriaHRMPrimitive<AggregationMode>]?
+  public var aggregation: [AsclepiusPrimitive<AggregationMode>]?
   
   /// Whether this reference needs to be version specific, version independent, or whether either can
   /// be used.
-  public var versioning: AlexandriaHRMPrimitive<ReferenceVersionRules>?
+  public var versioning: AsclepiusPrimitive<ReferenceVersionRules>?
   
-  public init(code: AlexandriaHRMPrimitive<AlexandriaHRMURI>) {
+  public init(code: AsclepiusPrimitive<AsclepiusURI>) {
     self.code = code
     super.init()
   }
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    code: AlexandriaHRMPrimitive<AlexandriaHRMURI>,
-    profile: [AlexandriaHRMPrimitive<Canonical>]? = nil,
-    targetProfile: [AlexandriaHRMPrimitive<Canonical>]? = nil,
-    aggregation: [AlexandriaHRMPrimitive<AggregationMode>]? = nil,
-    versioning: AlexandriaHRMPrimitive<ReferenceVersionRules>? = nil
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    code: AsclepiusPrimitive<AsclepiusURI>,
+    profile: [AsclepiusPrimitive<Canonical>]? = nil,
+    targetProfile: [AsclepiusPrimitive<Canonical>]? = nil,
+    aggregation: [AsclepiusPrimitive<AggregationMode>]? = nil,
+    versioning: AsclepiusPrimitive<ReferenceVersionRules>? = nil
   ) {
     self.init(code: code)
     self.fhirExtension = fhirExtension
@@ -75,11 +75,11 @@ open class ElementDefinitionType: Element {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.code = try AlexandriaHRMPrimitive<AlexandriaHRMURI>(from: codingKeyContainer, forKey: .code, auxKey: ._code)
-    self.profile = try [AlexandriaHRMPrimitive<Canonical>](from: codingKeyContainer, forKeyIfPresent: .profile, auxKey: ._profile)
-    self.targetProfile = try [AlexandriaHRMPrimitive<Canonical>](from: codingKeyContainer, forKeyIfPresent: .targetProfile, auxKey: ._targetProfile)
-    self.aggregation = try [AlexandriaHRMPrimitive<AggregationMode>](from: codingKeyContainer, forKeyIfPresent: .aggregation, auxKey: ._aggregation)
-    self.versioning = try AlexandriaHRMPrimitive<ReferenceVersionRules>(from: codingKeyContainer, forKeyIfPresent: .versioning, auxKey: ._versioning)
+    self.code = try AsclepiusPrimitive<AsclepiusURI>(from: codingKeyContainer, forKey: .code, auxKey: ._code)
+    self.profile = try [AsclepiusPrimitive<Canonical>](from: codingKeyContainer, forKeyIfPresent: .profile, auxKey: ._profile)
+    self.targetProfile = try [AsclepiusPrimitive<Canonical>](from: codingKeyContainer, forKeyIfPresent: .targetProfile, auxKey: ._targetProfile)
+    self.aggregation = try [AsclepiusPrimitive<AggregationMode>](from: codingKeyContainer, forKeyIfPresent: .aggregation, auxKey: ._aggregation)
+    self.versioning = try AsclepiusPrimitive<ReferenceVersionRules>(from: codingKeyContainer, forKeyIfPresent: .versioning, auxKey: ._versioning)
     
     try super.init(from: decoder)
   }

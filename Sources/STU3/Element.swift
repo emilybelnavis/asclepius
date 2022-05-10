@@ -1,6 +1,6 @@
 //
 //  Element.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  The base definition for all elements contained inside a resource. All elements, whether defined as a `Data Type`
@@ -25,9 +25,9 @@ import AlexandriaHRMCore
  
  Three kinds of decend
  */
-open class Element: AlexandriaHRMType {
+open class Element: AsclepiusType {
   /// Unique id for inter-element referencing
-  public var fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var fhirId: AsclepiusPrimitive<AsclepiusString>?
   
   /// Addistional content defined by implementations
   public var fhirExtension: [Extension]?
@@ -36,7 +36,7 @@ open class Element: AlexandriaHRMType {
     
   }
   
-  public convenience init(fhirExtension: [Extension]? = nil, fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil) {
+  public convenience init(fhirExtension: [Extension]? = nil, fhirId: AsclepiusPrimitive<AsclepiusString>? = nil) {
     self.init()
     self.fhirExtension = fhirExtension
     self.fhirId = fhirId
@@ -52,7 +52,7 @@ open class Element: AlexandriaHRMType {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     self.fhirExtension = try [Extension](from: codingKeyContainer, forKeyIfPresent: .fhirExtension)
-    self.fhirId = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .fhirId, auxKey: ._fhirId)
+    self.fhirId = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .fhirId, auxKey: ._fhirId)
   }
   
   public func encode(to encoder: Encoder) throws {

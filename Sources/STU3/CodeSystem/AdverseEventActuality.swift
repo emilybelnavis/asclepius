@@ -1,6 +1,6 @@
 //
 //  AdverseEventActuality.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/adverse-event-actuality
  ValueSet: http://hl7.org/fhir/ValueSet/adverse-event-actuality
  */
-public enum AdverseEventActuality: String, AlexandriaHRMPrimitiveType {
+public enum AdverseEventActuality: String, AsclepiusPrimitiveType {
   /// The adverse event actually happened regardless of whether anyone was affected/harmed
   case actual
   

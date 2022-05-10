@@ -1,6 +1,6 @@
 //
 //  CapabilityStatementMessagingSupportedMessage.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,17 +17,17 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /// References to message definitions for messages this system can send or receive
 open class CapabilityStatementMessagingSupportMessage: BackboneElement {
   /// The mode of this event declaration - whether application is sender or receiver
-  public var mode: AlexandriaHRMPrimitive<EventCapabilityMode>
+  public var mode: AsclepiusPrimitive<EventCapabilityMode>
   
   /// Mesage supported by this system
-  public var definition: AlexandriaHRMPrimitive<Canonical>
+  public var definition: AsclepiusPrimitive<Canonical>
  
-  public init(mode: AlexandriaHRMPrimitive<EventCapabilityMode>, definition: AlexandriaHRMPrimitive<Canonical>) {
+  public init(mode: AsclepiusPrimitive<EventCapabilityMode>, definition: AsclepiusPrimitive<Canonical>) {
     self.mode = mode
     self.definition = definition
     super.init()
@@ -36,9 +36,9 @@ open class CapabilityStatementMessagingSupportMessage: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    mode: AlexandriaHRMPrimitive<EventCapabilityMode>,
-    definition: AlexandriaHRMPrimitive<Canonical>
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    mode: AsclepiusPrimitive<EventCapabilityMode>,
+    definition: AsclepiusPrimitive<Canonical>
   ) {
     self.init(mode: mode, definition: definition)
     self.fhirExtension = fhirExtension
@@ -55,8 +55,8 @@ open class CapabilityStatementMessagingSupportMessage: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.mode = try AlexandriaHRMPrimitive<EventCapabilityMode>(from: codingKeyContainer, forKey: .mode, auxKey: ._mode)
-    self.definition = try AlexandriaHRMPrimitive<Canonical>(from: codingKeyContainer, forKey: .definition, auxKey: ._definition)
+    self.mode = try AsclepiusPrimitive<EventCapabilityMode>(from: codingKeyContainer, forKey: .mode, auxKey: ._mode)
+    self.definition = try AsclepiusPrimitive<Canonical>(from: codingKeyContainer, forKey: .definition, auxKey: ._definition)
     
     try super.init(from: decoder)
   }

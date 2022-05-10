@@ -1,6 +1,6 @@
 //
 //  PropertyRepresentation.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/property-representation
  ValueSet: http://hl7.org/fhir/ValueSet/property-representation
  */
-public enum PropertyRepresentation: String, AlexandriaHRMPrimitiveType {
+public enum PropertyRepresentation: String, AsclepiusPrimitiveType {
   /// In XML, this property is represented as an attribute not an element.
   case xmlAttr
   

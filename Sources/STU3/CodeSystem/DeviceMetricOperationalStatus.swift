@@ -1,6 +1,6 @@
 //
 //  DeviceMetricOperationalStatus.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/metric-operational-status
  ValueSet: http://hl7.org/fhir/ValueSet/metric-operational-status
  */
-public enum DeviceMetricOperationalStatus: String, AlexandriaHRMPrimitiveType {
+public enum DeviceMetricOperationalStatus: String, AsclepiusPrimitiveType {
   /// The DeviceMetric is operating and will generate DeviceObservations.
   case on
   

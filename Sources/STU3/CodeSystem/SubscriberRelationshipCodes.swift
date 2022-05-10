@@ -1,6 +1,6 @@
 //
 //  SubscriberRelationshipCodes.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -24,7 +24,7 @@
  URL: http://terminology.hl7.org/CodeSystem/subscriber-relationship
  ValueSet: http://hl7.org/fhir/ValueSet/subscriber-relationship
  */
-public enum SubscriberRelationshipCodes: String, AlexandriaHRMPrimitiveType {
+public enum SubscriberRelationshipCodes: String, AsclepiusPrimitiveType {
   /// The Beneficiary is a child of the Subscriber
   case child
   

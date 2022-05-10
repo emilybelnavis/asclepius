@@ -1,6 +1,6 @@
 //
 //  ImmunizationEvaluationDoseStatusReasonCodes.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -25,7 +25,7 @@
  URL: http://terminology.hl7.org/CodeSystem/immunization-evaluation-dose-status-reason
  ValueSet: http://hl7.org/fhir/ValueSet/immunization-evaluation-dose-status-reason
  */
-public enum ImmunizationEvaluationDoseStatusReasonCodes: String, AlexandriaHRMPrimitiveType {
+public enum ImmunizationEvaluationDoseStatusReasonCodes: String, AsclepiusPrimitiveType {
   /// The product was stored in a manner inconsistent with manufacturer guidelines potentially reducing the
   /// effectiveness of the product.
   case advstorage

@@ -1,6 +1,6 @@
 //
 //  AbstractResource.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,11 +17,11 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 import Foundation
 
 /// Base class for all FHIR Resources
-open class AlexandriaHRMAbstractResource: AlexandriaHRMType {
+open class AsclepiusAbstractResource: AsclepiusType {
   open class var resourceType: ResourceType { return .resource }
   
   public init() { }
@@ -44,12 +44,12 @@ open class AlexandriaHRMAbstractResource: AlexandriaHRMType {
   }
   
   // MARK: - Equatable
-  public static func == (leftSide: AlexandriaHRMAbstractResource, rightSide: AlexandriaHRMAbstractResource) -> Bool {
+  public static func == (leftSide: AsclepiusAbstractResource, rightSide: AsclepiusAbstractResource) -> Bool {
     return leftSide.isEqual(to: rightSide)
   }
   
   public func isEqual(to _other: Any?) -> Bool {
-    guard let _other = _other as? AlexandriaHRMAbstractResource else {
+    guard let _other = _other as? AsclepiusAbstractResource else {
       return false
     }
     

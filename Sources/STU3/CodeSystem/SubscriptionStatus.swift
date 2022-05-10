@@ -1,6 +1,6 @@
 //
 //  SubscriptionStatus.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/subscription-status
  ValueSet: http://hl7.org/fhir/ValueSet/subscription-status
  */
-public enum SubscriptionStatus: String, AlexandriaHRMPrimitiveType {
+public enum SubscriptionStatus: String, AsclepiusPrimitiveType {
   /// The client has requested the subscription, and the server has not yet set it up.
   case requested
   

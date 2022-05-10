@@ -1,6 +1,6 @@
 //
 //  Expression.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  An expression that can be used to generate a value
@@ -28,33 +28,33 @@ import AlexandriaHRMCore
  */
 open class Expression: Element {
   /// Description of the condition
-  public var fhirDescription: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var fhirDescription: AsclepiusPrimitive<AsclepiusString>?
   
   /// Shortname assigned to the xpression for re-use
-  public var name: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var name: AsclepiusPrimitive<AsclepiusString>?
   
   /// text/cql | text/fhirpath | application/x-fhir-query | etc...
-  public var language: AlexandriaHRMPrimitive<AlexandriaHRMString>
+  public var language: AsclepiusPrimitive<AsclepiusString>
   
   /// expression in specified language
-  public var expression: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var expression: AsclepiusPrimitive<AsclepiusString>?
   
   /// where the expression is found
-  public var reference: AlexandriaHRMPrimitive<AlexandriaHRMURI>?
+  public var reference: AsclepiusPrimitive<AsclepiusURI>?
  
-  public init(language: AlexandriaHRMPrimitive<AlexandriaHRMString>) {
+  public init(language: AsclepiusPrimitive<AsclepiusString>) {
     self.language = language
     super.init()
   }
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    fhirDescriotion: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    name: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    language: AlexandriaHRMPrimitive<AlexandriaHRMString>,
-    expression: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    reference: AlexandriaHRMPrimitive<AlexandriaHRMURI>? = nil
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    fhirDescriotion: AsclepiusPrimitive<AsclepiusString>? = nil,
+    name: AsclepiusPrimitive<AsclepiusString>? = nil,
+    language: AsclepiusPrimitive<AsclepiusString>,
+    expression: AsclepiusPrimitive<AsclepiusString>? = nil,
+    reference: AsclepiusPrimitive<AsclepiusURI>? = nil
   ) {
     self.init(language: language)
     self.fhirExtension = fhirExtension
@@ -76,11 +76,11 @@ open class Expression: Element {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.fhirDescription = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .fhirDescription, auxKey: ._fhirDescription)
-    self.name = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .name, auxKey: ._name)
-    self.language = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .language, auxKey: ._language)
-    self.expression = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .expression, auxKey: ._expression)
-    self.reference = try AlexandriaHRMPrimitive<AlexandriaHRMURI>(from: codingKeyContainer, forKeyIfPresent: .reference, auxKey: ._reference)
+    self.fhirDescription = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .fhirDescription, auxKey: ._fhirDescription)
+    self.name = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .name, auxKey: ._name)
+    self.language = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKey: .language, auxKey: ._language)
+    self.expression = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .expression, auxKey: ._expression)
+    self.reference = try AsclepiusPrimitive<AsclepiusURI>(from: codingKeyContainer, forKeyIfPresent: .reference, auxKey: ._reference)
     
     try super.init(from: decoder)
   }

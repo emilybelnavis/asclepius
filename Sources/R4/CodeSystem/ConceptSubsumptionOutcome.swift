@@ -1,6 +1,6 @@
 //
 //  ConceptSubsumptionOutcome.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -25,7 +25,7 @@
  URL: http://hl7.org/fhir/concept-subsumption-outcome
  ValueSet: http://hl7.org/fhir/ValueSet/concept-subsumption-outcome
  */
-public enum ConceptSubsumptionOutcome: String, AlexandriaHRMPrimitiveType {
+public enum ConceptSubsumptionOutcome: String, AsclepiusPrimitiveType {
   /// The two concepts are equivalent (have the same properties)
   case equivalent
   

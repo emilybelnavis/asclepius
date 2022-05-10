@@ -1,6 +1,6 @@
 //
 //  SearchModifierCode.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/search-modifier-code
  ValueSet: http://hl7.org/fhir/ValueSet/search-modifier-code
  */
-public enum SearchModifierCode: String, AlexandriaHRMPrimitiveType {
+public enum SearchModifierCode: String, AsclepiusPrimitiveType {
   /// The search parameter returns resources that have a value or not.
   case missing
   

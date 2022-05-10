@@ -1,6 +1,6 @@
 //
 //  CatalogEntryRelationType.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/relation-type
  ValueSet: http://hl7.org/fhir/ValueSet/relation-type
  */
-public enum CatalogEntryRelationType: String, AlexandriaHRMPrimitiveType {
+public enum CatalogEntryRelationType: String, AsclepiusPrimitiveType {
   /// The related entry represents an activity that may be triggered by the current item
   case triggers
   

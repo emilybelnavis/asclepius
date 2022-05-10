@@ -1,6 +1,6 @@
 //
 //  ObservationDataType.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/permitted-data-type
  ValueSet: http://hl7.org/fhir/ValueSet/permitted-data-type
  */
-public enum ObservationDataType: String, AlexandriaHRMPrimitiveType {
+public enum ObservationDataType: String, AsclepiusPrimitiveType {
   /// A measured amount.
   case quantity = "Quantity"
   

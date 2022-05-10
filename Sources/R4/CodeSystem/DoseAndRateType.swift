@@ -1,6 +1,6 @@
 //
 //  DoseAndRateType.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/dose-rate-type
  ValueSet: http://hl7.org/fhir/ValueSet/dose-rate-type
  */
-public enum DoseAndRateType: String, AlexandriaHRMPrimitiveType {
+public enum DoseAndRateType: String, AsclepiusPrimitiveType {
   /// The dose specified is calculated by the prescriber or the system.
   case calculated
   

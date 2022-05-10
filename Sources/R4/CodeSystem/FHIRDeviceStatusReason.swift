@@ -1,6 +1,6 @@
 //
 //  FHIRDeviceStatusReason.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/device-status-reason
  ValueSet: http://hl7.org/fhir/ValueSet/device-status-reason
  */
-public enum FHIRDeviceStatusReason: String, AlexandriaHRMPrimitiveType {
+public enum FHIRDeviceStatusReason: String, AsclepiusPrimitiveType {
   /// The device is off.
   case online
   

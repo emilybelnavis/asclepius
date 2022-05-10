@@ -1,6 +1,6 @@
 //
 //  ClaimResponsePayment.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  Payment details for the adjudication of the claims
@@ -33,7 +33,7 @@ open class ClaimResponsePayment: BackboneElement {
   public var adjustmentReason: CodeableConcept?
   
   /// Expected date of payment
-  public var date: AlexandriaHRMPrimitive<AlexandriaHRMDate>?
+  public var date: AsclepiusPrimitive<AsclepiusDate>?
   
   /// Payable amount after adjustment
   public var amount: Money
@@ -50,11 +50,11 @@ open class ClaimResponsePayment: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
     type: CodeableConcept,
     adjustment: Money? = nil,
     adjustmentReason: CodeableConcept? = nil,
-    date: AlexandriaHRMPrimitive<AlexandriaHRMDate>? = nil,
+    date: AsclepiusPrimitive<AsclepiusDate>? = nil,
     amount: Money,
     identifier: Identifier?
   ) {
@@ -84,7 +84,7 @@ open class ClaimResponsePayment: BackboneElement {
     self.type = try CodeableConcept(from: codingKeyContainer, forKey: .type)
     self.adjustment = try Money(from: codingKeyContainer, forKeyIfPresent: .adjustment)
     self.adjustmentReason = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .adjustmentReason)
-    self.date = try AlexandriaHRMPrimitive<AlexandriaHRMDate>(from: codingKeyContainer, forKeyIfPresent: .date, auxKey: ._date)
+    self.date = try AsclepiusPrimitive<AsclepiusDate>(from: codingKeyContainer, forKeyIfPresent: .date, auxKey: ._date)
     self.amount = try Money(from: codingKeyContainer, forKey: .amount)
     self.identifier = try Identifier(from: codingKeyContainer, forKeyIfPresent: .identifier)
     

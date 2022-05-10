@@ -1,6 +1,6 @@
 //
 //  EncounterStatus.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/encounter-status
  ValueSet: http://hl7.org/fhir/ValueSet/encounter-status
  */
-public enum EncounterStatus: String, AlexandriaHRMPrimitiveType {
+public enum EncounterStatus: String, AsclepiusPrimitiveType {
   /// The Encounter has not yet started.
   case planned
   

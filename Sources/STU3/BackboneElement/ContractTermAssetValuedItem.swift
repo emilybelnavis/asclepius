@@ -1,6 +1,6 @@
 //
 //  ContractTermAssetValuedItem.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /// Contract Valued Item List
 open class ContractTermAssetValuedItem: BackboneElement {
@@ -33,7 +33,7 @@ open class ContractTermAssetValuedItem: BackboneElement {
   public var identifier: Identifier?
   
   /// Contract Valued Item Effective Time
-  public var effectiveTime: AlexandriaHRMPrimitive<AlexandriaHRMDateTime>?
+  public var effectiveTime: AsclepiusPrimitive<AsclepiusDateTime>?
   
   /// Count of Contract Valued Items
   public var quantity: Quantity?
@@ -42,19 +42,19 @@ open class ContractTermAssetValuedItem: BackboneElement {
   public var unitPrice: Money?
   
   /// Contract Valued Item Price Scaling Factor
-  public var factor: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>?
+  public var factor: AsclepiusPrimitive<AsclepiusDecimal>?
   
   /// Contract Valued Item Difficulty Scaling Factor
-  public var points: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>?
+  public var points: AsclepiusPrimitive<AsclepiusDecimal>?
   
   /// Total Contract Valued Item Value
   public var net: Money?
   
   /// Terms of valuation
-  public var payment: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var payment: AsclepiusPrimitive<AsclepiusString>?
   
   /// When payment is due
-  public var paymentDate: AlexandriaHRMPrimitive<AlexandriaHRMDateTime>?
+  public var paymentDate: AsclepiusPrimitive<AsclepiusDateTime>?
   
   /// Who is responsible for making payment(s)
   public var responsible: Reference?
@@ -63,10 +63,10 @@ open class ContractTermAssetValuedItem: BackboneElement {
   public var recipient: Reference?
   
   /// Pointer to specific item
-  public var linkId: [AlexandriaHRMPrimitive<AlexandriaHRMString>]?
+  public var linkId: [AsclepiusPrimitive<AsclepiusString>]?
   
   /// Security labels that define affected terms
-  public var securityLabelNumber: [AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>]?
+  public var securityLabelNumber: [AsclepiusPrimitive<AsclepiusUnsignedInteger>]?
   
   override public init() {
     super.init()
@@ -75,20 +75,20 @@ open class ContractTermAssetValuedItem: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
     entity: EntityX? = nil,
     identifier: Identifier? = nil,
-    effectiveTime: AlexandriaHRMPrimitive<AlexandriaHRMDateTime>? = nil,
+    effectiveTime: AsclepiusPrimitive<AsclepiusDateTime>? = nil,
     quantity: Quantity? = nil,
     unitPrice: Money? = nil,
-    factor: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>? = nil,
-    points: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>? = nil,
+    factor: AsclepiusPrimitive<AsclepiusDecimal>? = nil,
+    points: AsclepiusPrimitive<AsclepiusDecimal>? = nil,
     net: Money? = nil,
-    payment: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    payment: AsclepiusPrimitive<AsclepiusString>? = nil,
     responsible: Reference? = nil,
     recipient: Reference? = nil,
-    linkId: [AlexandriaHRMPrimitive<AlexandriaHRMString>]? = nil,
-    securityLabelNumber: [AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>]? = nil
+    linkId: [AsclepiusPrimitive<AsclepiusString>]? = nil,
+    securityLabelNumber: [AsclepiusPrimitive<AsclepiusUnsignedInteger>]? = nil
   ) {
     self.init()
     self.fhirExtension = fhirExtension
@@ -147,17 +147,17 @@ open class ContractTermAssetValuedItem: BackboneElement {
     
     self.entity = tEntity
     self.identifier = try Identifier(from: codingKeyContainer, forKeyIfPresent: .identifier)
-    self.effectiveTime = try AlexandriaHRMPrimitive<AlexandriaHRMDateTime>(from: codingKeyContainer, forKeyIfPresent: .effectiveTime, auxKey: ._effectiveTime)
+    self.effectiveTime = try AsclepiusPrimitive<AsclepiusDateTime>(from: codingKeyContainer, forKeyIfPresent: .effectiveTime, auxKey: ._effectiveTime)
     self.quantity = try Quantity(from: codingKeyContainer, forKeyIfPresent: .quantity)
     self.unitPrice = try Money(from: codingKeyContainer, forKeyIfPresent: .unitPrice)
-    self.factor = try AlexandriaHRMPrimitive<AlexandriaHRMDecimal>(from: codingKeyContainer, forKeyIfPresent: .factor, auxKey: ._factor)
-    self.points = try AlexandriaHRMPrimitive<AlexandriaHRMDecimal>(from: codingKeyContainer, forKeyIfPresent: .points, auxKey: ._points)
+    self.factor = try AsclepiusPrimitive<AsclepiusDecimal>(from: codingKeyContainer, forKeyIfPresent: .factor, auxKey: ._factor)
+    self.points = try AsclepiusPrimitive<AsclepiusDecimal>(from: codingKeyContainer, forKeyIfPresent: .points, auxKey: ._points)
     self.net = try Money(from: codingKeyContainer, forKeyIfPresent: .net)
-    self.payment = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .payment, auxKey: ._payment)
+    self.payment = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .payment, auxKey: ._payment)
     self.responsible = try Reference(from: codingKeyContainer, forKeyIfPresent: .responsible)
     self.recipient = try Reference(from: codingKeyContainer, forKeyIfPresent: .recipient)
-    self.linkId = try [AlexandriaHRMPrimitive<AlexandriaHRMString>](from: codingKeyContainer, forKeyIfPresent: .linkId, auxKey: ._linkId)
-    self.securityLabelNumber = try [AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>](from: codingKeyContainer, forKeyIfPresent: .securityLabelNumber, auxKey: ._securityLabelNumber)
+    self.linkId = try [AsclepiusPrimitive<AsclepiusString>](from: codingKeyContainer, forKeyIfPresent: .linkId, auxKey: ._linkId)
+    self.securityLabelNumber = try [AsclepiusPrimitive<AsclepiusUnsignedInteger>](from: codingKeyContainer, forKeyIfPresent: .securityLabelNumber, auxKey: ._securityLabelNumber)
     
     try super.init(from: decoder)
   }

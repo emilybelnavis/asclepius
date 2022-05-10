@@ -1,6 +1,6 @@
 //
 //  CodeSearchSupport.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/code-search-support
  ValueSet: http://hl7.org/fhir/ValueSet/code-search-support
  */
-public enum CodeSearchSupport: String, AlexandriaHRMPrimitiveType {
+public enum CodeSearchSupport: String, AsclepiusPrimitiveType {
   /// The search for code on ValueSet only includes codes explicitly detailed on includes or expansions
   case explicit
   

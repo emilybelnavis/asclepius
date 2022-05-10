@@ -1,6 +1,6 @@
 //
 //  DocumentMode.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/document-mode
  ValueSet: http://hl7.org/fhir/ValueSet/document-mode
  */
-public enum DocumentMode: String, AlexandriaHRMPrimitiveType {
+public enum DocumentMode: String, AsclepiusPrimitiveType {
   /// The application produces documents of the specified type.
   case producer
   

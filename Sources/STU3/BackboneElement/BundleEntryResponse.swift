@@ -1,6 +1,6 @@
 //
 //  BundleEntryResponse.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  Indicates the results of processing the corresponding `request` entry in the batch or transaction being
@@ -25,21 +25,21 @@ import AlexandriaHRMCore
  */
 open class BundleEntryResponse: BackboneElement {
   /// Status response code (text is optional)
-  public var status: AlexandriaHRMPrimitive<AlexandriaHRMString>
+  public var status: AsclepiusPrimitive<AsclepiusString>
   
   /// The locaation (if the operation returns a location)
-  public var location: AlexandriaHRMPrimitive<AlexandriaHRMURI>?
+  public var location: AsclepiusPrimitive<AsclepiusURI>?
   
   /// The eTag for the resource (if relevant)
-  public var etag: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var etag: AsclepiusPrimitive<AsclepiusString>?
   
   /// Server's date/time modified
-  public var lastModified: AlexandriaHRMPrimitive<AlexandriaHRMInstant>?
+  public var lastModified: AsclepiusPrimitive<AsclepiusInstant>?
   
   /// Operation outcome with hints/warnings for batch/transaction
   public var outcome: ResourceProxy?
   
-  public init(status: AlexandriaHRMPrimitive<AlexandriaHRMString>) {
+  public init(status: AsclepiusPrimitive<AsclepiusString>) {
     self.status = status
     super.init()
   }
@@ -47,11 +47,11 @@ open class BundleEntryResponse: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    status: AlexandriaHRMPrimitive<AlexandriaHRMString>,
-    location: AlexandriaHRMPrimitive<AlexandriaHRMURI>? = nil,
-    etag: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    lastModified: AlexandriaHRMPrimitive<AlexandriaHRMInstant>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    status: AsclepiusPrimitive<AsclepiusString>,
+    location: AsclepiusPrimitive<AsclepiusURI>? = nil,
+    etag: AsclepiusPrimitive<AsclepiusString>? = nil,
+    lastModified: AsclepiusPrimitive<AsclepiusInstant>? = nil,
     outcome: ResourceProxy? = nil
   ) {
     self.init(status: status)
@@ -77,10 +77,10 @@ open class BundleEntryResponse: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.status = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .status, auxKey: ._status)
-    self.location = try AlexandriaHRMPrimitive<AlexandriaHRMURI>(from: codingKeyContainer, forKeyIfPresent: .location, auxKey: ._location)
-    self.etag = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .etag, auxKey: ._etag)
-    self.lastModified = try AlexandriaHRMPrimitive<AlexandriaHRMInstant>(from: codingKeyContainer, forKeyIfPresent: .lastModified, auxKey: ._lastModified)
+    self.status = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKey: .status, auxKey: ._status)
+    self.location = try AsclepiusPrimitive<AsclepiusURI>(from: codingKeyContainer, forKeyIfPresent: .location, auxKey: ._location)
+    self.etag = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .etag, auxKey: ._etag)
+    self.lastModified = try AsclepiusPrimitive<AsclepiusInstant>(from: codingKeyContainer, forKeyIfPresent: .lastModified, auxKey: ._lastModified)
     self.outcome = try ResourceProxy(from: codingKeyContainer, forKeyIfPresent: .outcome)
     
     try super.init(from: decoder)

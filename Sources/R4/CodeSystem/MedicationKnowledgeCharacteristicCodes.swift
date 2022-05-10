@@ -1,6 +1,6 @@
 //
 //  MedicationKnowledgeCharacteristicCodes.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/medicationknowledge-characteristic
  ValueSet: http://hl7.org/fhir/ValueSet/medicationknowledge-characteristic
  */
-public enum MedicationKnowledgeCharacteristicCodes: String, AlexandriaHRMPrimitiveType {
+public enum MedicationKnowledgeCharacteristicCodes: String, AsclepiusPrimitiveType {
   /// Identyifying marks on product
   case imprintcd
   

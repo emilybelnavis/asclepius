@@ -1,6 +1,6 @@
 //
 //  AllergyIntoleranceCertainty.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -24,7 +24,7 @@
  URL: http://terminology.hl7.org/CodeSystem/reaction-event-certainty
  ValueSet: http://hl7.org/fhir/ValueSet/reaction-event-certainty
  */
-public enum AllergyIntoleranceCertainty: String, AlexandriaHRMPrimitiveType {
+public enum AllergyIntoleranceCertainty: String, AsclepiusPrimitiveType {
   /// There is a low level of clinical certainty that the reaction was caused by the identified substance.
   case unlikely
   

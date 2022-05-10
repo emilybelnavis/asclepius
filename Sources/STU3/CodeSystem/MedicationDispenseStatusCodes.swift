@@ -1,6 +1,6 @@
 //
 //  MedicationDispenseStatusCodes.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/medicationdispense-status
  ValueSet: http://hl7.org/fhir/ValueSet/medicationdispense-status
  */
-public enum MedicationDispenseStatusCodes: String, AlexandriaHRMPrimitiveType {
+public enum MedicationDispenseStatusCodes: String, AsclepiusPrimitiveType {
   /// The core event has not started yet, but some staging activities have begun (e.g. initial compounding or
   /// packaging of medication). Preparation stages may be tracked for billing purposes.
   case preparation

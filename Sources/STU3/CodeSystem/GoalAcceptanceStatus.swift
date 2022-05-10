@@ -1,6 +1,6 @@
 //
 //  GoalAcceptanceStatus.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/goal-acceptance-status
  ValueSet: http://hl7.org/fhir/ValueSet/goal-acceptance-status
  */
-public enum GoalAcceptanceStatus: String, AlexandriaHRMPrimitiveType {
+public enum GoalAcceptanceStatus: String, AsclepiusPrimitiveType {
   /// Stakeholder supports pursuit of the goal.
   case agree
   

@@ -1,6 +1,6 @@
 //
 //  Timing.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  A timing schedule that specifies an event that may occur multiple times.
@@ -29,7 +29,7 @@ import AlexandriaHRMCore
  */
 open class Timing: BackboneElement {
   /// When the event occurs
-  public var event: [AlexandriaHRMPrimitive<AlexandriaHRMDateTime>]?
+  public var event: [AsclepiusPrimitive<AsclepiusDateTime>]?
   
   /// When the event is to occur
   public var timingRepeat: TimingRepeat?
@@ -44,8 +44,8 @@ open class Timing: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    event: [AlexandriaHRMPrimitive<AlexandriaHRMDateTime>]? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    event: [AsclepiusPrimitive<AsclepiusDateTime>]? = nil,
     timingRepeat: TimingRepeat? = nil,
     code: CodeableConcept? = nil
   ) {
@@ -68,7 +68,7 @@ open class Timing: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.event = try [AlexandriaHRMPrimitive<AlexandriaHRMDateTime>](from: codingKeyContainer, forKeyIfPresent: .event, auxKey: ._event)
+    self.event = try [AsclepiusPrimitive<AsclepiusDateTime>](from: codingKeyContainer, forKeyIfPresent: .event, auxKey: ._event)
     self.timingRepeat = try TimingRepeat(from: codingKeyContainer, forKeyIfPresent: .timingRepeat)
     self.code = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .code)
     

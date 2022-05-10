@@ -1,6 +1,6 @@
 //
 //  DomainResource.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  A resource that has a human-readable XHTML representation of the content inside the resource (`Narrative`), can
@@ -55,9 +55,9 @@ open class DomainResource: Resource {
     contained: [ResourceProxy]? = nil,
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    implicitRules: AlexandriaHRMPrimitive<AlexandriaHRMURI>? = nil,
-    language: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    implicitRules: AsclepiusPrimitive<AsclepiusURI>? = nil,
+    language: AsclepiusPrimitive<AsclepiusString>? = nil,
     meta: Meta? = nil
   ) {
     self.init()

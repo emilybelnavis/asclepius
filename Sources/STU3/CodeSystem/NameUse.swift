@@ -1,6 +1,6 @@
 //
 //  NameUse.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/name-use
  ValueSet: http://hl7.org/fhir/ValueSet/name-use
  */
-public enum NameUse: String, AlexandriaHRMPrimitiveType {
+public enum NameUse: String, AsclepiusPrimitiveType {
   /// Known as/conventional/the one you normally use.
   case usual
 

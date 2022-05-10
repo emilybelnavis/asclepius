@@ -1,6 +1,6 @@
 //
 //  DosageDoseAndRate.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /// The amount of medication administered
 open class DosageDoseAndRate: Element {
@@ -49,7 +49,7 @@ open class DosageDoseAndRate: Element {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
     type: CodeableConcept? = nil,
     dose: DoseX? = nil,
     rate: RateX? = nil

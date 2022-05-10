@@ -1,6 +1,6 @@
 //
 //  TestReportStatus.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/report-status-codes
  ValueSet: http://hl7.org/fhir/ValueSet/report-status-codes
  */
-public enum TestReportStatus: String, AlexandriaHRMPrimitiveType {
+public enum TestReportStatus: String, AsclepiusPrimitiveType {
   /// All test operations have completed.
   case completed
   

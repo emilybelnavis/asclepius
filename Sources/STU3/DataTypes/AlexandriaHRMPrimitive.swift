@@ -1,6 +1,6 @@
 //
-//  AlexandriaHRMPrimitive.swift
-//  AlexandriaHRM
+//  AsclepiusPrimitive.swift
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,21 +17,21 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 import Foundation
 
 // MARK: - Protocol Definition
 /// Protocol for all FHIR Primitives
-public protocol AlexandriaHRMPrimitiveType: AlexandriaHRMType { }
+public protocol AsclepiusPrimitiveType: AsclepiusType { }
 
-extension AlexandriaHRMPrimitiveType {
-  public func asPrimitive(with fhirId: String? = nil, fhirExtension: [Extension]? = nil) -> AlexandriaHRMPrimitive<Self> {
-    return AlexandriaHRMPrimitive(self, fhirId: fhirId, fhirExtension: fhirExtension)
+extension AsclepiusPrimitiveType {
+  public func asPrimitive(with fhirId: String? = nil, fhirExtension: [Extension]? = nil) -> AsclepiusPrimitive<Self> {
+    return AsclepiusPrimitive(self, fhirId: fhirId, fhirExtension: fhirExtension)
   }
 }
 
-public protocol AlexandriaHRMPrimitiveProtocol: Codable {
-  associatedtype PrimitiveType: AlexandriaHRMPrimitiveType
+public protocol AsclepiusPrimitiveProtocol: Codable {
+  associatedtype PrimitiveType: AsclepiusPrimitiveType
   
   var value: PrimitiveType? { get set }
   var fhirId: String? { get set }
@@ -40,7 +40,7 @@ public protocol AlexandriaHRMPrimitiveProtocol: Codable {
   var hasPrimitiveData: Bool { get }
 }
 
-extension AlexandriaHRMPrimitiveProtocol {
+extension AsclepiusPrimitiveProtocol {
   /// Returns an array of `Extension`s matching the desired URL. An empty array is returned
   /// if there are no extensions that match or if there are no extensions at all
   public func extensions(for url: String) -> [Extension] {
@@ -53,7 +53,7 @@ extension AlexandriaHRMPrimitiveProtocol {
 
 // MARK: - Type Defintion
 /// Wrapper for any of the FHIR primitive types
-public struct AlexandriaHRMPrimitive<PrimitiveType: AlexandriaHRMPrimitiveType>: AlexandriaHRMPrimitiveProtocol {
+public struct AsclepiusPrimitive<PrimitiveType: AsclepiusPrimitiveType>: AsclepiusPrimitiveProtocol {
   public var value: PrimitiveType?
   public var fhirId: String?
   public var fhirExtension: [Extension]?
@@ -83,8 +83,8 @@ public struct AlexandriaHRMPrimitive<PrimitiveType: AlexandriaHRMPrimitiveType>:
 }
 
 // MARK: - Hashable
-extension AlexandriaHRMPrimitive: Hashable {
-  public static func == (leftSide: AlexandriaHRMPrimitive<PrimitiveType>, rightSide: AlexandriaHRMPrimitive<PrimitiveType>) -> Bool {
+extension AsclepiusPrimitive: Hashable {
+  public static func == (leftSide: AsclepiusPrimitive<PrimitiveType>, rightSide: AsclepiusPrimitive<PrimitiveType>) -> Bool {
     if leftSide.value != rightSide.value {
       return false
     }
@@ -99,11 +99,11 @@ extension AlexandriaHRMPrimitive: Hashable {
     return true
   }
   
-  public static func == (leftSide: AlexandriaHRMPrimitive<PrimitiveType>, rightSide: PrimitiveType) -> Bool {
+  public static func == (leftSide: AsclepiusPrimitive<PrimitiveType>, rightSide: PrimitiveType) -> Bool {
     return leftSide.value == rightSide
   }
   
-  public static func == (leftSide: PrimitiveType, rightSide: AlexandriaHRMPrimitive<PrimitiveType>) -> Bool {
+  public static func == (leftSide: PrimitiveType, rightSide: AsclepiusPrimitive<PrimitiveType>) -> Bool {
     return leftSide == rightSide.value
   }
   
@@ -115,7 +115,7 @@ extension AlexandriaHRMPrimitive: Hashable {
 }
 
 // MARK: - Codable
-extension AlexandriaHRMPrimitive: Codable {
+extension AsclepiusPrimitive: Codable {
   private enum CodingKeys: String, CodingKey {
     case fhirId
     case fhirExtension
@@ -169,10 +169,10 @@ extension AlexandriaHRMPrimitive: Codable {
   }
 }
 
-// MARK: - Array<AlexandriaHRMPrimitiveProtocol>
+// MARK: - Array<AsclepiusPrimitiveProtocol>
 
 // swiftlint:disable identifier_name
-extension Array where Element: AlexandriaHRMPrimitiveProtocol {
+extension Array where Element: AsclepiusPrimitiveProtocol {
   public init<_Key: CodingKey>(from parentContainer: KeyedDecodingContainer<_Key>, forKey key: _Key, auxKey: _Key? = nil) throws {
     let values = try parentContainer.decodeIfPresent([Element.PrimitiveType?].self, forKey: key)
     let primitives = (auxKey != nil) ? try parentContainer.decodeIfPresent([Element?].self, forKey: auxKey!): nil
@@ -264,7 +264,7 @@ extension Collection {
 }
 
 // MARK: - ExpressibleByLiteral
-extension AlexandriaHRMPrimitive: ExpressibleByStringLiteral, ExpressibleByUnicodeScalarLiteral, ExpressibleByExtendedGraphemeClusterLiteral where PrimitiveType: ExpressibleByStringLiteral {
+extension AsclepiusPrimitive: ExpressibleByStringLiteral, ExpressibleByUnicodeScalarLiteral, ExpressibleByExtendedGraphemeClusterLiteral where PrimitiveType: ExpressibleByStringLiteral {
   public typealias StringLiteralType = PrimitiveType.StringLiteralType
   public typealias UnicodeScalarLiteralType = PrimitiveType.UnicodeScalarLiteralType
   public typealias ExtendedGraphemeClusterLiteralType = PrimitiveType.ExtendedGraphemeClusterLiteralType
@@ -283,7 +283,7 @@ extension AlexandriaHRMPrimitive: ExpressibleByStringLiteral, ExpressibleByUnico
 }
 
 // MARK: - ExpressibleByIntegerLiteral
-extension AlexandriaHRMPrimitive: ExpressibleByIntegerLiteral where PrimitiveType: ExpressibleByIntegerLiteral {
+extension AsclepiusPrimitive: ExpressibleByIntegerLiteral where PrimitiveType: ExpressibleByIntegerLiteral {
   public typealias IntegerLiteralType = PrimitiveType.IntegerLiteralType
   
   public init(integerLiteral value: PrimitiveType.IntegerLiteralType) {
@@ -292,7 +292,7 @@ extension AlexandriaHRMPrimitive: ExpressibleByIntegerLiteral where PrimitiveTyp
 }
 
 // MARK: - ExpressibleByFloatLiteral
-extension AlexandriaHRMPrimitive: ExpressibleByFloatLiteral where PrimitiveType: ExpressibleByFloatLiteral {
+extension AsclepiusPrimitive: ExpressibleByFloatLiteral where PrimitiveType: ExpressibleByFloatLiteral {
   public typealias FloatLiteralType = PrimitiveType.FloatLiteralType
   
   public init(floatLiteral value: PrimitiveType.FloatLiteralType) {

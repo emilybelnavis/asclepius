@@ -1,6 +1,6 @@
 //
 //  Signature.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  A signature along with supporting context. The signature may be a digital signature that is cryptographic in
@@ -30,7 +30,7 @@ open class Signature: Element {
   public var type: [Coding]
   
   /// when the signature was created
-  public var when: AlexandriaHRMPrimitive<AlexandriaHRMInstant>
+  public var when: AsclepiusPrimitive<AsclepiusInstant>
   
   /// who signed
   public var who: Reference
@@ -39,15 +39,15 @@ open class Signature: Element {
   public var onBehalfOf: Reference?
   
   /// technical format of the signed resources
-  public var targetFormat: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var targetFormat: AsclepiusPrimitive<AsclepiusString>?
   
   /// the technical format of the signature
-  public var sigFormat: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var sigFormat: AsclepiusPrimitive<AsclepiusString>?
   
   /// the actual signature content (XML DigSig, JWS, picture, etc...)
-  public var data: AlexandriaHRMPrimitive<AlexandriaHRMBase64Binary>?
+  public var data: AsclepiusPrimitive<AsclepiusBase64Binary>?
   
-  public init(type: [Coding], when: AlexandriaHRMPrimitive<AlexandriaHRMInstant>, who: Reference) {
+  public init(type: [Coding], when: AsclepiusPrimitive<AsclepiusInstant>, who: Reference) {
     self.type = type
     self.when = when
     self.who = who
@@ -56,14 +56,14 @@ open class Signature: Element {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
     type: [Coding],
-    when: AlexandriaHRMPrimitive<AlexandriaHRMInstant>,
+    when: AsclepiusPrimitive<AsclepiusInstant>,
     who: Reference,
     onBehalfOf: Reference? = nil,
-    targetFormat: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    sigFormat: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    data: AlexandriaHRMPrimitive<AlexandriaHRMBase64Binary>? = nil
+    targetFormat: AsclepiusPrimitive<AsclepiusString>? = nil,
+    sigFormat: AsclepiusPrimitive<AsclepiusString>? = nil,
+    data: AsclepiusPrimitive<AsclepiusBase64Binary>? = nil
   ) {
     self.init(type: type, when: when, who: who)
     self.fhirExtension = fhirExtension
@@ -89,12 +89,12 @@ open class Signature: Element {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     self.type = try [Coding](from: codingKeyContainer, forKey: .type)
-    self.when = try AlexandriaHRMPrimitive<AlexandriaHRMInstant>(from: codingKeyContainer, forKey: .when, auxKey: ._when)
+    self.when = try AsclepiusPrimitive<AsclepiusInstant>(from: codingKeyContainer, forKey: .when, auxKey: ._when)
     self.who = try Reference(from: codingKeyContainer, forKey: .who)
     self.onBehalfOf = try Reference(from: codingKeyContainer, forKeyIfPresent: .onBehalfOf)
-    self.targetFormat = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .targetFormat, auxKey: ._targetFormat)
-    self.sigFormat = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .sigFormat, auxKey: ._sigFormat)
-    self.data = try AlexandriaHRMPrimitive<AlexandriaHRMBase64Binary>(from: codingKeyContainer, forKeyIfPresent: .data, auxKey: ._data)
+    self.targetFormat = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .targetFormat, auxKey: ._targetFormat)
+    self.sigFormat = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .sigFormat, auxKey: ._sigFormat)
+    self.data = try AsclepiusPrimitive<AsclepiusBase64Binary>(from: codingKeyContainer, forKeyIfPresent: .data, auxKey: ._data)
     
     try super.init(from: decoder)
   }

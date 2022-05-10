@@ -1,6 +1,6 @@
 //
-//  AlexandriaHRMTimeTests.swift
-//  AlexandriaHRM
+//  AsclepiusTimeTests.swift
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,33 +17,33 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 import R4
 import XCTest
 
-class AlexandriaHRMTimeTests: XCTestCase {
+class AsclepiusTimeTests: XCTestCase {
   
   func timeRenderingTest() {
     let timeString = "16:20:00"
-    var time = try! AlexandriaHRMTime(timeString)
-    let expectedTime = AlexandriaHRMTime(hour: 16, minute: 20, second: 0.0)
+    var time = try! AsclepiusTime(timeString)
+    let expectedTime = AsclepiusTime(hour: 16, minute: 20, second: 0.0)
     XCTAssertEqual(time, expectedTime)
     XCTAssertEqual(time.description, timeString)
     
     time.hour = 1
-    XCTAssertEqual(time, AlexandriaHRMTime(hour: 1, minute: 20, second: 0.0))
+    XCTAssertEqual(time, AsclepiusTime(hour: 1, minute: 20, second: 0.0))
     XCTAssertEqual(time.description, "01:20:00")
     
     time.minute = 23
-    XCTAssertEqual(time, AlexandriaHRMTime(hour: 1, minute: 23, second: 0.0))
+    XCTAssertEqual(time, AsclepiusTime(hour: 1, minute: 23, second: 0.0))
     XCTAssertEqual(time.description, "01:23:00")
     
     time.second = 45
-    XCTAssertEqual(time, AlexandriaHRMTime(hour: 1, minute: 23, second: 45.0))
+    XCTAssertEqual(time, AsclepiusTime(hour: 1, minute: 23, second: 45.0))
     XCTAssertEqual(time.description, "01:23:45")
     
     time.second = 45.67
-    XCTAssertEqual(time, AlexandriaHRMTime(hour: 1, minute: 23, second: 45.67))
+    XCTAssertEqual(time, AsclepiusTime(hour: 1, minute: 23, second: 45.67))
     XCTAssertEqual(time.description, "01:23:45.67")
   }
   
@@ -51,20 +51,20 @@ class AlexandriaHRMTimeTests: XCTestCase {
     
     // whole time parsing
     let wholeTimeParseSet = [
-      ("00:00:00", AlexandriaHRMTime(hour: 0, minute: 0, second: 0.0)),
-      ("01:23:45", AlexandriaHRMTime(hour: 1, minute: 23, second: 45.0)),
-      ("09:41:60.0", AlexandriaHRMTime(hour: 9, minute: 41, second: 60.0)),
-      ("11:22:33.0", AlexandriaHRMTime(hour: 11, minute: 22, second: 33.0)),
-      ("16:20:00.0", AlexandriaHRMTime(hour: 16, minute: 20, second: 0.0)),
-      ("16:20:06.9", AlexandriaHRMTime(hour: 16, minute: 20, second: 6.9)),
-      ("18:19:20.00000", AlexandriaHRMTime(hour: 18, minute: 19, second: 20.0)),
-      ("23:59:59.99", AlexandriaHRMTime(hour: 23, minute: 59, second: 59.99)),
-      ("23:59:60.0", AlexandriaHRMTime(hour: 23, minute: 59, second: 60.0))
+      ("00:00:00", AsclepiusTime(hour: 0, minute: 0, second: 0.0)),
+      ("01:23:45", AsclepiusTime(hour: 1, minute: 23, second: 45.0)),
+      ("09:41:60.0", AsclepiusTime(hour: 9, minute: 41, second: 60.0)),
+      ("11:22:33.0", AsclepiusTime(hour: 11, minute: 22, second: 33.0)),
+      ("16:20:00.0", AsclepiusTime(hour: 16, minute: 20, second: 0.0)),
+      ("16:20:06.9", AsclepiusTime(hour: 16, minute: 20, second: 6.9)),
+      ("18:19:20.00000", AsclepiusTime(hour: 18, minute: 19, second: 20.0)),
+      ("23:59:59.99", AsclepiusTime(hour: 23, minute: 59, second: 59.99)),
+      ("23:59:60.0", AsclepiusTime(hour: 23, minute: 59, second: 60.0))
     ]
     
     for (timeString, expectedTime) in wholeTimeParseSet {
       do {
-        let time = try AlexandriaHRMTime(timeString)
+        let time = try AsclepiusTime(timeString)
         XCTAssertEqual(time, expectedTime)
         XCTAssertEqual(time.description, timeString)
         XCTAssertNotNil(time.originalSecondsString)
@@ -86,13 +86,13 @@ class AlexandriaHRMTimeTests: XCTestCase {
     
     for (timeString, location) in hourParseSet {
       do {
-        let time = try AlexandriaHRMTime(timeString)
+        let time = try AsclepiusTime(timeString)
         XCTFail("Should fail to parse time string: \"\(timeString)\" but succeeded anyway. Parsed: \(time)")
-      } catch AlexandriaHRMDateParserError.invalidHour(let position) {
-        let expectedPosition = AlexandriaHRMDateParserErrorPosition(string: timeString, location: location)
+      } catch AsclepiusDateParserError.invalidHour(let position) {
+        let expectedPosition = AsclepiusDateParserErrorPosition(string: timeString, location: location)
         XCTAssertEqual(position, expectedPosition)
       } catch {
-        XCTFail("Should throw AlexandriaHRMDateParserError.invalidHour but threw \(error) instead")
+        XCTFail("Should throw AsclepiusDateParserError.invalidHour but threw \(error) instead")
       }
     }
   }
@@ -106,13 +106,13 @@ class AlexandriaHRMTimeTests: XCTestCase {
     
     for (timeString, location) in minuteParseSet {
       do {
-        let time = try AlexandriaHRMTime(timeString)
+        let time = try AsclepiusTime(timeString)
         XCTFail("Should fail to parse time string: \"\(timeString)\" but succeeded anyway. Parsed: \(time)")
-      } catch AlexandriaHRMDateParserError.invalidMinute(let position) {
-        let expectedPosition = AlexandriaHRMDateParserErrorPosition(string: timeString, location: location)
+      } catch AsclepiusDateParserError.invalidMinute(let position) {
+        let expectedPosition = AsclepiusDateParserErrorPosition(string: timeString, location: location)
         XCTAssertEqual(position, expectedPosition)
       } catch {
-        XCTFail("Should throw AlexandriaHRMDateParserError.invalidMinute but threw \(error) instead")
+        XCTFail("Should throw AsclepiusDateParserError.invalidMinute but threw \(error) instead")
       }
     }
   }
@@ -127,13 +127,13 @@ class AlexandriaHRMTimeTests: XCTestCase {
     
     for (timeString, location) in secondParseSet {
       do {
-        let time = try AlexandriaHRMTime(timeString)
+        let time = try AsclepiusTime(timeString)
         XCTFail("Should fail to parse time string: \"\(timeString)\" but succeeded anyway. Parsed: \(time)")
-      } catch AlexandriaHRMDateParserError.invalidSecond(let position) {
-        let expectedPosition = AlexandriaHRMDateParserErrorPosition(string: timeString, location: location)
+      } catch AsclepiusDateParserError.invalidSecond(let position) {
+        let expectedPosition = AsclepiusDateParserErrorPosition(string: timeString, location: location)
         XCTAssertEqual(position, expectedPosition)
       } catch {
-        XCTFail("Should throw AlexandriaHRMDateParserError.invalidSecond but threw \(error) instead")
+        XCTFail("Should throw AsclepiusDateParserError.invalidSecond but threw \(error) instead")
       }
     }
   }
@@ -154,13 +154,13 @@ class AlexandriaHRMTimeTests: XCTestCase {
     
     for (timeString, location) in separatorParseSet {
       do {
-        let time = try AlexandriaHRMTime(timeString)
+        let time = try AsclepiusTime(timeString)
         XCTFail("Should fail to parse time string: \"\(timeString) but succeeded anyway. Parsed: \(time)")
-      } catch AlexandriaHRMDateParserError.invalidSeparator(let position) {
-        let expectedPosition = AlexandriaHRMDateParserErrorPosition(string: timeString, location: location)
+      } catch AsclepiusDateParserError.invalidSeparator(let position) {
+        let expectedPosition = AsclepiusDateParserErrorPosition(string: timeString, location: location)
         XCTAssertEqual(position, expectedPosition)
       } catch {
-        XCTFail("Should throw AlexandriaHRMDateParserError.invalidSeparator but threw \(error) instead")
+        XCTFail("Should throw AsclepiusDateParserError.invalidSeparator but threw \(error) instead")
       }
     }
   }
@@ -175,13 +175,13 @@ class AlexandriaHRMTimeTests: XCTestCase {
     
     for (timeString, location) in extraCharsSet {
       do {
-        let time = try AlexandriaHRMTime(timeString)
+        let time = try AsclepiusTime(timeString)
         XCTFail("Should fail to parse time string: \"\(timeString)\" but succeeded anyway. Parsed: \(time)")
-      } catch AlexandriaHRMDateParserError.additionalCharacters(let position) {
-        let expectedPosition = AlexandriaHRMDateParserErrorPosition(string: timeString, location: location)
+      } catch AsclepiusDateParserError.additionalCharacters(let position) {
+        let expectedPosition = AsclepiusDateParserErrorPosition(string: timeString, location: location)
         XCTAssertEqual(position, expectedPosition)
       } catch {
-        XCTFail("Should throw AlexandriaHRMDateParserError.additionalCharacters but threw \(error) instead")
+        XCTFail("Should throw AsclepiusDateParserError.additionalCharacters but threw \(error) instead")
       }
     }
   }
@@ -205,8 +205,8 @@ class AlexandriaHRMTimeTests: XCTestCase {
   
   // MARK: - Utils
   private func assertLeftToRight(_ left: String, _ right: String, compares: ComparisonResult, file: StaticString = #file, line: UInt = #line) throws {
-    let leftTime = try AlexandriaHRMTime(left)
-    let rightTime = try AlexandriaHRMTime(right)
+    let leftTime = try AsclepiusTime(left)
+    let rightTime = try AsclepiusTime(right)
     
     if compares == .orderedDescending {
       XCTAssertTrue(leftTime > rightTime, file: file, line: line)

@@ -1,6 +1,6 @@
 //
 //  CommunicationTopic.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/communication-topic
  ValueSet: http://hl7.org/fhir/ValueSet/communication-topic
  */
-public enum CommunicationTopic: String, AlexandriaHRMPrimitiveType {
+public enum CommunicationTopic: String, AsclepiusPrimitiveType {
   /// The purpose or content of the communication is a prescriptions refill request
   case presecriptionRefillRequest = "prescription-refill-request"
   

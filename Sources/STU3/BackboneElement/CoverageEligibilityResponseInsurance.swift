@@ -1,6 +1,6 @@
 //
 //  CoverageEligibilityResponseInsurance.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  Patient insurance information; Financial instruments for reimbursement for the healthcare products and services
@@ -27,7 +27,7 @@ open class CoverageEligibilityResponseInsurance: BackboneElement {
   public var coverage: Reference
   
   /// Coverage inforce indicator
-  public var inForce: AlexandriaHRMPrimitive<AlexandriaHRMBool>?
+  public var inForce: AsclepiusPrimitive<AsclepiusBool>?
   
   /// When the benefits are applicable
   public var benefitPeriod: Period?
@@ -43,9 +43,9 @@ open class CoverageEligibilityResponseInsurance: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
     coverage: Reference,
-    inForce: AlexandriaHRMPrimitive<AlexandriaHRMBool>? = nil,
+    inForce: AsclepiusPrimitive<AsclepiusBool>? = nil,
     benefitPeriod: Period? = nil,
     item: [CoverageEligibilityResponseInsuranceItem]? = nil
   ) {
@@ -70,7 +70,7 @@ open class CoverageEligibilityResponseInsurance: BackboneElement {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     self.coverage = try Reference(from: codingKeyContainer, forKey: .coverage)
-    self.inForce = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKeyIfPresent: .inForce, auxKey: ._inForce)
+    self.inForce = try AsclepiusPrimitive<AsclepiusBool>(from: codingKeyContainer, forKeyIfPresent: .inForce, auxKey: ._inForce)
     self.benefitPeriod = try Period(from: codingKeyContainer, forKeyIfPresent: .benefitPeriod)
     self.item = try [CoverageEligibilityResponseInsuranceItem](from: codingKeyContainer, forKeyIfPresent: .item)
     

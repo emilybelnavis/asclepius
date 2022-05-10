@@ -1,6 +1,6 @@
 //
 //  ProcedureDeviceActionCodes.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  
  URL: http://hl7.org/fhir/device-action
  */
-public enum ProcedureDeviceActionCodes: String, AlexandriaHRMPrimitiveType {
+public enum ProcedureDeviceActionCodes: String, AsclepiusPrimitiveType {
   /// The device was implanted in the patient during the procedure.
   case implanted
   

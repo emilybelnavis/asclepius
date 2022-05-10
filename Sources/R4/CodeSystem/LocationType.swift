@@ -1,6 +1,6 @@
 //
 //  LocationType.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/location-physical-type
  ValueSet: http://hl7.org/fhir/ValueSet/location-physical-type
  */
-public enum LocationType: String, AlexandriaHRMPrimitiveType {
+public enum LocationType: String, AsclepiusPrimitiveType {
   /// A collection of buildings or other locations such as a site or a campus.
   case si
   

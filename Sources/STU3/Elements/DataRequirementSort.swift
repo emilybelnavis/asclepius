@@ -1,6 +1,6 @@
 //
 //  DataRequirementSort.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  Order of the results.
@@ -26,12 +26,12 @@ import AlexandriaHRMCore
  */
 open class DataRequirementSort: Element {
   /// the name of the attribute to perform the sort
-  public var path: AlexandriaHRMPrimitive<AlexandriaHRMString>
+  public var path: AsclepiusPrimitive<AsclepiusString>
   
   /// the direction of the sort (ascending or descending
-  public var direction: AlexandriaHRMPrimitive<SortDirection>
+  public var direction: AsclepiusPrimitive<SortDirection>
   
-  public init(path: AlexandriaHRMPrimitive<AlexandriaHRMString>, direction: AlexandriaHRMPrimitive<SortDirection>) {
+  public init(path: AsclepiusPrimitive<AsclepiusString>, direction: AsclepiusPrimitive<SortDirection>) {
     self.path = path
     self.direction = direction
     super.init()
@@ -39,9 +39,9 @@ open class DataRequirementSort: Element {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    path: AlexandriaHRMPrimitive<AlexandriaHRMString>,
-    direction: AlexandriaHRMPrimitive<SortDirection>
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    path: AsclepiusPrimitive<AsclepiusString>,
+    direction: AsclepiusPrimitive<SortDirection>
   ) {
     self.init(path: path, direction: direction)
     self.fhirExtension = fhirExtension
@@ -57,8 +57,8 @@ open class DataRequirementSort: Element {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.path = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .path, auxKey: ._path)
-    self.direction = try AlexandriaHRMPrimitive<SortDirection>(from: codingKeyContainer, forKey: .direction, auxKey: ._direction)
+    self.path = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKey: .path, auxKey: ._path)
+    self.direction = try AsclepiusPrimitive<SortDirection>(from: codingKeyContainer, forKey: .direction, auxKey: ._direction)
     
     try super.init(from: decoder)
   }

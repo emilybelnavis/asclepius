@@ -1,6 +1,6 @@
 //
 //  ReasonMedicationGivenCodes.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -24,7 +24,7 @@
  URL: http://terminology.hl7.org/CodeSystem/reason-medication-given
  ValueSet: http://hl7.org/fhir/ValueSet/reason-medication-given-codes
  */
-public enum ReasonMedicationGivenCodes: String, AlexandriaHRMPrimitiveType {
+public enum ReasonMedicationGivenCodes: String, AsclepiusPrimitiveType {
   /// No reason known.
   case A = "a" // swiftlint:disable:this identifier_name
   

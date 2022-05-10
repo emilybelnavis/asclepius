@@ -1,6 +1,6 @@
 //
 //  UDIEntryType.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/udi-entry-type
  ValueSet: http://hl7.org/fhir/ValueSet/udi-entry-type
  */
-public enum UDIEntryType: String, AlexandriaHRMPrimitiveType {
+public enum UDIEntryType: String, AsclepiusPrimitiveType {
   /// a barcode scanner captured the data from the device label.
   case barcode
   

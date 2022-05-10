@@ -1,6 +1,6 @@
 //
 //  AccountGuarantor.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  The parties responsible for balancing the account if other payment options fall short
@@ -27,7 +27,7 @@ open class AccountGuarantor: BackboneElement {
   public var party: Reference
   
   /// Credit or other hold applied
-  public var onHold: AlexandriaHRMPrimitive<AlexandriaHRMBool>?
+  public var onHold: AsclepiusPrimitive<AsclepiusBool>?
   
   /// Guarantee account during
   public var period: Period?
@@ -40,9 +40,9 @@ open class AccountGuarantor: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
     party: Reference,
-    onHold: AlexandriaHRMPrimitive<AlexandriaHRMBool>? = nil,
+    onHold: AsclepiusPrimitive<AsclepiusBool>? = nil,
     period: Period? = nil
   ) {
     self.init(party: party)
@@ -64,7 +64,7 @@ open class AccountGuarantor: BackboneElement {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     self.party = try Reference(from: codingKeyContainer, forKey: .party)
-    self.onHold = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKeyIfPresent: .onHold, auxKey: ._onHold)
+    self.onHold = try AsclepiusPrimitive<AsclepiusBool>(from: codingKeyContainer, forKeyIfPresent: .onHold, auxKey: ._onHold)
     self.period = try Period(from: codingKeyContainer, forKeyIfPresent: .period)
     
     try super.init(from: decoder)

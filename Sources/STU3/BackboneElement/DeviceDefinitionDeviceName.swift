@@ -1,6 +1,6 @@
 //
 //  DeviceDefinitionDeviceName.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,20 +17,20 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  A name given to the device to identify it
  */
 open class DeviceDefinitionDeviceName: BackboneElement {
   /// The name of the device
-  public var name: AlexandriaHRMPrimitive<AlexandriaHRMString>
+  public var name: AsclepiusPrimitive<AsclepiusString>
   
   /// The type of `deviceName`
   /// `UDILabelName` | `UserFriendlyName` | `PatientReportedName` | `ManufactureDeviceName` | `ModelName`
-  public var type: AlexandriaHRMPrimitive<DeviceNameType>
+  public var type: AsclepiusPrimitive<DeviceNameType>
   
-  public init(name: AlexandriaHRMPrimitive<AlexandriaHRMString>, type: AlexandriaHRMPrimitive<DeviceNameType>) {
+  public init(name: AsclepiusPrimitive<AsclepiusString>, type: AsclepiusPrimitive<DeviceNameType>) {
     self.name = name
     self.type = type
     super.init()
@@ -39,9 +39,9 @@ open class DeviceDefinitionDeviceName: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    name: AlexandriaHRMPrimitive<AlexandriaHRMString>,
-    type: AlexandriaHRMPrimitive<DeviceNameType>
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    name: AsclepiusPrimitive<AsclepiusString>,
+    type: AsclepiusPrimitive<DeviceNameType>
   ) {
     self.init(name: name, type: type)
     self.fhirExtension = fhirExtension
@@ -58,8 +58,8 @@ open class DeviceDefinitionDeviceName: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.name = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .name, auxKey: ._name)
-    self.type = try AlexandriaHRMPrimitive<DeviceNameType>(from: codingKeyContainer, forKey: .type, auxKey: ._type)
+    self.name = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKey: .name, auxKey: ._name)
+    self.type = try AsclepiusPrimitive<DeviceNameType>(from: codingKeyContainer, forKey: .type, auxKey: ._type)
     
     try super.init(from: decoder)
   }

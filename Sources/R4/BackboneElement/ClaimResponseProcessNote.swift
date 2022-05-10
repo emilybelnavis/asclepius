@@ -1,6 +1,6 @@
 //
 //  ClaimResponseProcessNote.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,25 +17,25 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  Note concerning adjudication; A note that describes or explains adjudication results in a human-readable form
  */
 open class ClaimResponseProcessNote: BackboneElement {
   /// Note instance identifier
-  public var number: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>?
+  public var number: AsclepiusPrimitive<AsclepiusPositiveInteger>?
   
   /// The business purpose of the note text
-  public var type: AlexandriaHRMPrimitive<NoteType>?
+  public var type: AsclepiusPrimitive<NoteType>?
   
   /// Note explanatory text
-  public var text: AlexandriaHRMPrimitive<AlexandriaHRMString>
+  public var text: AsclepiusPrimitive<AsclepiusString>
   
   /// Language of the text
   public var language: CodeableConcept?
   
-  public init(text: AlexandriaHRMPrimitive<AlexandriaHRMString>) {
+  public init(text: AsclepiusPrimitive<AsclepiusString>) {
     self.text = text
     super.init()
   }
@@ -43,10 +43,10 @@ open class ClaimResponseProcessNote: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    number: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>? = nil,
-    type: AlexandriaHRMPrimitive<NoteType>? = nil,
-    text: AlexandriaHRMPrimitive<AlexandriaHRMString>,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    number: AsclepiusPrimitive<AsclepiusPositiveInteger>? = nil,
+    type: AsclepiusPrimitive<NoteType>? = nil,
+    text: AsclepiusPrimitive<AsclepiusString>,
     language: CodeableConcept? = nil
   ) {
     self.init(text: text)
@@ -69,9 +69,9 @@ open class ClaimResponseProcessNote: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.number = try AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>(from: codingKeyContainer, forKey: .number, auxKey: ._number)
-    self.type = try AlexandriaHRMPrimitive<NoteType>(from: codingKeyContainer, forKeyIfPresent: .type, auxKey: ._type)
-    self.text = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .text, auxKey: ._text)
+    self.number = try AsclepiusPrimitive<AsclepiusPositiveInteger>(from: codingKeyContainer, forKey: .number, auxKey: ._number)
+    self.type = try AsclepiusPrimitive<NoteType>(from: codingKeyContainer, forKeyIfPresent: .type, auxKey: ._type)
+    self.text = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKey: .text, auxKey: ._text)
     self.language = try CodeableConcept(from: codingKeyContainer, forKey: .language)
     
     try super.init(from: decoder)

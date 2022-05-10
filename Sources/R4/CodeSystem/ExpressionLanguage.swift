@@ -1,6 +1,6 @@
 //
 //  ExpressionLanguage.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/expression-language
  ValueSet: http://hl7.org/fhir/ValueSet/expression-language
  */
-public enum ExpressionLanguage: String, AlexandriaHRMPrimitiveType {
+public enum ExpressionLanguage: String, AsclepiusPrimitiveType {
   /// Clinical Quality Language.
   case textCql = "text/cql"
   

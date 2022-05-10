@@ -1,15 +1,16 @@
-# AlexandriaHRM
+# Asclepius
 
-[![Build Status](https://img.shields.io/circleci/build/github/samanthaerachelb/AlexandriaHRM/main?logo=circleci&style=flat-square)](https://app.circleci.com/pipelines/github/samanthaerachelb/AlexandriaHRM)&nbsp;
-[![Code Quality](https://img.shields.io/codacy/grade/e43cbd23b1804b629d07053d2294d7fc?logo=codacy&style=flat-square)](https://app.codacy.com/gh/samanthaerachelb/AlexandriaHRM/dashboard?branch=main)&nbsp;
-[![Maintainability](https://img.shields.io/codeclimate/maintainability-percentage/samanthaerachelb/AlexandriaHRM?logo=codeclimate&style=flat-square)](https://codeclimate.com/github/samanthaerachelb/AlexandriaHRM)
-![License](https://img.shields.io/github/license/samanthaerachelb/AlexandriaHRM?style=flat-square)
+[![Build Status](https://img.shields.io/circleci/build/github/samanthaerachelb/Asclepius/main?logo=circleci&style=flat-square)](https://app.circleci.com/pipelines/github/samanthaerachelb/Asclepius)&nbsp;
+[![Code Quality](https://img.shields.io/codacy/grade/e43cbd23b1804b629d07053d2294d7fc?logo=codacy&style=flat-square)](https://app.codacy.com/gh/samanthaerachelb/Asclepius/dashboard?branch=main)&nbsp;
+[![Maintainability](https://img.shields.io/codeclimate/maintainability-percentage/samanthaerachelb/Asclepius?logo=codeclimate&style=flat-square)](https://codeclimate.com/github/samanthaerachelb/Asclepius)
+![License](https://img.shields.io/github/license/samanthaerachelb/Asclepius?style=flat-square)
 
-AlexandriaHRM is a Health Records Management (HRM) library that implements the HL7 Fast Healthcare
-Interoperability Resources ([HL7 FHIR][hl7_fhir]) standard for healthcare interoperability in Swift.
+Asclepius is a library that implements the HL7 Fast Healthcare Interoperability
+Resources ([HL7 FHIR][hl7_fhir]) standard in Swift.
 
-AlexandriaHRM is currently being written to support the latest *stable* version of the
-FHIR Specification (v4.0.1: R4 - Mixed [Normative][balloting] and [STU][balloting])
+Asclepius is currently being written to support the latest *stable* version of
+the FHIR Specification (v4.0.1: R4 - Mixed [Normative][balloting] and
+[STU][balloting])
 
 ## Features
 
@@ -33,24 +34,24 @@ Date | Sequence | Version | Description
 
 ## Requirements
 
-AlexandriaHRM works with Swift 5.1 and later.
+Asclepius works with Swift 5.2 and later.
 
 ## Installation
 
-[Swift Package Manager][spm] is the recommended way to add AlexandriaHRM to your
+[Swift Package Manager][spm] is the recommended way to add Asclepius to your
 project. Just add the following to your `Package.swift` file to add AlexandriaHRM
 as a dependency:
 
 ```swift
 dependencies: [
-  .package(url: "https://github.com/samanthaerachelb/AlexandriaHRM.git"
+  .package(url: "https://github.com/samanthaerachelb/Asclepius.git"
            upToNextMajor(from: "0.1.0"))
 ]
 ```
 
 ## Usage
 
-Learn how to use AlexandriaHRM in the "How To" section (coming soon™)
+Learn how to use Asclepius in the "How To" section (coming soon™)
 
 ## License
 This work is licensed under the [Apache 2.0 License][license].
@@ -61,5 +62,5 @@ of this product by HL7
 
 [hl7_fhir]: https://hl7.org/fhir/
 [spm]: https://github.com/apple/swift-package-manager
-[license]: https://github.com/samanthaerachelb/AlexandriaHRM/blob/main/license
+[license]: https://github.com/samanthaerachelb/Asclepius/blob/main/license
 [balloting]: https://confluence.hl7.org/display/HL7/HL7+Balloting

@@ -1,6 +1,6 @@
 //
 //  EffectEstimateType.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -24,7 +24,7 @@
  URL: http://terminology.hl7.org/CodeSystem/effect-estimate-type
  ValueSet: http://hl7.org/fhir/ValueSet/effect-estimate-type
  */
-public enum EffectEstimateType: String, AlexandriaHRMPrimitiveType {
+public enum EffectEstimateType: String, AsclepiusPrimitiveType {
   /// relative risk (a type of relative effect estimate).
   case relativeRR = "relative-RR"
   

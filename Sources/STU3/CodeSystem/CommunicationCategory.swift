@@ -1,6 +1,6 @@
 //
 //  CommunicationCategory.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/communication-category
  ValueSet: http://hl7.org/fhir/ValueSet/communication-category
  */
-public enum CommunicationCategory: String, AlexandriaHRMPrimitiveType {
+public enum CommunicationCategory: String, AsclepiusPrimitiveType {
   /// The communication conveys an alert
   case alert
   

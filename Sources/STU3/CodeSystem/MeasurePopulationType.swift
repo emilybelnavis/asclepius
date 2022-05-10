@@ -1,6 +1,6 @@
 //
 //  MeasurePopulationType.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/measure-population
  ValueSet: http://hl7.org/fhir/ValueSet/measure-population
  */
-public enum MeasurePopulationType: String, AlexandriaHRMPrimitiveType {
+public enum MeasurePopulationType: String, AsclepiusPrimitiveType {
   /// The initial population refers to all patients or events to be evaluated by a quality measure involving patients
   /// who share a common set of specified characterstics. All patients or events counted (for example, as numerator,
   /// as denominator) are drawn from the initial population.

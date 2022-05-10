@@ -1,6 +1,6 @@
 //
 //  ContractTerm.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /// Contract Term List - One or more `Contract Provisions`, which may be related and conveyed as a
 /// group, and may contain nested groups
@@ -31,7 +31,7 @@ open class ContractTerm: BackboneElement {
   public var identifier: Identifier?
   
   /// Contract Term Issue Date/Time
-  public var issued: AlexandriaHRMPrimitive<AlexandriaHRMDateTime>?
+  public var issued: AsclepiusPrimitive<AsclepiusDateTime>?
   
   /// Contract Term Effective Period
   public var applies: Period?
@@ -46,7 +46,7 @@ open class ContractTerm: BackboneElement {
   public var subType: CodeableConcept?
   
   /// Term statement
-  public var text: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var text: AsclepiusPrimitive<AsclepiusString>?
   
   /// Protection for the term
   public var securityLabel: [ContractTermSecurityLabel]?
@@ -71,14 +71,14 @@ open class ContractTerm: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
     identifier: Identifier? = nil,
-    issued: AlexandriaHRMPrimitive<AlexandriaHRMDateTime>? = nil,
+    issued: AsclepiusPrimitive<AsclepiusDateTime>? = nil,
     applies: Period? = nil,
     topic: TopicX? = nil,
     type: CodeableConcept? = nil,
     subType: CodeableConcept? = nil,
-    text: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    text: AsclepiusPrimitive<AsclepiusString>? = nil,
     securityLabel: [ContractTermSecurityLabel]? = nil,
     offer: ContractTermOffer,
     asset: [ContractTermAsset]? = nil,
@@ -138,12 +138,12 @@ open class ContractTerm: BackboneElement {
     }
     
     self.identifier = try Identifier(from: codingKeyContainer, forKey: .identifier)
-    self.issued = try AlexandriaHRMPrimitive<AlexandriaHRMDateTime>(from: codingKeyContainer, forKeyIfPresent: .issued, auxKey: ._issued)
+    self.issued = try AsclepiusPrimitive<AsclepiusDateTime>(from: codingKeyContainer, forKeyIfPresent: .issued, auxKey: ._issued)
     self.applies = try Period(from: codingKeyContainer, forKeyIfPresent: .applies)
     self.topic = tTopic
     self.type = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .type)
     self.subType = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .subType)
-    self.text = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .text, auxKey: ._text)
+    self.text = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .text, auxKey: ._text)
     self.securityLabel = try [ContractTermSecurityLabel](from: codingKeyContainer, forKeyIfPresent: .securityLabel)
     self.offer = try ContractTermOffer(from: codingKeyContainer, forKey: .offer)
     self.asset = try [ContractTermAsset](from: codingKeyContainer, forKeyIfPresent: .asset)

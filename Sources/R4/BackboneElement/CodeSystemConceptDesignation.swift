@@ -1,6 +1,6 @@
 //
 //  CodeSystemConceptDesignation.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,20 +17,20 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 /**
  Additional representations for the concept - other languages, aliases, specialized purposes, used for particular
  purposes, etc
  */
 open class CodeSystemConceptDesignation: BackboneElement {
   /// Human language of the designation
-  public var language: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var language: AsclepiusPrimitive<AsclepiusString>?
   
   /// Details how this designation would be used
   public var use: Coding?
   
   /// The text value for this designation
-  public var value: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var value: AsclepiusPrimitive<AsclepiusString>?
   
   override public init() {
     super.init()
@@ -39,10 +39,10 @@ open class CodeSystemConceptDesignation: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    language: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    language: AsclepiusPrimitive<AsclepiusString>? = nil,
     use: Coding? = nil,
-    value: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil
+    value: AsclepiusPrimitive<AsclepiusString>? = nil
   ) {
     self.init()
     self.fhirExtension = fhirExtension
@@ -63,9 +63,9 @@ open class CodeSystemConceptDesignation: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.language = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .language, auxKey: ._language)
+    self.language = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .language, auxKey: ._language)
     self.use = try Coding(from: codingKeyContainer, forKeyIfPresent: .use)
-    self.value = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .value, auxKey: ._value)
+    self.value = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .value, auxKey: ._value)
     
     try super.init(from: decoder)
   }

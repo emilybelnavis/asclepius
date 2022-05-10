@@ -1,6 +1,6 @@
 //
 //  AggregationMode.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/resource-aggregation-mode
  ValueSet: http://hl7.org/fhir/ValueSet/resource-aggregation-mode
  */
-public enum AggregationMode: String, AlexandriaHRMPrimitiveType {
+public enum AggregationMode: String, AsclepiusPrimitiveType {
   /// The reference is a local reference to a contained resource
   case contained
   

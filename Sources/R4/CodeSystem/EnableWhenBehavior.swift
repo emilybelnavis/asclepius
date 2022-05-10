@@ -1,6 +1,6 @@
 //
 //  EnableWhenBehavior.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/questionnaire-enable-behavior
  ValueSet: http://hl7.org/fhir/ValueSet/questionnaire-enable-behavior
  */
-public enum EnableWhenBehavior: String, AlexandriaHRMPrimitiveType {
+public enum EnableWhenBehavior: String, AsclepiusPrimitiveType {
   /// Enable the question when all the enableWhen criteria are satisfied.
   case all
   

@@ -1,6 +1,6 @@
 //
 //  Group.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  Represents a defined collection of entities that may be discussed or acted upon collectively, but which are
@@ -31,22 +31,22 @@ open class Group: DomainResource {
   public var identifier: [Identifier]?
   
   /// whether this group's record is in active use
-  public var active: AlexandriaHRMPrimitive<AlexandriaHRMBool>?
+  public var active: AsclepiusPrimitive<AsclepiusBool>?
   
   /// identifies the broad classification of the kind of resources the group includes
-  public var type: AlexandriaHRMPrimitive<GroupType>
+  public var type: AsclepiusPrimitive<GroupType>
   
   /// descriptive or actual
-  public var actual: AlexandriaHRMPrimitive<AlexandriaHRMBool>
+  public var actual: AsclepiusPrimitive<AsclepiusBool>
   
   /// kind of group members
   public var code: CodeableConcept?
   
   /// label for group
-  public var name: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var name: AsclepiusPrimitive<AsclepiusString>?
   
   /// number of members
-  public var quantity: AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>?
+  public var quantity: AsclepiusPrimitive<AsclepiusUnsignedInteger>?
   
   /// entity that is the custodian of the group's definition
   public var managingEntity: Reference?
@@ -57,7 +57,7 @@ open class Group: DomainResource {
   // who/what is in group
   public var member: [GroupMember]?
   
-  public init(type: AlexandriaHRMPrimitive<GroupType>, actual: AlexandriaHRMPrimitive<AlexandriaHRMBool>) {
+  public init(type: AsclepiusPrimitive<GroupType>, actual: AsclepiusPrimitive<AsclepiusBool>) {
     self.type = type
     self.actual = actual
     super.init()
@@ -65,14 +65,14 @@ open class Group: DomainResource {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
     identifier: [Identifier]? = nil,
-    active: AlexandriaHRMPrimitive<AlexandriaHRMBool>? = nil,
-    type: AlexandriaHRMPrimitive<GroupType>,
-    actual: AlexandriaHRMPrimitive<AlexandriaHRMBool>,
+    active: AsclepiusPrimitive<AsclepiusBool>? = nil,
+    type: AsclepiusPrimitive<GroupType>,
+    actual: AsclepiusPrimitive<AsclepiusBool>,
     code: CodeableConcept? = nil,
-    name: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    quantity: AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>? = nil,
+    name: AsclepiusPrimitive<AsclepiusString>? = nil,
+    quantity: AsclepiusPrimitive<AsclepiusUnsignedInteger>? = nil,
     managingEntity: Reference? = nil,
     characteristic: [GroupCharacteristic]? = nil,
     member: [GroupMember]? = nil
@@ -108,12 +108,12 @@ open class Group: DomainResource {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     self.identifier = try [Identifier](from: codingKeyContainer, forKeyIfPresent: .identifier)
-    self.active = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKeyIfPresent: .active, auxKey: ._active)
-    self.type = try AlexandriaHRMPrimitive<GroupType>(from: codingKeyContainer, forKey: .type, auxKey: ._type)
-    self.actual = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKey: .actual, auxKey: ._actual)
+    self.active = try AsclepiusPrimitive<AsclepiusBool>(from: codingKeyContainer, forKeyIfPresent: .active, auxKey: ._active)
+    self.type = try AsclepiusPrimitive<GroupType>(from: codingKeyContainer, forKey: .type, auxKey: ._type)
+    self.actual = try AsclepiusPrimitive<AsclepiusBool>(from: codingKeyContainer, forKey: .actual, auxKey: ._actual)
     self.code = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .code)
-    self.name = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .name, auxKey: ._name)
-    self.quantity = try AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>(from: codingKeyContainer, forKeyIfPresent: .quantity, auxKey: ._quantity)
+    self.name = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .name, auxKey: ._name)
+    self.quantity = try AsclepiusPrimitive<AsclepiusUnsignedInteger>(from: codingKeyContainer, forKeyIfPresent: .quantity, auxKey: ._quantity)
     self.managingEntity = try Reference(from: codingKeyContainer, forKeyIfPresent: .managingEntity)
     self.characteristic = try [GroupCharacteristic](from: codingKeyContainer, forKeyIfPresent: .characteristic)
     self.member = try [GroupMember](from: codingKeyContainer, forKeyIfPresent: .member)

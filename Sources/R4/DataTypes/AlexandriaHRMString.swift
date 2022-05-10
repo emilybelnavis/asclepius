@@ -1,6 +1,6 @@
 //
-//  AlexandriaHRMString.swift
-//  AlexandriaHRM
+//  AsclepiusString.swift
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -18,7 +18,7 @@
 //  limitations under the License.
 
 import Foundation
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  Class to represent FHIR primitives representing "string", "code", "id", "markdown" and "xhtml", officially:
@@ -47,7 +47,7 @@ import AlexandriaHRMCore
  
  http://hl7.org/fhir/datatypes.html#markdown
  */
-public struct AlexandriaHRMString: AlexandriaHRMPrimitiveType {
+public struct AsclepiusString: AsclepiusPrimitiveType {
   public var string: String
   
   public init(_ string: String) {
@@ -56,14 +56,14 @@ public struct AlexandriaHRMString: AlexandriaHRMPrimitiveType {
 }
 
 // MARK: - ExpressibleByStringLiteral
-extension AlexandriaHRMString: ExpressibleByStringLiteral {
+extension AsclepiusString: ExpressibleByStringLiteral {
   public init(stringLiteral value: StringLiteralType) {
     self.init(value)
   }
 }
 
 // MARK: - Codable
-extension AlexandriaHRMString: Codable {
+extension AsclepiusString: Codable {
   public init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.singleValueContainer()
     self.string = try codingKeyContainer.decode(String.self)
@@ -76,30 +76,30 @@ extension AlexandriaHRMString: Codable {
 }
 
 // MARK: CustomStringConvertible
-extension AlexandriaHRMString: CustomStringConvertible {
+extension AsclepiusString: CustomStringConvertible {
   public var description: String {
     return string
   }
 }
 
 // MARK: - Equatable
-extension AlexandriaHRMString: Equatable {
-  public static func == (leftSide: AlexandriaHRMString, rightSide: AlexandriaHRMString) -> Bool {
+extension AsclepiusString: Equatable {
+  public static func == (leftSide: AsclepiusString, rightSide: AsclepiusString) -> Bool {
     return leftSide.string == rightSide.string
   }
   
-  public static func == (leftSide: String, rightSide: AlexandriaHRMString) -> Bool {
+  public static func == (leftSide: String, rightSide: AsclepiusString) -> Bool {
     return leftSide == rightSide.string
   }
   
-  public static func == (leftSide: AlexandriaHRMString, rightSide: String) -> Bool {
+  public static func == (leftSide: AsclepiusString, rightSide: String) -> Bool {
     return leftSide.string == rightSide
   }
 }
 
 // MARK: - Extends String
 extension String {
-  public func asAlexandriaHRMStringPrimitive() -> AlexandriaHRMPrimitive<AlexandriaHRMString> {
-    return AlexandriaHRMPrimitive(AlexandriaHRMString(self))
+  public func asAsclepiusStringPrimitive() -> AsclepiusPrimitive<AsclepiusString> {
+    return AsclepiusPrimitive(AsclepiusString(self))
   }
 }

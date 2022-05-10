@@ -1,6 +1,6 @@
 //
 //  PaymentAdjustmentReasonCodes.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -25,7 +25,7 @@
  */
 
 // swiftlint:disable identifier_name
-public enum PaymentAdjustmentReasonCodes: String, AlexandriaHRMPrimitiveType {
+public enum PaymentAdjustmentReasonCodes: String, AsclepiusPrimitiveType {
   /// Prior Payment Reversal
   case A001 = "a001"
   

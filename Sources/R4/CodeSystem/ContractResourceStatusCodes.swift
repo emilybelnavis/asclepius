@@ -1,6 +1,6 @@
 //
 //  ContractResourceStatusCodes.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/contract-status
  ValueSet: http://hl7.org/fhir/ValueSet/contract-status
  */
-public enum ContractResourceStatusCodes: String, AlexandriaHRMPrimitiveType {
+public enum ContractResourceStatusCodes: String, AsclepiusPrimitiveType {
   /// Contract is augmented with additional information to correct errors in a predecessor or to updated values in a
   /// predecessor. Usage: Contract altered within effective time. Precedence Order = 9. Comparable FHIR and v.3 status
   /// codes: revised; replaced.

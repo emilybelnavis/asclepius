@@ -1,6 +1,6 @@
 //
 //  SpecimenContainedPreference.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/specimen-contained-preference
  ValueSet: http://hl7.org/fhir/ValueSet/specimen-contained-preference
  */
-public enum SpecimenContainedPreference: String, AlexandriaHRMPrimitiveType {
+public enum SpecimenContainedPreference: String, AsclepiusPrimitiveType {
   /// This type of contained specimen is preferred to collect this kind of specimen.
   case preferred
   

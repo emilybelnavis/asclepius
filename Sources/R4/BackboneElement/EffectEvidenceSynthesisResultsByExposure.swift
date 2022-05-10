@@ -1,6 +1,6 @@
 //
 //  EffectEvidenceSynthesisResultsByExposure.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  What was the result per exposure?; A description of the results for each exposure considered in the effect
@@ -25,10 +25,10 @@ import AlexandriaHRMCore
  */
 open class EffectEvidenceSynthesisResultsByExposure: BackboneElement {
   /// Description of results by exposure
-  public var fhirDescription: AlexandriaHRMPrimitive<AlexandriaHRMString>
+  public var fhirDescription: AsclepiusPrimitive<AsclepiusString>
   
   /// Whether these results are for the exposure state or alternative exposure state
-  public var exposureState: AlexandriaHRMPrimitive<ExposureState>?
+  public var exposureState: AsclepiusPrimitive<ExposureState>?
   
   /// Variant exposure states
   public var variantState: CodeableConcept?
@@ -36,7 +36,7 @@ open class EffectEvidenceSynthesisResultsByExposure: BackboneElement {
   /// Risk evidence synthesis
   public var riskEvidenceSynthesis: Reference
   
-  public init(fhirDescription: AlexandriaHRMPrimitive<AlexandriaHRMString>, riskEvidenceSynthesis: Reference) {
+  public init(fhirDescription: AsclepiusPrimitive<AsclepiusString>, riskEvidenceSynthesis: Reference) {
     self.fhirDescription = fhirDescription
     self.riskEvidenceSynthesis = riskEvidenceSynthesis
     super.init()
@@ -45,9 +45,9 @@ open class EffectEvidenceSynthesisResultsByExposure: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    fhirDescription: AlexandriaHRMPrimitive<AlexandriaHRMString>,
-    exposureState: AlexandriaHRMPrimitive<ExposureState>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    fhirDescription: AsclepiusPrimitive<AsclepiusString>,
+    exposureState: AsclepiusPrimitive<ExposureState>? = nil,
     variantState: CodeableConcept? = nil,
     riskEvidenceSynthesis: Reference
   ) {
@@ -70,8 +70,8 @@ open class EffectEvidenceSynthesisResultsByExposure: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.fhirDescription = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .fhirDescription, auxKey: ._fhirDescription)
-    self.exposureState = try AlexandriaHRMPrimitive<ExposureState>(from: codingKeyContainer, forKeyIfPresent: .exposureState, auxKey: ._exposureState)
+    self.fhirDescription = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKey: .fhirDescription, auxKey: ._fhirDescription)
+    self.exposureState = try AsclepiusPrimitive<ExposureState>(from: codingKeyContainer, forKeyIfPresent: .exposureState, auxKey: ._exposureState)
     self.variantState = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .variantState)
     self.riskEvidenceSynthesis = try Reference(from: codingKeyContainer, forKey: .riskEvidenceSynthesis)
     

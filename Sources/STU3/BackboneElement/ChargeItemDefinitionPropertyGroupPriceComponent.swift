@@ -1,6 +1,6 @@
 //
 //  ChargeItemDefinitionPropertyGroupPriceComponent.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  The price for a `ChargeItem` may be calculated as a base price with surcharges/deductions that apply
@@ -28,18 +28,18 @@ import AlexandriaHRMCore
  */
 open class ChargeItemDefinitionPropertyGroupPriceComponent: BackboneElement {
   /// This code identifies the type of the component
-  public var type: AlexandriaHRMPrimitive<InvoicePriceComponentType>
+  public var type: AsclepiusPrimitive<InvoicePriceComponentType>
   
   /// Code identifiying the specific component
   public var code: CodeableConcept?
   
   /// Factor used for calculating this component
-  public var factor: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>?
+  public var factor: AsclepiusPrimitive<AsclepiusDecimal>?
   
   /// Monetary amount associated with this component
   public var amount: Money?
   
-  public init(type: AlexandriaHRMPrimitive<InvoicePriceComponentType>) {
+  public init(type: AsclepiusPrimitive<InvoicePriceComponentType>) {
     self.type = type
     super.init()
   }
@@ -47,10 +47,10 @@ open class ChargeItemDefinitionPropertyGroupPriceComponent: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    type: AlexandriaHRMPrimitive<InvoicePriceComponentType>,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    type: AsclepiusPrimitive<InvoicePriceComponentType>,
     code: CodeableConcept? = nil,
-    factor: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>? = nil,
+    factor: AsclepiusPrimitive<AsclepiusDecimal>? = nil,
     amount: Money? = nil
   ) {
     self.init(type: type)
@@ -73,9 +73,9 @@ open class ChargeItemDefinitionPropertyGroupPriceComponent: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.type = try AlexandriaHRMPrimitive<InvoicePriceComponentType>(from: codingKeyContainer, forKey: .type, auxKey: ._type)
+    self.type = try AsclepiusPrimitive<InvoicePriceComponentType>(from: codingKeyContainer, forKey: .type, auxKey: ._type)
     self.code = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .code)
-    self.factor = try AlexandriaHRMPrimitive<AlexandriaHRMDecimal>(from: codingKeyContainer, forKeyIfPresent: .factor, auxKey: ._factor)
+    self.factor = try AsclepiusPrimitive<AsclepiusDecimal>(from: codingKeyContainer, forKeyIfPresent: .factor, auxKey: ._factor)
     self.amount = try Money(from: codingKeyContainer, forKeyIfPresent: .amount)
     
     try super.init(from: decoder)

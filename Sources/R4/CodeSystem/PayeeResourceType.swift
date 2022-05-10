@@ -1,6 +1,6 @@
 //
 //  PayeeResourceType.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/resource-type-link
  ValueSet: http://hl7.org/fhir/ValueSet/resource-type-link
  */
-public enum PayeeResourceType: String, AlexandriaHRMPrimitiveType {
+public enum PayeeResourceType: String, AsclepiusPrimitiveType {
   /// Organization resource.
   case organization
   

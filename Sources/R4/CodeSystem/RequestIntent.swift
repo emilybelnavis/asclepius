@@ -1,6 +1,6 @@
 //
 //  RequestIntent.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/request-intent
  ValueSet: http://hl7.org/fhir/ValueSet/request-intent
  */
-public enum RequestIntent: String, AlexandriaHRMPrimitiveType {
+public enum RequestIntent: String, AsclepiusPrimitiveType {
   /// The request is a suggestion made by someone/something that does not have an intention to ensure it occurs and
   /// without providing an authorization to act.
   case proposal

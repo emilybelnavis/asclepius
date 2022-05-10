@@ -1,6 +1,6 @@
 //
 //  ConceptMapGroupElement.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,15 +17,15 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /// Mappings for an individual concept in the source to one or more concepts in the target
 open class ConceptMapGroupElement: BackboneElement {
   /// Identifies element being mapped
-  public var code: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var code: AsclepiusPrimitive<AsclepiusString>?
   
   /// Display for the code
-  public var display: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var display: AsclepiusPrimitive<AsclepiusString>?
   
   /// Concept in target system for element
   public var target: [ConceptMapGroupElementTarget]?
@@ -37,9 +37,9 @@ open class ConceptMapGroupElement: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    code: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    display: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    code: AsclepiusPrimitive<AsclepiusString>? = nil,
+    display: AsclepiusPrimitive<AsclepiusString>? = nil,
     target: [ConceptMapGroupElementTarget]? = nil
   ) {
     self.init()
@@ -61,8 +61,8 @@ open class ConceptMapGroupElement: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.code = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .code, auxKey: ._code)
-    self.display = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .display, auxKey: ._display)
+    self.code = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .code, auxKey: ._code)
+    self.display = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .display, auxKey: ._display)
     self.target = try [ConceptMapGroupElementTarget](from: codingKeyContainer, forKeyIfPresent: .target)
     
     try super.init(from: decoder)

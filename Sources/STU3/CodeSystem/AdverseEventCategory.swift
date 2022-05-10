@@ -1,6 +1,6 @@
 //
 //  AdverseEventCategory.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/adverse-event-category
  ValueSet: http://hl7.org/fhir/ValueSet/adverse-event-category
  */
-public enum AdverseEventCategory: String, AlexandriaHRMPrimitiveType {
+public enum AdverseEventCategory: String, AsclepiusPrimitiveType {
   /// Adverse event pertains to a product problem
   case productProblem = "product-problem"
   

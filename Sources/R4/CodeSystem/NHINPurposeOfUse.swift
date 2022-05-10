@@ -1,6 +1,6 @@
 //
 //  NHINPurposeOfUse.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -24,7 +24,7 @@
  URL: http://healthit.gov/nhin/purposeofuse
  ValueSet: http://hl7.org/fhir/ValueSet/nhin-purposeofuse
  */
-public enum NHINPurposeOfUse: String, AlexandriaHRMPrimitiveType {
+public enum NHINPurposeOfUse: String, AsclepiusPrimitiveType {
   /// Treatment
   case TREATMENT
   

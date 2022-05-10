@@ -1,6 +1,6 @@
 //
 //  AuditEventSource.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,12 +17,12 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /// The system that is reporting the event
 open class AuditEventSource: BackboneElement {
   /// Logical source location within the enterprise
-  public var site: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var site: AsclepiusPrimitive<AsclepiusString>?
   
   /// The identity of the source detecting the event
   public var observer: Reference
@@ -37,8 +37,8 @@ open class AuditEventSource: BackboneElement {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    site: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    site: AsclepiusPrimitive<AsclepiusString>? = nil,
     observer: Reference,
     type: [Coding]? = nil
   ) {
@@ -60,7 +60,7 @@ open class AuditEventSource: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.site = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .site, auxKey: ._site)
+    self.site = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .site, auxKey: ._site)
     self.observer = try Reference(from: codingKeyContainer, forKey: .observer)
     self.type = try [Coding](from: codingKeyContainer, forKeyIfPresent: .type)
     

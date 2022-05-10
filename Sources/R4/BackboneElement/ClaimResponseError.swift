@@ -1,6 +1,6 @@
 //
 //  ClaimResponseError.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,20 +17,20 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  Processing Errors - Errors encountered during the processing of the adjudication
  */
 open class ClaimResponseError: BackboneElement {
   /// Item sequence number
-  public var itemSequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>?
+  public var itemSequence: AsclepiusPrimitive<AsclepiusPositiveInteger>?
   
   /// Detail sequence number
-  public var detailSequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>?
+  public var detailSequence: AsclepiusPrimitive<AsclepiusPositiveInteger>?
   
   /// Subdetail sequence number
-  public var subDetailSequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>?
+  public var subDetailSequence: AsclepiusPrimitive<AsclepiusPositiveInteger>?
   
   /// Error code detailing processing issues
   public var code: CodeableConcept
@@ -43,10 +43,10 @@ open class ClaimResponseError: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    itemSequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>? = nil,
-    detailSequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>? = nil,
-    subDetailSequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    itemSequence: AsclepiusPrimitive<AsclepiusPositiveInteger>? = nil,
+    detailSequence: AsclepiusPrimitive<AsclepiusPositiveInteger>? = nil,
+    subDetailSequence: AsclepiusPrimitive<AsclepiusPositiveInteger>? = nil,
     code: CodeableConcept
   ) {
     self.init(code: code)
@@ -69,9 +69,9 @@ open class ClaimResponseError: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.itemSequence = try AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>(from: codingKeyContainer, forKeyIfPresent: .itemSequence, auxKey: .itemSequence)
-    self.detailSequence = try AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>(from: codingKeyContainer, forKeyIfPresent: .detailSequence, auxKey: ._detailSequence)
-    self.subDetailSequence = try AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>(from: codingKeyContainer, forKeyIfPresent: .subDetailSequence, auxKey: ._subDetailSequence)
+    self.itemSequence = try AsclepiusPrimitive<AsclepiusPositiveInteger>(from: codingKeyContainer, forKeyIfPresent: .itemSequence, auxKey: .itemSequence)
+    self.detailSequence = try AsclepiusPrimitive<AsclepiusPositiveInteger>(from: codingKeyContainer, forKeyIfPresent: .detailSequence, auxKey: ._detailSequence)
+    self.subDetailSequence = try AsclepiusPrimitive<AsclepiusPositiveInteger>(from: codingKeyContainer, forKeyIfPresent: .subDetailSequence, auxKey: ._subDetailSequence)
     self.code = try CodeableConcept(from: codingKeyContainer, forKey: .code)
     
     try super.init(from: decoder)

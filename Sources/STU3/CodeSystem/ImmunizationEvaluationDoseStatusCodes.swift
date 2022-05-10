@@ -1,6 +1,6 @@
 //
 //  ImmunizationEvaluationDoseStatusCodes.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -25,7 +25,7 @@
  URL: http://terminology.hl7.org/CodeSystem/immunization-evaluation-dose-status
  ValueSet: http://hl7.org/fhir/ValueSet/immunization-evaluation-dose-status
  */
-public enum ImmunizationEvaluationDoseStatusCodes: String, AlexandriaHRMPrimitiveType {
+public enum ImmunizationEvaluationDoseStatusCodes: String, AsclepiusPrimitiveType {
   /// The dose counts toward fulfilling a path to immunity for a patient, providing protection against the target
   /// disease.
   case valid

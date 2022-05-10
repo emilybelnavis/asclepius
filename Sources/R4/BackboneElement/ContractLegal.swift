@@ -1,6 +1,6 @@
 //
 //  ContractLegal.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /// Contract Legal Language - List of legal expressions or representations of this `Contract`
 open class ContractLegal: BackboneElement {
@@ -36,7 +36,7 @@ open class ContractLegal: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
     content: ContentX
   ) {
     self.init(content: content)

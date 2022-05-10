@@ -1,6 +1,6 @@
 //
 //  GuideParameterCode.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/guide-parameter-code
  ValueSet: http://hl7.org/fhir/ValueSet/guide-parameter-code
  */
-public enum GuideParameterCode: String, AlexandriaHRMPrimitiveType {
+public enum GuideParameterCode: String, AsclepiusPrimitiveType {
   /// If the value of this string 0..* parameter is one of the metadata fields then all conformance resources will
   /// have any specified [Resource].[field] overwritten with the ImplementationGuide.[field], where field is one of:
   /// version, date, status, publisher, contact, copyright, experimental, jurisdiction, useContext.

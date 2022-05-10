@@ -1,6 +1,6 @@
 //
 //  FinancialTaskCodes.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/financialtaskcode
  ValueSet: http://hl7.org/fhir/ValueSet/financial-taskcode
  */
-public enum FinancialTaskCodes: String, AlexandriaHRMPrimitiveType {
+public enum FinancialTaskCodes: String, AsclepiusPrimitiveType {
   /// Cancel or reverse a resource, such as a claim or preauthorization, which is in-process or complete.
   case cancel
   

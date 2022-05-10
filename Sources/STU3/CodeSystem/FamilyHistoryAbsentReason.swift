@@ -1,6 +1,6 @@
 //
 //  FamilyHistoryAbsentReason.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/history-absent-reason
  ValueSet: http://hl7.org/fhir/ValueSet/history-absent-reason
  */
-public enum FamilyHistoryAbsentReason: String, AlexandriaHRMPrimitiveType {
+public enum FamilyHistoryAbsentReason: String, AsclepiusPrimitiveType {
   /// Patient does not know the subject, e.g. the biological parent of an adopted patient.
   case subjectUnknown = "subject-unknown"
   

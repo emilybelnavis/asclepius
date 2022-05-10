@@ -1,6 +1,6 @@
 //
 //  ClaimResponseItemDetailSubDetail.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,22 +17,22 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  Adjudication for claim sub-details; A sub-detail adjudication of a simple product or service
  */
 open class ClaimResponseItemDetailSubDetail: BackboneElement {
   /// Claim sub-detail instance identifier
-  public var subDetailSequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>
+  public var subDetailSequence: AsclepiusPrimitive<AsclepiusPositiveInteger>
   
   /// Applicable note numbers
-  public var noteNumber: [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>]?
+  public var noteNumber: [AsclepiusPrimitive<AsclepiusPositiveInteger>]?
   
   /// Subdetaul level adjudication details
   public var adjudication: [ClaimResponseItemAdjudication]?
   
-  public init(subDetailSequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>) {
+  public init(subDetailSequence: AsclepiusPrimitive<AsclepiusPositiveInteger>) {
     self.subDetailSequence = subDetailSequence
     super.init()
   }
@@ -40,9 +40,9 @@ open class ClaimResponseItemDetailSubDetail: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    subDetailSequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>,
-    noteNumber: [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>]? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    subDetailSequence: AsclepiusPrimitive<AsclepiusPositiveInteger>,
+    noteNumber: [AsclepiusPrimitive<AsclepiusPositiveInteger>]? = nil,
     adjudication: [ClaimResponseItemAdjudication]? = nil
   ) {
     self.init(subDetailSequence: subDetailSequence)
@@ -62,8 +62,8 @@ open class ClaimResponseItemDetailSubDetail: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.subDetailSequence = try AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>(from: codingKeyContainer, forKey: .subDetailSequence, auxKey: ._subDetailSequence)
-    self.noteNumber = try [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>](from: codingKeyContainer, forKeyIfPresent: .noteNumber, auxKey: ._noteNumber)
+    self.subDetailSequence = try AsclepiusPrimitive<AsclepiusPositiveInteger>(from: codingKeyContainer, forKey: .subDetailSequence, auxKey: ._subDetailSequence)
+    self.noteNumber = try [AsclepiusPrimitive<AsclepiusPositiveInteger>](from: codingKeyContainer, forKeyIfPresent: .noteNumber, auxKey: ._noteNumber)
     self.adjudication = try [ClaimResponseItemAdjudication](from: codingKeyContainer, forKeyIfPresent: .adjudication)
     
     try super.init(from: decoder)

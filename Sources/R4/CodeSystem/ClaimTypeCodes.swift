@@ -1,6 +1,6 @@
 //
 //  ClaimTypeCodes.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/claim-type
  ValueSet: http://hl7.org/fhir/ValueSet/claim-type
  */
-public enum ClaimTypecodes: String, AlexandriaHRMPrimitiveType {
+public enum ClaimTypecodes: String, AsclepiusPrimitiveType {
   /// Hospital, clinic, and typically inpatient claims
   case institutional
   

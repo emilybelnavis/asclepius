@@ -1,6 +1,6 @@
 //
 //  SpecimenStatus.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/specimen-status
  ValueSet: http://hl7.org/fhir/ValueSet/specimen-status
  */
-public enum SpecimenStatus: String, AlexandriaHRMPrimitiveType {
+public enum SpecimenStatus: String, AsclepiusPrimitiveType {
   /// The physical specimen is present and in good condition.
   case available
   

@@ -1,6 +1,6 @@
 //
 //  CompositionAttester.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,20 +17,20 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /// A participant who has attested to the accuracy or the composition/document
 open class CompositionAttester: BackboneElement {
   /// The type of attestation the authenticator offers
-  public var mode: AlexandriaHRMPrimitive<CompositionAttestationMode>
+  public var mode: AsclepiusPrimitive<CompositionAttestationMode>
   
   /// When the composition was attested
-  public var time: AlexandriaHRMPrimitive<AlexandriaHRMDateTime>
+  public var time: AsclepiusPrimitive<AsclepiusDateTime>
   
   /// Who attested the composition
   public var party: Reference?
   
-  public init(mode: AlexandriaHRMPrimitive<CompositionAttestationMode>, time: AlexandriaHRMPrimitive<AlexandriaHRMDateTime>) {
+  public init(mode: AsclepiusPrimitive<CompositionAttestationMode>, time: AsclepiusPrimitive<AsclepiusDateTime>) {
     self.mode = mode
     self.time = time
     super.init()
@@ -39,9 +39,9 @@ open class CompositionAttester: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    mode: AlexandriaHRMPrimitive<CompositionAttestationMode>,
-    time: AlexandriaHRMPrimitive<AlexandriaHRMDateTime>,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    mode: AsclepiusPrimitive<CompositionAttestationMode>,
+    time: AsclepiusPrimitive<AsclepiusDateTime>,
     party: Reference? = nil
   ) {
     self.init(mode: mode, time: time)
@@ -61,8 +61,8 @@ open class CompositionAttester: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.mode = try AlexandriaHRMPrimitive<CompositionAttestationMode>(from: codingKeyContainer, forKey: .mode, auxKey: ._mode)
-    self.time = try AlexandriaHRMPrimitive<AlexandriaHRMDateTime>(from: codingKeyContainer, forKey: .time, auxKey: ._time)
+    self.mode = try AsclepiusPrimitive<CompositionAttestationMode>(from: codingKeyContainer, forKey: .mode, auxKey: ._mode)
+    self.time = try AsclepiusPrimitive<AsclepiusDateTime>(from: codingKeyContainer, forKey: .time, auxKey: ._time)
     self.party = try Reference(from: codingKeyContainer, forKeyIfPresent: .party)
     
     try super.init(from: decoder)

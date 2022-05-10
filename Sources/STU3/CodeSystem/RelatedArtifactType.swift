@@ -1,6 +1,6 @@
 //
 //  RelatedArtifactType.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/related-artifact-type
  ValueSet: http://hl7.org/fhir/ValueSet/related-artifact-type
  */
-public enum RelatedArtifactType: String, AlexandriaHRMPrimitiveType {
+public enum RelatedArtifactType: String, AsclepiusPrimitiveType {
   /// Additional documentation for the knowledge resource. This would include additional instructions on usage as well
   /// as additional information on clinical context or appropriateness.
   case documentation

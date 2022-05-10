@@ -1,6 +1,6 @@
 //
 //  QuestionnaireResponseStatus.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/questionnaire-answers-status
  ValueSet: http://hl7.org/fhir/ValueSet/questionnaire-answers-status
  */
-public enum QuestionnaireResponseStatus: String, AlexandriaHRMPrimitiveType {
+public enum QuestionnaireResponseStatus: String, AsclepiusPrimitiveType {
   /// This QuestionnaireResponse has been partially filled out with answers but changes or additions are still
   /// expected to be made to it.
   case inProgress = "in-progress"

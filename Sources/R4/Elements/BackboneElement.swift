@@ -1,6 +1,6 @@
 //
 //  BackboneElement.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  Base definition for all elements that are defined inside a resource, but not those in a data type
@@ -33,7 +33,7 @@ open class BackboneElement: Element {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil
   ) {
     self.init()
     self.fhirExtension = fhirExtension

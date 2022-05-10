@@ -1,6 +1,6 @@
 //
 //  EffectEvidenceSynthesisEffectEstimate.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,14 +17,14 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  The estimated effect of the exposure variant
  */
 open class EffectEvidenceSynthesisEffectEstimate: BackboneElement {
   /// Description of effect estimate
-  public var fhirDescription: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var fhirDescription: AsclepiusPrimitive<AsclepiusString>?
   
   /// Type of effect estimate
   public var type: CodeableConcept?
@@ -33,7 +33,7 @@ open class EffectEvidenceSynthesisEffectEstimate: BackboneElement {
   public var variantState: CodeableConcept?
   
   /// Point estimate
-  public var value: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>?
+  public var value: AsclepiusPrimitive<AsclepiusDecimal>?
   
   /// What unit is the outcome described in
   public var unitOfMeasure: CodeableConcept?
@@ -48,11 +48,11 @@ open class EffectEvidenceSynthesisEffectEstimate: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    fhirDescription: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    fhirDescription: AsclepiusPrimitive<AsclepiusString>? = nil,
     type: CodeableConcept? = nil,
     variantState: CodeableConcept? = nil,
-    value: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>? = nil,
+    value: AsclepiusPrimitive<AsclepiusDecimal>? = nil,
     unitOfMeasure: CodeableConcept? = nil,
     precisionEstimate: [EffectEvidenceSynthesisEffectEstimatePrecisionEstimate]? = nil
   ) {
@@ -81,10 +81,10 @@ open class EffectEvidenceSynthesisEffectEstimate: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.fhirDescription = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .fhirDescription, auxKey: ._fhirDescription)
+    self.fhirDescription = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .fhirDescription, auxKey: ._fhirDescription)
     self.type = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .type)
     self.variantState = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .variantState)
-    self.value = try AlexandriaHRMPrimitive<AlexandriaHRMDecimal>(from: codingKeyContainer, forKeyIfPresent: .value, auxKey: ._value)
+    self.value = try AsclepiusPrimitive<AsclepiusDecimal>(from: codingKeyContainer, forKeyIfPresent: .value, auxKey: ._value)
     self.unitOfMeasure = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .unitOfMeasure)
     self.precisionEstimate = try [EffectEvidenceSynthesisEffectEstimatePrecisionEstimate](from: codingKeyContainer, forKeyIfPresent: .precisionEstimate)
     

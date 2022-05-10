@@ -1,6 +1,6 @@
 //
 //  DeviceRequestParameter.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,14 +17,14 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  Device details; Specific parameters for the ordered item
  */
 open class DeviceRequestParameter: BackboneElement {
   public enum ValueX: Hashable {
-    case boolean(AlexandriaHRMPrimitive<AlexandriaHRMBool>)
+    case boolean(AsclepiusPrimitive<AsclepiusBool>)
     case codeableConcept(CodeableConcept)
     case quantity(Quantity)
     case range(Range)
@@ -43,7 +43,7 @@ open class DeviceRequestParameter: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
     code: CodeableConcept? = nil,
     value: ValueX? = nil
   ) {
@@ -68,7 +68,7 @@ open class DeviceRequestParameter: BackboneElement {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     var tempValue: ValueX?
-    if let valueBoolean = try AlexandriaHRMPrimitive<AlexandriaHRMBool>(from: codingKeyContainer, forKeyIfPresent: .valueBoolean, auxKey: ._valueBoolean) {
+    if let valueBoolean = try AsclepiusPrimitive<AsclepiusBool>(from: codingKeyContainer, forKeyIfPresent: .valueBoolean, auxKey: ._valueBoolean) {
       if tempValue != nil {
         throw DecodingError.dataCorruptedError(forKey: .valueBoolean, in: codingKeyContainer, debugDescription: "More than one value provided for \"value\"")
       }

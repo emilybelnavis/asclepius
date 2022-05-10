@@ -1,6 +1,6 @@
 //
 //  MedicationAdministrationPerformerFunctionCodes.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/med-admin-perform-function
  ValueSet: http://hl7.org/fhir/ValueSet/med-admin-perform-function
  */
-public enum MedicationAdministrationPerformerFunctionCodes: String, AlexandriaHRMPrimitiveType {
+public enum MedicationAdministrationPerformerFunctionCodes: String, AsclepiusPrimitiveType {
   /// A person, non-person living subject, organization or device that who actually and principally carries out the
   /// action
   case performer

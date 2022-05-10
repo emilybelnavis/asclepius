@@ -1,6 +1,6 @@
 //
 //  ClaimItem.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  A claim line containing either a simple item (a product or service) or a "group" of details which can be simple
@@ -31,24 +31,24 @@ open class ClaimItem: BackboneElement {
   }
   
   public enum ServicedX: Hashable {
-    case date(AlexandriaHRMPrimitive<AlexandriaHRMDate>)
+    case date(AsclepiusPrimitive<AsclepiusDate>)
     case period(Period)
   }
   
   /// Item instance identifier
-  public var sequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>
+  public var sequence: AsclepiusPrimitive<AsclepiusPositiveInteger>
   
   /// Applicable `careTeam` members
-  public var careTeamSequence: [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>]?
+  public var careTeamSequence: [AsclepiusPrimitive<AsclepiusPositiveInteger>]?
   
   /// Applicable diagnoses
-  public var diagnosisSequence: [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>]?
+  public var diagnosisSequence: [AsclepiusPrimitive<AsclepiusPositiveInteger>]?
   
   /// Applicable procedures
-  public var procedureSequence: [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>]?
+  public var procedureSequence: [AsclepiusPrimitive<AsclepiusPositiveInteger>]?
   
   /// Applicable exception and supporting information
-  public var informationSequence: [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>]?
+  public var informationSequence: [AsclepiusPrimitive<AsclepiusPositiveInteger>]?
   
   /// Revenue or cost center code
   public var revenue: CodeableConcept?
@@ -78,7 +78,7 @@ open class ClaimItem: BackboneElement {
   public var unitPrice: Money?
   
   /// Price scaling factor
-  public var factor: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>?
+  public var factor: AsclepiusPrimitive<AsclepiusDecimal>?
   
   /// Total item cost
   public var net: Money?
@@ -98,7 +98,7 @@ open class ClaimItem: BackboneElement {
   /// Product or service provided
   public var detail: [ClaimItemDetail]?
   
-  public init(sequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>, productOrService: CodeableConcept) {
+  public init(sequence: AsclepiusPrimitive<AsclepiusPositiveInteger>, productOrService: CodeableConcept) {
     self.sequence = sequence
     self.productOrService = productOrService
     super.init()
@@ -107,12 +107,12 @@ open class ClaimItem: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    sequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>,
-    careTeamSequence: [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>]? = nil,
-    diagnosisSequence: [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>]? = nil,
-    procedureSequence: [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>]? = nil,
-    informationSequence: [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>]? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    sequence: AsclepiusPrimitive<AsclepiusPositiveInteger>,
+    careTeamSequence: [AsclepiusPrimitive<AsclepiusPositiveInteger>]? = nil,
+    diagnosisSequence: [AsclepiusPrimitive<AsclepiusPositiveInteger>]? = nil,
+    procedureSequence: [AsclepiusPrimitive<AsclepiusPositiveInteger>]? = nil,
+    informationSequence: [AsclepiusPrimitive<AsclepiusPositiveInteger>]? = nil,
     revenue: CodeableConcept? = nil,
     category: CodeableConcept? = nil,
     productOrService: CodeableConcept,
@@ -122,7 +122,7 @@ open class ClaimItem: BackboneElement {
     locationX: LocationX? = nil,
     quantity: Quantity? = nil,
     unitPrice: Money? = nil,
-    factor: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>? = nil,
+    factor: AsclepiusPrimitive<AsclepiusDecimal>? = nil,
     net: Money? = nil,
     udi: [Reference]? = nil,
     bodySite: CodeableConcept? = nil,
@@ -187,7 +187,7 @@ open class ClaimItem: BackboneElement {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     var tempServicedX: ServicedX?
-    if let servicedDate = try AlexandriaHRMPrimitive<AlexandriaHRMDate>(from: codingKeyContainer, forKeyIfPresent: .servicedDate, auxKey: ._servicedDate) {
+    if let servicedDate = try AsclepiusPrimitive<AsclepiusDate>(from: codingKeyContainer, forKeyIfPresent: .servicedDate, auxKey: ._servicedDate) {
       if tempServicedX != nil {
         throw DecodingError.dataCorruptedError(forKey: .servicedDate, in: codingKeyContainer, debugDescription: "More than one value supplied for \"serviced\"")
       }
@@ -223,11 +223,11 @@ open class ClaimItem: BackboneElement {
       tempLocationX = .reference(locationReference)
     }
     
-    self.sequence = try AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>(from: codingKeyContainer, forKey: .sequence, auxKey: ._sequence)
-    self.careTeamSequence = try [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>](from: codingKeyContainer, forKeyIfPresent: .careTeamSequence, auxKey: ._careTeamSequence)
-    self.diagnosisSequence = try [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>](from: codingKeyContainer, forKeyIfPresent: .diagnosisSequence, auxKey: ._diagnosisSequence)
-    self.procedureSequence = try [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>](from: codingKeyContainer, forKeyIfPresent: .procedureSequence, auxKey: ._procedureSequence)
-    self.informationSequence = try [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>](from: codingKeyContainer, forKeyIfPresent: .informationSequence, auxKey: ._informationSequence)
+    self.sequence = try AsclepiusPrimitive<AsclepiusPositiveInteger>(from: codingKeyContainer, forKey: .sequence, auxKey: ._sequence)
+    self.careTeamSequence = try [AsclepiusPrimitive<AsclepiusPositiveInteger>](from: codingKeyContainer, forKeyIfPresent: .careTeamSequence, auxKey: ._careTeamSequence)
+    self.diagnosisSequence = try [AsclepiusPrimitive<AsclepiusPositiveInteger>](from: codingKeyContainer, forKeyIfPresent: .diagnosisSequence, auxKey: ._diagnosisSequence)
+    self.procedureSequence = try [AsclepiusPrimitive<AsclepiusPositiveInteger>](from: codingKeyContainer, forKeyIfPresent: .procedureSequence, auxKey: ._procedureSequence)
+    self.informationSequence = try [AsclepiusPrimitive<AsclepiusPositiveInteger>](from: codingKeyContainer, forKeyIfPresent: .informationSequence, auxKey: ._informationSequence)
     self.revenue = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .revenue)
     self.category = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .category)
     self.productOrService = try CodeableConcept(from: codingKeyContainer, forKey: .productOrService)
@@ -237,7 +237,7 @@ open class ClaimItem: BackboneElement {
     self.locationX = tempLocationX
     self.quantity = try Quantity(from: codingKeyContainer, forKeyIfPresent: .quantity)
     self.unitPrice = try Money(from: codingKeyContainer, forKeyIfPresent: .unitPrice)
-    self.factor = try AlexandriaHRMPrimitive<AlexandriaHRMDecimal>(from: codingKeyContainer, forKeyIfPresent: .factor, auxKey: ._factor)
+    self.factor = try AsclepiusPrimitive<AsclepiusDecimal>(from: codingKeyContainer, forKeyIfPresent: .factor, auxKey: ._factor)
     self.net = try Money(from: codingKeyContainer, forKeyIfPresent: .net)
     self.udi = try [Reference](from: codingKeyContainer, forKeyIfPresent: .udi)
     self.bodySite = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .bodySite)

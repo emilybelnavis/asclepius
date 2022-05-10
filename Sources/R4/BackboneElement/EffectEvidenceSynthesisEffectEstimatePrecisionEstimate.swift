@@ -1,6 +1,6 @@
 //
 //  EffectEvidenceSynthesisEffectEstimatePrecisionEstimate.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 /**
  A description of how precise the estimate for the effect is
  */
@@ -26,13 +26,13 @@ open class EffectEvidenceSynthesisEffectEstimatePrecisionEstimate: BackboneEleme
   public var type: CodeableConcept?
   
   /// Level of confidence interval
-  public var level: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>?
+  public var level: AsclepiusPrimitive<AsclepiusDecimal>?
   
   /// Lower bound
-  public var from: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>?
+  public var from: AsclepiusPrimitive<AsclepiusDecimal>?
   
   /// Upper bound
-  public var to: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>?
+  public var to: AsclepiusPrimitive<AsclepiusDecimal>?
   
   override public init() {
     super.init()
@@ -41,11 +41,11 @@ open class EffectEvidenceSynthesisEffectEstimatePrecisionEstimate: BackboneEleme
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
     type: CodeableConcept? = nil,
-    level: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>? = nil,
-    from: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>? = nil,
-    to: AlexandriaHRMPrimitive<AlexandriaHRMDecimal>? = nil
+    level: AsclepiusPrimitive<AsclepiusDecimal>? = nil,
+    from: AsclepiusPrimitive<AsclepiusDecimal>? = nil,
+    to: AsclepiusPrimitive<AsclepiusDecimal>? = nil
   ) {
     self.init()
     self.fhirExtension = fhirExtension
@@ -69,9 +69,9 @@ open class EffectEvidenceSynthesisEffectEstimatePrecisionEstimate: BackboneEleme
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
     self.type = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .type)
-    self.level = try AlexandriaHRMPrimitive<AlexandriaHRMDecimal>(from: codingKeyContainer, forKeyIfPresent: .level, auxKey: ._level)
-    self.from = try AlexandriaHRMPrimitive<AlexandriaHRMDecimal>(from: codingKeyContainer, forKeyIfPresent: .from, auxKey: ._from)
-    self.to = try AlexandriaHRMPrimitive<AlexandriaHRMDecimal>(from: codingKeyContainer, forKeyIfPresent: .to, auxKey: ._to)
+    self.level = try AsclepiusPrimitive<AsclepiusDecimal>(from: codingKeyContainer, forKeyIfPresent: .level, auxKey: ._level)
+    self.from = try AsclepiusPrimitive<AsclepiusDecimal>(from: codingKeyContainer, forKeyIfPresent: .from, auxKey: ._from)
+    self.to = try AsclepiusPrimitive<AsclepiusDecimal>(from: codingKeyContainer, forKeyIfPresent: .to, auxKey: ._to)
     
     try super.init(from: decoder)
   }

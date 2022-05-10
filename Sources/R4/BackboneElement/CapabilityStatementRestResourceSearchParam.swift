@@ -1,6 +1,6 @@
 //
 //  CapabilityStatementRestResourceSearchParam.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  Search parameters for implementations to support and/or make use of - either references to ones defined in
@@ -25,18 +25,18 @@ import AlexandriaHRMCore
  */
 open class CapabilityStatementRestResourceSearchParam: BackboneElement {
   /// Name of the search parameter
-  public var name: AlexandriaHRMPrimitive<AlexandriaHRMString>
+  public var name: AsclepiusPrimitive<AsclepiusString>
   
   /// Source of the definition for parameter
-  public var definition: AlexandriaHRMPrimitive<Canonical>?
+  public var definition: AsclepiusPrimitive<Canonical>?
   
   /// The type of value a search parameter refers to and how the content is interpreted
-  public var type: AlexandriaHRMPrimitive<SearchParamType>
+  public var type: AsclepiusPrimitive<SearchParamType>
   
   /// Server-specific usage
-  public var documentation: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var documentation: AsclepiusPrimitive<AsclepiusString>?
   
-  public init(name: AlexandriaHRMPrimitive<AlexandriaHRMString>, type: AlexandriaHRMPrimitive<SearchParamType>) {
+  public init(name: AsclepiusPrimitive<AsclepiusString>, type: AsclepiusPrimitive<SearchParamType>) {
     self.name = name
     self.type = type
     super.init()
@@ -45,11 +45,11 @@ open class CapabilityStatementRestResourceSearchParam: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    name: AlexandriaHRMPrimitive<AlexandriaHRMString>,
-    definition: AlexandriaHRMPrimitive<Canonical>? = nil,
-    type: AlexandriaHRMPrimitive<SearchParamType>,
-    documentation: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    name: AsclepiusPrimitive<AsclepiusString>,
+    definition: AsclepiusPrimitive<Canonical>? = nil,
+    type: AsclepiusPrimitive<SearchParamType>,
+    documentation: AsclepiusPrimitive<AsclepiusString>?
   ) {
     self.init(name: name, type: type)
     self.fhirExtension = fhirExtension
@@ -70,10 +70,10 @@ open class CapabilityStatementRestResourceSearchParam: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.name = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .name, auxKey: ._name)
-    self.definition = try AlexandriaHRMPrimitive<Canonical>(from: codingKeyContainer, forKeyIfPresent: .definition, auxKey: ._definition)
-    self.type = try AlexandriaHRMPrimitive<SearchParamType>(from: codingKeyContainer, forKey: .type, auxKey: ._type)
-    self.documentation = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .documentation, auxKey: ._documentation)
+    self.name = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKey: .name, auxKey: ._name)
+    self.definition = try AsclepiusPrimitive<Canonical>(from: codingKeyContainer, forKeyIfPresent: .definition, auxKey: ._definition)
+    self.type = try AsclepiusPrimitive<SearchParamType>(from: codingKeyContainer, forKey: .type, auxKey: ._type)
+    self.documentation = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .documentation, auxKey: ._documentation)
     
     try super.init(from: decoder)
   }

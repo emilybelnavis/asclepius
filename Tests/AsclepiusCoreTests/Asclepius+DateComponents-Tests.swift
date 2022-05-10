@@ -1,6 +1,6 @@
 //
-//  AlexandriaHRM+DateComponent-Tests.swift
-//  AlexandriaHRM
+//  Asclepius+DateComponent-Tests.swift
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,10 +17,10 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 import XCTest
 
-class AlexandriaHRMDateComponentsTests: XCTestCase {
+class AsclepiusDateComponentsTests: XCTestCase {
     
     // All these were calculated in GMT
     let date0 = Date(timeIntervalSinceReferenceDate: 662733296.0) // 2022-01-01 at 12:34:56.00
@@ -77,17 +77,17 @@ class AlexandriaHRMDateComponentsTests: XCTestCase {
             let gmtComponents = dateObject["gmtComponents"] as! [NSNumber]
             let estComponents = dateObject["estComponents"] as! [NSNumber]
             
-            let dateComponentsGMT = try AlexandriaHRMDateComponents.dateComponents(from: date, with: gmt)
+            let dateComponentsGMT = try AsclepiusDateComponents.dateComponents(from: date, with: gmt)
             XCTAssertEqual(dateComponentsGMT.year, gmtComponents[0] as? Int, "Date number \(i) incorrect GMT year")
             XCTAssertEqual(dateComponentsGMT.month, gmtComponents[1] as? UInt8, "Date number \(i) incorrect GMT month")
             XCTAssertEqual(dateComponentsGMT.day, gmtComponents[2] as? UInt8, "Date number \(i) incorrect GMT day")
             
-            let timeComponentsGMT = try AlexandriaHRMDateComponents.timeComponents(from: date, with: gmt)
+            let timeComponentsGMT = try AsclepiusDateComponents.timeComponents(from: date, with: gmt)
             XCTAssertEqual(timeComponentsGMT.hour, gmtComponents[3] as? UInt8, "Date number \(i) incorrect GMT hour")
             XCTAssertEqual(timeComponentsGMT.minute, gmtComponents[4] as? UInt8, "Date number \(i) incorrect GMT minute")
             XCTAssertEqual(timeComponentsGMT.second, gmtComponents[5].decimalValue, "Date number \(i) incorrect GMT second")
             
-            let componentsGMT = try AlexandriaHRMDateComponents.components(from: date, with: gmt)
+            let componentsGMT = try AsclepiusDateComponents.components(from: date, with: gmt)
             XCTAssertEqual(componentsGMT.year, gmtComponents[0] as? Int, "Date number \(i) incorrect GMT year")
             XCTAssertEqual(componentsGMT.month, gmtComponents[1] as? UInt8, "Date number \(i) incorrect GMT month")
             XCTAssertEqual(componentsGMT.day, gmtComponents[2] as? UInt8, "Date number \(i) incorrect GMT day")
@@ -95,17 +95,17 @@ class AlexandriaHRMDateComponentsTests: XCTestCase {
             XCTAssertEqual(componentsGMT.minute, gmtComponents[4] as? UInt8, "Date number \(i) incorrect GMT minute")
             XCTAssertEqual(componentsGMT.second, gmtComponents[5].decimalValue, "Date number \(i) incorrect GMT second")
             
-            let dateComponentsEST = try AlexandriaHRMDateComponents.dateComponents(from: date, with: est)
+            let dateComponentsEST = try AsclepiusDateComponents.dateComponents(from: date, with: est)
             XCTAssertEqual(dateComponentsEST.year, estComponents[0] as? Int, "Date number \(i) incorrect EST year")
             XCTAssertEqual(dateComponentsEST.month, estComponents[1] as? UInt8, "Date number \(i) incorrect EST month")
             XCTAssertEqual(dateComponentsEST.day, estComponents[2] as? UInt8, "Date number \(i) incorrect EST day")
             
-            let timeComponentsEST = try AlexandriaHRMDateComponents.timeComponents(from: date, with: est)
+            let timeComponentsEST = try AsclepiusDateComponents.timeComponents(from: date, with: est)
             XCTAssertEqual(timeComponentsEST.hour, estComponents[3] as? UInt8, "Date number \(i) incorrect EST hour")
             XCTAssertEqual(timeComponentsEST.minute, estComponents[4] as? UInt8, "Date number \(i) incorrect EST minute")
             XCTAssertEqual(timeComponentsEST.second, estComponents[5].decimalValue, "Date number \(i) incorrect EST second")
             
-            let componentsEST = try AlexandriaHRMDateComponents.components(from: date, with: est)
+            let componentsEST = try AsclepiusDateComponents.components(from: date, with: est)
             XCTAssertEqual(componentsEST.year, estComponents[0] as? Int, "Date number \(i) incorrect EST year")
             XCTAssertEqual(componentsEST.month, estComponents[1] as? UInt8, "Date number \(i) incorrect EST month")
             XCTAssertEqual(componentsEST.day, estComponents[2] as? UInt8, "Date number \(i) incorrect EST day")
@@ -116,17 +116,17 @@ class AlexandriaHRMDateComponentsTests: XCTestCase {
     }
     
     func testLeapDayParsing() throws {
-        let leapDayDate = try AlexandriaHRMDateComponents.dateComponents(from: date5, with: gmt)
+        let leapDayDate = try AsclepiusDateComponents.dateComponents(from: date5, with: gmt)
         XCTAssertEqual(2024, leapDayDate.year)
         XCTAssertEqual(2, leapDayDate.month)
         XCTAssertEqual(29, leapDayDate.day)
         
-        let leapDayTime = try AlexandriaHRMDateComponents.timeComponents(from: date5, with: gmt)
+        let leapDayTime = try AsclepiusDateComponents.timeComponents(from: date5, with: gmt)
         XCTAssertEqual(16, leapDayTime.hour)
         XCTAssertEqual(20, leapDayTime.minute)
         XCTAssertEqual(00.0, leapDayTime.second)
         
-        let leapDayComponents = try AlexandriaHRMDateComponents.components(from: date5, with: gmt)
+        let leapDayComponents = try AsclepiusDateComponents.components(from: date5, with: gmt)
         XCTAssertEqual(2024, leapDayComponents.year)
         XCTAssertEqual(2, leapDayComponents.month)
         XCTAssertEqual(29, leapDayComponents.day)
@@ -134,7 +134,7 @@ class AlexandriaHRMDateComponentsTests: XCTestCase {
         XCTAssertEqual(20, leapDayComponents.minute)
         XCTAssertEqual(0.0, leapDayTime.second)
         
-        let timeZoneShiftComponents = try AlexandriaHRMDateComponents.components(from: date5, with: est)
+        let timeZoneShiftComponents = try AsclepiusDateComponents.components(from: date5, with: est)
         XCTAssertEqual(2024, timeZoneShiftComponents.year)
         XCTAssertEqual(2, timeZoneShiftComponents.month)
         XCTAssertEqual(29, timeZoneShiftComponents.day)
@@ -144,17 +144,17 @@ class AlexandriaHRMDateComponentsTests: XCTestCase {
     }
     
     func testNewYearParsing() throws {
-        let happyNewYearDateComponents = try AlexandriaHRMDateComponents.dateComponents(from: date4, with: gmt)
+        let happyNewYearDateComponents = try AsclepiusDateComponents.dateComponents(from: date4, with: gmt)
         XCTAssertEqual(2023, happyNewYearDateComponents.year)
         XCTAssertEqual(1, happyNewYearDateComponents.month)
         XCTAssertEqual(1, happyNewYearDateComponents.day)
         
-        let happyNewYearTimeComponents = try AlexandriaHRMDateComponents.timeComponents(from: date4, with: gmt)
+        let happyNewYearTimeComponents = try AsclepiusDateComponents.timeComponents(from: date4, with: gmt)
         XCTAssertEqual(0, happyNewYearTimeComponents.hour)
         XCTAssertEqual(0, happyNewYearTimeComponents.minute)
         XCTAssertEqual(0.5, happyNewYearTimeComponents.second)
         
-        let happyNewYearComponents = try AlexandriaHRMDateComponents.components(from: date4, with: gmt)
+        let happyNewYearComponents = try AsclepiusDateComponents.components(from: date4, with: gmt)
         XCTAssertEqual(2023, happyNewYearComponents.year)
         XCTAssertEqual(1, happyNewYearComponents.month)
         XCTAssertEqual(1, happyNewYearComponents.day)
@@ -162,7 +162,7 @@ class AlexandriaHRMDateComponentsTests: XCTestCase {
         XCTAssertEqual(0, happyNewYearComponents.minute)
         XCTAssertEqual(0.5, happyNewYearComponents.second)
         
-        let timeZoneSwitchComponents = try AlexandriaHRMDateComponents.components(from: date4, with: est)
+        let timeZoneSwitchComponents = try AsclepiusDateComponents.components(from: date4, with: est)
         XCTAssertEqual(2022, timeZoneSwitchComponents.year)
         XCTAssertEqual(12, timeZoneSwitchComponents.month)
         XCTAssertEqual(31, timeZoneSwitchComponents.day)
@@ -177,7 +177,7 @@ class AlexandriaHRMDateComponentsTests: XCTestCase {
             let date = dateObject["date"] as! Date
             let gmtComponents = dateObject["gmtComponents"] as! [NSNumber]
             let estComponents = dateObject["estComponents"] as! [NSNumber]
-            let gmtFHIRComponents = AlexandriaHRMDateComponents(year: gmtComponents[0] as! Int,
+            let gmtFHIRComponents = AsclepiusDateComponents(year: gmtComponents[0] as! Int,
                                                        month: gmtComponents[1] as? UInt8,
                                                        day: gmtComponents[2] as? UInt8,
                                                        hour: gmtComponents[3] as? UInt8,
@@ -187,7 +187,7 @@ class AlexandriaHRMDateComponentsTests: XCTestCase {
             let testGMTDate = try gmtFHIRComponents.asNSDate()
             XCTAssertEqual(testGMTDate, date, "Date number \(i) GMT date conversion incorrect")
             
-            let estFHIRComponents = AlexandriaHRMDateComponents(year: estComponents[0] as! Int,
+            let estFHIRComponents = AsclepiusDateComponents(year: estComponents[0] as! Int,
                                                        month: estComponents[1] as? UInt8,
                                                        day: estComponents[2] as? UInt8,
                                                        hour: estComponents[3] as? UInt8,

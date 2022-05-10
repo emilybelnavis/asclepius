@@ -1,6 +1,6 @@
 //
 //  ClinicalImpressionFinding.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /// Specific fnidings or diagnoses that werwe considered likely or relevant to ongoing treatment
 open class ClinicalImpressionFinding: BackboneElement {
@@ -28,7 +28,7 @@ open class ClinicalImpressionFinding: BackboneElement {
   public var itemReference: Reference?
   
   /// Which investigations support finding
-  public var basis: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var basis: AsclepiusPrimitive<AsclepiusString>?
   
   override public init() {
     super.init()
@@ -37,10 +37,10 @@ open class ClinicalImpressionFinding: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
     itemCodeableConcept: CodeableConcept? = nil,
     itemReference: Reference? = nil,
-    basis: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil
+    basis: AsclepiusPrimitive<AsclepiusString>? = nil
   ) {
     self.init()
     self.fhirExtension = fhirExtension
@@ -63,7 +63,7 @@ open class ClinicalImpressionFinding: BackboneElement {
     
     self.itemCodeableConcept = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .itemCodeableConcept)
     self.itemReference = try Reference(from: codingKeyContainer, forKeyIfPresent: .itemReference)
-    self.basis = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .basis, auxKey: ._basis)
+    self.basis = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .basis, auxKey: ._basis)
     
     try super.init(from: decoder)
   }

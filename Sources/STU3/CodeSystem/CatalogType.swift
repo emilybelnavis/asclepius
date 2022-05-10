@@ -1,6 +1,6 @@
 //
 //  CatalogType.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/catalogType
  ValueSet: http://hl7.org/fhir/ValueSet/catalogType
  */
-public enum CatalogType: String, AlexandriaHRMPrimitiveType {
+public enum CatalogType: String, AsclepiusPrimitiveType {
   /// Medication catalog
   case medication
   

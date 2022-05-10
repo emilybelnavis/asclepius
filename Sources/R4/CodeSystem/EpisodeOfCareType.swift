@@ -1,6 +1,6 @@
 //
 //  EpisodeOfCareType.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/episodeofcare-type
  ValueSet: http://hl7.org/fhir/ValueSet/episodeofcare-type
  */
-public enum EpisodeOfCareType: String, AlexandriaHRMPrimitiveType {
+public enum EpisodeOfCareType: String, AsclepiusPrimitiveType {
   /// hacc
   case hacc
   

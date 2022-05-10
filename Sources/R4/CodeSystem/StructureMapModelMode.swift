@@ -1,6 +1,6 @@
 //
 //  StructureMapModelMode.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/map-model-mode
  ValueSet: http://hl7.org/fhir/ValueSet/map-model-mode
  */
-public enum StructureMapModelMode: String, AlexandriaHRMPrimitiveType {
+public enum StructureMapModelMode: String, AsclepiusPrimitiveType {
   /// This structure describes an instance passed to the mapping engine that is used a source of data.
   case source
   

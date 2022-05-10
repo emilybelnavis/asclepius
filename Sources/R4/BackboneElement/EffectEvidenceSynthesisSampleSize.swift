@@ -1,6 +1,6 @@
 //
 //  EffectEvidenceSynthesisSampleSize.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,20 +17,20 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  What sample size was involved? - A description of the size of the sample involved in the synthesis
  */
 open class EffectEvidenceSynthesisSampleSize: BackboneElement {
   /// Description of sample size
-  public var fhirDescription: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var fhirDescription: AsclepiusPrimitive<AsclepiusString>?
   
   /// Number of studies conducted
-  public var numberOfStudies: AlexandriaHRMPrimitive<AlexandriaHRMInteger>?
+  public var numberOfStudies: AsclepiusPrimitive<AsclepiusInteger>?
   
   /// Number of participants studied
-  public var numberOfParticipants: AlexandriaHRMPrimitive<AlexandriaHRMInteger>?
+  public var numberOfParticipants: AsclepiusPrimitive<AsclepiusInteger>?
   
   override public init() {
     super.init()
@@ -39,10 +39,10 @@ open class EffectEvidenceSynthesisSampleSize: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    fhirDescription: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    numberOfStudies: AlexandriaHRMPrimitive<AlexandriaHRMInteger>? = nil,
-    numberOfParticipants: AlexandriaHRMPrimitive<AlexandriaHRMInteger>? = nil
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    fhirDescription: AsclepiusPrimitive<AsclepiusString>? = nil,
+    numberOfStudies: AsclepiusPrimitive<AsclepiusInteger>? = nil,
+    numberOfParticipants: AsclepiusPrimitive<AsclepiusInteger>? = nil
   ) {
     self.init()
     self.fhirExtension = fhirExtension
@@ -63,9 +63,9 @@ open class EffectEvidenceSynthesisSampleSize: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.fhirDescription = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .fhirDescription, auxKey: ._fhirDescription)
-    self.numberOfStudies = try AlexandriaHRMPrimitive<AlexandriaHRMInteger>(from: codingKeyContainer, forKeyIfPresent: .numberOfStudies, auxKey: ._numberOfStudies)
-    self.numberOfParticipants = try AlexandriaHRMPrimitive<AlexandriaHRMInteger>(from: codingKeyContainer, forKeyIfPresent: .numberOfParticipants, auxKey: ._numberOfParticipants)
+    self.fhirDescription = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .fhirDescription, auxKey: ._fhirDescription)
+    self.numberOfStudies = try AsclepiusPrimitive<AsclepiusInteger>(from: codingKeyContainer, forKeyIfPresent: .numberOfStudies, auxKey: ._numberOfStudies)
+    self.numberOfParticipants = try AsclepiusPrimitive<AsclepiusInteger>(from: codingKeyContainer, forKeyIfPresent: .numberOfParticipants, auxKey: ._numberOfParticipants)
     
     try super.init(from: decoder)
   }

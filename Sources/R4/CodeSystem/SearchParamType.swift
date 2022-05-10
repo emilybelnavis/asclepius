@@ -1,6 +1,6 @@
 //
 //  SearchParamType.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/search-param-type
  ValueSet: http://hl7.org/fhir/ValueSet/search-param-type
  */
-public enum SearchParamType: String, AlexandriaHRMPrimitiveType {
+public enum SearchParamType: String, AsclepiusPrimitiveType {
   /// Search parameter SHALL be a number (a whole number, or a decimal).
   case number
   

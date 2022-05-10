@@ -1,6 +1,6 @@
 //
 //  Meta.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  The metadata about a resource. This is content in the resource that is maintained by the infrastructure.
@@ -25,16 +25,16 @@ import AlexandriaHRMCore
  */
 open class Meta: Element {
   /// Version specific identifier
-  public var versionId: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var versionId: AsclepiusPrimitive<AsclepiusString>?
   
   /// When the resource version last changed
-  public var lastUpdated: AlexandriaHRMPrimitive<AlexandriaHRMInstant>?
+  public var lastUpdated: AsclepiusPrimitive<AsclepiusInstant>?
   
   /// Identifies where the resource comes from
-  public var source: AlexandriaHRMPrimitive<AlexandriaHRMURI>?
+  public var source: AsclepiusPrimitive<AsclepiusURI>?
   
   /// Profiles this resource claims to conform to
-  public var profile: [AlexandriaHRMPrimitive<Canonical>]?
+  public var profile: [AsclepiusPrimitive<Canonical>]?
   
   /// Security labels applied to this resource
   public var security: [Coding]?
@@ -48,11 +48,11 @@ open class Meta: Element {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    versionId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    lastUpdated: AlexandriaHRMPrimitive<AlexandriaHRMInstant>? = nil,
-    source: AlexandriaHRMPrimitive<AlexandriaHRMURI>? = nil,
-    profile: [AlexandriaHRMPrimitive<Canonical>]? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    versionId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    lastUpdated: AsclepiusPrimitive<AsclepiusInstant>? = nil,
+    source: AsclepiusPrimitive<AsclepiusURI>? = nil,
+    profile: [AsclepiusPrimitive<Canonical>]? = nil,
     security: [Coding]? = nil,
     tag: [Coding]? = nil
   ) {
@@ -80,10 +80,10 @@ open class Meta: Element {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.versionId = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .versionId, auxKey: ._versionId)
-    self.lastUpdated = try AlexandriaHRMPrimitive<AlexandriaHRMInstant>(from: codingKeyContainer, forKeyIfPresent: .lastUpdated, auxKey: ._lastUpdated)
-    self.source = try AlexandriaHRMPrimitive<AlexandriaHRMURI>(from: codingKeyContainer, forKeyIfPresent: .source, auxKey: ._source)
-    self.profile = try [AlexandriaHRMPrimitive<Canonical>](from: codingKeyContainer, forKeyIfPresent: .profile, auxKey: ._profile)
+    self.versionId = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .versionId, auxKey: ._versionId)
+    self.lastUpdated = try AsclepiusPrimitive<AsclepiusInstant>(from: codingKeyContainer, forKeyIfPresent: .lastUpdated, auxKey: ._lastUpdated)
+    self.source = try AsclepiusPrimitive<AsclepiusURI>(from: codingKeyContainer, forKeyIfPresent: .source, auxKey: ._source)
+    self.profile = try [AsclepiusPrimitive<Canonical>](from: codingKeyContainer, forKeyIfPresent: .profile, auxKey: ._profile)
     self.security = try [Coding](from: codingKeyContainer, forKeyIfPresent: .security)
     self.tag = try [Coding](from: codingKeyContainer, forKeyIfPresent: .tag)
     

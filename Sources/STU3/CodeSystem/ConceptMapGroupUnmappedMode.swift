@@ -1,6 +1,6 @@
 //
 //  ConceptMapGroupUnmappedMode.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/conceptmap-unmapped-mode
  ValueSet: http://hl7.org/fhir/ValueSet/conceptmap-unmapped-mode
  */
-public enum ConceptMapGroupUnmappedMode: String, AlexandriaHRMPrimitiveType {
+public enum ConceptMapGroupUnmappedMode: String, AsclepiusPrimitiveType {
   /// Use the code as provided in the `$translate` request
   case provided
   

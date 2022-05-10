@@ -1,6 +1,6 @@
 //
 //  ConceptMapGroup.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,23 +17,23 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  A group of mappings that all have the same source and target systems
  */
 open class ConceptMapGroup: BackboneElement {
   /// Source system where concept to be mapped are defined
-  public var source: AlexandriaHRMPrimitive<AlexandriaHRMURI>?
+  public var source: AsclepiusPrimitive<AsclepiusURI>?
   
   /// Specific version of the code system
-  public var sourceVersion: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var sourceVersion: AsclepiusPrimitive<AsclepiusString>?
   
   /// Target system that the concepts are mapped to
-  public var target: AlexandriaHRMPrimitive<AlexandriaHRMURI>?
+  public var target: AsclepiusPrimitive<AsclepiusURI>?
   
   /// Specific version of the code system
-  public var targetVersion: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var targetVersion: AsclepiusPrimitive<AsclepiusString>?
   
   /// Mappings for a concept from the source set
   public var element: [ConceptMapGroupElement]
@@ -49,11 +49,11 @@ open class ConceptMapGroup: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    source: AlexandriaHRMPrimitive<AlexandriaHRMURI>? = nil,
-    sourceVersion: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    target: AlexandriaHRMPrimitive<AlexandriaHRMURI>? = nil,
-    targetVersion: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    source: AsclepiusPrimitive<AsclepiusURI>? = nil,
+    sourceVersion: AsclepiusPrimitive<AsclepiusString>? = nil,
+    target: AsclepiusPrimitive<AsclepiusURI>? = nil,
+    targetVersion: AsclepiusPrimitive<AsclepiusString>? = nil,
     element: [ConceptMapGroupElement],
     unmapped: ConceptMapGroupUnmapped? = nil
   ) {
@@ -81,10 +81,10 @@ open class ConceptMapGroup: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.source = try AlexandriaHRMPrimitive<AlexandriaHRMURI>(from: codingKeyContainer, forKeyIfPresent: .source, auxKey: ._source)
-    self.sourceVersion = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .sourceVersion, auxKey: ._sourceVersion)
-    self.target = try AlexandriaHRMPrimitive<AlexandriaHRMURI>(from: codingKeyContainer, forKeyIfPresent: .target, auxKey: ._target)
-    self.targetVersion = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .targetVersion, auxKey: ._targetVersion)
+    self.source = try AsclepiusPrimitive<AsclepiusURI>(from: codingKeyContainer, forKeyIfPresent: .source, auxKey: ._source)
+    self.sourceVersion = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .sourceVersion, auxKey: ._sourceVersion)
+    self.target = try AsclepiusPrimitive<AsclepiusURI>(from: codingKeyContainer, forKeyIfPresent: .target, auxKey: ._target)
+    self.targetVersion = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .targetVersion, auxKey: ._targetVersion)
     self.element = try [ConceptMapGroupElement](from: codingKeyContainer, forKey: .element)
     self.unmapped = try ConceptMapGroupUnmapped(from: codingKeyContainer, forKeyIfPresent: .unmapped)
   

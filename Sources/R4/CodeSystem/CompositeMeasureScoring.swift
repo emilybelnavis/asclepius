@@ -1,6 +1,6 @@
 //
 //  CompositeMeasureScoring.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/composite-measure-scoring
  ValueSet: http://hl7.org/fhir/ValueSet/composite-measure-scoring
  */
-public enum CompositeMeasureScoring: String, AlexandriaHRMPrimitiveType {
+public enum CompositeMeasureScoring: String, AsclepiusPrimitiveType {
   /// Opportunity scoring combines the scores from component measures by combining the numerators
   /// and denominators for each component
   case opportunity

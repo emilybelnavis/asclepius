@@ -1,7 +1,7 @@
 //
-//  AlexandriaHRMType.swift
-//  AlexandriaHRM
-//  Module: AlexandriaHRMCore
+//  AsclepiusType.swift
+//  Asclepius
+//  Module: AsclepiusCore
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
 //
@@ -17,41 +17,41 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-public protocol AlexandriaHRMType: Codable, Hashable {
-    
+public protocol AsclepiusType: Codable, Hashable {
+
 }
 
-extension AlexandriaHRMType {
-    
+extension AsclepiusType {
+
     public init<_Key>(from parentContainer: KeyedDecodingContainer<_Key>, forKey key: _Key) throws {
         self = try parentContainer.decode(Self.self, forKey: key)
     }
-    
+
     public init?<_Key>(from parentContainer: KeyedDecodingContainer<_Key>, forKeyIfPresent key: _Key) throws {
         guard let decoded = try parentContainer.decodeIfPresent(Self.self, forKey: key) else {
             return nil
         }
         self = decoded
     }
-    
+
     public func encode<_Key>(on parentContainer: inout KeyedEncodingContainer<_Key>, forKey key: _Key) throws {
         try parentContainer.encode(self, forKey: key)
     }
 }
 
-extension Array where Element: AlexandriaHRMType {
-    
+extension Array where Element: AsclepiusType {
+
     public init<_Key>(from container: KeyedDecodingContainer<_Key>, forKey key: _Key) throws {
         self = try container.decode(Self.self, forKey: key)
     }
-    
+
     public init?<_Key>(from container: KeyedDecodingContainer<_Key>, forKeyIfPresent key: _Key) throws {
         guard let decoded = try container.decodeIfPresent(Self.self, forKey: key) else {
             return nil
         }
         self = decoded
     }
-    
+
     public func encode<_Key>(on parentContainer: inout KeyedEncodingContainer<_Key>, forKey key: _Key) throws {
         try parentContainer.encode(self, forKey: key)
     }

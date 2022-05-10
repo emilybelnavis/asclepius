@@ -1,6 +1,6 @@
 //
 //  Identifier.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  An identifier intended for computation
@@ -26,16 +26,16 @@ import AlexandriaHRMCore
  */
 open class Identifier: Element {
   /// The purpose of this identifier
-  public var use: AlexandriaHRMPrimitive<IdentifierUse>?
+  public var use: AsclepiusPrimitive<IdentifierUse>?
   
   /// Description of identifier
   public var type: CodeableConcept?
   
   /// The namespace for the identifier value
-  public var system: AlexandriaHRMPrimitive<AlexandriaHRMURI>?
+  public var system: AsclepiusPrimitive<AsclepiusURI>?
   
   /// The value that is unique
-  public var value: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var value: AsclepiusPrimitive<AsclepiusString>?
   
   /// Time period when is/was valid for use
   public var period: Period?
@@ -49,11 +49,11 @@ open class Identifier: Element {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    use: AlexandriaHRMPrimitive<IdentifierUse>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    use: AsclepiusPrimitive<IdentifierUse>? = nil,
     type: CodeableConcept? = nil,
-    system: AlexandriaHRMPrimitive<AlexandriaHRMURI>? = nil,
-    value: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    system: AsclepiusPrimitive<AsclepiusURI>? = nil,
+    value: AsclepiusPrimitive<AsclepiusString>? = nil,
     period: Period? = nil,
     assigner: Reference? = nil
   ) {
@@ -81,10 +81,10 @@ open class Identifier: Element {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.use = try AlexandriaHRMPrimitive<IdentifierUse>(from: codingKeyContainer, forKeyIfPresent: .use, auxKey: ._use)
+    self.use = try AsclepiusPrimitive<IdentifierUse>(from: codingKeyContainer, forKeyIfPresent: .use, auxKey: ._use)
     self.type = try CodeableConcept(from: codingKeyContainer, forKeyIfPresent: .type)
-    self.system = try AlexandriaHRMPrimitive<AlexandriaHRMURI>(from: codingKeyContainer, forKeyIfPresent: .system, auxKey: ._system)
-    self.value = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .value, auxKey: ._value)
+    self.system = try AsclepiusPrimitive<AsclepiusURI>(from: codingKeyContainer, forKeyIfPresent: .system, auxKey: ._system)
+    self.value = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .value, auxKey: ._value)
     self.period = try Period(from: codingKeyContainer, forKeyIfPresent: .period)
     self.assigner = try Reference(from: codingKeyContainer, forKeyIfPresent: .assigner)
     

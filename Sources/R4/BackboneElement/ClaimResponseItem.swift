@@ -1,6 +1,6 @@
 //
 //  ClaimResponseItem.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  Adudication for claim line items; A claim line containing either a simple item (a product or service) or a "group"
@@ -25,10 +25,10 @@ import AlexandriaHRMCore
  */
 open class ClaimResponseItem: BackboneElement {
   /// Claim item instance identifier
-  public var itemSequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>
+  public var itemSequence: AsclepiusPrimitive<AsclepiusPositiveInteger>
   
   /// Applicable note numbers
-  public var noteNumber: [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>]?
+  public var noteNumber: [AsclepiusPrimitive<AsclepiusPositiveInteger>]?
   
   /// Adjudication details
   public var adjudication: [ClaimResponseItemAdjudication]
@@ -36,7 +36,7 @@ open class ClaimResponseItem: BackboneElement {
   /// Adjudication for claim details
   public var detail: [ClaimResponseItemDetail]?
   
-  public init(itemSequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>, adjudication: [ClaimResponseItemAdjudication]) {
+  public init(itemSequence: AsclepiusPrimitive<AsclepiusPositiveInteger>, adjudication: [ClaimResponseItemAdjudication]) {
     self.itemSequence = itemSequence
     self.adjudication = adjudication
     super.init()
@@ -45,9 +45,9 @@ open class ClaimResponseItem: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    itemSequence: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>,
-    noteNumber: [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>]? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    itemSequence: AsclepiusPrimitive<AsclepiusPositiveInteger>,
+    noteNumber: [AsclepiusPrimitive<AsclepiusPositiveInteger>]? = nil,
     adjudication: [ClaimResponseItemAdjudication],
     detail: [ClaimResponseItemDetail]? = nil
   ) {
@@ -70,8 +70,8 @@ open class ClaimResponseItem: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
 
-    self.itemSequence = try AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>(from: codingKeyContainer, forKey: .itemSequence, auxKey: ._itemSequence)
-    self.noteNumber = try [AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>](from: codingKeyContainer, forKeyIfPresent: .noteNumber, auxKey: ._noteNumber)
+    self.itemSequence = try AsclepiusPrimitive<AsclepiusPositiveInteger>(from: codingKeyContainer, forKey: .itemSequence, auxKey: ._itemSequence)
+    self.noteNumber = try [AsclepiusPrimitive<AsclepiusPositiveInteger>](from: codingKeyContainer, forKeyIfPresent: .noteNumber, auxKey: ._noteNumber)
     self.adjudication = try [ClaimResponseItemAdjudication](from: codingKeyContainer, forKey: .adjudication)
     self.detail = try [ClaimResponseItemDetail](from: codingKeyContainer, forKeyIfPresent: .detail)
     

@@ -1,6 +1,6 @@
 //
 //  CodeSystemHierarchyMeaning.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/codesystem-hierarchy-meaning
  ValueSet: http://hl7.org/fhir/ValueSet/codesystem-hierarchy-meaning
  */
-public enum CodeSystemHierarchyMeaning: String, AlexandriaHRMPrimitiveType {
+public enum CodeSystemHierarchyMeaning: String, AsclepiusPrimitiveType {
   /// No particular relationship between the concepts can be assumed, except what can be determined by
   /// inspection of the definitions of the elements (possible reasons to use this: importing from a source
   /// where this is not defined or where various parts of the hierarchy have different meanings).

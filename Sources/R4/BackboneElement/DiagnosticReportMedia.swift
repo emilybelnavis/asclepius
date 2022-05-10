@@ -1,6 +1,6 @@
 //
 //  DiagnosticReportMedia.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  Key images associated with this report; A list of key images associated with this report. The images are generally
@@ -26,7 +26,7 @@ import AlexandriaHRMCore
  */
 open class DiagnosticReportMedia: BackboneElement {
   /// Comment about the image (e.g. explanation)
-  public var comment: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var comment: AsclepiusPrimitive<AsclepiusString>?
   
   /// Reference to the image source
   public var link: Reference
@@ -39,8 +39,8 @@ open class DiagnosticReportMedia: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    comment: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    comment: AsclepiusPrimitive<AsclepiusString>? = nil,
     link: Reference
   ) {
     self.init(link: link)
@@ -59,7 +59,7 @@ open class DiagnosticReportMedia: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.comment = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .comment, auxKey: ._comment)
+    self.comment = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .comment, auxKey: ._comment)
     self.link = try Reference(from: codingKeyContainer, forKey: .link)
     
     try super.init(from: decoder)

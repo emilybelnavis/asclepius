@@ -1,6 +1,6 @@
 //
 //  ReferenceHandlingPolicy.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/reference-handling-policy
  ValueSet: http://hl7.org/fhir/ValueSet/reference-handling-policy
  */
-public enum ReferenceHandlingPolicy: String, AlexandriaHRMPrimitiveType {
+public enum ReferenceHandlingPolicy: String, AsclepiusPrimitiveType {
   /// The server supports and populates Literal references (i.e. using Reference.reference) where they are known (this
   /// code does not guarantee that all references are literal; see 'enforced').
   case literal

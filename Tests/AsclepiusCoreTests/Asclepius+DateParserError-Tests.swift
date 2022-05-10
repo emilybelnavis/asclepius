@@ -1,6 +1,6 @@
 //
-//  AlexandriaHRM+DateParserError-Tests.swift
-//  AlexandriaHRM
+//  Asclepius+DateParserError-Tests.swift
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,16 +17,16 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 import XCTest
 
 class FHIRDateParserErrorTests: XCTestCase {
-    
+
     func testEquality() {
-        let a = AlexandriaHRMDateParserErrorPosition(string: "abc", location: 2)
-        let b = AlexandriaHRMDateParserErrorPosition(string: "def", location: 2)
-        let c = AlexandriaHRMDateParserErrorPosition(string: "abc", location: 3)
-        let c1 = AlexandriaHRMDateParserErrorPosition(string: "abc", location: 3)
+        let a = AsclepiusDateParserErrorPosition(string: "abc", location: 2)
+        let b = AsclepiusDateParserErrorPosition(string: "def", location: 2)
+        let c = AsclepiusDateParserErrorPosition(string: "abc", location: 3)
+        let c1 = AsclepiusDateParserErrorPosition(string: "abc", location: 3)
         XCTAssertNotEqual(a, b)
         XCTAssertNotEqual(a, c)
         XCTAssertNotEqual(b, c)

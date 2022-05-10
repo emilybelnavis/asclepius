@@ -1,6 +1,6 @@
 //
 //  DiagnosticReportStatus.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/diagnostic-report-status
  ValueSet: http://hl7.org/fhir/ValueSet/diagnostic-report-status
  */
-public enum DiagnosticReportStatus: String, AlexandriaHRMPrimitiveType {
+public enum DiagnosticReportStatus: String, AsclepiusPrimitiveType {
   /// The existence of the report is registered, but there is nothing yet available.
   case registered
   

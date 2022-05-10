@@ -1,6 +1,6 @@
 //
 //  CodeSystemFilter.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,25 +17,25 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  A filter that can be used in a value set compose statement when selecting concepts using a filter
  */
 open class CodeSystemFilter: BackboneElement {
   /// Code that identifies the filter
-  public var code: AlexandriaHRMPrimitive<AlexandriaHRMString>
+  public var code: AsclepiusPrimitive<AsclepiusString>
   
   /// How or why the filter is used
-  public var fhirDescription: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var fhirDescription: AsclepiusPrimitive<AsclepiusString>?
   
   /// List of operators that can be used with the filter
-  public var filterOperator: [AlexandriaHRMPrimitive<FilterOperator>]
+  public var filterOperator: [AsclepiusPrimitive<FilterOperator>]
   
   /// What to use for the value
-  public var value: AlexandriaHRMPrimitive<AlexandriaHRMString>
+  public var value: AsclepiusPrimitive<AsclepiusString>
   
-  public init(code: AlexandriaHRMPrimitive<AlexandriaHRMString>, filterOperator: [AlexandriaHRMPrimitive<FilterOperator>], value: AlexandriaHRMPrimitive<AlexandriaHRMString>) {
+  public init(code: AsclepiusPrimitive<AsclepiusString>, filterOperator: [AsclepiusPrimitive<FilterOperator>], value: AsclepiusPrimitive<AsclepiusString>) {
     self.code = code
     self.filterOperator = filterOperator
     self.value = value
@@ -45,11 +45,11 @@ open class CodeSystemFilter: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    code: AlexandriaHRMPrimitive<AlexandriaHRMString>,
-    fhirDescription: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    filterOperator: [AlexandriaHRMPrimitive<FilterOperator>],
-    value: AlexandriaHRMPrimitive<AlexandriaHRMString>
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    code: AsclepiusPrimitive<AsclepiusString>,
+    fhirDescription: AsclepiusPrimitive<AsclepiusString>? = nil,
+    filterOperator: [AsclepiusPrimitive<FilterOperator>],
+    value: AsclepiusPrimitive<AsclepiusString>
   ) {
     self.init(code: code, filterOperator: filterOperator, value: value)
     self.fhirExtension = fhirExtension
@@ -69,10 +69,10 @@ open class CodeSystemFilter: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.code = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .code, auxKey: ._code)
-    self.fhirDescription = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .fhirDescription, auxKey: ._fhirDescription)
-    self.filterOperator = try [AlexandriaHRMPrimitive<FilterOperator>](from: codingKeyContainer, forKey: .filterOperator, auxKey: ._filterOperator)
-    self.value = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .value, auxKey: ._value)
+    self.code = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKey: .code, auxKey: ._code)
+    self.fhirDescription = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .fhirDescription, auxKey: ._fhirDescription)
+    self.filterOperator = try [AsclepiusPrimitive<FilterOperator>](from: codingKeyContainer, forKey: .filterOperator, auxKey: ._filterOperator)
+    self.value = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKey: .value, auxKey: ._value)
     
     try super.init(from: decoder)
   }

@@ -1,6 +1,6 @@
 //
 //  VisionEyes.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/vision-eye-codes
  ValueSet: http://hl7.org/fhir/ValueSet/vision-eye-codes
  */
-public enum VisionEyes: String, AlexandriaHRMPrimitiveType {
+public enum VisionEyes: String, AsclepiusPrimitiveType {
   /// Right Eye.
   case right
   

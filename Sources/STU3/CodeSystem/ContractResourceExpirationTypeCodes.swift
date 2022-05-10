@@ -1,6 +1,6 @@
 //
 //  ContractResourceExpirationTypeCodes.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://hl7.org/fhir/contract-expiration-type
  ValueSet: http://hl7.org/fhir/ValueSet/contract-expiration-type
  */
-public enum ContractResourceExpirationTypeCodes: String, AlexandriaHRMPrimitiveType {
+public enum ContractResourceExpirationTypeCodes: String, AsclepiusPrimitiveType {
   /// To be completed
   case breach
 }

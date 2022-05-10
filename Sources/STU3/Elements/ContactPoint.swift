@@ -1,6 +1,6 @@
 //
 //  ContactPoint.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,23 +17,23 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  Details of a Technology mediated contact point (phone, fax, email, etc.)
  */
 open class ContactPoint: Element {
   /// Telecommunications form for contact point
-  public var system: AlexandriaHRMPrimitive<ContactPointSystem>?
+  public var system: AsclepiusPrimitive<ContactPointSystem>?
   
   /// The actual contact point details
-  public var value: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var value: AsclepiusPrimitive<AsclepiusString>?
   
   /// Identifies the purpose for the contact point
-  public var use: AlexandriaHRMPrimitive<ContactPointUse>?
+  public var use: AsclepiusPrimitive<ContactPointUse>?
   
   /// Specified preferred order of use (1 = highest)
-  public var rank: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>?
+  public var rank: AsclepiusPrimitive<AsclepiusPositiveInteger>?
   
   /// Time period when the contact point was/is in use
   public var period: Period?
@@ -44,11 +44,11 @@ open class ContactPoint: Element {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    system: AlexandriaHRMPrimitive<ContactPointSystem>? = nil,
-    value: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    use: AlexandriaHRMPrimitive<ContactPointUse>? = nil,
-    rank: AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    system: AsclepiusPrimitive<ContactPointSystem>? = nil,
+    value: AsclepiusPrimitive<AsclepiusString>? = nil,
+    use: AsclepiusPrimitive<ContactPointUse>? = nil,
+    rank: AsclepiusPrimitive<AsclepiusPositiveInteger>? = nil,
     period: Period? = nil
   ) {
     self.init()
@@ -73,10 +73,10 @@ open class ContactPoint: Element {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.system = try AlexandriaHRMPrimitive<ContactPointSystem>(from: codingKeyContainer, forKeyIfPresent: .system, auxKey: ._system)
-    self.value = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .value, auxKey: ._value)
-    self.use = try AlexandriaHRMPrimitive<ContactPointUse>(from: codingKeyContainer, forKeyIfPresent: .use, auxKey: ._use)
-    self.rank = try AlexandriaHRMPrimitive<AlexandriaHRMPositiveInteger>(from: codingKeyContainer, forKeyIfPresent: ._rank, auxKey: ._rank)
+    self.system = try AsclepiusPrimitive<ContactPointSystem>(from: codingKeyContainer, forKeyIfPresent: .system, auxKey: ._system)
+    self.value = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .value, auxKey: ._value)
+    self.use = try AsclepiusPrimitive<ContactPointUse>(from: codingKeyContainer, forKeyIfPresent: .use, auxKey: ._use)
+    self.rank = try AsclepiusPrimitive<AsclepiusPositiveInteger>(from: codingKeyContainer, forKeyIfPresent: ._rank, auxKey: ._rank)
     self.period = try Period(from: codingKeyContainer, forKeyIfPresent: .period)
     
     try super.init(from: decoder)

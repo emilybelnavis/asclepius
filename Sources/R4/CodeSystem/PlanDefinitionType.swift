@@ -1,6 +1,6 @@
 //
 //  PlanDefinitionType.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/plan-definition-type
  ValueSet: http://hl7.org/fhir/ValueSet/plan-definition-type
  */
-public enum PlanDefinitionType: String, AlexandriaHRMPrimitiveType {
+public enum PlanDefinitionType: String, AsclepiusPrimitiveType {
   /// A pre-defined and approved group of orders related to a particular clinical condition (e.g. hypertension
   /// treatment and monitoring) or stage of care (e.g. hospital admission to Coronary Care Unit). An order set is used
   /// as a checklist for the clinician when managing a patient with a specific condition. It is a structured

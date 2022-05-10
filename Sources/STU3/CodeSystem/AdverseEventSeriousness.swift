@@ -1,6 +1,6 @@
 //
 //  AdverseEventSeriousness.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/adverse-event-seriousness
  ValueSet: http://hl7.org/fhir/ValueSet/adverse-event-seriousness
  */
-public enum AdverseEventSeriousness: String, AlexandriaHRMPrimitiveType {
+public enum AdverseEventSeriousness: String, AsclepiusPrimitiveType {
   /// Non-serious
   case nonSerious = "Non-serious"
   

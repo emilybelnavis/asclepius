@@ -1,6 +1,6 @@
 //
 //  Reference.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: R4
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,21 +17,21 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /// A reference from one resource to another
 open class Reference: Element {
   /// Literal reference, relative, internal, or absolute URL
-  public var reference: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var reference: AsclepiusPrimitive<AsclepiusString>?
   
   /// Type the reference refers to (e.g. "Patient")
-  public var type: AlexandriaHRMPrimitive<AlexandriaHRMURI>?
+  public var type: AsclepiusPrimitive<AsclepiusURI>?
   
   /// Logical reference for when literal reference is not known
   public var identifier: Identifier?
   
   /// Text alternative for the resource
-  public var display: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var display: AsclepiusPrimitive<AsclepiusString>?
   
   override public init() {
     super.init()
@@ -39,11 +39,11 @@ open class Reference: Element {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    reference: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    type: AlexandriaHRMPrimitive<AlexandriaHRMURI>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    reference: AsclepiusPrimitive<AsclepiusString>? = nil,
+    type: AsclepiusPrimitive<AsclepiusURI>? = nil,
     identifier: Identifier? = nil,
-    display: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil
+    display: AsclepiusPrimitive<AsclepiusString>? = nil
   ) {
     self.init()
     self.fhirExtension = fhirExtension
@@ -65,10 +65,10 @@ open class Reference: Element {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.reference = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .reference, auxKey: ._reference)
-    self.type = try AlexandriaHRMPrimitive<AlexandriaHRMURI>(from: codingKeyContainer, forKeyIfPresent: .type, auxKey: ._type)
+    self.reference = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .reference, auxKey: ._reference)
+    self.type = try AsclepiusPrimitive<AsclepiusURI>(from: codingKeyContainer, forKeyIfPresent: .type, auxKey: ._type)
     self.identifier = try Identifier(from: codingKeyContainer, forKeyIfPresent: .identifier)
-    self.display = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .display, auxKey: ._display)
+    self.display = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .display, auxKey: ._display)
     
     try super.init(from: decoder)
   }

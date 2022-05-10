@@ -1,6 +1,6 @@
 //
 //  ElementDefinitionMapping.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  Map element to another set of definitions; Identifies a concept from external specification that roughly
@@ -25,18 +25,18 @@ import AlexandriaHRMCore
  */
 open class ElementDefinitionMapping: Element {
   /// Reference to mapping declaration
-  public var identity: AlexandriaHRMPrimitive<AlexandriaHRMString>
+  public var identity: AsclepiusPrimitive<AsclepiusString>
   
   /// Computable language of mapping
-  public var language: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var language: AsclepiusPrimitive<AsclepiusString>?
   
   /// Details of the mapping
-  public var map: AlexandriaHRMPrimitive<AlexandriaHRMString>
+  public var map: AsclepiusPrimitive<AsclepiusString>
   
   /// Comments about the mapping or its use
-  public var comment: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var comment: AsclepiusPrimitive<AsclepiusString>?
   
-  public init(identity: AlexandriaHRMPrimitive<AlexandriaHRMString>, map: AlexandriaHRMPrimitive<AlexandriaHRMString>) {
+  public init(identity: AsclepiusPrimitive<AsclepiusString>, map: AsclepiusPrimitive<AsclepiusString>) {
     self.identity = identity
     self.map = map
     super.init()
@@ -44,11 +44,11 @@ open class ElementDefinitionMapping: Element {
   
   public convenience init(
     fhirExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    identity: AlexandriaHRMPrimitive<AlexandriaHRMString>,
-    language: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    map: AlexandriaHRMPrimitive<AlexandriaHRMString>,
-    comment: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    identity: AsclepiusPrimitive<AsclepiusString>,
+    language: AsclepiusPrimitive<AsclepiusString>? = nil,
+    map: AsclepiusPrimitive<AsclepiusString>,
+    comment: AsclepiusPrimitive<AsclepiusString>? = nil
   ) {
     self.init(identity: identity, map: map)
     self.fhirExtension = fhirExtension
@@ -68,10 +68,10 @@ open class ElementDefinitionMapping: Element {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.identity = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .identity, auxKey: ._identity)
-    self.language = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .language, auxKey: ._language)
-    self.map = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKey: .map, auxKey: ._map)
-    self.comment = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .comment, auxKey: ._comment)
+    self.identity = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKey: .identity, auxKey: ._identity)
+    self.language = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .language, auxKey: ._language)
+    self.map = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKey: .map, auxKey: ._map)
+    self.comment = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .comment, auxKey: ._comment)
     
     try super.init(from: decoder)
   }

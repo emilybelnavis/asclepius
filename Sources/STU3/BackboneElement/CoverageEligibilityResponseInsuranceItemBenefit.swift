@@ -1,6 +1,6 @@
 //
 //  CoverageEligibilityResponseInsuranceItemBenefit.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,21 +17,21 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 /**
  Benefits summary; Benefits used to date
  */
 open class CoverageEligibilityResponseInsuranceItemBenefit: BackboneElement {
   public enum AllowedX: Hashable {
     case money(Money)
-    case string(AlexandriaHRMPrimitive<AlexandriaHRMString>)
-    case unsignedInteger(AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>)
+    case string(AsclepiusPrimitive<AsclepiusString>)
+    case unsignedInteger(AsclepiusPrimitive<AsclepiusUnsignedInteger>)
   }
   
   public enum UsedX: Hashable {
     case money(Money)
-    case string(AlexandriaHRMPrimitive<AlexandriaHRMString>)
-    case unsignedInteger(AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>)
+    case string(AsclepiusPrimitive<AsclepiusString>)
+    case unsignedInteger(AsclepiusPrimitive<AsclepiusUnsignedInteger>)
   }
   
   /// Benefit classification
@@ -51,7 +51,7 @@ open class CoverageEligibilityResponseInsuranceItemBenefit: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
     type: CodeableConcept,
     allowed: AllowedX?,
     used: UsedX?
@@ -87,14 +87,14 @@ open class CoverageEligibilityResponseInsuranceItemBenefit: BackboneElement {
       tempAllowed = .money(allowedMoney)
     }
     
-    if let allowedString = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: ._allowedString, auxKey: ._allowedString) {
+    if let allowedString = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: ._allowedString, auxKey: ._allowedString) {
       if tempAllowed != nil {
         throw DecodingError.dataCorruptedError(forKey: .allowedString, in: codingKeyContainer, debugDescription: "More than one value provided for \"allowed\"")
       }
       tempAllowed = .string(allowedString)
     }
     
-    if let allowedUnsignedInteger = try AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>(from: codingKeyContainer, forKeyIfPresent: ._allowedUnsignedInteger, auxKey: ._allowedUnsignedInteger) {
+    if let allowedUnsignedInteger = try AsclepiusPrimitive<AsclepiusUnsignedInteger>(from: codingKeyContainer, forKeyIfPresent: ._allowedUnsignedInteger, auxKey: ._allowedUnsignedInteger) {
       if tempAllowed != nil {
         throw DecodingError.dataCorruptedError(forKey: .allowedUnsignedInteger, in: codingKeyContainer, debugDescription: "More than one value provided for \"allowed\"")
       }
@@ -109,14 +109,14 @@ open class CoverageEligibilityResponseInsuranceItemBenefit: BackboneElement {
       tempUsed = .money(usedMoney)
     }
     
-    if let usedString = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .usedString, auxKey: ._usedString) {
+    if let usedString = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .usedString, auxKey: ._usedString) {
       if tempUsed != nil {
         throw DecodingError.dataCorruptedError(forKey: .usedString, in: codingKeyContainer, debugDescription: "More than one value provided for \"used\"")
       }
       tempUsed = .string(usedString)
     }
     
-    if let usedUnsignedInteger = try AlexandriaHRMPrimitive<AlexandriaHRMUnsignedInteger>(from: codingKeyContainer, forKeyIfPresent: .usedUnsignedInteger, auxKey: ._usedUnsignedInteger) {
+    if let usedUnsignedInteger = try AsclepiusPrimitive<AsclepiusUnsignedInteger>(from: codingKeyContainer, forKeyIfPresent: .usedUnsignedInteger, auxKey: ._usedUnsignedInteger) {
       if tempUsed != nil {
         throw DecodingError.dataCorruptedError(forKey: .usedUnsignedInteger, in: codingKeyContainer, debugDescription: "More than one value provided for \"used\"")
       }

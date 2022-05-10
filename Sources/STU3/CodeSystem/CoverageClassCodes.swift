@@ -1,6 +1,6 @@
 //
 //  CoverageClassCodes.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -23,7 +23,7 @@
  URL: http://terminology.hl7.org/CodeSystem/coverage-class
  ValueSet: http://hl7.org/fhir/ValueSet/coverage-class
  */
-public enum CoverageClassCodes: String, AlexandriaHRMPrimitiveType {
+public enum CoverageClassCodes: String, AsclepiusPrimitiveType {
   /// An employee group
   case group
   

@@ -1,6 +1,6 @@
 //
 //  DeviceUdiCarrier.swift
-//  AlexandriaHRM
+//  Asclepius
 //  Module: STU3
 //
 //  Copyright (c) 2022 Bitmatic Ltd.
@@ -17,7 +17,7 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-import AlexandriaHRMCore
+import AsclepiusCore
 
 /**
  Unique Device Identifier (UDI) Barcode String; Unique Device Identifier (UDI) assigned to the device label or
@@ -26,22 +26,22 @@ import AlexandriaHRMCore
  */
 open class DeviceUdiCarrier: BackboneElement {
   /// Mandatory fixed portion of UDI
-  public var deviceIdentifier: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var deviceIdentifier: AsclepiusPrimitive<AsclepiusString>?
   
   /// UDI Issuing organization
-  public var issuer: AlexandriaHRMPrimitive<AlexandriaHRMURI>?
+  public var issuer: AsclepiusPrimitive<AsclepiusURI>?
   
   /// Regional UDI authority
-  public var jurisdiction: AlexandriaHRMPrimitive<AlexandriaHRMURI>?
+  public var jurisdiction: AsclepiusPrimitive<AsclepiusURI>?
   
   /// UDI Machine Readable Barcode String
-  public var carrierAIDC: AlexandriaHRMPrimitive<AlexandriaHRMBase64Binary>?
+  public var carrierAIDC: AsclepiusPrimitive<AsclepiusBase64Binary>?
   
   /// UDI Human Readable Barcode String
-  public var carrierHRF: AlexandriaHRMPrimitive<AlexandriaHRMString>?
+  public var carrierHRF: AsclepiusPrimitive<AsclepiusString>?
   
   /// A coded entry to indicate how the data was entered
-  public var entryTime: AlexandriaHRMPrimitive<UDIEntryType>?
+  public var entryTime: AsclepiusPrimitive<UDIEntryType>?
   
   override public init() {
     super.init()
@@ -50,13 +50,13 @@ open class DeviceUdiCarrier: BackboneElement {
   public convenience init(
     fhirExtension: [Extension]? = nil,
     modifierExtension: [Extension]? = nil,
-    fhirId: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    deviceIdentifier: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    issuer: AlexandriaHRMPrimitive<AlexandriaHRMURI>? = nil,
-    jurisdiction: AlexandriaHRMPrimitive<AlexandriaHRMURI>? = nil,
-    carrierAIDC: AlexandriaHRMPrimitive<AlexandriaHRMBase64Binary>? = nil,
-    carrierHRF: AlexandriaHRMPrimitive<AlexandriaHRMString>? = nil,
-    entryTime: AlexandriaHRMPrimitive<UDIEntryType>? = nil
+    fhirId: AsclepiusPrimitive<AsclepiusString>? = nil,
+    deviceIdentifier: AsclepiusPrimitive<AsclepiusString>? = nil,
+    issuer: AsclepiusPrimitive<AsclepiusURI>? = nil,
+    jurisdiction: AsclepiusPrimitive<AsclepiusURI>? = nil,
+    carrierAIDC: AsclepiusPrimitive<AsclepiusBase64Binary>? = nil,
+    carrierHRF: AsclepiusPrimitive<AsclepiusString>? = nil,
+    entryTime: AsclepiusPrimitive<UDIEntryType>? = nil
   ) {
     self.init()
     self.fhirExtension = fhirExtension
@@ -83,12 +83,12 @@ open class DeviceUdiCarrier: BackboneElement {
   public required init(from decoder: Decoder) throws {
     let codingKeyContainer = try decoder.container(keyedBy: CodingKeys.self)
     
-    self.deviceIdentifier = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .deviceIdentifier, auxKey: ._deviceIdentifier)
-    self.issuer = try AlexandriaHRMPrimitive<AlexandriaHRMURI>(from: codingKeyContainer, forKeyIfPresent: .issuer, auxKey: ._issuer)
-    self.jurisdiction = try AlexandriaHRMPrimitive<AlexandriaHRMURI>(from: codingKeyContainer, forKeyIfPresent: .jurisdiction, auxKey: ._jurisdiction)
-    self.carrierAIDC = try AlexandriaHRMPrimitive<AlexandriaHRMBase64Binary>(from: codingKeyContainer, forKeyIfPresent: .carrierAIDC, auxKey: ._carrierAIDC)
-    self.carrierHRF = try AlexandriaHRMPrimitive<AlexandriaHRMString>(from: codingKeyContainer, forKeyIfPresent: .carrierHRF, auxKey: ._carrierHRF)
-    self.entryTime = try AlexandriaHRMPrimitive<UDIEntryType>(from: codingKeyContainer, forKeyIfPresent: .entryTime, auxKey: ._entryTime)
+    self.deviceIdentifier = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .deviceIdentifier, auxKey: ._deviceIdentifier)
+    self.issuer = try AsclepiusPrimitive<AsclepiusURI>(from: codingKeyContainer, forKeyIfPresent: .issuer, auxKey: ._issuer)
+    self.jurisdiction = try AsclepiusPrimitive<AsclepiusURI>(from: codingKeyContainer, forKeyIfPresent: .jurisdiction, auxKey: ._jurisdiction)
+    self.carrierAIDC = try AsclepiusPrimitive<AsclepiusBase64Binary>(from: codingKeyContainer, forKeyIfPresent: .carrierAIDC, auxKey: ._carrierAIDC)
+    self.carrierHRF = try AsclepiusPrimitive<AsclepiusString>(from: codingKeyContainer, forKeyIfPresent: .carrierHRF, auxKey: ._carrierHRF)
+    self.entryTime = try AsclepiusPrimitive<UDIEntryType>(from: codingKeyContainer, forKeyIfPresent: .entryTime, auxKey: ._entryTime)
     
     try super.init(from: decoder)
   }
